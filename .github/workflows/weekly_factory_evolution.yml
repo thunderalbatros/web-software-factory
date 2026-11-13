@@ -17,6 +17,10 @@ on:
         default: 'true'
         type: string
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
 permissions: {}
 
 jobs:
@@ -29,13 +33,13 @@ jobs:
 
     steps:
       - name: 1. Checkout Repository (Zero Credential Persistence)
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
-          fetch-depth: 0
+          fetch-depth: 1
           persist-credentials: false
 
       - name: 2. Setup Node.js 24 (ESM + Built-in SQLite)
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: '24'
           cache: 'npm'
@@ -76,10 +80,14 @@ jobs:
         run: |
           git config user.name "WebFactory Autonomous Evolver"
           git config user.email "tomasbermudez777@gmail.com"
-          git add knowledge/ weekly_update/ .agents/memory/
+          git add knowledge/ weekly_update/ .agents/memory/held_in_regression_tasks.json
           if git diff --staged --quiet; then
             echo "No changes to commit."
           else
             git commit -m "chore(weekly-evolution): actualización automática SOTA y reporte CTO [skip ci]"
-            git push "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:${GITHUB_REF_NAME}
+            BASIC_AUTH=$(printf 'x-access-token:%s' "${GITHUB_TOKEN}" | base64 -w0)
+            GIT_CONFIG_COUNT=1 \
+            GIT_CONFIG_KEY_0="http.https://github.com/.extraheader" \
+            GIT_CONFIG_VALUE_0="AUTHORIZATION: basic ${BASIC_AUTH}" \
+              git push --force-with-lease "https://github.com/${GITHUB_REPOSITORY}.git" HEAD:${GITHUB_REF_NAME}
           fi

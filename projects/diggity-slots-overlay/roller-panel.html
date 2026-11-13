@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=680, height=200, initial-scale=1.0" />
+  <title>DIGGITYBETS.VIP — Promotional Vertical Roller Panel (680x200 60FPS)</title>
+  <style>
+    :root {
+      --bg-obsidian: #060a0f;
+      --bg-panel-dark: #0a1018;
+      --bg-panel-mid: #101b29;
+      --border-steel-outer: rgba(122, 178, 224, 0.72);
+      --border-steel-bright: rgba(186, 224, 255, 0.92);
+      --border-inner-light: rgba(255, 255, 255, 0.14);
+
+      --text-white: #f8fafc;
+      --text-eyebrow: #cbd5e1;
+
+      /* Default Ice-Blue / Slate-Steel Accent (matches Diggity Overlay) */
+      --accent-top: #bae6fd;
+      --accent-mid: #60a5fa;
+      --accent-bot: #2563eb;
+      --accent-glow: rgba(96, 165, 250, 0.42);
+      --eyebrow-line: #60a5fa;
+      --medal-rim-1: #e2e8f0;
+      --medal-rim-2: #60a5fa;
+      --medal-rim-3: #1e3a5f;
+    }
+
+    /* Optional Gold Accent Variant (matches Captura 2 $10,000+ gold look) */
+    body[data-accent="gold"] {
+      --accent-top: #fef08a;
+      --accent-mid: #fbbf24;
+      --accent-bot: #d97706;
+      --accent-glow: rgba(251, 191, 36, 0.42);
+      --eyebrow-line: #fbbf24;
+      --medal-rim-1: #fef08a;
+      --medal-rim-2: #f59e0b;
+      --medal-rim-3: #78350f;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 680px;
+      height: 200px;
+      overflow: hidden;
+      background: #05080d;
+      font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      user-select: none;
+    }
+
+    body[data-bg="transparent"] {
+      background: transparent;
+    }
+
+    /* Outer stage wrapper */
+    .roller-stage {
+      position: relative;
+      width: 680px;
+      height: 200px;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    body[data-tight="1"] .roller-stage {
+      padding: 0;
+    }
+
+    /* Main Panel Frame (1:1 Captura 2 geometry & texture) */
+    .roller-panel {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 14px;
+      background:
+        radial-gradient(360px 150px at 50% 50%, rgba(28, 52, 78, 0.42) 0%, transparent 75%),
+        repeating-linear-gradient(
+          -45deg,
+          rgba(255, 255, 255, 0.022) 0px,
+          rgba(255, 255, 255, 0.022) 3px,
+          rgba(0, 0, 0, 0.18) 3px,
+          rgba(0, 0, 0, 0.18) 9px
+        ),
+        linear-gradient(180deg, #0d1520 0%, #070b11 52%, #0a111a 100%);
+      border: 2px solid var(--border-steel-outer);
+      box-shadow:
+        0 14px 32px rgba(0, 0, 0, 0.85),
+        0 0 22px rgba(72, 148, 212, 0.22),
+        inset 0 1px 0 var(--border-inner-light),
+        inset 0 0 32px rgba(2, 5, 9, 0.92);
+      display: grid;
+      grid-template-columns: 122px 1fr 122px;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    /* Specular metallic corner highlights */
+    .roller-panel::after {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      border-radius: 14px;
+      background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.42) 0%,
+        transparent 16%,
+        transparent 84%,
+        rgba(147, 197, 253, 0.34) 100%
+      );
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      padding: 2px;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    /* Top & Bottom cylindrical drum shadow overlay (creates authentic 3D vertical roller depth) */
+    .drum-cylinder-shade {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(4, 7, 12, 0.92) 0%,
+        rgba(4, 7, 12, 0.28) 15%,
+        transparent 28%,
+        transparent 72%,
+        rgba(4, 7, 12, 0.28) 85%,
+        rgba(4, 7, 12, 0.92) 100%
+      );
+      pointer-events: none;
+      z-index: 6;
+    }
+
+    /* ==========================================================================
+       LEFT & CENTER VERTICAL DRUM VIEWPORTS (SYNCHRONIZED UPWARD SLIDE)
+       ========================================================================== */
+    .drum-viewport {
+      position: relative;
+      width: 100%;
+      height: 176px;
+      overflow: hidden;
+      z-index: 3;
+      -webkit-mask-image: linear-gradient(
+        180deg,
+        transparent 0%,
+        rgba(0, 0, 0, 0.85) 14%,
+        #000 24%,
+        #000 76%,
+        rgba(0, 0, 0, 0.85) 86%,
+        transparent 100%
+      );
+      mask-image: linear-gradient(
+        180deg,
+        transparent 0%,
+        rgba(0, 0, 0, 0.85) 14%,
+        #000 24%,
+        #000 76%,
+        rgba(0, 0, 0, 0.85) 86%,
+        transparent 100%
+      );
+    }
+
+    .drum-track {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      will-change: transform;
+    }
+
+    .drum-slide {
+      width: 100%;
+      height: 176px;
+      flex: 0 0 176px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    /* ==========================================================================
+       LEFT ICON EMBLEMS (3D ILLUSTRATED SVG BADGES)
+       ========================================================================== */
+    .left-icon-wrap {
+      width: 88px;
+      height: 88px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      filter:
+        drop-shadow(0 6px 10px rgba(0, 0, 0, 0.88))
+        drop-shadow(0 0 16px rgba(96, 165, 250, 0.28));
+    }
+
+    .left-icon-wrap svg {
+      width: 82px;
+      height: 82px;
+      overflow: visible;
+    }
+
+    /* ==========================================================================
+       CENTER TYPOGRAPHY STACK (1:1 CAPTURA 2 3-TIER HIERARCHY)
+       ========================================================================== */
+    .center-copy-slide {
+      padding: 0 6px;
+      text-align: center;
+    }
+
+    .eyebrow-row {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 6px;
+    }
+
+    .eyebrow-dash {
+      width: 34px;
+      height: 2.5px;
+      border-radius: 2px;
+      background: var(--eyebrow-line);
+      box-shadow: 0 0 8px var(--accent-glow);
+    }
+
+    .eyebrow-text {
+      font-size: 13.5px;
+      font-weight: 800;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--text-eyebrow);
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+    }
+
+    .headline-main {
+      font-size: 33px;
+      font-weight: 950;
+      line-height: 1.04;
+      letter-spacing: 0.025em;
+      text-transform: uppercase;
+      color: var(--text-white);
+      text-shadow:
+        0 3px 0 #04070b,
+        0 6px 14px rgba(0, 0, 0, 0.88);
+      white-space: nowrap;
+    }
+
+    .headline-accent {
+      margin-top: 3px;
+      font-size: 35px;
+      font-weight: 950;
+      line-height: 1.05;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      background: linear-gradient(180deg, var(--accent-top) 0%, var(--accent-mid) 52%, var(--accent-bot) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      filter:
+        drop-shadow(0 3px 0 #04070b)
+        drop-shadow(0 0 14px var(--accent-glow));
+      white-space: nowrap;
+    }
+
+    /* Slide-specific responsive font sizing so long phrases fit with bold optical balance */
+    .headline-main.sz-md {
+      font-size: 30px;
+    }
+    .headline-accent.sz-md {
+      font-size: 31px;
+    }
+    .headline-main.sz-lg {
+      font-size: 36px;
+      letter-spacing: 0.035em;
+    }
+    .headline-accent.sz-sm {
+      font-size: 25px;
+      letter-spacing: 0.06em;
+      margin-top: 5px;
+    }
+
+    /* ==========================================================================
+       RIGHT EMBLEM: METALLIC MEDALLION WITH OFFICIAL DIGGITY BET$ LOGO
+       ========================================================================== */
+    .right-medal-slot {
+      position: relative;
+      z-index: 7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      padding-right: 8px;
+    }
+
+    .diggity-coin {
+      position: relative;
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.28) 0%, transparent 45%),
+        radial-gradient(circle at 50% 50%, #17283b 0%, #09111a 72%, #05090f 100%);
+      border: 3px solid var(--medal-rim-2);
+      box-shadow:
+        0 8px 18px rgba(0, 0, 0, 0.9),
+        0 0 18px var(--accent-glow),
+        inset 0 2px 3px rgba(255, 255, 255, 0.42),
+        inset 0 -3px 6px rgba(0, 0, 0, 0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Inner grooved ring like a casino token / coin */
+    .diggity-coin::before {
+      content: "";
+      position: absolute;
+      inset: 5px;
+      border-radius: 50%;
+      border: 1.5px dashed rgba(186, 230, 253, 0.38);
+      pointer-events: none;
+    }
+
+    body[data-accent="gold"] .diggity-coin::before {
+      border-color: rgba(254, 240, 138, 0.45);
+    }
+
+    .diggity-coin img {
+      width: 72px;
+      height: auto;
+      transform: rotate(-4deg);
+      filter:
+        drop-shadow(0 3px 4px rgba(0, 0, 0, 0.95))
+        drop-shadow(0 0 8px rgba(96, 165, 250, 0.32));
+    }
+
+    /* Subtle progress dots at bottom center of panel */
+    .roller-progress-dots {
+      position: absolute;
+      bottom: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 6px;
+      z-index: 8;
+    }
+
+    .roller-dot {
+      width: 16px;
+      height: 3px;
+      border-radius: 2px;
+      background: rgba(148, 163, 184, 0.22);
+      transition: background 0.25s ease, box-shadow 0.25s ease, width 0.25s ease;
+    }
+
+    .roller-dot.is-active {
+      width: 24px;
+      background: var(--eyebrow-line);
+      box-shadow: 0 0 8px var(--accent-glow);
+    }
+  </style>
+</head>
+<body data-accent="ice-blue" data-bg="transparent" data-tight="1">
+
+  <div class="roller-stage">
+    <section class="roller-panel" aria-label="DiggityBets.vip Promotional Roller">
+      <div class="drum-cylinder-shade" aria-hidden="true"></div>
+
+      <!-- 1. LEFT SYNCHRONIZED ICON DRUM -->
+      <div class="drum-viewport" aria-hidden="true">
+        <div class="drum-track" id="left-icon-track">
+
+          <!-- ICON 1: KICK / STAKE LEADERBOARD (Trophy + Crown) -->
+          <div class="drum-slide">
+            <div class="left-icon-wrap">
+              <svg viewBox="0 0 96 96" fill="none">
+                <defs>
+                  <linearGradient id="iceGrad1" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#e0f2fe"/>
+                    <stop offset="45%" stop-color="#60a5fa"/>
+                    <stop offset="100%" stop-color="#1d4ed8"/>
+                  </linearGradient>
+                  <linearGradient id="goldAccent1" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#fef08a"/>
+                    <stop offset="55%" stop-color="#f59e0b"/>
+                    <stop offset="100%" stop-color="#b45309"/>
+                  </linearGradient>
+                </defs>
+                <!-- Handles -->
+                <path d="M24 26 H14 C14 42 22 50 32 52" stroke="url(#iceGrad1)" stroke-width="5.5" stroke-linecap="round"/>
+                <path d="M72 26 H82 C82 42 74 50 64 52" stroke="url(#iceGrad1)" stroke-width="5.5" stroke-linecap="round"/>
+                <!-- Cup Body -->
+                <path d="M24 18 H72 V40 C72 56 61 66 48 66 C35 66 24 56 24 40 Z" fill="url(#iceGrad1)" stroke="#f8fafc" stroke-width="2"/>
+                <!-- Star inside Trophy -->
+                <polygon points="48,27 52,36 62,36 54,42 57,51 48,46 39,51 42,42 34,36 44,36" fill="url(#goldAccent1)"/>
+                <!-- Stem & Base -->
+                <rect x="43" y="65" width="10" height="11" rx="2" fill="#93c5fd"/>
+                <rect x="30" y="75" width="36" height="8" rx="4" fill="url(#iceGrad1)" stroke="#e2e8f0" stroke-width="1.5"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- ICON 2: POINTS STORE AND RAFFLES (VIP Raffle Tickets + Gem) -->
+          <div class="drum-slide">
+            <div class="left-icon-wrap">
+              <svg viewBox="0 0 96 96" fill="none">
+                <!-- Back Ticket -->
+                <g transform="rotate(-14 48 48)">
+                  <rect x="16" y="28" width="64" height="38" rx="6" fill="#1e3a8a" stroke="#93c5fd" stroke-width="2"/>
+                </g>
+                <!-- Front Ticket -->
+                <g transform="rotate(6 48 48)">
+                  <path d="M16 34 C16 30.6 18.6 28 22 28 H74 C77.4 28 80 30.6 80 34 V41 C75.5 41 72 44.5 72 49 C72 53.5 75.5 57 80 57 V64 C80 67.4 77.4 70 74 70 H22 C18.6 70 16 67.4 16 64 V57 C20.5 57 24 53.5 24 49 C24 44.5 20.5 41 16 41 Z" fill="url(#iceGrad1)" stroke="#f8fafc" stroke-width="2"/>
+                  <line x1="34" y1="32" x2="34" y2="66" stroke="#e0f2fe" stroke-width="2" stroke-dasharray="4 4"/>
+                  <polygon points="55,37 58,45 67,45 60,50 62,58 55,53 48,58 50,50 43,45 52,45" fill="url(#goldAccent1)"/>
+                </g>
+              </svg>
+            </div>
+          </div>
+
+          <!-- ICON 3: HOUSE GAMES (3D Casino Dice + Glow) -->
+          <div class="drum-slide">
+            <div class="left-icon-wrap">
+              <svg viewBox="0 0 96 96" fill="none">
+                <!-- Back Die -->
+                <g transform="rotate(-12 36 42)">
+                  <rect x="14" y="20" width="44" height="44" rx="10" fill="#1e3a8a" stroke="#93c5fd" stroke-width="2"/>
+                  <circle cx="26" cy="32" r="3.8" fill="#f8fafc"/>
+                  <circle cx="36" cy="42" r="3.8" fill="#60a5fa"/>
+                  <circle cx="46" cy="52" r="3.8" fill="#f8fafc"/>
+                </g>
+                <!-- Front Die -->
+                <g transform="rotate(10 60 56)">
+                  <rect x="36" y="32" width="46" height="46" rx="11" fill="url(#iceGrad1)" stroke="#f8fafc" stroke-width="2.2"/>
+                  <circle cx="48" cy="44" r="4" fill="#09111a"/>
+                  <circle cx="70" cy="44" r="4" fill="#09111a"/>
+                  <circle cx="59" cy="55" r="4.5" fill="url(#goldAccent1)"/>
+                  <circle cx="48" cy="66" r="4" fill="#09111a"/>
+                  <circle cx="70" cy="66" r="4" fill="#09111a"/>
+                </g>
+              </svg>
+            </div>
+          </div>
+
+          <!-- ICON 4: LINK YOUR KICK WITH OUR SITE (Kick K + Sync Bolt) -->
+          <div class="drum-slide">
+            <div class="left-icon-wrap">
+              <svg viewBox="0 0 96 96" fill="none">
+                <!-- Hexagonal Tech Shield -->
+                <polygon points="48,12 80,30 80,66 48,84 16,66 16,30" fill="#0f1f33" stroke="#60a5fa" stroke-width="2.5"/>
+                <polygon points="48,18 74,33 74,63 48,78 22,63 22,33" fill="url(#iceGrad1)" opacity="0.22"/>
+                <!-- Blocky Kick-style K in crisp ice-white + neon green accent -->
+                <path d="M32 30 H42 V44 L54 30 H66 L51 47 L67 66 H54 L42 51 V66 H32 Z" fill="#f8fafc" stroke="#060a0f" stroke-width="1.5"/>
+                <!-- Sync Link Badge -->
+                <circle cx="70" cy="66" r="13" fill="#09131f" stroke="#93c5fd" stroke-width="2"/>
+                <path d="M65 66 H75 M71 61 L76 66 L71 71" stroke="#38bdf8" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- ICON 5: DIGGITYBETS.VIP (Faceted 3D Blue Diamond like Captura 2) -->
+          <div class="drum-slide">
+            <div class="left-icon-wrap">
+              <svg viewBox="0 0 96 96" fill="none">
+                <!-- Outer Diamond Shape -->
+                <polygon points="28,20 68,20 86,40 48,82 10,40" fill="#38bdf8" stroke="#e0f2fe" stroke-width="2" stroke-linejoin="round"/>
+                <!-- Top Crown Facets -->
+                <polygon points="28,20 68,20 60,40 36,40" fill="#bae6fd"/>
+                <polygon points="10,40 28,20 36,40" fill="#7dd3fc"/>
+                <polygon points="68,20 86,40 60,40" fill="#0284c7"/>
+                <!-- Lower Pavilion Facets -->
+                <polygon points="36,40 60,40 48,82" fill="#38bdf8"/>
+                <polygon points="10,40 36,40 48,82" fill="#0ea5e9"/>
+                <polygon points="60,40 86,40 48,82" fill="#0369a1"/>
+                <!-- Crisp Specular Glint -->
+                <line x1="10" y1="40" x2="86" y2="40" stroke="#e0f2fe" stroke-width="1.5" opacity="0.85"/>
+              </svg>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 2. CENTER SYNCHRONIZED TEXT DRUM (THE 5 REQUESTED PHRASES) -->
+      <div class="drum-viewport">
+        <div class="drum-track" id="center-copy-track">
+
+          <!-- SLIDE 1: "Kick / Stake leaderboard" -->
+          <div class="drum-slide center-copy-slide">
+            <div class="eyebrow-row">
+              <span class="eyebrow-dash"></span>
+              <span class="eyebrow-text">DIGGITYBETS.VIP</span>
+              <span class="eyebrow-dash"></span>
+            </div>
+            <div class="headline-main">KICK / STAKE</div>
+            <div class="headline-accent">LEADERBOARD</div>
+          </div>
+
+          <!-- SLIDE 2: "Points store and raffles" -->
+          <div class="drum-slide center-copy-slide">
+            <div class="eyebrow-row">
+              <span class="eyebrow-dash"></span>
+              <span class="eyebrow-text">VIP REWARDS</span>
+              <span class="eyebrow-dash"></span>
+            </div>
+            <div class="headline-main">POINTS STORE</div>
+            <div class="headline-accent">AND RAFFLES</div>
+          </div>
+
+          <!-- SLIDE 3: "House games" -->
+          <div class="drum-slide center-copy-slide">
+            <div class="eyebrow-row">
+              <span class="eyebrow-dash"></span>
+              <span class="eyebrow-text">EXCLUSIVE PLAY</span>
+              <span class="eyebrow-dash"></span>
+            </div>
+            <div class="headline-main sz-lg">HOUSE GAMES</div>
+            <div class="headline-accent sz-sm">DIGGITYBETS.VIP</div>
+          </div>
+
+          <!-- SLIDE 4: "Link your kick with our site" -->
+          <div class="drum-slide center-copy-slide">
+            <div class="eyebrow-row">
+              <span class="eyebrow-dash"></span>
+              <span class="eyebrow-text">INSTANT PERKS</span>
+              <span class="eyebrow-dash"></span>
+            </div>
+            <div class="headline-main sz-md">LINK YOUR KICK</div>
+            <div class="headline-accent sz-md">WITH OUR SITE</div>
+          </div>
+
+          <!-- SLIDE 5: "diggitybets.vip" -->
+          <div class="drum-slide center-copy-slide">
+            <div class="eyebrow-row">
+              <span class="eyebrow-dash"></span>
+              <span class="eyebrow-text">OFFICIAL SITE</span>
+              <span class="eyebrow-dash"></span>
+            </div>
+            <div class="headline-main sz-md">DIGGITYBETS.VIP</div>
+            <div class="headline-accent sz-sm">CLAIM YOUR REWARDS</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 3. RIGHT METALLIC MEDAL WITH OFFICIAL DIGGITY BET$ LOGO -->
+      <div class="right-medal-slot">
+        <div class="diggity-coin">
+          <img src="./site/assets/diggity-logo-alpha.png" alt="DIGGITY BET$" />
+        </div>
+      </div>
+
+      <!-- Progress Indicator Dots -->
+      <div class="roller-progress-dots" id="roller-dots" aria-hidden="true">
+        <span class="roller-dot is-active"></span>
+        <span class="roller-dot"></span>
+        <span class="roller-dot"></span>
+        <span class="roller-dot"></span>
+        <span class="roller-dot"></span>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    (function initPromotionalRoller() {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('accent') === 'gold') {
+        document.body.setAttribute('data-accent', 'gold');
+      }
+      if (params.get('bg') === 'dark') {
+        document.body.setAttribute('data-bg', 'dark');
+      }
+      if (params.get('tight') === '0') {
+        document.body.setAttribute('data-tight', '0');
+      }
+
+      const SLIDE_HEIGHT = 176;
+      const SLIDE_COUNT = 5;
+      const HOLD_SEC = 2.0;       // Time stationary per benefit
+      const ROLL_SEC = 0.5;       // Smooth upward slot-reel roll duration
+      const STEP_SEC = HOLD_SEC + ROLL_SEC; // 2.5s per slide -> 12.5s full 5-slide cycle
+      const TOTAL_CYCLE_SEC = SLIDE_COUNT * STEP_SEC;
+
+      const leftTrack = document.getElementById('left-icon-track');
+      const centerTrack = document.getElementById('center-copy-track');
+      const dots = Array.from(document.querySelectorAll('.roller-dot'));
+
+      // Clone first slide and append to end of both drums for a 100% seamless infinite upward loop
+      leftTrack.appendChild(leftTrack.children[0].cloneNode(true));
+      centerTrack.appendChild(centerTrack.children[0].cloneNode(true));
+
+      // Custom cubic-bezier-like easing with authentic slot-reel snap
+      function easeInOutReel(t) {
+        return t < 0.5
+          ? 4 * t * t * t
+          : 1 - Math.pow(-2 * t + 2, 3) / 2;
+      }
+
+      function renderAtTime(sec) {
+        const cycleTime = ((sec % TOTAL_CYCLE_SEC) + TOTAL_CYCLE_SEC) % TOTAL_CYCLE_SEC;
+        const slideIndex = Math.floor(cycleTime / STEP_SEC);
+        const localTime = cycleTime - slideIndex * STEP_SEC;
+
+        let progress = 0;
+        if (localTime > HOLD_SEC) {
+          const rawT = (localTime - HOLD_SEC) / ROLL_SEC;
+          progress = easeInOutReel(Math.min(1, Math.max(0, rawT)));
+        }
+
+        const translateY = -((slideIndex + progress) * SLIDE_HEIGHT);
+        const transformStr = `translate3d(0, ${translateY.toFixed(3)}px, 0)`;
+        leftTrack.style.transform = transformStr;
+        centerTrack.style.transform = transformStr;
+
+        const activeDot = progress > 0.5 ? (slideIndex + 1) % SLIDE_COUNT : slideIndex;
+        dots.forEach((d, idx) => {
+          d.classList.toggle('is-active', idx === activeDot);
+        });
+      }
+
+      // Expose deterministic time setter for Playwright frame-by-frame video/GIF rendering
+      let manualMode = params.get('manual') === '1';
+      window.__setRollerTime = function (sec) {
+        manualMode = true;
+        renderAtTime(sec);
+      };
+      window.__ROLLER_CONFIG = {
+        SLIDE_COUNT,
+        STEP_SEC,
+        TOTAL_CYCLE_SEC
+      };
+
+      const startStamp = performance.now();
+      function tick(now) {
+        if (!manualMode) {
+          const elapsedSec = (now - startStamp) / 1000;
+          renderAtTime(elapsedSec);
+        }
+        requestAnimationFrame(tick);
+      }
+      renderAtTime(0);
+      requestAnimationFrame(tick);
+    })();
+  </script>
+</body>
+</html>

@@ -20,6 +20,10 @@ on:
         default: 'agencia-alfa'
         type: string
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
 permissions: {}
 
 jobs:
@@ -32,13 +36,13 @@ jobs:
 
     steps:
       - name: 1. Checkout Repository (Zero Credential Persistence)
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
-          fetch-depth: 0
+          fetch-depth: 1
           persist-credentials: false
 
       - name: 2. Setup Node.js 24
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: '24'
           cache: 'npm'
@@ -65,7 +69,7 @@ jobs:
           '
 
       - name: 5. Upload Standalone Production ZIP & Visual Captures (90 Days Retention)
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: standalone-produccion-zip-and-visual-audit
           path: |

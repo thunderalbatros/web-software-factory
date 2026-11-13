@@ -181,8 +181,18 @@ export function resolveProjectRoot(inputPath = '') {
     return slugCandidate;
   }
 
-  // Check if it's an absolute path or direct relative path
+  // Check if it's an absolute path or direct relative path (bounded to FACTORY_ROOT unless explicitly opted in)
   const directCandidate = path.resolve(process.cwd(), raw);
+  const allowExternal = process.env.ALLOW_EXTERNAL_PROJECT_ROOT === 'true';
+  const resolvedFactoryRoot = path.resolve(FACTORY_ROOT);
+  const isInsideFactory =
+    directCandidate === resolvedFactoryRoot ||
+    directCandidate.startsWith(resolvedFactoryRoot + path.sep);
+  if (!allowExternal && !isInsideFactory) {
+    throw new Error(
+      `SECURITY_BLOCK: Project path "${raw}" resolves outside FACTORY_ROOT (${resolvedFactoryRoot}). Set ALLOW_EXTERNAL_PROJECT_ROOT=true to override.`
+    );
+  }
   if (fs.existsSync(directCandidate)) {
     return fs.statSync(directCandidate).isDirectory()
       ? directCandidate

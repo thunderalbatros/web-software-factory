@@ -495,7 +495,7 @@ export function auditModuleAndDependencyHygiene() {
   };
 }
 
-export function runAstAudit(targetDirs = [
+export const DEFAULT_AST_TARGET_DIRS = [
   'site/js',
   'core/src',
   'worker',
@@ -504,9 +504,33 @@ export function runAstAudit(targetDirs = [
   'templates/astro-edge/worker',
   'templates/astro-edge/src/pages',
   'templates/astro-edge/src/layouts',
+  'templates/fullstack-saas-edge/worker',
   'tools/design',
   'tools/lib'
-]) {
+];
+
+export function discoverAstTargetDirs(baseRoot = ROOT, defaults = DEFAULT_AST_TARGET_DIRS) {
+  const dirs = new Set(defaults);
+  const projectsDir = path.join(baseRoot, 'projects');
+  if (fs.existsSync(projectsDir)) {
+    for (const entry of fs.readdirSync(projectsDir, { withFileTypes: true })) {
+      if (!entry.isDirectory()) continue;
+      for (const sub of ['site/js', 'worker', 'src/pages', 'src/layouts']) {
+        const candidate = path.posix.join('projects', entry.name, sub);
+        if (fs.existsSync(path.join(baseRoot, candidate))) {
+          dirs.add(candidate);
+        }
+      }
+    }
+  }
+  return Array.from(dirs);
+}
+
+export function runAstAudit(targetDirs = null, options = {}) {
+  const auditRoot = options.rootDir ? path.resolve(options.rootDir) : ROOT;
+  const resolvedTargets = Array.isArray(targetDirs)
+    ? targetDirs
+    : discoverAstTargetDirs(auditRoot, DEFAULT_AST_TARGET_DIRS);
   console.log(`\n======================================================`);
   console.log(`🛡️  AST & SYMBOLIC CODE GUARD AUDIT`);
   console.log(`======================================================\n`);
@@ -524,8 +548,8 @@ export function runAstAudit(targetDirs = [
   let securityBlockers = 0;
   let warnings = 0;
 
-  for (const relDir of targetDirs) {
-    const absDir = path.join(ROOT, relDir);
+  for (const relDir of resolvedTargets) {
+    const absDir = path.join(auditRoot, relDir);
     if (!fs.existsSync(absDir)) continue;
 
     const files = fs

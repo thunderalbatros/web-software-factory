@@ -100,6 +100,43 @@ export async function verifySlackSignatureWebCrypto(
 }
 
 /**
+ * 1b. Cryptographic CTO Approval Token Verifier (`v1=<hmac-sha256>`) with 300s Anti-Replay Guard.
+ */
+export function verifyCtoApprovalToken(ticketId, options = {}) {
+  const cleanTicketId = String(ticketId || '').trim();
+  const secret = String(
+    options.secret || process.env.CTO_APPROVAL_SECRET || process.env.SLACK_SIGNING_SECRET || ''
+  ).trim();
+  const signature = String(
+    options.signature || process.env.CTO_APPROVAL_SIGNATURE || ''
+  ).trim();
+  const timestamp = String(
+    options.timestamp || process.env.CTO_APPROVAL_TIMESTAMP || ''
+  ).trim();
+  const nowSec = Number.isFinite(options.nowSec) ? options.nowSec : Math.floor(Date.now() / 1000);
+
+  if (!cleanTicketId || !secret || !signature || !timestamp) {
+    return { valid: false, reason: 'MISSING_CTO_APPROVAL_CREDENTIALS' };
+  }
+  const ts = Number(timestamp);
+  if (!Number.isFinite(ts) || Math.abs(nowSec - ts) > 300) {
+    return { valid: false, reason: 'CTO_APPROVAL_TIMESTAMP_EXPIRED_REPLAY_GUARD' };
+  }
+  const digest = crypto
+    .createHmac('sha256', secret)
+    .update(`cto-approve:${cleanTicketId}:${ts}`)
+    .digest('hex');
+  const expected = `v1=${digest}`;
+  if (expected.length !== signature.length) {
+    return { valid: false, reason: 'INVALID_CTO_APPROVAL_SIGNATURE' };
+  }
+  const matched = crypto.timingSafeEqual(Buffer.from(expected, 'utf8'), Buffer.from(signature, 'utf8'));
+  return matched
+    ? { valid: true, reason: 'VERIFIED_CTO_HMAC_SHA256', timestamp: ts }
+    : { valid: false, reason: 'INVALID_CTO_APPROVAL_SIGNATURE' };
+}
+
+/**
  * Redacts PII (Credit cards, SSN/CUIT/DNI patterns, API keys/tokens) from untrusted ticket text.
  */
 export function redactTicketPii(rawText = '') {
@@ -785,11 +822,31 @@ export async function executeApprovedTicketFix(ticketId, options = {}) {
   }
 
   const oxlintCheck = runOxlintFastPass();
+  const deltaSpecAbs = ticketRecord.deltaSpecPath ? path.join(FACTORY_ROOT, ticketRecord.deltaSpecPath) : '';
+  const deltaSpecText =
+    deltaSpecAbs && fs.existsSync(deltaSpecAbs) ? fs.readFileSync(deltaSpecAbs, 'utf8') : '';
+  let parsedSandboxManifest = {};
+  try {
+    const rawOut = String(sandboxVerification?.stdout || '').trim().split(/\r?\n/).pop() || '{}';
+    parsedSandboxManifest = JSON.parse(rawOut);
+  } catch (_) {
+    parsedSandboxManifest = {};
+  }
   const autoevals = runBraintrustAutoevals({
-    candidateText: ticketRecord.sanitizedMessage,
-    expectedText: ticketRecord.sanitizedMessage,
-    candidateJson: { branchName, previewUrl, approvedByCto: true, productionModified: false },
-    expectedJson: { branchName, previewUrl, approvedByCto: true, productionModified: false }
+    candidateText: deltaSpecText,
+    expectedText: `${cleanTicketId} ${ticketRecord.sectionSelector || ''} ${ticketRecord.sanitizedMessage || ''}`.trim(),
+    candidateJson: {
+      ticketId: parsedSandboxManifest.ticketId || null,
+      branch: parsedSandboxManifest.branch || null,
+      targetSection: parsedSandboxManifest.targetSection || null,
+      approvedByCto: parsedSandboxManifest.approvedByCto === true
+    },
+    expectedJson: {
+      ticketId: cleanTicketId,
+      branch: branchName,
+      targetSection: ticketRecord.sectionSelector,
+      approvedByCto: true
+    }
   });
 
   ticketRecord.stage = 'STAGE_2_APPROVED_SANDBOX_IMPLEMENTATION';
@@ -1038,8 +1095,27 @@ if (isMain) {
           : ticketIdIdx !== -1
           ? args[ticketIdIdx + 1]
           : process.env.TICKET_ID || '';
+      const approvalCheck = verifyCtoApprovalToken(targetTicketId);
+      if (!approvalCheck.valid) {
+        console.error(
+          JSON.stringify(
+            {
+              ok: false,
+              blocked: true,
+              ticketId: targetTicketId,
+              error: 'HARD_STOP_CTO_CRYPTO_APPROVAL_REQUIRED',
+              reason: approvalCheck.reason,
+              inCi: process.env.GITHUB_ACTIONS === 'true'
+            },
+            null,
+            2
+          )
+        );
+        process.exit(1);
+      }
       executeApprovedTicketFix(targetTicketId, {
-        approvedByCto: true
+        approvedByCto: true,
+        approvalReason: approvalCheck.reason
       }).then((res) => {
         console.log(JSON.stringify(res, null, 2));
         process.exit(res.ok ? 0 : 1);

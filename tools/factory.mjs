@@ -14,7 +14,10 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
-import { execSync } from 'node:child_process';
+import { execSync, execFile } from 'node:child_process';
+import { promisify } from 'node:util';
+
+const execFileAsync = promisify(execFile);
 import { loadProjectConfig, setActiveProject, recordProjectAuditScore, FACTORY_ROOT } from './lib/project_loader.mjs';
 import { generateSoftwareSpec } from './intelligence/spec_generator.mjs';
 import { runDiffUiAdversarialGate } from './audit/diff_ui_adversarial.mjs';
@@ -298,20 +301,40 @@ async function main() {
     console.log(`🛡️  RUNNING 5-GATE SOFTWARE FACTORY PIPELINE FOR [${cfg.id}]`);
     console.log('====================================================================\n');
 
-    execSync(`node "${path.join(FACTORY_ROOT, 'tools', 'audit', 'code_clean_audit.mjs')}" --project "${cfg.projectRoot}"`, {
-      cwd: FACTORY_ROOT,
-      stdio: 'inherit'
-    });
-
-    execSync(`node "${path.join(FACTORY_ROOT, 'tools', 'audit', 'floor_and_aeo_guard.mjs')}" --project "${cfg.projectRoot}"`, {
-      cwd: FACTORY_ROOT,
-      stdio: 'inherit'
-    });
-
-    execSync(`node "${path.join(FACTORY_ROOT, 'tools', 'audit', 'ryux_design_gate.mjs')}" --project "${cfg.projectRoot}"`, {
-      cwd: FACTORY_ROOT,
-      stdio: 'inherit'
-    });
+    const parallelStaticAudits = [
+      { label: 'code_clean_audit', script: path.join(FACTORY_ROOT, 'tools', 'audit', 'code_clean_audit.mjs') },
+      { label: 'floor_and_aeo_guard', script: path.join(FACTORY_ROOT, 'tools', 'audit', 'floor_and_aeo_guard.mjs') },
+      { label: 'ryux_design_gate', script: path.join(FACTORY_ROOT, 'tools', 'audit', 'ryux_design_gate.mjs') }
+    ];
+    const staticResults = await Promise.all(
+      parallelStaticAudits.map(async (gate) => {
+        try {
+          const { stdout, stderr } = await execFileAsync(
+            process.execPath,
+            [gate.script, '--project', cfg.projectRoot],
+            { cwd: FACTORY_ROOT, maxBuffer: 8 * 1024 * 1024 }
+          );
+          return { ...gate, ok: true, stdout, stderr, err: null };
+        } catch (err) {
+          return {
+            ...gate,
+            ok: false,
+            stdout: err.stdout || '',
+            stderr: err.stderr || err.message,
+            err
+          };
+        }
+      })
+    );
+    for (const res of staticResults) {
+      if (res.stdout) process.stdout.write(res.stdout);
+      if (res.stderr) process.stderr.write(res.stderr);
+    }
+    const failedStatic = staticResults.find((r) => !r.ok);
+    if (failedStatic) {
+      console.error(`\n❌ [FACTORY GATE FAILED] ${failedStatic.label} reported failures.`);
+      process.exit(1);
+    }
 
     execSync(`node "${path.join(FACTORY_ROOT, 'tools', 'audit', 'chaos_monkey_test.mjs')}" --project "${cfg.projectRoot}"`, {
       cwd: FACTORY_ROOT,

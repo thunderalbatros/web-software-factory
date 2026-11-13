@@ -195,6 +195,17 @@ export function auditEdgeWorkersAndDist(rootDir = ROOT) {
     if (!src.includes('MAX_BODY_BYTES') || !src.includes('PAYLOAD_TOO_LARGE')) {
       issues.push(`[OWASP-VALIBOT-BOUNDARY] ${rel} no aplica límite duro de tamaño de payload (MAX_BODY_BYTES / 413).`);
     }
+
+    // 5. Turnstile server-side verification + bounded rate-limit memory + zero auto-approval in edge worker
+    if (!src.includes('turnstile/v0/siteverify')) {
+      issues.push(`[OWASP-BOT-DEFENSE] ${rel} no verifica tokens Turnstile server-side contra Cloudflare siteverify.`);
+    }
+    if (!src.includes('MAX_RATE_LIMIT_BUCKETS') && !src.includes('RATE_LIMITER')) {
+      issues.push(`[OWASP-DOS-MEMORY] ${rel} no acota buckets de rate-limit en memoria (MAX_RATE_LIMIT_BUCKETS / RATE_LIMITER).`);
+    }
+    if (/\bapprovedByCto\s*:\s*true\b/.test(src)) {
+      issues.push(`[OWASP-AUTHZ-HITL] ${rel} contiene bypass hardcoded (approvedByCto: true) prohibido en edge dispatch.`);
+    }
   }
 
   return {
@@ -439,7 +450,7 @@ export function runSecurityQuarantineGate(options = {}) {
   }
 
   // 3. Run Symbolic SAST Guard (<500ms)
-  const astRes = runAstAudit();
+  const astRes = runAstAudit(null, { rootDir: targetDir });
   if (!astRes.passed) {
     reasons.push(
       `[SAST] AST Guard detectó ${astRes.securityBlockers} bloqueos de seguridad y ${astRes.missingMethodErrors} métodos faltantes.`
@@ -479,7 +490,7 @@ export function runSecurityQuarantineGate(options = {}) {
   }
 
   // 9. Run Automated MCP Security Protocol Auditor (18 Rules OWASP MCP Top 10 + SARIF v2.1.0)
-  const mcpSecurityAudit = runMcpSecurityAudit();
+  const mcpSecurityAudit = runMcpSecurityAudit({ rootDir: targetDir });
   if (!mcpSecurityAudit.passed) {
     reasons.push(`[MCP-SECURITY-AUDITOR] Falló la auditoría de reglas MCP (${mcpSecurityAudit.scoreRatio}).`);
   }

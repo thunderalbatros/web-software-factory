@@ -55,14 +55,26 @@
   {
     "prerender": [
       {
-        "where": { "href_matches": "/*" },
-        "eagerness": "moderate"
+        "where": {
+          "and": [
+            { "href_matches": "/*" },
+            { "not": { "href_matches": "/api/*" } },
+            { "not": { "href_matches": "/cdn-cgi/*" } }
+          ]
+        },
+        "eagerness": "conservative"
       }
     ],
     "prefetch": [
       {
-        "where": { "href_matches": "/*" },
-        "eagerness": "moderate"
+        "where": {
+          "and": [
+            { "href_matches": "/*" },
+            { "not": { "href_matches": "/api/*" } },
+            { "not": { "href_matches": "/cdn-cgi/*" } }
+          ]
+        },
+        "eagerness": "conservative"
       }
     ]
   }
@@ -135,7 +147,7 @@
       </div>
     </section>
 
-    <section id="prd-custom-synthesized-modules" class="wf-industry-widget container" aria-label="Módulos Específicos del PRD de Agencia Alfa" data-baml-synthesized="true">
+        <section id="prd-custom-synthesized-modules" class="wf-industry-widget container" aria-label="Módulos Específicos del PRD de Agencia Alfa" data-baml-synthesized="true">
       <header>
         <p style="font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;opacity:0.78;">ARQUITECTURA SINTETIZADA DESDE ENTREVISTA PRD — AGENCIA ALFA</p>
         <h2 style="margin-block:0.35rem;">Capacidades Específicas de Negocio Verificadas</h2>

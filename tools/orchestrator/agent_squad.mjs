@@ -84,6 +84,8 @@ export {
 
 const __filename = fileURLToPath(import.meta.url);
 
+export { buildCompactSkillIndex } from '../intelligence/agent_squad.mjs';
+
 if (process.argv[1] && path.resolve(process.argv[1]) === __filename) {
   const useSandbox = process.argv.includes('--sandbox');
   const resume = process.argv.includes('--resume');

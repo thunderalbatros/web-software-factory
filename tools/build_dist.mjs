@@ -1,3 +1,4 @@
+import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import zlib from 'node:zlib';
@@ -59,8 +60,8 @@ try {
 if (projectConfig.stack === 'astro-edge' && fs.existsSync(path.join(root, 'astro.config.mjs'))) {
   const astroNodeModules = path.join(root, 'node_modules', 'astro');
   if (fs.existsSync(astroNodeModules)) {
-    console.log('• Building Astro 5 project via `npx astro build`...');
-    execSync('npx astro build', { cwd: root, stdio: 'inherit' });
+    console.log('• Building Astro 5 project via `npx --no-install astro build`...');
+    execSync('npx --no-install astro build', { cwd: root, stdio: 'inherit' });
   } else {
     console.log('• [Astro Static Scaffold] Copying public/ and rendering static entry shell to dist/...');
     copyRecursive(path.join(root, 'public'), dist);
@@ -190,6 +191,28 @@ async function minifyDistAssets() {
     }
   }
 
+  // Bundle core stylesheets into /site/css/bundle.css (P-01) while preserving individual files
+  const cssBundleDir = path.join(dist, 'site', 'css');
+  const bundleOrder = ['design-tokens.css', 'ui-primitives.css', 'motion-engine.css'];
+  const bundleParts = bundleOrder
+    .map((fname) => path.join(cssBundleDir, fname))
+    .filter((fpath) => fs.existsSync(fpath))
+    .map((fpath) => fs.readFileSync(fpath, 'utf8'));
+  if (bundleParts.length > 0) {
+    fs.writeFileSync(path.join(cssBundleDir, 'bundle.css'), bundleParts.join('\n'), 'utf8');
+    const distIndex = path.join(dist, 'index.html');
+    if (fs.existsSync(distIndex)) {
+      const idxHtml = fs.readFileSync(distIndex, 'utf8');
+      const collapsed = idxHtml.replace(
+        /<link\s+rel=["']stylesheet["']\s+href=["']\/site\/css\/design-tokens\.css[^"']*["']\s*>\s*<link\s+rel=["']stylesheet["']\s+href=["']\/site\/css\/ui-primitives\.css[^"']*["']\s*>\s*<link\s+rel=["']stylesheet["']\s+href=["']\/site\/css\/motion-engine\.css[^"']*["']\s*>/i,
+        '<link rel="stylesheet" href="/site/css/bundle.css" fetchpriority="high">'
+      );
+      if (collapsed !== idxHtml) {
+        fs.writeFileSync(distIndex, collapsed, 'utf8');
+      }
+    }
+  }
+
   console.log(`• Minifying JS in dist/ via ${oxcMinify ? 'Oxc (oxc-minify Rust)' : esbuild ? 'esbuild (Oxc fallback)' : 'Native JS Minifier'} (0 source maps — OWASP A10:2025)...`);
 
   const jsDirs = [path.join(dist, 'site', 'js'), path.join(dist, 'data')];
@@ -315,12 +338,18 @@ try {
 
   const srcDirector = path.join(FACTORY_ROOT, 'templates', 'components', 'web-audio-director.js');
   if (fs.existsSync(srcDirector) && sonicConfig.uiSfxMode !== 'off') {
-    fs.mkdirSync(path.join(dist, 'site', 'js'), { recursive: true });
-    fs.copyFileSync(srcDirector, path.join(dist, 'site', 'js', 'web-audio-director.js'));
-    if (distIndexHtml && !distIndexHtml.includes('web-audio-director.js')) {
+    const distJsDir = path.join(dist, 'site', 'js');
+    fs.mkdirSync(distJsDir, { recursive: true });
+    fs.copyFileSync(srcDirector, path.join(distJsDir, 'web-audio-director.js'));
+    fs.writeFileSync(
+      path.join(distJsDir, 'audio-lazy-loader.js'),
+      "(() => {\n  const load = () => import('/site/js/web-audio-director.js').catch(() => {});\n  window.addEventListener('pointerdown', load, { once: true, passive: true });\n  window.addEventListener('keydown', load, { once: true, passive: true });\n})();\n",
+      'utf8'
+    );
+    if (distIndexHtml && !distIndexHtml.includes('audio-lazy-loader.js') && !distIndexHtml.includes('web-audio-director.js')) {
       distIndexHtml = distIndexHtml.replace(
         /<\/body>/i,
-        '  <script type="module" src="/site/js/web-audio-director.js" defer></script>\n</body>'
+        '  <script src="/site/js/audio-lazy-loader.js" defer></script>\n</body>'
       );
     }
   }
@@ -452,8 +481,20 @@ ${designMdText ? `## 5. Design System & Tokens Summary (DESIGN.md)\n\n${designMd
 
 await minifyDistAssets();
 
-// 4c. Inject automatic build cache-buster (?v=<buildTs>) into all HTML files in dist/
-const buildTs = Date.now();
+// 4c. Inject deterministic SHA-256 content-hash cache-buster (?v=<hash8>) into all HTML files in dist/
+const fallbackHash = crypto.createHash('sha256').update(projectConfig.id || 'factory').digest('hex').slice(0, 8);
+const assetHashCache = new Map();
+function getAssetContentHash(assetPath) {
+  const cleanRel = String(assetPath || '').replace(/^\/+/, '');
+  if (assetHashCache.has(cleanRel)) return assetHashCache.get(cleanRel);
+  const absAsset = path.join(dist, cleanRel);
+  let hash = fallbackHash;
+  if (fs.existsSync(absAsset) && fs.statSync(absAsset).isFile()) {
+    hash = crypto.createHash('sha256').update(fs.readFileSync(absAsset)).digest('hex').slice(0, 8);
+  }
+  assetHashCache.set(cleanRel, hash);
+  return hash;
+}
 function injectHtmlCacheBusters(dirPath) {
   for (const item of fs.readdirSync(dirPath)) {
     const full = path.join(dirPath, item);
@@ -462,8 +503,10 @@ function injectHtmlCacheBusters(dirPath) {
       injectHtmlCacheBusters(full);
     } else if (item.endsWith('.html')) {
       const html = fs.readFileSync(full, 'utf8');
-      const updated = html
-        .replace(/(<(?:script|link)\b[^>]*?\b(?:src|href)=["'])(?!https?:\/\/|\/\/|data:)([^"'?#]+\.(?:js|css))(?:\?[^"']*)?(["'])/gi, `$1$2?v=${buildTs}$3`);
+      const updated = html.replace(
+        /(<(?:script|link)\b[^>]*?\b(?:src|href)=["'])(?!https?:\/\/|\/\/|data:)([^"'?#]+\.(?:js|css))(?:\?[^"']*)?(["'])/gi,
+        (_m, prefix, assetUrl, suffix) => `${prefix}${assetUrl}?v=${getAssetContentHash(assetUrl)}${suffix}`
+      );
       if (updated !== html) {
         fs.writeFileSync(full, updated, 'utf8');
       }
@@ -472,22 +515,24 @@ function injectHtmlCacheBusters(dirPath) {
 }
 injectHtmlCacheBusters(dist);
 
-// 5. Generate Cloudflare _headers (Security, Hardened CSP, HSTS, COOP, Brotli, Caching)
+// 5. Generate Cloudflare _headers (Security, Hardened CSP, CORP, Early Hints, Immutable Hashing)
 console.log('• Generating Cloudflare _headers...');
 const headersContent = `/*
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'inline-speculation-rules' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https:; frame-src https://challenges.cloudflare.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'inline-speculation-rules' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
   Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()
   Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Resource-Policy: same-origin
   X-Frame-Options: DENY
+  Link: </site/css/bundle.css>; rel=preload; as=style
 
 /site/css/*
-  Cache-Control: public, max-age=0, must-revalidate
+  Cache-Control: public, max-age=31536000, immutable
 
 /site/js/*
-  Cache-Control: public, max-age=0, must-revalidate
+  Cache-Control: public, max-age=31536000, immutable
 
 /data/*
   Cache-Control: public, max-age=86400, stale-while-revalidate=604800

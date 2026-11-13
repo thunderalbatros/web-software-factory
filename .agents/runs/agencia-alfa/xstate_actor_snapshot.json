@@ -1,15 +1,15 @@
 {
   "schemaVersion": "2026.10-xstate-v5-actor-snapshot",
   "projectSlug": "agencia-alfa",
-  "updatedAt": "2026-10-29T22:57:09.757Z",
-  "currentState": "packaged_and_landed",
-  "activeState": "packaged_and_landed",
-  "chainHash": "burr_8cea06032a8d",
+  "updatedAt": "2026-11-13T03:57:03.573Z",
+  "currentState": "rpi_research_untainted",
+  "activeState": "rpi_research_untainted",
+  "chainHash": "burr_bf1e432243d9",
   "burrActionLog": [
     {
       "event": "INIT_PROJECT",
       "to": "gate1_prd_pending",
-      "ts": "2026-10-29T22:57:09.755Z",
+      "ts": "2026-11-13T03:57:03.566Z",
       "reads": [],
       "writes": [
         "gate1Status",
@@ -20,7 +20,7 @@
       "event": "APPROVE_GATE1_PRD",
       "to": "gate1_prd_approved",
       "actor": "human",
-      "ts": "2026-10-29T22:57:09.755Z",
+      "ts": "2026-11-13T03:57:03.568Z",
       "reads": [
         "gate1Status"
       ],
@@ -32,7 +32,7 @@
     {
       "event": "OPEN_GATE2_INTERVIEW",
       "to": "gate2_spec_pending",
-      "ts": "2026-10-29T22:57:09.755Z",
+      "ts": "2026-11-13T03:57:03.569Z",
       "reads": [
         "gate1Status"
       ],
@@ -44,7 +44,7 @@
       "event": "APPROVE_GATE2_SPEC",
       "to": "gate2_spec_approved",
       "actor": "human",
-      "ts": "2026-10-29T22:57:09.755Z",
+      "ts": "2026-11-13T03:57:03.569Z",
       "reads": [
         "gate1Status",
         "gate2Status"
@@ -57,7 +57,7 @@
     {
       "event": "COMPLETE_RPI_UNTAINTED_RESEARCH",
       "to": "rpi_research_untainted",
-      "ts": "2026-10-29T22:57:09.755Z",
+      "ts": "2026-11-13T03:57:03.570Z",
       "reads": [
         "gate2Status"
       ],
@@ -65,71 +65,9 @@
         "untaintedResearchVerified",
         "maxStageInstructions"
       ]
-    },
-    {
-      "event": "START_WAVE1_FOUNDATION",
-      "to": "wave1_foundation",
-      "ts": "2026-10-29T22:57:09.755Z",
-      "reads": [
-        "untaintedResearchVerified"
-      ],
-      "writes": [
-        "tokensCompiled",
-        "morphologyApplied"
-      ]
-    },
-    {
-      "event": "COMPLETE_WAVE1_FOUNDATION",
-      "to": "wave2_specialist_forge",
-      "ts": "2026-10-29T22:57:09.755Z",
-      "reads": [
-        "tokensCompiled"
-      ],
-      "writes": [
-        "wave2Complete"
-      ]
-    },
-    {
-      "event": "COMPLETE_WAVE2_SPECIALIST_FORGE",
-      "to": "wave3_qa_and_jev_verification",
-      "ts": "2026-10-29T22:57:09.755Z",
-      "reads": [
-        "wave2Complete"
-      ],
-      "writes": [
-        "ryuxScore",
-        "securityScore",
-        "visualBlockers"
-      ]
-    },
-    {
-      "event": "PASS_WAVE3_QA_AND_JEV",
-      "to": "hitl_review_ready",
-      "ts": "2026-10-29T22:57:09.755Z",
-      "reads": [
-        "ryuxScore",
-        "securityScore",
-        "visualBlockers"
-      ],
-      "writes": [
-        "hitlReady"
-      ]
-    },
-    {
-      "event": "APPROVE_HITL_DELIVERY",
-      "to": "packaged_and_landed",
-      "actor": "human",
-      "ts": "2026-10-29T22:57:09.755Z",
-      "reads": [
-        "ryuxScore",
-        "securityScore"
-      ],
-      "writes": [
-        "hitlApprovedByCto"
-      ]
     }
   ],
-  "status": "done",
+  "status": "active",
   "context": {
     "projectSlug": "agencia-alfa",
     "gate1Status": "COMPLETED_BY_CTO",
@@ -138,20 +76,20 @@
     "hasSpecAndDesign": true,
     "untaintedResearchVerified": true,
     "maxStageInstructions": 14,
-    "tokensCompiled": true,
-    "morphologyApplied": true,
-    "wave2Complete": true,
+    "tokensCompiled": false,
+    "morphologyApplied": false,
+    "wave2Complete": false,
     "ryuxScore": 100,
     "securityScore": 100,
     "visualBlockers": 0,
     "jevVerdict": "ALIGNED_WITH_SPEC",
     "repairAttempts": 0,
-    "hitlApprovedByCto": true,
+    "hitlApprovedByCto": false,
     "transitionLog": [
       {
         "event": "INIT_PROJECT",
         "to": "gate1_prd_pending",
-        "ts": "2026-10-29T22:57:09.755Z",
+        "ts": "2026-11-13T03:57:03.566Z",
         "reads": [],
         "writes": [
           "gate1Status",
@@ -162,7 +100,7 @@
         "event": "APPROVE_GATE1_PRD",
         "to": "gate1_prd_approved",
         "actor": "human",
-        "ts": "2026-10-29T22:57:09.755Z",
+        "ts": "2026-11-13T03:57:03.568Z",
         "reads": [
           "gate1Status"
         ],
@@ -174,7 +112,7 @@
       {
         "event": "OPEN_GATE2_INTERVIEW",
         "to": "gate2_spec_pending",
-        "ts": "2026-10-29T22:57:09.755Z",
+        "ts": "2026-11-13T03:57:03.569Z",
         "reads": [
           "gate1Status"
         ],
@@ -186,7 +124,7 @@
         "event": "APPROVE_GATE2_SPEC",
         "to": "gate2_spec_approved",
         "actor": "human",
-        "ts": "2026-10-29T22:57:09.755Z",
+        "ts": "2026-11-13T03:57:03.569Z",
         "reads": [
           "gate1Status",
           "gate2Status"
@@ -199,7 +137,7 @@
       {
         "event": "COMPLETE_RPI_UNTAINTED_RESEARCH",
         "to": "rpi_research_untainted",
-        "ts": "2026-10-29T22:57:09.755Z",
+        "ts": "2026-11-13T03:57:03.570Z",
         "reads": [
           "gate2Status"
         ],
@@ -207,75 +145,13 @@
           "untaintedResearchVerified",
           "maxStageInstructions"
         ]
-      },
-      {
-        "event": "START_WAVE1_FOUNDATION",
-        "to": "wave1_foundation",
-        "ts": "2026-10-29T22:57:09.755Z",
-        "reads": [
-          "untaintedResearchVerified"
-        ],
-        "writes": [
-          "tokensCompiled",
-          "morphologyApplied"
-        ]
-      },
-      {
-        "event": "COMPLETE_WAVE1_FOUNDATION",
-        "to": "wave2_specialist_forge",
-        "ts": "2026-10-29T22:57:09.755Z",
-        "reads": [
-          "tokensCompiled"
-        ],
-        "writes": [
-          "wave2Complete"
-        ]
-      },
-      {
-        "event": "COMPLETE_WAVE2_SPECIALIST_FORGE",
-        "to": "wave3_qa_and_jev_verification",
-        "ts": "2026-10-29T22:57:09.755Z",
-        "reads": [
-          "wave2Complete"
-        ],
-        "writes": [
-          "ryuxScore",
-          "securityScore",
-          "visualBlockers"
-        ]
-      },
-      {
-        "event": "PASS_WAVE3_QA_AND_JEV",
-        "to": "hitl_review_ready",
-        "ts": "2026-10-29T22:57:09.755Z",
-        "reads": [
-          "ryuxScore",
-          "securityScore",
-          "visualBlockers"
-        ],
-        "writes": [
-          "hitlReady"
-        ]
-      },
-      {
-        "event": "APPROVE_HITL_DELIVERY",
-        "to": "packaged_and_landed",
-        "actor": "human",
-        "ts": "2026-10-29T22:57:09.755Z",
-        "reads": [
-          "ryuxScore",
-          "securityScore"
-        ],
-        "writes": [
-          "hitlApprovedByCto"
-        ]
       }
     ],
     "rejectedPolicyProposals": []
   },
   "persistedSnapshot": {
-    "status": "done",
-    "value": "packaged_and_landed",
+    "status": "active",
+    "value": "rpi_research_untainted",
     "historyValue": {},
     "context": {
       "projectSlug": "agencia-alfa",
@@ -285,20 +161,20 @@
       "hasSpecAndDesign": true,
       "untaintedResearchVerified": true,
       "maxStageInstructions": 14,
-      "tokensCompiled": true,
-      "morphologyApplied": true,
-      "wave2Complete": true,
+      "tokensCompiled": false,
+      "morphologyApplied": false,
+      "wave2Complete": false,
       "ryuxScore": 100,
       "securityScore": 100,
       "visualBlockers": 0,
       "jevVerdict": "ALIGNED_WITH_SPEC",
       "repairAttempts": 0,
-      "hitlApprovedByCto": true,
+      "hitlApprovedByCto": false,
       "transitionLog": [
         {
           "event": "INIT_PROJECT",
           "to": "gate1_prd_pending",
-          "ts": "2026-10-29T22:57:09.755Z",
+          "ts": "2026-11-13T03:57:03.566Z",
           "reads": [],
           "writes": [
             "gate1Status",
@@ -309,7 +185,7 @@
           "event": "APPROVE_GATE1_PRD",
           "to": "gate1_prd_approved",
           "actor": "human",
-          "ts": "2026-10-29T22:57:09.755Z",
+          "ts": "2026-11-13T03:57:03.568Z",
           "reads": [
             "gate1Status"
           ],
@@ -321,7 +197,7 @@
         {
           "event": "OPEN_GATE2_INTERVIEW",
           "to": "gate2_spec_pending",
-          "ts": "2026-10-29T22:57:09.755Z",
+          "ts": "2026-11-13T03:57:03.569Z",
           "reads": [
             "gate1Status"
           ],
@@ -333,7 +209,7 @@
           "event": "APPROVE_GATE2_SPEC",
           "to": "gate2_spec_approved",
           "actor": "human",
-          "ts": "2026-10-29T22:57:09.755Z",
+          "ts": "2026-11-13T03:57:03.569Z",
           "reads": [
             "gate1Status",
             "gate2Status"
@@ -346,75 +222,13 @@
         {
           "event": "COMPLETE_RPI_UNTAINTED_RESEARCH",
           "to": "rpi_research_untainted",
-          "ts": "2026-10-29T22:57:09.755Z",
+          "ts": "2026-11-13T03:57:03.570Z",
           "reads": [
             "gate2Status"
           ],
           "writes": [
             "untaintedResearchVerified",
             "maxStageInstructions"
-          ]
-        },
-        {
-          "event": "START_WAVE1_FOUNDATION",
-          "to": "wave1_foundation",
-          "ts": "2026-10-29T22:57:09.755Z",
-          "reads": [
-            "untaintedResearchVerified"
-          ],
-          "writes": [
-            "tokensCompiled",
-            "morphologyApplied"
-          ]
-        },
-        {
-          "event": "COMPLETE_WAVE1_FOUNDATION",
-          "to": "wave2_specialist_forge",
-          "ts": "2026-10-29T22:57:09.755Z",
-          "reads": [
-            "tokensCompiled"
-          ],
-          "writes": [
-            "wave2Complete"
-          ]
-        },
-        {
-          "event": "COMPLETE_WAVE2_SPECIALIST_FORGE",
-          "to": "wave3_qa_and_jev_verification",
-          "ts": "2026-10-29T22:57:09.755Z",
-          "reads": [
-            "wave2Complete"
-          ],
-          "writes": [
-            "ryuxScore",
-            "securityScore",
-            "visualBlockers"
-          ]
-        },
-        {
-          "event": "PASS_WAVE3_QA_AND_JEV",
-          "to": "hitl_review_ready",
-          "ts": "2026-10-29T22:57:09.755Z",
-          "reads": [
-            "ryuxScore",
-            "securityScore",
-            "visualBlockers"
-          ],
-          "writes": [
-            "hitlReady"
-          ]
-        },
-        {
-          "event": "APPROVE_HITL_DELIVERY",
-          "to": "packaged_and_landed",
-          "actor": "human",
-          "ts": "2026-10-29T22:57:09.755Z",
-          "reads": [
-            "ryuxScore",
-            "securityScore"
-          ],
-          "writes": [
-            "hitlApprovedByCto"
           ]
         }
       ],

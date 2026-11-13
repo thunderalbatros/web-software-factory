@@ -2,13 +2,13 @@
   "schemaVersion": "2026.36.2",
   "minDivergenceThreshold": 0.7,
   "minHarmonyScore": 0.85,
-  "updatedAt": "2026-10-29T21:00:30.887Z",
+  "updatedAt": "2026-11-13T03:58:12.788Z",
   "projects": {
     "agencia-alfa": {
       "projectSlug": "agencia-alfa",
       "industryCategory": "saas",
       "archetypeId": "b2b-saas-platform",
-      "registeredAt": "2026-10-29T21:00:30.886Z",
+      "registeredAt": "2026-11-13T03:58:12.787Z",
       "morphologicalDivergenceScore": 1,
       "aestheticHarmonyScore": 0.99,
       "brandDnaVector": {

@@ -55,14 +55,26 @@
   {
     "prerender": [
       {
-        "where": { "href_matches": "/*" },
-        "eagerness": "moderate"
+        "where": {
+          "and": [
+            { "href_matches": "/*" },
+            { "not": { "href_matches": "/api/*" } },
+            { "not": { "href_matches": "/cdn-cgi/*" } }
+          ]
+        },
+        "eagerness": "conservative"
       }
     ],
     "prefetch": [
       {
-        "where": { "href_matches": "/*" },
-        "eagerness": "moderate"
+        "where": {
+          "and": [
+            { "href_matches": "/*" },
+            { "not": { "href_matches": "/api/*" } },
+            { "not": { "href_matches": "/cdn-cgi/*" } }
+          ]
+        },
+        "eagerness": "conservative"
       }
     ]
   }

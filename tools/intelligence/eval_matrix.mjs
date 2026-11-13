@@ -83,7 +83,7 @@ export function evaluateSealedEnvelopeSuite({
         hardGatedBlocks.visualAndMotion?.criticalPassed !== false
       );
     } else {
-      passed = true;
+      passed = false;
     }
 
     if (passed) earnedWeight += weight;
@@ -258,7 +258,7 @@ export async function runEvalMatrix(projectInput = '', options = {}) {
     timestamp: new Date().toISOString(),
     dimensions: {},
     hardGatedBlocks: {},
-    passed: true
+    passed: false
   };
 
   // --------------------------------------------------------------------------

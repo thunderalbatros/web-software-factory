@@ -1,6 +1,6 @@
 name = "{{PROJECT_ID}}"
 main = "worker/index.js"
-compatibility_date = "2025-02-01"
+compatibility_date = "2025-10-15"
 
 [placement]
 mode = "smart"
@@ -8,4 +8,4 @@ mode = "smart"
 [assets]
 directory = "./dist"
 binding = "ASSETS"
-not_found_handling = "single-page-application"
+not_found_handling = "404-page"

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080, initial-scale=1.0" />
+  <title>twennythree — Minimalist Broadcast Overlay (1920x1080)</title>
+  <style>
+    :root {
+      /* ==========================================================================
+         OKLCH DARK BLUE SURFACE HIERARCHY (Apple HIG + Material Design 3)
+         ========================================================================== */
+      --surface-canvas-deep: oklch(0.125 0.032 258);       /* #060c18 Deep Midnight Navy */
+      --surface-canvas-mid: oklch(0.155 0.042 256);        /* #0a1528 Atmospheric Sapphire */
+      --surface-canvas-edge: oklch(0.105 0.026 260);       /* #040811 Perimeter Vignette */
+
+      --surface-container-low: oklch(0.138 0.036 258 / 0.88);
+      --surface-container-base: oklch(0.162 0.042 256 / 0.78);
+      --surface-container-high: oklch(0.205 0.052 255 / 0.65);
+
+      /* Apple HIG Zenithal Specular Lighting & Concentric Hairline Borders */
+      --border-specular-outer: oklch(0.680 0.135 248 / 0.42);
+      --border-specular-subtle: oklch(0.620 0.110 252 / 0.28);
+      --border-specular-top: oklch(0.980 0.010 250 / 0.20);
+      --border-inner-ring: oklch(0.960 0.012 250 / 0.07);
+
+      /* Ambient Studio Elevation Shadows */
+      --glow-sapphire-soft: oklch(0.580 0.160 250 / 0.18);
+      --shadow-ambient-deep: rgba(2, 5, 12, 0.88);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background: transparent;
+      user-select: none;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ==========================================================================
+       1920x1080 BROADCAST VIEWPORT WITH AUTOMATIC ASPECT-RATIO SCALING
+       ========================================================================== */
+    .broadcast-viewport {
+      position: relative;
+      width: 1920px;
+      height: 1080px;
+      transform-origin: top left;
+      overflow: hidden;
+      background: transparent;
+    }
+
+    /* ==========================================================================
+       DEEP DARK BLUE ARCHITECTURAL CANVAS WITH EVENODD TRANSPARENT CUTOUTS
+       Leaves Main Screen (1296x728) and Webcam (522x274) 100% Empty/Transparent
+       ========================================================================== */
+    .bg-canvas-layer {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      clip-path: url(#screen-and-cam-cutout);
+      background:
+        radial-gradient(1200px 760px at 34% 40%, rgba(22, 54, 104, 0.44) 0%, transparent 72%),
+        radial-gradient(860px 620px at 86% 20%, rgba(28, 68, 128, 0.36) 0%, transparent 68%),
+        radial-gradient(920px 640px at 84% 84%, rgba(16, 42, 84, 0.40) 0%, transparent 74%),
+        radial-gradient(980px 420px at 34% 94%, rgba(18, 46, 92, 0.32) 0%, transparent 75%),
+        linear-gradient(145deg, #071020 0%, #0b1930 38%, #071224 72%, #040913 100%);
+    }
+
+    body[data-layout="all-cutout"] .bg-canvas-layer {
+      clip-path: url(#all-four-cutout);
+    }
+
+    /* Ultra-subtle precision micro-grid (MD3 spatial reference, barely perceptible) */
+    .bg-canvas-layer::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(96, 165, 250, 0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(96, 165, 250, 0.018) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.65) 0%, transparent 88%);
+      -webkit-mask-image: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.65) 0%, transparent 88%);
+      pointer-events: none;
+    }
+
+    /* Studio optical perimeter vignette */
+    .bg-canvas-layer::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      box-shadow: inset 0 0 140px rgba(2, 6, 14, 0.86);
+      pointer-events: none;
+    }
+
+    /* ==========================================================================
+       APPLE HIG + MD3 CONCENTRIC HUD FRAMES (ZERO TEXT)
+       Outer radius: 16px | Border: 1.5px | Inner aperture radius: 14.5px
+       ========================================================================== */
+    .hud-frame {
+      position: absolute;
+      border-radius: 16px;
+      border: 1.5px solid var(--border-specular-outer);
+      box-shadow:
+        0 22px 48px var(--shadow-ambient-deep),
+        0 0 26px var(--glow-sapphire-soft),
+        inset 0 1px 0 var(--border-specular-top);
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    /* Zenithal diagonal specular corner sheen (Apple visionOS glass edge) */
+    .hud-frame::after {
+      content: "";
+      position: absolute;
+      inset: -1.5px;
+      border-radius: 16px;
+      background: linear-gradient(
+        135deg,
+        rgba(224, 242, 254, 0.42) 0%,
+        rgba(96, 165, 250, 0.16) 18%,
+        transparent 42%,
+        transparent 76%,
+        rgba(56, 189, 248, 0.28) 100%
+      );
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      padding: 1.5px;
+      pointer-events: none;
+    }
+
+    /* ==========================================================================
+       1. MAIN STREAMER SCREEN CUTOUT FRAME (LEFT — 1296x728, 16:9 EXACT)
+       ========================================================================== */
+    .main-screen-frame {
+      left: 34px;
+      top: 56px;
+      width: 1296px;
+      height: 728px;
+      background: transparent !important;
+    }
+
+    /* Subtle optical corner reticles (pure geometry, zero text) */
+    .corner-reticle {
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      border-color: rgba(147, 197, 253, 0.22);
+      border-style: solid;
+      pointer-events: none;
+    }
+    .corner-reticle.tl { top: 12px; left: 12px; border-width: 1.5px 0 0 1.5px; border-top-left-radius: 5px; }
+    .corner-reticle.tr { top: 12px; right: 12px; border-width: 1.5px 1.5px 0 0; border-top-right-radius: 5px; }
+    .corner-reticle.bl { bottom: 12px; left: 12px; border-width: 0 0 1.5px 1.5px; border-bottom-left-radius: 5px; }
+    .corner-reticle.br { bottom: 12px; right: 12px; border-width: 0 1.5px 1.5px 0; border-bottom-right-radius: 5px; }
+
+    /* ==========================================================================
+       2. RIGHT RACK COLUMN (WIDTH: 522px, ALIGNED AT X = 1364px)
+       ========================================================================== */
+    .right-rack {
+      left: 1364px;
+      width: 522px;
+    }
+
+    /* 2A. WEBCAM CUTOUT FRAME (TOP RIGHT — 522x274, 100% TRANSPARENT INTERIOR) */
+    .webcam-frame {
+      top: 56px;
+      height: 274px;
+      background: transparent !important;
+    }
+
+    /* 2B. AUXILIARY TOP FRAME (MIDDLE RIGHT — 522x326, CLEAN RECESSED DARK BLUE) */
+    .aux-top-frame {
+      top: 354px;
+      height: 326px;
+      border-color: var(--border-specular-subtle);
+      background:
+        radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.14) 0%, transparent 70%),
+        linear-gradient(180deg, rgba(10, 21, 40, 0.86) 0%, rgba(6, 13, 26, 0.94) 100%);
+      box-shadow:
+        0 18px 40px var(--shadow-ambient-deep),
+        inset 0 1px 0 var(--border-specular-top),
+        inset 0 0 28px rgba(3, 7, 16, 0.85);
+    }
+
+    /* Subtle top accent bar (Apple HIG grabber-style luminous line, zero text) */
+    .aux-accent-line {
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 36px;
+      height: 3px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, transparent 0%, rgba(96, 165, 250, 0.55) 50%, transparent 100%);
+    }
+
+    /* 2C. AUXILIARY BOTTOM FRAME (BOTTOM RIGHT — 522x320, CLEAN RECESSED DARK BLUE) */
+    .aux-bottom-frame {
+      top: 704px;
+      height: 320px;
+      border-color: var(--border-specular-subtle);
+      background:
+        radial-gradient(circle at 50% 50%, rgba(29, 78, 216, 0.12) 0%, rgba(6, 12, 24, 0.95) 78%);
+      box-shadow:
+        0 18px 40px var(--shadow-ambient-deep),
+        inset 0 1px 0 var(--border-specular-top),
+        inset 0 0 28px rgba(3, 7, 16, 0.85);
+    }
+
+    /* Subtle concentric ring inside bottom-right dock (pure geometry, zero text) */
+    .aux-bottom-ring {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 184px;
+      height: 184px;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      border: 1px solid rgba(96, 165, 250, 0.08);
+      box-shadow:
+        0 0 0 18px rgba(96, 165, 250, 0.018),
+        inset 0 0 24px rgba(59, 130, 246, 0.04);
+      pointer-events: none;
+    }
+
+    /* ==========================================================================
+       3. OPTIONAL BOTTOM-LEFT DOCK FRAME (SHOWN IN ?layout=full-bento)
+       ========================================================================== */
+    .bottom-left-frame {
+      left: 34px;
+      top: 808px;
+      width: 1296px;
+      height: 216px;
+      border-color: var(--border-specular-subtle);
+      background:
+        radial-gradient(600px 180px at 50% 50%, rgba(29, 78, 216, 0.14) 0%, transparent 75%),
+        linear-gradient(180deg, rgba(9, 19, 37, 0.84) 0%, rgba(5, 11, 22, 0.92) 100%);
+      box-shadow:
+        0 18px 40px var(--shadow-ambient-deep),
+        inset 0 1px 0 var(--border-specular-top),
+        inset 0 0 28px rgba(3, 7, 16, 0.85);
+      display: none;
+    }
+
+    body[data-layout="full-bento"] .bottom-left-frame {
+      display: block;
+    }
+
+    body[data-layout="ultra-clean"] .aux-top-frame,
+    body[data-layout="ultra-clean"] .aux-bottom-frame,
+    body[data-layout="ultra-clean"] .bottom-left-frame {
+      display: none !important;
+    }
+
+    body[data-layout="all-cutout"] .aux-top-frame,
+    body[data-layout="all-cutout"] .aux-bottom-frame {
+      background: transparent !important;
+    }
+    body[data-layout="all-cutout"] .aux-bottom-ring {
+      display: none;
+    }
+  </style>
+</head>
+<body data-layout="rack">
+  <main class="broadcast-viewport" id="broadcast-viewport" aria-label="twennythree Broadcast Overlay">
+    <!-- Precision SVG Even-Odd Cutout Definitions -->
+    <svg width="0" height="0" style="position:absolute;pointer-events:none;" aria-hidden="true">
+      <defs>
+        <!-- Default Cutout: Main Screen (35.5, 57.5 -> 1328.5, 782.5) + Webcam (1365.5, 57.5 -> 1884.5, 328.5) -->
+        <clipPath id="screen-and-cam-cutout" clipPathUnits="userSpaceOnUse">
+          <path
+            clip-rule="evenodd"
+            fill-rule="evenodd"
+            d="M 0,0 H 1920 V 1080 H 0 Z
+               M 50,57.5 H 1314 A 14.5,14.5 0 0 1 1328.5,72 V 768 A 14.5,14.5 0 0 1 1314,782.5 H 50 A 14.5,14.5 0 0 1 35.5,768 V 72 A 14.5,14.5 0 0 1 50,57.5 Z
+               M 1380,57.5 H 1870 A 14.5,14.5 0 0 1 1884.5,72 V 314 A 14.5,14.5 0 0 1 1870,328.5 H 1380 A 14.5,14.5 0 0 1 1365.5,314 V 72 A 14.5,14.5 0 0 1 1380,57.5 Z"
+          />
+        </clipPath>
+
+        <!-- Full 4-Window Cutout: Main Screen + Webcam + Aux Top + Aux Bottom -->
+        <clipPath id="all-four-cutout" clipPathUnits="userSpaceOnUse">
+          <path
+            clip-rule="evenodd"
+            fill-rule="evenodd"
+            d="M 0,0 H 1920 V 1080 H 0 Z
+               M 50,57.5 H 1314 A 14.5,14.5 0 0 1 1328.5,72 V 768 A 14.5,14.5 0 0 1 1314,782.5 H 50 A 14.5,14.5 0 0 1 35.5,768 V 72 A 14.5,14.5 0 0 1 50,57.5 Z
+               M 1380,57.5 H 1870 A 14.5,14.5 0 0 1 1884.5,72 V 314 A 14.5,14.5 0 0 1 1870,328.5 H 1380 A 14.5,14.5 0 0 1 1365.5,314 V 72 A 14.5,14.5 0 0 1 1380,57.5 Z
+               M 1380,355.5 H 1870 A 14.5,14.5 0 0 1 1884.5,370 V 664 A 14.5,14.5 0 0 1 1870,678.5 H 1380 A 14.5,14.5 0 0 1 1365.5,664 V 370 A 14.5,14.5 0 0 1 1380,355.5 Z
+               M 1380,705.5 H 1870 A 14.5,14.5 0 0 1 1884.5,720 V 1008 A 14.5,14.5 0 0 1 1870,1022.5 H 1380 A 14.5,14.5 0 0 1 1365.5,1008 V 720 A 14.5,14.5 0 0 1 1380,705.5 Z"
+          />
+        </clipPath>
+      </defs>
+    </svg>
+
+    <!-- Deep Dark Blue Studio Canvas Layer -->
+    <div class="bg-canvas-layer" aria-hidden="true"></div>
+
+    <!-- 1. Main Streamer Screen Cutout Frame (Left: 1296x728) -->
+    <section class="hud-frame main-screen-frame" id="main-screen-frame" aria-hidden="true">
+      <div class="corner-reticle tl"></div>
+      <div class="corner-reticle tr"></div>
+      <div class="corner-reticle bl"></div>
+      <div class="corner-reticle br"></div>
+    </section>
+
+    <!-- 2A. Streamer Webcam Cutout Frame (Top Right: 522x274) -->
+    <section class="hud-frame right-rack webcam-frame" id="webcam-frame" aria-hidden="true">
+      <div class="corner-reticle tl"></div>
+      <div class="corner-reticle tr"></div>
+      <div class="corner-reticle bl"></div>
+      <div class="corner-reticle br"></div>
+    </section>
+
+    <!-- 2B. Auxiliary Middle-Right Frame (522x326, Zero Text) -->
+    <section class="hud-frame right-rack aux-top-frame" id="aux-top-frame" aria-hidden="true">
+      <div class="aux-accent-line"></div>
+    </section>
+
+    <!-- 2C. Auxiliary Bottom-Right Frame (522x320, Zero Text) -->
+    <section class="hud-frame right-rack aux-bottom-frame" id="aux-bottom-frame" aria-hidden="true">
+      <div class="aux-accent-line"></div>
+      <div class="aux-bottom-ring"></div>
+    </section>
+
+    <!-- 3. Optional Bottom-Left Dock Frame (1296x216, Zero Text) -->
+    <section class="hud-frame bottom-left-frame" id="bottom-left-frame" aria-hidden="true">
+      <div class="aux-accent-line"></div>
+    </section>
+  </main>
+
+  <script>
+    (function initTwennythreeOverlay() {
+      const viewport = document.getElementById('broadcast-viewport');
+      const params = new URLSearchParams(window.location.search);
+
+      function syncViewportScale() {
+        const scaleX = window.innerWidth / 1920;
+        const scaleY = window.innerHeight / 1080;
+        const scale = Math.min(scaleX, scaleY);
+        viewport.style.transform = `scale(${scale})`;
+      }
+      window.addEventListener('resize', syncViewportScale);
+      syncViewportScale();
+
+      const layout = params.get('layout');
+      if (layout === 'ultra-clean' || layout === 'full-bento' || layout === 'all-cutout' || layout === 'rack') {
+        document.body.setAttribute('data-layout', layout);
+      }
+    })();
+  </script>
+</body>
+</html>

@@ -70,6 +70,36 @@ import { evaluateFullJevOuterAndMetaGate } from './jev_semantic_gate.mjs';
 const selfHealingAstHashHistory = new Map();
 
 /**
+ * Progressive-disclosure Tier-1 Skill Index (`<= 50 tokens/skill`) reading YAML frontmatter only.
+ */
+export function buildCompactSkillIndex(
+  skillsRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..', '.agents', 'skills')
+) {
+  if (!fs.existsSync(skillsRoot)) return [];
+  const entries = [];
+  for (const dirent of fs.readdirSync(skillsRoot, { withFileTypes: true })) {
+    if (!dirent.isDirectory()) continue;
+    const skillMd = path.join(skillsRoot, dirent.name, 'SKILL.md');
+    if (!fs.existsSync(skillMd)) continue;
+    const head = fs.readFileSync(skillMd, 'utf8').slice(0, 1200);
+    const fmMatch = head.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+    const fm = fmMatch ? fmMatch[1] : '';
+    const nameMatch = fm.match(/^name:\s*["']?(.+?)["']?\s*$/m);
+    const descMatch = fm.match(/^description:\s*["']?(.+?)["']?\s*$/m);
+    const name = (nameMatch ? nameMatch[1] : dirent.name).trim();
+    const rawDesc = (descMatch ? descMatch[1] : '').replace(/\s+/g, ' ').trim();
+    const compactDescription = rawDesc.length > 140 ? `${rawDesc.slice(0, 137)}...` : rawDesc;
+    entries.push({
+      id: dirent.name,
+      name,
+      description: compactDescription,
+      path: `.agents/skills/${dirent.name}/SKILL.md`
+    });
+  }
+  return entries.sort((a, b) => a.id.localeCompare(b.id));
+}
+
+/**
  * Registers the structural AST hash of a Self-Healing round (`runId`) and immediately trips
  * the `AST Diff-Oscillation Breaker` if `State A -> State B -> State A` is detected.
  */

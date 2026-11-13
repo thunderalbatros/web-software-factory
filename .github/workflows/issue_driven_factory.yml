@@ -41,6 +41,10 @@ on:
         default: 'Landing page B2B con tokens OKLCH, Bento Grid y Cloudflare Workers.'
         type: string
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
 permissions: {}
 
 jobs:
@@ -57,13 +61,13 @@ jobs:
 
     steps:
       - name: 1. Checkout Repository (Zero Credential Persistence)
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
-          fetch-depth: 0
+          fetch-depth: 1
           persist-credentials: false
 
       - name: 2. Setup Node.js 24
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: '24'
           cache: 'npm'
@@ -181,13 +185,13 @@ jobs:
 
     steps:
       - name: 1. Checkout Repository (Zero Credential Persistence)
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
-          fetch-depth: 0
+          fetch-depth: 1
           persist-credentials: false
 
       - name: 2. Setup Node.js 24
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: '24'
           cache: 'npm'
@@ -293,13 +297,22 @@ jobs:
               execFileSync("git", ["config", "user.name", "WebFactory Minion NHI Bot"], { stdio: "inherit" });
               execFileSync("git", ["config", "user.email", "nhi-bot@webfactory.local"], { stdio: "inherit" });
               execFileSync("git", ["checkout", "-B", branchName], { stdio: "inherit" });
-              execFileSync("git", ["add", `projects/${verdict.slug}`, ".agents/memory/"], { stdio: "inherit" });
+              execFileSync("git", ["add", `projects/${verdict.slug}`, ".agents/memory/held_in_regression_tasks.json"], { stdio: "inherit" });
               try {
                 execFileSync("git", ["commit", "-m", `feat(${verdict.slug}): entrega verificada 100/100 por NHI Minion`], { stdio: "inherit" });
                 const repo = process.env.GITHUB_REPOSITORY;
                 const token = process.env.GITHUB_TOKEN;
                 if (repo && token) {
-                  execFileSync("git", ["push", "-f", `https://x-access-token:${token}@github.com/${repo}.git`, branchName], { stdio: "inherit" });
+                  const basicAuth = Buffer.from(`x-access-token:${token}`, "utf8").toString("base64");
+                  execFileSync("git", ["push", "--force-with-lease", `https://github.com/${repo}.git`, branchName], {
+                    stdio: "inherit",
+                    env: {
+                      ...process.env,
+                      GIT_CONFIG_COUNT: "1",
+                      GIT_CONFIG_KEY_0: "http.https://github.com/.extraheader",
+                      GIT_CONFIG_VALUE_0: `AUTHORIZATION: basic ${basicAuth}`
+                    }
+                  });
                   execFileSync("gh", [
                     "pr",
                     "create",
@@ -329,13 +342,13 @@ jobs:
 
     steps:
       - name: 1. Checkout Repository (Zero Credential Persistence)
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
-          fetch-depth: 0
+          fetch-depth: 1
           persist-credentials: false
 
       - name: 2. Setup Node.js 24
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: '24'
           cache: 'npm'
@@ -364,13 +377,13 @@ jobs:
 
     steps:
       - name: 1. Checkout Repository (Zero Credential Persistence)
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
-          fetch-depth: 0
+          fetch-depth: 1
           persist-credentials: false
 
       - name: 2. Setup Node.js 24
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: '24'
           cache: 'npm'
@@ -382,5 +395,8 @@ jobs:
       - name: 4. Execute Approved Sandbox Fix & Verify 100/100 Gates
         env:
           TICKET_ID: ${{ github.event.client_payload.ticketId || '' }}
+          CTO_APPROVAL_SIGNATURE: ${{ github.event.client_payload.approvalSignature || '' }}
+          CTO_APPROVAL_TIMESTAMP: ${{ github.event.client_payload.approvalTimestamp || '' }}
+          SLACK_SIGNING_SECRET: ${{ secrets.SLACK_SIGNING_SECRET }}
         run: |
           node tools/feedback/client_feedback_triage_agent.mjs --stage implement

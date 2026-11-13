@@ -34,6 +34,7 @@
     "cto:cambio-incremental": "node tools/cto_command_center.mjs cambio-incremental",
     "cto:auditar-harness": "node tools/audit/harness_doctor_audit.mjs",
     "cto:cockpit": "node tools/cockpit/factory_twin_server.mjs",
+    "test": "node tools/audit/run_factory_tests.mjs",
     "cto:crear-intro-video": "node tools/cto_command_center.mjs crear-intro-video",
     "cto:crear-audio": "node tools/cto_command_center.mjs crear-audio",
     "cto:entrevista-prd": "node tools/orchestrator/lean_prd_architect.mjs",

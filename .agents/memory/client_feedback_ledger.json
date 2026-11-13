@@ -3,8 +3,8 @@
     {
       "ticketId": "tkt-selftest01",
       "projectSlug": "agencia-alfa",
-      "createdAt": "2026-10-29T17:45:35.294Z",
-      "updatedAt": "2026-10-29T17:45:35.790Z",
+      "createdAt": "2026-11-13T03:58:13.448Z",
+      "updatedAt": "2026-11-13T03:58:15.820Z",
       "stage": "STAGE_2_APPROVED_SANDBOX_IMPLEMENTATION",
       "status": "READY_FOR_MERGE_PREVIEW",
       "approvedByCto": true,
@@ -30,7 +30,7 @@
           "applyDesignTokens",
           "initInteractiveMicroHandlers"
         ],
-        "astNodesIndexed": 141,
+        "astNodesIndexed": 145,
         "specVerifiedReadOnly": true,
         "designVerifiedReadOnly": true
       },
@@ -138,14 +138,14 @@
         "previewUrl": "https://preview-tkt-selftest01.agencia-alfa.pages.dev",
         "branchName": "feedback/tkt-selftest01",
         "evalScore": 100,
-        "braintrustScore": 100
+        "braintrustScore": 76.2
       },
-      "approvedAt": "2026-10-29T17:45:35.790Z",
-      "snapshotId": "snap-tkt-selftest01-1793295935309",
+      "approvedAt": "2026-11-13T03:58:15.820Z",
+      "snapshotId": "snap-tkt-selftest01-1794542293517",
       "sandboxMode": "local-worktree",
       "astGuardPassed": true,
       "evalMatrixScore": 100,
-      "braintrustScore": 100,
+      "braintrustScore": 76.2,
       "f2pVerified": true,
       "p2pVerified": true,
       "draftPrUrl": "https://github.com/tomas/web-software-factory/pull/new/feedback/tkt-selftest01"

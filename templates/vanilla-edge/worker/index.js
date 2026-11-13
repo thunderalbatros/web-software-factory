@@ -9,13 +9,14 @@
 
 const SECURITY_HEADERS = Object.freeze({
   "Content-Security-Policy":
-    "default-src 'self'; script-src 'self' 'inline-speculation-rules' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https:; frame-src https://challenges.cloudflare.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests",
+    "default-src 'self'; script-src 'self' 'inline-speculation-rules' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests",
   "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
   "X-Content-Type-Options": "nosniff",
   "Referrer-Policy": "strict-origin-when-cross-origin",
   "Permissions-Policy":
     "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()",
   "Cross-Origin-Opener-Policy": "same-origin",
+  "Cross-Origin-Resource-Policy": "same-origin",
   "X-Frame-Options": "DENY"
 });
 
@@ -29,6 +30,7 @@ const ALLOWED_LEAD_KEYS = new Set([
 ]);
 
 const RATE_LIMIT_BUCKETS = new Map();
+const MAX_RATE_LIMIT_BUCKETS = 2048;
 const RATE_LIMIT_WINDOW_MS = 60000;
 const RATE_LIMIT_MAX_REQUESTS = 20;
 
@@ -49,10 +51,11 @@ export function withSecurityHeaders(response, extraHeaders = {}) {
   });
 }
 
-export function validateFetchMetadata(request) {
+export function validateFetchMetadata(request, allowedOriginHost = "") {
   const secSite = (request.headers.get("Sec-Fetch-Site") || "").toLowerCase();
   const secMode = (request.headers.get("Sec-Fetch-Mode") || "").toLowerCase();
   const secDest = (request.headers.get("Sec-Fetch-Dest") || "").toLowerCase();
+  const originHeader = request.headers.get("Origin") || "";
 
   if (secSite && !["same-origin", "same-site", "none"].includes(secSite)) {
     return { allowed: false, reason: "CROSS_SITE_FETCH_REJECTED" };
@@ -63,6 +66,19 @@ export function validateFetchMetadata(request) {
   if (secDest && !["empty", "document", ""].includes(secDest)) {
     return { allowed: false, reason: "INVALID_FETCH_DEST" };
   }
+  if (originHeader && ["POST", "PUT", "DELETE"].includes(request.method.toUpperCase())) {
+    try {
+      const originHost = new URL(originHeader).hostname.toLowerCase();
+      const requestHost = new URL(request.url).hostname.toLowerCase();
+      const allowedHost = allowedOriginHost ? String(allowedOriginHost).toLowerCase() : "";
+      const isLocal = originHost === "localhost" || originHost === "127.0.0.1";
+      if (originHost !== requestHost && !isLocal && (!allowedHost || originHost !== allowedHost)) {
+        return { allowed: false, reason: "CROSS_ORIGIN_MISMATCH_REJECTED" };
+      }
+    } catch {
+      return { allowed: false, reason: "INVALID_ORIGIN_HEADER" };
+    }
+  }
   return { allowed: true };
 }
 
@@ -70,10 +86,32 @@ export function hasSequentialNumericIdInPath(pathname) {
   return /\/api\/[a-z0-9_-]+\/\d+(?:\/|$)/i.test(String(pathname || ""));
 }
 
-function checkRateLimit(clientIp) {
+async function checkRateLimit(clientIp, env = null) {
+  if (env && env.RATE_LIMITER && typeof env.RATE_LIMITER.limit === "function") {
+    try {
+      const outcome = await env.RATE_LIMITER.limit({ key: String(clientIp || "unknown") });
+      return {
+        allowed: Boolean(outcome && outcome.success !== false),
+        remaining: outcome && outcome.success !== false ? RATE_LIMIT_MAX_REQUESTS - 1 : 0
+      };
+    } catch {
+      // Fall through to bounded isolate limiter if binding throws
+    }
+  }
   const now = Date.now();
   const bucket = RATE_LIMIT_BUCKETS.get(clientIp);
   if (!bucket || now - bucket.windowStart > RATE_LIMIT_WINDOW_MS) {
+    if (RATE_LIMIT_BUCKETS.size >= MAX_RATE_LIMIT_BUCKETS) {
+      for (const [k, b] of RATE_LIMIT_BUCKETS.entries()) {
+        if (now - b.windowStart > RATE_LIMIT_WINDOW_MS) {
+          RATE_LIMIT_BUCKETS.delete(k);
+        }
+      }
+      if (RATE_LIMIT_BUCKETS.size >= MAX_RATE_LIMIT_BUCKETS) {
+        const oldestKey = RATE_LIMIT_BUCKETS.keys().next().value;
+        if (oldestKey !== undefined) RATE_LIMIT_BUCKETS.delete(oldestKey);
+      }
+    }
     RATE_LIMIT_BUCKETS.set(clientIp, { windowStart: now, count: 1 });
     return { allowed: true, remaining: RATE_LIMIT_MAX_REQUESTS - 1 };
   }
@@ -167,16 +205,50 @@ export async function verifySlackSignatureWebCrypto(
   const valid = timingSafeEqualStr(expectedSig, String(signatureHeader).trim());
   return {
     valid,
-    reason: valid ? "SLACK_SIGNATURE_VERIFIED" : "SLACK_SIGNATURE_MISMATCH",
-    expectedSig
+    reason: valid ? "SLACK_SIGNATURE_VERIFIED" : "SLACK_SIGNATURE_MISMATCH"
   };
 }
 
+export async function verifyTurnstileTokenServerSide(token, secretKey, remoteIp = "", fetchImpl = fetch) {
+  const cleanToken = String(token || "").trim();
+  if (!cleanToken) {
+    return { valid: false, reason: "TURNSTILE_VERIFICATION_REQUIRED" };
+  }
+  const cleanSecret = String(secretKey || "").trim();
+  if (!cleanSecret) {
+    return { valid: false, reason: "TURNSTILE_SECRET_NOT_CONFIGURED" };
+  }
+  try {
+    const formData = new URLSearchParams({
+      secret: cleanSecret,
+      response: cleanToken
+    });
+    if (remoteIp) formData.set("remoteip", String(remoteIp));
+    const res = await fetchImpl("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: formData.toString(),
+      signal: AbortSignal.timeout(1500)
+    });
+    if (!res.ok) {
+      return { valid: false, reason: "TURNSTILE_SITEVERIFY_HTTP_ERROR" };
+    }
+    const json = await res.json();
+    const ok = Boolean(json && json.success === true);
+    return { valid: ok, reason: ok ? "TURNSTILE_VERIFIED" : "TURNSTILE_SITEVERIFY_REJECTED" };
+  } catch {
+    return { valid: false, reason: "TURNSTILE_SITEVERIFY_NETWORK_ERROR" };
+  }
+}
+
 export function sanitizeAndRedactEdgeTicket(rawText = "") {
-  const msg = String(rawText || "").trim();
+  const msg = String(rawText || "")
+    .normalize("NFKC")
+    .replace(/[\u200B-\u200F\uFEFF]/g, "")
+    .trim();
   if (!msg) return { allowed: false, reason: "EMPTY_TICKET_MESSAGE" };
   if (
-    /ignore\s+(?:all\s+)?(?:previous|prior|above)\s+(?:instructions|prompts|rules)|disregard\s+(?:all\s+)?(?:previous|system)|reveal\s+(?:your\s+)?(?:system\s+prompt|api\s+keys|secrets)|DROP\s+TABLE|UNION\s+SELECT|<script|\b(?:CONSTRAINTS\.md|AGENTS\.md)\b.*(?:delete|overwrite|disable|bypass)/i.test(
+    /ignore\s+(?:all\s+)?(?:previous|prior|above)\s+(?:instructions|prompts|rules)|ignor(?:a|á|ar|e)\s+(?:todas?\s+)?(?:las?\s+)?(?:instrucciones|reglas|prompts)\s+(?:previas|anteriores)|olvid(?:a|á|ar)\s+(?:todo\s+)?lo\s+anterior|disregard\s+(?:all\s+)?(?:previous|system)|reveal\s+(?:your\s+)?(?:system\s+prompt|api\s+keys|secrets)|DROP\s+TABLE|UNION\s+SELECT|<script|\b(?:CONSTRAINTS\.md|AGENTS\.md)\b.*(?:delete|overwrite|disable|bypass)/i.test(
       msg
     )
   ) {
@@ -300,7 +372,7 @@ export default {
 
       if (["POST", "PUT", "DELETE"].includes(method)) {
         if (url.pathname !== "/api/slack-webhook") {
-          const fetchMeta = validateFetchMetadata(request);
+          const fetchMeta = validateFetchMetadata(request, env && env.ALLOWED_ORIGIN);
           if (!fetchMeta.allowed) {
             return withSecurityHeaders(
               new Response(JSON.stringify({ ok: false, error: fetchMeta.reason }), {
@@ -322,7 +394,7 @@ export default {
         }
 
         const clientIp = request.headers.get("CF-Connecting-IP") || "127.0.0.1";
-        const rate = checkRateLimit(clientIp);
+        const rate = await checkRateLimit(clientIp, env);
         const rateHeaders = {
           "RateLimit-Limit": String(RATE_LIMIT_MAX_REQUESTS),
           "RateLimit-Remaining": String(rate.remaining)
@@ -376,14 +448,21 @@ export default {
 
           const headerToken = request.headers.get("cf-turnstile-response") || "";
           const turnstileToken = validation.data.turnstileToken || headerToken;
-          if (env && env.TURNSTILE_REQUIRED === "true" && !turnstileToken) {
-            return withSecurityHeaders(
-              new Response(JSON.stringify({ ok: false, error: "TURNSTILE_VERIFICATION_REQUIRED" }), {
-                status: 403,
-                headers: { "Content-Type": "application/json; charset=utf-8" }
-              }),
-              rateHeaders
+          if (env && env.TURNSTILE_REQUIRED === "true") {
+            const turnstileCheck = await verifyTurnstileTokenServerSide(
+              turnstileToken,
+              env.TURNSTILE_SECRET_KEY,
+              clientIp
             );
+            if (!turnstileCheck.valid) {
+              return withSecurityHeaders(
+                new Response(JSON.stringify({ ok: false, error: turnstileCheck.reason }), {
+                  status: 403,
+                  headers: { "Content-Type": "application/json; charset=utf-8" }
+                }),
+                rateHeaders
+              );
+            }
           }
 
           if (env && env.DB && typeof env.DB.prepare === "function") {
@@ -408,13 +487,33 @@ export default {
 
         if ((url.pathname === "/api/client-feedback" || url.pathname === "/api/slack-webhook") && method === "POST") {
           const rawBodyText = await request.text();
+          if (rawBodyText.length > MAX_BODY_BYTES) {
+            return withSecurityHeaders(
+              new Response(JSON.stringify({ ok: false, error: "PAYLOAD_TOO_LARGE" }), {
+                status: 413,
+                headers: { "Content-Type": "application/json; charset=utf-8" }
+              }),
+              rateHeaders
+            );
+          }
           const isSlackRoute =
             url.pathname === "/api/slack-webhook" || Boolean(request.headers.get("X-Slack-Signature"));
 
-          if (isSlackRoute && env && env.SLACK_SIGNING_SECRET) {
+          let slackSignatureVerified = false;
+          const tsHeader = request.headers.get("X-Slack-Request-Timestamp") || "";
+          if (isSlackRoute) {
+            if (!env || !env.SLACK_SIGNING_SECRET) {
+              return withSecurityHeaders(
+                new Response(JSON.stringify({ ok: false, error: "SLACK_SIGNING_SECRET_NOT_CONFIGURED" }), {
+                  status: 503,
+                  headers: { "Content-Type": "application/json; charset=utf-8" }
+                }),
+                rateHeaders
+              );
+            }
             const sigCheck = await verifySlackSignatureWebCrypto(
               rawBodyText,
-              request.headers.get("X-Slack-Request-Timestamp") || "",
+              tsHeader,
               request.headers.get("X-Slack-Signature") || "",
               String(env.SLACK_SIGNING_SECRET)
             );
@@ -427,6 +526,7 @@ export default {
                 rateHeaders
               );
             }
+            slackSignatureVerified = true;
           }
 
           let body = null;
@@ -457,6 +557,16 @@ export default {
             );
           }
 
+          if (body && (body.type === "url_verification" || body.type === "block_actions") && !slackSignatureVerified) {
+            return withSecurityHeaders(
+              new Response(JSON.stringify({ ok: false, error: "SLACK_SIGNATURE_REQUIRED_FOR_INTERACTIVE_ACTION" }), {
+                status: 401,
+                headers: { "Content-Type": "application/json; charset=utf-8" }
+              }),
+              rateHeaders
+            );
+          }
+
           if (body && body.type === "url_verification" && typeof body.challenge === "string") {
             return withSecurityHeaders(
               new Response(JSON.stringify({ challenge: body.challenge }), {
@@ -472,10 +582,17 @@ export default {
             const actionId = String(actionObj.action_id || "approve_ticket_fix");
             const ticketId = String(actionObj.value || "tkt-pending").replace(/[^a-zA-Z0-9_-]/g, "");
             if (actionId === "approve_ticket_fix") {
+              const approvalTimestamp = tsHeader || String(Math.floor(Date.now() / 1000));
+              const approvalSignature = await signN8nPayloadHmac(
+                String(env.SLACK_SIGNING_SECRET),
+                `approve:${ticketId}:${approvalTimestamp}`
+              );
               const dispatchPromise = dispatchGitHubRepositoryEvent(env, "cto_slack_ticket_approved", {
                 ticketId,
                 actionId,
-                approvedByCto: true,
+                slackSignatureVerified: true,
+                approvalTimestamp,
+                approvalSignature,
                 approver: body.user?.username || "cto-slack"
               });
               if (ctx && typeof ctx.waitUntil === "function") {
@@ -494,6 +611,27 @@ export default {
               ),
               rateHeaders
             );
+          }
+
+          if (!isSlackRoute && env && env.TURNSTILE_REQUIRED === "true") {
+            const fbToken =
+              (typeof body?.["cf-turnstile-response"] === "string" ? body["cf-turnstile-response"] : "") ||
+              request.headers.get("cf-turnstile-response") ||
+              "";
+            const turnstileCheck = await verifyTurnstileTokenServerSide(
+              fbToken,
+              env.TURNSTILE_SECRET_KEY,
+              clientIp
+            );
+            if (!turnstileCheck.valid) {
+              return withSecurityHeaders(
+                new Response(JSON.stringify({ ok: false, error: turnstileCheck.reason }), {
+                  status: 403,
+                  headers: { "Content-Type": "application/json; charset=utf-8" }
+                }),
+                rateHeaders
+              );
+            }
           }
 
           const rawMsg =
@@ -522,14 +660,24 @@ export default {
             );
           }
 
+          const rawSelector = String(body?.sectionSelector || "#main").trim();
+          const safeSelector = /^#[a-zA-Z0-9_-]{1,64}$/.test(rawSelector) ? rawSelector : "#main";
+          const rawViewport = String(body?.viewport || "1440x900").trim();
+          const safeViewport = /^\d{3,4}x\d{3,4}$/.test(rawViewport) ? rawViewport : "1440x900";
+          let safePageUrl = "https://example.pages.dev";
+          try {
+            const parsedPage = new URL(String(body?.pageUrl || safePageUrl));
+            if (parsedPage.protocol === "https:") safePageUrl = parsedPage.toString().slice(0, 200);
+          } catch {}
+
           const ticketId = `tkt-${crypto.randomUUID().slice(0, 8)}`;
           const dispatchTask = dispatchGitHubRepositoryEvent(env, "slack_client_ticket_triage", {
             ticketId,
             projectSlug: "{{PROJECT_ID}}",
             sourceChannel: isSlackRoute ? "slack_webhook" : "client_feedback_widget",
-            sectionSelector: String(body?.sectionSelector || "#main").slice(0, 80),
-            pageUrl: String(body?.pageUrl || "https://example.pages.dev").slice(0, 200),
-            viewport: String(body?.viewport || "1440x900").slice(0, 24),
+            sectionSelector: safeSelector,
+            pageUrl: safePageUrl,
+            viewport: safeViewport,
             message: edgeSanitized.sanitizedMessage
           });
           if (ctx && typeof ctx.waitUntil === "function") {

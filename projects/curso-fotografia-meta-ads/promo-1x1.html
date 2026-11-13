@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1080, height=1080, initial-scale=1.0" />
+  <title>Curso de Fotografía Digital — Flyer Promocional 1x1 ($80.000)</title>
+  <style>
+    :root {
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+      --text-white: #FFFFFF;
+
+      /* Theme 1 (Default): ÁMBAR EDITORIAL */
+      --accent-main: #FBBF24;
+      --accent-deep: #F59E0B;
+      --accent-badge-bg: linear-gradient(135deg, #FBBF24 0%, #F59E0B 100%);
+      --accent-badge-text: #120901;
+      --accent-glow: rgba(245, 158, 11, 0.44);
+      --card-surface: rgba(20, 10, 3, 0.78);
+      --card-border: rgba(251, 191, 36, 0.72);
+
+      --photo-filter: grayscale(100%) sepia(88%) hue-rotate(-15deg) saturate(2.55) contrast(1.10) brightness(0.82);
+      --backdrop-scrim:
+        radial-gradient(circle at 66% 42%, rgba(217, 119, 6, 0.22) 0%, rgba(18, 9, 3, 0.72) 82%),
+        linear-gradient(
+          95deg,
+          rgba(14, 7, 2, 0.82) 0%,
+          rgba(22, 11, 3, 0.58) 58%,
+          rgba(26, 13, 4, 0.40) 100%
+        ),
+        linear-gradient(
+          180deg,
+          rgba(12, 6, 2, 0.62) 0%,
+          rgba(16, 8, 3, 0.38) 45%,
+          rgba(10, 5, 2, 0.90) 100%
+        );
+    }
+
+    /* Theme 2: ESMERALDA STUDIO */
+    body[data-theme="emerald"] {
+      --accent-main: #34D399;
+      --accent-deep: #10B981;
+      --accent-badge-bg: linear-gradient(135deg, #34D399 0%, #10B981 100%);
+      --accent-badge-text: #02140D;
+      --accent-glow: rgba(16, 185, 129, 0.44);
+      --card-surface: rgba(4, 18, 14, 0.78);
+      --card-border: rgba(52, 211, 153, 0.72);
+
+      --photo-filter: saturate(1.28) contrast(1.10) brightness(0.80);
+      --backdrop-scrim:
+        radial-gradient(circle at 66% 42%, rgba(16, 185, 129, 0.18) 0%, rgba(3, 14, 11, 0.74) 82%),
+        linear-gradient(
+          95deg,
+          rgba(3, 14, 11, 0.82) 0%,
+          rgba(4, 18, 14, 0.56) 58%,
+          rgba(5, 22, 17, 0.38) 100%
+        ),
+        linear-gradient(
+          180deg,
+          rgba(3, 12, 9, 0.60) 0%,
+          rgba(4, 16, 12, 0.36) 45%,
+          rgba(2, 9, 7, 0.90) 100%
+        );
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 1080px;
+      height: 1080px;
+      overflow: hidden;
+      background: #080808;
+      font-family: var(--font-sans);
+      font-variant-numeric: tabular-nums;
+      color: var(--text-white);
+      -webkit-font-smoothing: antialiased;
+      user-select: none;
+    }
+
+    .promo-canvas {
+      position: relative;
+      width: 1080px;
+      height: 1080px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 62px 76px 62px;
+    }
+
+    /* Background Photograph */
+    .photo-layer {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .photo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 38%;
+      filter: var(--photo-filter);
+    }
+
+    .photo-scrim {
+      position: absolute;
+      inset: 0;
+      background: var(--backdrop-scrim);
+      pointer-events: none;
+    }
+
+    /* Subtle Viewfinder Frame Corners */
+    .viewfinder-hud {
+      position: absolute;
+      inset: 34px;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .vf-corner {
+      position: absolute;
+      width: 28px;
+      height: 28px;
+      border-color: rgba(255, 255, 255, 0.34);
+      border-style: solid;
+    }
+    .vf-corner.tl { top: 0; left: 0; border-width: 3px 0 0 3px; border-top-left-radius: 8px; }
+    .vf-corner.tr { top: 0; right: 0; border-width: 3px 3px 0 0; border-top-right-radius: 8px; }
+    .vf-corner.bl { bottom: 0; left: 0; border-width: 0 0 3px 3px; border-bottom-left-radius: 8px; }
+    .vf-corner.br { bottom: 0; right: 0; border-width: 0 3px 3px 0; border-bottom-right-radius: 8px; }
+
+    /* ==========================================================================
+       1. TOP BLOCK: COURSE TITLE + LOCATION
+       ========================================================================== */
+    .top-header {
+      position: relative;
+      z-index: 4;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .main-headline {
+      font-size: 86px;
+      font-weight: 950;
+      line-height: 0.95;
+      letter-spacing: -0.032em;
+      color: var(--text-white);
+      text-shadow:
+        0 4px 0 rgba(0, 0, 0, 0.68),
+        0 10px 26px rgba(0, 0, 0, 0.95),
+        0 18px 42px rgba(0, 0, 0, 0.9);
+    }
+
+    .main-headline .accent-word {
+      color: var(--accent-main);
+    }
+
+    .subtitle-location {
+      display: inline-flex;
+      align-items: center;
+      align-self: flex-start;
+      font-size: 46px;
+      font-weight: 850;
+      line-height: 1.06;
+      letter-spacing: -0.02em;
+      color: var(--text-white);
+      text-shadow:
+        0 3px 0 rgba(0, 0, 0, 0.68),
+        0 8px 22px rgba(0, 0, 0, 0.95);
+      border-left: 8px solid var(--accent-main);
+      padding-left: 18px;
+    }
+
+    /* ==========================================================================
+       2. MIDDLE BLOCK: DE-BOXED STACKED BENEFITS
+       ========================================================================== */
+    .benefits-stack {
+      position: relative;
+      z-index: 4;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      padding-left: 4px;
+    }
+
+    .benefit-row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 48px;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1.06;
+      color: var(--text-white);
+      text-shadow:
+        0 3px 0 rgba(0, 0, 0, 0.72),
+        0 8px 22px rgba(0, 0, 0, 0.96);
+    }
+
+    .benefit-bullet {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--accent-main);
+      box-shadow:
+        0 0 16px var(--accent-main),
+        0 3px 8px rgba(0, 0, 0, 0.9);
+      flex-shrink: 0;
+    }
+
+    /* ==========================================================================
+       3. BOTTOM HERO PROMO CARD:
+          "Valor promocional $80.000" + "Válido hasta el 10/11" + "Inicio: 14/11/26"
+       ========================================================================== */
+    .promo-offer-card {
+      position: relative;
+      z-index: 4;
+      width: 100%;
+      border-radius: 28px;
+      background: var(--card-surface);
+      border: 2.5px solid var(--card-border);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+      box-shadow:
+        0 22px 50px rgba(0, 0, 0, 0.88),
+        0 0 36px var(--accent-glow),
+        inset 0 1px 0 rgba(255, 255, 255, 0.28);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .promo-main-area {
+      padding: 24px 36px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .promo-price-col {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .promo-kicker {
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-main);
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85);
+    }
+
+    .promo-price-value {
+      font-size: 104px;
+      font-weight: 950;
+      line-height: 0.94;
+      letter-spacing: -0.035em;
+      color: var(--text-white);
+      text-shadow:
+        0 4px 0 rgba(0, 0, 0, 0.75),
+        0 10px 28px rgba(0, 0, 0, 0.95);
+    }
+
+    .promo-validity-badge {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 26px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 2px solid rgba(255, 255, 255, 0.24);
+      text-align: center;
+      gap: 4px;
+    }
+
+    .validity-label {
+      font-size: 22px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .validity-date {
+      font-size: 42px;
+      font-weight: 950;
+      letter-spacing: -0.02em;
+      line-height: 1.02;
+      color: var(--accent-main);
+    }
+
+    /* Bottom solid bar inside card: Inicio: 14/11/26 */
+    .promo-footer-bar {
+      width: 100%;
+      padding: 16px 36px;
+      background: var(--accent-badge-bg);
+      color: var(--accent-badge-text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      font-size: 44px;
+      font-weight: 950;
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    .calendar-icon {
+      width: 38px;
+      height: 38px;
+      stroke: var(--accent-badge-text);
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body data-theme="amber">
+
+  <main class="promo-canvas">
+    <!-- Background Photograph + Scrim -->
+    <div class="photo-layer">
+      <img
+        src="./assets/hero-photographer.jpg"
+        alt="Curso de Fotografía Digital en San Martín GBA"
+        class="photo-img"
+      />
+      <div class="photo-scrim"></div>
+    </div>
+
+    <!-- Subtle Viewfinder Corners -->
+    <div class="viewfinder-hud">
+      <div class="vf-corner tl"></div>
+      <div class="vf-corner tr"></div>
+      <div class="vf-corner bl"></div>
+      <div class="vf-corner br"></div>
+    </div>
+
+    <!-- 1. Top Header: Title + Location -->
+    <header class="top-header">
+      <h1 class="main-headline">
+        CURSO de<br />
+        FOTOGRAFÍA <span class="accent-word">DIGITAL</span>
+      </h1>
+      <p class="subtitle-location">
+        en San Martín GBA.
+      </p>
+    </header>
+
+    <!-- 2. Middle Stacked Benefits -->
+    <section class="benefits-stack" aria-label="Beneficios del curso">
+      <div class="benefit-row">
+        <span class="benefit-bullet"></span>
+        <span>Presencial</span>
+      </div>
+      <div class="benefit-row">
+        <span class="benefit-bullet"></span>
+        <span>Certificado</span>
+      </div>
+      <div class="benefit-row">
+        <span class="benefit-bullet"></span>
+        <span>Cupos limitados</span>
+      </div>
+    </section>
+
+    <!-- 3. Bottom Promotional Offer & Start Date Card -->
+    <footer class="promo-offer-card">
+      <div class="promo-main-area">
+        <div class="promo-price-col">
+          <span class="promo-kicker">Valor promocional</span>
+          <span class="promo-price-value">$80.000</span>
+        </div>
+        <div class="promo-validity-badge">
+          <span class="validity-label">Válido hasta el</span>
+          <span class="validity-date">10/11</span>
+        </div>
+      </div>
+      <div class="promo-footer-bar">
+        <svg class="calendar-icon" viewBox="0 0 24 24" fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="4" width="18" height="18" rx="3" ry="3"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        <span>Inicio: 14/11/26</span>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    (function initPromo1x1() {
+      const params = new URLSearchParams(window.location.search);
+      const theme = params.get('theme') || 'amber';
+      document.body.setAttribute('data-theme', theme);
+    })();
+  </script>
+</body>
+</html>

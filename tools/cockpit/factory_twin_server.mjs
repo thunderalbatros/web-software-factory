@@ -17,6 +17,7 @@
  * ========================================================================================================
  */
 
+import crypto from 'node:crypto';
 import fs from 'node:fs';
 import http from 'node:http';
 import path from 'node:path';
@@ -51,7 +52,7 @@ export const DEFAULT_COCKPIT_PORT = Number(process.env.COCKPIT_PORT || 4400);
 /**
  * Generates the single-page Spanish Cockpit HTML application (zero external runtime bloat).
  */
-export function renderCockpitHtml() {
+export function renderCockpitHtml(cockpitCsrfToken = '') {
   return `<!DOCTYPE html>
 <html lang="es">
 <head>
@@ -735,6 +736,7 @@ export function renderCockpitHtml() {
   </section>
 
   <script>
+    const COCKPIT_CSRF_TOKEN = ${JSON.stringify(cockpitCsrfToken)};
     let currentState = null;
     let selectedAgentId = 'foreman';
     const agentCoordinates = new Map(); // id -> { x, y, targetX, targetY }
@@ -755,7 +757,10 @@ export function renderCockpitHtml() {
       btn.disabled = true;
       btn.textContent = '⚡ Simulando recorrido en las 6 salas...';
       try {
-        await fetch('/api/simulate', { method: 'POST' });
+        await fetch('/api/simulate', {
+          method: 'POST',
+          headers: { 'X-Cockpit-Token': COCKPIT_CSRF_TOKEN }
+        });
       } finally {
         setTimeout(() => {
           btn.disabled = false;
@@ -774,7 +779,10 @@ export function renderCockpitHtml() {
         }
         await fetch('/api/hitl-action', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Cockpit-Token': COCKPIT_CSRF_TOKEN
+          },
           body: JSON.stringify({ action, note })
         });
       });
@@ -1159,6 +1167,24 @@ export function renderCockpitHtml() {
  */
 export function createFactoryTwinServer() {
   const sseClients = new Set();
+  const cockpitCsrfToken = crypto.randomBytes(24).toString('hex');
+
+  const isAllowedLocalOrigin = (originHeader, hostHeader) => {
+    if (!originHeader) return true;
+    try {
+      const originUrl = new URL(originHeader);
+      if (originUrl.protocol !== 'http:') return false;
+      const host = originUrl.hostname;
+      if (host !== '127.0.0.1' && host !== 'localhost') return false;
+      if (hostHeader) {
+        const expectedPort = String(hostHeader).split(':')[1] || '';
+        if (expectedPort && originUrl.port && originUrl.port !== expectedPort) return false;
+      }
+      return true;
+    } catch {
+      return false;
+    }
+  };
 
   const onTelemetryUpdate = ({ state, streamEntry }) => {
     const frame = `data: ${JSON.stringify({ state, streamEntry })}\n\n`;
@@ -1174,13 +1200,21 @@ export function createFactoryTwinServer() {
   telemetryEmitter.on('state-updated', onTelemetryUpdate);
 
   const server = http.createServer(async (req, res) => {
-    const urlObj = new URL(req.url || '/', `http://${req.headers.host || 'localhost'}`);
+    const urlObj = new URL(req.url || '/', `http://${req.headers.host || '127.0.0.1'}`);
     const pathname = urlObj.pathname;
 
-    // CORS headers for local developer convenience
-    res.setHeader('Access-Control-Allow-Origin', '*');
+    const originHeader = req.headers.origin;
+    if (originHeader && !isAllowedLocalOrigin(originHeader, req.headers.host)) {
+      res.writeHead(403, { 'Content-Type': 'application/json; charset=utf-8' });
+      res.end(JSON.stringify({ ok: false, error: 'FORBIDDEN_CROSS_ORIGIN' }));
+      return;
+    }
+    if (originHeader) {
+      res.setHeader('Access-Control-Allow-Origin', originHeader);
+      res.setHeader('Vary', 'Origin');
+    }
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, X-Cockpit-Token');
 
     if (req.method === 'OPTIONS') {
       res.writeHead(204);
@@ -1188,9 +1222,21 @@ export function createFactoryTwinServer() {
       return;
     }
 
+    if (req.method === 'POST' && (pathname === '/api/simulate' || pathname === '/api/hitl-action')) {
+      const providedToken = String(req.headers['x-cockpit-token'] || '');
+      const tokenValid =
+        providedToken.length === cockpitCsrfToken.length &&
+        crypto.timingSafeEqual(Buffer.from(providedToken, 'utf8'), Buffer.from(cockpitCsrfToken, 'utf8'));
+      if (!tokenValid) {
+        res.writeHead(403, { 'Content-Type': 'application/json; charset=utf-8' });
+        res.end(JSON.stringify({ ok: false, error: 'FORBIDDEN_INVALID_COCKPIT_CSRF_TOKEN' }));
+        return;
+      }
+    }
+
     // 1. Main 3-Tab Cockpit UI
     if (req.method === 'GET' && (pathname === '/' || pathname === '/index.html')) {
-      const html = renderCockpitHtml();
+      const html = renderCockpitHtml(cockpitCsrfToken);
       res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
       res.end(html);
       return;
@@ -1358,6 +1404,8 @@ export function createFactoryTwinServer() {
     res.end(JSON.stringify({ error: 'Not Found', path: pathname }));
   });
 
+  server.cockpitCsrfToken = cockpitCsrfToken;
+
   server.on('close', () => {
     telemetryEmitter.off('state-updated', onTelemetryUpdate);
     for (const res of sseClients) {
@@ -1411,14 +1459,34 @@ export async function runCockpitSelfTest() {
       req.on('error', reject);
     });
 
-    // 3. Run full 11-agent / 6-station / 5-column walkthrough simulation
-    const simRes = await fetch(`${baseUrl}/api/simulate`, { method: 'POST' });
+    // 3. Verify fail-closed CSRF / Origin guard + run full walkthrough simulation
+    const tokenlessRes = await fetch(`${baseUrl}/api/simulate`, { method: 'POST' });
+    const crossOriginRes = await fetch(`${baseUrl}/api/hitl-action`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Origin: 'https://evil.example',
+        'X-Cockpit-Token': server.cockpitCsrfToken
+      },
+      body: JSON.stringify({ action: 'approve_hitl' })
+    });
+    if (tokenlessRes.status !== 403 || crossOriginRes.status !== 403) {
+      throw new Error(`Cockpit CSRF/Origin guard failed (${tokenlessRes.status}/${crossOriginRes.status})`);
+    }
+
+    const simRes = await fetch(`${baseUrl}/api/simulate`, {
+      method: 'POST',
+      headers: { 'X-Cockpit-Token': server.cockpitCsrfToken }
+    });
     const simJson = await simRes.json();
 
     // 4. Verify interactive HITL button endpoint
     const hitlRes = await fetch(`${baseUrl}/api/hitl-action`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Cockpit-Token': server.cockpitCsrfToken
+      },
       body: JSON.stringify({ action: 'approve_hitl' })
     });
     const hitlJson = await hitlRes.json();

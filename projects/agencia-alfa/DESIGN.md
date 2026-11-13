@@ -169,24 +169,33 @@ All colors are authored in perceptual **W3C DTCG 2025.10 OKLCH** space to guaran
 
 ## Brand DNA Vector & Bespoke Morphology
 
-- **Axis 1 — Grid Topology (`gridTopology`):** `golden-ratio-bento-matrix`
-- **Axis 2 — Hero Architecture (`heroArchitecture`):** `live-interactive-product-sandbox`
+- **Morphology Selection Mode:** `auto-bespoke-criteria` (Tension: `minimalismo-silencioso vs expresividad-cinetica`)
+- **Axis 1 — Grid Topology (`gridTopology`):** `tufte-high-density-data`
+- **Axis 2 — Hero Architecture (`heroArchitecture`):** `minimalist-high-trust-authority`
 - **Axis 3 — Component & Surface Morphology (`componentMorphology`):** Nav `floating-island-bar` | Corner `6px-tecnico` | Material `deep-obsidian-specular`
 - **Axis 4 — OKLCH Chromatic Gamut Mask (`gamutMaskType`):** `atmospheric-analogous`
-- **Axis 5 — Expressive Typographic Curation (`fontPairingProfile`):** `swiss-precision-geist-jetbrains`
-- **Axis 6 — Kinetic Physics & Scroll Choreography (`motionPhysicsCriteria`):** Transition `magnetic-precision-spring` ($zeta = 0.82$) | Scroll `native-view-transitions-morph`
-- **Axis 7 — Intro Video & 3D/Shader Decision (`introAnd3dDecision`):** Recommend Intro `true` (`parametric-svg-choreography`) | 3D/Shader `parametric-diorama-or-shader`
-- **Intra-Category Morphological Divergence Score:** `0.88` (Mandatory Floor `>= 0.70`)
-- **Birkhoff Aesthetic Harmony Score ($M = O / C$):** `0.94` (Mandatory Floor `>= 0.85`, Max Simultaneous High-Complexity Axes `<= 2`)
-
+- **Axis 5 — Expressive Typographic Curation (`fontPairingProfile`):** `literary-salon-spectral-rubik` (`1.250 Major Third`)
+- **Axis 6 — Kinetic Physics & Scroll Choreography (`motionPhysicsCriteria`):** `crisp-editorial-snap` ($\zeta = 1$) | Scroll `vector-mask-reveal`
+- **Axis 7 — Intro Video & 3D/Shader Decision (`introAnd3dDecision`):** Recommend Intro `false` (`intro-split-circle-881e0a`) | 3D/Shader `orthographic-2d-clean`
+- **Intra-Category Morphological Divergence Score:** `1` (Mandatory Floor `>= 0.70`)
+- **Birkhoff Aesthetic Harmony Score ($M = O / C$):** `0.99` (Mandatory Floor `>= 0.85`)
 ## Sonic & Video Identity
 
-- **Archetype Sonic Posture (`Persuade`):** Dual-Surface Sonic Architecture (Subtle persuasive soundscape in Persuade Hero -> quiet functional micro-SFX in Operate).
-- **Procedural UI SFX (`Web Audio API` — `0 KB` Network Overhead):** hoverMagnetic, clickTactile, drawerSlide & successChime (0 KB Web Audio API DSP, ±20 cents micro-variation).
-- **Programmatic Brand Intro Video (`60 FPS`):** vertex-veo-hybrid (Precision geometric SVG assembly over Vertex AI Veo B-Roll canvas, 3.5s @ 60 FPS, < 1.8 MB) — vector `.svg` geometry and `OKLCH` palette strictly locked (diffusion distortion prohibited).
-- **ITU-R BS.1770-4 Loudness & Sidechain Ducking:** Intro video normalized to `-14 LUFS`, background music normalized to `-18 LUFS` (high-pass `30 Hz`, True Peak `-1 dBTP`, Opus `.webm`/`.ogg`), and automatic `-6 dB` Sidechain Ducking in the `300 Hz – 3.5 kHz` vocal band (`15ms` attack / `250ms` release).
-- **Autoplay & Ergonomics Guard:** `AudioContext` starts suspended until first explicit user gesture; all `<video>` elements carry `muted playsinline preload="metadata"`, instant `poster.webp` (`LCP < 1.2s`, `CLS: 0.00`), budget `< 1.8 MB`, and an accessible `[data-audio-mute-toggle]` button.
-
+- **Sonic Seed Preset:** `linear-minimal-tick` (`archetype: saas`)
+- **UI SFX Mode:** `subtle` (`silentByClientPreference: false`)
+- **Dominant Modal Material:** `polymer` (Polímero / Acrílico Mate) — `Q: 4.5`, `decay: 6ms`
+- **Cross-Modal Spence & Parise Parameters:**
+  - `border-radius: 8px` -> Profile `balanced`, Attack `15.72ms`, Odd Harmonics `0.368`
+  - `OKLCH(0.15, 0.03, 260)` -> Spectral Centroid Cutoff `903 Hz`
+  - DOM Interactive Area (`8640 px²`) -> Fundamental Frequency `f0 = 699.39 Hz`
+- **Psychoacoustic Safety Envelope (ISO 226:2023 & EBU R128):**
+  - Peak Ceiling: `-23.74 dBFS` (`<= -18.0 dBFS`), Sub-bass HPF `30 Hz`, ISO 226 Notch `-5.0 dB @ 3250 Hz`, `maxPolyphony: 4`
+  - Browser Autoplay Compliance: `AudioContext` starts `suspended`, requires `[data-audio-mute-toggle]`, respects `prefers-reduced-motion: reduce`
+- **60 FPS Audiovisual Synchresis (Chion / Murch):**
+  - Spring `stiffness: 280, damping: 24` -> Peak Velocity at `66.12ms` (Deviation `<= 16.6ms`)
+- **Background Music & Video Intro:**
+  - Music Mode: `off` (`-18 LUFS` integrated target, `-6 dB` voiceover sidechain ducking)
+  - Brand Intro Video: `vector-svg-reveal-3s` (`-14 LUFS` integrated target, `-1.0 dBTP` True Peak, `AV1/WebM 60 FPS <= 1.8 MB`, Logo: `public/assets/brand/logo-primary.svg`)
 ## Do's and Don'ts
 
 ### Do
@@ -200,3 +209,12 @@ All colors are authored in perceptual **W3C DTCG 2025.10 OKLCH** space to guaran
 - Never nest cards inside cards (card-in-card slop).
 - Never fabricate unverified customer logos or vanity hero-metric counters.
 - Never violate any of the **62 deterministic Anti-Slop rules** of `pbakaus/impeccable`.
+
+## Brand Identity Lock (`BRAND_IDENTITY_LOCK.json`)
+
+- **Brand Identity Mode:** `PARTIAL_BRAND_EVOLUTION` (`lockClientPalette: false`)
+- **Locked Primary Brand Color (`--color-primary`):** `#2563EB`
+- **Locked Secondary Brand Color (`--color-secondary`):** `#0F172A`
+- **Locked Accent Brand Color (`--color-accent`):** `#10B981`
+- **Locked Surface Colors:** Light `#F8FAFC` | Dark `#0B0F19`
+- **Official Logo & Isotipo:** `public/assets/brand/logo-primary.svg` | `public/assets/brand/isotipo.svg`

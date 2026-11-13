@@ -79,12 +79,16 @@ export function ensureDeltaSecurityReportDirectories() {
  * Audits all 18 MCP Security Rules (`OWASP MCP01:2025–MCP10:2025` + `@royalpinto007/mcp-audit`)
  * and writes `.agents/security_reports/mcp_audit.sarif.json` (SARIF v2.1.0).
  */
-export function runMcpSecurityAudit() {
+export function runMcpSecurityAudit(options = {}) {
   const startMs = performance.now();
   ensureDeltaSecurityReportDirectories();
 
-  const mcpJson = fs.existsSync(MCP_JSON_PATH)
-    ? JSON.parse(fs.readFileSync(MCP_JSON_PATH, 'utf8'))
+  const resolvedMcpPath =
+    options.rootDir && fs.existsSync(path.join(options.rootDir, '.mcp.json'))
+      ? path.join(options.rootDir, '.mcp.json')
+      : MCP_JSON_PATH;
+  const mcpJson = fs.existsSync(resolvedMcpPath)
+    ? JSON.parse(fs.readFileSync(resolvedMcpPath, 'utf8'))
     : { mcpServers: {} };
   const roleRegistry = loadMcpRoleRegistry(true);
   const omniRagSource = fs.existsSync(OMNI_RAG_SERVER_PATH)

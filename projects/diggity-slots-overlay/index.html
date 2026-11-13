@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DIGGITY BET$ — Broadcast Slots & Bonus Hunt Overlay (1920x1080 60FPS)</title>
+  <style>
+    :root {
+      /* Paleta Solicitada: Gris/Azulado (Slate Steel), Blanco Puro, Gris Frío y Negro Obsidiana (OKLCH) */
+      --bg-obsidian: #070b10;
+      --bg-slate-deep: #0c141e;
+      --bg-slate-mid: #132030;
+      --bg-slate-surface: #18283b;
+      --bg-panel-glass: rgba(11, 18, 27, 0.86);
+      --bg-panel-inner: rgba(8, 13, 20, 0.92);
+
+      /* Bordes Especulares Gris-Azulados + Blanco Frío (Inspirado en Captura 2) */
+      --border-steel-outer: rgba(122, 178, 224, 0.62);
+      --border-steel-bright: rgba(186, 224, 255, 0.85);
+      --border-white-inner: rgba(255, 255, 255, 0.12);
+      --glow-slate-blue: rgba(72, 148, 212, 0.22);
+      --glow-ambient-dark: rgba(2, 5, 10, 0.88);
+
+      /* Tipografía y Acentos */
+      --text-white: #f8fafc;
+      --text-silver: #cbd5e1;
+      --text-cool-grey: #8b9bb0;
+      --text-muted-slate: #5b6e84;
+      --accent-ice-blue: #60a5fa;
+      --accent-sky-bright: #93c5fd;
+      --accent-silver-badge: #e2e8f0;
+      --accent-profit-cyan: #38bdf8;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background: transparent;
+      color: var(--text-white);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-variant-numeric: tabular-nums;
+      -webkit-font-smoothing: antialiased;
+      user-select: none;
+    }
+
+    /* ==========================================================================
+       LIENZO BROADCAST 1920x1080 CON ESCALADO AUTOMÁTICO EXACTO
+       ========================================================================== */
+    .broadcast-viewport {
+      position: relative;
+      width: 1920px;
+      height: 1080px;
+      transform-origin: top left;
+      overflow: hidden;
+      background: transparent;
+    }
+
+    /* Capa de fondo con recorte SVG (deja vacío/transparente el interior de la Webcam arriba a la derecha) */
+    .bg-canvas-layer {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      clip-path: url(#webcam-cutout-clip);
+      background:
+        radial-gradient(1100px 680px at 35% 38%, rgba(30, 58, 88, 0.42) 0%, transparent 72%),
+        radial-gradient(820px 640px at 85% 24%, rgba(44, 78, 114, 0.34) 0%, transparent 70%),
+        radial-gradient(900px 580px at 84% 82%, rgba(25, 46, 68, 0.38) 0%, transparent 75%),
+        linear-gradient(135deg, #090e15 0%, #101b27 42%, #0c1520 74%, #06090e 100%);
+    }
+
+    body[data-cutout-mode="webcam-and-slot"] .bg-canvas-layer {
+      clip-path: url(#webcam-and-slot-cutout-clip);
+    }
+    body[data-cutout-mode="webcam-and-slot"] .slot-stage-frame {
+      background: transparent !important;
+      box-shadow:
+        0 20px 46px var(--glow-ambient-dark),
+        0 0 24px var(--glow-slate-blue) !important;
+    }
+
+    /* Textura arquitectónica micro-metálica + malla sutil estilo Captura 2 */
+    .bg-canvas-layer::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(148, 163, 184, 0.022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148, 163, 184, 0.022) 1px, transparent 1px),
+        repeating-linear-gradient(
+          -45deg,
+          rgba(255, 255, 255, 0.008) 0px,
+          rgba(255, 255, 255, 0.008) 2px,
+          transparent 2px,
+          transparent 8px
+        );
+      background-size: 48px 48px, 48px 48px, 16px 16px;
+      pointer-events: none;
+    }
+
+    /* Viñeta perimetral de estudio para dar profundidad óptica */
+    .bg-canvas-layer::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      box-shadow: inset 0 0 130px rgba(2, 5, 9, 0.85);
+      pointer-events: none;
+    }
+
+    /* Logos en transparencia desactivados por solicitud del streamer (fondo 100% limpio) */
+    .global-bg-watermark,
+    .slot-stage-inner-watermark,
+    .bonus-panel-backdrop-clip {
+      display: none !important;
+    }
+
+    /* ==========================================================================
+       SISTEMA DE MARCOS METÁLICOS SLATE-BLUE / BLANCO / GRIS / NEGRO
+       ========================================================================== */
+    .hud-frame {
+      position: absolute;
+      border-radius: 13px;
+      background: var(--bg-panel-inner);
+      border: 1.5px solid var(--border-steel-outer);
+      box-shadow:
+        0 20px 46px var(--glow-ambient-dark),
+        0 0 24px var(--glow-slate-blue),
+        inset 0 1px 0 var(--border-white-inner),
+        inset 0 0 28px rgba(4, 8, 14, 0.82);
+      z-index: 5;
+    }
+
+    /* Acentos de esquina de alta precisión (blanco/plata sutil) */
+    .hud-frame::after {
+      content: "";
+      position: absolute;
+      inset: -1.5px;
+      border-radius: 13px;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.38) 0%, transparent 14%, transparent 86%, rgba(147, 197, 253, 0.28) 100%);
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      padding: 1.5px;
+      pointer-events: none;
+    }
+
+    /* ==========================================================================
+       1. VENTANA PRINCIPAL DE LA SLOT (IZQUIERDA ARRIBA — ESTRUCTURA CAPTURA 1)
+       ========================================================================== */
+    .slot-stage-frame {
+      left: 34px;
+      top: 76px;
+      width: 1296px;
+      height: 690px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 52% 48%, rgba(22, 37, 54, 0.55) 0%, rgba(7, 11, 17, 0.96) 78%);
+    }
+
+    /* Marca de agua interior (como en Captura 1, pero refinada en tonos gris/azulado y grafito) */
+    .slot-stage-inner-watermark {
+      position: absolute;
+      left: 52%;
+      top: 53%;
+      width: 820px;
+      transform: translate(-50%, -50%) rotate(-24deg);
+      opacity: 0.068;
+      filter: grayscale(100%) brightness(1.15);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    /* Sutil retícula de calibración de encuadre en las 4 esquinas internas de la slot */
+    .slot-corner-reticle {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border-color: rgba(203, 213, 225, 0.24);
+      border-style: solid;
+      pointer-events: none;
+    }
+    .slot-corner-reticle.tl { top: 14px; left: 14px; border-width: 1.5px 0 0 1.5px; border-top-left-radius: 4px; }
+    .slot-corner-reticle.tr { top: 14px; right: 14px; border-width: 1.5px 1.5px 0 0; border-top-right-radius: 4px; }
+    .slot-corner-reticle.bl { bottom: 14px; left: 14px; border-width: 0 0 1.5px 1.5px; border-bottom-left-radius: 4px; }
+    .slot-corner-reticle.br { bottom: 14px; right: 14px; border-width: 0 1.5px 1.5px 0; border-bottom-right-radius: 4px; }
+
+    /* ==========================================================================
+       2. ZONA INFERIOR IZQUIERDA (ESPACIO VACÍO + BADGE "USE CODE: DIGGITY ON Stake")
+       ========================================================================== */
+    .promo-code-dock {
+      position: absolute;
+      left: 44px;
+      bottom: 36px;
+      display: inline-flex;
+      align-items: center;
+      gap: 18px;
+      z-index: 6;
+    }
+
+    .promo-code-stack {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.04;
+      letter-spacing: 0.03em;
+    }
+
+    .promo-use-label {
+      font-size: 27px;
+      font-weight: 900;
+      color: var(--text-white);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      text-shadow: 0 3px 0 #05080c, 0 6px 14px rgba(0, 0, 0, 0.85);
+    }
+
+    .promo-code-line {
+      display: flex;
+      align-items: baseline;
+      gap: 9px;
+      font-size: 36px;
+      font-weight: 950;
+      text-transform: uppercase;
+    }
+
+    .promo-code-highlight {
+      background: linear-gradient(180deg, #ffffff 0%, #93c5fd 52%, #60a5fa 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      filter: drop-shadow(0 3px 0 #05080c) drop-shadow(0 0 14px rgba(96, 165, 250, 0.32));
+      letter-spacing: 0.02em;
+    }
+
+    .promo-code-on {
+      color: var(--text-silver);
+      font-size: 31px;
+      font-weight: 900;
+      text-shadow: 0 3px 0 #05080c;
+    }
+
+    .stake-logo-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 14px 6px 8px;
+      filter: drop-shadow(0 4px 0 #05080c) drop-shadow(0 0 18px rgba(96, 165, 250, 0.25));
+    }
+
+    .stake-svg-wordmark {
+      height: 58px;
+      width: auto;
+      overflow: visible;
+    }
+
+    /* --- 2B. PANEL RODILLO PROMOCIONAL INFERIOR (ESTILO CAPTURA 2 — DIGGITYBETS.VIP) --- */
+    .bottom-roller-dock {
+      position: absolute;
+      left: 536px;
+      bottom: 36px;
+      width: 680px;
+      height: 200px;
+      z-index: 6;
+      border-radius: 14px;
+      overflow: hidden;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .bottom-roller-dock.is-hidden {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(12px);
+    }
+
+    .bottom-roller-iframe {
+      width: 680px;
+      height: 200px;
+      border: 0;
+      display: block;
+      background: transparent;
+      pointer-events: none;
+    }
+
+    /* ==========================================================================
+       3. COLUMNA DERECHA: RACK DE 3 ESTACIONES ALINEADAS
+          (1: WEBCAM CON LOGO | 2: LIVE CHAT | 3: BONUS HUNT / RULETA DEBAJO DEL CHAT)
+       ========================================================================== */
+    .right-rack-frame {
+      left: 1368px;
+      width: 514px;
+    }
+
+    /* --- 3A. MARCO DE CÁMARA (ARRIBA DERECHA — MARCO LIMPIO CONTINUO SIN LOGO QUE TAPE LA CARA) --- */
+    .webcam-frame {
+      top: 76px;
+      height: 264px;
+      background: transparent !important;
+      box-shadow:
+        0 20px 46px var(--glow-ambient-dark),
+        0 0 24px var(--glow-slate-blue);
+    }
+
+    .webcam-top-rail-left,
+    .webcam-top-rail-right,
+    .webcam-logo-crest {
+      display: none !important;
+    }
+
+    /* --- 3B. MARCO DE LIVE CHAT (CENTRO DERECHA) --- */
+    .chat-frame {
+      top: 372px;
+      height: 294px;
+      background:
+        linear-gradient(180deg, rgba(12, 20, 30, 0.92) 0%, rgba(7, 12, 18, 0.96) 100%);
+    }
+
+    .frame-pill-badge {
+      position: absolute;
+      top: -17px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      height: 33px;
+      padding: 0 22px;
+      border-radius: 8px;
+      background: linear-gradient(180deg, #162435 0%, #0b121b 100%);
+      border: 1.5px solid var(--border-steel-bright);
+      box-shadow:
+        0 6px 16px rgba(0, 0, 0, 0.85),
+        0 0 14px rgba(96, 165, 250, 0.24),
+        inset 0 1px 0 rgba(255, 255, 255, 0.18);
+      color: var(--text-white);
+      font-size: 13.5px;
+      font-weight: 800;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      z-index: 9;
+      white-space: nowrap;
+    }
+
+    .live-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #60a5fa;
+      box-shadow: 0 0 8px #60a5fa;
+    }
+
+    /* --- 3C. PANEL INFERIOR DERECHO DEBAJO DEL CHAT: BONUS HUNT / RULETA DE EVENTOS --- */
+    .bonus-hunt-frame {
+      top: 698px;
+      height: 346px;
+      background:
+        radial-gradient(circle at 50% 48%, rgba(23, 39, 58, 0.55) 0%, rgba(8, 13, 20, 0.96) 76%);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 26px 16px 14px;
+    }
+
+    .bonus-panel-backdrop-clip {
+      position: absolute;
+      inset: 0;
+      border-radius: 12px;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Marca de agua circular/inclinada de fondo dentro del panel inferior derecho (como Captura 2) */
+    .bonus-panel-bg-emblem {
+      position: absolute;
+      left: 50%;
+      top: 48%;
+      width: 245px;
+      transform: translate(-50%, -50%) rotate(-14deg);
+      opacity: 0.055;
+      filter: grayscale(100%) brightness(1.2);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Anillo decorativo estilo Captura 2 detrás de la marca de agua del panel inferior */
+    .bonus-panel-ring {
+      position: absolute;
+      left: 50%;
+      top: 47%;
+      width: 224px;
+      height: 224px;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      border: 10px solid rgba(148, 163, 184, 0.035);
+      box-shadow: inset 0 0 0 2px rgba(96, 165, 250, 0.05);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Contenedor de vistas del panel inferior derecho (Bonus Hunt | Ruleta | Standby) */
+    .dock-view {
+      position: relative;
+      z-index: 3;
+      display: none;
+      flex-direction: column;
+      height: 100%;
+      justify-content: space-between;
+    }
+    .dock-view.is-active {
+      display: flex;
+    }
+
+    /* --- VISTA A: BONUS HUNT TRACKER EN VIVO --- */
+    .bh-kpi-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .bh-kpi-box {
+      background: rgba(15, 25, 38, 0.78);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      border-radius: 8px;
+      padding: 6px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .bh-kpi-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--text-cool-grey);
+      text-transform: uppercase;
+    }
+
+    .bh-kpi-val {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--text-white);
+    }
+
+    .bh-kpi-val.accent {
+      color: var(--accent-sky-bright);
+    }
+
+    .bh-slot-list {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .bh-slot-row {
+      display: grid;
+      grid-template-columns: 24px 1fr auto auto;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 10px;
+      border-radius: 7px;
+      background: rgba(13, 21, 32, 0.76);
+      border: 1px solid rgba(148, 163, 184, 0.12);
+      font-size: 12.5px;
+    }
+
+    .bh-slot-row.is-opened {
+      border-color: rgba(96, 165, 250, 0.34);
+      background: rgba(20, 34, 52, 0.82);
+    }
+
+    .bh-slot-idx {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-cool-grey);
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 4px;
+      text-align: center;
+      padding: 2px 0;
+    }
+
+    .bh-slot-name {
+      font-weight: 700;
+      color: var(--text-white);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .bh-slot-bet {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--text-cool-grey);
+      padding: 2px 7px;
+      border-radius: 5px;
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .bh-slot-payout {
+      font-weight: 800;
+      font-size: 12.5px;
+      min-width: 68px;
+      text-align: right;
+      color: var(--accent-sky-bright);
+    }
+
+    .bh-slot-payout.pending {
+      color: var(--text-muted-slate);
+      font-weight: 700;
+    }
+
+    /* Píldoras inferiores gemelas (Inspiradas directamente en Captura 2: $ 5,700 | $ 0.00) */
+    .bh-bottom-pills {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      padding-top: 8px;
+      margin-top: auto;
+    }
+
+    .stat-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(9, 14, 22, 0.92);
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      font-size: 14.5px;
+      font-weight: 800;
+      color: var(--text-white);
+    }
+
+    .stat-pill-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .stat-pill-badge.cost {
+      background: linear-gradient(180deg, #64748b 0%, #334155 100%);
+      color: #f8fafc;
+      border: 1px solid rgba(226, 232, 240, 0.4);
+    }
+
+    .stat-pill-badge.return {
+      background: linear-gradient(180deg, #60a5fa 0%, #2563eb 100%);
+      color: #ffffff;
+      border: 1px solid rgba(191, 219, 254, 0.6);
+    }
+
+    /* --- VISTA B: RULETA DE EVENTOS INTERACTIVA (DEBAJO DEL CHAT) --- */
+    .wheel-stage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+      padding-top: 2px;
+    }
+
+    .wheel-wrapper {
+      position: relative;
+      width: 226px;
+      height: 226px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .wheel-pointer {
+      position: absolute;
+      top: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 18px solid #f8fafc;
+      filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.9));
+      z-index: 6;
+    }
+
+    .event-wheel-svg {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      box-shadow:
+        0 10px 28px rgba(0, 0, 0, 0.85),
+        0 0 0 3px rgba(122, 178, 224, 0.55),
+        inset 0 0 18px rgba(0, 0, 0, 0.8);
+      transition: transform 3.2s cubic-bezier(0.14, 0.88, 0.22, 1);
+    }
+
+    .wheel-center-btn {
+      position: absolute;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #1e293b 0%, #090d14 100%);
+      border: 2px solid var(--border-steel-bright);
+      color: var(--text-white);
+      font-size: 10.5px;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.9);
+      z-index: 7;
+    }
+
+    .wheel-result-banner {
+      width: 100%;
+      text-align: center;
+      padding: 7px 12px;
+      border-radius: 8px;
+      background: rgba(13, 22, 34, 0.88);
+      border: 1px solid rgba(122, 178, 224, 0.32);
+      font-size: 12.5px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      color: var(--accent-sky-bright);
+      text-transform: uppercase;
+    }
+
+    /* --- VISTA C: MODO STANDBY / CAPTURA 2 ("BONUS HUNT / EVENT STARTING...") --- */
+    .standby-center-label {
+      margin: auto;
+      font-size: 22px;
+      font-weight: 800;
+      color: rgba(203, 213, 225, 0.42);
+      letter-spacing: 0.02em;
+      text-align: center;
+    }
+
+    /* ==========================================================================
+       BARRA FLOTANTE DE ESTUDIO (SE OCULTA CON TECLA [H] O EN OBS)
+       ========================================================================== */
+    .studio-control-bar {
+      position: fixed;
+      top: 14px;
+      left: 34px;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 10px;
+      background: rgba(9, 15, 23, 0.92);
+      border: 1px solid rgba(148, 163, 184, 0.28);
+      backdrop-filter: blur(12px);
+      font-size: 12px;
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.7);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    body.controls-hidden .studio-control-bar {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-10px);
+    }
+
+    .studio-ctrl-label {
+      font-weight: 800;
+      color: var(--text-silver);
+      margin-right: 4px;
+      letter-spacing: 0.04em;
+    }
+
+    .studio-btn {
+      background: rgba(24, 40, 59, 0.85);
+      color: var(--text-white);
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      border-radius: 6px;
+      padding: 5px 10px;
+      font-size: 11.5px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .studio-btn.is-active {
+      background: linear-gradient(180deg, #2563eb 0%, #1d4ed8 100%);
+      border-color: #93c5fd;
+    }
+  </style>
+</head>
+<body data-watermark-mode="studio-hybrid" data-obs-cutout="false">
+
+  <!-- Barra de Control Rápido para el Streamer (Podés ocultarla tocando [H] o con `?clean=1` en OBS) -->
+  <nav class="studio-control-bar" aria-label="Controles de Estudio del Overlay">
+    <span class="studio-ctrl-label">PANEL INFERIOR DERECHO:</span>
+    <button type="button" class="studio-btn is-active" data-switch-dock="bonus-hunt">Bonus Hunt</button>
+    <button type="button" class="studio-btn" data-switch-dock="event-wheel">Ruleta de Eventos</button>
+    <button type="button" class="studio-btn" data-switch-dock="standby">Marco Limpio (Estilo Captura 2)</button>
+    <span class="studio-ctrl-label" style="margin-left:10px;">RODILLO DIGGITYBETS.VIP:</span>
+    <button type="button" class="studio-btn is-active" data-switch-roller="ice-blue">Ice-Blue</button>
+    <button type="button" class="studio-btn" data-switch-roller="gold">Dorado VIP</button>
+    <button type="button" class="studio-btn" data-switch-roller="off">Ocultar</button>
+    <button type="button" class="studio-btn" id="btn-hide-controls" title="Atajo: Tecla H">Ocultar Barra [H]</button>
+  </nav>
+
+  <!-- LIENZO PRINCIPAL 1920x1080 -->
+  <main class="broadcast-viewport" id="broadcast-viewport">
+
+    <!-- Definición de recortes SVG para dejar vacía/transparente la caja de Webcam (1368, 76, 514x264) -->
+    <svg width="0" height="0" style="position:absolute;pointer-events:none;" aria-hidden="true">
+      <defs>
+        <clipPath id="webcam-cutout-clip" clipPathUnits="userSpaceOnUse">
+          <path
+            fill-rule="evenodd"
+            d="M 0,0 H 1920 V 1080 H 0 Z M 1381,77.5 H 1869 A 11.5,11.5 0 0 1 1880.5,89 V 327 A 11.5,11.5 0 0 1 1869,338.5 H 1381 A 11.5,11.5 0 0 1 1369.5,327 V 89 A 11.5,11.5 0 0 1 1381,77.5 Z"
+          />
+        </clipPath>
+        <clipPath id="webcam-and-slot-cutout-clip" clipPathUnits="userSpaceOnUse">
+          <path
+            fill-rule="evenodd"
+            d="M 0,0 H 1920 V 1080 H 0 Z M 1381,77.5 H 1869 A 11.5,11.5 0 0 1 1880.5,89 V 327 A 11.5,11.5 0 0 1 1869,338.5 H 1381 A 11.5,11.5 0 0 1 1369.5,327 V 89 A 11.5,11.5 0 0 1 1381,77.5 Z M 47,77.5 H 1317 A 11.5,11.5 0 0 1 1328.5,89 V 753 A 11.5,11.5 0 0 1 1317,764.5 H 47 A 11.5,11.5 0 0 1 35.5,753 V 89 A 11.5,11.5 0 0 1 47,77.5 Z"
+          />
+        </clipPath>
+      </defs>
+    </svg>
+
+    <!-- Capa de Fondo Gris/Azulado Limpio (sin watermark, con recorte vacío en Webcam) -->
+    <div class="bg-canvas-layer" aria-hidden="true"></div>
+
+    <!-- 1. MARCO PRINCIPAL DE LA SLOT (IZQUIERDA ARRIBA — ESTRUCTURA EXACTA CAPTURA 1) -->
+    <section class="hud-frame slot-stage-frame" id="slot-stage-frame" aria-label="Ventana Principal de Slot">
+      <div class="slot-corner-reticle tl"></div>
+      <div class="slot-corner-reticle tr"></div>
+      <div class="slot-corner-reticle bl"></div>
+      <div class="slot-corner-reticle br"></div>
+      <img
+        src="./site/assets/diggity-logo-watermark.png"
+        alt=""
+        class="slot-stage-inner-watermark"
+        aria-hidden="true"
+      />
+    </section>
+
+    <!-- 2. ESPACIO INFERIOR IZQUIERDO LIMPIO + BADGE "USE CODE: DIGGITY ON Stake" -->
+    <footer class="promo-code-dock" aria-label="Código Promocional Stake">
+      <div class="promo-code-stack">
+        <span class="promo-use-label">USE CODE:</span>
+        <div class="promo-code-line">
+          <span class="promo-code-highlight">DIGGITY</span>
+          <span class="promo-code-on">ON</span>
+        </div>
+      </div>
+      <div class="stake-logo-badge" aria-label="Stake">
+        <img
+          src="./site/assets/stake-logo-slate.png"
+          alt="Stake"
+          style="height:78px;width:auto;image-rendering:auto;filter:drop-shadow(0 4px 12px rgba(0,0,0,0.85)) drop-shadow(0 0 16px rgba(96,165,250,0.28));"
+        />
+      </div>
+    </footer>
+
+    <!-- 2B. PANEL RODILLO PROMOCIONAL (ESTILO CAPTURA 2 — BENEFICIOS DIGGITYBETS.VIP) -->
+    <aside class="bottom-roller-dock" id="bottom-roller-dock" aria-label="Panel Promocional DiggityBets.vip">
+      <iframe
+        src="./roller-panel.html?accent=ice-blue&bg=transparent&tight=1"
+        title="DiggityBets.vip Promotional Roller"
+        class="bottom-roller-iframe"
+        id="bottom-roller-iframe"
+      ></iframe>
+    </aside>
+
+    <!-- 3A. MARCO DE WEBCAM (ARRIBA DERECHA) CON CORTE SUPERIOR Y LOGO OFICIAL DIGGITY BET$ -->
+    <section class="hud-frame right-rack-frame webcam-frame" id="webcam-frame" aria-label="Marco de Cámara del Streamer">
+      <div class="webcam-top-rail-left"></div>
+      <div class="webcam-top-rail-right"></div>
+      <img
+        src="./site/assets/diggity-logo-alpha.png"
+        alt="DIGGITY BET$"
+        class="webcam-logo-crest"
+      />
+    </section>
+
+    <!-- 3B. MARCO DE LIVE CHAT (CENTRO DERECHA) -->
+    <section class="hud-frame right-rack-frame chat-frame" id="chat-frame" aria-label="Marco de Chat en Vivo">
+      <div class="frame-pill-badge">
+        <span class="live-dot"></span>
+        <span>LIVE CHAT</span>
+      </div>
+    </section>
+
+    <!-- 3C. PANEL DE BONUS HUNT / RULETA DE EVENTOS (ABAJO A LA DERECHA, DEBAJO DEL CHAT — SOLO EL MARCO POR DEFECTO) -->
+    <section class="hud-frame right-rack-frame bonus-hunt-frame" id="bonus-hunt-frame" aria-label="Marco de Bonus Hunt">
+      <div class="frame-pill-badge" id="bottom-right-pill-title" style="display:none;">
+        <span class="live-dot"></span>
+        <span id="bottom-right-pill-text">BONUS HUNT</span>
+      </div>
+
+      <!-- VISTA 0 (POR DEFECTO): SOLO EL MARCO LIMPIO -->
+      <div class="dock-view is-active" id="view-empty-frame"></div>
+
+      <!-- VISTA 1: BONUS HUNT TRACKER -->
+      <div class="dock-view" id="view-bonus-hunt">
+        <div class="bh-kpi-strip">
+          <div class="bh-kpi-box">
+            <span class="bh-kpi-label">BONUSES</span>
+            <span class="bh-kpi-val">5 / 8</span>
+          </div>
+          <div class="bh-kpi-box">
+            <span class="bh-kpi-label">REQ. BE X</span>
+            <span class="bh-kpi-val accent">118.4x</span>
+          </div>
+          <div class="bh-kpi-box">
+            <span class="bh-kpi-label">RUN AVG</span>
+            <span class="bh-kpi-val">164.2x</span>
+          </div>
+        </div>
+
+        <div class="bh-slot-list">
+          <div class="bh-slot-row is-opened">
+            <span class="bh-slot-idx">#1</span>
+            <span class="bh-slot-name">Gates of Olympus 1000</span>
+            <span class="bh-slot-bet">$4.00</span>
+            <span class="bh-slot-payout">$1,120.00</span>
+          </div>
+          <div class="bh-slot-row is-opened">
+            <span class="bh-slot-idx">#2</span>
+            <span class="bh-slot-name">Wanted Dead or a Wild</span>
+            <span class="bh-slot-bet">$3.00</span>
+            <span class="bh-slot-payout">$744.00</span>
+          </div>
+          <div class="bh-slot-row is-opened">
+            <span class="bh-slot-idx">#3</span>
+            <span class="bh-slot-name">Sweet Bonanza 1000</span>
+            <span class="bh-slot-bet">$4.00</span>
+            <span class="bh-slot-payout">$596.00</span>
+          </div>
+          <div class="bh-slot-row">
+            <span class="bh-slot-idx">#4</span>
+            <span class="bh-slot-name">Sugar Rush 1000</span>
+            <span class="bh-slot-bet">$5.00</span>
+            <span class="bh-slot-payout pending">WAITING</span>
+          </div>
+          <div class="bh-slot-row">
+            <span class="bh-slot-idx">#5</span>
+            <span class="bh-slot-name">SixSixSix (Hacksaw)</span>
+            <span class="bh-slot-bet">$4.00</span>
+            <span class="bh-slot-payout pending">WAITING</span>
+          </div>
+        </div>
+
+        <div class="bh-bottom-pills">
+          <div class="stat-pill" title="Costo Inicial del Bonus Hunt">
+            <span class="stat-pill-badge cost">$</span>
+            <span>5,700</span>
+          </div>
+          <div class="stat-pill" title="Retorno Acumulado">
+            <span class="stat-pill-badge return">$</span>
+            <span>2,460</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- VISTA 2: RULETA DE EVENTOS INTERACTIVA -->
+      <div class="dock-view" id="view-event-wheel">
+        <div class="wheel-stage">
+          <div class="wheel-wrapper">
+            <div class="wheel-pointer"></div>
+            <svg class="event-wheel-svg" id="event-wheel-svg" viewBox="0 0 200 200">
+              <g transform="translate(100,100)">
+                <path d="M0,0 L0,-98 A98,98 0 0,1 69.3,-69.3 Z" fill="#162638" stroke="#60a5fa" stroke-width="1"/>
+                <path d="M0,0 L69.3,-69.3 A98,98 0 0,1 98,0 Z" fill="#0d1722" stroke="#60a5fa" stroke-width="1"/>
+                <path d="M0,0 L98,0 A98,98 0 0,1 69.3,69.3 Z" fill="#1e344d" stroke="#60a5fa" stroke-width="1"/>
+                <path d="M0,0 L69.3,69.3 A98,98 0 0,1 0,98 Z" fill="#0d1722" stroke="#60a5fa" stroke-width="1"/>
+                <path d="M0,0 L0,98 A98,98 0 0,1 -69.3,69.3 Z" fill="#162638" stroke="#60a5fa" stroke-width="1"/>
+                <path d="M0,0 L-69.3,69.3 A98,98 0 0,1 -98,0 Z" fill="#0d1722" stroke="#60a5fa" stroke-width="1"/>
+                <path d="M0,0 L-98,0 A98,98 0 0,1 -69.3,-69.3 Z" fill="#1e344d" stroke="#60a5fa" stroke-width="1"/>
+                <path d="M0,0 L-69.3,-69.3 A98,98 0 0,1 0,-98 Z" fill="#0d1722" stroke="#60a5fa" stroke-width="1"/>
+
+                <g transform="rotate(-67.5)"><text x="60" y="3" text-anchor="middle" fill="#f8fafc" font-size="8.2" font-weight="800">MAX BUY</text></g>
+                <g transform="rotate(-22.5)"><text x="60" y="3" text-anchor="middle" fill="#93c5fd" font-size="8.2" font-weight="800">CHAT PICK</text></g>
+                <g transform="rotate(22.5)"><text x="60" y="3" text-anchor="middle" fill="#f8fafc" font-size="8.2" font-weight="800">HACKSAW</text></g>
+                <g transform="rotate(67.5)"><text x="60" y="3" text-anchor="middle" fill="#93c5fd" font-size="8.2" font-weight="800">ALL-IN X</text></g>
+                <g transform="rotate(112.5)"><text x="60" y="3" text-anchor="middle" fill="#f8fafc" font-size="8.2" font-weight="800">PRAGMATIC</text></g>
+                <g transform="rotate(157.5)"><text x="60" y="3" text-anchor="middle" fill="#93c5fd" font-size="8.2" font-weight="800">SUPER BUY</text></g>
+                <g transform="rotate(202.5)"><text x="60" y="3" text-anchor="middle" fill="#f8fafc" font-size="8.2" font-weight="800">VIP DROP</text></g>
+                <g transform="rotate(247.5)"><text x="60" y="3" text-anchor="middle" fill="#93c5fd" font-size="8.2" font-weight="800">DOUBLE UP</text></g>
+              </g>
+            </svg>
+            <button type="button" class="wheel-center-btn" id="btn-spin-wheel">SPIN</button>
+          </div>
+
+          <div class="wheel-result-banner" id="wheel-result-banner">
+            EVENTO ACTIVO: SUPER BONUS BUY ($400)
+          </div>
+        </div>
+      </div>
+
+      <!-- VISTA 3: MODO STANDBY / GIVEAWAY (ESTILO CAPTURA 2) -->
+      <div class="dock-view" id="view-standby">
+        <div class="standby-center-label">Bonus Hunt / Event Starting...</div>
+        <div class="bh-bottom-pills">
+          <div class="stat-pill">
+            <span class="stat-pill-badge cost">$</span>
+            <span>5,700</span>
+          </div>
+          <div class="stat-pill">
+            <span class="stat-pill-badge return">$</span>
+            <span>0.00</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    (function initDiggityBroadcastOverlay() {
+      const viewport = document.getElementById('broadcast-viewport');
+      const params = new URLSearchParams(window.location.search);
+
+      // Escalado fluido automático para cualquier monitor manteniendo proporción 1920x1080 exacta
+      function syncViewportScale() {
+        const scaleX = window.innerWidth / 1920;
+        const scaleY = window.innerHeight / 1080;
+        const scale = Math.min(scaleX, scaleY);
+        viewport.style.transform = `scale(${scale})`;
+      }
+      window.addEventListener('resize', syncViewportScale);
+      syncViewportScale();
+
+      // Parámetros URL para automatización OBS / capturas (?clean=1&dock=bonus-hunt|event-wheel|standby&wm=studio-hybrid|bold-45&cutout=1)
+      if (params.get('clean') === '1') {
+        document.body.classList.add('controls-hidden');
+      }
+      if (params.get('cutout') === 'webcam-and-slot') {
+        document.body.setAttribute('data-cutout-mode', 'webcam-and-slot');
+      }
+
+      const pillBox = document.getElementById('bottom-right-pill-title');
+      const pillText = document.getElementById('bottom-right-pill-text');
+      const views = {
+        'empty-frame': { el: document.getElementById('view-empty-frame'), title: '', showPill: false },
+        'empty-frame-pill': { el: document.getElementById('view-empty-frame'), title: 'BONUS HUNT', showPill: true },
+        'bonus-hunt': { el: document.getElementById('view-bonus-hunt'), title: 'BONUS HUNT', showPill: true },
+        'event-wheel': { el: document.getElementById('view-event-wheel'), title: 'EVENT WHEEL', showPill: true },
+        'standby': { el: document.getElementById('view-standby'), title: 'BONUS HUNT', showPill: true }
+      };
+
+      function switchDockView(mode) {
+        if (!views[mode]) return;
+        Object.entries(views).forEach(([k, v]) => {
+          v.el.classList.toggle('is-active', k === mode || (mode === 'empty-frame-pill' && k === 'empty-frame'));
+        });
+        if (pillBox) {
+          pillBox.style.display = views[mode].showPill ? 'inline-flex' : 'none';
+        }
+        if (views[mode].title) {
+          pillText.textContent = views[mode].title;
+        }
+        document.querySelectorAll('[data-switch-dock]').forEach((btn) => {
+          btn.classList.toggle('is-active', btn.getAttribute('data-switch-dock') === mode);
+        });
+      }
+
+      if (params.get('dock')) {
+        switchDockView(params.get('dock'));
+      }
+
+      document.querySelectorAll('[data-switch-dock]').forEach((btn) => {
+        btn.addEventListener('click', () => switchDockView(btn.getAttribute('data-switch-dock')));
+      });
+
+      const rollerDock = document.getElementById('bottom-roller-dock');
+      const rollerIframe = document.getElementById('bottom-roller-iframe');
+      function switchRollerMode(rollerMode) {
+        if (!rollerDock || !rollerIframe) return;
+        if (rollerMode === 'off') {
+          rollerDock.classList.add('is-hidden');
+        } else {
+          rollerDock.classList.remove('is-hidden');
+          const accent = rollerMode === 'gold' ? 'gold' : 'ice-blue';
+          rollerIframe.src = `./roller-panel.html?accent=${accent}&bg=transparent&tight=1`;
+        }
+        document.querySelectorAll('[data-switch-roller]').forEach((b) => {
+          b.classList.toggle('is-active', b.getAttribute('data-switch-roller') === rollerMode);
+        });
+      }
+      if (params.get('roller')) {
+        switchRollerMode(params.get('roller'));
+      }
+      document.querySelectorAll('[data-switch-roller]').forEach((btn) => {
+        btn.addEventListener('click', () => switchRollerMode(btn.getAttribute('data-switch-roller')));
+      });
+
+      const hideBtn = document.getElementById('btn-hide-controls');
+      if (hideBtn) {
+        hideBtn.addEventListener('click', () => document.body.classList.toggle('controls-hidden'));
+      }
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'h' || e.key === 'H') {
+          document.body.classList.toggle('controls-hidden');
+        }
+      });
+
+      // Giro a 60 FPS de la Ruleta de Eventos
+      let currentWheelDeg = 0;
+      const wheelSvg = document.getElementById('event-wheel-svg');
+      const spinBtn = document.getElementById('btn-spin-wheel');
+      const wheelBanner = document.getElementById('wheel-result-banner');
+      const outcomes = [
+        'SUPER BONUS BUY ($400)',
+        'CHAT PICKS NEXT SLOT',
+        'HACKSAW GAMING ONLY',
+        'ALL-IN BONUS HUNT',
+        'PRAGMATIC 1000 SERIES',
+        'VIP VIEWER GIVEAWAY',
+        'DOUBLE OR NOTHING SPIN',
+        'MAX VOLATILITY SLOT'
+      ];
+      if (spinBtn && wheelSvg) {
+        spinBtn.addEventListener('click', () => {
+          currentWheelDeg += 1080 + Math.floor(Math.random() * 720);
+          wheelSvg.style.transform = `rotate(${currentWheelDeg}deg)`;
+          wheelBanner.textContent = 'GIRANDO RULETA EN VIVO...';
+          setTimeout(() => {
+            const pick = outcomes[Math.floor(Math.random() * outcomes.length)];
+            wheelBanner.textContent = `EVENTO: ${pick}`;
+          }, 3200);
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

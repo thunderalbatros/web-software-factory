@@ -27,14 +27,14 @@
     },
     "context7": {
       "command": "npx",
-      "args": ["-y", "@upstash/context7-mcp@latest"],
+      "args": ["-y", "@upstash/context7-mcp@4.7.0"],
       "disabled": false
     },
     "chrome-devtools": {
       "command": "npx",
       "args": [
         "-y",
-        "chrome-devtools-mcp@latest",
+        "chrome-devtools-mcp@1.13.0",
         "--headless",
         "--isolated",
         "--no-usage-statistics",
@@ -44,7 +44,7 @@
     },
     "playwright": {
       "command": "npx",
-      "args": ["-y", "@playwright/mcp@latest", "--headless"],
+      "args": ["-y", "@playwright/mcp@0.0.85", "--headless"],
       "disabled": false
     },
     "semgrep-mcp": {
@@ -84,7 +84,7 @@
     },
     "cloudflare-edge-mcp": {
       "command": "npx",
-      "args": ["-y", "@cloudflare/mcp-server-cloudflare"],
+      "args": ["-y", "@cloudflare/mcp-server-cloudflare@0.2.0"],
       "disabled": false
     },
     "blender-mcp": {

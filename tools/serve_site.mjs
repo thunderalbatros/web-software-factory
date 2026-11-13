@@ -29,7 +29,20 @@ const MIME_TYPES = {
 
 const server = http.createServer((req, res) => {
   const urlObj = new URL(req.url || '/', `http://127.0.0.1:${PORT}`);
-  const cleanUrl = decodeURIComponent(urlObj.pathname);
+  let cleanUrl;
+  try {
+    cleanUrl = decodeURIComponent(urlObj.pathname);
+  } catch (_) {
+    res.writeHead(400, { 'Content-Type': 'text/plain; charset=utf-8' });
+    res.end('400 Bad Request');
+    return;
+  }
+
+  if (cleanUrl.includes('\0')) {
+    res.writeHead(400, { 'Content-Type': 'text/plain; charset=utf-8' });
+    res.end('400 Bad Request');
+    return;
+  }
 
   if (cleanUrl === '/api/health') {
     res.writeHead(200, { 'Content-Type': 'application/json' });
@@ -43,13 +56,27 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  let relPath = cleanUrl === '/' ? projectConfig.paths.entryHtml : cleanUrl.replace(/^\/+/, '');
-  let filePath = path.join(ROOT, relPath);
-  if (!fs.existsSync(filePath) && fs.existsSync(path.join(ROOT, 'public', relPath))) {
-    filePath = path.join(ROOT, 'public', relPath);
+  const segments = cleanUrl.split('/').filter(Boolean);
+  if (segments.some((seg) => seg === '..' || (seg.startsWith('.') && seg !== '.well-known'))) {
+    res.writeHead(403, { 'Content-Type': 'text/plain; charset=utf-8' });
+    res.end('403 Forbidden');
+    return;
+  }
+
+  const resolvedRoot = path.resolve(ROOT);
+  const relPath = cleanUrl === '/' ? projectConfig.paths.entryHtml : cleanUrl.replace(/^\/+/, '');
+  let filePath = path.resolve(resolvedRoot, relPath);
+  if (!fs.existsSync(filePath) && fs.existsSync(path.resolve(resolvedRoot, 'public', relPath))) {
+    filePath = path.resolve(resolvedRoot, 'public', relPath);
   }
   if (fs.existsSync(filePath) && fs.statSync(filePath).isDirectory()) {
-    filePath = path.join(filePath, 'index.html');
+    filePath = path.resolve(filePath, 'index.html');
+  }
+
+  if (filePath !== resolvedRoot && !filePath.startsWith(resolvedRoot + path.sep)) {
+    res.writeHead(403, { 'Content-Type': 'text/plain; charset=utf-8' });
+    res.end('403 Forbidden');
+    return;
   }
 
   if (!fs.existsSync(filePath) || !fs.statSync(filePath).isFile()) {
@@ -60,8 +87,19 @@ const server = http.createServer((req, res) => {
 
   const ext = path.extname(filePath).toLowerCase();
   const mime = MIME_TYPES[ext] || 'application/octet-stream';
-  res.writeHead(200, { 'Content-Type': mime, 'Cache-Control': 'no-cache' });
-  fs.createReadStream(filePath).pipe(res);
+  res.writeHead(200, {
+    'Content-Type': mime,
+    'Cache-Control': 'no-cache',
+    'X-Content-Type-Options': 'nosniff'
+  });
+  const stream = fs.createReadStream(filePath);
+  stream.on('error', () => {
+    if (!res.headersSent) {
+      res.writeHead(500, { 'Content-Type': 'text/plain; charset=utf-8' });
+    }
+    res.end('500 Internal Server Error');
+  });
+  stream.pipe(res);
 });
 
 server.listen(PORT, '127.0.0.1', () => {
