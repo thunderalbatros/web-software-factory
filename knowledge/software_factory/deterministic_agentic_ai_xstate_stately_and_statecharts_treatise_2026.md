@@ -136,3 +136,6 @@ En `XState v5` (instalado en `package.json`), las máquinas de estados y actores
    - Intercepta cualquier evento propuesto por un agente (`policy`), verifica vocabulario, propiedad `meta.actor !== "human"` y evaluación de guardas `snapshot.can(event)` en `< 0.1ms`, registrando cada intento aceptado o rechazado en el historial auditable.
 3. **Motor 3 — `createUiStateMachine` (FSMs Deterministas en el Frontend de los Sitios Generados):**
    - Inyectado en `projects/<slug>/site/js/industry-interactive.js` por `build_vanilla_primitives.mjs` para que los 8 widgets interactivos por rubro (`ecommerce`, `fintech`, `erp`, `clinica`, `abogacia`, `lujo`, `streamer`, `saas`) operen con estados explícitos (`idle -> validating -> computing -> settled | error`) y reflejen `data-ui-state` en el DOM sin banderas booleanas sueltas.
+
+---
+**Conexiones del Grafo (Obsidian):** [[INDEX]] · [[CANON_SPLE_ISO26550_AND_SOFTWARE_FACTORIES_ARCHITECTURE_2026]] · [[CANON_ASTRO5_CLOUDFLARE_WORKERS_AND_MODERN_WEB_TEMPLATES_2026]] · [[CANON_MULTI_BRAND_DESIGN_SYSTEMS_DTCG_STYLE_DICTIONARY_AND_ARCHETYPES_2026]] · [[CANON_SOTA_AGENT_TEAM_TOPOLOGY_AND_2026_WEB_STACK_AUDIT]] · #software_factory

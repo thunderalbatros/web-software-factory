@@ -1,15 +1,15 @@
 ---
 name: threejs-r186-tsl-and-gsap-free
-description: Reglas técnicas anti-deprecación 2026 para Three.js r183-r186 (WebGPURenderer, TSL, Timer, RenderPipeline, SunLight), Spark 2.x 3D Gaussian Splatting, Dioramas HDR y GSAP Club Free (SplitText autoSplit, ScrollTrigger, Flip, MorphSVG).
+description: Reglas técnicas anti-deprecación 2026 para Three.js r186-r187 (WebGPURenderer, TSL auto type promotion, EON diffuse BRDF, PMREM cube targets, SPLATLoader/SPZLoader/GaussianSplat nativos, Timer, RenderPipeline), Dioramas HDR y GSAP Club Free (SplitText autoSplit, ScrollTrigger, Flip, MorphSVG).
 ---
 
-# Three.js r186 (WebGPU + TSL), Spark 3DGS, Dioramas HDR & GSAP 2026 — Guía Anti-Deprecación
+# Three.js r186–r187 (WebGPU + TSL + Native Gaussian Splats), Dioramas HDR & GSAP 2026 — Guía Anti-Deprecación
 
-## 1. Reglas Estrictas Three.js `r183–r186` (Septiembre 2026 & `llms.txt`)
+## 1. Reglas Estrictas Three.js `r186–r187` (Noviembre 2026 & `llms.txt`)
 
-1. **Motor Dual WebGPU + WebGL 2 (`WebGPURenderer` & TSL):**
-   - Importar siempre desde `three/webgpu` y `three/tsl`.
-   - `WebGPURenderer` selecciona WebGPU de forma nativa y hace fallback automático a WebGL 2 sin reescribir materiales cuando se usa **TSL (Three Shading Language)** (`Fn`, `uniform`, `uv`, `positionLocal`, `color`, `mix`).
+1. **Motor Dual WebGPU + WebGL 2 (`WebGPURenderer` & TSL `r187`):**
+   - Importar siempre desde `three/webgpu` y `three/tsl`. En `r187`, TSL realiza promoción automática de escalares a vectores en nodos (`vec3`/`float`) reduciendo boilerplate.
+   - `WebGPURenderer` incorpora **EON (Energy-Preserving Oren-Nayar)** como BRDF difuso por defecto para superficies rugosas más realistas e iluminación IBL PMREM basada en Cube Render Targets.
    - Precompilar compute shaders antes del primer frame interactivo usando `await renderer.compileComputeAsync(computeNode)` para eliminar tirones de fotogramas (shader stutter).
 
 2. **APIs Eliminadas / Deprecadas en 2026 (PROHIBIDO USAR):**
@@ -40,8 +40,8 @@ renderPipeline.outputNode = scenePass.add(bloom(scenePass, 0.35, 0.4, 0.85));
 1. **Iluminación Cinematográfica (`dioramas`):**
    - Combinar `AgX tone mapping` con oclusión ambiental en espacio de pantalla (`N8AO` / `GTAONode`), `mip-chain bloom` selectivo por umbral de luminancia y reflectores volumétricos sobre planos de suelo con rugosidad modulada.
    - Optimizar todos los activos `.glb` con `glTF-Transform` + `meshoptimizer` (`prune`, `dedup`, `resample`, `meshopt` compression y texturas `webp`/`ktx2`) reduciendo el tamaño entre **70% y 85%**.
-2. **3D Gaussian Splatting (`sparkjsdev/spark` 2.x):**
-   - Usar formatos comprimidos `.SPZ` o `.RAD` con árbol de Nivel de Detalle (`LoD Splat Tree`).
+2. **3D Gaussian Splatting Nativo (`three@0.187.0` + Fallback `sparkjsdev/spark` 2.x):**
+   - Usar preferentemente los cargadores nativos incorporados en Three.js `r186–r187`: `SPLATLoader`, `SPZLoader` y el nodo `GaussianSplat` (`three/addons/loaders/SPLATLoader.js`, `SPZLoader.js`), reservando `spark` cuando se requiera streaming LoD masivo `.RAD`.
    - Aplicar presupuesto adaptativo estricto: `maxSplats: 500_000` en dispositivos móviles y `maxSplats: 2_000_000` en desktop para sostener 60 FPS constantes.
 
 ---

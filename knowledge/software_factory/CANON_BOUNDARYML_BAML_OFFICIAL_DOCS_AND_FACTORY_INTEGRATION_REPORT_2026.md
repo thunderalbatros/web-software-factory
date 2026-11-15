@@ -154,3 +154,6 @@ Permite inyectar metadatos específicos del proveedor como `{{ _.role("user", ca
      2. **Soporte de `Symbol Tuning` (`@alias("k1")`) y `TypeBuilder` Dinámico:** Permitir que `compileCompactBamlTypePrompt` emita alias simbólicos (`k1..kN`) para eliminar el sesgo léxico del juez JEV y traduzca automáticamente `k1 -> choice` durante el parseo `SAP`.
      3. **Validaciones Graduadas (`@assert` + `@check`) y `Collector` de Telemetría:** Extender el resultado de `SAP` con un arreglo `checks: Record<string, { status: 'succeeded' | 'failed', expr: string }>` y métricas estilo `Collector` (`rawLlmResponse`, `repairFlags`, `coercionScore`).
      4. **Detector de Elegibilidad Tabular (`>= 80%`) en `toon_serializer.mjs`:** Aplicar la regla oficial de `token-optimization.mdx` para elegir automáticamente entre `TOON` (arreglos uniformes `>= 80%`) y `JSON-compact` (objetos profundamente anidados).
+
+---
+**Conexiones del Grafo (Obsidian):** [[INDEX]] · [[CANON_SPLE_ISO26550_AND_SOFTWARE_FACTORIES_ARCHITECTURE_2026]] · [[CANON_ASTRO5_CLOUDFLARE_WORKERS_AND_MODERN_WEB_TEMPLATES_2026]] · [[CANON_MULTI_BRAND_DESIGN_SYSTEMS_DTCG_STYLE_DICTIONARY_AND_ARCHETYPES_2026]] · [[CANON_SOTA_AGENT_TEAM_TOPOLOGY_AND_2026_WEB_STACK_AUDIT]] · #software_factory

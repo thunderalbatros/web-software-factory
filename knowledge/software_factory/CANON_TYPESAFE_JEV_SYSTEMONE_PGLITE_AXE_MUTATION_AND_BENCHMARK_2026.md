@@ -78,3 +78,6 @@ All `12/12` mutants must be killed (`Mutation Kill Score == 100.0%`).
 
 - **`auditModuleAndDependencyHygiene()` (`tools/intelligence/ast_guard.mjs`):** Ensures zero broken script entrypoints in `package.json#scripts` and zero unused dependencies in `package.json#dependencies`.
 - **`verifyAndEmitOpenApiContract()` (`tools/audit/api_contract_verifier.mjs`):** Extracts all `fetch('/api/...')` calls from `site/js/` and verifies `1:1` route parity against `worker/index.js`, validating payloads with `Valibot` and emitting `dist/openapi.json` (`OpenAPI 3.1.0`).
+
+---
+**Conexiones del Grafo (Obsidian):** [[INDEX]] · [[CANON_SPLE_ISO26550_AND_SOFTWARE_FACTORIES_ARCHITECTURE_2026]] · [[CANON_ASTRO5_CLOUDFLARE_WORKERS_AND_MODERN_WEB_TEMPLATES_2026]] · [[CANON_MULTI_BRAND_DESIGN_SYSTEMS_DTCG_STYLE_DICTIONARY_AND_ARCHETYPES_2026]] · [[CANON_SOTA_AGENT_TEAM_TOPOLOGY_AND_2026_WEB_STACK_AUDIT]] · #software_factory

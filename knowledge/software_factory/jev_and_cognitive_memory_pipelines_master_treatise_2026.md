@@ -138,3 +138,6 @@ En `tools/intelligence/jev_memory_pipeline.mjs`, JEV actúa como el **Controlado
      - Escanea las trazas episódicas y eventos de fallo ($\phi$) en `.agents/memory/failure_events.jsonl`.
      - Destila clústeres de fricción recurrentes en tarjetas de *Instinct* procedural dentro de `.agents/memory/instincts/` (*Soar Chunking*).
      - Ejecuta poda basada en utilidad (*ReMe Utility Pruning*): archiva reglas invalidadas en el registro histórico frío y verifica que el presupuesto de memoria activa se mantenga limpio y libre de contradicciones.
+
+---
+**Conexiones del Grafo (Obsidian):** [[INDEX]] · [[CANON_SPLE_ISO26550_AND_SOFTWARE_FACTORIES_ARCHITECTURE_2026]] · [[CANON_ASTRO5_CLOUDFLARE_WORKERS_AND_MODERN_WEB_TEMPLATES_2026]] · [[CANON_MULTI_BRAND_DESIGN_SYSTEMS_DTCG_STYLE_DICTIONARY_AND_ARCHETYPES_2026]] · [[CANON_SOTA_AGENT_TEAM_TOPOLOGY_AND_2026_WEB_STACK_AUDIT]] · #software_factory
