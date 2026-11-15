@@ -8,7 +8,7 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
-import { loadProjectConfig, FACTORY_ROOT } from '../lib/project_loader.mjs';
+import { loadProjectConfig } from '../lib/project_loader.mjs';
 
 const projectConfig = loadProjectConfig();
 const root = projectConfig.projectRoot;

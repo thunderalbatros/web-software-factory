@@ -10,6 +10,36 @@
             "timeout": 5
           }
         ]
+      },
+      {
+        "matcher": "write_file",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ./tools/intelligence/agy_token_guard_hook.mjs",
+            "timeout": 5
+          }
+        ]
+      },
+      {
+        "matcher": "edit_file",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ./tools/intelligence/agy_token_guard_hook.mjs",
+            "timeout": 5
+          }
+        ]
+      },
+      {
+        "matcher": "delete_file",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ./tools/intelligence/agy_token_guard_hook.mjs",
+            "timeout": 5
+          }
+        ]
       }
     ],
     "PreInvocation": [

@@ -21,8 +21,7 @@ import { execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import {
   runTechScout,
-  calculateSotaViabilityScore,
-  CURATED_AWESOME_RADARS
+  calculateSotaViabilityScore
 } from './tech_scout.mjs';
 import { runOptimizeMode } from './self_evolving_pipeline.mjs';
 import { sanitizeMarkdownContent, classifyEpistemicTier } from './rag_library_sanitizer.mjs';
@@ -265,7 +264,7 @@ export async function syncOwaspCheatSheetAtomFeed(skipNetwork = false) {
           }));
         }
       }
-    } catch (_) {
+    } catch {
       feedMode = 'VERIFIED_LOCAL_ATOM_BASELINE';
     }
   }
@@ -313,7 +312,7 @@ async function fetchTrustedReleasesSnapshot(skipNetwork = false) {
             sourceMode = 'GITHUB_LIVE_RELEASE';
           }
         }
-      } catch (_) {
+      } catch {
         sourceMode = 'VERIFIED_BASELINE';
       }
     }

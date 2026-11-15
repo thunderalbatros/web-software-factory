@@ -22,8 +22,10 @@
  *      and APCA perceptual contrast (`apca-w3`).
  */
 
+import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
 import http from 'node:http';
+import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright-core';
@@ -201,6 +203,56 @@ function startEphemeralHeadersServer(distDir, headersFilePath) {
   });
 }
 
+export function verifyStandaloneBuildOutsideMonorepo(projectRoot = DEFAULT_PROJECT_ROOT) {
+  const startMs = performance.now();
+  const tmpWs = fs.mkdtempSync(path.join(os.tmpdir(), 'wf-standalone-cert-'));
+  const tmpProj = path.join(tmpWs, path.basename(projectRoot));
+  const nodeModulesSrc = path.join(projectRoot, 'node_modules');
+  try {
+    fs.cpSync(projectRoot, tmpProj, {
+      recursive: true,
+      filter: (src) => {
+        const rel = path.relative(projectRoot, src).replace(/\\/g, '/');
+        if (!rel) return true;
+        const first = rel.split('/')[0];
+        return first !== 'node_modules' && first !== 'dist' && first !== '.astro';
+      }
+    });
+    if (fs.existsSync(nodeModulesSrc)) {
+      fs.symlinkSync(
+        nodeModulesSrc,
+        path.join(tmpProj, 'node_modules'),
+        process.platform === 'win32' ? 'junction' : 'dir'
+      );
+    }
+    const astroCli = path.join(tmpProj, 'node_modules', 'astro', 'bin', 'astro.mjs');
+    execFileSync(process.execPath, [astroCli, 'build'], {
+      cwd: tmpProj,
+      stdio: 'pipe',
+      env: { ...process.env, ASTRO_TELEMETRY_DISABLED: '1' }
+    });
+    const isolatedDist = path.join(tmpProj, 'dist');
+    const swCheck = measureSwPrecacheBudget(isolatedDist);
+    const hasIndex = fs.existsSync(path.join(isolatedDist, 'index.html'));
+    const hasHeaders = fs.existsSync(path.join(isolatedDist, '_headers'));
+    return {
+      passed: hasIndex && hasHeaders && swCheck.withinBudget250Kb,
+      hasIndex,
+      hasHeaders,
+      swPrecache: swCheck,
+      durationMs: Math.round(performance.now() - startMs)
+    };
+  } catch (err) {
+    return {
+      passed: false,
+      error: String(err?.message || err),
+      durationMs: Math.round(performance.now() - startMs)
+    };
+  } finally {
+    fs.rmSync(tmpWs, { recursive: true, force: true, maxRetries: 5, retryDelay: 80 });
+  }
+}
+
 export async function certifyAcademiaRuntime(projectRoot = DEFAULT_PROJECT_ROOT) {
   const distDir = path.join(projectRoot, 'dist');
   const publicHeadersPath = path.join(projectRoot, 'public', '_headers');
@@ -208,6 +260,7 @@ export async function certifyAcademiaRuntime(projectRoot = DEFAULT_PROJECT_ROOT)
     throw new Error(`Missing dist/ or public/_headers in ${projectRoot}. Run build first.`);
   }
 
+  const standaloneBuildCheck = verifyStandaloneBuildOutsideMonorepo(projectRoot);
   const headersValidation = validateHeadersForProfile(
     fs.readFileSync(publicHeadersPath, 'utf8'),
     'education'
@@ -670,6 +723,7 @@ export async function certifyAcademiaRuntime(projectRoot = DEFAULT_PROJECT_ROOT)
     );
 
     const passed =
+      standaloneBuildCheck.passed &&
       headersValidation.valid &&
       swPrecache.withinBudget250Kb &&
       negativeXssTrustedTypesCheck.passed &&
@@ -688,6 +742,7 @@ export async function certifyAcademiaRuntime(projectRoot = DEFAULT_PROJECT_ROOT)
 
     return {
       passed,
+      standaloneBuildCheck,
       distStats,
       swPrecache,
       negativeXssTrustedTypesCheck,

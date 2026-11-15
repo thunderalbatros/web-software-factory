@@ -155,13 +155,13 @@ async function minifyDistAssets() {
   try {
     const oxcMod = await import('oxc-minify');
     oxcMinify = oxcMod.minify || oxcMod.default?.minify || null;
-  } catch (_) {}
+  } catch {}
 
   let lightningTransform = null;
   try {
     const lcss = await import('lightningcss');
     lightningTransform = lcss.transform || (lcss.default && lcss.default.transform) || null;
-  } catch (_) {}
+  } catch {}
 
   let esbuild = null;
   try {
@@ -170,7 +170,7 @@ async function minifyDistAssets() {
       const mod = await import('file:///' + esbuildPath.replace(/\\/g, '/'));
       esbuild = mod.default || mod;
     }
-  } catch (_) {}
+  } catch {}
 
   let savedBytes = 0;
 
@@ -205,7 +205,7 @@ async function minifyDistAssets() {
             fs.writeFileSync(fullPath, outCode, 'utf8');
             savedBytes += Math.max(0, Buffer.byteLength(raw) - Buffer.byteLength(outCode));
           }
-        } catch (_) {}
+        } catch {}
       }
     }
   }
@@ -269,7 +269,7 @@ async function minifyDistAssets() {
           fs.writeFileSync(fullPath, outCode, 'utf8');
           savedBytes += Math.max(0, Buffer.byteLength(raw) - Buffer.byteLength(outCode));
         }
-      } catch (_) {}
+      } catch {}
     }
   }
 
@@ -299,7 +299,7 @@ async function minifyDistAssets() {
         }
       }
     }
-  } catch (_) {}
+  } catch {}
 
   console.log(`  ✓ Minified dist/ CSS, JS & SVGs (saved ${(savedBytes / 1024).toFixed(1)} KiB + generated .map files)`);
 }
@@ -578,7 +578,7 @@ try {
     }
     console.log(`• Generated OpenGraph Social Card (dist/og-image.svg, ${ogRes.bytes} bytes)`);
   }
-} catch (_) {}
+} catch {}
 
 // 6. Cloudflare routing is handled natively via wrangler.toml
 
@@ -630,7 +630,7 @@ export function createZipArchiveFromDir(sourceDir, outZipPath, skipFileNames = n
 
   for (const file of files) {
     const rawData = fs.readFileSync(file.fullPath);
-    const compressedData = zlib.deflateRawSync(rawData);
+    const compressedData = zlib.deflateRawSync(rawData, { level: zlib.constants.Z_BEST_SPEED });
     const crc = zlib.crc32(rawData) >>> 0;
     const nameBuf = Buffer.from(file.relPath, 'utf8');
 
@@ -877,9 +877,12 @@ ${workerBullet}- \`wrangler.toml\` y \`package.json\`: Configuración lista para
     copyRecursive(srcTokensDir, path.join(localDeliverableDir, 'tokens'));
   }
 
-  // 7. Create <slug>-produccion.zip inside deliverables/<slug>/
-  const localZipPath = path.join(localDeliverableDir, zipFileName);
-  const zipStats = createZipArchiveFromDir(localDeliverableDir, localZipPath, new Set([zipFileName]));
+  // 7. Create <slug>-produccion.zip inside deliverables/<slug>/ (unless skipped for fast dir-only verification)
+  const skipZip = Boolean(options.skipZip);
+  const localZipPath = skipZip ? null : path.join(localDeliverableDir, zipFileName);
+  const zipStats = skipZip
+    ? { fileCount: 0, sizeBytes: 0 }
+    : createZipArchiveFromDir(localDeliverableDir, localZipPath, new Set([zipFileName]));
 
   // 8. Mirror complete standalone package to Desktop on Windows unless skipped (e.g. tmpdir tests)
   if (process.platform === 'win32' && !skipDesktopMirror) {
@@ -888,7 +891,7 @@ ${workerBullet}- \`wrangler.toml\` y \`package.json\`: Configuración lista para
         fs.rmSync(desktopDeliverableDir, { recursive: true, force: true });
       }
       copyRecursive(localDeliverableDir, desktopDeliverableDir);
-    } catch (_) {}
+    } catch {}
   }
 
   return {

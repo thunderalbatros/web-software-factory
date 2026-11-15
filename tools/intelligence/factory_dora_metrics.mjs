@@ -112,7 +112,7 @@ export function loadFactoryDoraLedger() {
     }
     parsed.aggregateMetrics = recomputeAggregateMetrics(parsed.projects);
     return parsed;
-  } catch (_) {
+  } catch {
     return buildDefaultLedger();
   }
 }
@@ -212,7 +212,7 @@ export function getRecentForensicActionTraces(limit = 20) {
   return lines.slice(-limit).map((l) => {
     try {
       return JSON.parse(l);
-    } catch (_) {
+    } catch {
       return null;
     }
   }).filter(Boolean);

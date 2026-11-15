@@ -23,12 +23,10 @@ import { PNG } from 'pngjs';
 import { loadProjectConfig } from '../lib/project_loader.mjs';
 
 let odiffCompare = null;
-let odiffSource = 'none';
 try {
   const odiffMod = await import('odiff-bin');
   odiffCompare = odiffMod.compare || (odiffMod.default && odiffMod.default.compare) || null;
-  if (odiffCompare) odiffSource = 'odiff-bin';
-} catch (_) {
+} catch {
   odiffCompare = null;
 }
 
@@ -38,9 +36,8 @@ if (!odiffCompare) {
     if (fs.existsSync(vaultOdiff)) {
       const vaultMod = await import('file:///' + vaultOdiff);
       odiffCompare = vaultMod.compare || (vaultMod.default && vaultMod.default.compare) || null;
-      if (odiffCompare) odiffSource = 'vault:hunt-2026-10/odiff';
     }
-  } catch (_) {}
+  } catch {}
 }
 
 const __filename = fileURLToPath(import.meta.url);
@@ -318,7 +315,7 @@ export async function runVisualRegression(options = {}) {
           for (let attempt = 0; attempt < 3; attempt++) {
             try {
               if (fs.existsSync(targetFile)) {
-                try { fs.unlinkSync(targetFile); } catch (_) {}
+                try { fs.unlinkSync(targetFile); } catch {}
               }
               fs.writeFileSync(targetFile, buf);
               return;
@@ -361,7 +358,7 @@ export async function runVisualRegression(options = {}) {
               diffPixels = totalPixels;
               diffRatio = 1;
             }
-          } catch (_) {
+          } catch {
             usedEngine = 'pixelmatch';
           }
         }

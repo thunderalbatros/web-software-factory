@@ -15,20 +15,26 @@ async function applyStandardWalPragmas(db, preferMvcc = false) {
   if (preferMvcc) {
     try {
       await db.exec("PRAGMA journal_mode = 'mvcc';");
-    } catch (_) {
+    } catch {
       try {
         await db.exec('PRAGMA journal_mode = WAL;');
-      } catch (__) {}
+      } catch {
+        // fallback WAL unsupported in ephemeral mode
+      }
     }
   } else {
     try {
       await db.exec('PRAGMA journal_mode = WAL;');
-    } catch (_) {}
+    } catch {
+      // ignore read-only WAL errors
+    }
   }
   for (const pragma of ['PRAGMA synchronous = NORMAL;', 'PRAGMA busy_timeout = 5000;', 'PRAGMA foreign_keys = ON;']) {
     try {
       await db.exec(pragma);
-    } catch (_) {}
+    } catch {
+      // ignore unsupported pragma
+    }
   }
 }
 
@@ -56,7 +62,7 @@ export async function openConcurrentSqliteConnection(dbPath = ':memory:', option
         rawDb = await tursoMod.connect(dbPath);
         engineName = 'turso-mvcc';
       }
-    } catch (_) {
+    } catch {
       rawDb = null;
     }
   }
@@ -68,7 +74,16 @@ export async function openConcurrentSqliteConnection(dbPath = ':memory:', option
     engineName = 'node:sqlite-wal';
   }
 
-  await applyStandardWalPragmas(rawDb, engineName === 'turso-mvcc' && !isMemory);
+  try {
+    await applyStandardWalPragmas(rawDb, engineName === 'turso-mvcc' && !isMemory);
+  } catch (err) {
+    try {
+      if (typeof rawDb?.close === 'function') await rawDb.close();
+    } catch {
+      // ignore close failure on init rollback
+    }
+    throw err;
+  }
 
   const api = {
     engineName,
@@ -105,7 +120,9 @@ export async function openConcurrentSqliteConnection(dbPath = ':memory:', option
           lastErr = err;
           try {
             await rawDb.exec('ROLLBACK');
-          } catch (_) {}
+          } catch {
+            // ignore rollback error
+          }
           if (isBusyError(err) && attempt < maxRetries) {
             await new Promise((r) => setTimeout(r, 15 * (attempt + 1)));
             continue;
@@ -118,7 +135,9 @@ export async function openConcurrentSqliteConnection(dbPath = ':memory:', option
     async close() {
       try {
         if (typeof rawDb.close === 'function') await rawDb.close();
-      } catch (_) {}
+      } catch {
+        // ignore close failure
+      }
     }
   };
 

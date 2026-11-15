@@ -281,7 +281,7 @@ export function runRyuxDesignGate(projectInput = '') {
         optGeo = { ...optGeo, ...parsedOpt };
         hasOptGeoEvidence = true;
       }
-    } catch (_) {
+    } catch {
       hasOptGeoEvidence = false;
     }
   }
@@ -670,7 +670,7 @@ export async function runAutonomousAestheticRepairLoop(options = {}) {
         generateProductAndDesignMd(ROOT, activeCfg.industryArchetype || activeCfg.archetype || 'saas');
         const { compileDesignTokens } = await import('../design/token_compiler.mjs');
         compileDesignTokens({ projectDir: ROOT });
-      } catch (_) {}
+      } catch {}
     }
   }
 

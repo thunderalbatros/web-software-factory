@@ -13,6 +13,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { spawn } from 'node:child_process';
+import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
 import * as v from 'valibot';
 import { createSandbox, destroySandbox, listSandboxes } from '../lib/sandcastle-runner.mjs';
@@ -72,34 +73,146 @@ import { evaluateFullJevOuterAndMetaGate } from './jev_semantic_gate.mjs';
 
 const selfHealingAstHashHistory = new Map();
 
+const DEFAULT_SKILLS_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..', '.agents', 'skills');
+
+const ROLE_SKILL_ALIAS_MAP = {
+  research: ['research-mode', 'kb-retrieval', 'firecrawl', 'finops-context-budget', 'clean-room-course-harvester']
+};
+
+function resolveSkillsAllowedForRole(roleId = '') {
+  const cleanRole = String(roleId || '').trim().toLowerCase();
+  if (!cleanRole) return null;
+  if (ROLE_SKILL_ALIAS_MAP[cleanRole]) {
+    return new Set(ROLE_SKILL_ALIAS_MAP[cleanRole]);
+  }
+  for (const squad of Object.values(SQUADS)) {
+    const squadRole = path.basename(squad.roleFile || '', '.md').toLowerCase();
+    if (squadRole === cleanRole) {
+      return new Set(squad.skills || []);
+    }
+  }
+  return new Set();
+}
+
+let _cachedGptTokenizer;
+const _rawSkillIndexCache = new Map();
+const _staticDocTokenCache = new Map();
+
+function countBpeTokens(text = '') {
+  const str = String(text || '');
+  try {
+    if (_cachedGptTokenizer === undefined) {
+      const require = createRequire(import.meta.url);
+      _cachedGptTokenizer = require('gpt-tokenizer/encoding/cl100k_base');
+    }
+    if (typeof _cachedGptTokenizer?.encode === 'function') {
+      return _cachedGptTokenizer.encode(str).length;
+    }
+  } catch {
+    _cachedGptTokenizer = null;
+    /* fallback deterministic character divisor */
+  }
+  return Math.ceil(str.length / 4);
+}
+
+function countCachedFileBpeTokens(filePath) {
+  if (!fs.existsSync(filePath)) return 0;
+  const st = fs.statSync(filePath);
+  const key = `${path.resolve(filePath)}:${st.mtimeMs}:${st.size}`;
+  if (_staticDocTokenCache.has(key)) {
+    return _staticDocTokenCache.get(key);
+  }
+  const tokens = countBpeTokens(fs.readFileSync(filePath, 'utf8'));
+  _staticDocTokenCache.set(key, tokens);
+  return tokens;
+}
+
 /**
  * Progressive-disclosure Tier-1 Skill Index (`<= 50 tokens/skill`) reading YAML frontmatter only.
+ * Supports either `buildCompactSkillIndex(customRoot, { roleId })` or `buildCompactSkillIndex({ roleId })`.
  */
-export function buildCompactSkillIndex(
-  skillsRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..', '.agents', 'skills')
-) {
+export function buildCompactSkillIndex(skillsRootOrOptions = DEFAULT_SKILLS_ROOT, maybeOptions = {}) {
+  let skillsRoot = DEFAULT_SKILLS_ROOT;
+  let options = maybeOptions || {};
+  if (typeof skillsRootOrOptions === 'string' && skillsRootOrOptions.trim()) {
+    skillsRoot = skillsRootOrOptions;
+  } else if (skillsRootOrOptions && typeof skillsRootOrOptions === 'object') {
+    options = skillsRootOrOptions;
+    if (typeof options.skillsRoot === 'string' && options.skillsRoot.trim()) {
+      skillsRoot = options.skillsRoot;
+    }
+  }
+
   if (!fs.existsSync(skillsRoot)) return [];
+  const resolvedRoot = path.resolve(skillsRoot);
+  let rawEntries = _rawSkillIndexCache.get(resolvedRoot);
+  if (!rawEntries) {
+    rawEntries = [];
+    for (const dirent of fs.readdirSync(resolvedRoot, { withFileTypes: true })) {
+      if (!dirent.isDirectory()) continue;
+      const skillMd = path.join(resolvedRoot, dirent.name, 'SKILL.md');
+      if (!fs.existsSync(skillMd)) continue;
+      const head = fs.readFileSync(skillMd, 'utf8').slice(0, 1200);
+      const fmMatch = head.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+      const fm = fmMatch ? fmMatch[1] : '';
+      const nameMatch = fm.match(/^name:\s*["']?(.+?)["']?\s*$/m);
+      const descMatch = fm.match(/^description:\s*["']?(.+?)["']?\s*$/m);
+      const name = (nameMatch ? nameMatch[1] : dirent.name).trim();
+      const rawDesc = (descMatch ? descMatch[1] : '').replace(/\s+/g, ' ').trim();
+      rawEntries.push({
+        id: dirent.name,
+        name,
+        rawDesc,
+        path: `.agents/skills/${dirent.name}/SKILL.md`
+      });
+    }
+    rawEntries.sort((a, b) => a.id.localeCompare(b.id));
+    _rawSkillIndexCache.set(resolvedRoot, rawEntries);
+  }
+
+  const allowedRoleSkills = options?.roleId ? resolveSkillsAllowedForRole(options.roleId) : null;
+  const maxDescLen = options?.roleId ? 80 : 140;
   const entries = [];
-  for (const dirent of fs.readdirSync(skillsRoot, { withFileTypes: true })) {
-    if (!dirent.isDirectory()) continue;
-    const skillMd = path.join(skillsRoot, dirent.name, 'SKILL.md');
-    if (!fs.existsSync(skillMd)) continue;
-    const head = fs.readFileSync(skillMd, 'utf8').slice(0, 1200);
-    const fmMatch = head.match(/^---\r?\n([\s\S]*?)\r?\n---/);
-    const fm = fmMatch ? fmMatch[1] : '';
-    const nameMatch = fm.match(/^name:\s*["']?(.+?)["']?\s*$/m);
-    const descMatch = fm.match(/^description:\s*["']?(.+?)["']?\s*$/m);
-    const name = (nameMatch ? nameMatch[1] : dirent.name).trim();
-    const rawDesc = (descMatch ? descMatch[1] : '').replace(/\s+/g, ' ').trim();
-    const compactDescription = rawDesc.length > 140 ? `${rawDesc.slice(0, 137)}...` : rawDesc;
+  for (const item of rawEntries) {
+    if (allowedRoleSkills && !allowedRoleSkills.has(item.id)) continue;
+    const compactDescription =
+      item.rawDesc.length > maxDescLen ? `${item.rawDesc.slice(0, maxDescLen - 3)}...` : item.rawDesc;
     entries.push({
-      id: dirent.name,
-      name,
+      id: item.id,
+      name: item.name,
       description: compactDescription,
-      path: `.agents/skills/${dirent.name}/SKILL.md`
+      path: item.path
     });
   }
-  return entries.sort((a, b) => a.id.localeCompare(b.id));
+  return entries;
+}
+
+/**
+ * Measures exact Tier-1 startup token footprint (`AGENTS.md` + `CONSTRAINTS.md` + role-filtered skill index)
+ * against the strict `<= 1,800` BPE token budget.
+ */
+export function measureRoleTier1TokenBudget(roleId = 'senior-coder') {
+  const agentsPath = path.join(ROOT, 'AGENTS.md');
+  const constraintsPath = path.join(ROOT, 'CONSTRAINTS.md');
+  const roleSkills = buildCompactSkillIndex({ roleId });
+  const serializedIndex = roleSkills.map((s) => `- ${s.id}: ${s.description} (${s.path})`).join('\n');
+
+  const agentsTokens = countCachedFileBpeTokens(agentsPath);
+  const constraintsTokens = countCachedFileBpeTokens(constraintsPath);
+  const skillIndexTokens = countBpeTokens(serializedIndex);
+  const totalTier1Tokens = agentsTokens + constraintsTokens + skillIndexTokens;
+
+  return {
+    roleId,
+    skillsCount: roleSkills.length,
+    skillIds: roleSkills.map((s) => s.id),
+    agentsTokens,
+    constraintsTokens,
+    skillIndexTokens,
+    totalTier1Tokens,
+    budgetLimit: 1800,
+    withinBudget: totalTier1Tokens <= 1800
+  };
 }
 
 /**
@@ -271,7 +384,7 @@ export async function runSelfHealingLoop(taskFn, options = {}) {
             reason: lastResult?.error || 'Validation failure triggers deterministic self-repair'
           }
         });
-      } catch (_) {}
+      } catch {}
     }
     try {
       const res = await taskFn(attempt);
@@ -402,7 +515,13 @@ export const REQUIRED_EDUCATIONAL_SKILLS = Object.freeze([
   'gamification-and-project-coach'
 ]);
 
-export function verifySquadAlignment() {
+let _cachedSquadAlignment = null;
+
+export function verifySquadAlignment(options = {}) {
+  const recordEvidence = options?.recordEvidence === true;
+  if (!options?.forceRefresh && !recordEvidence && _cachedSquadAlignment) {
+    return structuredClone(_cachedSquadAlignment);
+  }
   const missingSkills = [];
   const missingRoles = [];
   const skillsDir = path.join(ROOT, '.agents', 'skills');
@@ -425,15 +544,19 @@ export function verifySquadAlignment() {
         missingSkills.push({ squad: key, skill });
       }
     }
-    try {
-      recordSkillExecutionEvidence({
-        skillIds: squad.skills.slice(0, 2),
-        roleId: roleSlug,
-        success: missingSkills.length === 0 && missingRoles.length === 0,
-        fallbackTriggered: false,
-        latencyMs: 11.2
-      });
-    } catch (_) {}
+    if (recordEvidence) {
+      try {
+        recordSkillExecutionEvidence({
+          skillIds: squad.skills.slice(0, 2),
+          roleId: roleSlug,
+          success: missingSkills.length === 0 && missingRoles.length === 0,
+          fallbackTriggered: false,
+          latencyMs: 11.2
+        });
+      } catch {
+        /* ignore evidence telemetry write failure during audit */
+      }
+    }
   }
 
   // L-03: Cross-check exact count and names across `.agents/agency/roles/`, `ORGANIZATION.md`, and `SQUADS`
@@ -474,7 +597,7 @@ export function verifySquadAlignment() {
     qaRolePermReadOnly &&
     qaToolsForbidWrite;
 
-  return {
+  const result = {
     valid:
       missingSkills.length === 0 &&
       missingRoles.length === 0 &&
@@ -492,6 +615,10 @@ export function verifySquadAlignment() {
     missingRoles,
     topologyMismatches: { extraRoleFiles, missingOrgSlugs, extraOrgSlugs }
   };
+  if (!recordEvidence) {
+    _cachedSquadAlignment = structuredClone(result);
+  }
+  return result;
 }
 
 /**
@@ -537,7 +664,7 @@ export function loadBoltCheckpoint() {
   if (!fs.existsSync(CHECKPOINT_PATH)) return null;
   try {
     return JSON.parse(fs.readFileSync(CHECKPOINT_PATH, 'utf8'));
-  } catch (_) {
+  } catch {
     return null;
   }
 }
@@ -634,7 +761,10 @@ export async function runSquadMission(missionTitle = 'Standard SOTA Bolt Pipelin
     }
   }
 
-  const dagWaves = [
+  let allPassed = true;
+
+  try {
+    const dagWaves = [
     {
       waveId: 'WAVE_1_CONSTITUTION_AND_PREFLIGHT',
       waveNumber: '1',
@@ -729,7 +859,7 @@ export async function runSquadMission(missionTitle = 'Standard SOTA Bolt Pipelin
                 { type: 'COMPLETE_RPI_UNTAINTED_RESEARCH', untaintedResearchVerified: true, maxStageInstructions: 14 },
                 { type: 'START_WAVE1_FOUNDATION' }
               ]);
-            } catch (_) {}
+            } catch {}
             return {
               id: 'control_plane_rpi_and_beads_preflight',
               passed: Boolean(rpiStages === 6 && !stuckRes.stuck && beadsRes.ok),
@@ -823,7 +953,7 @@ export async function runSquadMission(missionTitle = 'Standard SOTA Bolt Pipelin
               if (forge3dMode && forge3dMode !== 'none') {
                 forged3dResult = forge3dSceneOrEffect(forge3dMode, project || '');
               }
-            } catch (_) {}
+            } catch {}
             return {
               id: 'webgpu_3d_primitives_fill_in',
               passed: primitiveCount >= 3,
@@ -899,7 +1029,7 @@ export async function runSquadMission(missionTitle = 'Standard SOTA Bolt Pipelin
     }
   ];
 
-  let allPassed = true;
+  allPassed = true;
   let activeUpstreamPointers = [];
 
   for (const wave of dagWaves) {
@@ -927,7 +1057,7 @@ export async function runSquadMission(missionTitle = 'Standard SOTA Bolt Pipelin
         })),
         forensicWhy: `DAG Wave ${wave.waveNumber}: Inicio de ${wave.waveId} (${wave.title})`
       });
-    } catch (_) {}
+    } catch {}
 
     const settled = await Promise.allSettled(
       wave.nodes.map(async (node) => {
@@ -1075,7 +1205,7 @@ export async function runSquadMission(missionTitle = 'Standard SOTA Bolt Pipelin
         { persist: false }
       );
     }
-  } catch (_) {}
+  } catch {}
 
   // Independent Blind Foreman Review (`vercel-labs/eve` pattern)
   const blindReview = await runBlindIndependentReview({
@@ -1089,12 +1219,20 @@ export async function runSquadMission(missionTitle = 'Standard SOTA Bolt Pipelin
     }
   });
   checkpointState.blindReview = blindReview;
-
-  if (sbInfo) {
-    try {
-      destroySandbox(sbInfo.name);
-      console.log(`  ✓ [Worktree] Cleaned ephemeral worktree ${sbInfo.name}`);
-    } catch (_) {}
+  } catch (missionErr) {
+    allPassed = false;
+    checkpointState.status = checkpointState.status === 'RUNNING' ? 'FAILED_WITH_EXCEPTION' : checkpointState.status;
+    checkpointState.error = missionErr?.message || String(missionErr);
+    throw missionErr;
+  } finally {
+    if (sbInfo) {
+      try {
+        destroySandbox(sbInfo.name);
+        console.log(`  ✓ [Worktree] Cleaned ephemeral worktree ${sbInfo.name}`);
+      } catch {
+        /* ignore cleanup error on already removed worktree */
+      }
+    }
   }
 
   const totalDurationMs = Math.round(performance.now() - startMs);

@@ -155,7 +155,7 @@ export function auditEdgeWorkersAndDist(rootDir = ROOT, options = {}) {
         const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
         complianceProfile =
           manifest.complianceProfile || (manifest.archetype === 'education' ? 'education' : 'standard-web');
-      } catch (_) {}
+      } catch {}
     }
 
     const candidateWorker = path.join(projDir, 'worker', 'index.js');
@@ -486,7 +486,11 @@ export function runAgentShieldHarnessAudit(rootDir = ROOT) {
 }
 
 export function runSecurityQuarantineGate(options = {}) {
-  const targetDir = options.rootDir || ROOT;
+  const resolvedProjectDir = options.projectDir ? path.resolve(String(options.projectDir)) : '';
+  const targetDir = options.rootDir
+    ? path.resolve(String(options.rootDir))
+    : resolvedProjectDir || ROOT;
+  const isFactoryRoot = path.resolve(targetDir).toLowerCase() === path.resolve(ROOT).toLowerCase();
   const candidateDescription = String(options.description || '');
   const fastMode = Boolean(options.fast || options.skipNpmAudit);
 
@@ -500,7 +504,11 @@ export function runSecurityQuarantineGate(options = {}) {
   }
 
   // 2. Run Supply Chain & Anti-Slopsquatting Guard
-  const supplyRes = runSupplyChainGuard({ rootDir: targetDir, skipNetworkAudit: fastMode });
+  const supplyRes = runSupplyChainGuard({
+    rootDir: targetDir,
+    skipNetworkAudit: fastMode,
+    skipSbomWrite: fastMode || !isFactoryRoot || Boolean(options.skipSbomWrite)
+  });
   if (!supplyRes.passed) {
     for (const issue of supplyRes.issues) {
       reasons.push(`[SCA:${issue.rule}] ${issue.message}`);
@@ -508,7 +516,10 @@ export function runSecurityQuarantineGate(options = {}) {
   }
 
   // 3. Run Symbolic SAST Guard (<500ms)
-  const astRes = runAstAudit(null, { rootDir: targetDir });
+  const astRes = runAstAudit(null, {
+    rootDir: targetDir,
+    skipOxlint: fastMode || !isFactoryRoot
+  });
   if (!astRes.passed) {
     reasons.push(
       `[SAST] AST Guard detectó ${astRes.securityBlockers} bloqueos de seguridad y ${astRes.missingMethodErrors} métodos faltantes.`
@@ -536,8 +547,10 @@ export function runSecurityQuarantineGate(options = {}) {
     reasons.push('[PII-PRESIDIO-GUARD] Falló el self-test de redacción automática de entidades PII.');
   }
 
-  // 7. Run OWASP GitHub Actions & Zizmor v1.30 Workflow Security Linter
-  const workflowAudit = runWorkflowSecurityLinter(targetDir);
+  // 7. Run OWASP GitHub Actions & Zizmor v1.30 Workflow Security Linter (Monorepo harness root only)
+  const workflowAudit = isFactoryRoot
+    ? runWorkflowSecurityLinter(targetDir)
+    : { passed: true, skippedExternalProject: true, workflowsChecked: 0, issues: [] };
   if (!workflowAudit.passed) {
     for (const wIssue of workflowAudit.issues) {
       reasons.push(`[WORKFLOW:${wIssue.rule}] ${wIssue.file}: ${wIssue.message}`);
@@ -550,20 +563,26 @@ export function runSecurityQuarantineGate(options = {}) {
     reasons.push('[AGENT-GOVERNANCE-KERNEL] Falló la verificación 10/10 de OWASP Agentic Top 10 (ASI01-ASI10).');
   }
 
-  // 9. Run Automated MCP Security Protocol Auditor (18 Rules OWASP MCP Top 10 + SARIF v2.1.0)
-  const mcpSecurityAudit = runMcpSecurityAudit({ rootDir: targetDir });
+  // 9. Run Automated MCP Security Protocol Auditor (18 Rules OWASP MCP Top 10 + SARIF v2.1.0; Monorepo root only)
+  const mcpSecurityAudit = isFactoryRoot
+    ? runMcpSecurityAudit({ rootDir: targetDir })
+    : { passed: true, skippedExternalProject: true, scoreRatio: 'SKIPPED_STANDALONE', issues: [] };
   if (!mcpSecurityAudit.passed) {
     reasons.push(`[MCP-SECURITY-AUDITOR] Falló la auditoría de reglas MCP (${mcpSecurityAudit.scoreRatio}).`);
   }
 
-  // 10. Run Enterprise Postgres RLS, EnvelopeEncryptionEngine & Ory Kratos/Keto Zanzibar Audit
-  const enterpriseDbAndIdentityAudit = auditEnterpriseDatabaseAndIdentity(targetDir);
+  // 10. Run Enterprise Postgres RLS, EnvelopeEncryptionEngine & Ory Kratos/Keto Zanzibar Audit (Monorepo root only)
+  const enterpriseDbAndIdentityAudit = isFactoryRoot
+    ? auditEnterpriseDatabaseAndIdentity(targetDir)
+    : { passed: true, skippedExternalProject: true, issues: [] };
   if (!enterpriseDbAndIdentityAudit.passed) {
     reasons.push(...enterpriseDbAndIdentityAudit.issues);
   }
 
-  // 11. Run AgentShield Harness & `safe-outputs` (`affaan-m/agentshield` + `github/gh-aw`) Audit
-  const agentShieldAudit = runAgentShieldHarnessAudit(targetDir);
+  // 11. Run AgentShield Harness & `safe-outputs` (`affaan-m/agentshield` + `github/gh-aw`) Audit (Monorepo root only)
+  const agentShieldAudit = isFactoryRoot
+    ? runAgentShieldHarnessAudit(targetDir)
+    : { passed: true, skippedExternalProject: true, filesAudited: 0, skillsChecked: 0, safeOutputsVerified: 0, issues: [] };
   if (!agentShieldAudit.passed) {
     reasons.push(...agentShieldAudit.issues);
   }

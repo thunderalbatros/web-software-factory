@@ -392,7 +392,7 @@ export async function evaluateMemoryWriteAdmissionWithJev(candidateInput = {}, o
         lastAction: `JEV Memory Write-Gate: ${apiRes.verdict.choice} (${newRuleId})`,
         forensicWhy: `Admisión JEV 5-Tier Memory Pipeline [${apiRes.verdict.choice}] para regla "${newRuleId}" (${ledger.rules.length} reglas activas).`
       });
-    } catch (_) {}
+    } catch {}
   }
 
   return {
@@ -442,7 +442,7 @@ export async function runJevSleepTimeConsolidationCycle(options = {}) {
         if (entry.samples.length < 3 && evt.evidence) {
           entry.samples.push(String(evt.evidence).slice(0, 180));
         }
-      } catch (_) {}
+      } catch {}
     }
   }
 
@@ -485,7 +485,7 @@ export async function runJevSleepTimeConsolidationCycle(options = {}) {
     if (fs.existsSync(COLD_ARCHIVE_LEDGER_PATH)) {
       try {
         coldArchive = JSON.parse(fs.readFileSync(COLD_ARCHIVE_LEDGER_PATH, 'utf8'));
-      } catch (_) {}
+      } catch {}
     }
     const toArchive = expiredRules.slice(0, expiredRules.length - 25);
     const keepExpired = expiredRules.slice(expiredRules.length - 25);
@@ -556,7 +556,7 @@ export async function runJevSleepTimeConsolidationCycle(options = {}) {
         forensicWhy: `Consolidación JEV 5-Tier Memory Pipeline completada en ${report.latencyMs}ms (${activeRules.length} reglas semánticas activas).`,
         jevMemoryPipeline: report
       });
-    } catch (_) {}
+    } catch {}
   }
 
   return report;

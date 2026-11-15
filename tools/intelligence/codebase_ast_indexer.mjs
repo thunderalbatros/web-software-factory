@@ -279,7 +279,7 @@ function collectTargetSourceFiles(rootDir = ROOT) {
   try {
     const active = getActiveProject();
     if (active?.activeSlug) activeSlug = active.activeSlug;
-  } catch (_) {}
+  } catch {}
 
   const targetRoots = [
     path.join(rootDir, 'tools'),
@@ -329,7 +329,7 @@ export function buildOrUpdateAstIndex({ rootDir = ROOT, forceRebuild = false } =
         previousNodesByPath.set(node.path, node);
       }
       previousHashSignature = existing.combinedSha256 || '';
-    } catch (_) {
+    } catch {
       previousNodesByPath = new Map();
     }
   }

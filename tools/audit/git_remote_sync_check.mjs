@@ -24,7 +24,7 @@ export const EXPECTED_REPO_SLUG = 'thunderalbatros/web-software-factory';
 function safeExecGit(cmd) {
   try {
     return execSync(cmd, { cwd: ROOT, stdio: ['ignore', 'pipe', 'ignore'], encoding: 'utf8' }).trim();
-  } catch (_) {
+  } catch {
     return '';
   }
 }

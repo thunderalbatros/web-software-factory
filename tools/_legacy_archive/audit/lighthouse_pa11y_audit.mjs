@@ -111,7 +111,7 @@ async function waitForDebuggerReady(debugPort, timeoutMs = 10000) {
     try {
       const res = await fetch(`http://127.0.0.1:${debugPort}/json/version`);
       if (res.ok) return true;
-    } catch (_) {}
+    } catch {}
     await new Promise(r => setTimeout(r, 150));
   }
   throw new Error('Timed out waiting for Chrome DevTools port ' + debugPort);
@@ -212,10 +212,10 @@ try {
     console.log(`  ✅ Pa11y [${hash.padEnd(18)}] -> Errors: ${errors.length}`);
   }
 } finally {
-  try { chromeProc.kill(); } catch (_) {}
-  try { server.close(); } catch (_) {}
+  try { chromeProc.kill(); } catch {}
+  try { server.close(); } catch {}
   setTimeout(() => {
-    try { fs.rmSync(userDataDir, { recursive: true, force: true }); } catch (_) {}
+    try { fs.rmSync(userDataDir, { recursive: true, force: true }); } catch {}
   }, 500);
 }
 

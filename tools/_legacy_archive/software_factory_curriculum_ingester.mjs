@@ -49,7 +49,7 @@ let DatabaseSyncClass = null;
 try {
   const sqliteMod = await import('node:sqlite');
   DatabaseSyncClass = sqliteMod.DatabaseSync || null;
-} catch (_) {
+} catch {
   DatabaseSyncClass = null;
 }
 
@@ -588,7 +588,7 @@ export function ensureAcademicCourseReposAndRegisterVault() {
           .readdirSync(destPath)
           .filter((n) => !n.startsWith('.'))
           .slice(0, 6);
-      } catch (_) {}
+      } catch {}
     }
 
     repoStatuses.push({
@@ -690,7 +690,7 @@ export function ensureContextAndHarnessReposAndRegisterVault() {
         .readdirSync(destPath)
         .filter((n) => !n.startsWith('.'))
         .slice(0, 6);
-    } catch (_) {}
+    } catch {}
 
     repoStatuses.push({
       ...repo,
@@ -950,7 +950,7 @@ export function indexCanonInSqliteFts5(markdownContent = '', extraCanonFiles = [
     db.exec('COMMIT');
     try {
       db.exec("INSERT INTO chunks_fts(chunks_fts) VALUES('optimize');");
-    } catch (_) {}
+    } catch {}
     db.exec('PRAGMA wal_checkpoint(TRUNCATE);');
 
     return {
@@ -961,7 +961,7 @@ export function indexCanonInSqliteFts5(markdownContent = '', extraCanonFiles = [
   } finally {
     try {
       db.close();
-    } catch (_) {}
+    } catch {}
   }
 }
 
@@ -1072,7 +1072,7 @@ export function runSoftwareFactoryCurriculumIngestion() {
   const ftsResult = indexCanonInSqliteFts5(canonMarkdown, extraCanonsForFts5);
   try {
     ensureLocalKnowledgeIndex(true);
-  } catch (_) {}
+  } catch {}
   const elapsedMs = Math.round(performance.now() - t0);
 
   const passed =

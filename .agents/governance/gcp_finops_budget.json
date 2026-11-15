@@ -114,16 +114,12 @@
     }
   },
   "telemetrySummary": {
-    "lastUpdatedAt": "2026-11-15T09:17:46.662Z",
-    "todaySpendUsd": 0.084553,
-    "remainingDailyBudgetUsd": 1.4154,
-    "remainingCreditUsd": 69.9148,
+    "lastUpdatedAt": "2026-11-15T00:00:00.000Z",
+    "todaySpendUsd": 0,
+    "remainingDailyBudgetUsd": 1.5,
+    "remainingCreditUsd": 70,
     "lastMultimediaOperation": {
-      "timestamp": "2026-11-15T09:17:46.649Z",
-      "tierId": "TIER_2_VERTEX_AI_NATIVE_PREMIUM",
-      "engine": "es-US-Studio-B",
-      "estimatedAssetCostUsd": 0.02,
-      "billedCostUsd": 0
+      "note": "Immutable FinOps policy baseline. Live telemetry state is written strictly to .agents/memory/gcp_finops_budget.json."
     }
   }
 }

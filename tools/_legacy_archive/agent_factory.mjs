@@ -33,7 +33,6 @@ const [cmd, ...args] = process.argv.slice(2);
 const B = "\x1b[36m";
 const G = "\x1b[32m";
 const Y = "\x1b[33m";
-const R = "\x1b[31m";
 const X = "\x1b[0m";
 
 switch (cmd) {
@@ -43,7 +42,7 @@ switch (cmd) {
     console.log(`${B}======================================================${X}\n`);
 
     console.log(`${G}ACTIVE AGENT SQUADS:${X}`);
-    for (const [key, squad] of Object.entries(SQUADS)) {
+    for (const [, squad] of Object.entries(SQUADS)) {
       console.log(`  • ${B}${squad.name}${X}`);
       console.log(`    Mission: ${squad.mission}`);
       console.log(`    Skills:  ${squad.skills.join(', ')}`);

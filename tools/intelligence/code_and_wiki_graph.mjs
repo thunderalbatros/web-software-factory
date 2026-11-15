@@ -377,67 +377,74 @@ export function buildAndPersistAllGraphs() {
   try {
     const { DatabaseSync } = require('node:sqlite');
     const db = new DatabaseSync(SQLITE_DB_FILE);
-    db.exec(`
-      CREATE TABLE IF NOT EXISTS code_nodes (
-        id TEXT PRIMARY KEY,
-        type TEXT,
-        pagerank REAL,
-        classes_json TEXT,
-        functions_json TEXT,
-        globals_json TEXT,
-        routes_json TEXT,
-        lines INTEGER
-      );
-      CREATE TABLE IF NOT EXISTS code_edges (
-        source TEXT,
-        target TEXT,
-        relation TEXT
-      );
-      CREATE TABLE IF NOT EXISTS wiki_nodes (
-        id TEXT PRIMARY KEY,
-        title TEXT,
-        domain TEXT,
-        pagerank REAL
-      );
-      CREATE TABLE IF NOT EXISTS wiki_edges (
-        source TEXT,
-        target TEXT,
-        relation TEXT
-      );
-      DELETE FROM code_nodes;
-      DELETE FROM code_edges;
-      DELETE FROM wiki_nodes;
-      DELETE FROM wiki_edges;
-    `);
+    try {
+      db.exec(`
+        CREATE TABLE IF NOT EXISTS code_nodes (
+          id TEXT PRIMARY KEY,
+          type TEXT,
+          pagerank REAL,
+          classes_json TEXT,
+          functions_json TEXT,
+          globals_json TEXT,
+          routes_json TEXT,
+          lines INTEGER
+        );
+        CREATE TABLE IF NOT EXISTS code_edges (
+          source TEXT,
+          target TEXT,
+          relation TEXT
+        );
+        CREATE TABLE IF NOT EXISTS wiki_nodes (
+          id TEXT PRIMARY KEY,
+          title TEXT,
+          domain TEXT,
+          pagerank REAL
+        );
+        CREATE TABLE IF NOT EXISTS wiki_edges (
+          source TEXT,
+          target TEXT,
+          relation TEXT
+        );
+        DELETE FROM code_nodes;
+        DELETE FROM code_edges;
+        DELETE FROM wiki_nodes;
+        DELETE FROM wiki_edges;
+      `);
 
-    db.exec('BEGIN TRANSACTION');
-    const insCodeNode = db.prepare('INSERT INTO code_nodes VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
-    for (const n of codeGraph.nodes) {
-      insCodeNode.run(
-        n.id,
-        n.type,
-        n.pagerank,
-        JSON.stringify(n.classes),
-        JSON.stringify(n.functions),
-        JSON.stringify(n.globals),
-        JSON.stringify(n.apiRoutes),
-        n.lines
-      );
+      db.exec('BEGIN TRANSACTION');
+      const insCodeNode = db.prepare('INSERT INTO code_nodes VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
+      for (const n of codeGraph.nodes) {
+        insCodeNode.run(
+          n.id,
+          n.type,
+          n.pagerank,
+          JSON.stringify(n.classes),
+          JSON.stringify(n.functions),
+          JSON.stringify(n.globals),
+          JSON.stringify(n.apiRoutes),
+          n.lines
+        );
+      }
+      const insCodeEdge = db.prepare('INSERT INTO code_edges VALUES (?, ?, ?)');
+      for (const e of codeGraph.edges) {
+        insCodeEdge.run(e.source, e.target, e.relation);
+      }
+      const insWikiNode = db.prepare('INSERT INTO wiki_nodes VALUES (?, ?, ?, ?)');
+      for (const n of wikiGraph.nodes) {
+        insWikiNode.run(n.id, n.title, n.domain, n.pagerank);
+      }
+      const insWikiEdge = db.prepare('INSERT INTO wiki_edges VALUES (?, ?, ?)');
+      for (const e of wikiGraph.edges) {
+        insWikiEdge.run(e.source, e.target, e.relation);
+      }
+      db.exec('COMMIT');
+    } finally {
+      try {
+        db.close();
+      } catch {
+        // ignore close failure
+      }
     }
-    const insCodeEdge = db.prepare('INSERT INTO code_edges VALUES (?, ?, ?)');
-    for (const e of codeGraph.edges) {
-      insCodeEdge.run(e.source, e.target, e.relation);
-    }
-    const insWikiNode = db.prepare('INSERT INTO wiki_nodes VALUES (?, ?, ?, ?)');
-    for (const n of wikiGraph.nodes) {
-      insWikiNode.run(n.id, n.title, n.domain, n.pagerank);
-    }
-    const insWikiEdge = db.prepare('INSERT INTO wiki_edges VALUES (?, ?, ?)');
-    for (const e of wikiGraph.edges) {
-      insWikiEdge.run(e.source, e.target, e.relation);
-    }
-    db.exec('COMMIT');
-    db.close();
   } catch (err) {
     console.warn('[WARN] SQLite graph persistence warning:', err.message);
   }

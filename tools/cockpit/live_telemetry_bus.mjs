@@ -282,7 +282,7 @@ function readJsonSafe(filePath, fallback) {
     if (fs.existsSync(filePath)) {
       return JSON.parse(fs.readFileSync(filePath, 'utf8'));
     }
-  } catch (_) {}
+  } catch {}
   return fallback;
 }
 
@@ -644,7 +644,7 @@ export function emitFactoryTelemetryEvent(event = {}) {
         .slice(-200);
       fs.writeFileSync(LIVE_STREAM_JSONL_PATH, recentLines.join('\n') + '\n', 'utf8');
     }
-  } catch (_) {}
+  } catch {}
 
   telemetryEmitter.emit('state-updated', { state, streamEntry });
   return state;

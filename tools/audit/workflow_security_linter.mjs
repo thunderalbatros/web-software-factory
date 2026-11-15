@@ -254,7 +254,7 @@ export function runWorkflowSecurityLinter(rootDir = ROOT) {
     if (cliCheck.status === 0 && cliCheck.stdout) {
       nativeZizmorVersion = cliCheck.stdout.trim();
     }
-  } catch (_) {}
+  } catch {}
 
   if (!fs.existsSync(workflowsDir)) {
     return {

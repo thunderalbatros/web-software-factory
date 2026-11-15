@@ -29,7 +29,7 @@ let DatabaseSyncClass = null;
 try {
   const sqliteMod = await import('node:sqlite');
   DatabaseSyncClass = sqliteMod.DatabaseSync || null;
-} catch (_) {
+} catch {
   DatabaseSyncClass = null;
 }
 
@@ -74,7 +74,7 @@ export function stripConversationalTranscriptFiller(rawText = '') {
 
     // Keep lines with high technical signal (commands, code, APIs, metrics, rules) or concise headings
     const hasTechnicalSignal =
-      /[`{}()[\]=;<>\/\\]|(?:\b(?:npm|npx|node|git|wrangler|postgres|sqlite|oklch|clamp|webgpu|three|shader|gsap|jwt|argon2id|zanzibar|rls|kms|aes-256-gcm|owasp|asvs|mcp|ast|oxlint|valibot)\b)/i.test(
+      /[`{}()[\]=;<>/\\]|(?:\b(?:npm|npx|node|git|wrangler|postgres|sqlite|oklch|clamp|webgpu|three|shader|gsap|jwt|argon2id|zanzibar|rls|kms|aes-256-gcm|owasp|asvs|mcp|ast|oxlint|valibot)\b)/i.test(
         deFillered
       ) || /^#{1,4}\s+/.test(deFillered);
 
@@ -540,7 +540,7 @@ export function distillLongDurationVideoTranscript({
           if (fs.existsSync(cachedSubPath)) {
             transcriptSource = fs.readFileSync(cachedSubPath, 'utf8');
           }
-        } catch (_) {}
+        } catch {}
       }
     }
   }
@@ -696,23 +696,32 @@ ${deduplicatedMap[0]?.codePattern || ''}
   if (!dryRun && !skipSqliteIndex && DatabaseSyncClass && fs.existsSync(sqlitePath)) {
     try {
       const db = new DatabaseSyncClass(sqlitePath);
-      db.exec('PRAGMA journal_mode = WAL; PRAGMA synchronous = NORMAL;');
-      const upsertStmt = db.prepare(
-        'INSERT INTO chunks_fts (id, source, category, snippet, title, section, text) VALUES (?, ?, ?, ?, ?, ?, ?)'
-      );
-      upsertStmt.run(
-        `${relPlaybookPath}#mapreduce-0`,
-        `local://${relPlaybookPath}`,
-        'canon-treatise',
-        reducedMarkdown.slice(0, 420),
-        title,
-        'Map-Reduce Distillation',
-        reducedMarkdown
-      );
-      db.exec('PRAGMA wal_checkpoint(TRUNCATE);');
-      db.close();
-      sqliteIndexed = true;
-    } catch (_) {}
+      try {
+        db.exec('PRAGMA journal_mode = WAL; PRAGMA synchronous = NORMAL;');
+        const upsertStmt = db.prepare(
+          'INSERT INTO chunks_fts (id, source, category, snippet, title, section, text) VALUES (?, ?, ?, ?, ?, ?, ?)'
+        );
+        upsertStmt.run(
+          `${relPlaybookPath}#mapreduce-0`,
+          `local://${relPlaybookPath}`,
+          'canon-treatise',
+          reducedMarkdown.slice(0, 420),
+          title,
+          'Map-Reduce Distillation',
+          reducedMarkdown
+        );
+        db.exec('PRAGMA wal_checkpoint(TRUNCATE);');
+        sqliteIndexed = true;
+      } finally {
+        try {
+          db.close();
+        } catch {
+          // ignore close failure
+        }
+      }
+    } catch {
+      // ignore SQLite index failure
+    }
   }
 
   return {
@@ -801,7 +810,7 @@ export function runCourseAndPaperDistillerSelfTest() {
 
   try {
     fs.rmSync(tmpDir, { recursive: true, force: true });
-  } catch (_) {}
+  } catch {}
 
   console.log(
     `  ✓ [Anti-Filler Filter] Reducción conversacional verificada: ${res.originalLength} chars -> ${res.cleanedLength} chars (-${res.reductionPct}% ruido).`

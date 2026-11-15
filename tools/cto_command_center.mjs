@@ -16,17 +16,10 @@ import path from 'node:path';
 import readline from 'node:readline';
 import { execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
-import { runSquadMission, loadBoltCheckpoint, saveBoltCheckpoint } from './intelligence/agent_squad.mjs';
-import { applyCtoFeedbackAndInvalidate } from './intelligence/memory_reflector.mjs';
-import { consultTomSwe } from './intelligence/tom_swe_engine.mjs';
-import { runAutonomousAestheticRepairLoop } from './audit/ryux_design_gate.mjs';
-import { captureAccessibilitySnapshot } from './audit/a11y_tree_snapshot.mjs';
 import { compileDesignTokens } from './design/token_compiler.mjs';
 import { listSandboxes, destroySandbox } from './lib/sandcastle-runner.mjs';
-import { getActiveRules } from './intelligence/instincts_engine.mjs';
 import { runSupplyChainGuard } from './audit/supply_chain_guard.mjs';
-import { runAstAudit, scanSecurityAndPerformance } from './audit/ast_guard.mjs';
-import { runEvalMatrix } from './intelligence/eval_matrix.mjs';
+import { scanSecurityAndPerformance } from './audit/ast_guard.mjs';
 import { printCtoHelpCatalog } from './cto/cto_help_catalog.mjs';
 import {
   loadProjectConfig,
@@ -40,10 +33,6 @@ import {
   recordProjectDoraMetrics
 } from './intelligence/factory_dora_metrics.mjs';
 import { runGitRemoteSyncCheck } from './audit/git_remote_sync_check.mjs';
-import {
-  evaluateMemoryWriteAdmissionWithJev,
-  runJevSleepTimeConsolidationCycle
-} from './intelligence/jev_memory_pipeline.mjs';
 import { syncProjectStatechartSnapshot } from './orchestrator/deterministic_agent_statechart.mjs';
 import { hasStandaloneUnsafeEval, validateHeadersForProfile } from './lib/csp_builder.mjs';
 import { createRequire } from 'node:module';
@@ -61,7 +50,9 @@ const DECISION_BRIEF_PATH = path.join(ROOT, '.agents', 'skills', 'cto-hitl-visua
 const TESTBENCH_AUDIT_PATH = path.join(ROOT, 'tools', 'audit', 'component_testbench.html');
 const TESTBENCH_DOCS_PATH = path.join(ROOT, 'docs', 'audit_snapshots', 'component_testbench.html');
 
-export function evaluateCybersecurityTrafficLight(projectCfgInput = null) {
+export function evaluateCybersecurityTrafficLight(projectCfgInput = null, options = {}) {
+  const skipNetworkAudit = Boolean(options?.skipNetworkAudit);
+  const skipSbomWrite = options?.skipSbomWrite !== undefined ? Boolean(options.skipSbomWrite) : skipNetworkAudit;
   const projectCfg =
     typeof projectCfgInput === 'string'
       ? loadProjectConfig(projectCfgInput)
@@ -112,7 +103,11 @@ export function evaluateCybersecurityTrafficLight(projectCfgInput = null) {
   const escudoNavegadorOk = headersValid && agenticReport.passed;
 
   // 2. Supply Chain & Anti-Slopsquatting Guard
-  const supplyReport = runSupplyChainGuard({ skipNetworkAudit: false });
+  const supplyReport = runSupplyChainGuard({
+    rootDir: projRoot,
+    skipNetworkAudit,
+    skipSbomWrite
+  });
   const controlLibreriasOk = supplyReport.passed;
 
   // 3. Forms, Private Data & SAST (XSS, D1 SQLi, Mutant Endpoints) + 4. Secret Leaks
@@ -131,8 +126,7 @@ export function evaluateCybersecurityTrafficLight(projectCfgInput = null) {
     'templates/astro-edge/worker',
     'templates/astro-edge/src/pages',
     'templates/astro-edge/src/layouts',
-    'tools/design',
-    'tools/lib'
+    ...(projRelPrefix && skipNetworkAudit ? [] : ['tools/design', 'tools/lib'])
   ];
   let formOrEndpointFailures = 0;
   let secretLeaksCount = 0;
@@ -217,14 +211,7 @@ function parseCliFlag(args, flagName, defaultVal = '') {
   return defaultVal;
 }
 
-async function handleNuevo(args) {
-  console.log('\n====================================================================');
-  console.log('🧭 ASISTENTE DEL CTO — CREACIÓN DE NUEVO SITIO WEB AISLADO');
-  console.log('====================================================================');
-
-  const tomConsult = consultTomSwe('Crear nuevo sitio web moderno con alto contraste y velocidad instantánea');
-  console.log(`💡 Memoria de tus preferencias activa (${tomConsult.critical_invariants.length} reglas clave cargadas).\n`);
-
+export async function handleNuevo(args, options = {}) {
   const positionalName = args.find(a => !a.startsWith('--')) || '';
   const stackFlag = parseCliFlag(args, '--stack', parseCliFlag(args, '--template', ''));
   const rubroFlag = parseCliFlag(args, '--archetype', parseCliFlag(args, '--rubro', ''));
@@ -232,11 +219,22 @@ async function handleNuevo(args) {
   const isNonInteractive = Boolean(positionalName) || !process.stdin.isTTY;
 
   if (isNonInteractive && !stackFlag) {
-    console.error(
-      '\n❌ [ERROR_MISSING_EXPLICIT_STACK] En modo no interactivo debés indicar explícitamente `--stack astro-edge` o `--stack vanilla-edge` (se eliminó el fallback silencioso a vanilla-edge).\n   Ejemplo: node tools/cto_command_center.mjs nuevo academia-ia --stack astro-edge --archetype education --style stripe-editorial\n'
-    );
+    const errMsg =
+      '❌ [ERROR_MISSING_EXPLICIT_STACK] En modo no interactivo debés indicar explícitamente `--stack astro-edge` o `--stack vanilla-edge` (se eliminó el fallback silencioso a vanilla-edge).\n   Ejemplo: node tools/cto_command_center.mjs nuevo academia-ia --stack astro-edge --archetype education --style stripe-editorial';
+    if (options.throwOnError === true) {
+      throw new Error(errMsg);
+    }
+    console.error(`\n${errMsg}\n`);
     process.exit(1);
   }
+
+  console.log('\n====================================================================');
+  console.log('🧭 ASISTENTE DEL CTO — CREACIÓN DE NUEVO SITIO WEB AISLADO');
+  console.log('====================================================================');
+
+  const { consultTomSwe } = await import('./intelligence/tom_swe_engine.mjs');
+  const tomConsult = consultTomSwe('Crear nuevo sitio web moderno con alto contraste y velocidad instantánea');
+  console.log(`💡 Memoria de tus preferencias activa (${tomConsult.critical_invariants.length} reglas clave cargadas).\n`);
 
   const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
   try {
@@ -481,6 +479,8 @@ async function handleConstruir(args = []) {
   );
   const { applyBespokeMorphologyToProjectDom } = await import('./design/build_vanilla_primitives.mjs');
   const { evaluateFullJevOuterAndMetaGate } = await import('./intelligence/jev_semantic_gate.mjs');
+  const { runSquadMission } = await import('./intelligence/agent_squad.mjs');
+  const { captureAccessibilitySnapshot } = await import('./audit/a11y_tree_snapshot.mjs');
 
   const laneDecision = classifyAdaptiveDepthLane(`Construcción Ejecutiva del CTO (${projectCfg.id})`, { filesCount: 4 });
   runHumanLayerRpiPipeline({
@@ -538,6 +538,9 @@ async function handleConstruir(args = []) {
 
 async function generateExecutiveDecisionBrief(boltRes = null, axRes = null) {
   const projectCfg = loadProjectConfig();
+  const { runAutonomousAestheticRepairLoop } = await import('./audit/ryux_design_gate.mjs');
+  const { runEvalMatrix } = await import('./intelligence/eval_matrix.mjs');
+  const { getActiveRules } = await import('./intelligence/instincts_engine.mjs');
   const ryuxLoop = await runAutonomousAestheticRepairLoop({ maxIterations: 3, minScore: 92 });
   const evalRes = await runEvalMatrix(projectCfg.projectRoot, { reuseRecentChaos: true });
   const score = evalRes.compositeScore ?? (ryuxLoop.finalScore || 100);
@@ -681,6 +684,7 @@ async function handleRevisar(args) {
   console.log('====================================================================\n');
 
   const projectCfg = loadProjectConfig();
+  const { captureAccessibilitySnapshot } = await import('./audit/a11y_tree_snapshot.mjs');
   const axRes = await captureAccessibilitySnapshot({ projectDir: projectCfg.projectRoot });
   const { briefPath, testbenchPath, semaforo, nivelRiesgo } = await generateExecutiveDecisionBrief(null, axRes);
 
@@ -698,7 +702,7 @@ async function handleRevisar(args) {
       if (process.platform === 'win32') {
         execSync(`start "" "${testbenchPath}"`, { stdio: 'ignore' });
       }
-    } catch (_) {}
+    } catch {}
   }
 }
 
@@ -723,7 +727,6 @@ async function handleEmpaquetar(args = []) {
     { cwd: ROOT, stdio: 'inherit' }
   );
 
-  const localDeliverable = path.join(ROOT, 'deliverables', slug);
   const desktopDeliverable = path.join('C:\\Users\\tomas\\Desktop\\Sitios_Entregables', slug);
   const zipFile = `${slug}-produccion.zip`;
 
@@ -754,9 +757,10 @@ async function handleAprobar(args = []) {
     try {
       destroySandbox(name);
       console.log(`  🧹 Entorno temporal limpiado: ${name}`);
-    } catch (_) {}
+    } catch {}
   }
 
+  const { loadBoltCheckpoint, saveBoltCheckpoint } = await import('./intelligence/agent_squad.mjs');
   const ck = loadBoltCheckpoint() || { mission: 'Entrega Aprobada por el CTO' };
   ck.ctoApproved = true;
   ck.ctoApprovedAt = new Date().toISOString();
@@ -785,6 +789,8 @@ async function handleFeedback(args) {
   console.log(`  🗣️  Tu indicación: "${comment}"\n`);
 
   // 1. Evaluate JEV Write-Gate & update Temporal Fact Graph
+  const { evaluateMemoryWriteAdmissionWithJev } = await import('./intelligence/jev_memory_pipeline.mjs');
+  const { applyCtoFeedbackAndInvalidate } = await import('./intelligence/memory_reflector.mjs');
   const jevGate = await evaluateMemoryWriteAdmissionWithJev({
     fact: comment,
     projectSlug: projectCfg.id
@@ -1231,7 +1237,7 @@ async function handleAprobarTicket(args = []) {
       const ledger = JSON.parse(fs.readFileSync(FEEDBACK_LEDGER_PATH, 'utf8'));
       const waiting = (ledger.tickets || []).find((t) => t.status === 'WAITING_CTO_TRIAGE_APPROVAL');
       if (waiting) targetId = waiting.ticketId;
-    } catch (_) {}
+    } catch {}
   }
 
   const res = await executeApprovedTicketFix(targetId, { approvedByCto: true });
@@ -1428,7 +1434,7 @@ async function handleCrearAudio(args = []) {
  *   4. Verifies `git status --short`.
  *   5. Writes `.agents/runs/NEXT_SESSION_HANDOFF.md` with the exact continuation prompt for 0% memory loss.
  */
-export async function handleAterrizar(args = []) {
+export async function handleAterrizar(_args = []) {
   const activeObj = getActiveProject();
   const slug = activeObj?.activeSlug || 'agencia-alfa';
 
@@ -1445,10 +1451,11 @@ export async function handleAterrizar(args = []) {
         db.close();
         walCheckpointed = true;
       }
-    } catch (_) {}
+    } catch {}
   }
 
   // 1b. Run JEV Sleep-Time Consolidation Cycle & XState v5 Actor Snapshot Landing
+  const { runJevSleepTimeConsolidationCycle } = await import('./intelligence/jev_memory_pipeline.mjs');
   const sleepTimeReport = await runJevSleepTimeConsolidationCycle({ persist: true });
   const xstateLanding = syncProjectStatechartSnapshot(slug, [
     { type: 'COMPLETE_RPI_UNTAINTED_RESEARCH', untaintedResearchVerified: true, maxStageInstructions: 14 },
@@ -1476,7 +1483,7 @@ export async function handleAterrizar(args = []) {
         task.priority = 'P0_RECENT_HANDOFF';
         task.syncedAt = new Date().toISOString();
         parsedTasks.push(task);
-      } catch (_) {}
+      } catch {}
     }
     beadsCount = parsedTasks.length;
     prioritizedTasks = parsedTasks;
@@ -1495,10 +1502,10 @@ export async function handleAterrizar(args = []) {
       destroySandbox(sb.id);
       cleanedSandboxes++;
     }
-  } catch (_) {}
+  } catch {}
   try {
     execSync('git worktree prune', { cwd: ROOT, stdio: 'ignore' });
-  } catch (_) {}
+  } catch {}
 
   // 4. Inspect `git status`
   let gitBranch = 'master';
@@ -1507,7 +1514,7 @@ export async function handleAterrizar(args = []) {
     gitBranch = execSync('git rev-parse --abbrev-ref HEAD', { cwd: ROOT, encoding: 'utf8' }).trim();
     const statusRaw = execSync('git status --short', { cwd: ROOT, encoding: 'utf8' }).trim();
     gitDirtyFiles = statusRaw ? statusRaw.split(/\r?\n/) : [];
-  } catch (_) {}
+  } catch {}
 
   // 5. Generate `.agents/runs/NEXT_SESSION_HANDOFF.md`
   const handoffPath = path.join(ROOT, '.agents', 'runs', 'NEXT_SESSION_HANDOFF.md');

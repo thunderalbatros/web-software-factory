@@ -128,7 +128,7 @@ export function compileMultiTargetTokens(projectRoot, options = {}) {
   if (fs.existsSync(manifestPath)) {
     try {
       manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
-    } catch (_) {}
+    } catch {}
   }
 
   const archetypeKey =
@@ -440,7 +440,7 @@ export function forgeMobileTarget(projectRoot, options = {}) {
   if (fs.existsSync(manifestPath)) {
     try {
       manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
-    } catch (_) {}
+    } catch {}
   }
 
   const slug = String(options.slug || manifest.id || path.basename(absRoot))

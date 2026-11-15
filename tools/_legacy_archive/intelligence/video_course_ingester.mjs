@@ -41,7 +41,7 @@ function loadEnv() {
             env[match[1]] = (match[2] || '').trim();
           }
         });
-      } catch (_) {}
+      } catch {}
     }
   }
   return env;
@@ -132,7 +132,7 @@ export function groupTranscriptSegments(items, blockDurationSec = 60) {
 }
 
 // Synthesize transcript into canonical markdown using Groq LLM
-export async function synthesizeCourseWithAI({ title, videoId, segments, fullText, category }) {
+export async function synthesizeCourseWithAI({ title, videoId, segments: _segments, fullText, category }) {
   if (!GROQ_API_KEY) {
     return null;
   }
@@ -193,7 +193,7 @@ Provide deep, professional, actionable content without fluff.`;
         const content = data.choices?.[0]?.message?.content;
         if (content) return content;
       }
-    } catch (_) {}
+    } catch {}
   }
 
   return null;

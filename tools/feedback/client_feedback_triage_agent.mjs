@@ -269,7 +269,7 @@ export function loadProjectExplicitNonGoals(projectSlug = '') {
       if (Array.isArray(b4.outOfScopeItems)) nonGoals.push(...b4.outOfScopeItems);
       if (Array.isArray(b4.phase2DeferredItems)) nonGoals.push(...b4.phase2DeferredItems);
     }
-  } catch (_) {}
+  } catch {}
 
   try {
     const prdPath = path.join(projDir, 'PRD_LEAN.md');
@@ -281,7 +281,7 @@ export function loadProjectExplicitNonGoals(projectSlug = '') {
         nonGoals.push(...bullets);
       }
     }
-  } catch (_) {}
+  } catch {}
 
   return [...new Set(nonGoals.filter(Boolean))];
 }
@@ -377,7 +377,7 @@ export function diagnoseAstRootCauseReadOnly(projectSlug = 'agencia-alfa', secti
       const graph = JSON.parse(fs.readFileSync(AST_GRAPH_PATH, 'utf8'));
       astNodesIndexed = Array.isArray(graph.nodes) ? graph.nodes.length : Object.keys(graph.files || {}).length;
     }
-  } catch (_) {}
+  } catch {}
 
   const specPath = path.join(FACTORY_ROOT, 'projects', projectSlug, 'SPEC.md');
   const designPath = path.join(FACTORY_ROOT, 'projects', projectSlug, 'DESIGN.md');
@@ -402,7 +402,7 @@ export function buildSlackBlockKitTriageCard({
   ticketId,
   projectSlug,
   sourceChannel,
-  pageUrl,
+  pageUrl: _pageUrl,
   viewport,
   sanitizedMessage,
   scopeInfo,
@@ -474,7 +474,7 @@ function readFeedbackLedger() {
       const parsed = JSON.parse(fs.readFileSync(FEEDBACK_LEDGER_PATH, 'utf8'));
       if (parsed && Array.isArray(parsed.tickets)) return parsed;
     }
-  } catch (_) {}
+  } catch {}
   return { tickets: [] };
 }
 
@@ -647,7 +647,7 @@ export async function analyzeTicketAndProposeSpec(ticketInput = {}, options = {}
         signal: AbortSignal.timeout(4000)
       });
       slackWebhookDispatched = res.ok;
-    } catch (_) {}
+    } catch {}
   }
 
   const branchName = `feedback/${ticketId}`;
@@ -721,7 +721,7 @@ export async function analyzeTicketAndProposeSpec(ticketInput = {}, options = {}
         columnId: 'col_2_waiting_hitl'
       }
     });
-  } catch (_) {}
+  } catch {}
 
   return {
     ok: true,
@@ -829,7 +829,7 @@ export async function executeApprovedTicketFix(ticketId, options = {}) {
   try {
     const rawOut = String(sandboxVerification?.stdout || '').trim().split(/\r?\n/).pop() || '{}';
     parsedSandboxManifest = JSON.parse(rawOut);
-  } catch (_) {
+  } catch {
     parsedSandboxManifest = {};
   }
   const autoevals = runBraintrustAutoevals({
@@ -901,7 +901,7 @@ export async function executeApprovedTicketFix(ticketId, options = {}) {
         columnId: 'col_5_approved_packaged'
       }
     });
-  } catch (_) {}
+  } catch {}
 
   return {
     ok: true,
@@ -1028,7 +1028,7 @@ export async function runClientFeedbackTriageSelfTest() {
   try {
     if (fs.existsSync(deltaAbs)) fs.rmSync(deltaAbs, { force: true });
     if (fs.existsSync(reportAbs)) fs.rmSync(reportAbs, { force: true });
-  } catch (_) {}
+  } catch {}
 
   const testDOk =
     unapprovedAttempt.ok === false &&

@@ -34,7 +34,6 @@ const IGNORE_PATTERNS = [
   /\.spec\.ts$/
 ];
 
-let totalWarnings = 0;
 const findings = [];
 
 function scanDir(dir) {
@@ -54,7 +53,6 @@ function scanDir(dir) {
       lines.forEach((line, idx) => {
         // Match console.log but not console.warn or console.error
         if (/\bconsole\.log\s*\(/.test(line) && !line.trim().startsWith('//')) {
-          totalWarnings++;
           findings.push({
             file: path.relative(ROOT, fullPath),
             line: idx + 1,

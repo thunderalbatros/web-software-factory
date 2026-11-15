@@ -436,7 +436,7 @@ function writeDualVideoAndPosterContainers({
         if (cur.equals(buf)) return;
       }
       fs.writeFileSync(targetPath, buf);
-    } catch (_) {}
+    } catch {}
   };
 
   // 1. Lightweight AV1/WebM EBML container header + structured cue metadata (Zero 0x41 dummy padding)

@@ -80,7 +80,7 @@ export function isPhiUnderCooldown(phi, cooldownDays = 7) {
           return true;
         }
       }
-    } catch (_) {}
+    } catch {}
   }
   return false;
 }
@@ -147,7 +147,7 @@ export function updateGepaParetoFrontier(candidate = {}, tournamentMatches = [])
       if (parsed && Array.isArray(parsed.paretoFront)) {
         frontierStore = parsed;
       }
-    } catch (_) {}
+    } catch {}
   }
 
   const entry = {
@@ -331,14 +331,14 @@ export function runClaudeCouncilDeliberation(evalResult = null) {
       for (const sig of tom.tier1_cleaned_signals || []) {
         if (!sig.valid_until) ctoSignals.push(sig);
       }
-    } catch (_) {}
+    } catch {}
   }
 
   let latestEval = evalResult;
   if (!latestEval && fs.existsSync(EVAL_LATEST_PATH)) {
     try {
       latestEval = JSON.parse(fs.readFileSync(EVAL_LATEST_PATH, 'utf8'));
-    } catch (_) {}
+    } catch {}
   }
 
   const perspectives = [
@@ -487,7 +487,7 @@ export function runArenaTournamentInSandbox(gradients = []) {
   if (fs.existsSync(EVALS_PATH)) {
     try {
       suiteConfig = JSON.parse(fs.readFileSync(EVALS_PATH, 'utf8'));
-    } catch (_) {}
+    } catch {}
   }
 
   const matches = [];
@@ -737,7 +737,7 @@ export async function runTextGradOptimizer(existingEvalResult = null) {
     try {
       history = JSON.parse(fs.readFileSync(LOG_PATH, 'utf8'));
       if (!Array.isArray(history)) history = [];
-    } catch (_) {
+    } catch {
       history = [];
     }
   }

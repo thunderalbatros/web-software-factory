@@ -48,11 +48,30 @@ const QDRANT_HOST = env.QDRANT_HOST || '';
 const QDRANT_API_KEY = env.QDRANT_API_KEY || '';
 const DEFAULT_COLLECTION = env.QDRANT_COLLECTION_OBSIDIAN || 'web_factory_knowledge';
 
+function stripRagUnsafeControlChars(str) {
+  let out = '';
+  for (let i = 0; i < str.length; i++) {
+    const c = str.charCodeAt(i);
+    if (
+      (c <= 0x08) ||
+      c === 0x0b ||
+      c === 0x0c ||
+      (c >= 0x0e && c <= 0x1f) ||
+      (c >= 0x7f && c <= 0x9f) ||
+      (c >= 0x202a && c <= 0x202e) ||
+      (c >= 0x2066 && c <= 0x2069)
+    ) {
+      continue;
+    }
+    out += str[i];
+  }
+  return out;
+}
+
 export function sanitizeRagPayload(value) {
   if (typeof value === 'string') {
     const cleaned = inspectAndSanitizePromptInjection(value).sanitizedText;
-    return cleaned
-      .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F-\u009F\u202A-\u202E\u2066-\u2069]/g, '')
+    return stripRagUnsafeControlChars(cleaned)
       .replace(/<\s*\/?\s*(system|instruction|prompt|tool_call|function_call)[^>]*>/gi, '[REDACTED_TAG]')
       .slice(0, 16000);
   }
@@ -81,7 +100,7 @@ export function ensureLocalKnowledgeIndex(forceRebuild = false) {
       ) {
         return data;
       }
-    } catch (_) {}
+    } catch {}
   }
 
   const mdFiles = [];
@@ -322,7 +341,7 @@ export function projectScopeFilter(query = '', options = {}) {
   let cfg;
   try {
     cfg = loadProjectConfig(options.project || '');
-  } catch (_) {
+  } catch {
     cfg = { id: 'agencia-alfa', archetype: 'saas-b2b', projectRoot: ROOT };
   }
 
@@ -336,7 +355,7 @@ export function projectScopeFilter(query = '', options = {}) {
     if (fs.existsSync(specCandidate)) {
       specText = fs.readFileSync(specCandidate, 'utf8').toLowerCase();
     }
-  } catch (_) {}
+  } catch {}
 
   const combinedIntentText = `${String(query || '').toLowerCase()} ${specText}`;
   const explicitOffDomainRequest =
@@ -394,7 +413,7 @@ export async function hybridRrfSearch(query, limit = 5, options = {}) {
   if (QDRANT_HOST && !QDRANT_HOST.includes('localhost')) {
     try {
       await listCollections();
-    } catch (_) {
+    } catch {
       remoteResults = [];
     }
   }

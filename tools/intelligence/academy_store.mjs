@@ -20,7 +20,7 @@ import { loadProjectCharter } from '../lib/project_profile.mjs';
 let DatabaseSyncClass = null;
 try {
   DatabaseSyncClass = (await import('node:sqlite')).DatabaseSync || null;
-} catch (_) {
+} catch {
   DatabaseSyncClass = null;
 }
 
@@ -533,7 +533,7 @@ export function runAcademyMigrations(db, { migrationsDir = ACADEMY_MIGRATIONS_DI
       db.exec('COMMIT');
       applied.push(mig.file);
     } catch (err) {
-      try { db.exec('ROLLBACK'); } catch (_) {}
+      try { db.exec('ROLLBACK'); } catch {}
       throw new Error(`ACADEMY_MIGRATION_FAILED[${mig.file}]: ${err.message}`);
     }
   }
@@ -595,8 +595,8 @@ export function getAcademyDb({ dbPath = ACADEMY_DB_PATH } = {}) {
   try {
     db = new DatabaseSyncClass(abs);
     db.prepare('PRAGMA schema_version').get();
-  } catch (openErr) {
-    try { db?.close(); } catch (_) {}
+  } catch {
+    try { db?.close(); } catch {}
     if (existed) backupCorruptFile(abs);
     existed = false;
     db = new DatabaseSyncClass(abs);
@@ -619,7 +619,7 @@ export function closeAcademyDb({ dbPath = ACADEMY_DB_PATH } = {}) {
   const abs = path.resolve(dbPath);
   const db = dbByPath.get(abs);
   if (db) {
-    try { db.close(); } catch (_) {}
+    try { db.close(); } catch {}
     dbByPath.delete(abs);
   }
 }
@@ -653,7 +653,7 @@ export function purgeLegacyAcademyTablesFromCache({ cachePath = LEGACY_RAG_CACHE
     for (const t of tables) cacheDb.exec(`DROP TABLE IF EXISTS "${t.replace(/"/g, '')}"`);
     return { purged: true, tables, backupFile: path.relative(ROOT, backupFile) };
   } finally {
-    try { cacheDb.close(); } catch (_) {}
+    try { cacheDb.close(); } catch {}
   }
 }
 
@@ -715,7 +715,7 @@ function runInTransaction(db, fn) {
     db.exec('COMMIT');
     return out;
   } catch (err) {
-    try { db.exec('ROLLBACK'); } catch (_) {}
+    try { db.exec('ROLLBACK'); } catch {}
     throw err;
   }
 }

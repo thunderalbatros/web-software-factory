@@ -680,7 +680,7 @@ export function expandChunkToParentMarkdownSection(chunk = {}, maxChars = 2200) 
     const sectionStart =
       headingMatches.length > 0 ? headingMatches[headingMatches.length - 1].index : Math.max(0, pos - 300);
     return fileContent.slice(sectionStart, sectionStart + maxChars).trim();
-  } catch (_) {
+  } catch {
     return snippet.slice(0, maxChars);
   }
 }
@@ -1237,7 +1237,7 @@ export function startMcpServer() {
     let req;
     try {
       req = JSON.parse(trimmed);
-    } catch (_) {
+    } catch {
       return;
     }
 

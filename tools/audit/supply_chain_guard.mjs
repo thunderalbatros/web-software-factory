@@ -228,8 +228,8 @@ export function checkLockfileAndVulnerabilities(rootDir = ROOT, skipNetworkAudit
         });
       } else {
         const directDeps = {
-          ...(targetPkg.dependencies || {}),
-          ...(targetPkg.devDependencies || {})
+          ...targetPkg.dependencies,
+          ...targetPkg.devDependencies
         };
         for (const depName of Object.keys(directDeps)) {
           const nodeKey = `node_modules/${depName}`;
@@ -437,7 +437,7 @@ export function generateCycloneDxSbom(rootDir = ROOT) {
     if (fs.existsSync(pkgPath)) {
       pkg = JSON.parse(fs.readFileSync(pkgPath, "utf8").replace(/^\uFEFF/, ""));
     }
-  } catch (_) {}
+  } catch {}
 
   let lockPackages = {};
   try {
@@ -445,9 +445,9 @@ export function generateCycloneDxSbom(rootDir = ROOT) {
       const lockObj = JSON.parse(fs.readFileSync(lockPath, "utf8").replace(/^\uFEFF/, ""));
       lockPackages = lockObj.packages || {};
     }
-  } catch (_) {}
+  } catch {}
 
-  const allDeps = { ...(pkg.dependencies || {}), ...(pkg.devDependencies || {}) };
+  const allDeps = { ...pkg.dependencies, ...pkg.devDependencies };
   const components = Object.entries(allDeps).map(([depName, specVer]) => {
     const lockEntry = lockPackages[`node_modules/${depName}`] || {};
     const resolvedVersion = String(lockEntry.version || String(specVer).replace(/^[\^~]/, ""));
@@ -507,13 +507,14 @@ export function generateCycloneDxSbom(rootDir = ROOT) {
 export function runSupplyChainGuard(options = {}) {
   const rootDir = options.rootDir || ROOT;
   const skipNetworkAudit = Boolean(options.skipNetworkAudit);
+  const skipSbomWrite = Boolean(options.skipSbomWrite);
   const start = performance.now();
 
   const allowlistCheck = checkPackageAllowlist(rootDir);
   const lockfileCheck = checkLockfileAndVulnerabilities(rootDir, skipNetworkAudit);
   const sriCheck = checkSubresourceIntegrity(rootDir);
   const retireCheck = checkRetireJsClientSignatures(rootDir);
-  const sbom = generateCycloneDxSbom(rootDir);
+  const sbom = skipSbomWrite ? { skipped: true, componentCount: 0 } : generateCycloneDxSbom(rootDir);
 
   const allIssues = [
     ...allowlistCheck.issues,

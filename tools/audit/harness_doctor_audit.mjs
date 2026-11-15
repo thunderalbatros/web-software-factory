@@ -17,8 +17,7 @@ import { fileURLToPath } from 'node:url';
 
 import {
   classifyAdaptiveDepthLane,
-  buildAndPersistBeadsTaskGraph,
-  verifyZeroParallelFileCollisions
+  buildAndPersistBeadsTaskGraph
 } from '../orchestrator/adaptive_depth_router.mjs';
 import {
   runHumanLayerRpiPipeline,
@@ -45,8 +44,7 @@ import {
   lintDesignMd
 } from '../design/industry_archetype_matrix.mjs';
 import { FORGE_3D_PRIMITIVES } from '../design/shader_and_3d_forge.mjs';
-import { forgeDatabaseArchitecture, EnvelopeEncryptionEngine } from '../db/dual_database_forge.mjs';
-import { forgeMobileTarget } from '../mobile/mobile_target_forge.mjs';
+import { EnvelopeEncryptionEngine } from '../db/dual_database_forge.mjs';
 import { compileDesignTokens } from '../design/token_compiler.mjs';
 import { verifySpecKittyTraceabilityMatrix } from '../lib/project_loader.mjs';
 import {
@@ -881,7 +879,7 @@ ${resetResult.preservedStatus.map((p) => `  - \`${p.file}\`: **${p.intact ? 'ÍN
   return REPORT_OUTPUT_PATH;
 }
 
-export async function runHarnessDoctorAudit(options = {}) {
+export async function runHarnessDoctorAudit(_options = {}) {
   const startMs = performance.now();
   const resetResult = resetTestArtifactsAndTelemetry();
   const layersResult = await auditEightHarnessLayers();

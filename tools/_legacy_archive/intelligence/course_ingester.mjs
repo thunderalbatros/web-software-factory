@@ -86,7 +86,7 @@ export async function fetchYouTubeTranscript(videoId, langPref = 'en') {
       const authorMatch = html.match(/"author":"(.*?)"/) || html.match(/"ownerChannelName":"(.*?)"/);
       if (authorMatch) author = decodeHtmlEntities(authorMatch[1]);
     }
-  } catch (_) {}
+  } catch {}
 
   const ytMod = await loadYoutubeTranscript();
   const YoutubeTranscript = ytMod.YoutubeTranscript || ytMod.default?.YoutubeTranscript;
@@ -99,7 +99,7 @@ export async function fetchYouTubeTranscript(videoId, langPref = 'en') {
         rawSegments = result;
         break;
       }
-    } catch (_) {}
+    } catch {}
   }
 
   if (!rawSegments || rawSegments.length === 0) {

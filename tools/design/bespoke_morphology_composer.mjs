@@ -26,9 +26,6 @@ import {
 } from './industry_archetype_matrix.mjs';
 import { OKLCH_GAMUT_MASKS, applyOklchGamutMask } from './token_compiler.mjs';
 import {
-  NAVIGATION_MORPHOLOGY_VARIANTS,
-  CORNER_GEOMETRY_VARIANTS,
-  SURFACE_MATERIAL_PHYSICS,
   compileComponentMorphologyPrimitives
 } from './build_vanilla_primitives.mjs';
 import { generateParametric3dShaderConfig } from './shader_and_3d_forge.mjs';
@@ -313,7 +310,7 @@ export function evaluateIntroAnd3dNecessity({
   projectSlug = 'agencia-alfa',
   industryCategory = 'saas',
   primarySurfaceMode = 'Persuade',
-  brandPersonalityTension = 'minimalismo-silencioso vs expresividad-cinetica',
+  brandPersonalityTension: _brandPersonalityTension = 'minimalismo-silencioso vs expresividad-cinetica',
   gridTopology = 'golden-ratio-bento-matrix',
   heroArchitecture = 'live-interactive-product-sandbox',
   gamutMaskType = 'atmospheric-analogous',
@@ -546,7 +543,7 @@ export function loadProjectDnaLedger(customLedgerPath = LEDGER_PATH) {
   }
   try {
     return JSON.parse(fs.readFileSync(customLedgerPath, 'utf8'));
-  } catch (_) {
+  } catch {
     return {
       schemaVersion: '2026.36.2',
       minDivergenceThreshold: MIN_DIVERGENCE_THRESHOLD,

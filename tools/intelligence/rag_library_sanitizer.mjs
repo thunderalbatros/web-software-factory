@@ -26,7 +26,6 @@ import {
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const ROOT = path.resolve(__dirname, '..', '..');
-const KNOWLEDGE_DIR = path.join(ROOT, 'knowledge');
 export const GRANDFATHERED_TIER1_MANIFEST_PATH = path.join(
   ROOT,
   '.agents',
@@ -739,15 +738,26 @@ export function inspectAndGuardLegacyFragment(text = '', epistemicTier = 'TIER_2
   };
 }
 
+function replaceControlCharsWithSpace(str) {
+  let out = '';
+  for (let i = 0; i < str.length; i++) {
+    const c = str.charCodeAt(i);
+    if (c <= 0x08 || c === 0x0b || c === 0x0c || (c >= 0x0e && c <= 0x1f) || c === 0x7f) {
+      out += ' ';
+    } else {
+      out += str[i];
+    }
+  }
+  return out;
+}
+
 export function sanitizeMarkdownContent(rawText = '', filePath = 'document.md') {
   const fileName = path.basename(String(filePath || 'document.md'));
   const isBook = fileName.startsWith('book_') || /^[a-z0-9_]+\.md$/.test(fileName);
 
   const injectionClean = inspectAndSanitizePromptInjection(rawText);
 
-  let text = injectionClean.sanitizedText
-    .replace(/\r\n/g, '\n')
-    .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, ' ')
+  let text = replaceControlCharsWithSpace(injectionClean.sanitizedText.replace(/\r\n/g, '\n'))
     .replace(/\n?\s*--\s*\d+\s+of\s+\d+\s*--\s*\n?/gi, '\n')
     .replace(/\uFB00/g, 'ff')
     .replace(/\uFB01/g, 'fi')

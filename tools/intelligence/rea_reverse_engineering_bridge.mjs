@@ -168,7 +168,7 @@ export function analyzeReferenceWebOrBundle(targetPathOrUrl, options = {}) {
     ...(discoveredAssets.cssTokenPatterns.length > 0
       ? discoveredAssets.cssTokenPatterns.map((t) => `  - \`${t}\``)
       : [`  - \`--surface: oklch(11% 0.015 255)\``, `  - \`--primary: oklch(68% 0.17 250)\``]),
-    `- **Motion Invariant:** Compositor-only \`transform\` and \`opacity\` at 60 FPS ($\zeta \in [0.78, 1.0]$).`,
+    `- **Motion Invariant:** Compositor-only \`transform\` and \`opacity\` at 60 FPS ($\\zeta \\in [0.78, 1.0]$).`,
     ``,
     `## 4. Network Contract Evidence (\`.har\` / Edge Endpoints)`,
     `- **Observed API Routes:** \`${discoveredAssets.harEndpoints.join('`, `')}\``,

@@ -24,10 +24,7 @@
 import fs from 'node:fs';
 import http from 'node:http';
 import path from 'node:path';
-import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
-import { chromium } from 'playwright-core';
-import { PGlite } from '@electric-sql/pglite';
 import {
   verifyZeroTrustJwtAndCookie,
   evaluateZanzibarRelationAccess,
@@ -174,6 +171,7 @@ export async function runStatelessComponentStressHarness() {
   if (browserPath) {
     let browser = null;
     try {
+      const { chromium } = await import('playwright-core');
       browser = await chromium.launch({ executablePath: browserPath, headless: true });
       const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
       const page = await context.newPage();
@@ -230,13 +228,13 @@ export async function runStatelessComponentStressHarness() {
       });
 
       await context.close();
-    } catch (_) {
+    } catch {
       executionEngine = 'deterministic-dom-geometry-fallback';
     } finally {
       if (browser) {
         try {
           await browser.close();
-        } catch (_) {}
+        } catch {}
       }
     }
   } else {
@@ -602,8 +600,16 @@ export function runPropertyBasedInvariantsCheck() {
     const discountBps = BigInt(Math.round(safeDiscount * 100));
     const totalMinorUnits = subtotal - (subtotal * discountBps) / 10000n;
 
-    const sanitizedText = String(vec.rawText || '')
-      .replace(/[\u0000-\u001F\u200B-\u200F\u202A-\u202E]/g, '')
+    const sanitizedText = Array.from(String(vec.rawText || ''))
+      .filter((ch) => {
+        const code = ch.codePointAt(0);
+        return !(
+          (code >= 0x0000 && code <= 0x001f) ||
+          (code >= 0x200b && code <= 0x200f) ||
+          (code >= 0x202a && code <= 0x202e)
+        );
+      })
+      .join('')
       .replace(/[&<>"']/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
 
     return {
@@ -617,7 +623,10 @@ export function runPropertyBasedInvariantsCheck() {
     const out = computeSafeOrderAndSanitize(vec);
     const invariantNonNegativeBigInt = typeof out.totalMinorUnits === 'bigint' && out.totalMinorUnits >= 0n;
     const invariantZeroRawHtmlTags = !/[<>]/.test(out.sanitizedText);
-    const invariantZeroControlChars = !/[\u0000\u202E]/.test(out.sanitizedText);
+    const invariantZeroControlChars = !Array.from(out.sanitizedText).some((ch) => {
+      const code = ch.codePointAt(0);
+      return code === 0x0000 || code === 0x202e;
+    });
     if (!invariantNonNegativeBigInt || !invariantZeroRawHtmlTags || !invariantZeroControlChars) {
       violations++;
     }
@@ -697,6 +706,7 @@ export function inspect3dCanvasHistogramStability(samples = []) {
  *   2. Cross-tenant `INSERT` throws a real PostgreSQL RLS violation (`new row violates row-level security policy`).
  */
 export async function runPgliteRealPostgresRlsVerification() {
+  const { PGlite } = await import('@electric-sql/pglite');
   const t0 = performance.now();
   const tenantAlphaId = '0192d4f0-8a10-7000-8000-000000000001';
   const tenantBetaId = '0192d4f0-8a10-7000-8000-000000000002';
@@ -756,7 +766,7 @@ export async function runPgliteRealPostgresRlsVerification() {
   } finally {
     try {
       await pg.close();
-    } catch (_) {}
+    } catch {}
   }
 }
 

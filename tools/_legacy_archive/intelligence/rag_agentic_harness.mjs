@@ -76,7 +76,18 @@ export function runStage1ProposeAndHeal(autoHeal = true) {
 
   const forbiddenLegacyRegex = /\b(Yendo\s+Mobile|yendo_mobile|yendo_obsidian_vault|centinela_knowledge|Centinela\s+Studio|Proyecto\s+Centinela|React\s*Native|ReactNative|Android\s+APK|Metasploit|Mobile\s+Application\s+Hacker|Rainbet|DiggityBets|diggitybets\.vip|contratos de API de Kick)\b/i;
   const pageMarkerRegex = /--\s*\d+\s+of\s+\d+\s*--/i;
-  const controlCharRegex = /[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/;
+  const hasControlChar = (text, includeDel = false) =>
+    Array.from(String(text || '')).some((ch) => {
+      const code = ch.codePointAt(0);
+      return (
+        (code >= 0x0000 && code <= 0x0008) ||
+        code === 0x000b ||
+        code === 0x000c ||
+        (code >= 0x000e && code <= 0x001f) ||
+        (includeDel && code === 0x007f)
+      );
+    });
+  const controlCharRegex = { test: (text) => hasControlChar(text, true) };
 
   for (const fp of files) {
     const rel = path.relative(KNOWLEDGE_DIR, fp).replace(/\\/g, '/');
@@ -217,7 +228,18 @@ const SYNTHETIC_PROBE_SUITE = [
 function isChunkNoisyFrontOrBackMatter(chunkText = '') {
   const low = chunkText.toLowerCase();
   if (/--\s*\d+\s+of\s+\d+\s*--/.test(low)) return true;
-  if (/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/.test(chunkText)) return true;
+  if (
+    Array.from(chunkText).some((ch) => {
+      const code = ch.codePointAt(0);
+      return (
+        (code >= 0x0000 && code <= 0x0008) ||
+        code === 0x000b ||
+        code === 0x000c ||
+        (code >= 0x000e && code <= 0x001f)
+      );
+    })
+  )
+    return true;
   if (/all rights reserved.*library of congress cataloging/s.test(low) && chunkText.length < 1500) return true;
   return false;
 }

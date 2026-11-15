@@ -18,7 +18,6 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
-import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { emitFactoryTelemetryEvent } from '../cockpit/live_telemetry_bus.mjs';
 
@@ -100,7 +99,7 @@ export function classifyAdaptiveDepthLane(taskPromptOrInput = '', options = {}) 
           reason: decision.reason
         }
       });
-    } catch (_) {}
+    } catch {}
     return decision;
   }
 
@@ -125,7 +124,7 @@ export function classifyAdaptiveDepthLane(taskPromptOrInput = '', options = {}) 
           reason: decision.reason
         }
       });
-    } catch (_) {}
+    } catch {}
     return decision;
   }
 
@@ -146,7 +145,7 @@ export function classifyAdaptiveDepthLane(taskPromptOrInput = '', options = {}) 
         reason: decision.reason
       }
     });
-  } catch (_) {}
+  } catch {}
   return decision;
 }
 
@@ -159,6 +158,10 @@ export function buildAndPersistBeadsTaskGraph(rawTasks = [], options = {}) {
   const graphPath = options.graphPath || BEADS_GRAPH_PATH;
   fs.mkdirSync(path.dirname(graphPath), { recursive: true });
 
+  const defaultLeaseMs = Number.isFinite(Number(options.leaseDurationMs))
+    ? Math.max(1000, Number(options.leaseDurationMs))
+    : 15 * 60 * 1000;
+  const nowMs = Date.now();
   const fileOwnerHistory = new Map(); // normalizedFile -> lastTaskId
   const normalizedNodes = [];
   let autoResolvedCollisions = 0;
@@ -170,6 +173,7 @@ export function buildAndPersistBeadsTaskGraph(rawTasks = [], options = {}) {
     const role = t.role || 'senior-coder';
     const fileLocks = Array.from(new Set((t.fileLocks || ['site/js/app.js']).map((f) => String(f).replace(/\\/g, '/'))));
     const blockedBySet = new Set(Array.isArray(t.blockedBy) ? t.blockedBy : []);
+    const leaseExpiresAt = t.leaseExpiresAt || new Date(nowMs + defaultLeaseMs).toISOString();
 
     for (const file of fileLocks) {
       if (fileOwnerHistory.has(file)) {
@@ -189,10 +193,12 @@ export function buildAndPersistBeadsTaskGraph(rawTasks = [], options = {}) {
       role,
       lane: t.lane || 'LANE_1_FAST_PATH',
       fileLocks,
+      fileLockLeases: fileLocks.map((lockPath) => ({ path: lockPath, leaseExpiresAt })),
+      leaseExpiresAt,
       blockedBy: Array.from(blockedBySet),
       verificationTest: t.verificationTest || `assert_${taskId.replace(/[^a-zA-Z0-9_]/g, '_')}_passed`,
       status: t.status || 'READY',
-      updatedAt: new Date().toISOString()
+      updatedAt: new Date(nowMs).toISOString()
     };
     normalizedNodes.push(node);
   }

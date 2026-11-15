@@ -16,15 +16,16 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
+import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
 import { queryKnowledge, getOrBuildMiniSearchIndex } from './rag_pipeline.mjs';
 import { runAstAudit } from './ast_guard.mjs';
-import { computeRagasMetrics, getVertexClient } from './vertex_ai_bridge.mjs';
+import { computeRagasMetrics, generateWithVertex } from './vertex_ai_bridge.mjs';
 import { runSleeptimeCompute } from './tom_swe_engine.mjs';
 import { runDiffUiAdversarialGate } from '../audit/diff_ui_adversarial.mjs';
 import { runSecurityGate } from '../audit/security_gate.mjs';
-import { runChaosMonkeyAudit, CHAOS_REPORT_PATH } from '../audit/chaos_monkey_test.mjs';
 import { runRyuxDesignGate } from '../audit/ryux_design_gate.mjs';
+import { analyzeSpanishReadability } from '../audit/readability_es.mjs';
 import { loadProjectConfig, FACTORY_ROOT } from '../lib/project_loader.mjs';
 import { emitFactoryTelemetryEvent } from '../cockpit/live_telemetry_bus.mjs';
 import { evaluateFullJevOuterAndMetaGate } from './jev_semantic_gate.mjs';
@@ -160,7 +161,8 @@ export async function runBlindIndependentReview({
   specPath = '',
   gitDiff = '',
   auditMetrics = {},
-  implementerReasoning = undefined
+  implementerReasoning = undefined,
+  liveLlmJudge = false
 } = {}) {
   // Enforce blind wall: strip and discard any constructor reasoning or excuses
   const blindWallEnforced = true;
@@ -179,34 +181,380 @@ export async function runBlindIndependentReview({
     auditMetrics.visualPassed !== false &&
     Number(auditMetrics.compositeScore ?? 100) >= 95;
 
+  let reviewMode = 'DETERMINISTIC_GATE_ONLY';
   let verifierBackend = 'deterministic-blind-foreman-v2026';
-  let verifierModel = 'gemini-2.5-flash-verifier-offline-guard';
+  let verifierModel = 'deterministic-static-gate';
+  let tokensUsed = 0;
+  let llmVerdictNotes = null;
 
-  if (process.env.USE_VERTEX_AI === 'true') {
+  if ((liveLlmJudge === true || process.env.FACTORY_ENABLE_LLM_BLIND_REVIEW === 'true') && process.env.USE_VERTEX_AI === 'true') {
+    const blindPrompt = [
+      'You are a blind read-only QA foreman. Judge strictly on SPEC excerpt, diff summary, and audit metrics.',
+      `SPEC: ${specSummary}`,
+      `DIFF: ${diffPreview}`,
+      `METRICS: ${JSON.stringify({
+        astPassed: auditMetrics.astPassed !== false,
+        securityPassed: auditMetrics.securityPassed !== false,
+        visualPassed: auditMetrics.visualPassed !== false,
+        compositeScore: Number(auditMetrics.compositeScore ?? 100)
+      })}`,
+      'Reply concisely with APPROVED or REJECTED and 1-sentence justification.'
+    ].join('\n');
     try {
-      const client = await getVertexClient();
-      if (client) {
+      const judgeText = await generateWithVertex(blindPrompt, 'Strict blind verifier (read-only).', 'gemini-2.5-flash');
+      if (judgeText) {
+        reviewMode = 'LIVE_VERTEX_BLIND_JUDGE';
         verifierBackend = 'vertex-ai-independent-verifier';
         verifierModel = 'gemini-2.5-flash';
+        tokensUsed = Math.ceil((blindPrompt.length + String(judgeText).length) / 4);
+        llmVerdictNotes = String(judgeText).slice(0, 240);
+      } else {
+        reviewMode = 'DETERMINISTIC_GATE_ONLY_FALLBACK';
       }
-    } catch (_) {
-      // Fallback to deterministic local foreman verification
+    } catch {
+      reviewMode = 'DETERMINISTIC_GATE_ONLY_FALLBACK';
     }
   }
 
   return {
     pattern: 'vercel-labs/eve-blind-foreman',
+    reviewMode,
     blindWallEnforced,
     ignoredConstructorReasoning,
     verifierBackend,
     verifierModel,
+    tokensUsed,
+    llmVerdictNotes,
     inputsInspected: {
       specLoaded: Boolean(specSummary),
       cleanGitDiffBytes: Buffer.byteLength(diffPreview, 'utf8'),
       constructorReasoningRead: false
     },
+    approved: metricsPassed,
     passed: metricsPassed,
     verdict: metricsPassed ? 'APPROVED_BLIND_VERIFICATION' : 'REJECTED_BY_BLIND_FOREMAN'
+  };
+}
+
+const VERIFIED_VIDEO_ANCHOR_STATUSES = new Set([
+  'VERIFIED',
+  'oer_transcript_verified',
+  'human_verified',
+  'multimodal_verified'
+]);
+
+const NON_EXECUTABLE_FENCE_LANGS = new Set(['mermaid', 'text', 'plaintext', 'txt', 'markdown', 'md', 'diagram']);
+
+function parseIsoDurationToSeconds(raw = '') {
+  if (typeof raw === 'number' && Number.isFinite(raw)) return raw;
+  const m = String(raw || '').match(/^PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?$/i);
+  if (!m) return Number.NaN;
+  const h = Number(m[1] || 0);
+  const min = Number(m[2] || 0);
+  const s = Number(m[3] || 0);
+  return h * 3600 + min * 60 + s;
+}
+
+function normalizeWordsForOverlap(text = '') {
+  return String(text || '')
+    .toLowerCase()
+    .replace(/[^\p{L}\p{N}\s]+/gu, ' ')
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean);
+}
+
+function maxConsecutiveWordOverlap(textA = '', textB = '') {
+  const wordsA = normalizeWordsForOverlap(textA);
+  const wordsB = normalizeWordsForOverlap(textB);
+  if (wordsA.length === 0 || wordsB.length === 0) return 0;
+
+  // Hash-indexed consecutive run scan for fast deterministic Clean-Room overlap verification
+  const indexB = new Map();
+  for (let j = 0; j < wordsB.length; j++) {
+    const w = wordsB[j];
+    if (!indexB.has(w)) indexB.set(w, []);
+    indexB.get(w).push(j);
+  }
+
+  let bestRun = 0;
+  for (let i = 0; i < wordsA.length; i++) {
+    const candidates = indexB.get(wordsA[i]);
+    if (!candidates) continue;
+    for (const startJ of candidates) {
+      let run = 1;
+      while (
+        i + run < wordsA.length &&
+        startJ + run < wordsB.length &&
+        wordsA[i + run] === wordsB[startJ + run]
+      ) {
+        run++;
+      }
+      if (run > bestRun) bestRun = run;
+    }
+  }
+  return bestRun;
+}
+
+function loadAcademyCatalogJson(fileName, projectDir) {
+  const baseDir = projectDir || path.join(ROOT, 'projects', 'academia-ia');
+  const candidate = path.join(baseDir, 'data', 'academy', fileName);
+  if (!fs.existsSync(candidate)) return [];
+  try {
+    const parsed = JSON.parse(fs.readFileSync(candidate, 'utf8'));
+    if (Array.isArray(parsed)) return parsed;
+    if (Array.isArray(parsed?.items)) return parsed.items;
+    if (Array.isArray(parsed?.sources)) return parsed.sources;
+    if (Array.isArray(parsed?.videos)) return parsed.videos;
+  } catch {
+    /* ignore malformed catalog */
+  }
+  return [];
+}
+
+/**
+ * 4-Dimension Educational Lesson Integrity Evaluator (`[A-06]`):
+ *   1. Clean-Room & `sources.json` verification (`<= 25` consecutive verbatim words).
+ *   2. Level Code Policy (`0` executable code blocks in Level 1; valid JS/JSON syntax in Levels 2–3).
+ *   3. Video Triangulation (`2..3` verified videos with `0 <= start_sec < end_sec <= duration_sec`) + dual quiz.
+ *   4. Neutral Spanish Readability (`analyzeSpanishReadability`: zero voseo, <=110 words/beat, INFLESZ floor).
+ */
+export function evaluateEducationalLessonIntegrity(lessonArtifact = {}, context = {}) {
+  const violations = [];
+  const level = Number(lessonArtifact.level ?? context.level ?? 1);
+  const mdxBody = String(lessonArtifact.body ?? lessonArtifact.mdxBody ?? lessonArtifact.content ?? '');
+  const introducedTerms = lessonArtifact.introducedTerms || lessonArtifact.terms_introduced || [];
+  const maxOverlapWords = Number(context.maxOverlapWords ?? 25);
+
+  // Dimension 1: Clean-Room & sources.json verification
+  const sourcesCatalog = Array.isArray(context.sources)
+    ? context.sources
+    : loadAcademyCatalogJson('sources.json', context.projectDir);
+  const sourcesMap = new Map(sourcesCatalog.map((s) => [s.id || s.source_id, s]));
+  const rawRefs = lessonArtifact.sourceRefs || lessonArtifact.source_ids || lessonArtifact.sources || [];
+  const refIds = (Array.isArray(rawRefs) ? rawRefs : [rawRefs])
+    .map((r) => (typeof r === 'string' ? r : r?.id || r?.source_id || ''))
+    .filter(Boolean);
+
+  if (refIds.length === 0) {
+    violations.push('CLEAN_ROOM_MISSING_SOURCE_REFS: Lesson must cite >= 1 verified source from sources.json.');
+  }
+  let maxObservedOverlapWords = 0;
+  for (const refId of refIds) {
+    const srcMeta = sourcesMap.get(refId);
+    if (!srcMeta) {
+      violations.push(`CLEAN_ROOM_UNREGISTERED_SOURCE: Referenced source '${refId}' not found in sources.json.`);
+      continue;
+    }
+    const isCleanRoomRestricted =
+      srcMeta.license === 'CLEAN_ROOM_ONLY' || srcMeta.usage_policy === 'CLEAN_ROOM_FACTS_ONLY';
+    const candidateSourceText =
+      context.cleanRoomSourceTexts?.[refId] ||
+      srcMeta.excerpt ||
+      srcMeta.rawText ||
+      (typeof rawRefs === 'object' && !Array.isArray(rawRefs) ? rawRefs.sourceText : '') ||
+      '';
+    if ((isCleanRoomRestricted || context.cleanRoomSourceTexts?.[refId]) && candidateSourceText) {
+      const overlap = maxConsecutiveWordOverlap(mdxBody, candidateSourceText);
+      if (overlap > maxObservedOverlapWords) maxObservedOverlapWords = overlap;
+      if (overlap > maxOverlapWords) {
+        violations.push(
+          `CLEAN_ROOM_VERBATIM_OVERLAP: ${overlap} consecutive overlapping words with '${refId}' exceeds ceiling of ${maxOverlapWords}.`
+        );
+      }
+    }
+  }
+  if (lessonArtifact.cleanRoomSourceText) {
+    const overlap = maxConsecutiveWordOverlap(mdxBody, lessonArtifact.cleanRoomSourceText);
+    if (overlap > maxObservedOverlapWords) maxObservedOverlapWords = overlap;
+    if (overlap > maxOverlapWords) {
+      violations.push(
+        `CLEAN_ROOM_VERBATIM_OVERLAP: ${overlap} consecutive overlapping words exceeds ceiling of ${maxOverlapWords}.`
+      );
+    }
+  }
+  const cleanRoomPassed = !violations.some((v) => v.startsWith('CLEAN_ROOM_'));
+
+  // Dimension 2: Code Policy by Level
+  const fenceRegex = /```([a-zA-Z0-9_-]*)\r?\n([\s\S]*?)```/g;
+  const codeBlocks = [];
+  let match;
+  while ((match = fenceRegex.exec(mdxBody)) !== null) {
+    const lang = String(match[1] || '').toLowerCase().trim();
+    const code = match[2] || '';
+    if (!NON_EXECUTABLE_FENCE_LANGS.has(lang)) {
+      codeBlocks.push({ lang: lang || 'unlabeled', code });
+    }
+  }
+  if (level === 1 && codeBlocks.length > 0) {
+    violations.push(
+      `LEVEL_1_NO_EXECUTABLE_CODE_BLOCKS: Level 1 conceptual lessons forbid executable code blocks (found ${codeBlocks.length}).`
+    );
+  } else if (level >= 2) {
+    for (let i = 0; i < codeBlocks.length; i++) {
+      const blk = codeBlocks[i];
+      if (/^(?:js|javascript|mjs|cjs)$/.test(blk.lang)) {
+        try {
+          new vm.Script(blk.code);
+        } catch (err) {
+          violations.push(`CODE_SYNTAX_ERROR: JavaScript block #${i + 1} invalid syntax (${err.message}).`);
+        }
+      } else if (blk.lang === 'json') {
+        try {
+          JSON.parse(blk.code);
+        } catch (err) {
+          violations.push(`CODE_SYNTAX_ERROR: JSON block #${i + 1} invalid JSON (${err.message}).`);
+        }
+      }
+    }
+  }
+  const codePolicyPassed = !violations.some(
+    (v) => v.startsWith('LEVEL_1_NO_EXECUTABLE') || v.startsWith('CODE_SYNTAX_ERROR')
+  );
+
+  // Dimension 3: Video Triangulation (2..3 verified videos) & Dual Text+Video Quiz
+  const videosCatalog = Array.isArray(context.videosCatalog)
+    ? context.videosCatalog
+    : loadAcademyCatalogJson('videos.json', context.projectDir);
+  const catalogVideoById = new Map(videosCatalog.map((v) => [v.id || v.video_id, v]));
+  const rawVideos = Array.isArray(lessonArtifact.videos) ? lessonArtifact.videos : [];
+  const resolvedVideos = rawVideos.map((vItem) =>
+    typeof vItem === 'string' ? catalogVideoById.get(vItem) || { id: vItem } : vItem || {}
+  );
+
+  if (resolvedVideos.length < 2 || resolvedVideos.length > 3) {
+    violations.push(
+      `VIDEO_TRIANGULATION_COUNT_INVALID: Expected 2..3 triangulated videos, got ${resolvedVideos.length}.`
+    );
+  }
+
+  const allowedAnchorStatuses = context.strictLiteralVerified
+    ? new Set(['VERIFIED'])
+    : VERIFIED_VIDEO_ANCHOR_STATUSES;
+
+  for (let i = 0; i < resolvedVideos.length; i++) {
+    const v = resolvedVideos[i];
+    const vLabel = v.id || `video[${i}]`;
+    const status = String(v.anchors_status || v.status || '').trim();
+    if (!allowedAnchorStatuses.has(status)) {
+      violations.push(
+        `VIDEO_ANCHORS_UNVERIFIED: Video '${vLabel}' has unverified anchors_status='${status || 'MISSING'}'.`
+      );
+    }
+
+    const durationSec = Number.isFinite(Number(v.duration_sec))
+      ? Number(v.duration_sec)
+      : parseIsoDurationToSeconds(v.duration_iso);
+
+    let anchors = [];
+    if (Array.isArray(v.anchors)) {
+      anchors = v.anchors;
+    } else if (typeof v.transcript_anchors_json === 'string' && v.transcript_anchors_json.trim()) {
+      try {
+        const parsedAnchors = JSON.parse(v.transcript_anchors_json);
+        if (Array.isArray(parsedAnchors)) anchors = parsedAnchors;
+      } catch {
+        violations.push(`VIDEO_ANCHOR_BOUNDS_INVALID: Video '${vLabel}' has malformed transcript_anchors_json.`);
+      }
+    } else if (v.start_sec !== undefined || v.end_sec !== undefined) {
+      anchors = [{ start_sec: v.start_sec, end_sec: v.end_sec }];
+    }
+
+    if (anchors.length === 0) {
+      violations.push(`VIDEO_ANCHOR_MISSING: Video '${vLabel}' must include >= 1 bounded timestamp anchor.`);
+    }
+    for (const a of anchors) {
+      const startSec = Number(a?.start_sec);
+      const endSec = Number(a?.end_sec);
+      if (
+        !Number.isFinite(startSec) ||
+        !Number.isFinite(endSec) ||
+        !Number.isFinite(durationSec) ||
+        durationSec <= 0 ||
+        startSec < 0 ||
+        startSec >= endSec ||
+        endSec > durationSec
+      ) {
+        violations.push(
+          `VIDEO_ANCHOR_BOUNDS_INVALID: Video '${vLabel}' anchor [${a?.start_sec}, ${a?.end_sec}] invalid for duration ${durationSec}s.`
+        );
+      }
+    }
+  }
+
+  const rawQuiz = lessonArtifact.quiz;
+  let textQuizCount = 0;
+  let videoAnchorQuizCount = 0;
+  if (Array.isArray(rawQuiz)) {
+    for (const q of rawQuiz) {
+      const isVideoQ = Boolean(
+        q?.video_id || q?.videoId || q?.timestamp_sec != null || q?.anchor || q?.type === 'video' || q?.type === 'video_anchor'
+      );
+      if (isVideoQ) videoAnchorQuizCount++;
+      else textQuizCount++;
+    }
+  } else if (rawQuiz && typeof rawQuiz === 'object') {
+    const qs = Array.isArray(rawQuiz.questions) ? rawQuiz.questions : [];
+    for (const q of qs) {
+      const isVideoQ = Boolean(
+        q?.video_id || q?.videoId || q?.timestamp_sec != null || q?.anchor || q?.type === 'video' || q?.type === 'video_anchor'
+      );
+      if (isVideoQ) videoAnchorQuizCount++;
+      else textQuizCount++;
+    }
+    if (Array.isArray(rawQuiz.textQuestions)) textQuizCount += rawQuiz.textQuestions.length;
+    if (Array.isArray(rawQuiz.videoQuestions)) videoAnchorQuizCount += rawQuiz.videoQuestions.length;
+  }
+  if (textQuizCount < 1 || videoAnchorQuizCount < 1) {
+    violations.push(
+      `DUAL_QUIZ_COVERAGE_INCOMPLETE: Lesson quiz requires >=1 text question (got ${textQuizCount}) and >=1 video-anchor question (got ${videoAnchorQuizCount}).`
+    );
+  }
+  const videoTriangulationPassed = !violations.some(
+    (v) => v.startsWith('VIDEO_') || v.startsWith('DUAL_QUIZ_')
+  );
+
+  // Dimension 4: Neutral Spanish Readability
+  const readabilityRes = analyzeSpanishReadability(mdxBody, {
+    level,
+    introducedTerms: Array.isArray(introducedTerms) ? introducedTerms : []
+  });
+  if (!readabilityRes.passed) {
+    const readabilityIssues =
+      Array.isArray(readabilityRes.violations) && readabilityRes.violations.length > 0
+        ? readabilityRes.violations
+        : readabilityRes.errors || ['Readability audit failed'];
+    for (const err of readabilityIssues) {
+      violations.push(`READABILITY_ES_VIOLATION: ${err}`);
+    }
+  }
+
+  const passed = violations.length === 0;
+  const score = passed ? 100 : Math.max(0, 100 - violations.length * 25);
+
+  return {
+    passed,
+    score,
+    level,
+    violations,
+    checks: {
+      cleanRoom: {
+        passed: cleanRoomPassed,
+        citedSourcesCount: refIds.length,
+        maxObservedOverlapWords
+      },
+      codePolicy: {
+        passed: codePolicyPassed,
+        executableBlocksCount: codeBlocks.length
+      },
+      videoTriangulation: {
+        passed: videoTriangulationPassed,
+        videosCount: resolvedVideos.length,
+        textQuizCount,
+        videoAnchorQuizCount
+      },
+      readability: readabilityRes
+    }
   };
 }
 
@@ -454,6 +802,7 @@ export async function runEvalMatrix(projectInput = '', options = {}) {
   // BLOCK 3 (25 PTS): Chaos Monkey Destructive Testing (`chaos_monkey_test.mjs`)
   // --------------------------------------------------------------------------
   console.log(`\n[BLOCK 3 / 25 PTS] Running Chaos Monkey Destructive Browser Suite...`);
+  const { runChaosMonkeyAudit, CHAOS_REPORT_PATH } = await import('../audit/chaos_monkey_test.mjs');
   let chaosReport = null;
   if (options.reuseRecentChaos && fs.existsSync(CHAOS_REPORT_PATH)) {
     try {
@@ -580,9 +929,10 @@ export async function runEvalMatrix(projectInput = '', options = {}) {
     f2pVerified: !hardGateCalc.vetoTriggered && compositeScore >= 95,
     turnCount: 2,
     maxTurns: 20,
-    tokensUsed: 6000,
+    tokensUsed: blindReview?.tokensUsed ?? 0,
     maxTokens: 48000
   });
+  results.reviewMode = blindReview?.reviewMode || 'DETERMINISTIC_GATE_ONLY';
   results.f2pVerified = f2pAndP2p.f2pVerified;
   results.p2pVerified = f2pAndP2p.p2pVerified;
   results.f2pAndP2pGate = f2pAndP2p;
@@ -646,7 +996,7 @@ export async function runEvalMatrix(projectInput = '', options = {}) {
         reason: `Blocks: ${block1Points}/25 | ${block2Points}/25 | ${block3Points}/25 | ${block4Points}/25`
       }
     });
-  } catch (_) {}
+  } catch {}
 
   return results;
 }

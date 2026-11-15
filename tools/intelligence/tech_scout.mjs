@@ -862,7 +862,7 @@ export function loadApprovedPackagesSet() {
         return new Set(raw.approvedPackages);
       }
     }
-  } catch (_) {}
+  } catch {}
   return new Set();
 }
 
@@ -968,7 +968,7 @@ export function runAuditSourcesCli() {
     try {
       const reg = JSON.parse(fs.readFileSync(LOCAL_VAULT_REGISTRY_PATH, 'utf8'));
       localVaultCount = Number(reg.totalUniqueRepositories || reg.repositories?.length || 225);
-    } catch (_) {
+    } catch {
       localVaultCount = 225;
     }
   }

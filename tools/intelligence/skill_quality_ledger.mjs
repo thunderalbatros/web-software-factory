@@ -85,7 +85,7 @@ export function loadSkillQualityRecords() {
       if (parsed && typeof parsed.records === 'object') {
         store = parsed;
       }
-    } catch (_) {
+    } catch {
       // Rebuild cleanly on corrupt JSON
     }
   }
@@ -101,7 +101,7 @@ export function loadSkillQualityRecords() {
           allSkills.get(s).add(roleId);
         }
       }
-    } catch (_) {}
+    } catch {}
   }
 
   const nowIso = new Date().toISOString();
@@ -113,7 +113,7 @@ export function loadSkillQualityRecords() {
         try {
           const raw = fs.readFileSync(skillFile, 'utf8');
           tokenOverhead = Math.max(80, Math.ceil(raw.length / 4));
-        } catch (_) {}
+        } catch {}
       }
       store.records[skillId] = {
         skillId,
@@ -212,7 +212,7 @@ export function loadHeldInRegressionTasks() {
       if (parsed && Array.isArray(parsed.tasks)) {
         store = parsed;
       }
-    } catch (_) {}
+    } catch {}
   }
 
   if (store.tasks.length === 0) {
@@ -375,7 +375,7 @@ export function readFailureEventsLog() {
     .map((line) => {
       try {
         return JSON.parse(line);
-      } catch (_) {
+      } catch {
         return null;
       }
     })

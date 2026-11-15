@@ -84,7 +84,7 @@ export async function runAbsorbMode(description, options = {}) {
       const sb = createSandbox(`absorb-${Date.now()}`);
       sandboxName = sb.name;
       console.log(`  🌿 Entorno aislado Git Worktree creado: ${sb.path}`);
-    } catch (_) {}
+    } catch {}
   }
 
   try {
@@ -285,7 +285,7 @@ ${extractedLocalPattern ? `\n## Extracto Directo de la Bóveda Local\n\`\`\`mark
     if (sandboxName) {
       try {
         destroySandbox(sandboxName);
-      } catch (_) {}
+      } catch {}
     }
   }
 }
@@ -324,7 +324,7 @@ export async function runOptimizeMode(options = {}) {
       } else if (typeof latestMatrix.compositeScore === 'number') {
         verifiedDiskScore = latestMatrix.compositeScore;
       }
-    } catch (_) {}
+    } catch {}
   }
 
   let gepaResult = {

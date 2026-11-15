@@ -71,7 +71,7 @@ export function resolveDatabaseTier(projectRoot = ROOT) {
       if (VALID_DB_TIERS.includes(manifest.database?.dbTier)) {
         return manifest.database.dbTier;
       }
-    } catch (_) {}
+    } catch {}
   }
 
   const specCandidates = [
@@ -456,7 +456,7 @@ export function forgeDatabaseArchitecture(projectRoot = ROOT, requestedTier = ''
         updatedAt: new Date().toISOString()
       };
       fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + '\n', 'utf8');
-    } catch (_) {}
+    } catch {}
   }
 
   return {

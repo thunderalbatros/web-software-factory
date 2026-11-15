@@ -265,7 +265,7 @@ export function loadRpiCheckpoint(slug = 'agencia-alfa') {
   if (fs.existsSync(checkpointPath)) {
     try {
       return JSON.parse(fs.readFileSync(checkpointPath, 'utf8'));
-    } catch (_) {}
+    } catch {}
   }
   return {
     slug,
@@ -473,7 +473,7 @@ export function advanceRpiStage(slug, stageId, artifactPayload = {}, touchedPath
       ],
       forensicWhy: `HumanLayer 6-Stage RPI: Etapa ${stageDef.order}/6 completada (${stageDef.id} — ${stageDef.title})`
     });
-  } catch (_) {}
+  } catch {}
   return saved;
 }
 
@@ -832,7 +832,7 @@ export function runHumanLayerRpiSelfTest() {
   try {
     fs.rmSync(path.join(FACTORY_ROOT, '.agents', 'runs', 'self-test-rpi'), { recursive: true, force: true });
     fs.rmSync(path.join(FACTORY_ROOT, '.agents', 'runs', 'self-test-invalid-jump'), { recursive: true, force: true });
-  } catch (_) {}
+  } catch {}
 
   const allPassed = cpOk && rpiOk && blockedOutOfOrder && stuckOk && evalOk && crispOk;
   console.log('--------------------------------------------------------------------');

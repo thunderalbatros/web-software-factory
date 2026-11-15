@@ -84,61 +84,92 @@ export const BENCHMARK_20_QUERIES = Object.freeze([
     id: 'EDU-01',
     category: 'education',
     lang: 'es',
-    query: 'progresión de competencias UNESCO Acquire Deepen Create alfabetización en IA'
+    query: 'progresión de competencias UNESCO Acquire Deepen Create alfabetización en IA',
+    expectedDocIds: [
+      'local://knowledge/ai_academy/CANON_PEDAGOGICAL_SCAFFOLDING_UNESCO_DIATAXIS_AND_SOCRATIC_LEARNLM_2026.md'
+    ]
   },
   {
     id: 'EDU-02',
     category: 'education',
     lang: 'en',
-    query: 'LearnLM Socratic tutoring three progressive hints active learning pedagogy'
+    query: 'LearnLM Socratic tutoring three progressive hints active learning pedagogy',
+    expectedDocIds: [
+      'local://knowledge/ai_academy/CANON_PEDAGOGICAL_SCAFFOLDING_UNESCO_DIATAXIS_AND_SOCRATIC_LEARNLM_2026.md'
+    ]
   },
   {
     id: 'EDU-03',
     category: 'education',
     lang: 'es',
-    query: 'teoría de carga cognitiva Sweller bloques breves de 110 palabras ejemplos resueltos'
+    query: 'teoría de carga cognitiva Sweller bloques breves de 110 palabras ejemplos resueltos',
+    expectedDocIds: [
+      'local://knowledge/ai_academy/CANON_PEDAGOGICAL_SCAFFOLDING_UNESCO_DIATAXIS_AND_SOCRATIC_LEARNLM_2026.md'
+    ]
   },
   {
     id: 'EDU-04',
     category: 'education',
     lang: 'es',
-    query: 'separación Diátaxis rutas Entender frente a Hacer sin saltos de nivel en grafo DAG'
+    query: 'separación Diátaxis rutas Entender frente a Hacer sin saltos de nivel en grafo DAG',
+    expectedDocIds: [
+      'local://knowledge/ai_academy/CANON_AUTONOMOUS_CURRICULUM_ENGINEERING_MULTIMEDIA_TRIANGULATION_AND_ASSESSMENT_2026.md'
+    ]
   },
   {
     id: 'EDU-05',
     category: 'education',
     lang: 'en',
-    query: 'spaced repetition ts-fsrs ethical gamification Self-Determination Theory streak pause'
+    query: 'spaced repetition ts-fsrs ethical gamification Self-Determination Theory streak pause',
+    expectedDocIds: [
+      'local://knowledge/ai_academy/CANON_ETHICAL_GAMIFICATION_ZERO_COST_TUTOR_AND_PRIVACY_2026.md'
+    ]
   },
   {
     id: 'EDU-06',
     category: 'education',
     lang: 'es',
-    query: 'privacidad Local-First Ley 25326 cifrado WebCrypto AES-GCM llave propia BYOK'
+    query: 'privacidad Local-First Ley 25326 cifrado WebCrypto AES-GCM llave propia BYOK',
+    expectedDocIds: [
+      'local://knowledge/ai_academy/CANON_ETHICAL_GAMIFICATION_ZERO_COST_TUTOR_AND_PRIVACY_2026.md'
+    ]
   },
   {
     id: 'EDU-07',
     category: 'education',
     lang: 'es',
-    query: 'interfaz educativa minimalista estilo Brilliant Stripe Distill micro-controles en vivo'
+    query: 'interfaz educativa minimalista estilo Brilliant Stripe Distill micro-controles en vivo',
+    expectedDocIds: [
+      'local://knowledge/ai_academy/CANON_INCLUSIVE_MINIMALIST_UX_BRILLIANT_STRIPE_AND_DISTILL_2026.md'
+    ]
   },
   {
     id: 'EDU-08',
     category: 'education',
     lang: 'en',
-    query: 'APCA perceptual contrast reading mode prefers-reduced-motion keyboard accessibility WCAG'
+    query: 'APCA perceptual contrast reading mode prefers-reduced-motion keyboard accessibility WCAG',
+    expectedDocIds: [
+      'local://knowledge/ai_academy/CANON_INCLUSIVE_MINIMALIST_UX_BRILLIANT_STRIPE_AND_DISTILL_2026.md'
+    ]
   },
   {
     id: 'EDU-09',
     category: 'education',
     lang: 'es',
-    query: 'pensamiento crítico detección de alucinaciones sesgos y verificación de fuentes en IA'
+    query: 'pensamiento crítico detección de alucinaciones sesgos y verificación de fuentes en IA',
+    expectedDocIds: [
+      'local://knowledge/ai_academy/CANON_PEDAGOGICAL_SCAFFOLDING_UNESCO_DIATAXIS_AND_SOCRATIC_LEARNLM_2026.md',
+      'local://knowledge/ai_academy/CANON_AUTONOMOUS_CURRICULUM_ENGINEERING_MULTIMEDIA_TRIANGULATION_AND_ASSESSMENT_2026.md'
+    ]
   },
   {
     id: 'EDU-10',
     category: 'education',
     lang: 'en',
-    query: 'zero-cost browser tutor precompiled diagnostic misconceptions Valibot JSON schema'
+    query: 'zero-cost browser tutor precompiled diagnostic misconceptions Valibot JSON schema',
+    expectedDocIds: [
+      'local://knowledge/ai_academy/CANON_ETHICAL_GAMIFICATION_ZERO_COST_TUTOR_AND_PRIVACY_2026.md'
+    ]
   }
 ]);
 
@@ -147,28 +178,58 @@ export async function runBenchmark20Queries({ reloadIndex = false } = {}) {
     invalidateIndexCache();
   }
   const entries = [];
+  let expectedCanonChecked = 0;
+  let expectedCanonHits = 0;
   for (const q of BENCHMARK_20_QUERIES) {
     const hits = await queryKnowledge(q.query, 3, { fastLocalOnly: true });
+    const top3 = hits.map((h, idx) => ({
+      rank: idx + 1,
+      docId: String(h.source || h.id || '').split('#')[0],
+      title: h.title || '',
+      source: h.source || '',
+      epistemicTier: h.epistemicTier || 'UNKNOWN',
+      authorityBoost: Number(h.authorityBoost || 1.0),
+      fusedScore: Number((h.fusedScore || h.rrfScore || 0).toFixed(6))
+    }));
+    const expectedList = Array.isArray(q.expectedDocIds) ? q.expectedDocIds : [];
+    let expectedCanonHit = true;
+    if (expectedList.length > 0) {
+      expectedCanonChecked++;
+      expectedCanonHit = top3.some(
+        (hit) =>
+          hit.epistemicTier === 'TIER_1_SOTA_2026' &&
+          expectedList.some(
+            (exp) =>
+              hit.docId === exp ||
+              hit.source.startsWith(exp) ||
+              hit.docId.endsWith(exp.replace(/^local:\/\//, ''))
+          )
+      );
+      if (expectedCanonHit) expectedCanonHits++;
+    }
     entries.push({
       id: q.id,
       category: q.category,
       lang: q.lang,
       query: q.query,
-      top3: hits.map((h, idx) => ({
-        rank: idx + 1,
-        docId: String(h.source || h.id || '').split('#')[0],
-        title: h.title || '',
-        source: h.source || '',
-        epistemicTier: h.epistemicTier || 'UNKNOWN',
-        authorityBoost: Number(h.authorityBoost || 1.0),
-        fusedScore: Number((h.fusedScore || h.rrfScore || 0).toFixed(6))
-      }))
+      expectedDocIds: expectedList,
+      expectedCanonHit,
+      top3
     });
   }
+  const eduEntries = entries.filter((e) => e.category === 'education');
+  const eduTier1HitCount = eduEntries.filter((e) => e.expectedCanonHit).length;
   return {
     schema: 'rag-benchmark-20q-v1',
     generatedAt: new Date().toISOString(),
     queryCount: entries.length,
+    summary: {
+      expectedCanonChecked,
+      expectedCanonHits,
+      allExpectedCanonsHit: expectedCanonChecked > 0 && expectedCanonHits === expectedCanonChecked,
+      eduTier1HitRate:
+        eduEntries.length > 0 ? Number((eduTier1HitCount / eduEntries.length).toFixed(4)) : 1
+    },
     entries
   };
 }
@@ -181,6 +242,8 @@ export function compareBenchmarkRuns(baseline, after) {
   let engineeringCount = 0;
   let educationNonEmpty = 0;
   let educationCount = 0;
+  let expectedCanonChecked = 0;
+  let expectedCanonHits = 0;
 
   for (const cur of after.entries || []) {
     const prev = baseById.get(cur.id) || { top3: [] };
@@ -197,6 +260,10 @@ export function compareBenchmarkRuns(baseline, after) {
       educationCount++;
       if (curDocs.length === 3) educationNonEmpty++;
     }
+    if (Array.isArray(cur.expectedDocIds) && cur.expectedDocIds.length > 0) {
+      expectedCanonChecked++;
+      if (cur.expectedCanonHit) expectedCanonHits++;
+    }
 
     comparisons.push({
       id: cur.id,
@@ -205,6 +272,7 @@ export function compareBenchmarkRuns(baseline, after) {
       query: cur.query,
       top1Same,
       top3DocOverlap: overlapCount,
+      expectedCanonHit: Boolean(cur.expectedCanonHit),
       beforeTop1: prev.top3[0] ? `${prev.top3[0].docId} (${prev.top3[0].epistemicTier} x${prev.top3[0].authorityBoost})` : 'NONE',
       afterTop1: cur.top3[0] ? `${cur.top3[0].docId} (${cur.top3[0].epistemicTier} x${cur.top3[0].authorityBoost})` : 'NONE',
       beforeTop3Docs: prevDocs,
@@ -214,6 +282,11 @@ export function compareBenchmarkRuns(baseline, after) {
 
   const engineeringTop1Retention = engineeringCount > 0 ? Number((engineeringTop1Same / engineeringCount).toFixed(4)) : 1;
   const engineeringTop3MeanOverlap = engineeringCount > 0 ? Number((engineeringOverlapSum / engineeringCount).toFixed(4)) : 1;
+  const allExpectedCanonsHit =
+    expectedCanonChecked > 0 ? expectedCanonHits === expectedCanonChecked : true;
+  const eduTier1HitRate =
+    after.summary?.eduTier1HitRate ??
+    (expectedCanonChecked > 0 ? Number((expectedCanonHits / expectedCanonChecked).toFixed(4)) : 1);
 
   return {
     schema: 'rag-benchmark-20q-comparison-v1',
@@ -228,6 +301,10 @@ export function compareBenchmarkRuns(baseline, after) {
       engineeringTop3MeanOverlap,
       educationQueries: educationCount,
       educationFullTop3Count: educationNonEmpty,
+      expectedCanonChecked,
+      expectedCanonHits,
+      eduTier1HitRate,
+      allExpectedCanonsHit,
       zeroEngineeringDegradation: engineeringTop3MeanOverlap >= 0.8 && engineeringTop1Retention >= 0.8
     },
     comparisons
@@ -258,10 +335,13 @@ if (process.argv[1] && path.resolve(process.argv[1]) === __filename) {
       fs.writeFileSync(absOut, JSON.stringify({ after: snapshot, comparison: report }, null, 2) + '\n', 'utf8');
     }
     console.log(JSON.stringify(report.summary, null, 2));
-    if (!report.summary.zeroEngineeringDegradation) {
+    if (!report.summary.zeroEngineeringDegradation || !report.summary.allExpectedCanonsHit) {
       process.exitCode = 1;
     }
   } else {
-    console.log(JSON.stringify(snapshot, null, 2));
+    console.log(JSON.stringify(snapshot.summary, null, 2));
+    if (!snapshot.summary.allExpectedCanonsHit) {
+      process.exitCode = 1;
+    }
   }
 }

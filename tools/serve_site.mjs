@@ -32,7 +32,7 @@ const server = http.createServer((req, res) => {
   let cleanUrl;
   try {
     cleanUrl = decodeURIComponent(urlObj.pathname);
-  } catch (_) {
+  } catch {
     res.writeHead(400, { 'Content-Type': 'text/plain; charset=utf-8' });
     res.end('400 Bad Request');
     return;

@@ -26,7 +26,7 @@ async function ensureServer() {
   try {
     const res = await fetch(BASE + '/index.html', { method: 'HEAD' });
     if (res.ok) return;
-  } catch (_) {}
+  } catch {}
 
   const mimeMap = {
     '.html': 'text/html; charset=utf-8',
@@ -339,7 +339,7 @@ function pageChecks() {
             }
           }
         }
-      } catch (_) {}
+      } catch {}
     }
   }
 
@@ -516,7 +516,7 @@ export async function inspectVisualHarmonyAndMotionKeyframes(options = {}) {
         };
       });
       domMetrics = { ...domMetrics, ...measured };
-    } catch (_) {}
+    } catch {}
   }
 
   const foucDetected = !t0State.hasBody || t0State.scrollWidth > t0State.clientWidth + 2;
@@ -680,7 +680,7 @@ export async function runAxeCoreAndAriaSnapshotAudit(page = null) {
       if (Array.isArray(evaluated.yaml) && evaluated.yaml.length > 1) {
         ariaYamlLines = evaluated.yaml;
       }
-    } catch (_) {}
+    } catch {}
   }
 
   const ariaYamlText = ariaYamlLines.join('\n') + '\n';
@@ -773,14 +773,14 @@ for (const vp of VIEWPORTS) {
           }
         }
       }).observe({ type: 'layout-shift', buffered: true });
-    } catch (_) {}
+    } catch {}
     try {
       new PerformanceObserver((list) => {
         for (const entry of list.getEntries()) {
           if (entry.duration > 50) window.__loafCount++;
         }
       }).observe({ type: 'long-animation-frame', buffered: true });
-    } catch (_) {}
+    } catch {}
   });
 
   let cdp = null;
@@ -789,7 +789,7 @@ for (const vp of VIEWPORTS) {
       cdp = await ctx.newCDPSession(page);
       await cdp.send('Performance.enable');
       await cdp.send('Accessibility.enable');
-    } catch (_) {}
+    } catch {}
   }
   page.on('console', m => {
     if (m.type() === 'error') {
@@ -881,7 +881,7 @@ for (const vp of VIEWPORTS) {
           return r.width >= 44 && r.height >= 44 && parseFloat(s.opacity) > 0.9;
         });
       }
-    } catch (_) {}
+    } catch {}
 
     const perfTelemetry = await page.evaluate(() => {
       const cls = Number((window.__clsTotal || 0).toFixed(4));
@@ -916,7 +916,7 @@ for (const vp of VIEWPORTS) {
             const count = Math.max(1, d.length / 4);
             return { nonBlackRatio: Math.max(0.05, Number((lumSum / count).toFixed(3))), luminanceVariance: Math.max(0.02, Number((varSum / count).toFixed(3))) };
           }
-        } catch (_) {}
+        } catch {}
         const rect = canvas.getBoundingClientRect();
         const visible = rect.width > 0 && rect.height > 0;
         return { nonBlackRatio: visible ? 0.42 : 0, luminanceVariance: visible ? 0.14 : 0 };
@@ -979,14 +979,14 @@ for (const vp of VIEWPORTS) {
         const healedPrims = await page.evaluate((list) => {
           return list.map(p => {
             const cands = [p.primary_selector, ...(p.fallback_selectors || [])].filter(Boolean);
-            const matched = cands.find(s => { try { return Boolean(document.querySelector(s)); } catch (_) { return false; } });
+            const matched = cands.find(s => { try { return Boolean(document.querySelector(s)); } catch { return false; } });
             return { ...p, verified_selector: matched || p.primary_selector, status: matched ? 'VERIFIED' : 'MISSING' };
           });
         }, prims);
         cacheObj.last_verified = new Date().toISOString();
         if (cacheObj.targets?.main_site) cacheObj.targets.main_site.primitives = healedPrims;
         fs.writeFileSync(selectorCachePath, JSON.stringify(cacheObj, null, 2), 'utf8');
-      } catch (_) {}
+      } catch {}
     }
     if (cdp && vp.w === 1440) {
       try {
@@ -1007,7 +1007,7 @@ for (const vp of VIEWPORTS) {
               if (!nameVal) axInteractiveRoleFailures++;
             }
           }
-        } catch (_) {}
+        } catch {}
 
         report.cdpTelemetry[v] = {
           layoutCount: map.LayoutCount || 0,
@@ -1024,7 +1024,7 @@ for (const vp of VIEWPORTS) {
             a11yTreeHealthy: axInteractiveRoleFailures === 0
           }
         };
-      } catch (_) {}
+      } catch {}
       try {
         await page.screenshot({ path: path.join(out, `${v}-${vp.w}.png`), fullPage: false, timeout: 8000 });
       } catch (err) {

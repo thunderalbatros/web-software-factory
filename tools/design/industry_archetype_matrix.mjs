@@ -2174,7 +2174,7 @@ All colors are authored in perceptual **W3C DTCG 2025.10 OKLCH** space to guaran
 - **Axis 3 — Component & Surface Morphology (\`componentMorphology\`):** Nav \`${defaultDna.componentMorphology?.nav || 'floating-island-bar'}\` | Corner \`${defaultDna.componentMorphology?.corner || '6px-tecnico'}\` | Material \`${defaultDna.componentMorphology?.material || 'deep-obsidian-specular'}\`
 - **Axis 4 — OKLCH Chromatic Gamut Mask (\`gamutMaskType\`):** \`${defaultDna.gamutMaskType}\`
 - **Axis 5 — Expressive Typographic Curation (\`fontPairingProfile\`):** \`${defaultDna.fontPairingProfile}\`
-- **Axis 6 — Kinetic Physics & Scroll Choreography (\`motionPhysicsCriteria\`):** Transition \`${defaultDna.motionPhysicsCriteria?.transitionPhysics || 'magnetic-precision-spring'}\` ($\zeta = ${defaultDna.motionPhysicsCriteria?.dampingRatioZeta ?? vs.springPhysics.zeta}$) | Scroll \`${defaultDna.motionPhysicsCriteria?.scrollChoreography || 'native-view-transitions-morph'}\`
+- **Axis 6 — Kinetic Physics & Scroll Choreography (\`motionPhysicsCriteria\`):** Transition \`${defaultDna.motionPhysicsCriteria?.transitionPhysics || 'magnetic-precision-spring'}\` ($\\zeta = ${defaultDna.motionPhysicsCriteria?.dampingRatioZeta ?? vs.springPhysics.zeta}$) | Scroll \`${defaultDna.motionPhysicsCriteria?.scrollChoreography || 'native-view-transitions-morph'}\`
 - **Axis 7 — Intro Video & 3D/Shader Decision (\`introAnd3dDecision\`):** Recommend Intro \`${Boolean(defaultDna.introAnd3dDecision?.recommendIntroVideo)}\` (\`${defaultDna.introAnd3dDecision?.introMode || 'parametric-svg-choreography'}\`) | 3D/Shader \`${defaultDna.introAnd3dDecision?.forged3dMode || 'parametric-diorama-or-shader'}\`
 - **Intra-Category Morphological Divergence Score:** \`${defaultDna.morphologicalDivergenceScore ?? 0.88}\` (Mandatory Floor \`>= 0.70\`)
 - **Birkhoff Aesthetic Harmony Score ($M = O / C$):** \`${defaultDna.aestheticHarmonyScore ?? 0.94}\` (Mandatory Floor \`>= 0.85\`, Max Simultaneous High-Complexity Axes \`<= 2\`)
@@ -2377,7 +2377,7 @@ export function generateProductAndDesignMd(projectRoot, archetypeInput = 'saas',
         raw.industryArchetype = archetypeObj.id;
         raw.surfaceMode = archetypeObj.primarySurfaceMode;
         raw.design = {
-          ...(raw.design || {}),
+          ...raw.design,
           industryArchetype: archetypeObj.id,
           surfaceMode: archetypeObj.primarySurfaceMode,
           creativeNorthStar: archetypeObj.creativeNorthStar,
@@ -2386,7 +2386,7 @@ export function generateProductAndDesignMd(projectRoot, archetypeInput = 'saas',
         };
         fs.writeFileSync(manifestPath, JSON.stringify(raw, null, 2) + '\n', 'utf8');
       }
-    } catch (_) {}
+    } catch {}
   }
 
   const productMdContent = compileProductMdContent(archetypeObj, projectMeta);

@@ -127,15 +127,22 @@ export function destroySandbox(rawName) {
     try {
       execSync(`git worktree remove --force "${targetDir}"`, { cwd: ROOT, stdio: 'pipe' });
     } catch {
-      fs.rmSync(targetDir, { recursive: true, force: true });
+      fs.rmSync(targetDir, { recursive: true, force: true, maxRetries: 5, retryDelay: 120 });
+    }
+    if (fs.existsSync(targetDir)) {
+      fs.rmSync(targetDir, { recursive: true, force: true, maxRetries: 5, retryDelay: 120 });
     }
   }
   try {
     execSync(`git branch -D "${branchName}"`, { cwd: ROOT, stdio: 'pipe' });
-  } catch {}
+  } catch {
+    /* branch may already be deleted */
+  }
   try {
     execSync('git worktree prune', { cwd: ROOT, stdio: 'pipe' });
-  } catch {}
+  } catch {
+    /* ignore worktree prune failure */
+  }
   return { name, destroyed: true };
 }
 

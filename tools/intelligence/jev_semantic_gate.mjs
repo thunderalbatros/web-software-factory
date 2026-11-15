@@ -62,7 +62,7 @@ export function loadJevEnvConfig(customEnv = null) {
           env[m[1]] = m[2].replace(/^['"]|['"]$/g, '').trim();
         }
       }
-    } catch (_) {}
+    } catch {}
   }
 
   const jevApiKey = String(env.JEV_API_KEY || '').trim();
@@ -544,7 +544,7 @@ export function parseWithSchemaAlignedRecovery(
           rep.flags.push('FirstMatch');
         }
         candidateList.push(rep);
-      } catch (_) {}
+      } catch {}
     });
   }
 
@@ -739,7 +739,7 @@ export function loadJevDecisionCache() {
       if (parsed && typeof parsed.entries === 'object') {
         store = parsed;
       }
-    } catch (_) {}
+    } catch {}
   }
   inMemoryDecisionCache = store;
   return store;
@@ -797,7 +797,7 @@ export function loadJevFinOpsLedger() {
           ledger.dailySpendUsd = 0;
         }
       }
-    } catch (_) {}
+    } catch {}
   }
 
   ledger.dailyJevBudgetUsd = envCfg.dailyJevBudgetUsd;
@@ -1277,7 +1277,7 @@ export async function callOfficialJevApi({
               tracesText
             });
       }
-    } catch (_) {
+    } catch {
       providerUsed = 'OFFICIAL_JEV_API_OFFLINE_FALLBACK';
       rawResponsePayload = typeof localFallbackEvaluator === 'function'
         ? localFallbackEvaluator()
@@ -1396,7 +1396,7 @@ export async function evaluateCrossTraceFrictionMiner(customTracesText = '', opt
       if (fs.existsSync(p)) {
         try {
           chunks.push(fs.readFileSync(p, 'utf8').slice(-8000));
-        } catch (_) {}
+        } catch {}
       }
     }
     combinedTraces = chunks.join('\n').trim();
@@ -1444,11 +1444,11 @@ export async function evaluateCrossTraceFrictionMiner(customTracesText = '', opt
  * exploiting SystemOne's Input-Only Billing (`$0.00` output tokens: 12 questions = 3 primitives x 4 predicates in 1 pass).
  */
 export async function evaluateMultiPredicateSystemOneBatch({
-  diffText = '',
-  specText = '',
-  tracesText = '',
-  customEnv = null,
-  bypassCache = false
+  diffText: _diffText = '',
+  specText: _specText = '',
+  tracesText: _tracesText = '',
+  customEnv: _customEnv = null,
+  bypassCache: _bypassCache = false
 } = {}) {
   const predicatesConfig = [
     {
@@ -1494,7 +1494,7 @@ export async function evaluateFullJevOuterAndMetaGate({
   if (!effectiveDiff) {
     try {
       effectiveDiff = execSync('git diff HEAD', { cwd: ROOT, encoding: 'utf8', timeout: 3000 }).trim();
-    } catch (_) {}
+    } catch {}
   }
   if (!effectiveDiff) {
     effectiveDiff = [

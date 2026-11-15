@@ -105,7 +105,7 @@ export function inspectVaultRepository(clusterName, repoName) {
             .map((line) => line.replace(/^#{1,3}\s+/, '').trim())
             .slice(0, 6);
           extractedHeadings.push(...headings);
-        } catch (_) {}
+        } catch {}
       }
     }
   }

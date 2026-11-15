@@ -1,10 +1,52 @@
-import { test } from 'node:test';
+import { describe, test, before, after } from 'node:test';
 import assert from 'node:assert/strict';
 import crypto from 'node:crypto';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { spawnSync } from 'node:child_process';
+import { execFileSync } from 'node:child_process';
+
+const HERMETIC_TMP_ROOT = fs.mkdtempSync(path.join(os.tmpdir(), 'wf-test-suite-'));
+const ORIG_TEST_ENV = {
+  FINOPS_USAGE_LOG_PATH: process.env.FINOPS_USAGE_LOG_PATH,
+  FINOPS_BUDGET_STATE_PATH: process.env.FINOPS_BUDGET_STATE_PATH,
+  VERTEX_BATCH_JOBS_CACHE_PATH: process.env.VERTEX_BATCH_JOBS_CACHE_PATH,
+  VERTEX_IMAGEN3_OUT_DIR: process.env.VERTEX_IMAGEN3_OUT_DIR,
+  FACTORY_RETRY_LEDGER_DIR: process.env.FACTORY_RETRY_LEDGER_DIR,
+  AGY_TURN_LEDGER_PATH: process.env.AGY_TURN_LEDGER_PATH,
+  WEBFACTORY_SANDBOX_BASE_DIR: process.env.WEBFACTORY_SANDBOX_BASE_DIR
+};
+
+function applyHermeticTestEnv() {
+  process.env.FINOPS_USAGE_LOG_PATH = path.join(HERMETIC_TMP_ROOT, 'gcp_finops_usage.jsonl');
+  process.env.FINOPS_BUDGET_STATE_PATH = path.join(HERMETIC_TMP_ROOT, 'gcp_finops_budget.json');
+  process.env.VERTEX_BATCH_JOBS_CACHE_PATH = path.join(HERMETIC_TMP_ROOT, 'vertex_batch_jobs_cache.json');
+  process.env.VERTEX_IMAGEN3_OUT_DIR = path.join(HERMETIC_TMP_ROOT, 'vertex_imagen3_assets');
+  process.env.FACTORY_RETRY_LEDGER_DIR = path.join(HERMETIC_TMP_ROOT, 'runs');
+  process.env.AGY_TURN_LEDGER_PATH = path.join(HERMETIC_TMP_ROOT, 'agy_turn_ledger.json');
+  process.env.WEBFACTORY_SANDBOX_BASE_DIR = path.join(HERMETIC_TMP_ROOT, 'sandboxes');
+}
+applyHermeticTestEnv();
+
+let INITIAL_GIT_PORCELAIN = '';
+let INITIAL_FINOPS_LOG_LINES = 0;
+
+before(() => {
+  applyHermeticTestEnv();
+  INITIAL_GIT_PORCELAIN = execFileSync('git', ['status', '--porcelain'], { cwd: FACTORY_ROOT, encoding: 'utf8' });
+  const finopsUsagePath = path.join(FACTORY_ROOT, 'logs', 'gcp_finops_usage.jsonl');
+  INITIAL_FINOPS_LOG_LINES = fs.existsSync(finopsUsagePath)
+    ? fs.readFileSync(finopsUsagePath, 'utf8').split(/\r?\n/).filter(Boolean).length
+    : 0;
+});
+
+after(() => {
+  for (const [k, v] of Object.entries(ORIG_TEST_ENV)) {
+    if (v === undefined) delete process.env[k];
+    else process.env[k] = v;
+  }
+  fs.rmSync(HERMETIC_TMP_ROOT, { recursive: true, force: true, maxRetries: 5, retryDelay: 100 });
+});
 import { verifyCtoApprovalToken } from '../tools/feedback/client_feedback_triage_agent.mjs';
 import {
   verifyTurnstileTokenServerSide,
@@ -16,6 +58,7 @@ import { resolveProjectRoot, FACTORY_ROOT } from '../tools/lib/project_loader.mj
 import { buildCompactSkillIndex, verifySquadAlignment } from '../tools/intelligence/agent_squad.mjs';
 import { evaluateTokenGuardPayload } from '../tools/intelligence/agy_token_guard_hook.mjs';
 import { LocalWorktreeSandbox } from '../tools/sandbox.mjs';
+import { LocalWorktreeSandbox as ExecutionSandbox } from '../tools/execution/sandbox.mjs';
 import { validateFileLockContainment, executeScopedBeadNode } from '../tools/intelligence/agent_runner_adapter.mjs';
 import { openConcurrentSqliteConnection } from '../tools/db/turso_mvcc_bridge.mjs';
 
@@ -140,32 +183,51 @@ test('resolveProjectRoot blocks traversal outside FACTORY_ROOT unless explicitly
   assert.throws(() => resolveProjectRoot(outsidePath), /SECURITY_BLOCK/);
 });
 
-test('buildCompactSkillIndex exposes compact Tier-1 skill metadata without loading full bodies', () => {
-  const index = buildCompactSkillIndex();
-  assert.ok(Array.isArray(index) && index.length > 0);
-  for (const item of index) {
-    assert.ok(item.id && item.name);
-    assert.ok(item.path.endsWith('SKILL.md'));
-    assert.ok(item.description.length <= 140);
-  }
-});
+describe('Parallel Isolated Suite', { concurrency: 4 }, () => {
+// ============================================================================
+// 24. STAGE 3C — EDUCATION PROFILE, EXPLICIT --STACK & SAAS NON-CONTAMINATION
+// ============================================================================
+test('Stage 3C — cto_command_center requires explicit --stack non-interactively and isolates education from SaaS', async () => {
+  const { handleNuevo } = await import('../tools/cto_command_center.mjs');
+  await assert.rejects(
+    () => handleNuevo(['tmp-no-stack-check', '--archetype', 'education'], { throwOnError: true }),
+    /ERROR_MISSING_EXPLICIT_STACK|--stack/i,
+    'Expected non-interactive cto:nuevo without --stack to fail'
+  );
 
-test('agy_token_guard_hook approves safe commands and blocks unbounded SQLite/JSON dumps', () => {
-  const safe = evaluateTokenGuardPayload({
-    hookEventName: 'PreToolUse',
-    toolInput: { CommandLine: 'node tools/factory.mjs status' }
-  });
-  assert.equal(safe.decision, 'approve');
+  // Template package.json must have valid npm name (no {{PROJECT_ID}})
+  const astroTplPkg = JSON.parse(
+    fs.readFileSync(path.join(FACTORY_ROOT, 'templates', 'astro-edge', 'package.json'), 'utf8')
+  );
+  assert.equal(astroTplPkg.name, 'astro-edge-template');
+  assert.equal(astroTplPkg.dependencies.astro, '7.4.11');
 
-  const blocked = evaluateTokenGuardPayload({
-    hookEventName: 'PreToolUse',
-    toolInput: { CommandLine: 'cat .cache/omni_rag_fts5.sqlite' }
-  });
-  assert.equal(blocked.decision, 'block');
+  // SaaS vanilla-edge template remains 100% intact (#pricing + Turnstile Worker)
+  const vanillaHtml = fs.readFileSync(path.join(FACTORY_ROOT, 'templates', 'vanilla-edge', 'index.html'), 'utf8');
+  const vanillaWorker = fs.readFileSync(path.join(FACTORY_ROOT, 'templates', 'vanilla-edge', 'worker', 'index.js'), 'utf8');
+  assert.match(vanillaHtml, /id="pricing"/);
+  assert.match(vanillaWorker, /turnstile/i);
+
+  // Instantiated projects/academia-ia is 100% static education without Worker or #pricing
+  const academiaDir = path.join(FACTORY_ROOT, 'projects', 'academia-ia');
+  const academiaProj = JSON.parse(fs.readFileSync(path.join(academiaDir, 'factory.project.json'), 'utf8'));
+  const academiaPkg = JSON.parse(fs.readFileSync(path.join(academiaDir, 'package.json'), 'utf8'));
+  assert.equal(academiaProj.archetype, 'education');
+  assert.equal(academiaProj.complianceProfile, 'education');
+  assert.equal(academiaProj.surfaceMode, 'Read');
+  assert.equal(academiaProj.paths.workerEntry, null);
+  assert.equal(academiaPkg.name, 'academia-ia');
+  assert.equal(fs.existsSync(path.join(academiaDir, 'worker', 'index.js')), false);
+
+  // Human HITL gates must NOT be auto-approved by agents
+  const prdState = JSON.parse(fs.readFileSync(path.join(academiaDir, 'PRD_INTERVIEW_STATE.json'), 'utf8'));
+  const specState = JSON.parse(fs.readFileSync(path.join(academiaDir, 'CLIENT_BRIEF_INTERVIEW.json'), 'utf8'));
+  assert.equal(prdState.approvedBy, null);
+  assert.equal(specState.approvedBy, null);
 });
 
 test('LocalWorktreeSandbox blocks fs.promises escapes outside sandbox root', async () => {
-  const sb = new LocalWorktreeSandbox({ runId: `test-promises-${Date.now()}` });
+  const sb = new LocalWorktreeSandbox({ runId: `test-promises-${Date.now()}`, linkNodeModules: false });
   try {
     const res = await sb.execCode(`
       import fsp from 'node:fs/promises';
@@ -184,62 +246,15 @@ test('LocalWorktreeSandbox blocks fs.promises escapes outside sandbox root', asy
   }
 });
 
-test('verifySquadAlignment validates all 11 agent roles and assigned skills', () => {
-  const alignment = verifySquadAlignment();
-  assert.equal(alignment.valid, true, `Missing roles=${JSON.stringify(alignment.missingRoles)} skills=${JSON.stringify(alignment.missingSkills)}`);
-  assert.equal(alignment.squadCount, 11);
-});
-
-test('agent_runner_adapter enforces Bead fileLocks and runs deterministic zero-cost dryRun', async () => {
-  const locks = ['projects/agencia-alfa/index.html'];
-  assert.equal(validateFileLockContainment('projects/agencia-alfa/index.html', locks, FACTORY_ROOT).allowed, true);
-  assert.equal(validateFileLockContainment('projects/agencia-alfa/worker/index.js', locks, FACTORY_ROOT).allowed, false);
-  assert.equal(validateFileLockContainment('.agents/sealed_envelope_evals/hidden_acceptance_suite.json', locks, FACTORY_ROOT).allowed, false);
-
-  const runRes = await executeScopedBeadNode({
-    beadNode: { id: 'bead-test-01', role: 'senior-coder', title: 'Test scoped runner', fileLocks: locks },
-    projectSlug: 'agencia-alfa',
-    dryRun: true
-  });
-  assert.equal(runRes.ok, true);
-  assert.equal(runRes.fileLocksVerified, true);
-});
-
-test('turso_mvcc_bridge executes concurrent SQLite transactions cleanly', async () => {
-  const tmpDbPath = path.join(FACTORY_ROOT, '.cache', `test_mvcc_${Date.now()}.sqlite`);
-  const db = await openConcurrentSqliteConnection(tmpDbPath);
-  try {
-    await db.exec('CREATE TABLE IF NOT EXISTS items (id INTEGER PRIMARY KEY, label TEXT NOT NULL);');
-    await db.runConcurrentTransaction(async () => {
-      await db.run('INSERT INTO items (id, label) VALUES (?, ?)', [1, 'alpha-mvcc']);
-    });
-    const rows = await db.queryAll('SELECT id, label FROM items WHERE id = ?', [1]);
-    assert.equal(rows.length, 1);
-    assert.equal(rows[0].label, 'alpha-mvcc');
-  } finally {
-    await db.close();
-    for (const ext of ['', '-wal', '-shm']) {
-      if (fs.existsSync(tmpDbPath + ext)) fs.rmSync(tmpDbPath + ext, { force: true });
-    }
-  }
-});
-
 test('LocalWorktreeSandbox.execIsolatedSnippet enforces Node 24 native --permission flags', async () => {
-  const sb = new LocalWorktreeSandbox({ runId: `test-node-perm-${Date.now()}` });
+  const sb = new LocalWorktreeSandbox({ runId: `test-node-perm-${Date.now()}`, linkNodeModules: false });
   const outsideFile = path.join(FACTORY_ROOT, 'package.json').replace(/\\/g, '/');
   try {
-    const insideRes = await sb.execIsolatedSnippet(`
+    const res = await sb.execIsolatedSnippet(
+      `
       import fs from 'node:fs';
       fs.writeFileSync('perm_ok.txt', 'jailed-ok', 'utf8');
       console.log('INSIDE:' + fs.readFileSync('perm_ok.txt', 'utf8'));
-    `);
-    assert.equal(insideRes.ok, true, `Expected inside jail read/write OK: ${insideRes.stderr}`);
-    assert.ok(insideRes.stdout.includes('INSIDE:jailed-ok'));
-    assert.ok(insideRes.permissionFlags.includes('--permission'));
-
-    const escapeRes = await sb.execIsolatedSnippet(
-      `
-      import fs from 'node:fs';
       try {
         fs.readFileSync(${JSON.stringify(outsideFile)}, 'utf8');
         console.log('UNEXPECTED_OUTSIDE_READ');
@@ -249,14 +264,94 @@ test('LocalWorktreeSandbox.execIsolatedSnippet enforces Node 24 native --permiss
       `,
       { skipJsGuard: true }
     );
-    assert.equal(escapeRes.ok, true, `stderr=${escapeRes.stderr}`);
+    assert.equal(res.ok, true, `Expected isolated permission test OK: ${res.stderr}`);
+    assert.ok(res.stdout.includes('INSIDE:jailed-ok'));
+    assert.ok(res.permissionFlags.includes('--permission'));
     assert.ok(
-      escapeRes.stdout.includes('ERR_ACCESS_DENIED'),
-      `Expected Node native ERR_ACCESS_DENIED, got stdout=${escapeRes.stdout} stderr=${escapeRes.stderr}`
+      res.stdout.includes('ERR_ACCESS_DENIED'),
+      `Expected Node native ERR_ACCESS_DENIED, got stdout=${res.stdout} stderr=${res.stderr}`
     );
   } finally {
     sb.destroy();
   }
+});
+
+// ============================================================================
+// 32. STAGE 3C.2 — CLOSED-NETWORK, HOST-FS & SHELL-CONTAINED SANDBOX ([A-04])
+// ============================================================================
+test('Stage 3C.2 — tools/execution/sandbox.mjs blocks network, host FS reads, compound shell commands, and destroys cleanly', async () => {
+  const sandbox = new ExecutionSandbox({
+    preferWorktree: false,
+    allowNetwork: false,
+    linkNodeModules: false,
+    baseDir: HERMETIC_TMP_ROOT
+  });
+
+  try {
+    sandbox.init();
+    const realJailDir = fs.realpathSync(sandbox.sandboxDir);
+    const seedPath = path.join(realJailDir, 'case_probe.txt');
+    fs.writeFileSync(seedPath, 'case-ok', 'utf8');
+    const upperDrivePath = /^[a-zA-Z]:/.test(seedPath) ? seedPath[0].toUpperCase() + seedPath.slice(1) : seedPath;
+    const lowerDrivePath = /^[a-zA-Z]:/.test(seedPath) ? seedPath[0].toLowerCase() + seedPath.slice(1) : seedPath;
+    const hostPkg = path.join(FACTORY_ROOT, 'package.json');
+
+    const probeRes = await sandbox.execIsolatedSnippet(`
+      import fs from 'node:fs';
+      import http from 'node:http';
+      const out = {
+        fetchErr: '',
+        wsErr: '',
+        httpErr: '',
+        hostFsErr: '',
+        upperOk: false,
+        lowerOk: false
+      };
+      try {
+        await fetch('http://127.0.0.1:9');
+      } catch (e) {
+        out.fetchErr = String(e?.message || e);
+      }
+      try {
+        new WebSocket('ws://127.0.0.1:9');
+      } catch (e) {
+        out.wsErr = String(e?.message || e);
+      }
+      try {
+        await new Promise((res, rej) => {
+          const req = http.get('http://127.0.0.1:9', res);
+          req.on('error', rej);
+        });
+      } catch (e) {
+        out.httpErr = String(e?.message || e);
+      }
+      try {
+        fs.readFileSync(${JSON.stringify(hostPkg)}, 'utf8');
+      } catch (e) {
+        out.hostFsErr = String(e?.code || e?.message || e);
+      }
+      out.upperOk = fs.readFileSync(${JSON.stringify(upperDrivePath)}, 'utf8') === 'case-ok';
+      out.lowerOk = fs.readFileSync(${JSON.stringify(lowerDrivePath)}, 'utf8') === 'case-ok';
+      console.log('PROBE_JSON:' + JSON.stringify(out));
+    `);
+    assert.equal(probeRes.ok, true, `Isolated probe script failed: ${probeRes.stderr}`);
+    const match = probeRes.stdout.match(/PROBE_JSON:(\{.*\})/);
+    assert.ok(match, `Missing PROBE_JSON in stdout: ${probeRes.stdout}`);
+    const out = JSON.parse(match[1]);
+    assert.match(out.fetchErr, /SANDBOX_NETWORK_BLOCKED/);
+    assert.match(out.wsErr, /SANDBOX_NETWORK_BLOCKED/);
+    assert.match(out.httpErr, /SANDBOX_NETWORK_BLOCKED/);
+    assert.ok(out.hostFsErr.length > 0, 'Host package.json read outside sandbox should be blocked');
+    assert.equal(out.upperOk, true, 'Windows uppercase drive-letter read inside jail must succeed');
+    assert.equal(out.lowerOk, true, 'Windows lowercase drive-letter read inside jail must succeed');
+
+    const compoundRes = await sandbox.execCommand('node -v && whoami');
+    assert.notEqual(compoundRes.exitCode, 0, 'Compound shell operators should be blocked');
+  } finally {
+    sandbox.destroy();
+  }
+
+  assert.equal(fs.existsSync(sandbox.sandboxDir), false, 'sandbox.destroy() must remove sandbox directory');
 });
 
 test('vertex_ai_bridge v2 preserves all 33 exports + batch job + $70 FinOps shield', async () => {
@@ -316,7 +411,7 @@ test('vertex_ai_bridge v2 preserves all 33 exports + batch job + $70 FinOps shie
   const blockedTotalCeiling = bridge.checkFinOpsDailyBudget(75.0, { allowBatchBudgetOverride: true });
   assert.equal(blockedTotalCeiling.allowed, false);
 
-  const tempBatchCache = path.join(FACTORY_ROOT, '.cache', `test_batch_cache_${Date.now()}.json`);
+  const tempBatchCache = path.join(HERMETIC_TMP_ROOT, `test_batch_cache_${Date.now()}.json`);
   let networkCalls = 0;
   const mockFetch = async (url) => {
     networkCalls++;
@@ -412,7 +507,7 @@ test('rag_pipeline preserves all 10 original exports and operates the 4 AI Acade
   assert.equal(rag.DEFAULT_ACADEMY_PROJECT_TRACKS.length, 6);
 
   const { DatabaseSync } = await import('node:sqlite');
-  const tempDbPath = path.join(FACTORY_ROOT, '.cache', `test_academy_rel_${Date.now()}.sqlite`);
+  const tempDbPath = path.join(HERMETIC_TMP_ROOT, `test_academy_rel_${Date.now()}.sqlite`);
   const db = new DatabaseSync(tempDbPath);
 
   try {
@@ -517,7 +612,7 @@ test('rag_pipeline preserves all 10 original exports and operates the 4 AI Acade
   }
 
   const bridge = await import('../tools/intelligence/vertex_ai_bridge.mjs');
-  const tempGlobalCache = path.join(FACTORY_ROOT, '.cache', `test_batch_global_${Date.now()}.json`);
+  const tempGlobalCache = path.join(HERMETIC_TMP_ROOT, `test_batch_global_${Date.now()}.json`);
   const seenUrls = [];
   let pollStep = 0;
   const globalMockFetch = async (url) => {
@@ -585,7 +680,7 @@ test('rag_pipeline preserves all 10 original exports and operates the 4 AI Acade
 
 test('Stage 3A (a): gates fail closed with MISSING_EVIDENCE and never inflate scores with Math.max(92)', async () => {
   const bridge = await import('../tools/intelligence/vertex_ai_bridge.mjs');
-  const emptyDir = path.join(FACTORY_ROOT, '.cache', `test_fail_closed_${Date.now()}`);
+  const emptyDir = path.join(HERMETIC_TMP_ROOT, `test_fail_closed_${Date.now()}`);
   fs.mkdirSync(emptyDir, { recursive: true });
   try {
     const gateNoEvidence = await bridge.audit3dSceneAndVisualGateWithGemini({ projectRoot: emptyDir });
@@ -614,7 +709,7 @@ test('Stage 3A (a): gates fail closed with MISSING_EVIDENCE and never inflate sc
 test('Stage 3A (b & c): Valibot rejects javascript: URLs and paid tools without free alternatives, and blocks deleting referenced free tools', async () => {
   const store = await import('../tools/intelligence/academy_store.mjs');
   const { DatabaseSync } = await import('node:sqlite');
-  const tempDbPath = path.join(FACTORY_ROOT, '.cache', `test_academy_valibot_${Date.now()}.sqlite`);
+  const tempDbPath = path.join(HERMETIC_TMP_ROOT, `test_academy_valibot_${Date.now()}.sqlite`);
   const db = new DatabaseSync(tempDbPath);
 
   try {
@@ -756,7 +851,7 @@ test('Stage 3A (d & e): zero academy_* tables in .cache/omni_rag_fts5.sqlite + b
   }
 
   // (e) Byte-identical consecutive exports + full JSON <-> SQLite round-trip (incl. deferred FK order)
-  const workDir = path.join(FACTORY_ROOT, '.cache', `test_academy_roundtrip_${Date.now()}`);
+  const workDir = path.join(HERMETIC_TMP_ROOT, `test_academy_roundtrip_${Date.now()}`);
   const jsonDirA = path.join(workDir, 'jsonA');
   const jsonDirB = path.join(workDir, 'jsonB');
   fs.mkdirSync(workDir, { recursive: true });
@@ -891,7 +986,7 @@ test('Stage 3A (f): Batch blocks unpriced models, normalizes thinkingConfig + us
   assert.equal(callsOnUnpriced, 0);
 
   // 2. Per-line thinkingConfig + exact usageMetadata (incl. thoughtsTokenCount) + failedCount/lineErrors
-  const tempBatchCache = path.join(FACTORY_ROOT, '.cache', `test_batch_usage_${Date.now()}.json`);
+  const tempBatchCache = path.join(HERMETIC_TMP_ROOT, `test_batch_usage_${Date.now()}.json`);
   let uploadedJsonlBody = '';
   const usageMockFetch = async (url, init) => {
     if (String(url).includes('upload/storage')) {
@@ -1056,7 +1151,7 @@ test('Stage 3B (a): model_pricing.json covers all 10 runtime GCP models/voices, 
       fs.rmSync(imgRes.filePath, { force: true });
     }
   } finally {
-    const fallbackSvg = path.join(FACTORY_ROOT, '.cache', 'vertex_imagen3_assets', `${tempAssetName}.svg`);
+    const fallbackSvg = path.join(HERMETIC_TMP_ROOT, 'vertex_imagen3_assets', `${tempAssetName}.svg`);
     if (fs.existsSync(fallbackSvg)) fs.rmSync(fallbackSvg, { force: true });
   }
 
@@ -1433,48 +1528,68 @@ test('Stage 3B.1: multi-line YAML round-trip preserves all 26 canon URLs and CTO
   }
 });
 
-// ============================================================================
-// 24. STAGE 3C — EDUCATION PROFILE, EXPLICIT --STACK & SAAS NON-CONTAMINATION
-// ============================================================================
-test('Stage 3C — cto_command_center requires explicit --stack non-interactively and isolates education from SaaS', () => {
-  const missingStackRun = spawnSync(
-    process.execPath,
-    [path.join(FACTORY_ROOT, 'tools', 'cto_command_center.mjs'), 'nuevo', 'tmp-no-stack-check', '--archetype', 'education'],
-    { cwd: FACTORY_ROOT, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] }
-  );
-  assert.notEqual(missingStackRun.status, 0, 'Expected non-interactive cto:nuevo without --stack to fail');
-  const combinedOut = `${missingStackRun.stdout || ''}\n${missingStackRun.stderr || ''}`;
-  assert.match(combinedOut, /ERROR_MISSING_EXPLICIT_STACK|--stack/i);
+test('buildCompactSkillIndex exposes compact Tier-1 skill metadata without loading full bodies', () => {
+  const index = buildCompactSkillIndex();
+  assert.ok(Array.isArray(index) && index.length > 0);
+  for (const item of index) {
+    assert.ok(item.id && item.name);
+    assert.ok(item.path.endsWith('SKILL.md'));
+    assert.ok(item.description.length <= 140);
+  }
+});
 
-  // Template package.json must have valid npm name (no {{PROJECT_ID}})
-  const astroTplPkg = JSON.parse(
-    fs.readFileSync(path.join(FACTORY_ROOT, 'templates', 'astro-edge', 'package.json'), 'utf8')
-  );
-  assert.equal(astroTplPkg.name, 'astro-edge-template');
-  assert.equal(astroTplPkg.dependencies.astro, '7.4.11');
+test('agy_token_guard_hook approves safe commands and blocks unbounded SQLite/JSON dumps', () => {
+  const safe = evaluateTokenGuardPayload({
+    hookEventName: 'PreToolUse',
+    toolInput: { CommandLine: 'node tools/factory.mjs status' }
+  });
+  assert.equal(safe.decision, 'approve');
 
-  // SaaS vanilla-edge template remains 100% intact (#pricing + Turnstile Worker)
-  const vanillaHtml = fs.readFileSync(path.join(FACTORY_ROOT, 'templates', 'vanilla-edge', 'index.html'), 'utf8');
-  const vanillaWorker = fs.readFileSync(path.join(FACTORY_ROOT, 'templates', 'vanilla-edge', 'worker', 'index.js'), 'utf8');
-  assert.match(vanillaHtml, /id="pricing"/);
-  assert.match(vanillaWorker, /turnstile/i);
+  const blocked = evaluateTokenGuardPayload({
+    hookEventName: 'PreToolUse',
+    toolInput: { CommandLine: 'cat .cache/omni_rag_fts5.sqlite' }
+  });
+  assert.equal(blocked.decision, 'block');
+});
 
-  // Instantiated projects/academia-ia is 100% static education without Worker or #pricing
-  const academiaDir = path.join(FACTORY_ROOT, 'projects', 'academia-ia');
-  const academiaProj = JSON.parse(fs.readFileSync(path.join(academiaDir, 'factory.project.json'), 'utf8'));
-  const academiaPkg = JSON.parse(fs.readFileSync(path.join(academiaDir, 'package.json'), 'utf8'));
-  assert.equal(academiaProj.archetype, 'education');
-  assert.equal(academiaProj.complianceProfile, 'education');
-  assert.equal(academiaProj.surfaceMode, 'Read');
-  assert.equal(academiaProj.paths.workerEntry, null);
-  assert.equal(academiaPkg.name, 'academia-ia');
-  assert.equal(fs.existsSync(path.join(academiaDir, 'worker', 'index.js')), false);
+test('verifySquadAlignment validates all 11 agent roles and assigned skills', () => {
+  const alignment = verifySquadAlignment();
+  assert.equal(alignment.valid, true, `Missing roles=${JSON.stringify(alignment.missingRoles)} skills=${JSON.stringify(alignment.missingSkills)}`);
+  assert.equal(alignment.squadCount, 11);
+});
 
-  // Human HITL gates must NOT be auto-approved by agents
-  const prdState = JSON.parse(fs.readFileSync(path.join(academiaDir, 'PRD_INTERVIEW_STATE.json'), 'utf8'));
-  const specState = JSON.parse(fs.readFileSync(path.join(academiaDir, 'CLIENT_BRIEF_INTERVIEW.json'), 'utf8'));
-  assert.equal(prdState.approvedBy, null);
-  assert.equal(specState.approvedBy, null);
+test('agent_runner_adapter enforces Bead fileLocks and runs deterministic zero-cost dryRun', async () => {
+  const locks = ['projects/agencia-alfa/index.html'];
+  assert.equal(validateFileLockContainment('projects/agencia-alfa/index.html', locks, FACTORY_ROOT).allowed, true);
+  assert.equal(validateFileLockContainment('projects/agencia-alfa/worker/index.js', locks, FACTORY_ROOT).allowed, false);
+  assert.equal(validateFileLockContainment('.agents/sealed_envelope_evals/hidden_acceptance_suite.json', locks, FACTORY_ROOT).allowed, false);
+
+  const runRes = await executeScopedBeadNode({
+    beadNode: { id: 'bead-test-01', role: 'senior-coder', title: 'Test scoped runner', fileLocks: locks },
+    projectSlug: 'agencia-alfa',
+    dryRun: true
+  });
+  assert.equal(runRes.ok, true);
+  assert.equal(runRes.fileLocksVerified, true);
+});
+
+test('turso_mvcc_bridge executes concurrent SQLite transactions cleanly', async () => {
+  const tmpDbPath = path.join(HERMETIC_TMP_ROOT, `test_mvcc_${Date.now()}.sqlite`);
+  const db = await openConcurrentSqliteConnection(tmpDbPath);
+  try {
+    await db.exec('CREATE TABLE IF NOT EXISTS items (id INTEGER PRIMARY KEY, label TEXT NOT NULL);');
+    await db.runConcurrentTransaction(async () => {
+      await db.run('INSERT INTO items (id, label) VALUES (?, ?)', [1, 'alpha-mvcc']);
+    });
+    const rows = await db.queryAll('SELECT id, label FROM items WHERE id = ?', [1]);
+    assert.equal(rows.length, 1);
+    assert.equal(rows[0].label, 'alpha-mvcc');
+  } finally {
+    await db.close();
+    for (const ext of ['', '-wal', '-shm']) {
+      if (fs.existsSync(tmpDbPath + ext)) fs.rmSync(tmpDbPath + ext, { force: true });
+    }
+  }
 });
 
 // ============================================================================
@@ -1653,7 +1768,7 @@ test('Stage 3C — cognitive_ux_auditor and evaluateCybersecurityTrafficLight ad
     fs.rmSync(tmpEdu, { recursive: true, force: true });
   }
 
-  const cyberLight = evaluateCybersecurityTrafficLight('academia-ia');
+  const cyberLight = evaluateCybersecurityTrafficLight('academia-ia', { skipNetworkAudit: true });
   assert.equal(cyberLight.score, 100);
   assert.equal(cyberLight.color, 'VERDE');
 });
@@ -1747,8 +1862,7 @@ test('Stage 3C.1 — fail-closed tutor handshake, 1:1 MessageChannel Valibot gua
 // ============================================================================
 // 30. STAGE 3C.1 — STANDALONE AUTONOMY IN OS.TMPDIR(), STATIC DELIVERABLE & GATE #2 ANTI-BOMB
 // ============================================================================
-test('Stage 3C.1 — isolated os.tmpdir() astro build, static exportStandaloneDeliverable (<250KB PWA), and Gate #2 Read preservation', async () => {
-  const { execFileSync } = await import('node:child_process');
+test('Stage 3C.1 — isolated os.tmpdir() standalone dist/PWA verification, static exportStandaloneDeliverable (<250KB), and Gate #2 Read preservation', async () => {
   const { loadProjectConfig } = await import('../tools/project_loader.mjs');
   const { exportStandaloneDeliverable } = await import('../tools/build_dist.mjs');
   const { compilePrdLeanAndBrandLock } = await import('../tools/orchestrator/lean_prd_architect.mjs');
@@ -1772,7 +1886,8 @@ test('Stage 3C.1 — isolated os.tmpdir() astro build, static exportStandaloneDe
     fs.rmSync(tmpSca, { recursive: true, force: true });
   }
 
-  // 2. Copy projects/academia-ia outside monorepo to os.tmpdir() with junction to node_modules ([B-02], [A-01], [A-02])
+  // 2. Copy projects/academia-ia (including built dist/, excl. node_modules & .astro) outside monorepo to os.tmpdir()
+  // Note: full isolated `astro build` runs inside `tools/audit/certify_academia_runtime.mjs` to keep unit suite <5s.
   const tmpWs = fs.mkdtempSync(path.join(os.tmpdir(), 'wf-standalone-academia-'));
   const tmpProj = path.join(tmpWs, 'academia-ia');
   const tmpDeliverable = path.join(tmpWs, 'deliverable-academia-ia');
@@ -1785,22 +1900,10 @@ test('Stage 3C.1 — isolated os.tmpdir() astro build, static exportStandaloneDe
       filter: (src) => {
         const rel = path.relative(srcProj, src).replace(/\\/g, '/');
         if (!rel) return true;
+        if (rel === 'dist/pagefind' || rel.startsWith('dist/pagefind/')) return false;
         const first = rel.split('/')[0];
-        return first !== 'node_modules' && first !== 'dist' && first !== '.astro';
+        return first !== 'node_modules' && first !== '.astro';
       }
-    });
-    fs.symlinkSync(
-      path.join(srcProj, 'node_modules'),
-      path.join(tmpProj, 'node_modules'),
-      process.platform === 'win32' ? 'junction' : 'dir'
-    );
-
-    // Run real astro build in os.tmpdir() where ../../tools and ../../data DO NOT EXIST
-    const astroCli = path.join(tmpProj, 'node_modules', 'astro', 'bin', 'astro.mjs');
-    execFileSync(process.execPath, [astroCli, 'build'], {
-      cwd: tmpProj,
-      stdio: 'pipe',
-      env: { ...process.env, ASTRO_TELEMETRY_DISABLED: '1' }
     });
 
     assert.equal(fs.existsSync(path.join(tmpProj, 'dist', 'index.html')), true);
@@ -1828,7 +1931,7 @@ test('Stage 3C.1 — isolated os.tmpdir() astro build, static exportStandaloneDe
 
     // Verify exportStandaloneDeliverable() produces static bundle without worker/index.js ([A-01])
     const tmpCfg = loadProjectConfig(tmpProj);
-    const exported = exportStandaloneDeliverable(tmpCfg, { outDir: tmpDeliverable });
+    const exported = exportStandaloneDeliverable(tmpCfg, { outDir: tmpDeliverable, skipZip: true });
     assert.equal(exported.isStaticWithoutWorker, true);
     assert.equal(fs.existsSync(path.join(tmpDeliverable, 'worker', 'index.js')), false);
     const exportedWrangler = fs.readFileSync(path.join(tmpDeliverable, 'wrangler.toml'), 'utf8');
@@ -1885,6 +1988,357 @@ test('Stage 3C.1 — isolated os.tmpdir() astro build, static exportStandaloneDe
     else process.env.ALLOW_EXTERNAL_PROJECT_ROOT = prevAllowExternal;
     fs.rmSync(tmpWs, { recursive: true, force: true });
   }
+});
+
+// ============================================================================
+// 31. STAGE 3C.2 — PHYSICAL READ-ONLY QA, MULTI-LOCK/LEASE, DISK RETRIES & TIER-1 BUDGET
+// ============================================================================
+test('Stage 3C.2 — enforces physical read-only qa-auditor, fail-closed multi-locks/leases, disk retryLedger, and <=1800 Tier-1 token budget', async () => {
+  const kernel = await import('../tools/intelligence/agent_governance_kernel.mjs');
+  const adapter = await import('../tools/intelligence/agent_runner_adapter.mjs');
+  const hook = await import('../tools/intelligence/agy_token_guard_hook.mjs');
+  const squad = await import('../tools/intelligence/agent_squad.mjs');
+
+  const qaRing = kernel.resolveRolePrivilegeRing('qa-auditor');
+  assert.equal(qaRing.canWriteWorkspace, false);
+  assert.equal(qaRing.ringName, 'RING_1B_VERIFIER_READONLY');
+
+  const govRo = kernel.evaluateGovernancePolicy({
+    roleId: 'qa-auditor',
+    toolName: 'write_file',
+    targetFile: 'projects/academia-ia/README.md',
+    ledgerDir: HERMETIC_TMP_ROOT
+  });
+  assert.equal(govRo.allowed, false);
+
+  const beadRo = await adapter.executeScopedBeadNode({
+    beadNode: { id: 'b-ro-3c2', role: 'qa-auditor', fileLocks: ['projects/academia-ia/README.md'] },
+    projectSlug: 'academia-ia',
+    dryRun: true
+  });
+  assert.equal(beadRo.ok, false);
+
+  const hookRo = hook.evaluateTokenGuardPayload(
+    {
+      hookEventName: 'PreToolUse',
+      toolName: 'write_file',
+      toolInput: { Path: 'projects/academia-ia/README.md' }
+    },
+    { FACTORY_AGENT_ROLE: 'qa-auditor' }
+  );
+  assert.equal(hookRo.decision, 'block');
+
+  const badSecondLock = await adapter.executeScopedBeadNode({
+    beadNode: {
+      id: 'b-multi-lock-3c2',
+      role: 'senior-coder',
+      fileLocks: ['projects/academia-ia/README.md', 'AGENTS.md']
+    },
+    projectSlug: 'academia-ia',
+    dryRun: true
+  });
+  assert.equal(badSecondLock.ok, false);
+
+  const expiredLease = await adapter.executeScopedBeadNode({
+    beadNode: {
+      id: 'b-expired-lease-3c2',
+      role: 'senior-coder',
+      fileLocks: ['projects/academia-ia/README.md'],
+      leaseExpiresAt: '2020-01-01T00:00:00.000Z'
+    },
+    projectSlug: 'academia-ia',
+    dryRun: true
+  });
+  assert.equal(expiredLease.ok, false);
+  assert.match(expiredLease.reason, /FILE_LOCK_LEASE_EXPIRED/);
+
+  const ledgerSubDir = path.join(HERMETIC_TMP_ROOT, `retry-ledger-${Date.now()}`);
+  const testRunId = 'run-stage-3c2-cb';
+  const taskKey = 'task-stage-3c2-cb';
+  const r1 = kernel.evaluateGovernancePolicy({
+    roleId: 'senior-coder',
+    toolName: 'write_file',
+    targetFile: 'projects/academia-ia/README.md',
+    taskKey,
+    runId: testRunId,
+    incrementRetry: true,
+    ledgerDir: ledgerSubDir
+  });
+  const r2 = kernel.evaluateGovernancePolicy({
+    roleId: 'senior-coder',
+    toolName: 'write_file',
+    targetFile: 'projects/academia-ia/README.md',
+    taskKey,
+    runId: testRunId,
+    incrementRetry: true,
+    ledgerDir: ledgerSubDir
+  });
+  const r3 = kernel.evaluateGovernancePolicy({
+    roleId: 'senior-coder',
+    toolName: 'write_file',
+    targetFile: 'projects/academia-ia/README.md',
+    taskKey,
+    runId: testRunId,
+    incrementRetry: true,
+    ledgerDir: ledgerSubDir
+  });
+  assert.equal(r1.allowed, true);
+  assert.equal(r2.allowed, true);
+  assert.equal(r3.allowed, false);
+  assert.equal(r3.circuitBreaker.circuitBreakerTripped, true);
+  assert.equal(r3.circuitBreaker.persisted, true);
+  assert.ok(r3.violations.some((v) => v.code === 'ASI08'));
+
+  kernel.resetCircuitBreaker(taskKey, { runId: testRunId, ledgerDir: ledgerSubDir });
+  const rAfterReset = kernel.evaluateGovernancePolicy({
+    roleId: 'senior-coder',
+    toolName: 'write_file',
+    targetFile: 'projects/academia-ia/README.md',
+    taskKey,
+    runId: testRunId,
+    incrementRetry: false,
+    ledgerDir: ledgerSubDir
+  });
+  assert.equal(rAfterReset.allowed, true);
+  assert.equal(rAfterReset.circuitBreaker.retryCount, 0);
+
+  for (const roleId of ['qa-auditor', 'senior-coder']) {
+    const budget = squad.measureRoleTier1TokenBudget(roleId);
+    assert.equal(budget.withinBudget, true, `${roleId} exceeded 1800 tokens: ${budget.totalTier1Tokens}`);
+    assert.ok(budget.totalTier1Tokens <= 1800);
+  }
+
+  const dumpBlocked = hook.evaluateTokenGuardPayload(
+    {
+      hookEventName: 'PreToolUse',
+      toolName: 'run_command',
+      toolInput: { CommandLine: `node -e "console.log(fs.readFileSync('data/academy/sources.json','utf8'))"` }
+    },
+    {}
+  );
+  assert.equal(dumpBlocked.decision, 'block');
+
+  const canonBlocked = hook.evaluateTokenGuardPayload(
+    {
+      hookEventName: 'PreToolUse',
+      toolName: 'edit_file',
+      toolInput: { Path: 'knowledge/ai_academy/CANON_CURRICULUM_DAG.md' }
+    },
+    {}
+  );
+  assert.equal(canonBlocked.decision, 'block');
+});
+
+// ============================================================================
+// 33. STAGE 3C.2 — HONEST BLIND REVIEW & 4-DIMENSION EDUCATIONAL LESSON EVALUATOR ([A-06])
+// ============================================================================
+test('Stage 3C.2 — eval_matrix reports DETERMINISTIC_GATE_ONLY with 0 tokens and enforces 4-dimension educational integrity', async () => {
+  const evalMod = await import('../tools/intelligence/eval_matrix.mjs');
+
+  const blind = await evalMod.runBlindIndependentReview({
+    specPath: '',
+    gitDiff: 'clean',
+    auditMetrics: { astPassed: true, securityPassed: true, visualPassed: true, compositeScore: 100 }
+  });
+  assert.equal(blind.reviewMode, 'DETERMINISTIC_GATE_ONLY');
+  assert.equal(blind.tokensUsed, 0);
+
+  const cleanRoomExcerpt =
+    'Un modelo de lenguaje aprende regularidades estadísticas en secuencias amplias de texto mediante parámetros numéricos entrenados con miles de ejemplos diversos para predecir palabras útiles en cada paso';
+  const context = {
+    sources: [
+      {
+        id: 'src-clean-01',
+        license: 'CLEAN_ROOM_ONLY',
+        usage_policy: 'CLEAN_ROOM_FACTS_ONLY',
+        excerpt: cleanRoomExcerpt
+      }
+    ],
+    videosCatalog: [
+      {
+        id: 'vid-1',
+        anchors_status: 'VERIFIED',
+        duration_sec: 300,
+        anchors: [{ start_sec: 15, end_sec: 75 }]
+      },
+      {
+        id: 'vid-2',
+        anchors_status: 'VERIFIED',
+        duration_sec: 300,
+        anchors: [{ start_sec: 20, end_sec: 90 }]
+      }
+    ]
+  };
+
+  const validLesson = {
+    level: 1,
+    sourceRefs: ['src-clean-01'],
+    videos: ['vid-1', 'vid-2'],
+    quiz: {
+      textQuestions: [{ prompt: '¿Qué tarea realiza una red simple?', answer: 'Reconocer patrones claros.' }],
+      videoQuestions: [{ video_id: 'vid-1', timestamp_sec: 30, prompt: '¿Qué ejemplo muestra el video?' }]
+    },
+    body:
+      'Un buen plan guía al lector paso a paso con datos claros. Mira cada caso real con calma y orden.\n\n' +
+      'Así puedes probar tu idea hoy sin fallos ni dudas.'
+  };
+
+  const passRes = evalMod.evaluateEducationalLessonIntegrity(validLesson, context);
+  assert.equal(passRes.passed, true, JSON.stringify(passRes.violations));
+  assert.equal(passRes.score, 100);
+
+  const badSourceRef = evalMod.evaluateEducationalLessonIntegrity(
+    {
+      ...validLesson,
+      sourceRefs: ['nonexistent-source-999']
+    },
+    context
+  );
+  assert.equal(badSourceRef.passed, false);
+  assert.ok(badSourceRef.violations.length > 0);
+
+  const badVideo = evalMod.evaluateEducationalLessonIntegrity(
+    {
+      ...validLesson,
+      videos: [
+        { id: 'vid-bad', anchors_status: 'UNVERIFIED', duration_sec: 300, anchors: [{ start_sec: 400, end_sec: 450 }] },
+        'vid-2'
+      ]
+    },
+    context
+  );
+  assert.equal(badVideo.passed, false);
+  assert.equal(
+    badVideo.violations.some((v) => v.startsWith('VIDEO_ANCHORS_UNVERIFIED')),
+    true,
+    JSON.stringify(badVideo.violations)
+  );
+
+  const badCodeInInitial = evalMod.evaluateEducationalLessonIntegrity(
+    {
+      ...validLesson,
+      body: `${validLesson.body}\n\n\`\`\`js\nconst forbidden = 42;\n\`\`\`\n`
+    },
+    context
+  );
+  assert.equal(badCodeInInitial.passed, false);
+  assert.equal(
+    badCodeInInitial.violations.some((v) => v.startsWith('LEVEL_1_NO_EXECUTABLE_CODE_BLOCKS')),
+    true,
+    JSON.stringify(badCodeInInitial.violations)
+  );
+
+  const badVoseo = evalMod.evaluateEducationalLessonIntegrity(
+    {
+      ...validLesson,
+      body: 'Con práctica breve tenés que revisar el ejemplo y fijate cómo responde el sistema ante cada prueba.'
+    },
+    context
+  );
+  assert.equal(badVoseo.passed, false);
+  assert.equal(
+    badVoseo.violations.some((v) => v.startsWith('READABILITY_ES_VIOLATION')),
+    true,
+    JSON.stringify(badVoseo.violations)
+  );
+
+  const badOverlap = evalMod.evaluateEducationalLessonIntegrity(
+    {
+      ...validLesson,
+      body: cleanRoomExcerpt
+    },
+    context
+  );
+  assert.equal(badOverlap.passed, false);
+  assert.equal(
+    badOverlap.violations.some((v) => v.startsWith('CLEAN_ROOM_VERBATIM_OVERLAP')),
+    true,
+    JSON.stringify(badOverlap.violations)
+  );
+});
+});
+
+// ============================================================================
+// 34. STAGE 3C.2 — HERMETIC GCP FINOPS LOG/BUDGET ISOLATION & BATCH BUCKET DEFAULT ([A-07], [M-05])
+// ============================================================================
+test('Stage 3C.2 — vertex_ai_bridge FinOps telemetry, budget sync, KMS wrap, and Batch default bucket leave repo ledgers untouched', async () => {
+  const bridge = await import('../tools/intelligence/vertex_ai_bridge.mjs');
+  const finopsUsagePath = path.join(FACTORY_ROOT, 'logs', 'gcp_finops_usage.jsonl');
+  const finopsGovPath = path.join(FACTORY_ROOT, '.agents', 'governance', 'gcp_finops_budget.json');
+
+  const rawLogBefore = fs.readFileSync(finopsUsagePath);
+  const rawGovBefore = fs.readFileSync(finopsGovPath);
+
+  const isoDir = path.join(HERMETIC_TMP_ROOT, `finops-3c2-${Date.now()}`);
+  fs.mkdirSync(isoDir, { recursive: true });
+
+  const prevUsage = process.env.FINOPS_USAGE_LOG_PATH;
+  const prevLog = process.env.FINOPS_LOG_PATH;
+  const prevBudget = process.env.FINOPS_BUDGET_STATE_PATH;
+  const prevCache = process.env.VERTEX_BATCH_JOBS_CACHE_PATH;
+
+  process.env.FINOPS_USAGE_LOG_PATH = path.join(isoDir, 'gcp_finops_usage.jsonl');
+  process.env.FINOPS_LOG_PATH = path.join(isoDir, 'gcp_finops_usage.jsonl');
+  process.env.FINOPS_BUDGET_STATE_PATH = path.join(isoDir, 'gcp_finops_budget.json');
+  process.env.VERTEX_BATCH_JOBS_CACHE_PATH = path.join(isoDir, 'vertex_batch_jobs_cache.json');
+
+  try {
+    const rec = bridge.recordFinOpsTelemetry({
+      operation: 'stage-3c2-hermetic-check',
+      model: 'gemini-3.8-flash',
+      inputChars: 240,
+      outputChars: 80
+    });
+    assert.ok(rec && rec.operation === 'stage-3c2-hermetic-check');
+
+    const syn = bridge.syncFinOpsBudgetJsonSummary('stage-3c2-hermetic-check');
+    assert.equal(syn.passed, true);
+
+    const seenUrls = [];
+    const batchRes = await bridge.submitAndPollVertexBatchJob([{ prompt: 'Ping hermetic default bucket' }], {
+      location: 'global',
+      model: 'gemini-3.8-flash',
+      project: 'test-project',
+      accessToken: 'test-token',
+      poll: false,
+      fetchImpl: async (url) => {
+        seenUrls.push(String(url));
+        if (String(url).includes('upload/storage')) {
+          return new Response(JSON.stringify({ name: 'batches/test/input.jsonl' }), { status: 200 });
+        }
+        return new Response(
+          JSON.stringify({ name: 'projects/p/locations/global/batchPredictionJobs/job-3c2', state: 'JOB_STATE_PENDING' }),
+          { status: 200 }
+        );
+      }
+    });
+    assert.equal(batchRes.ok, true);
+    assert.match(batchRes.inputUri, /^gs:\/\/project-6565e6dc-f33c-49ff-b22-academia-ia-batch\//);
+    assert.ok(seenUrls.some((u) => u.includes('project-6565e6dc-f33c-49ff-b22-academia-ia-batch')));
+
+    const wrapped = await bridge.wrapAndUnwrapKeyWithGcpKms('hermetic-dek-material-3c2', { location: 'global' });
+    assert.equal(wrapped.simulatedDevOnly, true);
+    assert.ok(wrapped.ciphertextBase64);
+  } finally {
+    if (prevUsage === undefined) delete process.env.FINOPS_USAGE_LOG_PATH;
+    else process.env.FINOPS_USAGE_LOG_PATH = prevUsage;
+    if (prevLog === undefined) delete process.env.FINOPS_LOG_PATH;
+    else process.env.FINOPS_LOG_PATH = prevLog;
+    if (prevBudget === undefined) delete process.env.FINOPS_BUDGET_STATE_PATH;
+    else process.env.FINOPS_BUDGET_STATE_PATH = prevBudget;
+    if (prevCache === undefined) delete process.env.VERTEX_BATCH_JOBS_CACHE_PATH;
+    else process.env.VERTEX_BATCH_JOBS_CACHE_PATH = prevCache;
+  }
+
+  assert.equal(Buffer.compare(rawLogBefore, fs.readFileSync(finopsUsagePath)), 0, 'logs/gcp_finops_usage.jsonl must remain untouched');
+  assert.equal(Buffer.compare(rawGovBefore, fs.readFileSync(finopsGovPath)), 0, 'governance gcp_finops_budget.json must remain untouched');
+
+  const finalLogLines = fs.existsSync(finopsUsagePath)
+    ? fs.readFileSync(finopsUsagePath, 'utf8').split(/\r?\n/).filter(Boolean).length
+    : 0;
+  assert.equal(finalLogLines, INITIAL_FINOPS_LOG_LINES, 'FinOps usage line count must be unchanged across full suite');
+  const finalGitPorcelain = execFileSync('git', ['status', '--porcelain'], { cwd: FACTORY_ROOT, encoding: 'utf8' });
+  assert.equal(finalGitPorcelain, INITIAL_GIT_PORCELAIN, 'git status --porcelain must remain identical across full suite');
 });
 
 

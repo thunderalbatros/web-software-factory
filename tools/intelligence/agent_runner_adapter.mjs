@@ -11,7 +11,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { verifyRoleMcpPermission } from './agent_governance_kernel.mjs';
+import { resolveRolePrivilegeRing, verifyRoleMcpPermission } from './agent_governance_kernel.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -21,7 +21,8 @@ const IMMUTABLE_AND_SEALED_PATHS = [
   '.agents/sealed_envelope_evals/',
   '.agents/memory/constitution_lock.json',
   'AGENTS.md',
-  'CONSTRAINTS.md'
+  'CONSTRAINTS.md',
+  'knowledge/ai_academy/CANON_'
 ];
 
 function toPosixRelative(targetPath, baseDir = ROOT) {
@@ -38,35 +39,94 @@ function toPosixRelative(targetPath, baseDir = ROOT) {
 }
 
 /**
- * Validates that a candidate write path stays strictly inside the Bead node's `fileLocks`
- * and never touches sealed evaluation envelopes or immutable constitution files.
+ * Validates that a candidate write path stays strictly inside the Bead node's `fileLocks`,
+ * has an active non-expired lease (when `leaseExpiresAt` is supplied), and never touches
+ * sealed evaluation envelopes or immutable constitution/canon files.
  */
-export function validateFileLockContainment(targetPath, allowedLocks = [], projectRoot = ROOT) {
+export function validateFileLockContainment(targetPath, allowedLocks = [], projectRoot = ROOT, options = {}) {
   const rel = toPosixRelative(targetPath, projectRoot);
   if (!rel || rel.startsWith('..') || path.isAbsolute(rel)) {
-    return { allowed: false, normalizedTarget: rel, matchedLock: null, reason: 'PATH_ESCAPES_FACTORY_ROOT' };
+    return {
+      ok: false,
+      allowed: false,
+      normalizedTarget: rel,
+      matchedLock: null,
+      reason: 'PATH_ESCAPES_FACTORY_ROOT'
+    };
   }
 
   for (const blocked of IMMUTABLE_AND_SEALED_PATHS) {
     if (rel === blocked || rel.startsWith(blocked)) {
-      return { allowed: false, normalizedTarget: rel, matchedLock: null, reason: 'SEALED_OR_IMMUTABLE_PATH_BLOCKED' };
+      return {
+        ok: false,
+        allowed: false,
+        normalizedTarget: rel,
+        matchedLock: null,
+        reason: 'SEALED_OR_IMMUTABLE_PATH_BLOCKED'
+      };
     }
   }
 
-  const normalizedLocks = (Array.isArray(allowedLocks) ? allowedLocks : [])
-    .map((l) => String(l || '').replace(/\\/g, '/').replace(/^\.\//, ''))
-    .filter(Boolean);
-
-  const matchedLock = normalizedLocks.find((lock) => rel === lock || (lock.endsWith('/') && rel.startsWith(lock)));
-  if (!matchedLock) {
-    return { allowed: false, normalizedTarget: rel, matchedLock: null, reason: 'OUTSIDE_BEAD_FILE_LOCKS' };
+  const nowMs = Number.isFinite(options?.nowMs) ? options.nowMs : Date.now();
+  if (options?.leaseExpiresAt) {
+    const expMs = Date.parse(options.leaseExpiresAt);
+    if (Number.isFinite(expMs) && nowMs > expMs) {
+      return {
+        ok: false,
+        allowed: false,
+        normalizedTarget: rel,
+        matchedLock: null,
+        reason: 'FILE_LOCK_LEASE_EXPIRED'
+      };
+    }
   }
 
-  return { allowed: true, normalizedTarget: rel, matchedLock };
+  const normalizedLockEntries = (Array.isArray(allowedLocks) ? allowedLocks : [])
+    .map((entry) => {
+      if (entry && typeof entry === 'object' && entry.path) {
+        return {
+          path: String(entry.path).replace(/\\/g, '/').replace(/^\.\//, ''),
+          leaseExpiresAt: entry.leaseExpiresAt || null
+        };
+      }
+      return {
+        path: String(entry || '').replace(/\\/g, '/').replace(/^\.\//, ''),
+        leaseExpiresAt: null
+      };
+    })
+    .filter((e) => Boolean(e.path));
+
+  const matchedEntry = normalizedLockEntries.find(
+    (entry) => rel === entry.path || (entry.path.endsWith('/') && rel.startsWith(entry.path))
+  );
+  if (!matchedEntry) {
+    return {
+      ok: false,
+      allowed: false,
+      normalizedTarget: rel,
+      matchedLock: null,
+      reason: 'OUTSIDE_BEAD_FILE_LOCKS'
+    };
+  }
+
+  if (matchedEntry.leaseExpiresAt) {
+    const expMs = Date.parse(matchedEntry.leaseExpiresAt);
+    if (Number.isFinite(expMs) && nowMs > expMs) {
+      return {
+        ok: false,
+        allowed: false,
+        normalizedTarget: rel,
+        matchedLock: matchedEntry.path,
+        reason: 'FILE_LOCK_LEASE_EXPIRED'
+      };
+    }
+  }
+
+  return { ok: true, allowed: true, normalizedTarget: rel, matchedLock: matchedEntry.path };
 }
 
 /**
- * Executes a scoped Bead node synthesis step with strict role + fileLock + MCP enforcement.
+ * Executes a scoped Bead node synthesis step with strict fail-closed role + fileLock + TTL + MCP enforcement.
  */
 export async function executeScopedBeadNode({
   beadNode = {},
@@ -79,15 +139,37 @@ export async function executeScopedBeadNode({
   const t0 = performance.now();
   const role = beadNode.role || 'senior-coder';
   const beadId = beadNode.id || 'bead-unknown';
-  const fileLocks = Array.isArray(beadNode.fileLocks) && beadNode.fileLocks.length > 0
-    ? beadNode.fileLocks
-    : [`projects/${projectSlug}/index.html`];
+  const rawLocks =
+    Array.isArray(beadNode.fileLocks) && beadNode.fileLocks.length > 0
+      ? beadNode.fileLocks
+      : [`projects/${projectSlug}/index.html`];
+  const fileLocks = rawLocks.map((l) => (l && typeof l === 'object' ? l.path : l)).filter(Boolean);
+
+  if (beadNode.leaseExpiresAt) {
+    const nodeLeaseMs = Date.parse(beadNode.leaseExpiresAt);
+    if (Number.isFinite(nodeLeaseMs) && Date.now() > nodeLeaseMs) {
+      return {
+        ok: false,
+        mode: 'blocked',
+        beadId,
+        role,
+        fileLocksVerified: false,
+        mcpWritePermitted: false,
+        reason: `FILE_LOCK_LEASE_EXPIRED: Bead '${beadId}' lock lease expired at ${beadNode.leaseExpiresAt}`,
+        latencyMs: Number((performance.now() - t0).toFixed(2))
+      };
+    }
+  }
 
   const rolePromptPath = path.join(ROOT, '.agents', 'agency', 'roles', `${role}.md`);
   const rolePromptExists = fs.existsSync(rolePromptPath);
 
-  const lockChecks = fileLocks.map((lockPath) => validateFileLockContainment(lockPath, fileLocks, projectDir));
-  const fileLocksVerified = lockChecks.length > 0 && lockChecks.every((c) => c.allowed);
+  const lockChecks = fileLocks.map((lockPath) =>
+    validateFileLockContainment(lockPath, beadNode.fileLockLeases || rawLocks, projectDir, {
+      leaseExpiresAt: beadNode.leaseExpiresAt || null
+    })
+  );
+  const fileLocksVerified = lockChecks.length > 0 && !lockChecks.some((c) => !c.ok || !c.allowed);
   if (!fileLocksVerified) {
     return {
       ok: false,
@@ -95,17 +177,36 @@ export async function executeScopedBeadNode({
       beadId,
       role,
       fileLocksVerified: false,
-      reason: lockChecks.find((c) => !c.allowed)?.reason || 'FILE_LOCK_CONTAINMENT_FAILURE',
+      mcpWritePermitted: false,
+      reason: lockChecks.find((c) => !c.ok || !c.allowed)?.reason || 'FILE_LOCK_CONTAINMENT_FAILURE',
       latencyMs: Number((performance.now() - t0).toFixed(2))
     };
   }
 
-  const mcpCheck = verifyRoleMcpPermission({
-    roleId: role,
-    mcpServer: 'filesystem-scoped',
-    toolName: 'filesystem_scoped_write',
-    targetPath: lockChecks[0].normalizedTarget
-  });
+  const ring = resolveRolePrivilegeRing(role);
+  const mcpChecks = lockChecks.map((c) =>
+    verifyRoleMcpPermission({
+      roleId: role,
+      mcpServer: 'filesystem-scoped',
+      toolName: 'filesystem_scoped_write',
+      targetPath: c.normalizedTarget
+    })
+  );
+  const deniedMcp = mcpChecks.find((m) => !m?.allowed);
+  if (!ring.canWriteWorkspace || deniedMcp) {
+    return {
+      ok: false,
+      mode: 'blocked',
+      beadId,
+      role,
+      fileLocksVerified: true,
+      mcpWritePermitted: false,
+      reason:
+        deniedMcp?.reason ||
+        `READONLY_ROLE_BLOCKED: Role '${role}' (${ring.ringName}) has canWriteWorkspace=false and cannot execute write beads.`,
+      latencyMs: Number((performance.now() - t0).toFixed(2))
+    };
+  }
 
   let mode = 'deterministic-zero-cost';
   let synthesisSummary = `Scoped ${role} execution plan for ${beadId} on [${fileLocks.join(', ')}] (lane=${lane}).`;
@@ -124,7 +225,7 @@ export async function executeScopedBeadNode({
           synthesisSummary = llmRes.text.slice(0, 1200);
         }
       }
-    } catch (_) {
+    } catch {
       mode = 'deterministic-zero-cost';
     }
   }
@@ -135,7 +236,7 @@ export async function executeScopedBeadNode({
     beadId,
     role,
     rolePromptLoaded: rolePromptExists,
-    mcpWritePermitted: Boolean(mcpCheck?.allowed),
+    mcpWritePermitted: true,
     fileLocksVerified: true,
     allowedFiles: lockChecks.map((c) => c.normalizedTarget),
     summary: synthesisSummary,

@@ -399,7 +399,7 @@ export function validateAgentPolicyProposal(snapshot, proposedEvent, options = {
   const actorRole = options.actorRole || 'agent';
   const eventObj = typeof proposedEvent === 'string'
     ? { type: proposedEvent }
-    : { ...(proposedEvent || {}) };
+    : { ...proposedEvent };
   const eventType = String(eventObj.type || '').trim();
 
   if (!FACTORY_EVENT_VOCABULARY.includes(eventType)) {
@@ -461,13 +461,13 @@ export function syncProjectStatechartSnapshot(projectInput = '', eventSequence =
     try {
       const p = JSON.parse(fs.readFileSync(prdJsonPath, 'utf8'));
       gate1Status = p.prdInterviewStatus || gate1Status;
-    } catch (_) {}
+    } catch {}
   }
   if (fs.existsSync(specJsonPath)) {
     try {
       const s = JSON.parse(fs.readFileSync(specJsonPath, 'utf8'));
       gate2Status = s.specInterviewStatus || gate2Status;
-    } catch (_) {}
+    } catch {}
   }
 
   const actor = createActor(factoryLifecycleMachine, {
@@ -564,7 +564,7 @@ export function syncProjectStatechartSnapshot(projectInput = '', eventSequence =
         updatedAt: payload.updatedAt
       }
     });
-  } catch (_) {}
+  } catch {}
 
   return payload;
 }

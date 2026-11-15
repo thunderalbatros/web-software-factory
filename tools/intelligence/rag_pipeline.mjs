@@ -53,7 +53,7 @@ function getLoadedGraphData(forceRebuild = false) {
     }
     cachedGraphData = buildAndPersistAllGraphs();
     return cachedGraphData;
-  } catch (_) {
+  } catch {
     return null;
   }
 }
@@ -63,7 +63,7 @@ let DatabaseSyncClass = null;
 try {
   const sqliteMod = await import('node:sqlite');
   DatabaseSyncClass = sqliteMod.DatabaseSync || null;
-} catch (_) {
+} catch {
   DatabaseSyncClass = null;
 }
 
@@ -72,7 +72,7 @@ let MiniSearchClass = null;
 try {
   const mod = await import('minisearch');
   MiniSearchClass = mod.default || mod;
-} catch (_) {
+} catch {
   const msPath = path.join(ROOT, 'node_modules', 'minisearch', 'dist', 'es', 'index.js');
   if (fs.existsSync(msPath)) {
     const mod = await import(`file://${msPath.replace(/\\/g, '/')}`);
@@ -99,7 +99,7 @@ function loadEnv() {
             env[match[1]] = (match[2] || '').trim();
           }
         });
-      } catch (_) {}
+      } catch {}
     }
   }
   return env;
@@ -132,7 +132,8 @@ const BILINGUAL_THESAURUS = [
   { match: /\b(base de datos|sqlite|d1|durable objects|websocket|hibernation|cloudflare|sre|resiliencia|workers|hono)\b/i, expand: 'CANON_CLOUDFLARE_D1_WORKERS_PAID_FINOPS_AND_EDGE_OPTIMIZATION_2026 designing_data_intensive_applications clean_architecture durable objects sqlite wal indexes hibernation database_internals release_it' },
   { match: /\b(rag|lightrag|hipporag|fts5|bm25|rrf|rerank|reranker|chunking|embeddings|vector|qdrant)\b/i, expand: 'CANON_SOTA_RAG_ARCHITECTURES_AND_TOOLS_2026 lightrag hipporag sqlite fts5 bm25 contextual retrieval reciprocal rank fusion cross-encoder onnx' },
   { match: /\b(akenine-moller|game\s*engine\s*architecture|real-time\s*rendering)\b/i, expand: 'LIBRARY_INGEST_02_MOTION_SHADERS_GAME_ENGINE_AND_AUDIO_25_BOOKS_2026 jason gregory real-time rendering' },
-  { match: /\b(academia|pedagogia|pedagogía|socratico|socrático|unesco|ocde|oecd|diataxis|diátaxis|learnlm|sweller|bloom|gamificacion|gamificación|fsrs|tutor|racha|byok|privacidad|biggs|merrill|gagne|gagné|triangulacion|triangulación|curriculo|currículo)\b/i, expand: 'CANON_PEDAGOGICAL_SCAFFOLDING_UNESCO_DIATAXIS_AND_SOCRATIC_LEARNLM_2026 CANON_INCLUSIVE_MINIMALIST_UX_BRILLIANT_STRIPE_AND_DISTILL_2026 CANON_ETHICAL_GAMIFICATION_ZERO_COST_TUTOR_AND_PRIVACY_2026 CANON_AUTONOMOUS_CURRICULUM_ENGINEERING_MULTIMEDIA_TRIANGULATION_AND_ASSESSMENT_2026 unesco acquire deepen create sweller bloom socratic learnlm biggs merrill gagne brilliant stripe distill ts-fsrs webcrypto ley 25326 ley 26653' }
+  { match: /\b(academia|pedagogia|pedagogía|socratico|socrático|unesco|ocde|oecd|diataxis|diátaxis|learnlm|sweller|bloom|gamificacion|gamificación|fsrs|tutor|racha|byok|privacidad|biggs|merrill|gagne|gagné|triangulacion|triangulación|curriculo|currículo)\b/i, expand: 'CANON_PEDAGOGICAL_SCAFFOLDING_UNESCO_DIATAXIS_AND_SOCRATIC_LEARNLM_2026 CANON_INCLUSIVE_MINIMALIST_UX_BRILLIANT_STRIPE_AND_DISTILL_2026 CANON_ETHICAL_GAMIFICATION_ZERO_COST_TUTOR_AND_PRIVACY_2026 CANON_AUTONOMOUS_CURRICULUM_ENGINEERING_MULTIMEDIA_TRIANGULATION_AND_ASSESSMENT_2026 unesco acquire deepen create sweller bloom socratic learnlm biggs merrill gagne brilliant stripe distill ts-fsrs webcrypto ley 25326 ley 26653' },
+  { match: /\b(pensamiento\s+cr[ií]tico|alucinaci[oó]n|alucinaciones|verificaci[oó]n\s+de\s+fuentes)\b/i, expand: 'CANON_PEDAGOGICAL_SCAFFOLDING_UNESCO_DIATAXIS_AND_SOCRATIC_LEARNLM_2026 CANON_AUTONOMOUS_CURRICULUM_ENGINEERING_MULTIMEDIA_TRIANGULATION_AND_ASSESSMENT_2026 unesco acquire pensamiento critico alucinacion sesgo clean-room' }
 ];
 
 export function expandQueryBilingual(query) {
@@ -187,7 +188,7 @@ function scanKnowledgeFiles(dir, maxDepth = 4, depth = 0, mode = 'full') {
         }
       }
     }
-  } catch (_) {}
+  } catch {}
 
   return files;
 }
@@ -421,7 +422,7 @@ export function invalidateIndexCache() {
   cachedIndex = null;
   lastIndexTime = 0;
   if (cachedSqliteDb) {
-    try { cachedSqliteDb.close(); } catch (_) {}
+    try { cachedSqliteDb.close(); } catch {}
     cachedSqliteDb = null;
   }
 }
@@ -504,32 +505,41 @@ export function deduplicateAndVacuumSqliteFts5() {
     return { passed: false, reason: 'SQLITE_NOT_AVAILABLE_OR_FILE_MISSING' };
   }
   if (cachedSqliteDb) {
-    try { cachedSqliteDb.close(); } catch (_) {}
+    try { cachedSqliteDb.close(); } catch {}
     cachedSqliteDb = null;
   }
   const sizeBeforeMb = Number((fs.statSync(SQLITE_FTS_FILE).size / (1024 * 1024)).toFixed(3));
   const db = new DatabaseSyncClass(SQLITE_FTS_FILE);
-  db.exec('PRAGMA journal_mode = WAL; PRAGMA synchronous = NORMAL; PRAGMA busy_timeout = 5000;');
-  const beforeStats = db
-    .prepare('SELECT COUNT(*) AS totalRows, COUNT(DISTINCT id) AS uniqueIds FROM chunks_fts')
-    .get();
+  let beforeStats;
+  let afterStats;
+  try {
+    db.exec('PRAGMA journal_mode = WAL; PRAGMA synchronous = NORMAL; PRAGMA busy_timeout = 5000;');
+    beforeStats = db
+      .prepare('SELECT COUNT(*) AS totalRows, COUNT(DISTINCT id) AS uniqueIds FROM chunks_fts')
+      .get();
 
-  if (beforeStats.totalRows > beforeStats.uniqueIds) {
-    db.exec(`
-      DELETE FROM chunks_fts
-      WHERE rowid NOT IN (
-        SELECT MIN(rowid) FROM chunks_fts GROUP BY id
-      );
-    `);
+    if (beforeStats.totalRows > beforeStats.uniqueIds) {
+      db.exec(`
+        DELETE FROM chunks_fts
+        WHERE rowid NOT IN (
+          SELECT MIN(rowid) FROM chunks_fts GROUP BY id
+        );
+      `);
+    }
+    try { db.exec("INSERT INTO chunks_fts(chunks_fts) VALUES('optimize');"); } catch {}
+    try { db.exec('VACUUM;'); } catch {}
+    try { db.exec('PRAGMA wal_checkpoint(TRUNCATE);'); } catch {}
+
+    afterStats = db
+      .prepare('SELECT COUNT(*) AS totalRows, COUNT(DISTINCT id) AS uniqueIds, COUNT(DISTINCT source) AS uniqueDocs FROM chunks_fts')
+      .get();
+  } finally {
+    try {
+      db.close();
+    } catch {
+      // ignore close failure
+    }
   }
-  try { db.exec("INSERT INTO chunks_fts(chunks_fts) VALUES('optimize');"); } catch (_) {}
-  try { db.exec('VACUUM;'); } catch (_) {}
-  try { db.exec('PRAGMA wal_checkpoint(TRUNCATE);'); } catch (_) {}
-
-  const afterStats = db
-    .prepare('SELECT COUNT(*) AS totalRows, COUNT(DISTINCT id) AS uniqueIds, COUNT(DISTINCT source) AS uniqueDocs FROM chunks_fts')
-    .get();
-  db.close();
 
   const sizeAfterMb = Number((fs.statSync(SQLITE_FTS_FILE).size / (1024 * 1024)).toFixed(3));
   return {
@@ -588,48 +598,55 @@ export function ingestMarkdownFilesIntoSqliteFts5(filePaths = []) {
   }
   invalidateIndexCache();
   const db = new DatabaseSyncClass(SQLITE_FTS_FILE);
-  db.exec('PRAGMA journal_mode = WAL; PRAGMA synchronous = NORMAL; PRAGMA busy_timeout = 5000;');
-
-  const delSourceStmt = db.prepare('DELETE FROM chunks_fts WHERE source = ?');
-  const delIdStmt = db.prepare('DELETE FROM chunks_fts WHERE id = ?');
-  const insertStmt = db.prepare(
-    'INSERT INTO chunks_fts (id, source, category, snippet, title, section, text) VALUES (?, ?, ?, ?, ?, ?, ?)'
-  );
-
   let filesIngested = 0;
   let chunksInserted = 0;
+  let stats;
+  try {
+    db.exec('PRAGMA journal_mode = WAL; PRAGMA synchronous = NORMAL; PRAGMA busy_timeout = 5000;');
 
-  db.exec('BEGIN IMMEDIATE');
-  for (const fp of filePaths) {
-    const absPath = path.isAbsolute(fp) ? fp : path.join(ROOT, fp);
-    if (!fs.existsSync(absPath)) continue;
-    const chunks = createDocumentChunks(absPath);
-    if (!chunks.length) continue;
-    const sourceUri = chunks[0].source;
-    delSourceStmt.run(sourceUri);
-    for (const c of chunks) {
-      delIdStmt.run(c.id);
-      insertStmt.run(
-        String(c.id || ''),
-        String(c.source || ''),
-        String(c.category || 'canon-treatise'),
-        String(c.snippet || ''),
-        String(c.title || ''),
-        String(c.section || ''),
-        String(c.text || '')
-      );
-      chunksInserted++;
+    const delSourceStmt = db.prepare('DELETE FROM chunks_fts WHERE source = ?');
+    const delIdStmt = db.prepare('DELETE FROM chunks_fts WHERE id = ?');
+    const insertStmt = db.prepare(
+      'INSERT INTO chunks_fts (id, source, category, snippet, title, section, text) VALUES (?, ?, ?, ?, ?, ?, ?)'
+    );
+
+    db.exec('BEGIN IMMEDIATE');
+    for (const fp of filePaths) {
+      const absPath = path.isAbsolute(fp) ? fp : path.join(ROOT, fp);
+      if (!fs.existsSync(absPath)) continue;
+      const chunks = createDocumentChunks(absPath);
+      if (!chunks.length) continue;
+      const sourceUri = chunks[0].source;
+      delSourceStmt.run(sourceUri);
+      for (const c of chunks) {
+        delIdStmt.run(c.id);
+        insertStmt.run(
+          String(c.id || ''),
+          String(c.source || ''),
+          String(c.category || 'canon-treatise'),
+          String(c.snippet || ''),
+          String(c.title || ''),
+          String(c.section || ''),
+          String(c.text || '')
+        );
+        chunksInserted++;
+      }
+      filesIngested++;
     }
-    filesIngested++;
-  }
-  db.exec('COMMIT');
-  try { db.exec("INSERT INTO chunks_fts(chunks_fts) VALUES('optimize');"); } catch (_) {}
-  try { db.exec('PRAGMA wal_checkpoint(TRUNCATE);'); } catch (_) {}
+    db.exec('COMMIT');
+    try { db.exec("INSERT INTO chunks_fts(chunks_fts) VALUES('optimize');"); } catch {}
+    try { db.exec('PRAGMA wal_checkpoint(TRUNCATE);'); } catch {}
 
-  const stats = db
-    .prepare('SELECT COUNT(*) AS totalRows, COUNT(DISTINCT id) AS uniqueIds, COUNT(DISTINCT source) AS uniqueDocs FROM chunks_fts')
-    .get();
-  db.close();
+    stats = db
+      .prepare('SELECT COUNT(*) AS totalRows, COUNT(DISTINCT id) AS uniqueIds, COUNT(DISTINCT source) AS uniqueDocs FROM chunks_fts')
+      .get();
+  } finally {
+    try {
+      db.close();
+    } catch {
+      // ignore close failure
+    }
+  }
 
   return {
     passed: stats.totalRows === stats.uniqueIds,
@@ -648,100 +665,114 @@ export function ingestMarkdownFilesIntoSqliteFts5(filePaths = []) {
  */
 function buildOrOpenSqliteFts5Index(chunks, forceRebuild = false) {
   if (!DatabaseSyncClass) return null;
-  try {
-    if (!fs.existsSync(CACHE_DIR)) {
-      fs.mkdirSync(CACHE_DIR, { recursive: true });
-    }
-    const dbExists = fs.existsSync(SQLITE_FTS_FILE);
-    if (!forceRebuild && dbExists) {
-      if (cachedSqliteDb) return cachedSqliteDb;
-      const db = new DatabaseSyncClass(SQLITE_FTS_FILE);
-      db.exec('PRAGMA journal_mode = WAL; PRAGMA synchronous = NORMAL; PRAGMA busy_timeout = 5000;');
-      const row = db
-        .prepare('SELECT COUNT(*) AS cnt, COUNT(DISTINCT id) AS uniq FROM chunks_fts')
-        .get();
-      if (row && row.cnt > row.uniq) {
-        db.exec(`
-          DELETE FROM chunks_fts
-          WHERE rowid NOT IN (
-            SELECT MIN(rowid) FROM chunks_fts GROUP BY id
-          );
-        `);
-        try { db.exec("INSERT INTO chunks_fts(chunks_fts) VALUES('optimize');"); } catch (_) {}
-      }
-      const cleanCnt = row ? Math.min(row.cnt, row.uniq) : 0;
-      if (cleanCnt >= Math.floor(chunks.length * 0.95)) {
-        try { db.exec("INSERT INTO chunks_fts(chunks_fts) VALUES('optimize');"); } catch (_) {}
-        cachedSqliteDb = db;
-        return db;
-      }
-      try { db.close(); } catch (_) {}
-    }
-
-    if (cachedSqliteDb) {
-      try { cachedSqliteDb.close(); } catch (_) {}
-      cachedSqliteDb = null;
-    }
-
-    let db;
-    try {
-      db = new DatabaseSyncClass(SQLITE_FTS_FILE);
-      db.exec('PRAGMA journal_mode = WAL; PRAGMA synchronous = NORMAL; PRAGMA busy_timeout = 5000; PRAGMA foreign_keys = ON;');
-    } catch (_) {
-      if (fs.existsSync(SQLITE_FTS_FILE)) {
-        // Never delete blindly: keep a timestamped copy of the corrupt cache for forensics.
-        const corruptBackup = `${SQLITE_FTS_FILE}.${new Date().toISOString().replace(/[:.]/g, '-')}.corrupt`;
-        try { fs.renameSync(SQLITE_FTS_FILE, corruptBackup); } catch (_) {}
-      }
-      db = new DatabaseSyncClass(SQLITE_FTS_FILE);
-      db.exec('PRAGMA journal_mode = WAL; PRAGMA synchronous = NORMAL; PRAGMA busy_timeout = 5000; PRAGMA foreign_keys = ON;');
-    }
-
-    db.exec('DROP TABLE IF EXISTS chunks_fts;');
-    db.exec(`
-      CREATE VIRTUAL TABLE IF NOT EXISTS chunks_fts USING fts5(
-        id UNINDEXED,
-        source UNINDEXED,
-        category UNINDEXED,
-        snippet UNINDEXED,
-        title,
-        section,
-        text,
-        tokenize='porter unicode61 remove_diacritics 2'
-      );
-    `);
-
-    // Anti-duplication guard: even if unlinkSync failed on Windows due to a file handle, wipe existing rows before bulk insert
-    db.exec('DELETE FROM chunks_fts;');
-
-    const insertStmt = db.prepare(
-      'INSERT INTO chunks_fts (id, source, category, snippet, title, section, text) VALUES (?, ?, ?, ?, ?, ?, ?)'
-    );
-    const seenChunkIds = new Set();
-    db.exec('BEGIN IMMEDIATE');
-    for (let i = 0; i < chunks.length; i++) {
-      const c = chunks[i];
-      const cid = String(c.id || '');
-      if (seenChunkIds.has(cid)) continue;
-      seenChunkIds.add(cid);
-      insertStmt.run(
-        cid,
-        String(c.source || ''),
-        String(c.category || 'general'),
-        String(c.snippet || ''),
-        String(c.title || ''),
-        String(c.section || ''),
-        String(c.text || '')
-      );
-    }
-    db.exec('COMMIT');
-    try { db.exec("INSERT INTO chunks_fts(chunks_fts) VALUES('optimize');"); } catch (_) {}
-    try { db.exec('PRAGMA wal_checkpoint(TRUNCATE);'); } catch (_) {}
-    cachedSqliteDb = db;
-    return db;
-  } catch (_) {
-    return null;
+  if (!fs.existsSync(CACHE_DIR)) {
+    fs.mkdirSync(CACHE_DIR, { recursive: true });
   }
+  const dbExists = fs.existsSync(SQLITE_FTS_FILE);
+  let db = null;
+  try {
+      if (!forceRebuild && dbExists) {
+        if (cachedSqliteDb) return cachedSqliteDb;
+        const probeDb = new DatabaseSyncClass(SQLITE_FTS_FILE);
+        let promotedToCache = false;
+        try {
+          probeDb.exec('PRAGMA journal_mode = WAL; PRAGMA synchronous = NORMAL; PRAGMA busy_timeout = 5000;');
+          const row = probeDb
+            .prepare('SELECT COUNT(*) AS cnt, COUNT(DISTINCT id) AS uniq FROM chunks_fts')
+            .get();
+          if (row && row.cnt > row.uniq) {
+            probeDb.exec(`
+              DELETE FROM chunks_fts
+              WHERE rowid NOT IN (
+                SELECT MIN(rowid) FROM chunks_fts GROUP BY id
+              );
+            `);
+            try { probeDb.exec("INSERT INTO chunks_fts(chunks_fts) VALUES('optimize');"); } catch {}
+          }
+          const cleanCnt = row ? Math.min(row.cnt, row.uniq) : 0;
+          if (cleanCnt >= Math.floor(chunks.length * 0.95)) {
+            try { probeDb.exec("INSERT INTO chunks_fts(chunks_fts) VALUES('optimize');"); } catch {}
+            cachedSqliteDb = probeDb;
+            promotedToCache = true;
+            return probeDb;
+          }
+        } finally {
+          if (!promotedToCache) {
+            try { probeDb.close(); } catch {}
+          }
+        }
+      }
+
+      if (cachedSqliteDb) {
+        try { cachedSqliteDb.close(); } catch {}
+        cachedSqliteDb = null;
+      }
+
+      try {
+        db = new DatabaseSyncClass(SQLITE_FTS_FILE);
+        db.exec('PRAGMA journal_mode = WAL; PRAGMA synchronous = NORMAL; PRAGMA busy_timeout = 5000; PRAGMA foreign_keys = ON;');
+      } catch {
+        if (db) {
+          try { db.close(); } catch {}
+          db = null;
+        }
+        if (fs.existsSync(SQLITE_FTS_FILE)) {
+          // Never delete blindly: keep a timestamped copy of the corrupt cache for forensics.
+          const corruptBackup = `${SQLITE_FTS_FILE}.${new Date().toISOString().replace(/[:.]/g, '-')}.corrupt`;
+          try { fs.renameSync(SQLITE_FTS_FILE, corruptBackup); } catch {}
+        }
+        db = new DatabaseSyncClass(SQLITE_FTS_FILE);
+        db.exec('PRAGMA journal_mode = WAL; PRAGMA synchronous = NORMAL; PRAGMA busy_timeout = 5000; PRAGMA foreign_keys = ON;');
+      }
+
+      db.exec('DROP TABLE IF EXISTS chunks_fts;');
+      db.exec(`
+        CREATE VIRTUAL TABLE IF NOT EXISTS chunks_fts USING fts5(
+          id UNINDEXED,
+          source UNINDEXED,
+          category UNINDEXED,
+          snippet UNINDEXED,
+          title,
+          section,
+          text,
+          tokenize='porter unicode61 remove_diacritics 2'
+        );
+      `);
+
+      // Anti-duplication guard: even if unlinkSync failed on Windows due to a file handle, wipe existing rows before bulk insert
+      db.exec('DELETE FROM chunks_fts;');
+
+      const insertStmt = db.prepare(
+        'INSERT INTO chunks_fts (id, source, category, snippet, title, section, text) VALUES (?, ?, ?, ?, ?, ?, ?)'
+      );
+      const seenChunkIds = new Set();
+      db.exec('BEGIN IMMEDIATE');
+      for (let i = 0; i < chunks.length; i++) {
+        const c = chunks[i];
+        const cid = String(c.id || '');
+        if (seenChunkIds.has(cid)) continue;
+        seenChunkIds.add(cid);
+        insertStmt.run(
+          cid,
+          String(c.source || ''),
+          String(c.category || 'general'),
+          String(c.snippet || ''),
+          String(c.title || ''),
+          String(c.section || ''),
+          String(c.text || '')
+        );
+      }
+      db.exec('COMMIT');
+      try { db.exec("INSERT INTO chunks_fts(chunks_fts) VALUES('optimize');"); } catch {}
+      try { db.exec('PRAGMA wal_checkpoint(TRUNCATE);'); } catch {}
+      cachedSqliteDb = db;
+      return db;
+    } catch {
+      if (db && db !== cachedSqliteDb) {
+        try { db.close(); } catch {}
+      }
+      return null;
+    }
 }
 
 const FTS_GENERIC_STOP = new Set([
@@ -798,7 +829,7 @@ function querySqliteFts5(sqliteDb, chunkMap, terms, limit = 20) {
     });
     scored.sort((a, b) => b.score - a.score);
     return capResultsPerFile(scored, 2, limit);
-  } catch (_) {
+  } catch {
     return [];
   }
 }
@@ -842,7 +873,7 @@ export function getOrBuildMiniSearchIndex(force = false) {
 
   // Clean up legacy duplicate 248MB JSON cache if present (Priority 4 Forensic Audit)
   if (fs.existsSync(CACHE_FILE)) {
-    try { fs.unlinkSync(CACHE_FILE); } catch (_) {}
+    try { fs.unlinkSync(CACHE_FILE); } catch {}
   }
 
   if (!force && DatabaseSyncClass && fs.existsSync(SQLITE_FTS_FILE)) {
@@ -864,7 +895,7 @@ export function getOrBuildMiniSearchIndex(force = false) {
           return cachedIndex;
         }
       }
-    } catch (_) {}
+    } catch {}
   }
 
   const searchDirs = [
@@ -886,7 +917,7 @@ export function getOrBuildMiniSearchIndex(force = false) {
       try {
         const chunks = createDocumentChunks(f);
         allChunks.push(...chunks);
-      } catch (_) {}
+      } catch {}
     }
   }
 
@@ -1015,7 +1046,7 @@ function runLocalSemanticVectorRanker(chunks, queryString, limit = 20) {
   if (totalQueryIdf <= 0) totalQueryIdf = 1;
 
   // Pass 2: Fast bitwise scoring over matched candidates only (<0.5ms)
-  const scored = new Array(candidates.length);
+  const scored = [];
   for (let k = 0; k < candidates.length; k++) {
     const { idx, mask, titleMask } = candidates[k];
     const c = chunks[idx];
@@ -1037,14 +1068,14 @@ function runLocalSemanticVectorRanker(chunks, queryString, limit = 20) {
     const categoryMult = c.category === 'canon-treatise'
       ? 3.2
       : (c.category === 'canon-vault' ? 1.9 : (c.category === 'canon-book' ? 1.45 : 0.9));
-    scored[k] = {
+    scored.push({
       id: c.id,
       source: c.source,
       title: c.title,
       snippet: c.snippet,
       text: c.text,
       score: weightedScore * (1 + idfCoverage) * categoryMult
-    };
+    });
   }
 
   scored.sort((a, b) => b.score - a.score);
@@ -1100,7 +1131,7 @@ async function runLocalOnnxCrossEncoderRerank(query, candidates, limit = 8) {
     });
     reranked.sort((a, b) => b.combinedScore - a.combinedScore);
     return reranked.slice(0, limit);
-  } catch (_) {
+  } catch {
     return candidates.slice(0, limit);
   }
 }
@@ -1184,7 +1215,7 @@ export async function queryKnowledge(query, limit = 8, options = {}) {
         if (Array.isArray(exp.canonicalTerms)) expandedTerms = exp.canonicalTerms;
         if (exp.canonicalEnglishQuery) canonicalQuery = exp.canonicalEnglishQuery;
       }
-    } catch (_) {}
+    } catch {}
   }
 
   const searchQuery = [effectiveQuery, bilingualExpansion, canonicalQuery, ...expandedTerms]
@@ -1220,7 +1251,7 @@ export async function queryKnowledge(query, limit = 8, options = {}) {
         };
       });
       if (bm25Results.length > 0) rankedLists.push(bm25Results);
-    } catch (_) {}
+    } catch {}
   }
 
   // Engine B: Single-Pass Bitmask Exact IDF + LightRAG Dual-Level Ranker (<15ms over Canon Pool)
@@ -1283,7 +1314,7 @@ export async function queryKnowledge(query, limit = 8, options = {}) {
         });
         if (qdrantResults.length > 0) rankedLists.push(qdrantResults);
       }
-    } catch (_) {}
+    } catch {}
   }
 
   // 4. Fused Ranking using Reciprocal Rank Fusion (RRF, k=60) + Squad Semantic Router + 1-Hop Wikilink Graph & CRAG
@@ -1314,7 +1345,7 @@ export async function queryKnowledge(query, limit = 8, options = {}) {
           squadRoute: route.primarySquad.squad
         })).slice(0, limit);
       }
-    } catch (_) {}
+    } catch {}
   }
 
   const tierResolved = fused.map(item => {
@@ -1428,7 +1459,7 @@ Output pure markdown text and cite the specific sources used.`;
     if (vertexAnswer && vertexAnswer.trim().length > 10) {
       return vertexAnswer + '\n\n*(Sintetizado con Google Cloud Vertex AI · Gemini 2.5 Flash)*' + webTag;
     }
-  } catch (_) {}
+  } catch {}
 
   // 2. Fallback: Groq Ultra-Fast LPU (Verified 2026 Production Models)
   if (GROQ_API_KEY) {
@@ -1463,7 +1494,7 @@ Output pure markdown text and cite the specific sources used.`;
           const content = data.choices?.[0]?.message?.content;
           if (content) return content + `\n\n*(Sintetizado con Groq LPU · ${model})*` + webTag;
         }
-      } catch (_) {}
+      } catch {}
     }
   }
 

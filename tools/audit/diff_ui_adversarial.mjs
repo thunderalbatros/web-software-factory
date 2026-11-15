@@ -55,7 +55,7 @@ export function runDiffUiAdversarialGate(projectInput = '') {
   try {
     const rawDiff = execSync('git diff --name-only HEAD~1', { cwd: ROOT, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] });
     changedFiles = rawDiff.split(/\r?\n/).map(s => s.trim()).filter(Boolean);
-  } catch (_) {
+  } catch {
     changedFiles = [projectConfig.paths.entryHtml, projectConfig.paths.workerEntry].filter(Boolean);
   }
 

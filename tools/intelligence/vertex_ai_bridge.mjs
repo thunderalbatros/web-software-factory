@@ -240,9 +240,9 @@ function convertValibotSchemaToJsonSchema(schema) {
 
 function normalizeThinkingConfigForModel(modelId, requestedThinkingConfig = undefined, isStructuredJson = false) {
   const m = String(modelId || '').toLowerCase();
-  const isGemini3 = /^gemini-3/.test(m);
-  const isGemini25 = /^gemini-2\.5/.test(m);
-  const isPro = m.includes('pro') || /^gemini-4/.test(m);
+  const isGemini3 = m.startsWith('gemini-3');
+  const isGemini25 = m.startsWith('gemini-2.5');
+  const isPro = m.includes('pro') || m.startsWith('gemini-4');
   const supportsMinimalLevel = /^gemini-3\.(?:0|1|5)/.test(m);
 
   if (requestedThinkingConfig && typeof requestedThinkingConfig === 'object') {
@@ -695,7 +695,30 @@ Respond in structured Markdown with:
  */
 const CACHE_META_PATH = path.join(ROOT, '.agents', 'memory', 'vertex_context_cache.json');
 const DISK_PROMPT_CACHE_PATH = path.join(ROOT, '.agents', 'memory', 'vertex_prompt_cache.json');
-const FINOPS_LOG_PATH = path.join(ROOT, 'logs', 'gcp_finops_usage.jsonl');
+
+export function getFinOpsLogPath() {
+  const custom = process.env.FINOPS_USAGE_LOG_PATH || process.env.FINOPS_LOG_PATH;
+  if (custom) {
+    return path.resolve(custom);
+  }
+  return path.join(ROOT, 'logs', 'gcp_finops_usage.jsonl');
+}
+
+export function getFinOpsBudgetStatePath() {
+  if (process.env.FINOPS_BUDGET_STATE_PATH) {
+    return path.resolve(process.env.FINOPS_BUDGET_STATE_PATH);
+  }
+  return GCP_FINOPS_MEMORY_BUDGET_PATH;
+}
+
+export function getVertexBatchJobsCachePath() {
+  if (process.env.VERTEX_BATCH_JOBS_CACHE_PATH) {
+    return path.resolve(process.env.VERTEX_BATCH_JOBS_CACHE_PATH);
+  }
+  return path.join(ROOT, '.agents', 'memory', 'vertex_batch_jobs_cache.json');
+}
+
+const DEFAULT_GCP_BATCH_BUCKET = 'project-6565e6dc-f33c-49ff-b22-academia-ia-batch';
 
 const RATE_BUCKET = {
   tokens: 60,
@@ -748,7 +771,8 @@ export function recordFinOpsTelemetry({ operation, model = GEMINI_MODEL, inputCh
       ? Number(Number(fixedCostUsd).toFixed(8))
       : Number(((estInputTokens * inRatePerToken) + (estOutputTokens * outRatePerToken)).toFixed(8));
 
-    fs.mkdirSync(path.dirname(FINOPS_LOG_PATH), { recursive: true });
+    const finopsLogPath = getFinOpsLogPath();
+    fs.mkdirSync(path.dirname(finopsLogPath), { recursive: true });
     const entry = {
       timestamp: new Date().toISOString(),
       project: GCP_PROJECT,
@@ -759,7 +783,7 @@ export function recordFinOpsTelemetry({ operation, model = GEMINI_MODEL, inputCh
       cacheHit,
       estCostUsd
     };
-    fs.appendFileSync(FINOPS_LOG_PATH, JSON.stringify(entry) + '\n', 'utf8');
+    fs.appendFileSync(finopsLogPath, JSON.stringify(entry) + '\n', 'utf8');
     return entry;
   } catch (telemetryErr) {
     process.env.VERTEX_LAST_DIAGNOSTIC = `finops_telemetry_warn:${telemetryErr.message}`;
@@ -1310,7 +1334,6 @@ export async function speculativeRagSynthesize(query, hits = []) {
 // PHASE 18B: $70 USD GCP FINOPS SHIELD + IMAGEN 3 PBR/3D PLATES + BATCH + VLM GATE
 // ============================================================================
 export const GCP_FINOPS_BUDGET_PATH = path.join(ROOT, '.agents', 'governance', 'gcp_finops_budget.json');
-const BATCH_JOBS_CACHE_PATH = path.join(ROOT, '.cache', 'vertex_batch_jobs_cache.json');
 
 async function resolveGcpAccessToken(explicitToken = '') {
   if (explicitToken) return String(explicitToken).trim();
@@ -1335,7 +1358,7 @@ async function resolveGcpAccessToken(explicitToken = '') {
         const tokJson = await res.json();
         if (tokJson.access_token) return tokJson.access_token;
       }
-    } catch (_) {}
+    } catch {}
   }
   return runGcloudCli(['auth', 'application-default', 'print-access-token']);
 }
@@ -1366,9 +1389,10 @@ export function getGcpFinOpsStatus() {
   let totalCallsLogged = 0;
   let cacheHitsCount = 0;
 
-  if (fs.existsSync(FINOPS_LOG_PATH)) {
+  const finopsLogPath = getFinOpsLogPath();
+  if (fs.existsSync(finopsLogPath)) {
     try {
-      const lines = fs.readFileSync(FINOPS_LOG_PATH, 'utf8').split(/\r?\n/).filter(Boolean);
+      const lines = fs.readFileSync(finopsLogPath, 'utf8').split(/\r?\n/).filter(Boolean);
       for (const line of lines) {
         const entry = JSON.parse(line);
         const cost = Number(entry.estCostUsd || 0);
@@ -1482,7 +1506,7 @@ function normalizeBatchJsonlRequests(jsonlRequests, batchModel = GEMINI_MODEL) {
       const normalizedThinking = normalizeThinkingConfigForModel(batchModel, requestedThinking, true);
       if (normalizedThinking) {
         payload.request.generationConfig = {
-          ...(payload.request.generationConfig || {}),
+          ...payload.request.generationConfig,
           thinkingConfig: normalizedThinking
         };
       } else if (payload.request.generationConfig && Object.keys(payload.request.generationConfig).length === 0) {
@@ -1523,9 +1547,13 @@ export async function submitAndPollVertexBatchJob(jsonlRequests, options = {}) {
       ? 'https://aiplatform.googleapis.com'
       : `https://${batchLocation}-aiplatform.googleapis.com`;
   const projectId = String(options.project || GCP_PROJECT || env.GCP_PROJECT_ID || '');
-  const rawBucket = String(options.gcsBucket || env.GCP_BATCH_BUCKET || process.env.GCP_BATCH_BUCKET || '').trim();
+  const rawBucket = String(
+    options.gcsBucket !== undefined
+      ? options.gcsBucket
+      : env.GCP_BATCH_BUCKET || process.env.GCP_BATCH_BUCKET || DEFAULT_GCP_BATCH_BUCKET
+  ).trim();
   const bucketName = rawBucket.replace(/^gs:\/\//, '').replace(/\/+$/, '');
-  const cachePath = String(options.cachePath || BATCH_JOBS_CACHE_PATH);
+  const cachePath = String(options.cachePath || getVertexBatchJobsCachePath());
   const fetchFn = options.fetchImpl || globalThis.fetch;
 
   const batchHash = crypto
@@ -1537,7 +1565,7 @@ export async function submitAndPollVertexBatchJob(jsonlRequests, options = {}) {
   if (fs.existsSync(cachePath)) {
     try {
       batchCache = JSON.parse(fs.readFileSync(cachePath, 'utf8'));
-    } catch (_) {
+    } catch {
       batchCache = {};
     }
   }
@@ -1819,7 +1847,7 @@ export async function submitAndPollVertexBatchJob(jsonlRequests, options = {}) {
   try {
     fs.mkdirSync(path.dirname(cachePath), { recursive: true });
     fs.writeFileSync(cachePath, JSON.stringify(batchCache, null, 2), 'utf8');
-  } catch (_) {}
+  } catch {}
 
   if (billedCostNow > 0 || !isResumingInFlight) {
     recordFinOpsTelemetry({
@@ -1858,7 +1886,8 @@ export async function generateVisualAssetWithImagen3({
   charter = undefined,
   useCharter = false,
   clientOverride = undefined,
-  recordSpend = true
+  recordSpend = true,
+  outDir: explicitOutDir = undefined
 } = {}) {
   const profile = getProjectProfile({ slug: projectSlug, complianceProfile, charter, useCharter });
   const imagenPricing = getVerifiedModelPricing('imagen-3.0-generate-002', GCP_LOCATION);
@@ -1875,7 +1904,11 @@ export async function generateVisualAssetWithImagen3({
     };
   }
 
-  const outDir = path.join(ROOT, '.cache', 'vertex_imagen3_assets');
+  const outDir = explicitOutDir
+    ? path.resolve(explicitOutDir)
+    : process.env.VERTEX_IMAGEN3_OUT_DIR
+    ? path.resolve(process.env.VERTEX_IMAGEN3_OUT_DIR)
+    : path.join(ROOT, '.cache', 'vertex_imagen3_assets');
   fs.mkdirSync(outDir, { recursive: true });
 
   const enrichedPrompt =
@@ -2284,7 +2317,7 @@ export async function generate3dMeshFromPrompt({
         fs.writeFileSync(rawGlbPath, Buffer.from(arrBuf));
         generationMode = 'CLOUD_RUN_GPU_TRELLIS_LIVE';
       }
-    } catch (_) {
+    } catch {
       // Fallback to deterministic local GLB v2 synthesis
     }
   }
@@ -2683,26 +2716,29 @@ export const MULTIMEDIA_FINOPS_TIERS = {
 };
 
 /**
- * Synchronizes telemetry summary into `.agents/memory/gcp_finops_budget.json`
- * and `.agents/governance/gcp_finops_budget.json`.
+ * Synchronizes mutable telemetry summary strictly into `.agents/memory/gcp_finops_budget.json`
+ * (or `FINOPS_BUDGET_STATE_PATH` in tests), keeping `.agents/governance/gcp_finops_budget.json` read-only.
  */
 export function syncFinOpsBudgetJsonSummary(lastOperation = null) {
   const status = getGcpFinOpsStatus();
-  const pathsToSync = [GCP_FINOPS_MEMORY_BUDGET_PATH, GCP_FINOPS_BUDGET_PATH];
-  for (const p of pathsToSync) {
-    if (!fs.existsSync(p)) continue;
-    try {
-      const data = JSON.parse(fs.readFileSync(p, 'utf8'));
-      data.telemetrySummary = {
-        lastUpdatedAt: new Date().toISOString(),
-        todaySpendUsd: status.todaySpendUsd,
-        remainingDailyBudgetUsd: status.remainingDailyBudgetUsd,
-        remainingCreditUsd: status.remainingCreditUsd,
-        lastMultimediaOperation: lastOperation || data.telemetrySummary?.lastMultimediaOperation || null
-      };
-      fs.writeFileSync(p, JSON.stringify(data, null, 2) + '\n', 'utf8');
-    } catch (_) {}
-  }
+  const statePath = getFinOpsBudgetStatePath();
+  try {
+    let baseData = {};
+    if (fs.existsSync(statePath)) {
+      baseData = JSON.parse(fs.readFileSync(statePath, 'utf8'));
+    } else if (fs.existsSync(GCP_FINOPS_BUDGET_PATH)) {
+      baseData = JSON.parse(fs.readFileSync(GCP_FINOPS_BUDGET_PATH, 'utf8'));
+    }
+    baseData.telemetrySummary = {
+      lastUpdatedAt: new Date().toISOString(),
+      todaySpendUsd: status.todaySpendUsd,
+      remainingDailyBudgetUsd: status.remainingDailyBudgetUsd,
+      remainingCreditUsd: status.remainingCreditUsd,
+      lastMultimediaOperation: lastOperation || baseData.telemetrySummary?.lastMultimediaOperation || null
+    };
+    fs.mkdirSync(path.dirname(statePath), { recursive: true });
+    fs.writeFileSync(statePath, JSON.stringify(baseData, null, 2) + '\n', 'utf8');
+  } catch {}
   return status;
 }
 

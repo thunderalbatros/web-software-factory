@@ -92,17 +92,17 @@ function loadBrandLockAndPrdState(slug = 'agencia-alfa', explicitProjectDir = nu
   if (fs.existsSync(brandLockPath)) {
     try {
       brandLock = JSON.parse(fs.readFileSync(brandLockPath, 'utf8'));
-    } catch (_) {}
+    } catch {}
   }
   if (fs.existsSync(prdStatePath)) {
     try {
       prdState = JSON.parse(fs.readFileSync(prdStatePath, 'utf8'));
-    } catch (_) {}
+    } catch {}
   }
   if (fs.existsSync(manifestPath)) {
     try {
       manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
-    } catch (_) {}
+    } catch {}
   }
   return { brandLock, prdState, manifest };
 }
@@ -547,7 +547,7 @@ ${(t1.domSectionsAndComponents || []).map((s) => `  - ${s}`).join('\n')}
 ## Bloque 5 — Dirección Estética, Personalidad Diferenciadora y Física Cinética a 60 FPS
 - **Eje de Tensión de Personalidad (\`brandPersonalityTension\`):** \`${t5.brandPersonalityTension || 'minimalismo-silencioso vs expresividad-cinetica'}\`
 - **Modo de Selección Morfológica (\`morphologySelectionMode\`):** \`${t5.morphologySelectionMode || 'auto-bespoke-criteria'}\` (Garantía de 0 repetición intra-categoría frente a proyectos previos)
-- **Nivel de Animación:** \`${t5.animationLevel || 'spring-fluid-60fps'}\` ($\zeta = ${t5.dampingRatioZeta ?? 0.78}$, \`stiffness: ${t5.springPhysics?.stiffness ?? 280}, damping: ${t5.springPhysics?.damping ?? 24}\`)
+- **Nivel de Animación:** \`${t5.animationLevel || 'spring-fluid-60fps'}\` ($\\zeta = ${t5.dampingRatioZeta ?? 0.78}$, \`stiffness: ${t5.springPhysics?.stiffness ?? 280}, damping: ${t5.springPhysics?.damping ?? 24}\`)
 - **Scroll-Driven CSS & View Transitions API:** \`scroll=${Boolean(t5.useScrollDrivenAnimationsCss)}\`, \`viewTransitions=${Boolean(t5.useViewTransitionsApi)}\`, \`reducedMotion=${Boolean(t5.respectReducedMotion)}\`
 
 ## Bloque 6 — Gráficos 3D WebGPU, Modelos \`.glb\` y Shaders (\`shader_and_3d_forge.mjs\`)
@@ -1214,7 +1214,7 @@ export function compileSpecFromInterview(slugOrDir = 'agencia-alfa', options = {
         projJson.specInterviewStatus = interview.specInterviewStatus;
         projJson.interviewStatus = interview.status;
         fs.writeFileSync(factoryProjPath, JSON.stringify(projJson, null, 2) + '\n', 'utf8');
-      } catch (_) {}
+      } catch {}
     }
   };
 

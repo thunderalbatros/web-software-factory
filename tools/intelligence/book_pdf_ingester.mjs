@@ -97,7 +97,7 @@ export function parseEpubFile(filePath) {
     execFileSync('python', ['-c', pyScript, filePath, tmpJson], { stdio: 'ignore', timeout: 300000 });
     if (fs.existsSync(tmpJson)) {
       const parsed = JSON.parse(fs.readFileSync(tmpJson, 'utf8'));
-      try { fs.unlinkSync(tmpJson); } catch (_) {}
+      try { fs.unlinkSync(tmpJson); } catch {}
       if (parsed && typeof parsed.text === 'string' && parsed.text.trim().length > 400) {
         return {
           text: parsed.text,
@@ -105,8 +105,8 @@ export function parseEpubFile(filePath) {
         };
       }
     }
-  } catch (_) {
-    try { if (fs.existsSync(tmpJson)) fs.unlinkSync(tmpJson); } catch (_) {}
+  } catch {
+    try { if (fs.existsSync(tmpJson)) fs.unlinkSync(tmpJson); } catch {}
   }
 
   const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'epub_ingest_'));
@@ -148,15 +148,26 @@ export function parseEpubFile(filePath) {
   } finally {
     try {
       fs.rmSync(tmpDir, { recursive: true, force: true });
-    } catch (_) {}
+    } catch {}
   }
+}
+
+function replacePdfControlCharsWithSpace(str) {
+  let out = '';
+  for (let i = 0; i < str.length; i++) {
+    const c = str.charCodeAt(i);
+    if (c <= 0x08 || c === 0x0b || c === 0x0c || (c >= 0x0e && c <= 0x1f) || c === 0x7f) {
+      out += ' ';
+    } else {
+      out += str[i];
+    }
+  }
+  return out;
 }
 
 export function cleanRawPdfText(text) {
   if (!text) return '';
-  return text
-    .replace(/\r\n/g, '\n')
-    .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, ' ')
+  return replacePdfControlCharsWithSpace(text.replace(/\r\n/g, '\n'))
     .replace(/\n?\s*--\s*\d+\s+of\s+\d+\s*--\s*\n?/gi, '\n')
     .replace(/\uFB00/g, 'ff')
     .replace(/\uFB01/g, 'fi')
@@ -367,7 +378,7 @@ export async function parsePdfFile(filePath) {
     execFileSync('python', ['-c', pyScript, filePath, tmpTxt], { stdio: 'ignore', timeout: 300000 });
     if (fs.existsSync(tmpTxt)) {
       const parsed = JSON.parse(fs.readFileSync(tmpTxt, 'utf8'));
-      try { fs.unlinkSync(tmpTxt); } catch (_) {}
+      try { fs.unlinkSync(tmpTxt); } catch {}
       if (parsed && typeof parsed.text === 'string' && parsed.text.length > 0) {
         return {
           text: parsed.text,
@@ -376,8 +387,8 @@ export async function parsePdfFile(filePath) {
         };
       }
     }
-  } catch (_) {
-    try { if (fs.existsSync(tmpTxt)) fs.unlinkSync(tmpTxt); } catch (_) {}
+  } catch {
+    try { if (fs.existsSync(tmpTxt)) fs.unlinkSync(tmpTxt); } catch {}
   }
 
   const pdfParseModule = await loadPdfParse();
@@ -389,7 +400,7 @@ export async function parsePdfFile(filePath) {
     let infoResult = {};
     try {
       infoResult = await parser.getInfo();
-    } catch (_) {}
+    } catch {}
     return {
       text: textResult.text || '',
       numPages: textResult.pages?.length || infoResult.total || 0,
@@ -504,7 +515,7 @@ export async function ingestBookToMarkdown({
     if (sanitized && typeof sanitized.content === 'string') {
       fullMarkdown = sanitized.content;
     }
-  } catch (_) {}
+  } catch {}
 
   const outputFile = path.join(outDir, `${finalSlug}.md`);
   fs.writeFileSync(outputFile, fullMarkdown, 'utf8');

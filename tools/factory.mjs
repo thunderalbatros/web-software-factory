@@ -49,12 +49,12 @@ function applyStaticEducationScaffoldVariant(targetDir, { slug, displayName, dom
     manifestObj.industryArchetype = 'academic-editorial-education';
     manifestObj.dbTier = 'static-json-and-indexeddb';
     manifestObj.paths = {
-      ...(manifestObj.paths || {}),
+      ...manifestObj.paths,
       workerEntry: null,
       sourceDirs: templateName === 'astro-edge' ? ['src', 'public'] : ['site']
     };
     manifestObj.sdd = {
-      ...(manifestObj.sdd || {}),
+      ...manifestObj.sdd,
       targetUsers: ['Estudiantes Hispanohablantes', 'Autodidactas y Profesionales', 'Docentes'],
       visualTheme: 'OKLCH 90/8/2 Editorial Read Mode (65ch) + 3 Semantic Level Accents + WCAG 2.2 AA+',
       architectureTier:
@@ -454,7 +454,7 @@ async function main() {
         const manifestFile = path.join(targetDir, 'factory.project.json');
         if (fs.existsSync(manifestFile)) {
           const manifestObj = JSON.parse(fs.readFileSync(manifestFile, 'utf8'));
-          manifestObj.design = { ...(manifestObj.design || {}), styleSkill: styleName, styleGuidePath: '.specify/memory/style-guide.md' };
+          manifestObj.design = { ...manifestObj.design, styleSkill: styleName, styleGuidePath: '.specify/memory/style-guide.md' };
           fs.writeFileSync(manifestFile, JSON.stringify(manifestObj, null, 2) + '\n', 'utf8');
         }
       } else {
@@ -549,7 +549,7 @@ async function main() {
       syncProjectStatechartSnapshot(cfg.id, [
         { type: 'COMPLETE_RPI_UNTAINTED_RESEARCH', untaintedResearchVerified: true, maxStageInstructions: 14 }
       ]);
-    } catch (_) {}
+    } catch {}
     execSync(`node "${path.join(FACTORY_ROOT, 'tools', 'build_dist.mjs')}" --project "${cfg.projectRoot}"`, {
       cwd: FACTORY_ROOT,
       stdio: 'inherit'

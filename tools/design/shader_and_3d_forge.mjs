@@ -336,7 +336,7 @@ export async function optimizeGlbAsset(inputGlbPath, outputGlbPath = '') {
         jsonMeta = {
           ...parsed,
           asset: {
-            ...(parsed.asset || {}),
+            ...parsed.asset,
             version: '2.0',
             generator: 'WebFactory glTF-Transform + meshoptimizer v1.3 (prune+dedup+resample+meshopt+webp)'
           },

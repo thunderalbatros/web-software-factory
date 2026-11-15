@@ -210,7 +210,7 @@ export async function harvestOfficialAudiovisualDspSources(options = {}) {
             vaultFiles: vaultInfo.detectedFiles
           };
         }
-      } catch (_) {
+      } catch {
         // Offline / CI resilience fallback to local vault
       }
 
@@ -379,7 +379,7 @@ El canal auditivo externo humano presenta una resonancia física natural entre *
 
 ## 4. Pilar Matemático IV: Sincresis Audiovisual y Montaje Rítmico (Michel Chion, Walter Murch & Motion Canvas)
 
-Según la ley de **Sincresis** de Michel Chion (*Audio-Vision*) y la regla de corte rítmico de Walter Murch (*In the Blink of an Eye*), el cerebro humano fusiona un evento visual y uno acústico como un único objeto físico si y solo si el transiente acústico ocurre dentro de una ventana de **$\\pm 1$ fotograma a 60 FPS ($\le 16.67\\text{ ms}$)** respecto al pico de velocidad o punto de impacto visual.
+Según la ley de **Sincresis** de Michel Chion (*Audio-Vision*) y la regla de corte rítmico de Walter Murch (*In the Blink of an Eye*), el cerebro humano fusiona un evento visual y uno acústico como un único objeto físico si y solo si el transiente acústico ocurre dentro de una ventana de **$\\pm 1$ fotograma a 60 FPS ($\\le 16.67\\text{ ms}$)** respecto al pico de velocidad o punto de impacto visual.
 
 ### 4.1 Alineación con Curvas \`cubic-bezier\` y Resortes Físicos (\`spring(stiffness, damping)\`)
 Para un resorte sub-amortiguado con rigidez $k$ (\`stiffness\`) y amortiguamiento $c$ (\`damping\`) sobre masa unitaria $m = 1$:

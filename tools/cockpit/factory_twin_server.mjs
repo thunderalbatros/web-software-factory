@@ -32,12 +32,9 @@ import {
   runLiveDemoWalkthroughSequence
 } from './live_telemetry_bus.mjs';
 import {
-  verifyClientInterviewGate,
-  verifyDualInterviewGates,
   compileSpecFromInterview
 } from '../orchestrator/client_interview_gate.mjs';
 import {
-  verifyPrdInterviewGate,
   compilePrdLeanAndBrandLock
 } from '../orchestrator/lean_prd_architect.mjs';
 import {
@@ -1191,7 +1188,7 @@ export function createFactoryTwinServer() {
     for (const res of sseClients) {
       try {
         res.write(frame);
-      } catch (_) {
+      } catch {
         sseClients.delete(res);
       }
     }
@@ -1292,7 +1289,7 @@ export function createFactoryTwinServer() {
         let body = {};
         try {
           body = JSON.parse(rawBody || '{}');
-        } catch (_) {}
+        } catch {}
 
         const action = String(body.action || 'approve_hitl');
         const note = String(body.note || '');
@@ -1302,23 +1299,25 @@ export function createFactoryTwinServer() {
         let updatedState;
         let approvedTicketResult = null;
         if (action === 'approve_hitl' || action === 'approve_interview' || action === 'approve_prd_interview' || action === 'approve_ticket') {
-          try {
-            compilePrdLeanAndBrandLock(targetProjectSlug, { approve: true });
-            compileSpecFromInterview(targetProjectSlug, { approve: true, refreshFromPrd: true });
-          } catch {}
-          try {
-            let pendingTicketId = body.ticketId || '';
-            if (!pendingTicketId && fs.existsSync(FEEDBACK_LEDGER_PATH)) {
-              const ledger = JSON.parse(fs.readFileSync(FEEDBACK_LEDGER_PATH, 'utf8'));
-              const waitingTicket = (ledger.tickets || []).find(
-                (t) => t.status === 'WAITING_CTO_TRIAGE_APPROVAL' && (!body.projectSlug || t.projectSlug === targetProjectSlug)
-              );
-              if (waitingTicket) pendingTicketId = waitingTicket.ticketId;
-            }
-            if (pendingTicketId) {
-              approvedTicketResult = await executeApprovedTicketFix(pendingTicketId, { approvedByCto: true });
-            }
-          } catch {}
+          if (!body.dryRun) {
+            try {
+              compilePrdLeanAndBrandLock(targetProjectSlug, { approve: true });
+              compileSpecFromInterview(targetProjectSlug, { approve: true, refreshFromPrd: true });
+            } catch {}
+            try {
+              let pendingTicketId = body.ticketId || '';
+              if (!pendingTicketId && fs.existsSync(FEEDBACK_LEDGER_PATH)) {
+                const ledger = JSON.parse(fs.readFileSync(FEEDBACK_LEDGER_PATH, 'utf8'));
+                const waitingTicket = (ledger.tickets || []).find(
+                  (t) => t.status === 'WAITING_CTO_TRIAGE_APPROVAL' && (!body.projectSlug || t.projectSlug === targetProjectSlug)
+                );
+                if (waitingTicket) pendingTicketId = waitingTicket.ticketId;
+              }
+              if (pendingTicketId) {
+                approvedTicketResult = await executeApprovedTicketFix(pendingTicketId, { approvedByCto: true });
+              }
+            } catch {}
+          }
           updatedState = emitFactoryTelemetryEvent({
             eventType: 'CTO_HITL_APPROVED',
             projectSlug: targetProjectSlug,
@@ -1414,7 +1413,7 @@ export function createFactoryTwinServer() {
     for (const res of sseClients) {
       try {
         res.end();
-      } catch (_) {}
+      } catch {}
     }
     sseClients.clear();
   });
@@ -1490,7 +1489,7 @@ export async function runCockpitSelfTest() {
         'Content-Type': 'application/json',
         'X-Cockpit-Token': server.cockpitCsrfToken
       },
-      body: JSON.stringify({ action: 'approve_hitl', projectSlug: 'agencia-alfa' })
+      body: JSON.stringify({ action: 'approve_hitl', projectSlug: 'agencia-alfa', dryRun: true })
     });
     const hitlJson = await hitlRes.json();
 

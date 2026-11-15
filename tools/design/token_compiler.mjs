@@ -1009,7 +1009,7 @@ export function compileDesignTokens(options = {}) {
       if (fs.existsSync(brandLockPath)) {
         try {
           brandLock = JSON.parse(fs.readFileSync(brandLockPath, 'utf8'));
-        } catch (_) {}
+        } catch {}
       }
     }
     const interviewPath = path.join(rootDir, 'CLIENT_BRIEF_INTERVIEW.json');
@@ -1023,7 +1023,7 @@ export function compileDesignTokens(options = {}) {
             interview.bespokeDna.fontPairingDetails ||
             interview.bespokeDna.fontPairingProfile;
         }
-      } catch (_) {}
+      } catch {}
     }
     if (!gamutMaskType || !fontPairingProfile) {
       const dnaLedgerPath = path.join(FACTORY_ROOT, '.agents', 'memory', 'project_dna_fingerprints.json');
@@ -1035,7 +1035,7 @@ export function compileDesignTokens(options = {}) {
             gamutMaskType = gamutMaskType || entry.vector.gamutMaskType;
             fontPairingProfile = fontPairingProfile || entry.vector.fontPairingProfile;
           }
-        } catch (_) {}
+        } catch {}
       }
     }
   }
@@ -1131,7 +1131,7 @@ export function compileDesignTokens(options = {}) {
     // Also compile Style Dictionary v4 Multi-Target Mobile Tokens (tokens.css, tokens.mobile.json, ThemeTokens.ts)
     try {
       compileMultiTargetMobileTokensSync(rootDir, dtcg, writtenFiles);
-    } catch (_) {}
+    } catch {}
   }
 
   return {
@@ -1179,7 +1179,7 @@ export function extractOklchPaletteFromBrandImage(imagePathOrBuffer = 'brand-ref
   } else if (typeof imagePathOrBuffer === 'string' && fs.existsSync(imagePathOrBuffer)) {
     try {
       seedBytes = fs.readFileSync(imagePathOrBuffer);
-    } catch (_) {}
+    } catch {}
   }
 
   let hash = 2166136261;

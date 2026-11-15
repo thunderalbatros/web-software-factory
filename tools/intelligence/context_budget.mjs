@@ -166,7 +166,7 @@ export function compressReversibleCcr(payload, options = {}) {
     if (typeof payload === 'string') {
       try {
         parsedObj = JSON.parse(payload);
-      } catch (_) {
+      } catch {
         parsedObj = { raw: payload };
       }
     }
@@ -340,7 +340,7 @@ export function selectTopTwoSkills(query = '', preferredSkills = [], activeRoleI
     try {
       const parsed = JSON.parse(fs.readFileSync(SKILL_INDEX_PATH, 'utf8'));
       roleSkillsMap = parsed.roles || {};
-    } catch (_) {
+    } catch {
       roleSkillsMap = {};
     }
   }
@@ -380,7 +380,7 @@ export function selectTopTwoSkills(query = '', preferredSkills = [], activeRoleI
       fallbackTriggered: false,
       latencyMs: 6.4
     });
-  } catch (_) {}
+  } catch {}
   return selected;
 }
 
@@ -442,7 +442,7 @@ export function assembleThreeTierContext(query = '', options = {}) {
         const ccr = compressReversibleCcr(parsed, { mode: 'json', maxArrayItems: 2, maxStringLen: 72 });
         effectiveTokens = Math.min(rawTokens, ccr.afterTokens, 420);
         ccrHash = ccr.hash;
-      } catch (_) {}
+      } catch {}
     } else if (rel.endsWith('.md')) {
       const caveman = compressWithCavemanAndPonytail(content);
       const folded = codeCompressorAst(caveman.compressedText, { maxLines: 42 });
@@ -571,7 +571,7 @@ export function repairAndValidateJsonPayload(rawJsonInput, valibotSchemaOrValida
   let parsed = null;
   try {
     parsed = JSON.parse(text);
-  } catch (_) {
+  } catch {
     const openBraces = (text.match(/\{/g) || []).length - (text.match(/\}/g) || []).length;
     const openBrackets = (text.match(/\[/g) || []).length - (text.match(/\]/g) || []).length;
     let balanced = text;

@@ -225,7 +225,7 @@ export function extractCleanEducationalProse(mdxContent = '') {
   // 4. Strip LaTeX display math (`$$...$$`) and inline math (`$...$`, excluding escaped `\$`)
   text = text
     .replace(/\$\$[\s\S]*?\$\$/g, ' ')
-    .replace(/(?<!\\)\$(?!\s|\d)([^\$\n]+?)(?<!\s)\$/g, ' ');
+    .replace(/(?<!\\)\$(?!\s|\d)([^$\n]+?)(?<!\s)\$/g, ' ');
 
   // 5. Strip Markdown tables (lines starting and ending with `|`)
   text = text.replace(/^\s*\|.*\|\s*$/gm, '\n\n');
@@ -271,7 +271,7 @@ export function extractCleanEducationalProse(mdxContent = '') {
     .join('\n')
     .replace(/\*\*|__/g, '')
     .replace(/(?<!\w)\*|\*(?!\w)|(?<!\w)_|_(?!\w)/g, '')
-    .replace(/\\([\$_*[\]()])/g, '$1');
+    .replace(/\\([$*[\]()_])/g, '$1');
 
   const paragraphs = cleaned
     .split(/\n\s*\n+/)

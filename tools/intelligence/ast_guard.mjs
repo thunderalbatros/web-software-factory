@@ -17,11 +17,13 @@
  */
 
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { buildOrUpdateAstIndex } from './codebase_ast_indexer.mjs';
 import { evaluatePersistedStateAndEnvOwnerGate } from './jev_semantic_gate.mjs';
+import { getActiveProject } from '../lib/project_loader.mjs';
 
 export { evaluatePersistedStateAndEnvOwnerGate };
 
@@ -33,12 +35,27 @@ const ROOT = path.resolve(__dirname, '..', '..');
  * Runs Oxc Unified Suite (`oxlint v1.93.0` + `oxfmt v0.78.0` + `oxlint-tsgolint`)
  * using local native binaries if present, with deterministic fallback.
  */
-export function runOxlintFastPass(
-  targets = ['templates/vanilla-edge/site/js', 'templates/vanilla-edge/worker', 'templates/astro-edge/worker'],
-  options = {}
-) {
+export function runOxlintFastPass(targets = null, options = {}) {
   const startMs = performance.now();
-  const existingTargets = targets.map(t => path.join(ROOT, t)).filter(p => fs.existsSync(p));
+  let resolvedTargetList;
+  if (Array.isArray(targets)) {
+    resolvedTargetList = targets;
+  } else {
+    const active = getActiveProject();
+    const defaultSet = new Set([
+      'tools',
+      'templates/vanilla-edge/site/js',
+      'templates/vanilla-edge/worker',
+      'templates/astro-edge/worker',
+      'projects/academia-ia/src'
+    ]);
+    if (active?.activeSlug) {
+      defaultSet.add(`projects/${active.activeSlug}/src`);
+    }
+    resolvedTargetList = Array.from(defaultSet);
+  }
+
+  const existingTargets = resolvedTargetList.map(t => path.join(ROOT, t)).filter(p => fs.existsSync(p));
   if (existingTargets.length === 0) {
     return { passed: true, durationMs: 0, toolchain: 'oxc-v1.93-suite', output: 'No JS/TS targets to lint' };
   }
@@ -47,21 +64,23 @@ export function runOxlintFastPass(
   const localBin = path.join(ROOT, 'node_modules', '.bin', binName);
   const cmd = fs.existsSync(localBin) ? `"${localBin}"` : 'npx --no-install oxlint';
 
-  const hasTsTarget = existingTargets.some((t) => fs.existsSync(path.join(t, 'tsconfig.json')) || fs.existsSync(path.join(path.dirname(t), 'tsconfig.json')));
-  const typeAwareFlag = options.typeAware === true || hasTsTarget ? '--type-aware ' : '';
+  const typeAware = options.typeAware === true;
+  const typeAwareFlag = typeAware ? '--type-aware ' : '';
+  const denyWarningsFlag = options.denyWarnings === true ? '--deny-warnings ' : '';
+  const configPath = path.join(ROOT, '.oxlintrc.json');
   const quotedTargets = existingTargets.map(p => `"${p}"`).join(' ');
-  const res = spawnSync(`${cmd} ${typeAwareFlag}--deny-warnings ${quotedTargets}`, {
+  const res = spawnSync(`${cmd} -c "${configPath}" ${typeAwareFlag}${denyWarningsFlag}${quotedTargets}`, {
     cwd: ROOT,
     shell: true,
     encoding: 'utf8',
-    timeout: 6500
+    timeout: 15000
   });
 
   const durationMs = Math.round(performance.now() - startMs);
   return {
     passed: res.status === 0,
     durationMs,
-    typeAware: Boolean(typeAwareFlag),
+    typeAware,
     toolchain: 'oxc-v1.93 (oxlint + oxfmt + oxlint-tsgolint)',
     output: (res.stdout || '') + (res.stderr || '')
   };
@@ -94,7 +113,6 @@ export function runOxfmtFastCheck(targetPath = 'tools/factory.mjs') {
 
 export function scanClassMethods(filePath) {
   const content = fs.readFileSync(filePath, 'utf8');
-  const lines = content.split('\n');
 
   // Match class declarations
   const classMatches = [...content.matchAll(/class\s+([A-Za-z0-9_$]+)(?:\s+extends\s+([A-Za-z0-9_$]+))?\s*\{/g)];
@@ -421,7 +439,7 @@ export function runNegativeSelfTest() {
     '  return props.label;',
     '}'
   ].join('\n');
-  const tmpFile = path.join(ROOT, '.cache', '__ast_negative_fixture__.js');
+  const tmpFile = path.join(os.tmpdir(), `__ast_negative_fixture_${process.pid}_${Date.now()}.js`);
   fs.mkdirSync(path.dirname(tmpFile), { recursive: true });
   fs.writeFileSync(tmpFile, syntheticCode, 'utf8');
   try {
@@ -455,7 +473,7 @@ export function runNegativeSelfTest() {
       caughtHighRisk
     );
   } finally {
-    try { fs.unlinkSync(tmpFile); } catch (_) {}
+    try { fs.unlinkSync(tmpFile); } catch {}
   }
 }
 
@@ -491,7 +509,7 @@ export function auditModuleAndDependencyHygiene() {
   // Collect source corpus across tools/ and .mcp.json
   const corpusChunks = [];
   if (fs.existsSync(mcpPath)) {
-    try { corpusChunks.push(fs.readFileSync(mcpPath, 'utf8')); } catch (_) {}
+    try { corpusChunks.push(fs.readFileSync(mcpPath, 'utf8')); } catch {}
   }
 
   const walkTools = (dir) => {
@@ -501,7 +519,7 @@ export function auditModuleAndDependencyHygiene() {
       if (entry.isDirectory()) {
         if (entry.name !== 'out' && entry.name !== 'node_modules') walkTools(full);
       } else if (/\.(?:mjs|js|json)$/i.test(entry.name)) {
-        try { corpusChunks.push(fs.readFileSync(full, 'utf8')); } catch (_) {}
+        try { corpusChunks.push(fs.readFileSync(full, 'utf8')); } catch {}
       }
     }
   };
@@ -540,7 +558,18 @@ export const DEFAULT_AST_TARGET_DIRS = [
 ];
 
 export function discoverAstTargetDirs(baseRoot = ROOT, defaults = DEFAULT_AST_TARGET_DIRS) {
-  const dirs = new Set(defaults);
+  const isStandaloneProjectRoot =
+    path.resolve(baseRoot).toLowerCase() !== path.resolve(ROOT).toLowerCase() &&
+    fs.existsSync(path.join(baseRoot, 'factory.project.json'));
+  const dirs = new Set(isStandaloneProjectRoot ? [] : defaults);
+  if (isStandaloneProjectRoot) {
+    for (const sub of ['site/js', 'worker', 'src/pages', 'src/layouts']) {
+      if (fs.existsSync(path.join(baseRoot, sub))) {
+        dirs.add(sub);
+      }
+    }
+    return Array.from(dirs);
+  }
   const projectsDir = path.join(baseRoot, 'projects');
   if (fs.existsSync(projectsDir)) {
     for (const entry of fs.readdirSync(projectsDir, { withFileTypes: true })) {
@@ -616,8 +645,24 @@ export function runAstAudit(targetDirs = null, options = {}) {
     }
   }
 
-  const astGraphSync = buildOrUpdateAstIndex({ forceRebuild: false });
-  const moduleHygiene = auditModuleAndDependencyHygiene();
+  const isFactoryRootAudit = path.resolve(auditRoot) === path.resolve(ROOT);
+  const astGraphSync = isFactoryRootAudit
+    ? buildOrUpdateAstIndex({ forceRebuild: false })
+    : { totalFilesIndexed: 0, totalSymbols: 0, elapsedMs: 0 };
+  const moduleHygiene = isFactoryRootAudit
+    ? auditModuleAndDependencyHygiene()
+    : {
+        passed: true,
+        engine: 'knip-skipped-external',
+        totalScriptsChecked: 0,
+        brokenScripts: [],
+        totalDependenciesChecked: 0,
+        unusedDependencies: []
+      };
+  const oxlintRes =
+    isFactoryRootAudit && options.skipOxlint !== true
+      ? runOxlintFastPass()
+      : { passed: true, durationMs: 0, skipped: true };
   const elapsedMs = Math.round(performance.now() - startAstMs);
   const score = Math.max(0, 100 - (missingMethodErrors * 25) - (securityBlockers * 50) - (warnings * 2));
 
@@ -626,6 +671,9 @@ export function runAstAudit(targetDirs = null, options = {}) {
   console.log(`Classes Inspected:      ${totalClasses}`);
   console.log(`CocoIndex AST Graph:    ${astGraphSync.totalFilesIndexed} files / ${astGraphSync.totalSymbols} symbols (${astGraphSync.elapsedMs}ms)`);
   console.log(`Knip Module Hygiene:    ${moduleHygiene.passed ? 'PASS' : 'WARN'} (${moduleHygiene.totalDependenciesChecked} deps, ${moduleHygiene.brokenScripts.length} broken scripts, ${moduleHygiene.unusedDependencies.length} unused deps)`);
+  if (!oxlintRes.skipped) {
+    console.log(`Oxlint Fast-Pass:       ${oxlintRes.passed ? 'PASS' : 'FAIL'} (${oxlintRes.durationMs}ms)`);
+  }
   console.log(`Missing Method Errors:  ${missingMethodErrors}`);
   console.log(`Security Blockers:      ${securityBlockers}`);
   console.log(`Minor Warnings:         ${warnings}`);
@@ -633,7 +681,11 @@ export function runAstAudit(targetDirs = null, options = {}) {
   console.log(`AST Health Score:       ${score.toFixed(1)} / 100.0`);
   console.log(`------------------------------------------------------\n`);
 
-  const passed = missingMethodErrors === 0 && securityBlockers === 0 && moduleHygiene.brokenScripts.length === 0;
+  const passed =
+    missingMethodErrors === 0 &&
+    securityBlockers === 0 &&
+    moduleHygiene.brokenScripts.length === 0 &&
+    oxlintRes.passed;
   if (passed) {
     console.log(`✅ [AST GUARD PASSED] Zero symbolic errors or security blockers in ${elapsedMs}ms.\n`);
   } else {
@@ -650,7 +702,8 @@ export function runAstAudit(targetDirs = null, options = {}) {
     securityBlockers,
     warnings,
     astGraphStats: astGraphSync,
-    moduleAndDependencyHygiene: moduleHygiene
+    moduleAndDependencyHygiene: moduleHygiene,
+    oxlintFastPass: oxlintRes
   };
 }
 

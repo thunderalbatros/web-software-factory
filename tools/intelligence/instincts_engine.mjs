@@ -132,7 +132,7 @@ export function getTemporalLedger() {
   }
   try {
     return JSON.parse(fs.readFileSync(LEDGER_FILE, 'utf8'));
-  } catch (_) {
+  } catch {
     return DEFAULT_TEMPORAL_GRAPH;
   }
 }
@@ -273,7 +273,7 @@ export function getRegressionAssertions() {
     const parsed = JSON.parse(fs.readFileSync(REGRESSION_ASSERTIONS_FILE, 'utf8'));
     if (!Array.isArray(parsed.assertions)) parsed.assertions = DEFAULT_REGRESSION_ASSERTIONS.assertions;
     return parsed;
-  } catch (_) {
+  } catch {
     return DEFAULT_REGRESSION_ASSERTIONS;
   }
 }
@@ -315,7 +315,7 @@ export function recordRegressionAssertion(item = {}) {
       linkedRuleId: entry.linkedRuleId,
       description: entry.description
     });
-  } catch (_) {}
+  } catch {}
 
   return entry;
 }
@@ -404,7 +404,7 @@ export async function runPreFlightCheck() {
   console.log('\n• Checking for forbidden/invalidated stacks in package.json...');
   const rootPkgPath = path.join(ROOT, 'package.json');
   const rootPkg = fs.existsSync(rootPkgPath) ? JSON.parse(fs.readFileSync(rootPkgPath, 'utf8')) : {};
-  const deps = Object.keys({ ...(rootPkg.dependencies || {}), ...(rootPkg.devDependencies || {}) });
+  const deps = Object.keys({ ...rootPkg.dependencies, ...rootPkg.devDependencies });
   const foundForbidden = deps.filter(d => forbiddenPatterns.includes(d));
   if (foundForbidden.length > 0) {
     throw new Error(`[PRE-FLIGHT FAILED] Forbidden dependencies detected: ${foundForbidden.join(', ')}`);

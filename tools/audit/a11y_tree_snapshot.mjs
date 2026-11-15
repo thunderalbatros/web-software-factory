@@ -90,7 +90,7 @@ export async function captureAccessibilitySnapshot(options = {}) {
   if (fs.existsSync(SELECTOR_CACHE_PATH)) {
     try {
       selectorCache = JSON.parse(fs.readFileSync(SELECTOR_CACHE_PATH, 'utf8'));
-    } catch (_) {}
+    } catch {}
   }
 
   const { server, url } = await startStaticServer(targetRoot, activeCfg.paths?.entryHtml || 'index.html');
@@ -106,7 +106,7 @@ export async function captureAccessibilitySnapshot(options = {}) {
       if (typeof page.locator('body').ariaSnapshot === 'function') {
         ariaYaml = await page.locator('body').ariaSnapshot();
       }
-    } catch (_) {}
+    } catch {}
 
     const primitivesToVerify = selectorCache.targets?.main_site?.primitives || [];
 
@@ -149,7 +149,7 @@ export async function captureAccessibilitySnapshot(options = {}) {
               healed = idx > 0;
               break;
             }
-          } catch (_) {}
+          } catch {}
         }
 
         return {

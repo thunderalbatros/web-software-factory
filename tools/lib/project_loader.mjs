@@ -38,7 +38,7 @@ export function getActiveProject() {
         projectRoot: candidateRoot
       };
     }
-  } catch (_) {}
+  } catch {}
   return null;
 }
 
@@ -55,7 +55,7 @@ export function setActiveProject(slugOrPath, extraMeta = {}) {
   if (fs.existsSync(manifestPath)) {
     try {
       manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
-    } catch (_) {}
+    } catch {}
   }
 
   const state = {
@@ -104,7 +104,7 @@ export function listProjectsCatalog() {
     if (fs.existsSync(manifestPath)) {
       try {
         manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
-      } catch (_) {}
+      } catch {}
     }
 
     const auditFile = path.join(projRoot, '.specify', 'memory', 'last_audit.json');
@@ -113,7 +113,7 @@ export function listProjectsCatalog() {
       try {
         const a = JSON.parse(fs.readFileSync(auditFile, 'utf8'));
         lastAuditScore = `${a.score}/100 (${a.statusLabel || 'APROBADO'})`;
-      } catch (_) {}
+      } catch {}
     }
 
     let mtime = fs.statSync(projRoot).mtime;

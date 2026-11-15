@@ -1060,13 +1060,13 @@ export function applyBespokeMorphologyToProjectDom(projectInput = '', customOpti
   const brandLockPath = path.join(rootDir, 'BRAND_IDENTITY_LOCK.json');
 
   if (fs.existsSync(interviewPath)) {
-    try { interview = JSON.parse(fs.readFileSync(interviewPath, 'utf8')); } catch (_) {}
+    try { interview = JSON.parse(fs.readFileSync(interviewPath, 'utf8')); } catch {}
   }
   if (fs.existsSync(prdStatePath)) {
-    try { prdState = JSON.parse(fs.readFileSync(prdStatePath, 'utf8')); } catch (_) {}
+    try { prdState = JSON.parse(fs.readFileSync(prdStatePath, 'utf8')); } catch {}
   }
   if (fs.existsSync(brandLockPath)) {
-    try { brandLock = JSON.parse(fs.readFileSync(brandLockPath, 'utf8')); } catch (_) {}
+    try { brandLock = JSON.parse(fs.readFileSync(brandLockPath, 'utf8')); } catch {}
   }
 
   const dna = customOptions.bespokeDna || interview?.bespokeDna || {};

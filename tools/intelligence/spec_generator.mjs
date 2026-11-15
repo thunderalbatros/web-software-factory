@@ -196,7 +196,7 @@ export function generateSoftwareSpec(featureTitle, description, options = {}) {
   const featuresJsonPath = path.join(SPECIFY_MEM_DIR, 'features.json');
   let featuresList = [];
   if (fs.existsSync(featuresJsonPath)) {
-    try { featuresList = JSON.parse(fs.readFileSync(featuresJsonPath, 'utf8')); } catch (_) { featuresList = []; }
+    try { featuresList = JSON.parse(fs.readFileSync(featuresJsonPath, 'utf8')); } catch { featuresList = []; }
   }
   const existingIdx = featuresList.findIndex(f => f.slug === slug);
   const featureEntry = {

@@ -21,13 +21,23 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
-import { execSync, spawn } from 'node:child_process';
-import { fileURLToPath } from 'node:url';
+import { execSync, execFileSync, spawn } from 'node:child_process';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 export const FACTORY_ROOT = path.resolve(__dirname, '..');
 export const SANDBOXES_BASE_DIR = path.join(FACTORY_ROOT, '.cache', 'sandboxes');
+
+function expandWindowsCaseVariants(targetPath) {
+  const abs = path.resolve(String(targetPath || '.'));
+  if (process.platform === 'win32' && /^[a-zA-Z]:/.test(abs)) {
+    const upper = abs[0].toUpperCase() + abs.slice(1);
+    const lower = abs[0].toLowerCase() + abs.slice(1);
+    return upper === lower ? [abs] : [upper, lower];
+  }
+  return [abs];
+}
 
 const HARD_TIMEOUT_MS = 30_000;
 const MEMORY_LIMIT_MB = 2048;
@@ -89,21 +99,43 @@ export function assertFilesystemContainment(sandboxDir, targetPath) {
 
 /**
  * Generates the runtime Node.js preload guard placed inside each sandbox jail
- * to intercept and block any `fs` write/delete/read escape outside `SANDBOX_ROOT`.
+ * to intercept and block any `fs` write/delete/read escape outside `SANDBOX_ROOT`
+ * AND block outbound network access when `allowNetwork !== true`.
  */
-function buildRuntimeFsGuardSource(sandboxRoot) {
+function buildRuntimeFsGuardSource(sandboxRoot, { allowNetwork = false } = {}) {
   const escapedRoot = JSON.stringify(path.resolve(sandboxRoot));
-  return `// Auto-generated LocalWorktreeSandbox Filesystem & Subprocess Containment Guard
-import fs from 'node:fs';
-import cp from 'node:child_process';
-import { syncBuiltinESMExports } from 'node:module';
+  const escapedFactoryNodeModules = JSON.stringify(path.join(FACTORY_ROOT, 'node_modules'));
+  const netBlockedFlag = Boolean(allowNetwork);
+  return `// Auto-generated LocalWorktreeSandbox Network, Filesystem & Subprocess Containment Guard
+import { createRequire, syncBuiltinESMExports } from 'node:module';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const require = createRequire(import.meta.url);
+const fs = require('node:fs');
+const cp = require('node:child_process');
+const http = require('node:http');
+const https = require('node:https');
+const http2 = require('node:http2');
+const net = require('node:net');
+const tls = require('node:tls');
+const dns = require('node:dns');
 
 const JAIL_ROOT = ${escapedRoot};
+const FACTORY_NODE_MODULES = ${escapedFactoryNodeModules};
+const ALLOW_NETWORK = ${netBlockedFlag};
 const NORM_JAIL = process.platform === 'win32' ? JAIL_ROOT.toLowerCase() : JAIL_ROOT;
+const NORM_FACTORY_NM = process.platform === 'win32' ? FACTORY_NODE_MODULES.toLowerCase() : FACTORY_NODE_MODULES;
+
+function normalizeTargetRaw(target) {
+  if (target instanceof URL) {
+    return target.protocol === 'file:' ? fileURLToPath(target) : String(target);
+  }
+  return String(target);
+}
 
 function resolveContainedTarget(target) {
-  const raw = target instanceof URL ? target.pathname : String(target);
+  const raw = normalizeTargetRaw(target);
   const resolved = path.resolve(JAIL_ROOT, raw);
   const norm = process.platform === 'win32' ? resolved.toLowerCase() : resolved;
   const inside = norm === NORM_JAIL || norm.startsWith(NORM_JAIL + path.sep);
@@ -120,42 +152,107 @@ function checkContainment(target, opName, errorCode = 'SANDBOX_CONTAINMENT_VIOLA
 
 function checkReadContainment(target, opName) {
   if (typeof target !== 'string' && !(target instanceof URL)) return;
-  const raw = target instanceof URL ? target.pathname : String(target);
-  if (raw.includes('..') || path.isAbsolute(raw)) {
-    const { norm } = resolveContainedTarget(target);
-    const isNodeModules = norm.includes(path.sep + 'node_modules' + path.sep);
-    if (!isNodeModules) {
+  const raw = normalizeTargetRaw(target);
+  if (raw.includes('..') || path.isAbsolute(raw) || target instanceof URL) {
+    const { norm, inside } = resolveContainedTarget(target);
+    if (inside) return;
+    const isFactoryModuleRead = norm === NORM_FACTORY_NM || norm.startsWith(NORM_FACTORY_NM + path.sep);
+    if (!isFactoryModuleRead) {
       checkContainment(target, opName, 'SANDBOX_READ_ESCAPE_VIOLATION');
     }
   }
 }
 
+// 1. Sync fs guards
 const MUTATING_SYNC = [
   'writeFileSync', 'appendFileSync', 'unlinkSync', 'rmSync', 'rmdirSync',
   'mkdirSync', 'copyFileSync', 'cpSync', 'renameSync', 'symlinkSync',
-  'linkSync', 'truncateSync', 'chmodSync', 'utimesSync'
+  'linkSync', 'truncateSync', 'chmodSync', 'utimesSync', 'openSync'
 ];
+const READ_SYNC = ['readFileSync', 'readdirSync', 'statSync', 'lstatSync', 'realpathSync', 'accessSync', 'readlinkSync'];
 const TWO_ARG_MUTATING_SYNC = new Set(['copyFileSync', 'cpSync', 'renameSync', 'symlinkSync', 'linkSync']);
+
 for (const fnName of MUTATING_SYNC) {
   if (typeof fs[fnName] === 'function') {
     const orig = fs[fnName].bind(fs);
     fs[fnName] = function(p, ...rest) {
-      checkContainment(p, fnName);
-      if (TWO_ARG_MUTATING_SYNC.has(fnName)) {
-        checkContainment(rest[0], fnName);
+      if (fnName === 'openSync') {
+        const modeStr = typeof rest[0] === 'string' ? rest[0] : 'r';
+        if (/[wa+x]/.test(modeStr)) checkContainment(p, 'openSync(write)');
+        else checkReadContainment(p, 'openSync(read)');
+      } else if (fnName === 'copyFileSync' || fnName === 'cpSync') {
+        checkReadContainment(p, \`\${fnName}(src)\`);
+        checkContainment(rest[0], \`\${fnName}(dest)\`);
+      } else {
+        checkContainment(p, fnName);
+        if (TWO_ARG_MUTATING_SYNC.has(fnName)) checkContainment(rest[0], fnName);
       }
       return orig(p, ...rest);
     };
   }
 }
+for (const fnName of READ_SYNC) {
+  if (typeof fs[fnName] === 'function') {
+    const orig = fs[fnName].bind(fs);
+    fs[fnName] = function(p, ...rest) {
+      checkReadContainment(p, fnName);
+      return orig(p, ...rest);
+    };
+  }
+}
 
-const origReadFileSync = fs.readFileSync.bind(fs);
-fs.readFileSync = function(p, ...rest) {
-  checkReadContainment(p, 'readFileSync');
-  return origReadFileSync(p, ...rest);
-};
+// 2. Callback & Stream fs guards
+const MUTATING_CALLBACK = [
+  'writeFile', 'appendFile', 'unlink', 'rm', 'rmdir', 'mkdir',
+  'copyFile', 'cp', 'rename', 'symlink', 'link', 'truncate', 'chmod', 'utimes', 'open'
+];
+const READ_CALLBACK = ['readFile', 'readdir', 'stat', 'lstat', 'realpath', 'access', 'readlink'];
+for (const fnName of MUTATING_CALLBACK) {
+  if (typeof fs[fnName] === 'function') {
+    const orig = fs[fnName].bind(fs);
+    fs[fnName] = function(p, ...rest) {
+      if (fnName === 'open') {
+        const flagsArg = typeof rest[0] === 'string' ? rest[0] : 'r';
+        if (/[wa+x]/.test(flagsArg)) checkContainment(p, 'fs.open(write)');
+        else checkReadContainment(p, 'fs.open(read)');
+      } else if (fnName === 'copyFile' || fnName === 'cp') {
+        checkReadContainment(p, \`fs.\${fnName}(src)\`);
+        checkContainment(rest[0], \`fs.\${fnName}(dest)\`);
+      } else {
+        checkContainment(p, \`fs.\${fnName}\`);
+        if (fnName === 'rename' || fnName === 'symlink' || fnName === 'link') {
+          checkContainment(rest[0], \`fs.\${fnName}(dest)\`);
+        }
+      }
+      return orig(p, ...rest);
+    };
+  }
+}
+for (const fnName of READ_CALLBACK) {
+  if (typeof fs[fnName] === 'function') {
+    const orig = fs[fnName].bind(fs);
+    fs[fnName] = function(p, ...rest) {
+      checkReadContainment(p, \`fs.\${fnName}\`);
+      return orig(p, ...rest);
+    };
+  }
+}
+if (typeof fs.createReadStream === 'function') {
+  const origCreateReadStream = fs.createReadStream.bind(fs);
+  fs.createReadStream = function(p, ...rest) {
+    checkReadContainment(p, 'fs.createReadStream');
+    return origCreateReadStream(p, ...rest);
+  };
+}
+if (typeof fs.createWriteStream === 'function') {
+  const origCreateWriteStream = fs.createWriteStream.bind(fs);
+  fs.createWriteStream = function(p, ...rest) {
+    checkContainment(p, 'fs.createWriteStream');
+    return origCreateWriteStream(p, ...rest);
+  };
+}
 
-// Async fs.promises containment wrappers (L-05 hardening)
+// 3. Async fs.promises guards
 const MUTATING_PROMISES = [
   'writeFile', 'appendFile', 'unlink', 'rm', 'rmdir', 'mkdir',
   'copyFile', 'cp', 'rename', 'symlink', 'link',
@@ -181,7 +278,6 @@ if (fs.promises) {
       };
     }
   }
-
   for (const fnName of READ_PROMISES) {
     if (typeof fs.promises[fnName] === 'function') {
       const orig = fs.promises[fnName].bind(fs.promises);
@@ -191,7 +287,6 @@ if (fs.promises) {
       };
     }
   }
-
   const origPromiseOpen = fs.promises.open.bind(fs.promises);
   fs.promises.open = async function(p, flags = 'r', ...rest) {
     const modeStr = String(flags || 'r');
@@ -204,7 +299,7 @@ if (fs.promises) {
   };
 }
 
-// Child-process working directory, fork module path & argument traversal containment guards
+// 4. Child-process working directory, fork module path & argument traversal containment guards
 const CP_METHODS = ['exec', 'execSync', 'spawn', 'spawnSync', 'execFile', 'execFileSync', 'fork'];
 for (const fnName of CP_METHODS) {
   if (typeof cp[fnName] === 'function') {
@@ -240,6 +335,54 @@ for (const fnName of CP_METHODS) {
   }
 }
 
+// 5. Outbound Network Closure Guard (closed by default unless allowNetwork: true)
+if (!ALLOW_NETWORK) {
+  const netErr = (op, target = '') =>
+    new Error(\`SANDBOX_NETWORK_BLOCKED: Outbound network call '\${op}' blocked inside jail (\${String(target || 'network disabled')})\`);
+
+  globalThis.fetch = async function blockedFetch(input) {
+    const target = typeof input === 'string' ? input : (input?.url || 'fetch');
+    throw netErr('fetch', target);
+  };
+  globalThis.WebSocket = class BlockedWebSocket {
+    constructor(url) {
+      throw netErr('WebSocket', url);
+    }
+  };
+
+  for (const [modName, mod, methods] of [
+    ['node:http', http, ['request', 'get']],
+    ['node:https', https, ['request', 'get']],
+    ['node:http2', http2, ['connect']],
+    ['node:net', net, ['connect', 'createConnection']],
+    ['node:tls', tls, ['connect']],
+    ['node:dns', dns, ['lookup', 'resolve', 'resolve4', 'resolve6']]
+  ]) {
+    for (const m of methods) {
+      if (typeof mod[m] === 'function') {
+        mod[m] = function blockedNetCall(target) {
+          const targetDesc = typeof target === 'string' ? target : (target?.host || target?.hostname || '');
+          throw netErr(\`\${modName}.\${m}\`, targetDesc);
+        };
+      }
+    }
+  }
+  if (net.Socket?.prototype?.connect) {
+    net.Socket.prototype.connect = function blockedSocketConnect() {
+      throw netErr('node:net.Socket.connect');
+    };
+  }
+  if (dns.promises) {
+    for (const m of ['lookup', 'resolve', 'resolve4', 'resolve6']) {
+      if (typeof dns.promises[m] === 'function') {
+        dns.promises[m] = async function blockedDnsPromise(target) {
+          throw netErr(\`node:dns.promises.\${m}\`, target);
+        };
+      }
+    }
+  }
+}
+
 syncBuiltinESMExports();
 `;
 }
@@ -252,20 +395,25 @@ export class LocalWorktreeSandbox {
     this.timestamp = Date.now();
     this.suffix = Math.random().toString(36).slice(2, 7);
     this.runId = options.runId || `run-${this.timestamp}-${this.suffix}`;
-    this.sandboxDir = path.join(SANDBOXES_BASE_DIR, this.runId);
+    this.baseDir = path.resolve(
+      options.baseDir || process.env.WEBFACTORY_SANDBOX_BASE_DIR || SANDBOXES_BASE_DIR
+    );
+    this.sandboxDir = path.join(this.baseDir, this.runId);
     this.timeoutMs = options.timeoutMs || HARD_TIMEOUT_MS;
     this.preferWorktree = Boolean(options.preferWorktree);
+    this.allowNetwork = Boolean(options.allowNetwork);
+    this.linkNodeModules = options.linkNodeModules !== false;
     this.isGitWorktree = false;
     this.initialized = false;
   }
 
   init() {
     if (this.initialized) return this;
-    fs.mkdirSync(SANDBOXES_BASE_DIR, { recursive: true });
+    fs.mkdirSync(this.baseDir, { recursive: true });
 
     if (this.preferWorktree) {
       try {
-        execSync(`git worktree add --detach "${this.sandboxDir}" HEAD`, {
+        execFileSync('git', ['worktree', 'add', '--detach', this.sandboxDir, 'HEAD'], {
           cwd: FACTORY_ROOT,
           stdio: 'pipe',
           timeout: 15_000
@@ -287,7 +435,7 @@ export class LocalWorktreeSandbox {
       // Link node_modules via Windows junction so imports resolve in <5ms without copying
       const rootNodeModules = path.join(FACTORY_ROOT, 'node_modules');
       const jailNodeModules = path.join(this.sandboxDir, 'node_modules');
-      if (fs.existsSync(rootNodeModules) && !fs.existsSync(jailNodeModules)) {
+      if (this.linkNodeModules && fs.existsSync(rootNodeModules) && !fs.existsSync(jailNodeModules)) {
         try {
           fs.symlinkSync(rootNodeModules, jailNodeModules, 'junction');
         } catch {
@@ -296,9 +444,15 @@ export class LocalWorktreeSandbox {
       }
     }
 
-    // Write the runtime FS containment guard inside the sandbox
-    this.guardFilePath = path.join(this.sandboxDir, '.jail_fs_guard.mjs');
-    fs.writeFileSync(this.guardFilePath, buildRuntimeFsGuardSource(this.sandboxDir), 'utf8');
+    // Write the runtime Network + FS containment guard inside the sandbox
+    this.guardFilePath = path.join(this.sandboxDir, '.jail_net_fs_guard.mjs');
+    fs.writeFileSync(
+      this.guardFilePath,
+      buildRuntimeFsGuardSource(this.sandboxDir, { allowNetwork: this.allowNetwork }),
+      'utf8'
+    );
+    this.legacyGuardAliasPath = path.join(this.sandboxDir, '.jail_fs_guard.mjs');
+    fs.writeFileSync(this.legacyGuardAliasPath, "import './.jail_net_fs_guard.mjs';\n", 'utf8');
     this.initialized = true;
     return this;
   }
@@ -315,17 +469,44 @@ export class LocalWorktreeSandbox {
    * - 30s Hard Timeout
    * - 2048MB Memory Limit
    * - Sanitized Environment
-   * - Filesystem Containment Pre-Check
+   * - Filesystem, Compound-Operator & Network-Command Containment Pre-Check
    */
   async execCommand(command, options = {}) {
     this.init();
     const timeoutMs = options.timeoutMs || this.timeoutMs || HARD_TIMEOUT_MS;
     const cwd = options.cwd ? this.resolvePath(options.cwd) : this.sandboxDir;
+    const cmdText = String(command || '');
 
-    // Static containment pre-check for explicit parent traversal tokens
-    const traversalMatch = String(command).match(/(?:\.\.[\\/]){2,}[\w.-]+/);
-    if (traversalMatch) {
-      const candidate = path.resolve(cwd, traversalMatch[0]);
+    if (!options.allowCompoundShell && /(?:&&|\|\||[;|`]|\$\()/.test(cmdText)) {
+      return {
+        ok: false,
+        exitCode: 1,
+        timedOut: false,
+        elapsedMs: 0,
+        sandboxMode: 'LocalWorktreeSandbox',
+        sandboxDir: this.sandboxDir,
+        stdout: '',
+        stderr: 'SANDBOX_COMMAND_POLICY_VIOLATION: Compound shell operators (&&, ||, ;, |, `, $()) are blocked inside sandbox.'
+      };
+    }
+
+    if (!this.allowNetwork && /\b(?:Invoke-WebRequest|Invoke-RestMethod|iwr|irm|curl|wget|Start-BitsTransfer)\b/i.test(cmdText)) {
+      return {
+        ok: false,
+        exitCode: 1,
+        timedOut: false,
+        elapsedMs: 0,
+        sandboxMode: 'LocalWorktreeSandbox',
+        sandboxDir: this.sandboxDir,
+        stdout: '',
+        stderr: 'SANDBOX_NETWORK_BLOCKED: Shell network utilities are blocked inside network-closed sandbox.'
+      };
+    }
+
+    // Static containment pre-check for parent traversal tokens outside sandboxDir
+    const traversalMatches = cmdText.match(/(?:\.\.[\\/])+[\w.-]*/g) || [];
+    for (const tok of traversalMatches) {
+      const candidate = path.resolve(cwd, tok);
       assertFilesystemContainment(this.sandboxDir, candidate);
     }
 
@@ -337,8 +518,8 @@ export class LocalWorktreeSandbox {
       const isWin = process.platform === 'win32';
       const shellCmd = isWin ? 'powershell.exe' : '/bin/sh';
       const shellArgs = isWin
-        ? ['-NoProfile', '-NonInteractive', '-Command', command]
-        : ['-c', command];
+        ? ['-NoProfile', '-NonInteractive', '-Command', cmdText]
+        : ['-c', cmdText];
 
       const child = spawn(shellCmd, shellArgs, {
         cwd,
@@ -362,7 +543,9 @@ export class LocalWorktreeSandbox {
         } catch {
           try {
             child.kill('SIGKILL');
-          } catch {}
+          } catch {
+            /* process already closed */
+          }
         }
       }, timeoutMs);
 
@@ -408,34 +591,42 @@ export class LocalWorktreeSandbox {
 
   /**
    * Executes a JavaScript/ESM test snippet in an isolated child process enforced by
-   * Node 24's native permission model (`--permission --allow-fs-read=<jail> --allow-fs-write=<jail>`).
+   * Node 24's native permission model (`--permission --allow-fs-read=<jail> --allow-fs-write=<jail>`)
+   * plus `--import=<guard>` network/filesystem preload.
    */
   async execIsolatedSnippet(code, options = {}) {
     this.init();
     const timeoutMs = options.timeoutMs || this.timeoutMs || HARD_TIMEOUT_MS;
     const realJailRoot = fs.realpathSync(this.sandboxDir);
+    const realGuardPath = fs.realpathSync(this.guardFilePath);
     const scriptName = `_isolated_${Date.now()}_${Math.random().toString(36).slice(2, 6)}.mjs`;
     const scriptPath = this.resolvePath(scriptName);
-    const wrappedCode = options.skipJsGuard === true ? `${code}\n` : `import './.jail_fs_guard.mjs';\n${code}\n`;
-    fs.writeFileSync(scriptPath, wrappedCode, 'utf8');
+    fs.writeFileSync(scriptPath, `${code}\n`, 'utf8');
 
     const realScriptPath = fs.realpathSync(scriptPath);
     const sanitizedEnv = sanitizeEnvironment(process.env);
     sanitizedEnv.SANDBOX_ROOT = realJailRoot;
 
-    const readAllowList = [realJailRoot, ...(Array.isArray(options.allowFsRead) ? options.allowFsRead : [])]
-      .filter(Boolean)
-      .join(',');
-    const writeAllowList = [realJailRoot, ...(Array.isArray(options.allowFsWrite) ? options.allowFsWrite : [])]
-      .filter(Boolean)
-      .join(',');
+    const readAllowSet = new Set([
+      ...expandWindowsCaseVariants(realJailRoot),
+      ...expandWindowsCaseVariants(realGuardPath),
+      ...expandWindowsCaseVariants(realScriptPath),
+      ...(Array.isArray(options.allowFsRead) ? options.allowFsRead.flatMap(expandWindowsCaseVariants) : [])
+    ]);
+    const writeAllowSet = new Set([
+      ...expandWindowsCaseVariants(realJailRoot),
+      ...(Array.isArray(options.allowFsWrite) ? options.allowFsWrite.flatMap(expandWindowsCaseVariants) : [])
+    ]);
 
-    const nodeArgs = [
-      '--permission',
-      `--allow-fs-read=${readAllowList}`,
-      `--allow-fs-write=${writeAllowList}`,
-      realScriptPath
-    ];
+    const readAllowFlags = [...readAllowSet].filter(Boolean).map((p) => `--allow-fs-read=${p}`);
+    const writeAllowFlags = [...writeAllowSet].filter(Boolean).map((p) => `--allow-fs-write=${p}`);
+    const permissionFlags = ['--permission', ...readAllowFlags, ...writeAllowFlags];
+
+    const nodeArgs = [...permissionFlags];
+    if (options.skipJsGuard !== true) {
+      nodeArgs.push(`--import=${pathToFileURL(realGuardPath).href}`);
+    }
+    nodeArgs.push(realScriptPath);
 
     return new Promise((resolve) => {
       const startMs = Date.now();
@@ -460,7 +651,11 @@ export class LocalWorktreeSandbox {
             child.kill('SIGKILL');
           }
         } catch {
-          try { child.kill('SIGKILL'); } catch {}
+          try {
+            child.kill('SIGKILL');
+          } catch {
+            /* process already closed */
+          }
         }
       }, timeoutMs);
 
@@ -480,7 +675,7 @@ export class LocalWorktreeSandbox {
           elapsedMs: Date.now() - startMs,
           sandboxMode: 'LocalWorktreeSandbox(node-permission)',
           sandboxDir: realJailRoot,
-          permissionFlags: ['--permission', `--allow-fs-read=${readAllowList}`, `--allow-fs-write=${writeAllowList}`],
+          permissionFlags,
           stdout: stdout.trim(),
           stderr: timedOut
             ? `${stderr.trim()}\nSANDBOX_HARD_TIMEOUT: Task exceeded ${timeoutMs}ms limit`.trim()
@@ -497,7 +692,7 @@ export class LocalWorktreeSandbox {
           elapsedMs: Date.now() - startMs,
           sandboxMode: 'LocalWorktreeSandbox(node-permission)',
           sandboxDir: realJailRoot,
-          permissionFlags: ['--permission', `--allow-fs-read=${readAllowList}`, `--allow-fs-write=${writeAllowList}`],
+          permissionFlags,
           stdout: stdout.trim(),
           stderr: err.message
         });
@@ -506,22 +701,100 @@ export class LocalWorktreeSandbox {
   }
 
   /**
-   * Executes a JavaScript/ESM snippet inside the sandbox with the runtime FS containment guard active.
+   * Executes a JavaScript/ESM snippet inside the sandbox with `--import` Network + FS guard preloaded.
    */
   async execCode(code, options = {}) {
     if (options.useNativeNodePermissions) {
       return this.execIsolatedSnippet(code, options);
     }
     this.init();
-    const scriptName = `_task_${Date.now()}.mjs`;
+    const timeoutMs = options.timeoutMs || this.timeoutMs || HARD_TIMEOUT_MS;
+    const realJailRoot = fs.realpathSync(this.sandboxDir);
+    const realGuardPath = fs.realpathSync(this.guardFilePath);
+    const scriptName = `_task_${Date.now()}_${Math.random().toString(36).slice(2, 6)}.mjs`;
     const scriptPath = this.resolvePath(scriptName);
-    const wrappedCode = `import './.jail_fs_guard.mjs';\n${code}\n`;
-    fs.writeFileSync(scriptPath, wrappedCode, 'utf8');
-    return this.execCommand(`node "${scriptPath}"`, options);
+    fs.writeFileSync(scriptPath, `${code}\n`, 'utf8');
+    const realScriptPath = fs.realpathSync(scriptPath);
+
+    const sanitizedEnv = sanitizeEnvironment(process.env);
+    sanitizedEnv.SANDBOX_ROOT = realJailRoot;
+
+    return new Promise((resolve) => {
+      const startMs = Date.now();
+      const isWin = process.platform === 'win32';
+      const child = spawn(
+        process.execPath,
+        [`--import=${pathToFileURL(realGuardPath).href}`, realScriptPath],
+        {
+          cwd: realJailRoot,
+          env: sanitizedEnv,
+          stdio: ['ignore', 'pipe', 'pipe'],
+          windowsHide: true
+        }
+      );
+
+      let stdout = '';
+      let stderr = '';
+      let timedOut = false;
+
+      const timer = setTimeout(() => {
+        timedOut = true;
+        try {
+          if (isWin && child.pid) {
+            execSync(`taskkill /PID ${child.pid} /T /F`, { stdio: 'ignore' });
+          } else {
+            child.kill('SIGKILL');
+          }
+        } catch {
+          try {
+            child.kill('SIGKILL');
+          } catch {
+            /* process already closed */
+          }
+        }
+      }, timeoutMs);
+
+      child.stdout.on('data', (chunk) => {
+        stdout += chunk.toString();
+      });
+      child.stderr.on('data', (chunk) => {
+        stderr += chunk.toString();
+      });
+
+      child.on('close', (exitCode) => {
+        clearTimeout(timer);
+        resolve({
+          ok: !timedOut && exitCode === 0,
+          exitCode: timedOut ? 124 : (exitCode ?? 1),
+          timedOut,
+          elapsedMs: Date.now() - startMs,
+          sandboxMode: 'LocalWorktreeSandbox(node-direct)',
+          sandboxDir: realJailRoot,
+          stdout: stdout.trim(),
+          stderr: timedOut
+            ? `${stderr.trim()}\nSANDBOX_HARD_TIMEOUT: Task exceeded ${timeoutMs}ms limit`.trim()
+            : stderr.trim()
+        });
+      });
+
+      child.on('error', (err) => {
+        clearTimeout(timer);
+        resolve({
+          ok: false,
+          exitCode: 1,
+          timedOut: false,
+          elapsedMs: Date.now() - startMs,
+          sandboxMode: 'LocalWorktreeSandbox(node-direct)',
+          sandboxDir: realJailRoot,
+          stdout: stdout.trim(),
+          stderr: err.message
+        });
+      });
+    });
   }
 
   /**
-   * Automatically cleans up and destroys the temporary sandbox directory.
+   * Automatically cleans up and destroys the temporary sandbox directory (Windows retry-safe).
    */
   destroy() {
     if (!fs.existsSync(this.sandboxDir)) {
@@ -536,24 +809,36 @@ export class LocalWorktreeSandbox {
         fs.unlinkSync(jailNodeModules);
       } catch {
         try {
-          fs.rmSync(jailNodeModules, { recursive: false, force: true });
-        } catch {}
+          fs.rmSync(jailNodeModules, { recursive: false, force: true, maxRetries: 5, retryDelay: 120 });
+        } catch {
+          /* ignore junction cleanup error */
+        }
       }
     }
 
     if (this.isGitWorktree) {
       try {
-        execSync(`git worktree remove --force "${this.sandboxDir}"`, {
+        execFileSync('git', ['worktree', 'remove', '--force', this.sandboxDir], {
           cwd: FACTORY_ROOT,
           stdio: 'ignore'
         });
-        execSync('git worktree prune', { cwd: FACTORY_ROOT, stdio: 'ignore' });
-      } catch {}
+      } catch {
+        /* fallback to fs.rmSync */
+      }
     }
 
     try {
-      fs.rmSync(this.sandboxDir, { recursive: true, force: true });
-    } catch {}
+      fs.rmSync(this.sandboxDir, { recursive: true, force: true, maxRetries: 5, retryDelay: 120 });
+    } catch {
+      /* retry exhausted */
+    }
+    if (this.isGitWorktree) {
+      try {
+        execFileSync('git', ['worktree', 'prune'], { cwd: FACTORY_ROOT, stdio: 'ignore' });
+      } catch {
+        /* ignore prune error */
+      }
+    }
     this.initialized = false;
   }
 }
@@ -572,6 +857,8 @@ export class HybridAgentSandbox {
     this.desktopEnabled = Boolean(options.desktop);
     this.timeoutMs = options.timeoutMs || HARD_TIMEOUT_MS;
     this.preferWorktree = Boolean(options.preferWorktree);
+    this.allowNetwork = Boolean(options.allowNetwork);
+    this.baseDir = options.baseDir;
     this.allowedDirectories = Array.isArray(options.allowedDirectories)
       ? options.allowedDirectories
       : ['src', 'site', 'public', 'worker', 'tokens', 'tests'];
@@ -603,7 +890,7 @@ export class HybridAgentSandbox {
           this.e2bSessionId = data.sandboxID || data.id || `e2b-firecracker-${Date.now()}`;
           return this;
         }
-      } catch (_) {
+      } catch {
         // Automatic deterministic fallback to local-worktree when offline or unreachable
       }
       this.mode = 'local-worktree';
@@ -611,7 +898,9 @@ export class HybridAgentSandbox {
 
     this.localJail = new LocalWorktreeSandbox({
       timeoutMs: this.timeoutMs,
-      preferWorktree: this.preferWorktree
+      preferWorktree: this.preferWorktree,
+      allowNetwork: this.allowNetwork,
+      baseDir: this.baseDir
     }).init();
     return this;
   }
@@ -704,7 +993,9 @@ export async function runInHybridSandbox(taskOrCode, options = {}) {
 
   const jail = new LocalWorktreeSandbox({
     timeoutMs: options.timeoutMs || HARD_TIMEOUT_MS,
-    preferWorktree: Boolean(options.preferWorktree)
+    preferWorktree: Boolean(options.preferWorktree),
+    allowNetwork: Boolean(options.allowNetwork),
+    baseDir: options.baseDir
   });
 
   try {
@@ -729,6 +1020,8 @@ export async function runNodePermissionJailedSnippet(code, options = {}) {
   const jail = new LocalWorktreeSandbox({
     timeoutMs: options.timeoutMs || HARD_TIMEOUT_MS,
     preferWorktree: Boolean(options.preferWorktree),
+    allowNetwork: Boolean(options.allowNetwork),
+    baseDir: options.baseDir,
     runId: options.runId
   });
   try {

@@ -149,7 +149,7 @@ export async function evaluateMultiAgentTracesAndMcp({
     {
       waveId: 'wave_3_qa_security_and_seo_gate',
       squads: ['squad_6', 'squad_7'],
-      traceStatus: Boolean(astRes?.passed && secRes?.passed && chaosRes?.passed) ? 'VERIFIED' : 'DRIFT',
+      traceStatus: astRes?.passed && secRes?.passed && chaosRes?.passed ? 'VERIFIED' : 'DRIFT',
       passed: Boolean(astRes?.passed && secRes?.passed && chaosRes?.passed)
     }
   ];
@@ -227,7 +227,7 @@ export function createAndVerifyAgentVcsSnapshot({
   if (fs.existsSync(AGENTVCS_KEYS_PATH)) {
     try {
       keyPair = JSON.parse(fs.readFileSync(AGENTVCS_KEYS_PATH, 'utf8'));
-    } catch (_) {
+    } catch {
       keyPair = null;
     }
   }
@@ -299,7 +299,7 @@ export function createAndVerifyAgentVcsSnapshot({
       if (parsed && Array.isArray(parsed.snapshots)) {
         store.snapshots = parsed.snapshots;
       }
-    } catch (_) {}
+    } catch {}
   }
 
   const prevSnapshot = store.snapshots[0] || null;
@@ -393,7 +393,7 @@ export async function runAgentBenchmarkHarness(options = {}) {
     try {
       const cleanRep = JSON.parse(fs.readFileSync(cleanReportPath, 'utf8'));
       cleanCodeBlockers = Number(cleanRep.blockers ?? 0);
-    } catch (_) {
+    } catch {
       cleanCodeBlockers = 0;
     }
   }
@@ -414,7 +414,7 @@ export async function runAgentBenchmarkHarness(options = {}) {
   if (fs.existsSync(CHAOS_REPORT_PATH)) {
     try {
       chaosRes = JSON.parse(fs.readFileSync(CHAOS_REPORT_PATH, 'utf8'));
-    } catch (_) {
+    } catch {
       chaosRes = null;
     }
   }
@@ -480,7 +480,7 @@ export async function runAgentBenchmarkHarness(options = {}) {
   if (fs.existsSync(SKILL_INDEX_PATH)) {
     try {
       skillIndex = JSON.parse(fs.readFileSync(SKILL_INDEX_PATH, 'utf8'));
-    } catch (_) {}
+    } catch {}
   }
 
   let history = [];
@@ -489,7 +489,7 @@ export async function runAgentBenchmarkHarness(options = {}) {
       const parsedHist = JSON.parse(fs.readFileSync(BENCHMARK_HISTORY_PATH, 'utf8'));
       if (Array.isArray(parsedHist.runs)) history = parsedHist.runs;
       else if (Array.isArray(parsedHist)) history = parsedHist;
-    } catch (_) {
+    } catch {
       history = [];
     }
   }
@@ -653,7 +653,7 @@ export function buildBenchmarkComparisonTableMarkdown(benchmarkRun) {
     try {
       const p = JSON.parse(fs.readFileSync(GEPA_PARETO_PATH, 'utf8'));
       paretoCount = (p.paretoFront || []).length || 1;
-    } catch (_) {}
+    } catch {}
   }
 
   const lines = [

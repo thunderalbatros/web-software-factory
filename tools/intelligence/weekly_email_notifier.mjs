@@ -37,7 +37,7 @@ if (fs.existsSync(ENV_PATH)) {
         }
       }
     }
-  } catch (_) {}
+  } catch {}
 }
 
 export const DEFAULT_CTO_EMAIL = process.env.CTO_EMAIL_TO || 'tomasbermudez777@gmail.com';

@@ -11,7 +11,7 @@
  */
 
 export function compactAgentHistory(historyItems = [], options = {}) {
-  const { maxTokensTarget = 2500, preserveInvariants = true } = options;
+  const { maxTokensTarget: _maxTokensTarget = 2500, preserveInvariants = true } = options;
 
   if (!Array.isArray(historyItems) || historyItems.length === 0) {
     return '';
@@ -39,7 +39,7 @@ export function compactAgentHistory(historyItems = [], options = {}) {
     const text = typeof item === 'string' ? item : JSON.stringify(item);
 
     // 1. Extract touched/modified files
-    const fileMatches = text.match(/(?:src|tools|docs|public|knowledge|\.agents)[\\/][\w\d_./\-]+/g);
+    const fileMatches = text.match(/(?:src|tools|docs|public|knowledge|\.agents)[\\/][\w\d_./-]+/g);
     if (fileMatches) {
       fileMatches.forEach(f => modifiedFiles.add(f));
     }
