@@ -22,4 +22,4 @@ tools: Read, Write, Edit, Grep, Glob, Bash
 4. **Dual-Loop SPLE Harvesting:** Distill reusable patterns from completed client projects back into `knowledge/software_factory/` via `node tools/factory.mjs harvest` and update graphs via `node tools/intelligence/code_and_wiki_graph.mjs`.
 
 ## 2. Assigned Skills (`.agents/skills/`)
-- `research-mode`, `extract-design`, `firecrawl`, `kb-retrieval`, `kb-writing`, `sandboxed-experiments`, `self-evolving-factory`
+- `research-mode`, `extract-design`, `firecrawl`, `kb-retrieval`, `kb-writing`, `sandboxed-experiments`, `self-evolving-factory`, `clean-room-course-harvester`

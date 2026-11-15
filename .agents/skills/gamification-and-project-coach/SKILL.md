@@ -1,33 +1,30 @@
 ---
 name: gamification-and-project-coach
-description: Coaches mastery XP gamification, mindful streak pauses, <4KB SVG companion states, and 6 Boss Project rubrics.
+description: Coaches ethical mastery XP, mindful pauses, <4KB SVG companion, and 6 Boss Projects across 4 learner archetypes.
 ---
 
-# Gamification & Boss Project Coach
+# Ethical Gamification & Boss Project Coach
 
-> **Canon Anchor:** `CANON_ETHICAL_GAMIFICATION_ZERO_COST_TUTOR_AND_PRIVACY_2026` + `academy_project_tracks` SQLite table.
+> **Canons Required:** `CANON_ETHICAL_GAMIFICATION_ZERO_COST_TUTOR_AND_PRIVACY_2026` and `CANON_AUTONOMOUS_CURRICULUM_ENGINEERING_MULTIMEDIA_TRIANGULATION_AND_ASSESSMENT_2026`, backed by `data/academy.sqlite` (`academy_project_tracks`, `academy_learner_archetypes`).
 
-## 1. Ethical Mastery-Driven Progression Rules
-1. **Mastery over Passive Clicking:**
-   - Keep passive reading modest (`10 XP`); concentrate XP rewards on active recall quizzes (`35 XP`), daily `ts-fsrs` spaced repetition reviews (`30 XP`), critical error audits (`+20 XP`), and Boss Project milestones (`150 XP` per milestone, `450 XP` total).
-2. **No Dark Patterns / Mindful Streak Pause:**
-   - Support one-click *"Pausa consciente de estudio"* (`streakPausedUntil`) preserving streak progress with zero guilt copy (`zero confirm-shaming`).
-3. **Pure Vector Companion (`< 4 KB` SVG, 0 external deps):**
-   - Drive lightweight reactive states (`curious`, `thinking`, `celebrating`, `resting`) via CSS custom properties in `OKLCH` and minimal SVG attribute transitions respecting `prefers-reduced-motion: reduce`.
-4. **Local-First Sovereignty (Ley 25.326):**
-   - Persist all XP, FSRS cards, pauses, and project checklists in browser storage (`IndexedDB`/`localStorage`) with one-click JSON export/import validated by `Valibot` and opt-in public Portfolio cards.
+## 1. Self-Determination Theory (`SDT`) Progression & Zero Dark Patterns
+1. **Mastery XP Over Passive Clicking:**
+   - Reward genuine cognitive effort: passive lesson completion (`10 XP`), dual text/video application quiz (`35 XP`), `ts-fsrs` spaced-repetition review (`30 XP`), hallucination/privacy audit catch (`+20 XP`), and Boss Project milestones (`150 XP` x 3 = `450 XP`).
+2. **Mindful Study Pause & Zero Confirm-Shaming:**
+   - Provide one-click *"Pausa consciente de estudio"* (`streakPausedUntil`) with encouraging neutral-Spanish (`tú`) microcopy, zero punitive countdowns, and zero paywalls.
+3. **Pure Vector Companion (`< 4 KB` SVG, 0 Heavy Runtimes):**
+   - Render reactive states (`curious`, `thinking`, `celebrating`, `resting`) via semantic SVG + `OKLCH` CSS tokens honoring `prefers-reduced-motion: reduce`.
+4. **Local-First Data Sovereignty (`Ley 25.326`):**
+   - Store XP, skill-constellation nodes, `ts-fsrs` decks, selected `archetype_id`, and Boss Project rubrics locally (`IndexedDB`/`localStorage`) with 1-click `.json` export/restore validated by `Valibot` and strictly opt-in portfolio publishing with PII stripping.
 
-## 2. Guided Coaching Across the 6 Selectable Boss Project Tracks
-Load track definitions dynamically from `academy_project_tracks` and tailor prompts to the learner's interest without mandatory paid tools:
-1. **`sitio-web`** (*Sitio Web o Portfolio Interactivo* — `crear`)
-2. **`bot-automatizado`** (*Bot o Flujo Automatizado Útil* — `cotidiano`)
-3. **`animacion-corta`** (*Animación Corta o Pieza Audiovisual* — `crear`)
-4. **`comic-digital`** (*Cómic Digital o Narrativa Visual Ilustrada* — `crear`)
-5. **`musica-banda-sonora`** (*Música Original o Banda Sonora* — `crear`)
-6. **`sistema-profesional`** (*Sistema Profesional para Trabajo o Emprendimiento* — `emprender`)
+## 2. 6 Boss Project Tracks Adapted to the 4 `academy_learner_archetypes`
+Load tracks from `academy_project_tracks` (`sitio-web`, `bot-automatizado`, `animacion-corta`, `comic-digital`, `musica-banda-sonora`, `sistema-profesional`) and tailor coaching briefs to the learner's archetype:
+- **`ciudadano-cotidiano`:** Personal/family organizer, study assistant, or illustrated story using `free_no_card` web tools (`LibreChat`, `Whisper Web`, `Stirling-PDF`).
+- **`estudiante-profesional`:** Research synthesizer, SOP workflow, or KPI brief using `Khoj`, `AnythingLLM`, `Penpot`, and citation checks.
+- **`creador-maker`:** Short animation, digital comic, soundtrack, or interactive portfolio using `ComfyUI`, `Upscayl`, `Audacity`, and `Astro`.
+- **`desarrollador-builder`:** Local/edge RAG agent, `n8n`/`Activepieces` pipeline, or `Cloudflare Workers` + `Valibot` + `Promptfoo` evaluated app.
 
-## 3. Standard 3-Milestone Coaching Rubric per Track
-- **Hito 1 (`Acquire`):** Clear goal statement (`<= 60` words) + data privacy boundary check (what stays out of prompts).
-- **Hito 2 (`Deepen`):** Working prototype built exclusively with verified `free_no_card` / `open_source_local` tools from `free_tools_stack_json`, plus accessibility check.
-- **Hito 3 (`Create`):** Real edge-case test log, factual/human verification note, and exportable Portfolio showcase card highlighting human authorship.
-
+## 3. 3-Milestone Constructive Alignment Rubric (`Acquire -> Deepen -> Create`)
+- **Hito 1 (`Acquire`):** Problem statement (`<= 60` words), target user, and explicit privacy boundary checklist.
+- **Hito 2 (`Deepen`):** Reproducible prototype built with stage-appropriate Open-Source / `free_no_card` tools plus WCAG `2.2` accessibility check.
+- **Hito 3 (`Create`):** Adversarial/edge-case test log, human verification sign-off, and exportable Portfolio credential card.

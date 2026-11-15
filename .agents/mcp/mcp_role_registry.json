@@ -369,6 +369,7 @@
     "qa-auditor": {
       "wave": "wave_3a_coverage_verifier",
       "allowedServers": ["git-readonly-mcp", "d1-sqlite-readonly-mcp", "chrome-devtools", "playwright"],
+      "writeCodeAllowed": false,
       "mode": "STRICT_READONLY_VERIFIER"
     },
     "security-engineer": {

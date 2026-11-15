@@ -1,35 +1,32 @@
 ---
 name: explorable-lesson-author
-description: Authors neutral-Spanish lessons with everyday analogies, Sweller <=110-word blocks, and side-by-side controls.
+description: Authors neutral-Spanish lessons (<=110 words, readability_es), 2-3 triangulated videos, OSS tools, and archetype tabs.
 ---
 
 # Explorable Lesson Author (Brilliant + Stripe + Distill Standard)
 
-> **Canons Required:** `CANON_PEDAGOGICAL_SCAFFOLDING_UNESCO_DIATAXIS_AND_SOCRATIC_LEARNLM_2026` + `CANON_INCLUSIVE_MINIMALIST_UX_BRILLIANT_STRIPE_AND_DISTILL_2026`.
+> **Canons Required:** `CANON_PEDAGOGICAL_SCAFFOLDING_UNESCO_DIATAXIS_AND_SOCRATIC_LEARNLM_2026`, `CANON_INCLUSIVE_MINIMALIST_UX_BRILLIANT_STRIPE_AND_DISTILL_2026`, and `CANON_AUTONOMOUS_CURRICULUM_ENGINEERING_MULTIMEDIA_TRIANGULATION_AND_ASSESSMENT_2026`.
 
-## Authoring Rules (Zero Exceptions)
-1. **Language & Tone (`tú` internacional):** Warm, respectful, clear neutral Spanish (`tú`, *"haz clic"*, *"observa cómo cambia"*, *"puedes probar"*). Zero regional slang inside course prose and zero condescending academic tone.
-2. **Zero Unintroduced Technical Jargon (3-Step Rule):**
-   - Never drop raw terms like *embeddings*, *tokens*, *RAG*, *temperature*, or *API* in a Principiante lesson without first giving: (1) an everyday analogy, (2) a plain-Spanish definition, and (3) the technical term gently in parentheses.
-3. **Sweller Cognitive Budget:**
-   - Hard cap of **3 new concepts** per lesson.
-   - Break prose every **`<= 110` words** with an interactive micro-control, visual comparison table, or short check question.
-   - Apply worked-example fading: annotated example -> fill-in-the-blank template -> independent prompt exercise.
+## 1. Editorial & Readability Rules (`tools/audit/readability_es.mjs`)
+1. **International Neutral Spanish (`tú`):** Warm, clear, respectful `tú` (*"observa"*, *"puedes probar"*, *"fíjate"*). Zero accidental Rioplatense `voseo` (*tenés, podés, fijate, usá*) in lesson prose.
+2. **3-Step Jargon Introduction & `introduced_terms`:**
+   - In Level 1 (`Acquire`), never introduce technical terms without: (1) everyday analogy, (2) plain-Spanish explanation, and (3) technical term in parentheses.
+   - Declare newly taught terms in YAML frontmatter `introduced_terms: [...]` so Levels 2 (`Deepen`) and 3 (`Create`) pass `readability_es.mjs` (`INFLESZ >= 55` L1, `>= 45` L2, `>= 40` L3).
+3. **Sweller Cognitive Load Cap:**
+   - Maximum **3 new concepts** per lesson and **zero continuous paragraphs `> 110` words**.
+   - Apply worked-example fading: annotated example -> guided fill-in -> autonomous prompt/workflow exercise.
 
-## Canonical 5-Beat Lesson Structure
-1. **Tiempo 1 — Gancho cotidiano (`<= 60` palabras):** Real scenario the reader recognizes immediately.
-2. **Tiempo 2 — Idea clave + Micro-control en vivo (lado a lado estilo Stripe/Brilliant):**
-   - Short concept explanation paired inline with a zero-framework (`Vanilla ESM` + `OKLCH` + semantic HTML/SVG) micro-control (e.g., toggle vague vs. structured prompt, slider adjusting output detail/creativity, live privacy redactor highlighting PII before sending).
-   - Must stay responsive without horizontal scroll, `44x44` min tap targets, and honor `prefers-reduced-motion: reduce`.
-3. **Tiempo 3 — Video breve curado + Equivalente accesible:**
-   - Render via `lite-youtube-embed` pointing exclusively to `https://www.youtube-nocookie.com/embed/<youtube_id>`.
-   - Always include an accessible **3-bullet text summary** directly beneath so bandwidth-constrained or deaf/blind learners get equal value.
-4. **Tiempo 4 — Práctica guiada gratuita:**
-   - Step-by-step exercise using verified `free_no_card` / `open_source_local` tools from `academy_tools` plus an explicit privacy reminder (*"Reemplaza nombres reales antes de copiar"*).
-5. **Tiempo 5 — Micro-cuestionario (3 preguntas):**
-   - Handoff slot for `socratic-tutor-and-assessor` JSON bundle (`0ms` client evaluation).
+## 2. Canonical 5-Beat Multimodal Lesson Structure
+1. **Tiempo 1 — Gancho Cotidiano y Selector de Arquetipo (`<= 60` palabras):**
+   - Concrete relatable problem plus lightweight tabs adapting the scenario to the 4 `academy_learner_archetypes` (`ciudadano-cotidiano`, `estudiante-profesional`, `creador-maker`, `desarrollador-builder`).
+2. **Tiempo 2 — Idea Clave + Micro-Control Interactivo (Estilo Stripe / Brilliant):**
+   - Side-by-side (`1440px`) / stacked (`390px`) pure `Vanilla ESM` + `OKLCH` + SVG/HTML interactive control (`>= 44x44px` touch targets, keyboard operable, `prefers-reduced-motion: reduce`, `0px` horizontal overflow).
+3. **Tiempo 3 — Triangulación de `2` a `3` Videos Complementarios + Equivalente Accesible:**
+   - Render 2–3 non-redundant videos (`intuicion_visual`, `demostracion_practica`, `caso_critico_o_comparativa`) via `lite-youtube-embed` (`youtube-nocookie.com`), each paired with a 3-bullet accessible text synthesis and timestamped conceptual anchors (`WCAG 2.2` / `Ley 26.653`).
+4. **Tiempo 4 — Práctica Guiada con Stack Open-Source / Sin Tarjeta:**
+   - Reproducible exercise powered by stage-appropriate `open_source_local` or `free_no_card` tools from `academy_tools`, including an explicit PII redaction reminder (`Ley 25.326`).
+5. **Tiempo 5 — Evaluación Dual Socrática (`0 ms` cliente):**
+   - Mounts the precompiled `Valibot`-validated quiz bundle from `socratic-tutor-and-assessor`.
 
-## Technical Hygiene
-- Use `OKLCH` (`W3C DTCG 2025.10`), Utopia `clamp()`, `APCA` contrast floors (`Lc >= 75` body), and `Valibot` payload validation.
-- Keep lesson HTML/CSS lightweight for instant Cloudflare Workers Static Assets delivery (`CLS = 0.00`).
-
+## 3. Technical & Visual Hygiene
+- Enforce `W3C DTCG 2025.10` `OKLCH 90/8/2` tokens, `APCA` (`Lc >= 75` body), Utopia `clamp()`, `CLS = 0.00`, and verify every `.md`/`.mdx` file with `node tools/audit/readability_es.mjs --file <path> --level <1|2|3>`.

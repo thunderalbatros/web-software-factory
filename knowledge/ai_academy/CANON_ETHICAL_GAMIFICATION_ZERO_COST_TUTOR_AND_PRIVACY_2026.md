@@ -1,65 +1,103 @@
-# Canon de Gamificación Ética, Tutor Socrático Costo \$0.00 y Privacidad Local-First 2026
+---
+canon_id: "CANON_ETHICAL_GAMIFICATION_2026"
+title: "Gamificación Ética sin Patrones Oscuros, Tutor de Costo Cero y Soberanía Local-First"
+domain: "ai_academy"
+approval_status: "PENDING_CTO_REVIEW"
+epistemic_tier_target: "TIER_1_SOTA_2026"
+language_register: "es-neutral-tu"
+sources:
+  - claim_id: "C2-SDT-01"
+    claim_summary: "La Teoría de la Autodeterminación (Ryan y Deci, 2000) establece que la motivación intrínseca sostenible depende de tres necesidades psicológicas básicas: autonomía, competencia y relación, evitando presiones coercitivas externas."
+    url: "https://selfdeterminationtheory.org/theory/"
+    section_or_quote: "Self-Determination Theory (SDT): autonomy, competence, and relatedness support high-quality intrinsic motivation and engagement."
+    http_status: 200
+    verified_at: "2026-11-15"
+    accessed_at: "2026-11-15T02:40:36.968Z"
+  - claim_id: "C2-SDT-DOI-02"
+    claim_summary: "Las recompensas controladoras o punitivas erosionan la motivación intrínseca frente a la retroalimentación informativa orientada al dominio."
+    url: "https://api.crossref.org/works/10.1037/0003-066X.55.1.68"
+    section_or_quote: "Ryan, R. M., & Deci, E. L. (2000). Self-determination theory and the facilitation of intrinsic motivation, social development, and well-being. American Psychologist, 55(1), 68-78."
+    http_status: 200
+    verified_at: "2026-11-15"
+    accessed_at: "2026-11-15T02:40:37.565Z"
+  - claim_id: "C2-TSFSRS-03"
+    claim_summary: "El paquete open-source ts-fsrs implementa en TypeScript/ESM el algoritmo Free Spaced Repetition Scheduler (FSRS) ejecutable íntegramente en el cliente sin servidor."
+    url: "https://github.com/open-spaced-repetition/ts-fsrs"
+    section_or_quote: "open-spaced-repetition/ts-fsrs: TypeScript implementation of Free Spaced Repetition Scheduler supporting ES modules in browser and Node."
+    http_status: 200
+    verified_at: "2026-11-15"
+    accessed_at: "2026-11-15T02:40:38.072Z"
+  - claim_id: "C2-VALIBOT-04"
+    claim_summary: "Valibot provee validación modular de esquemas estructurales con tree-shaking extremo apta para ejecución en navegador y Edge."
+    url: "https://github.com/fabian-hiller/valibot"
+    section_or_quote: "open-circle/valibot: modular and type-safe schema library designed for minimal bundle size."
+    http_status: 200
+    verified_at: "2026-11-15"
+    accessed_at: "2026-11-15T02:40:38.716Z"
+  - claim_id: "C2-WEBCRYPTO-05"
+    claim_summary: "La API estándar SubtleCrypto del navegador provee primitivas criptográficas nativas como PBKDF2 y AES-GCM sin dependencias externas."
+    url: "https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto"
+    section_or_quote: "MDN Web APIs SubtleCrypto: deriveKey (PBKDF2) and encrypt/decrypt (AES-GCM) in secure browser contexts."
+    http_status: 200
+    verified_at: "2026-11-15"
+    accessed_at: "2026-11-15T02:40:39.540Z"
+  - claim_id: "C2-LEY25326-06"
+    claim_summary: "La Ley Nacional 25.326 de Protección de los Datos Personales (Argentina) regula el consentimiento informado, finalidad, seguridad y derechos de acceso, rectificación y supresión."
+    url: "https://www.argentina.gob.ar/normativa/nacional/ley-25326-64790/texto"
+    section_or_quote: "Ley 25.326 — Protección de los Datos Personales (República Argentina): principios generales, licitud, seguridad de los datos y derechos de los titulares."
+    http_status: 200
+    verified_at: "2026-11-15"
+    accessed_at: "2026-11-15T02:40:39.598Z"
+---
 
-> **Alcance epistemológico:** `TIER_1_SOTA_2026` (`authorityBoost: 1.35`). Directrices arquitectónicas y de motivación intrínseca para el motor de progreso, repetición espaciada, proyectos aplicados y soberanía de datos en **Academia IA**.
+# Canon: Gamificación Ética sin Patrones Oscuros, Tutor de Costo Cero y Soberanía Local-First
+
+**Alcance:** Sistema de motivación basado en dominio real (*Self-Determination Theory*), repetición espaciada científica en el navegador (`ts-fsrs`), tutor diagnóstico de costo `$0.00 USD` en servidor con puente opcional `BYOK` cifrado localmente y cumplimiento de la `Ley 25.326` (Argentina) (`approval_status: PENDING_CTO_REVIEW`).
 
 ---
 
-## 1. Gamificación Ética Orientada al Dominio Real (Cero *Dark Patterns*)
+## 1. Gamificación Ética Centrada en Competencia y Autonomía (`SDT`)
 
-Academia IA rechaza tácticas manipulativas (rachas punitivas con pérdida de avance, urgencia artificial, notificaciones invasivas o *confirm-shaming*). El sistema se fundamenta en la **Teoría de la Autodeterminación**: competencia percibida, autonomía de elección y propósito real.
+Basado en la **Teoría de la Autodeterminación** de Ryan y Deci (`Autonomía`, `Competencia` y `Propósito` — `[C2-SDT-01]`, `[C2-SDT-DOI-02]`):
 
-### 1.1 Economía de XP Ponderada hacia la Comprensión Activa
-No todo clic vale lo mismo. La lectura pasiva solo registra avance básico; la retención a largo plazo y la creación real concentran la recompensa:
-
-| Actividad formativa | XP otorgado | Motivo pedagógico |
-| :--- | :--- | :--- |
-| Completar lectura + micro-control | `10 XP` | Incentiva el inicio sin recompensar el desplazamiento rápido vacío. |
-| Aprobar micro-cuestionario (sin saltar pistas) | `35 XP` | Refuerza recuperación activa y comprensión factual. |
-| Sesión de repaso espaciado **`ts-fsrs`** al día | `30 XP` | Premia consolidar memoria de largo plazo sobre el atracón de un día. |
-| Completar cada Hito de **Proyecto Jefe** (`1`, `2` y `3`) | `150 XP` (`450 XP` total) | Convierte el conocimiento en artefacto tangible verificable. |
-| Auditar y corregir alucinación o fuga de privacidad | `+20 XP` extra | Valora el criterio crítico y la seguridad humana. |
-
-### 1.2 Los 4 Árboles de Habilidad (*Skill Trees*)
-La persona elige libremente qué ramas explorar o combinar según sus metas vitales, viendo siempre prerequisitos y tiempo estimado real:
-1. **Cotidiano:** Organización del tiempo, estudio efectivo, verificación de noticias y salud informacional, trámites cotidianos.
-2. **Trabajo:** Síntesis de documentos extensos, redacción profesional clara, análisis en hojas de cálculo, preparación de reuniones.
-3. **Crear:** Sitios web propios, ilustración y cómic digital, animación corta, narrativa audiovisual y música/banda sonora.
-4. **Emprender:** Validación de propuestas, flujos y bots de atención asistida, catálogos y sistemas operativos profesionales reproducibles.
-
-### 1.3 Pausa Consciente de Racha, Compañero SVG `< 4 KB` y Portfolio Compartible
-- **Pausa Consciente de Racha (*Mindful Streak Rest*):** Tú puedes activar modo descanso (*"Pausa consciente de estudio"*) para días laborales pesados, exámenes o fines de semana sin perder consistencia acumulada ni recibir mensajes de culpa.
-- **Compañero Reactivo en SVG Vectorial Puro (`< 4 KB`, 0 dependencias):** Mascota geométrica minimalista animada exclusivamente vía atributos SVG y clases CSS sobre variables `OKLCH`. Reacciona a cuatro estados semánticos claros: *Curioso* (inicio de lección), *Pensando* (cuando abres una pista socrática), *Celebrando* (al completar un hito o repaso `ts-fsrs`), y *En descanso* (pausa consciente). Respeta automáticamente `prefers-reduced-motion: reduce`.
-- **Portfolio Compartible sin Servidor:** Al terminar cualquiera de los 6 **Proyectos Jefe**, puedes generar una ficha exportable limpia (HTML/Markdown/JSON local o tarjeta lista para compartir) que documenta el problema resuelto, las herramientas gratuitas empleadas, tus pruebas y qué decisiones tomaste tú como autor humano.
+1. **Prohibición Estricta de Patrones Oscuros (*Zero Dark Patterns*):**
+   - Prohibido castigar al estudiante con mensajes culpabilizadores (*confirm-shaming*), temporizadores artificiales de ansiedad, vidas limitadas que bloqueen la lectura o muros de pago para mantener rachas.
+   - **Pausa Consciente de Estudio:** Todo usuario dispone de un botón libre de costo para pausar su racha (*"Pausar racha por descanso o exámenes"*) sin perder su historial ni recibir reproches.
+2. **Puntos de Dominio (*Mastery XP*), Nunca por Clics Vacíos:**
+   - `[ASUNCIÓN: ponderación numérica de producto definida por el estudio para priorizar práctica activa sobre lectura pasiva]`
+   - Completar lectura pasiva: `10 XP`.
+   - Resolver correctamente el micro-cuestionario de aplicación y juicio crítico: `35 XP`.
+   - Completar sesión de repaso espaciado (`ts-fsrs` — `[C2-TSFSRS-03]`): `30 XP`.
+   - Auditar y corregir una alucinación o fuga de privacidad en el simulador: `+20 XP`.
+   - Entregar cada uno de los 3 hitos verificables del **Proyecto Jefe (*Boss Project*)**: `150 XP` por hito (`450 XP` totales + insignia verificable exportable).
+3. **Árbol de Habilidades Visual y Compañero Vectorial Sobrio:**
+   - El progreso se representa como un **mapa constelación / árbol de habilidades** claro (`Uso Cotidiano`, `Trabajo y Estudio`, `Crear`, `Emprender`).
+   - El compañero de estudio es un emblema geométrico en **SVG puro** (`[ASUNCIÓN: presupuesto técnico interno < 4 KB sin librerías pesadas]`) con estados discretos (`curioso`, `analizando`, `celebración sutil`, `en descanso`), respetando `prefers-reduced-motion: reduce`.
 
 ---
 
-## 2. Arquitectura de Tutor Socrático de Costo Servidor `\$0.00`
+## 2. Arquitectura Híbrida del Tutor de Costo `$0.00 USD` en Servidor
 
-Academia IA garantiza acceso completo y gratuito para toda la comunidad manteniendo **cero costos variables de inferencia en servidores propios**, combinando inteligencia precompilada en tiempo de *build* con un puente opcional en el dispositivo del usuario.
+Para que la plataforma escale a miles de estudiantes con **costo marginal de servidor exactamente igual a `$0.00 USD`**:
 
-### 2.1 Capa 1 — Árbol Socrático JSON Precompilado (`\$0.00`, `0 ms` latencia)
-Durante la construcción estática del sitio (`build`), cada lección y pregunta incluye su árbol de diálogo validado estrictamente con **`Valibot`** (`< 1 KB` en cliente):
-- **Normalización lingüística determinista en navegador:** Normalización Unicode `NFKC`, remoción de diacríticos y detección de patrones conceptuales frecuentes en respuestas cortas o selección múltiple.
-- **Escalera garantizada de 3 pistas:** Pista 1 (pregunta orientadora), Pista 2 (contraste reducido), Pista 3 (estructura casi resuelta) + explicación diagnóstica final.
-- **Funciona incluso sin conexión (*offline-ready*):** Al ser JSON estático servido desde Workers Static Assets, mil o un millón de estudiantes consumen exactamente `$0.00` de cómputo de IA en servidor.
+### Capa A — Motor Diagnóstico Precompilado en Cliente (100% Gratuito, `0 ms`, Offline-Ready)
+- Durante la construcción del sitio, los agentes pre-generan (vía `Vertex AI Batch` al `50%` de descuento + caché SHA-256) árboles diagnósticos validados con `Valibot` (`[C2-VALIBOT-04]`) para cada ejercicio.
+- En el navegador, un evaluador ligero en JavaScript compara tu selección o estructura de prompt contra reglas deterministas y despliega al instante las **3 pistas socráticas** específicas para el error conceptual detectado, sin enviar datos a ningún servidor externo.
 
-### 2.2 Capa 2 — Puente BYOK Opcional Cifrado Localmente (`WebCrypto AES-GCM` + `IndexedDB`)
-Para quienes desean conversación socrática abierta sobre un caso propio (nivel Intermedio/Avanzado o *Proyectos Jefe*), se ofrece un módulo opcional **BYOK (*Bring Your Own Key*)**:
-- **Cifrado cliente estricto:** La clave API personal se cifra exclusivamente en tu dispositivo usando la API nativa **`crypto.subtle`** (`AES-GCM` de 256 bits con vector de inicialización único por registro y clave derivada vía `PBKDF2` desde frase de paso opcional o dispositivo), almacenándose solo como texto cifrado en **`IndexedDB`**.
-- **Tráfico directo navegador -> proveedor:** Las peticiones salen directo desde el navegador hacia el endpoint oficial elegido por la persona (por ejemplo Gemini API gratuita, Groq u OpenRouter), dentro de estrictas cabeceras `connect-src` declaradas en CSP, sin pasar nunca por servidores intermedios de Academia IA.
-- **Control total de privacidad:** Botón visible en todo momento para probar en modo *offline* simulado, inspeccionar qué texto se enviará antes de pulsar enviar (recordatorio automático contra datos sensibles) o borrar la clave de `IndexedDB` en un clic.
+### Capa B — Puente Opcional `BYOK` (*Bring Your Own Key*) 100% en Navegador
+- Para quienes deseen practicar conversación abierta ilimitada en ejercicios avanzados, se ofrece un conector opcional donde puedes usar una clave gratuita sin tarjeta (p. ej., Google AI Studio o Groq) o un servidor local propio (`Ollama` en `http://localhost:11434`):
+  1. La clave se cifra en tu propio navegador usando **`WebCrypto SubtleCrypto` (`PBKDF2` + `AES-GCM` de 256 bits — `[C2-WEBCRYPTO-05]`)** y se guarda únicamente en tu `IndexedDB` local con opción de sesión efímera en memoria.
+  2. La petición viaja **directamente desde tu navegador al proveedor elegido**; jamás pasa por servidores de la Academia ni queda registrada en bases de datos remotas.
+  3. Un botón visible *"Borrar llave y datos locales ahora"* destruye de inmediato las entradas en `IndexedDB` y `localStorage`.
 
 ---
 
-## 3. Privacidad *Local-First* y Cumplimiento Ley 25.326 + Estándares Globales
+## 3. Soberanía de Datos *Local-First* y Cumplimiento `Ley 25.326` (Argentina)
 
-Academia IA adopta privacidad por defecto (*Privacy by Design*) alineada con la **Ley 25.326 de Protección de Datos Personales (Argentina)** y principios internacionales de minimización (GDPR):
-
-1. **Cero inicio de sesión obligatorio:** Puedes completar el 100% de las lecciones, tarjetas `ts-fsrs` y proyectos sin crear cuenta, sin entregar correo electrónico y sin verificación por teléfono.
-2. **Almacenamiento integral en tu dispositivo:** Tu historial de dominio, métricas de repetición espaciada `ts-fsrs`, pausas de racha y avances de proyectos viven exclusivamente en tu navegador (`IndexedDB` / `localStorage`), con **exportación e importación portátil en un archivo `.json`** (con verificación de integridad de esquema `Valibot`) para cambiar de computadora o hacer copia de respaldo cuando tú quieras.
-3. **Cero rastreadores comerciales ni telemetría invasiva:** Prohibición absoluta de píxeles publicitarios, cookies de seguimiento de terceros o perfiles ocultos. Los videos embebidos utilizan `youtube-nocookie.com` activado recién tras interacción explícita (`lite-youtube-embed`).
-4. **Alias público estrictamente *opt-in*:** Si en el futuro decides exportar o compartir una tarjeta de proyecto de tu Portfolio, tú eliges un alias libre o iniciales sin exponer apellidos, ubicación ni identificadores personales.
-5. **Higiene de entrenamiento en herramientas externas:** Cada ficha del catálogo (`academy_tools`) documenta pasos concretos para desactivar el historial o entrenamiento de modelos en plataformas externas gratuitas y qué alternativa local *open-source* usar cuando trabajes con material privado.
+En cumplimiento de los principios de minimización, finalidad y autodeterminación informativa de la **Ley 25.326 de Protección de los Datos Personales** (`[C2-LEY25326-06]`):
+1. **Cero Registro Obligatorio:** El **100% de las lecciones, controles interactivos, videos curados y rutas gratuitas** es accesible sin crear cuenta, sin entregar correo electrónico y sin rastreadores publicitarios.
+2. **Respaldo Portátil Firmado:** Tu avance (`XP`, nodos completados, mazos `ts-fsrs` y rúbricas de tu Proyecto Jefe) vive en `IndexedDB` / `localStorage` y puede exportarse o restaurarse en un clic mediante un archivo `.json` validado en cliente con `Valibot` (`[C2-VALIBOT-04]`).
+3. **Vitrina Pública Estrictamente *Opt-In*:** Solo si decides voluntariamente publicar tu Proyecto Jefe terminado, se envía exclusivamente la ficha pública que apruebes en pantalla, previa advertencia automática de redacción de datos personales.
 
 ---
 **Conexiones del Grafo (Obsidian):** [[INDEX]] · [[CANON_SOTA_RAG_ARCHITECTURES_AND_TOOLS_2026]] · [[CURATED_MASTER_BOOKS_AND_COURSES_2026]] · [[CANON_SOFTWARE_ENGINEERING_AT_GOOGLE]] · [[CANON_HARNESS_ENGINEERING_INTEGRAL_2026]] · #ai_academy

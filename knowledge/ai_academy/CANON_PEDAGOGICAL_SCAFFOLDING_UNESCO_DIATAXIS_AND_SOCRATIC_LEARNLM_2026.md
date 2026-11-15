@@ -1,82 +1,125 @@
-# Canon de Andamiaje Pedagógico: UNESCO, UE/OCDE 2026, Diátaxis y Método Socrático estilo LearnLM
+---
+canon_id: "CANON_PEDAGOGICAL_SCAFFOLDING_2026"
+title: "Andamiaje Pedagógico SOTA — UNESCO, Diátaxis, Carga Cognitiva y Tutoría Socrática LearnLM"
+domain: "ai_academy"
+approval_status: "PENDING_CTO_REVIEW"
+epistemic_tier_target: "TIER_1_SOTA_2026"
+language_register: "es-neutral-tu"
+sources:
+  - claim_id: "C1-UNESCO-01"
+    claim_summary: "UNESCO estructura el desarrollo de competencias en IA para estudiantes en tres niveles progresivos: Acquire (Adquirir), Deepen (Profundizar) y Create (Crear)."
+    url: "https://www.unesco.org/en/articles/ai-competency-framework-students"
+    section_or_quote: "AI competency framework for students: three progression levels (Understand/Acquire, Apply/Deepen, Create) across human-centred mindset, ethics, techniques and system design."
+    http_status: 200
+    verified_at: "2026-11-15"
+    accessed_at: "2026-11-15T02:40:19.953Z"
+  - claim_id: "C1-EU-AI-ACT-02"
+    claim_summary: "El Reglamento Europeo de IA (Reglamento UE 2024/1689, Artículo 4) establece obligaciones de alfabetización en IA (AI Literacy) para comprender capacidades, límites, riesgos y supervisión humana."
+    url: "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai"
+    section_or_quote: "EU AI Act regulatory framework: AI literacy provisions (Article 4, applicable from February 2025) and risk-aware human oversight."
+    http_status: 200
+    verified_at: "2026-11-15"
+    accessed_at: "2026-11-15T02:40:41.829Z"
+  - claim_id: "C1-OECD-03"
+    claim_summary: "Los Principios de IA de la OCDE exigen transparencia, explicabilidad, robustez, privacidad y supervisión centrada en las personas."
+    url: "https://oecd.ai/en/ai-principles"
+    section_or_quote: "OECD AI Principles (updated May 2024): inclusive growth, human-centered values, transparency and explainability, robustness, security and accountability."
+    http_status: 200
+    verified_at: "2026-11-15"
+    accessed_at: "2026-11-15T02:40:42.447Z"
+  - claim_id: "C1-DIATAXIS-04"
+    claim_summary: "Diátaxis separa la documentación y enseñanza técnica según la necesidad cognitiva del usuario entre estudio/comprensión (Tutorials/Explanation) y ejecución práctica orientada a metas (How-to/Reference)."
+    url: "https://diataxis.fr/"
+    section_or_quote: "Diátaxis structures documentation around four distinct user needs along two axes: study vs work (action) and acquisition vs application."
+    http_status: 200
+    verified_at: "2026-11-15"
+    accessed_at: "2026-11-15T02:40:43.557Z"
+  - claim_id: "C1-SWELLER-05"
+    claim_summary: "La Teoría de la Carga Cognitiva de John Sweller demuestra que la memoria de trabajo es limitada y que los ejemplos resueltos graduales reducen la carga extrínseca frente al ensayo-error sin guía."
+    url: "https://api.crossref.org/works/10.1207/s15516709cog1202_4"
+    section_or_quote: "Sweller, J. (1988). Cognitive Load During Problem Solving: Effects on Learning. Cognitive Science, 12(2), 257-285."
+    http_status: 200
+    verified_at: "2026-11-15"
+    accessed_at: "2026-11-15T02:40:43.843Z"
+  - claim_id: "C1-LEARNLM-06"
+    claim_summary: "LearnLM fundamenta la tutoría generativa efectiva en aprendizaje activo, gestión de carga cognitiva, adaptación al nivel del estudiante, estímulo de la curiosidad y profundización metacognitiva sin entregar la solución directa de inmediato."
+    url: "https://arxiv.org/abs/2412.16429"
+    section_or_quote: "arXiv:2412.16429 — LearnLM: Improving Gemini for Learning (pedagogical instruction following: inspire active learning, manage cognitive load, adapt to learner, stimulate curiosity, deepen metacognition)."
+    http_status: 200
+    verified_at: "2026-11-15"
+    accessed_at: "2026-11-15T02:40:44.332Z"
+  - claim_id: "C1-BLOOM-07"
+    claim_summary: "La revisión de la Taxonomía de Bloom por Krathwohl (2002) organiza los procesos cognitivos desde recordar y comprender hasta aplicar, analizar, evaluar y crear."
+    url: "https://api.crossref.org/works/10.1207/s15430421tip4104_2"
+    section_or_quote: "Krathwohl, D. R. (2002). A Revision of Bloom's Taxonomy: An Overview. Theory Into Practice, 41(4), 212-218."
+    http_status: 200
+    verified_at: "2026-11-15"
+    accessed_at: "2026-11-15T02:40:44.357Z"
+---
 
-> **Alcance epistemológico:** `TIER_1_SOTA_2026` (`authorityBoost: 1.35`). Marco normativo instruccional para toda lección, módulo, evaluación y proyecto guiado de **Academia IA**. Idioma de autoría: español neutro internacional (`tú`), lenguaje llano y progresivo sin barreras técnicas previas.
+# Canon: Andamiaje Pedagógico SOTA — UNESCO, Diátaxis, Carga Cognitiva y Tutoría Socrática LearnLM
+
+**Alcance:** Arquitectura curricular de 3 niveles para la Academia Pública de IA en Español Neutro (`tú`), libre de jerga no introducida y alineada con el marco de competencias de IA de la UNESCO, el Artículo 4 de Alfabetización en IA del Reglamento Europeo (`UE 2024/1689`) y los Principios de IA de la OCDE (`approval_status: PENDING_CTO_REVIEW`).
 
 ---
 
-## 1. Progresión Competencial UNESCO + Marco UE/OCDE de *AI Literacy* (Junio 2026)
+## 1. Matriz Progresiva de 3 Niveles (UNESCO `Acquire -> Deepen -> Create`)
 
-Toda ruta formativa de Academia IA organiza el aprendizaje en **tres estadios progresivos de competencia**, evitando saltos abruptos de dificultad y conectando cada concepto con la vida real de quien aprende:
+Toda ruta temática del sitio (`Uso Cotidiano`, `Trabajo y Estudio`, `Crear Arte/Video/Web/Código`, `Emprender y Automatizar`) se organiza en tres peldaños verificables (`[C1-UNESCO-01]`):
 
-| Nivel en Academia IA | Estadio UNESCO equivalente | Enfoque para la persona que aprende (`tú`) | Requisitos mínimos de acceso |
+1. **Nivel 1 — Principiante (`Acquire` / Comprender y Usar con Seguridad):**
+   - **Objetivo:** Que cualquier persona (incluso sin base informática previa) logre resultados útiles en pocos minutos, reconozca alucinaciones y proteja sus datos personales.
+   - **Regla de Cero Jerga Cruda:** Prohibido usar términos como *token*, *embedding*, *temperatura*, *context window*, *RAG* o *fine-tuning* sin antes presentar una **analogía cotidiana familiar** (ej.: *"un modelo de lenguaje funciona como un autocompletado muy leído que calcula qué palabra encaja mejor a continuación, no como una enciclopedia infalible"*).
+2. **Nivel 2 — Intermedio (`Deepen` / Estructurar y Combinar Flujos):**
+   - **Objetivo:** Diseñar instrucciones estructuradas con contexto, criterios de calidad y ejemplos (*few-shot*), encadenar herramientas gratuitas/abiertas sin código pesado y auditar salidas con listas de verificación.
+   - **Introducción progresiva de vocabulario:** Cada término técnico se declara en `introduced_terms` y se ancla primero a un control visual interactivo antes de exigir su uso autónomo.
+3. **Nivel 3 — Avanzado (`Create` / Construir Sistemas Reales y Éticos):**
+   - **Objetivo:** Construir flujos reproducibles, agentes supervisados, bases de conocimiento propias, automatizaciones y el **Proyecto Jefe (*Boss Project*)** elegido por el estudiante con software libre o niveles gratuitos verificados.
+
+### Pilares Transversales de Alfabetización Crítica (`UE AI Act Art. 4` + `OCDE`)
+Cada módulo incorpora obligatoriamente al menos dos de estos cuatro hábitos críticos (`[C1-EU-AI-ACT-02]`, `[C1-OECD-03]`):
+- **Verificación factual:** Cómo contrastar fechas, citas, cálculos y afirmaciones médicas/legales frente a fuentes primarias.
+- **Detección de sesgos y límites estadísticos:** Por qué un modelo suena seguro incluso cuando se equivoca.
+- **Privacidad y minimización de datos:** Qué datos jamás debes pegar en un chat externo (documentos de identidad, claves, historias clínicas, contratos confidenciales) y cómo desactivar el entrenamiento con tus conversaciones.
+- **Autoría responsable y criterio humano (*Human-in-the-Loop*):** Usar la IA para amplificar tu comprensión y oficio, nunca para sustituir tu juicio.
+
+---
+
+## 2. Separación Estructural `Diátaxis` (*Ruta Entender* vs. *Ruta Hacer*)
+
+Para evitar frustrar tanto a quien busca comprender los fundamentos como a quien necesita resolver una tarea concreta hoy, cada unidad separa explícitamente dos modos inspirados en `Diátaxis` (`[C1-DIATAXIS-04]`):
+
+| Modo en la Academia | Equivalencia `Diátaxis` | Propósito Cognitivo | Formato de Entrega |
 | :--- | :--- | :--- | :--- |
-| **Principiante** | **Adquirir (*Acquire*)** | Uso cotidiano seguro, comprensión intuitiva sin código, lectura crítica de respuestas y primeros prompts estructurados. | Cero conocimientos técnicos ni programación previa. |
-| **Intermedio** | **Profundizar (*Deepen*)** | Flujos de trabajo replicables, gestión consciente de contexto, comparación neutral de herramientas gratuitas y automatización sin fricción. | Dominio de los conceptos del nivel Principiante en el grafo de prerequisitos (DAG). |
-| **Avanzado** | **Crear (*Create*)** | Diseño de sistemas compuestos, evaluación de calidad, agentes supervisados, flujos multimodales y Proyectos Jefe publicados en portfolio. | Aprobación de módulos Intermedios + auditoría de riesgos y privacidad. |
-
-### Los 4 Pilares Transversales UE / OCDE de *AI Literacy* (Junio 2026)
-Ninguna unidad didáctica queda aprobada si no integra al menos dos de estos cuatro pilares prácticos de alfabetización en inteligencia artificial:
-
-1. **Verificación factual y detección de alucinaciones:** Aprender a desconfiar de la fluidez gramatical. Regla práctica: toda cifra, cita legal, dato médico o referencia bibliográfica generada por un modelo probabilístico requiere comprobación en fuente primaria antes de usarse o compartirse.
-2. **Sesgos, cobertura y límites estadísticos:** Comprender que los modelos predicen continuaciones probables según sus datos de entrenamiento; por tanto, reproducen vacíos culturales, sesgos idiomáticos y pierden fiabilidad fuera de su contexto.
-3. **Privacidad y minimización de datos sensibles:** Regla de oro antes de escribir cualquier instrucción: nunca pegar contraseñas, documentos de identidad, historias clínicas, datos bancarios o secretos de clientes sin anonimizarlos previamente. Conocer cómo desactivar el uso de conversaciones para entrenamiento en cada herramienta.
-4. **Juicio humano irremplazable (*Human-in-the-Loop*):** La herramienta genera borradores, opciones o exploraciones; tú decides el propósito, los criterios éticos, el tono y la versión final. El mérito creativo y la responsabilidad siguen siendo humanos.
+| **Ruta Entender (`Learn`)** | *Tutorial + Explanation* | Construir intuición duradera y modelos mentales libres de cajas negras. | Analogía cotidiana + diagrama/control interactivo en vivo + comprobación conceptual. |
+| **Ruta Hacer (`Build`)** | *How-To Guide + Reference* | Resolver un problema real paso a paso con herramientas gratuitas/abiertas hoy mismo. | Receta accionable numerada + plantilla copiable + alternativa 100% gratuita sin tarjeta. |
 
 ---
 
-## 2. Arquitectura Diátaxis Adaptada y Separación *Entender (Learn)* vs. *Hacer (Build)*
+## 3. Ley de Carga Cognitiva de Sweller y Desvanecimiento de Ejemplos
 
-Mezclar teoría profunda con instrucciones operativas en medio de una tarea urgente genera frustración. Por eso Academia IA separa explícitamente **dos modos complementarios de recorrido**, adaptando el marco documental **Diátaxis**:
-
-- **Modo Entender (*Learn Track* — Tutoriales guiados + Explicaciones visuales):**
-  - Responde a *"¿Cómo funciona esto por dentro y por qué importa?"*.
-  - Prioriza intuición cotidiana, simuladores interactivos manipulables (deslizadores, comparadores y diagramas causales) y ausencia total de urgencia operativa.
-  - Nunca exige instalar software pesado ni configurar claves de pago para comprender la idea central.
-- **Modo Hacer (*Build Track* — Guías How-To paso a paso + Fichas de Referencia):**
-  - Responde a *"¿Cómo logro un resultado concreto hoy?"*.
-  - Pasos numerados directos, listas de verificación, plantillas copiables de un clic y equivalentes gratuitos verificados sin tarjeta de crédito.
-  - Enlaza al módulo de **Entender** únicamente como enlace opcional (*"¿Quieres saber por qué funciona este paso?"*) para no bloquear la acción.
+Siguiendo la Teoría de la Carga Cognitiva de John Sweller (`[C1-SWELLER-05]`):
+1. **Tope de Conceptos Nuevos por Lección:** `[ASUNCIÓN: presupuesto editorial interno derivado de Sweller]` Máximo **3 conceptos nuevos** por lección. Si un tema requiere 6 conceptos, se divide en 2 lecciones encadenadas sin saltos de nivel en el grafo curricular (`DAG`).
+2. **Bloques Breves de Lectura (`<= 110` palabras):** `[ASUNCIÓN: límite operativo de diseño instruccional para lectura en pantalla]` Ningún párrafo continuo supera las **110 palabras** sin intercalar un ejemplo visual, una comparación *Antes vs. Después*, un control interactivo o una micro-pregunta activa.
+3. **Andamiaje con Desvanecimiento (*Worked-Example Fading*):**
+   - **Paso A (Ejemplo Resuelto):** Muestra el caso completo comentado línea por línea.
+   - **Paso B (Completar Huecos):** El estudiante ajusta o completa únicamente la pieza clave en un control guiado.
+   - **Paso C (Práctica Autónoma):** El estudiante resuelve un reto equivalente aplicable a su vida, estudio o proyecto.
 
 ---
 
-## 3. Economía Cognitiva (Teoría de Carga Cognitiva de Sweller) y Taxonomía de Bloom
+## 4. Evaluación Revisada de Bloom y Tutoría Socrática (`LearnLM`)
 
-### 3.1 Presupuesto Estricto de Carga Cognitiva (Sweller)
-La memoria de trabajo humana procesa un máximo reducido de elementos nuevos en paralelo. Para impedir el abandono prematuro, cada lección debe cumplir estas cotas numéricas verificables:
+Cada lección cierra con un micro-cuestionario de **3 preguntas** alineadas a la Taxonomía de Bloom revisada (`[C1-BLOOM-07]`):
+1. **Pregunta 1 (Recordar / Comprender):** Verifica que la intuición central quedó clara sin memorización mecánica.
+2. **Pregunta 2 (Aplicar):** Presenta una situación cotidiana o laboral donde debes elegir o ajustar el enfoque adecuado.
+3. **Pregunta 3 (Analizar / Evaluar — Pensamiento Crítico):** Muestra una respuesta generada por IA con un error sutil, sesgo o riesgo de privacidad para que detectes el fallo.
 
-- **Máximo `3` conceptos nuevos por lección.** Si un tema requiere seis ideas nuevas, se divide en dos lecciones atómicas independientes.
-- **Bloques expositivos de `<= 110` palabras** antes de introducir un elemento de descanso perceptual: micro-control interactivo, ejemplo visual antes/después o pregunta breve de verificación.
-- **Regla anti-jerga prematura (3 pasos obligatorios):**
-  1. **Situación o analogía cotidiana primero** (cocina, correo postal, biblioteca, receta de viaje).
-  2. **Definición en español llano** sin tecnicismos opacos.
-  3. **Término técnico estándar entre paréntesis** únicamente cuando la persona ya entendió la idea (ejemplo: *"memoria inmediata de la conversación (ventana de contexto)"*).
-- **Andamiaje en retirada gradual (*Worked Example Effect -> Fading*):**
-  1. *Ejemplo resuelto anotado:* ves una instrucción buena y otra ambigua con el porqué de la diferencia.
-  2. *Práctica con huecos:* completas una parte de la plantilla siguiendo el patrón.
-  3. *Creación autónoma:* redactas tu propia instrucción o decides entre dos opciones ante un caso real.
-
-### 3.2 Progresión según la Taxonomía de Bloom Revisada
-Cada lección y micro-evaluación asciende por tres escalones cognitivos medibles:
-1. **Recordar / Comprender:** Identificar qué hace un concepto con tus propias palabras o reconocer la analogía correcta.
-2. **Aplicar / Analizar:** Elegir o ajustar parámetros, instrucciones o herramientas ante un escenario cotidiano o laboral concreto.
-3. **Evaluar / Crear:** Detectar un error sutil (alucinación, fuga de privacidad, sesgo o afirmación sin evidencia) y construir una solución propia verificable.
-
----
-
-## 4. Método Socrático estilo LearnLM: Escalera de 3 Pistas y Mapa de Conceptos Erróneos
-
-En la pedagogía moderna inspirada en **LearnLM**, un buen tutor **jamás entrega la respuesta final resuelta al primer tropiezo**. Entregar la solución inmediata produce ilusión de competencia y borra el aprendizaje activo.
-
-### 4.1 Contrato de la Escalera Determinista de 3 Pistas Progresivas
-Cada ejercicio práctico o pregunta de micro-cuestionario precompila tres niveles de ayuda escalonada más una explicación diagnóstica final:
-
-1. **Pista 1 — Orientación conceptual (pregunta guía):** Devuelves el foco hacia la propiedad clave del problema mediante una pregunta breve, sin mencionar la opción ganadora. Ejemplo: *"Fíjate qué dato personal aparece en el segundo párrafo: ¿necesita saberlo el asistente para resumir el contrato?"*.
-2. **Pista 2 — Reducción del espacio del problema (contraste directo):** Descartas explícitamente las rutas menos plausibles o comparas dos alternativas acotadas para reducir la carga cognitiva. Ejemplo: *"Descarta las opciones que exigen tarjeta bancaria. Compara qué ocurre si reemplazas el nombre real por `[CLIENTE_A]` antes de pegar el texto"*.
-3. **Pista 3 — Andamio casi completo (último paso del aprendiz):** Entregas la estructura o regla casi lista dejando únicamente la decisión central para que tú cierres el razonamiento. Ejemplo: *"Tu instrucción ya tiene rol y formato de salida; solo falta añadir la condición explícita: 'Si no encuentras el dato en el texto proporcionado, responde...'"*.
-4. **Resolución explicada (solo tras agotar los 3 intentos o solicitar verla):** Explica por qué la opción correcta funciona y por qué cada distractor común induce a error.
-
-### 4.2 Mapa de Errores Frecuentes (*Misconception Mapping*)
-Cada distractor de examen y cada nodo socrático debe identificar el modelo mental equivocado que originó el error (por ejemplo: *"confundir confianza tonal con precisión factual"*, *"creer que la IA busca en tiempo real en toda la web sin conector habilitado"* o *"asumir que las conversaciones gratuitas son siempre privadas por defecto"*), devolviendo retroalimentación amable, específica y accionable en tiempo constante de `0 ms`.
+### Protocolo Socrático Determinista de 3 Pistas (`$0.00` Servidor)
+Inspirado en los principios pedagógicos de **Google LearnLM** (`[C1-LEARNLM-06]`) y adaptado a ejecución estática de costo cero `[ASUNCIÓN: adaptación estática determinista de 3 intentos precompilada en JSON]`, cuando eliges una opción incorrecta el sistema **jamás revela la respuesta correcta en el primer fallo**:
+- **Intento 1 -> Pista 1 (Orientación Conceptual):** Formula una pregunta breve que dirige tu atención al dato clave omitido (*"Fíjate en qué información sensible aparece en la segunda frase..."*).
+- **Intento 2 -> Pista 2 (Contraste Dirigido):** Descarta el error conceptual específico (`misconception_id`) y reduce el espacio de decisión con una analogía concreta.
+- **Intento 3 -> Pista 3 + Solución Razonada:** Explica paso a paso por qué la opción correcta funciona y por qué las alternativas fallaban, habilitando tarjetas de repaso espaciado.
 
 ---
 **Conexiones del Grafo (Obsidian):** [[INDEX]] · [[CANON_SOTA_RAG_ARCHITECTURES_AND_TOOLS_2026]] · [[CURATED_MASTER_BOOKS_AND_COURSES_2026]] · [[CANON_SOFTWARE_ENGINEERING_AT_GOOGLE]] · [[CANON_HARNESS_ENGINEERING_INTEGRAL_2026]] · #ai_academy

@@ -97,7 +97,15 @@ export function getVerifiedModelPricing(modelId, location = 'global', pricingPat
   try {
     const catalog = JSON.parse(fs.readFileSync(pricingPath, 'utf8'));
     const entry = catalog?.models?.[cleanId];
-    if (!entry || !entry.verified_at || !entry.source_url || !/^https:\/\//i.test(String(entry.source_url))) {
+    if (!entry || !entry.verified_at) {
+      return null;
+    }
+    const basis = String(entry.pricing_basis || 'official_public_pricing');
+    const hasHttpsUrl = Boolean(entry.source_url && /^https:\/\//i.test(String(entry.source_url)));
+    const validBasis =
+      (basis === 'official_public_pricing' && hasHttpsUrl) ||
+      (basis === 'conservative_ceiling_guard' && entry.runtime_http_200_verified === true && hasHttpsUrl);
+    if (!validBasis) {
       return null;
     }
     const locBucket = String(location || 'global').toLowerCase() === 'global' ? 'global' : 'regional';
@@ -105,6 +113,11 @@ export function getVerifiedModelPricing(modelId, location = 'global', pricingPat
     const bat = entry.batch?.[locBucket] || entry.batch?.global || null;
     return {
       model: cleanId,
+      provider: entry.provider || 'vertex-ai',
+      modality: entry.modality || 'text_multimodal',
+      unit: entry.unit || catalog.unit || 'per_1m_tokens',
+      pricing_basis: basis,
+      runtime_http_200_verified: Boolean(entry.runtime_http_200_verified),
       locationBucket: locBucket,
       verified_at: entry.verified_at,
       source_url: entry.source_url,
@@ -1838,12 +1851,28 @@ export async function submitAndPollVertexBatchJob(jsonlRequests, options = {}) {
  */
 export async function generateVisualAssetWithImagen3({
   prompt,
-  assetType = 'image-to-3d-plate', // 'image-to-3d-plate' | 'pbr-tileable-texture' | 'hero-avif'
-  outputName = 'generated-asset'
+  assetType = 'image-to-3d-plate', // 'image-to-3d-plate' | 'pbr-tileable-texture' | 'hero-avif' | 'infographic-education'
+  outputName = 'generated-asset',
+  projectSlug = '',
+  complianceProfile = '',
+  charter = undefined,
+  useCharter = false,
+  clientOverride = undefined,
+  recordSpend = true
 } = {}) {
-  const budgetCheck = checkFinOpsDailyBudget(0.03);
+  const profile = getProjectProfile({ slug: projectSlug, complianceProfile, charter, useCharter });
+  const imagenPricing = getVerifiedModelPricing('imagen-3.0-generate-002', GCP_LOCATION);
+  const perImageCostUsd = Number(imagenPricing?.standard?.per_image_usd ?? 0.04);
+  const budgetCheck = checkFinOpsDailyBudget(perImageCostUsd);
   if (!budgetCheck.allowed) {
-    return { ok: false, error: budgetCheck.reason, finopsStatus: budgetCheck.status };
+    return {
+      ok: false,
+      blockedByFinOps: true,
+      error: budgetCheck.reason,
+      complianceProfile: profile.complianceProfile,
+      pollinationsUsed: false,
+      finopsStatus: budgetCheck.status
+    };
   }
 
   const outDir = path.join(ROOT, '.cache', 'vertex_imagen3_assets');
@@ -1854,6 +1883,8 @@ export async function generateVisualAssetWithImagen3({
       ? `Studio product photography on pure neutral grey background (#808080), orthographic 3/4 isometric angle, uniform diffuse studio lighting, zero cast shadows, clean silhouette ready for Image-to-3D mesh reconstruction (blendi-remade/dioramas pipeline): ${prompt}`
       : assetType === 'pbr-tileable-texture'
       ? `Seamlessly tileable 2K PBR surface texture map (albedo + micro-roughness detail), orthographic top-down flat lighting, zero perspective distortion: ${prompt}`
+      : assetType === 'infographic-education'
+      ? `Clean pedagogical diagram on calm high-contrast surface, perceptual OKLCH palette, minimalist Stripe/Distill visual clarity, zero clutter, zero watermarks: ${prompt}`
       : `High-craft editorial hero visual in perceptual OKLCH palette, 90/8/2 dark glass hierarchy, subtle volumetric rim lighting: ${prompt}`;
 
   // Generate deterministic compact ThumbHash placeholder (28-char base64) for zero-CLS loading
@@ -1861,7 +1892,7 @@ export async function generateVisualAssetWithImagen3({
     crypto.createHash('sha256').update(enrichedPrompt).digest().subarray(0, 21)
   ).toString('base64');
 
-  const ai = await getVertexClient();
+  const ai = clientOverride !== undefined ? clientOverride : await getVertexClient(GCP_LOCATION);
   if (ai && typeof ai.models?.generateImages === 'function') {
     try {
       const response = await ai.models.generateImages({
@@ -1876,17 +1907,24 @@ export async function generateVisualAssetWithImagen3({
       if (b64) {
         const filePath = path.join(outDir, `${outputName}.jpg`);
         fs.writeFileSync(filePath, Buffer.from(b64, 'base64'));
-        recordFinOpsTelemetry({
-          operation: `imagen3_${assetType}`,
-          model: 'imagen-3.0-generate-002',
-          inputChars: enrichedPrompt.length,
-          outputChars: 1024,
-          cacheHit: false,
-          fixedCostUsd: 0.03
-        });
+        if (recordSpend) {
+          recordFinOpsTelemetry({
+            operation: `imagen3_${assetType}`,
+            model: 'imagen-3.0-generate-002',
+            inputChars: enrichedPrompt.length,
+            outputChars: 1024,
+            cacheHit: false,
+            fixedCostUsd: perImageCostUsd
+          });
+        }
         return {
           ok: true,
           mode: 'VERTEX_IMAGEN_3_LIVE',
+          model: 'imagen-3.0-generate-002',
+          complianceProfile: profile.complianceProfile,
+          pollinationsUsed: false,
+          estimatedAssetCostUsd: perImageCostUsd,
+          pricingBasis: imagenPricing?.pricing_basis || 'official_public_pricing',
           assetType,
           filePath,
           thumbhashBase64,
@@ -1898,7 +1936,7 @@ export async function generateVisualAssetWithImagen3({
     }
   }
 
-  // Deterministic Serverless Local Fallback (Zero cost when offline)
+  // Deterministic Serverless Local Fallback (Zero cost when offline; never calls Pollinations)
   const svgFallbackPath = path.join(outDir, `${outputName}.svg`);
   const svgContent = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
   <rect width="1024" height="1024" fill="#181a24"/>
@@ -1919,6 +1957,11 @@ export async function generateVisualAssetWithImagen3({
   return {
     ok: true,
     mode: 'DETERMINISTIC_LOCAL_PLATE',
+    model: 'imagen-3.0-generate-002',
+    complianceProfile: profile.complianceProfile,
+    pollinationsUsed: false,
+    estimatedAssetCostUsd: perImageCostUsd,
+    pricingBasis: imagenPricing?.pricing_basis || 'official_public_pricing',
     assetType,
     filePath: svgFallbackPath,
     thumbhashBase64,
@@ -2622,17 +2665,20 @@ export const MULTIMEDIA_FINOPS_TIERS = {
   },
   TIER_2_VERTEX_AI_NATIVE_PREMIUM: {
     id: 'TIER_2_VERTEX_AI_NATIVE_PREMIUM',
-    costRangeUsd: [0.02, 0.1],
+    costRangeUsd: [0.005, 0.1],
     defaultCostUsd: 0.04,
     scaleToZeroIdleUsd: 0.0,
     engines: [
       'vertex-lyria-musiclm',
       'vertex-veo-broll',
       'imagen-3-keyframes',
-      'gcp-tts-studio-journey'
+      'imagen-3.0-generate-002',
+      'gcp-tts-studio-journey',
+      'es-US-Studio-B',
+      'es-US-Chirp3-HD-Achernar'
     ],
     description:
-      'Música de Estudio (Vertex AI Lyria / MusicLM 24kHz-48kHz), Video B-Roll Cinematográfico (Vertex AI Veo + Imagen 3 Keyframes) y Locución Neuronal (Google Cloud Text-to-Speech Studio / Journey con word-level timestamps).'
+      'Música de Estudio (Vertex AI Lyria / MusicLM 24kHz-48kHz), Video B-Roll Cinematográfico (Vertex AI Veo + Imagen 3 Keyframes), Infografías Nativas (Imagen 3) y Locución Neuronal (Google Cloud Text-to-Speech Studio es-US-Studio-B / Chirp 3 HD es-US-Chirp3-HD-Achernar con word-level timestamps).'
   }
 };
 
@@ -2671,14 +2717,24 @@ export function resolveMultimediaTierAndEngine({ requestedTier = '', engine = ''
     normTier === 'TIER_2_VERTEX_AI_NATIVE_PREMIUM' ||
     normTier === 'TIER_2' ||
     normTier === 'TIER2' ||
-    /lyria|musiclm|veo|tts|journey|studio|vertex/.test(normEng) ||
-    /lyria|musiclm|veo|tts|vertex/i.test(requestedTier)
+    /lyria|musiclm|veo|imagen|infographic|tts|journey|studio|chirp3|achernar|vertex/.test(normEng) ||
+    /lyria|musiclm|veo|imagen|tts|chirp|vertex/i.test(requestedTier)
   ) {
     let resolvedEngine = 'vertex-lyria-musiclm';
     let costUsd = 0.04;
     if (/veo|b-?roll|video/.test(normEng) || /veo/i.test(requestedTier)) {
       resolvedEngine = 'vertex-veo-broll';
       costUsd = 0.08;
+    } else if (/imagen|infographic/.test(normEng) || /imagen/i.test(requestedTier)) {
+      resolvedEngine = 'imagen-3.0-generate-002';
+      const imgPricing = getVerifiedModelPricing('imagen-3.0-generate-002', GCP_LOCATION);
+      costUsd = Number(imgPricing?.standard?.per_image_usd ?? 0.04);
+    } else if (/chirp3|achernar/.test(normEng) || /chirp/i.test(requestedTier)) {
+      resolvedEngine = 'es-US-Chirp3-HD-Achernar';
+      costUsd = 0.01;
+    } else if (/studio-b/.test(normEng)) {
+      resolvedEngine = 'es-US-Studio-B';
+      costUsd = 0.02;
     } else if (/tts|voice|locucion|speech|journey/.test(normEng) || /tts/i.test(requestedTier)) {
       resolvedEngine = 'gcp-tts-studio-journey';
       costUsd = 0.02;
@@ -2784,16 +2840,33 @@ export async function routeMultimediaGeneration({
   const profile = getProjectProfile({ slug: projectSlug, complianceProfile, charter, useCharter });
   const resolved = resolveMultimediaTierAndEngine({ requestedTier, engine, taskType });
   const budgetCheck = checkFinOpsDailyBudget(resolved.estimatedCostUsd);
-  const shouldFallbackToPollinations =
-    forcePollinationsFallback || simulateBudgetExhausted || (!budgetCheck.allowed && resolved.estimatedCostUsd > 0);
+  const explicitPollinationsRequest =
+    forcePollinationsFallback || resolved.engine === 'pollinations-free-multimedia';
+  const budgetExhausted =
+    simulateBudgetExhausted || (!budgetCheck.allowed && resolved.estimatedCostUsd > 0);
+  const shouldFallbackToPollinations = explicitPollinationsRequest || budgetExhausted;
 
-  if (!profile.externalGenerativeFallbacksAllowed && (shouldFallbackToPollinations || resolved.engine === 'pollinations-free-multimedia')) {
+  if (!profile.externalGenerativeFallbacksAllowed && explicitPollinationsRequest) {
     return {
       ok: false,
       blocked: true,
       reason: 'POLLINATIONS_BLOCKED_FOR_EDUCATION_PROFILE',
       complianceProfile: profile.complianceProfile,
       requestedTierId: resolved.tierId,
+      costUsd: 0.0
+    };
+  }
+
+  if (!profile.externalGenerativeFallbacksAllowed && budgetExhausted) {
+    return {
+      ok: false,
+      blocked: true,
+      blockedByFinOps: true,
+      pollinationsFallbackBlocked: true,
+      reason: simulateBudgetExhausted ? 'SIMULATED_DAILY_CAP_REACHED_1_50_USD' : budgetCheck.reason,
+      complianceProfile: profile.complianceProfile,
+      requestedTierId: resolved.tierId,
+      engine: resolved.engine,
       costUsd: 0.0
     };
   }
@@ -2901,8 +2974,18 @@ export async function routeMultimediaGeneration({
         vectorLogoProtection: 'STRICT_SVG_COMPOSITE_LAYER_ABOVE_VEO_CANVAS'
       },
       neuralVoiceoverTts: {
-        model: 'gcp-tts-studio-journey',
-        voiceProfile: archetype.includes('law') ? 'en-US-Journey-D' : 'es-US-Studio-B',
+        model:
+          resolved.engine === 'es-US-Chirp3-HD-Achernar' || resolved.engine === 'es-US-Studio-B'
+            ? resolved.engine
+            : 'gcp-tts-studio-journey',
+        voiceProfile:
+          resolved.engine === 'es-US-Chirp3-HD-Achernar'
+            ? 'es-US-Chirp3-HD-Achernar'
+            : resolved.engine === 'es-US-Studio-B'
+            ? 'es-US-Studio-B'
+            : archetype.includes('law')
+            ? 'en-US-Journey-D'
+            : 'es-US-Studio-B',
         wordLevelTimestamps: wordTimestamps,
         sidechainDuckingEnvelope: {
           bandHz: [300, 3500],
@@ -2917,6 +3000,8 @@ export async function routeMultimediaGeneration({
   const opSummary = {
     tierId: resolved.tierId,
     engine: resolved.engine,
+    complianceProfile: profile.complianceProfile,
+    pollinationsUsed: false,
     taskType,
     archetype,
     estimatedAssetCostUsd: resolved.estimatedCostUsd,

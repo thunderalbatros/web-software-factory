@@ -14,6 +14,7 @@ import { fileURLToPath } from 'node:url';
 import {
   classifyEpistemicTier,
   inspectAndGuardLegacyFragment,
+  inspectAndSanitizePromptInjection,
   TRANSLATION_RULE_WARNING,
   LEGACY_TECH_REPLACEMENT_TABLE
 } from './rag_library_sanitizer.mjs';
@@ -49,10 +50,10 @@ const DEFAULT_COLLECTION = env.QDRANT_COLLECTION_OBSIDIAN || 'web_factory_knowle
 
 export function sanitizeRagPayload(value) {
   if (typeof value === 'string') {
-    return value
+    const cleaned = inspectAndSanitizePromptInjection(value).sanitizedText;
+    return cleaned
       .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F-\u009F\u202A-\u202E\u2066-\u2069]/g, '')
       .replace(/<\s*\/?\s*(system|instruction|prompt|tool_call|function_call)[^>]*>/gi, '[REDACTED_TAG]')
-      .replace(/ignore\s+(all\s+)?(previous|prior)\s+instructions/gi, '[REDACTED_INJECTION]')
       .slice(0, 16000);
   }
   if (Array.isArray(value)) return value.map(sanitizeRagPayload);
@@ -106,7 +107,9 @@ export function ensureLocalKnowledgeIndex(forceRebuild = false) {
   const documentTiers = {};
   const tierCounts = {
     TIER_1_SOTA_2026: 0,
+    TIER_2_VERIFIED_DRAFT: 0,
     TIER_2_TIMELESS_PRINCIPLES: 0,
+    TIER_UNTRUSTED: 0,
     TIER_3_LEGACY_SYNTAX_GUARD_CHUNKS: 0
   };
 
@@ -122,6 +125,8 @@ export function ensureLocalKnowledgeIndex(forceRebuild = false) {
       epistemicRole: tierMeta.epistemicRole
     };
     if (tierMeta.epistemicTier === 'TIER_1_SOTA_2026') tierCounts.TIER_1_SOTA_2026++;
+    else if (tierMeta.epistemicTier === 'TIER_2_VERIFIED_DRAFT') tierCounts.TIER_2_VERIFIED_DRAFT++;
+    else if (tierMeta.epistemicTier === 'TIER_UNTRUSTED') tierCounts.TIER_UNTRUSTED++;
     else tierCounts.TIER_2_TIMELESS_PRINCIPLES++;
 
     let currentHeader = path.basename(fullPath, '.md');

@@ -21,4 +21,4 @@ tools: Read, Write, Edit, Grep, Glob, Bash
 3. **Native Core Web Vitals Floor:** Enforce `Speculation Rules API` (`eagerness: "moderate"`), `content-visibility: auto`, `tabular-nums`, and `CLS = 0.000`.
 
 ## 2. Assigned Skills (`.agents/skills/`)
-- `motion-engineer`, `animate`, `animation-performance`, `vanilla-motion-choreography`, `baseline-ui`, `code-structure`, `test-driven-development`, `systematic-debugging`
+- `motion-engineer`, `animate`, `animation-performance`, `vanilla-motion-choreography`, `baseline-ui`, `code-structure`, `test-driven-development`, `systematic-debugging`, `socratic-tutor-and-assessor`

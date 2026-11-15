@@ -1,0 +1,2469 @@
+{
+  "schema": "grandfathered-epistemic-tier-manifest-v1",
+  "generated_at": "2026-11-14",
+  "hash_normalization": "utf8_lf",
+  "policy": "IMMUTABLE_BY_PATH_AND_SHA256_EXCLUDING_AI_ACADEMY_AND_NEW_FILES",
+  "counts": {
+    "tier1_sota_2026": 114,
+    "tier2_timeless_principles": 377
+  },
+  "tier1_files": {
+    "knowledge/AGENT_CREATIVE_AND_VISUAL_AWARENESS_2026.md": {
+      "sha256": "40ae836cacc766faf9010a7e8bac31291d96be216045e2666f51f00eddb76a76",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/architecture_and_books/CANON_50_REPOS_AGENTIC_SOFTWARE_FACTORY_TOM_SWE_STAGEHAND_AND_OXC_2026.md": {
+      "sha256": "3eeabd4a1e3bfad5639f8c6cd30d9189d8113251ae8e86c0331f4b300a31eb8a",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/architecture_and_books/CANON_AGENT_TOKEN_EFFICIENCY_ANTIGRAVITY_2026-10-24.md": {
+      "sha256": "d8429e1f3369e733d356b31904b2920881cac0550aac586988cca5b2e036841a",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/architecture_and_books/CANON_AGENTIC_SOFTWARE_FACTORY_WEB_CRAFT_2026.md": {
+      "sha256": "60d3175a7847ed2ad38d0b225c696c9b8583207fb160874a7aa446bf8664bdad",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/architecture_and_books/CANON_AI_SOFTWARE_FACTORY_MASTERCLASS_SERIES_2026.md": {
+      "sha256": "b322a536e2e0bf4433f07c74d5b22521705c30da35385853d223544cd9b2b175",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/architecture_and_books/CANON_AI_SOFTWARE_FACTORY_SOTA_2026-10-24.md": {
+      "sha256": "0841690de55a517e4e09e1c839b29403318ee2d2f4b5ce1efbe201464c618991",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/architecture_and_books/CANON_ANTI_FRAGILITY_RESILIENCE_AND_GUARDRAILS_2026.md": {
+      "sha256": "4ba4dfefaddac809ff564ee738818004fe7ad3180073e9509a2ecd46d6419105",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/architecture_and_books/CANON_AUTOMATED_VISUAL_QA_VLM_CRITIC_AND_CTO_HITL_GATE_2026.md": {
+      "sha256": "2958bdd1ec88c07b946b4fbb21df9417d1e45cd1bdf97911601d24f91f12137c",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/architecture_and_books/CANON_CLEAN_ROOM_SOFTWARE_DESIGN_REFACTORING_AND_LEGACY_CODE_2026.md": {
+      "sha256": "d661d2f5bfc9aad83abda49297f8238fccd941546ad45c3c0d14cb2d82352dae",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/architecture_and_books/CANON_CLOUDFLARE_D1_WORKERS_PAID_FINOPS_AND_EDGE_OPTIMIZATION_2026.md": {
+      "sha256": "8a315bc4f11ab8d9c591ac6d1b9049d5625a7e7a7c7893bb1e2b4191eb050af0",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/architecture_and_books/CANON_COMPLETE_FREE_VIDEO_COURSES_AND_SEMINAL_PAPERS_2026.md": {
+      "sha256": "98cdf76493d66a9586f6bf916f0c9f2b2c099328ecbecaf063ac46fb35ab1e33",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/architecture_and_books/CANON_DOMAIN_MIT_6102_OUSTERHOUT_DEEP_MODULES_AND_REP_INVARIANTS_2026.md": {
+      "sha256": "9cd09dc97d16109b36d20d95619202092a34a3eef0de5fff33b9053f477fba6d",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/architecture_and_books/CANON_EBOOKFOUNDATION_FREE_PROGRAMMING_BOOKS_MASTER_SYNTHESIS_2026.md": {
+      "sha256": "0f6358f113ee4d804aad2ea4069924f9fe7dfe18d846da9e1062d40999ecd838",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/architecture_and_books/CANON_ECC_EVERYTHING_CLAUDE_CODE_AGENT_HARNESS_2026.md": {
+      "sha256": "c4197add67c6845a7c1d79c6d89c289cdceff02c9ea9faf8d9b6ebeccb4fa851",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/architecture_and_books/CANON_ECC_HARNESS_AND_AGENT_OPTIMIZATION_PLAYBOOK_2026.md": {
+      "sha256": "2321129ef336256800a46c628ccf49f04a140fd9e533e968c872bef054f99f0f",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/architecture_and_books/CANON_EFFECTIVE_TYPESCRIPT_VANDERKAM.md": {
+      "sha256": "4160d25302551ba5839862df46b6548023178f6a55bda0a3701ace0dadf4ba0f",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/architecture_and_books/CANON_ELITE_MULTI_AGENT_WEB_SOFTWARE_FACTORY_TOPOLOGY_2026.md": {
+      "sha256": "c341bc831d328f09c2ab9076bf29a46620553ebf550e5b5c40ea7222ac8d68af",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/architecture_and_books/CANON_FRONTEND_VERIFICATION_PIPELINE_AND_BENCHMARKS_2026.md": {
+      "sha256": "2eae7f533693cb6d6b20d4a069553a3f2b5635bd124db3c0c651159a9dedec0c",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/architecture_and_books/CANON_GAMIFICATION_PSYCHOLOGY_CRO_AND_STREAM_MARKETING_2026.md": {
+      "sha256": "4ecd6b96206b21254c1dd86747c23570668b0a7cf11be08a4f7e3f670a974e10",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/architecture_and_books/CANON_HARNESS_ENGINEERING_INTEGRAL_2026.md": {
+      "sha256": "0ddf60120e42634929b0dbce23e18ce97f2b2b6213e94df41f4edd4fd0385182",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/architecture_and_books/CANON_HARNESS_EVALS_SANDBOXES_SOFTWARE_FACTORY_2026.md": {
+      "sha256": "cc4f4a8d18d43c09f7f4ed26da17c2091481ea6b163bfca774fbabe199a9e26f",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/architecture_and_books/CANON_HARNESS_Y_EVALS_AGENTICOS_SOTA_2026.md": {
+      "sha256": "9e23f2aafbecb58ca1ff3020f80aa8313e15093c039ff8f512ce7871d60630cd",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/architecture_and_books/CANON_MATT_POCOCK_TYPESCRIPT_AND_AGENT_SKILLS_2026.md": {
+      "sha256": "59cf97b9b2421c908ac6af36e91def4dbb009b8bccd2b71ae49e2f433ef0512c",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/architecture_and_books/CANON_OPEN_BOOKS_GAME_PROGRAMMING_PATTERNS_NATURE_OF_CODE_AND_ES2025_2026.md": {
+      "sha256": "7f05fc62d0031e2b041414aa13792f3b9b633880ed82216dc38052049d98b98f",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/architecture_and_books/CANON_PAPERS_AGENTIC_SOFTWARE_ENGINEERING_2026.md": {
+      "sha256": "a6c90404e473b8b20a6df67d0cb961a585034aff7c2395d9289e25230b9122e9",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/architecture_and_books/CANON_PAYMENT_GATEWAYS_MERCADOPAGO_STRIPE_LEMONSQUEEZY_EDGE_2026.md": {
+      "sha256": "91aeaffcf1d47b5adb8494e17bb8979ea6e4b05732d0f67bcf2efc58128c71f6",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/architecture_and_books/CANON_PDF_CATALOGS_FRAMEWORKLESS_FRONTEND_SYSTEM_DESIGN_AND_XRAYS_2026.md": {
+      "sha256": "9b9c07fcac675b36abe700bc83d899928a40e4df5dbef61ebb3b99608684eee3",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/architecture_and_books/CANON_POEAA_FOWLER_GOOS_FREEMAN_C4_SIMON_BROWN_AND_FUNCTIONAL_CORE_2026.md": {
+      "sha256": "2910bc301329322a7c14ae0dea99031cb6feda81ae14cf8ac66d0ef731dfa0f3",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/architecture_and_books/CANON_QASIMHBTI_BOOKS_SQLITE_SCALABILITY_EDGE_CACHE_AND_ALGORITHMS_2026.md": {
+      "sha256": "fcb9ac17495a4d23af9d7b4f8cfebea789ba2da47f09a09c1f6b4fa2baf4bf14",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/architecture_and_books/CANON_SELF_EVOLVING_SOFTWARE_FACTORY_AND_SPECULATIVE_RAG_2026.md": {
+      "sha256": "dccead23c4a62f4a11ce06e3c76f87653b75fde631594180f56090d244640f1b",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/architecture_and_books/CANON_SOFTWARE_ENGINEERING_AT_GOOGLE.md": {
+      "sha256": "3f61f49087c9440abb69c6df1ee0ad39bc6ece813adf4108af00e9de9a52f4e5",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/architecture_and_books/CANON_SOTA_AGENT_HARNESS_ENGINEERING_2026.md": {
+      "sha256": "7185c137f9964e596bba74a5d1ab199c70d60c804623cce1dfe9b9d09b8cdd74",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/architecture_and_books/CANON_SOTA_DEVELOPERS_AND_ENGINEERING_PLAYBOOK_2026.md": {
+      "sha256": "2684342eaf38892e74b26f366045f896269710a061750a71c88edddd502b934c",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/architecture_and_books/CANON_SOTA_RAG_ARCHITECTURES_AND_TOOLS_2026.md": {
+      "sha256": "ba8dd6cc211ed2253c04c08552b9d349e75c66d7571a71ecc1e6ba58c9b2b41c",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/architecture_and_books/CANON_SOTA_WEB_DESIGN_AGENT_SKILLS_AND_OPENSOURCE_TOOLS_2026.md": {
+      "sha256": "62c5d6675df962dd0d0d302a0ba2d7e3cd9573ef6be35c9fb432e16785b210c0",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/architecture_and_books/CANON_SRE_RELIABILITY_ZERO_CRASH_2026.md": {
+      "sha256": "97dcd18daa456f282f055a05115957c83bb7c620b4926b9ff4ecbb7d21b83e03",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/architecture_and_books/CANON_TOKEN_REDUCTION_AND_CONTEXT_BUDGET_TOOLKIT_2026.md": {
+      "sha256": "7787e6240a3693e8129b89c27e70f1b5ba48885a0a54cb95588885aee3421fa2",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/architecture_and_books/CANON_TRANSACTIONAL_EMAIL_RESEND_ONBOARDING_AND_DELIVERABILITY_2026.md": {
+      "sha256": "78ecb0061a56578459cd7160a81f7cbab8ee4a106888dfc6cba71972bfeb0d5d",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/architecture_and_books/CANON_VALIBOT_EDGE_SCHEMA_VALIDATION.md": {
+      "sha256": "2716441e357f7380f870779be60fe904e7bc5f811862224a24e78e7040fd1764",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/architecture_and_books/CANON_WORKFLOW_OPTIMIZATION_LIBRARIES_AND_TOOLS_2026.md": {
+      "sha256": "1daf5d570e34ec4522d48c1fac64ede30d69605338cb22d767f42dc352bd8dfd",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/architecture_and_books/COMPENDIO_55_VIDEOCURSOS_DISENO_ANIMACION_ARQUITECTURA_2026.md": {
+      "sha256": "0406f9e741b1a76180a13197ff981b734e0f7e9b3e7c98682ba5dae187fc6f6a",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/architecture_and_books/CURATED_MASTER_BOOKS_COURSES_AND_DOCS_CATALOG_2026.md": {
+      "sha256": "802c3f8c5873d258ab2fa7963b63da1a1e3a35d836504ed1fac29a5684b871d0",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/architecture_and_books/TRATADO_30_LIBROS_Y_30_CHARLAS_INGENIERIA_2026.md": {
+      "sha256": "4cdd80763c79916f141ddadbf0b660de4f994cfc70069527210baf61e6da72e5",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/architecture_and_edge/CANON_EDGE_PAYMENTS_STRIPE_MERCADOPAGO_AND_POLAR_2026.md": {
+      "sha256": "f18f19fd02ba92fefe41ecd1e35e509de315c558a9590032ac83b97cf99e1a90",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/architecture_and_edge/CANON_TRANSACTIONAL_EMAIL_RESEND_MJML_AND_DELIVERABILITY_2026.md": {
+      "sha256": "90f51764ca2c8c4a5c11dd469f167b93d8879ce606e6091cb661f39d7d7658d3",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/cybersecurity/ANTI_BOT_STEALTH_GUIDE.md": {
+      "sha256": "5dc49d18f81ceae7a69b217dc6d1b2f7fc0b9a518c39b87407d07bff51e7ec58",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/cybersecurity/CANON_ATOMIC_OWASP_ASVS5_TOP10_2025_AND_EDGE_DB_DEFENSE_2026.md": {
+      "sha256": "1dd6cd7f6562cf027bfe2bd6ff77e9adf4fc627007595d635278d45556c0ede0",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/cybersecurity/CANON_CLEAN_ROOM_WEB_SECURITY_OAUTH2_BUG_HUNTING_AND_VIRTUAL_ECONOMIES_2026.md": {
+      "sha256": "54f34b79fff65ccd9f0a11994f5ffd9a2ef2f4522000adafed981dc4d918cfb3",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/cybersecurity/CANON_CYBERSECURITY_DEVSECOPS_2026.md": {
+      "sha256": "580c181d057cf37896fdb62fdbf67899ec2fbab746e43825b726888b85869d8d",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/cybersecurity/CANON_DOMAIN_CMU_15445_MVCC_BTREE_WAL_AND_ATOMIC_TX_2026.md": {
+      "sha256": "18e51fe29238f4586a7e8f6013eeb166fbab7e2ab0086efe92c75fc5e94a55dc",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/cybersecurity/CANON_DOMAIN_STANFORD_CS253_WEB_SECURITY_SOP_CSP_AND_WEBAUTHN_2026.md": {
+      "sha256": "811a72eb7277bd0a188d6e8fb96a46b8a3739f40b7e6cf8ec872e8bcf38854ca",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/cybersecurity/CANON_ENTERPRISE_SAAS_ORY_ZANZIBAR_POSTGRES_RLS_AND_ATOMIC_COMMERCE_2026.md": {
+      "sha256": "94b2d63b0aaa8575bde14f8302dad8a8f2341f67ad4a0f1cf6b5986a8905f23a",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/cybersecurity/CANON_IDENTITY_AND_OAUTH_CYBERSECURITY_AUDIT_2026.md": {
+      "sha256": "138de9c582b270c175a3c057b7a4df2a3742137243c6b9b31c5518d67a5830b2",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/cybersecurity/CANON_OFFICIAL_DOCS_POSTGRES_RLS_CIS_ORY_ZANZIBAR_GCP_KMS_AND_ZIZMOR_2026.md": {
+      "sha256": "b0dfae7c6fe2e6faefcd68ed2ebe209c650a64bb3eb71526947205168c84a747",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/cybersecurity/CANON_OPEN_BOOKS_WEB_SECURITY_OWASP_AND_SQLITE_INTERNALS_2026.md": {
+      "sha256": "925d241e4d4fcdb0dab9e072570f52c9d5528530a02e11e10cae993df97a37a2",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/cybersecurity/CANON_SECURITY_BOOKS_AND_DOCS_2026.md": {
+      "sha256": "412700694e1e69cb568737f88e47174402efed83ad18fe4d2e4d486a2f1c034e",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/cybersecurity/CYBERSECURITY_MASTER_PROTOCOL.md": {
+      "sha256": "df7a508b309d61cdaaf3c1fe594a4daf9a67426818b61746c40e35f4de4a904e",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/DESIGN_MASTERY_2026.md": {
+      "sha256": "1078cc1c7bec5f527eb35e279257392add2c0efd50170c77ff4485e562d179fa",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/motion_and_animation/CANON_2D_3D_GRAPHICS_SHADERS_AND_AESTHETICS_2026.md": {
+      "sha256": "1de6a9e10bf72b37a3047f4967ddc799e9c54ea25f6d25201137ce21cba596b9",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/motion_and_animation/CANON_ATOMIC_PBR_FILAMENT_CINEMATOGRAPHY_AND_FLUID_MOTION_2026.md": {
+      "sha256": "4c7324ee16b6e1ac69de6b769404b887ca69497866aa7b159ccfc881cde11eb8",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/motion_and_animation/CANON_ATOMIC_PSYCHOACOUSTICS_PROCEDURAL_DSP_AND_AUDIOVISUAL_SYNCHRESIS_2026.md": {
+      "sha256": "b896f46de9c03d47fbd259aca3dd9ab52ba0a576d01a5980c9f16820d3d5300a",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/motion_and_animation/CANON_CLEAN_ROOM_SVG_ANIMATIONS_GAME_AUDIO_AND_REALTIME_RENDERING_2026.md": {
+      "sha256": "820ba94feedd032d58850a2aa94d806eb76e60a741acd9fbbd64096ad27661b9",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/motion_and_animation/CANON_DOMAIN_CMU_15462_KEENAN_CRANE_AND_WEBGPU_SHADERS_60FPS_2026.md": {
+      "sha256": "805a399690ae85ec33220b1010ab66ca2e3ead08d94c998416fc524d66cd1594",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/motion_and_animation/CANON_DOMAIN_STANFORD_CCRMA_220A_MODAL_SYNTHESIS_AND_PROCEDURAL_AUDIO_2026.md": {
+      "sha256": "0fd2fb1494e504c63373a6f1475372a59a0c2bb8d64800874cbbb52292cfca66",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/motion_and_animation/CANON_EMIL_KOWALSKI_ANIMATIONS_ON_THE_WEB.md": {
+      "sha256": "a508d0e5a59e55a664ff21657259337a429105e18cb24b72477bc04d61ac9b25",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/motion_and_animation/CANON_HOLO_SHADERS_3D_PACK_CHOREOGRAPHY_AND_WEBAUDIO_SFX_2026.md": {
+      "sha256": "f913a62b034ae5ac0f49635a82d2b703c2843db1b5dbd7cf7e124b76b824c73a",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/motion_and_animation/CANON_OFFICIAL_DOCS_THREE_R186_SPARK_DIORAMAS_BLENDER_MCP_AND_GLTF_2026.md": {
+      "sha256": "0cc87ff36f34d89be4996bafa1c4e010e819d02a059a155e2c28db5f25e4da81",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/motion_and_animation/CANON_OPEN_BOOKS_SHADERS_SDF_AND_WEB_ANIMATION_MASTERY_2026.md": {
+      "sha256": "2ab0321de1b48ad1c342a708fbc83a1bea46e8b5de4b30f54d048bd2714a1c85",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/motion_and_animation/CANON_VISUAL_SOTA_HUNT_2026-10-24.md": {
+      "sha256": "0c341e92ccab2ca2d54f520d3b0cb5ed6bbdbc65c731df57a7a2501061df3134",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/motion_and_animation/CANON_WEB_DESIGN_COMPOSITION_SHADERS_AND_MOTION_2026.md": {
+      "sha256": "81edad861e4bdb4cbdf120fbcaafdcfa8d66e1177f94905148eae0b6bc2bbda7",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/motion_and_animation/CANON_WEBGPU_THREE_R186_SPARK_3DGS_DIORAMAS_AND_GSAP_2026.md": {
+      "sha256": "3b9a3686d3d4e3f13eb7a221dafc262f0effcea56703a63bdb2af428ddbb6f4b",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/motion_and_animation/SOTA_WEB_ANIMATION_AND_VISUAL_CRAFT_ARSENAL_2026.md": {
+      "sha256": "aaea47bb5fbb70d2db049c7d697f3336398b2667fa077b28bc2687290cc2377c",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/software_factory/CANON_AGENTIC_HARNESS_ENGINEERING_ACI_EDD_BOOKS_AND_COURSES_2026.md": {
+      "sha256": "2be648d6554167c4c756e3d3f5b8096c18a7280fbd7e272dd44ca99d9e07dcff",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/software_factory/CANON_ASTRO5_CLOUDFLARE_WORKERS_AND_MODERN_WEB_TEMPLATES_2026.md": {
+      "sha256": "0b807ea82ad0d645f4d8af3516fab0a59beeeffa70c76d609b785f45ba2f444e",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/software_factory/CANON_BOUNDARYML_BAML_OFFICIAL_DOCS_AND_FACTORY_INTEGRATION_REPORT_2026.md": {
+      "sha256": "8142471f0f7c1d186c5e92b4d2a2b12f3532af3ad42115eba4f2dd9300330cfe",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/software_factory/CANON_CLOUDFLARE_AGENTS_DURABLE_OBJECTS_AND_CODEMODE_2026.md": {
+      "sha256": "8b20a36b64fe6c863e043fb380a5f6e3abee0cb03b16c3f2cf06b665324f8efa",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/software_factory/CANON_DARK_FACTORIES_SCALING_LEVELS_AND_POST_MERGE_GATES_2026.md": {
+      "sha256": "fc3983102930a59501803c10e4d6ddebf9291c96629d43aca41cba6235939281",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/software_factory/CANON_DOMAIN_MIT_65840_DISTRIBUTED_IDEMPOTENCY_AND_DURABLE_OBJECTS_2026.md": {
+      "sha256": "b9065c8dc32034b9a012f4277c4bde3fa6c29cf6e950350c1b309434df482c56",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/software_factory/CANON_JEV_BAML_SAP_CONTEXT_REPOMAP_AND_HARNESS_ENGINEERING_2026.md": {
+      "sha256": "d4f099bcce161cf2155d38ca29aa9e562ac012a1c95108c92b1545ba851a4be5",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/software_factory/CANON_LOCAL_SEO_GOOGLE_BUSINESS_AND_MULTI_LOCATION_JSONLD_2026.md": {
+      "sha256": "6d1bb84f07b4a10257ee57fad40d7b292710a5ec2616abf2c4ace8ea41639e75",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/software_factory/CANON_LOCAL_SEO_PROGRAMMATIC_JSONLD_AND_GEO_2026.md": {
+      "sha256": "e91318ef7b69a51aca04ac55029faeb568f264a46d6e915e1f6c6f5d77b052c4",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/software_factory/CANON_MULTI_BRAND_DESIGN_SYSTEMS_DTCG_STYLE_DICTIONARY_AND_ARCHETYPES_2026.md": {
+      "sha256": "49a3d72342791a735ed2d89ed9e03b6f85435600b56f325bc0c07e9875534612",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/software_factory/CANON_N8N_WEBHOOKS_CRM_AND_WHATSAPP_AUTOMATION_2026.md": {
+      "sha256": "b5aff03ce6d08a52292154b9d3d2bf25c832c65483ad2ff17222790998da80c8",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/software_factory/CANON_OFFICIAL_DOCS_HARNESS2_GEPA_OPENSPACE_HEADROOM_COCOINDEX_AND_CODEMODE_2026.md": {
+      "sha256": "317fd79085c2e20c26b70076237994d7a72164e3b1dc5fa76fb4fe1267113abb",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/software_factory/CANON_PRIVACY_FIRST_ANALYTICS_PARTYWORKER_AND_AB_TESTING_2026.md": {
+      "sha256": "b8ee264184a2f0727baa1d1dadbfb6705cd2e55083c8680ba66f49c0a88bad53",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/software_factory/CANON_PRIVACY_FIRST_ANALYTICS_POSTHOG_PLAUSIBLE_AND_AB_TESTING_2026.md": {
+      "sha256": "7f5c7a7e8a1e0d8c1c2cd4d363e865fa689e180eaab62e72314b83b3feed7668",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/software_factory/CANON_SOFTWARE_FACTORY_CURRICULUM_BOOKS_PAPERS_AND_VIDEO_COURSES_2026.md": {
+      "sha256": "344a5bd6b4deee1ab1aadc10c88006b71d3ce21e68298788551fdc0628f0ee4b",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/software_factory/CANON_SOTA_2026_GLOBAL_AGENTIC_SOFTWARE_FACTORIES_BENCHMARK.md": {
+      "sha256": "4fafbdf656546de6ef1827255cf51115d332e91335aad938ddd8ab1765cb77e3",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/software_factory/CANON_SOTA_AGENT_TEAM_TOPOLOGY_AND_2026_WEB_STACK_AUDIT.md": {
+      "sha256": "d45731005c1494fc2a4553c8924a8c9ea72d36cfa1712f08c36f963b3462760b",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/software_factory/CANON_SPLE_ISO26550_AND_SOFTWARE_FACTORIES_ARCHITECTURE_2026.md": {
+      "sha256": "7043c36de2e67632131c98d86e362f9c774d70a43abc25ed4fd11b5e34270c38",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/software_factory/CANON_TYPESAFE_JEV_SYSTEMONE_PGLITE_AXE_MUTATION_AND_BENCHMARK_2026.md": {
+      "sha256": "a77915e4263c14bd8a6bba0f7c87738ff6f5da30d8b0322a2a6a949934ad8be2",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/software_factory/CANON_UNIVERSITY_COURSES_AND_28_FACTORY_TALKS_2026.md": {
+      "sha256": "a36a4400528698d49a19fde23c56d84e6035b72c8aeff2ae13d87a57cb3ad4e2",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/software_factory/CANON_WEB_SOFTWARE_FACTORY_MCP_DTCG_AND_LIGHTNINGCSS_2026.md": {
+      "sha256": "a59bc4896c8fcc1e3781dcc8c6e4e4cfad4f401d4a9829c7f2580937740ad8a2",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/software_factory/SOTA_WEEKLY_DIGEST_2026.md": {
+      "sha256": "b855ca2d1fd4a1785faebfa3ffb6f08b296b70ba3cb70208c65a438ca55fba27",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/streaming_and_overlays/CANON_LIVE_INTERACTIVE_STREAM_GAMES_AND_CROWD_PLAY_2026.md": {
+      "sha256": "3237dcc72e843d587a91e25069394a51b00c4c5d810fd91c82de065578304f7c",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/ui_ux_design/CANON_ATOMIC_COLORIMETRY_OKLAB_APCA_AND_PICTORIAL_LIGHT_2026.md": {
+      "sha256": "84a5121c637a990476fba2db1a90937f710ad1cac07e9ae43190ea253096c137",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/ui_ux_design/CANON_ATOMIC_MOBILE_HIG_M3_ERGONOMICS_FOR_CAPACITOR_2026.md": {
+      "sha256": "41934c38c5c6b14fa8d0b51a1be7a28f605ab5593a40c0d24f4d012896a44d51",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/ui_ux_design/CANON_ATOMIC_TUFTE_DATA_DENSITY_AND_SWISS_TYPOGRAPHY_2026.md": {
+      "sha256": "9a4a6e809c73b2f29ef026567f98c80e8c152c9321ce07da7dbaf7ab8b23615c",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/ui_ux_design/CANON_CLEAN_ROOM_SWISS_TYPOGRAPHY_COLOR_LIGHT_AND_CSS_SECRETS_2026.md": {
+      "sha256": "843b147c3361664359dc67214d19ce20c2c48ec39da6aed93dba625169d1c54a",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/ui_ux_design/CANON_DESIGN_SYSTEMS_ALLA_KHOLMATOVA.md": {
+      "sha256": "136b98f36374bef45d0246c298f210a59a63d2153b2f5a83f82e1de8916a9c0c",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/ui_ux_design/CANON_DOMAIN_BAYMARD_AND_LAWS_OF_UX_CHECKOUT_CRO_2026.md": {
+      "sha256": "16a734294aae3c0b644b9ccb646169ba032779c80bbafa942cd0488b68c01e63",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/ui_ux_design/CANON_DOMAIN_GOOGLE_WEBDEV_CWV_BLINK_V8_A11Y_AND_MODERN_CSS_2026.md": {
+      "sha256": "ca6a50f50aedb89044c61f71fa578c436046a3f2122884ba50c6c9d1f2a9ed95",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/ui_ux_design/CANON_EVERY_LAYOUT_CSS_ALGORITHMS.md": {
+      "sha256": "f7ae933020a9b6360707b61c121991bb0d42c00deddcc62adccc828b08484603",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/ui_ux_design/CANON_HISPANIC_B2B_COPYWRITING_AND_100M_OFFERS_ENGINEERING_2026.md": {
+      "sha256": "16038f5962a7fb284914c9011b234b097c00a5e37508c65611ccf15c02c10c1b",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/ui_ux_design/CANON_OPEN_BOOKS_TYPOGRAPHY_COLOR_GRIDS_AND_WEB_PERF_2026.md": {
+      "sha256": "fa21ff44e4bdc82f0473e4bf024e2b6d3ab645a54df2d1324bf4d24f5316953a",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/ui_ux_design/CANON_PRACTICAL_UI_ADHAM_DANNAWAY.md": {
+      "sha256": "19a3b45ac54d4b527769988683dfafdec1c15ae00e775892d669b9a99fc3957f",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/ui_ux_design/CANON_REFACTORING_UI_WATHAN_SCHOGER.md": {
+      "sha256": "5e6bbc1883305cc7173625cd17162da95168a2764d31b337d3e0a208f87db0a2",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/ui_ux_design/CANON_SPANISH_COPYWRITING_HORMOZI_OFFERS_AND_SCHWARTZ_CRO_2026.md": {
+      "sha256": "e3790931371f5e19735bc461bbaa674de79b1e3f8ab695dae9b0f7d218637488",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/ui_ux_design/CANON_UX_HUMAN_EXPERIENCE_ACCESSIBILITY_2026.md": {
+      "sha256": "346a0e90fa1d322f86c444d4f2962e2674f30e99201aa7ebfed05f602d0f9d4b",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/ui_ux_design/CANON_UX_UI_MASTER_MANIFESTO_2026.md": {
+      "sha256": "242b9f0e97d946e5eedd84a4224d6c1cc62a6d4c338e8353b0a574abfdc7f215",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/ui_ux_design/CANON_VISUAL_PERCEPTION_AND_DESIGN_EXTRACTION_2026.md": {
+      "sha256": "d91f0d3193fcce01ab2437f1dbcacf2bcdb3261d0e79c300bfd078bd218ba803",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/ui_ux_design/SOTA_MODERN_CSS_SPECIFICATIONS_2026.md": {
+      "sha256": "c4576a404accaf76c087738834a164aa5d3732699a03e5f4cca0f706e42bade6",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/ui_ux_design/SOTA_UI_MASTER_UPGRADE_2026.md": {
+      "sha256": "5e26abc5f55e4e9d6a67be0cd2972ea79e406ac53c4d28c40c68338fab773ee3",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    },
+    "knowledge/ui_ux_design/SOTA_UX_UI_AGENT_ARSENAL_INVESTIGATION_2026.md": {
+      "sha256": "016e5f3893c5b103e513330612975ef1e10085bcb3c1e6b5a0ccaef8f0a52cff",
+      "tier": "TIER_1_SOTA_2026",
+      "authorityBoost": 1.35
+    }
+  },
+  "tier2_files": {
+    "knowledge/actionable_gamification.md": {
+      "sha256": "5f1c0bd2c8b7e229566713a7d3345903c1458d9de0014e336fb2acf47b1490f4",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/12_factor_agents_production.md": {
+      "sha256": "6caace27a1804d36e9f7468aeb3f99e4b9cc3a2ca0cc317764a66c5132939e35",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/ai_engineering.md": {
+      "sha256": "c24e187c850dfcd480e2b3d508ad5448e7cca55bb571179146df0948ac2b28fe",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/artificial_intelligence_a_modern_approach_4th.md": {
+      "sha256": "bb549407e15b610b308cd00e89f4427f29ad22f0d73d894939e73dd21f09b8aa",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/AUTONOMOUS_AI_SOFTWARE_FACTORY_CANON_2026.md": {
+      "sha256": "e6eb816278f67ccf96e3af7fc90c67efcb45992e614e68c94dae70e3c4669b90",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/beyond_vibe_coding.md": {
+      "sha256": "eca943b139341a0b071f3469fa4c3649740cf80685b319d5952dd9a2a93c4c77",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/bigquery_and_llm_post_training_for_autonomous_agents.md": {
+      "sha256": "3c35335abf979d948515a1f5c47638185b097b577ba0040b6c0ea0e9fd8756ca",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_a_course_in_game_theory_osborne_rubinstein.md": {
+      "sha256": "5fff5181aebc8acec3435642ba6a9a5d51ab178510eb2c189a95c7b31e990824",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_a_philosophy_of_software_design_2nd_edition_john_ousterhout.md": {
+      "sha256": "1d713636e74ce607db6af8e13903902b152e5773cadf4f43b04d4b84f5181014",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_a_philosophy_of_software_design_john_ousterhout.md": {
+      "sha256": "257ddc1550618e96c56095edec6d3dffeb8f6eb1af8b955ac10aba2189c91b77",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_addy_osmani_learning_javascript_design_patterns.md": {
+      "sha256": "4d6e99b6d22123190fa8cdb5f20882bce6d8f2a6b9f82b3271136548f38ea061",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_algorithms_notes_for_professionals.md": {
+      "sha256": "1815d98eccebef80f43c3af1c75b6f9e05b976ce47a39110d68c0e2cd7d5d28f",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_architecting_the_cloud_2014.md": {
+      "sha256": "d19781f8c88a3fbed65ebb47e30421d73bef830579d4f86253664878396a6825",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_architectural_metapatterns_and_safe_by_design.md": {
+      "sha256": "9593b96694cc0eedc2809f8cd4dedcf4dcdac2f56c331e132ad57bf0fdbfe680",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_aws_certified_solutions_architect_official_study_guide_pdf.md": {
+      "sha256": "ef4190221742b4ee5c56afd72a2beaa8a249406e3a8f6251f31adcdceb50c9b5",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_beautiful_code_oram_wilson.md": {
+      "sha256": "5fb7e4367d84d2993eca497ca53db1444c3fa5b8158ecce40ab46d7409a9f1d0",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_build_apis_you_wont_hate_phil_sturgeon.md": {
+      "sha256": "e7a475651fe894b904f68186c948da1820466eddb78e2f1f7661a8761d164583",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_clean_architecture_a_craftsman_s_guide_to_software_structure.md": {
+      "sha256": "94e6d710ce6942c244b44a0e01e4e481090dd3581ae8ffc54cd26e44020c678c",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_clean_code_and_functional_light_javascript.md": {
+      "sha256": "725d0c4bb161ae7274a407c41b982359f9e282286ab3bfd152b6cb08b2a94e51",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_cloud_computing_concepts_technology_architecture_by_thomas_e.md": {
+      "sha256": "48e8d640c64d001b616cb93ed2eceab00f414fc06dd573cbd0beaaf4566ee0f0",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_code_complete_2nd_edition_steve_mcconnell.md": {
+      "sha256": "3fa0aea3a0de4fd66fa112a53a3308ec88765811ae6ec6f738e2a7225501833b",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_code_simplicity_max_kanat_alexander.md": {
+      "sha256": "8dd46b09f15fab0d916e1d8706c0e1027ae2ce7f9ac92ea8b2c9e56305e17d39",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_computer_networking_a_top_down_approach_8th_edition_by_james.md": {
+      "sha256": "98386959e402f053f07cc7bfd8597e215314b79adde3c14a9be81ae846b47cb4",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_concise_typescript_book_poggiali.md": {
+      "sha256": "4aa7617ba48266f2197500d623771d4d2132b48faa9e907662c708731d829c12",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_database_internals_alex_petrov.md": {
+      "sha256": "e7f190ae2d8f485e4c6e23298e43ad061527df1affc1beeb86c4cb2a23652984",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_deep_javascript_theory_and_techniques.md": {
+      "sha256": "48d0e91c337902b7517ec1fc037e94982fdeddbf2f3c3f8fa4508ac2cb996766",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_design_patterns_gang_of_four_gamma_helm_johnson_vlissides.md": {
+      "sha256": "6876e30d3513e5ca52bb015212c02062b62d9b4eb7169911f865945fd4372a17",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_designing_data_intensive_applications_martin_kleppmann_full.md": {
+      "sha256": "1e58d1bd38d738712c9c962ad2957d2eb3db11999af5619f33358973a07e7ce3",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_designing_event_driven_systems_ben_stopford.md": {
+      "sha256": "40a984648506d318d84373aa72c1319d08a42e47c28027ee011373f4d0c59d10",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_designing_llm_applications_oreilly.md": {
+      "sha256": "c2f60793650e52959e28f5414894e4351d9d90aef1a24e94b8d7c4036c6dc592",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_designing_web_apis_jin_sahni_shevat.md": {
+      "sha256": "24ac1de456c96601101e82ed19063d4df83613e7a75825c012bb462aef59d540",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_dokumen_pub_google_cloud_architect_handbook_designing_highly.md": {
+      "sha256": "8423b1b6f358012232e410c8c77e475d6fe9efc2402b590c1a75dcd3fc5d9eaf",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_dokumen_pub_react_up_amp_running_2nbsped_9781492051466.md": {
+      "sha256": "5189149cdbcc3a075fdd2edabf2b93a7cf6c5bad8360475289b7817442659048",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_dokumen_pub_total_typescript_the_essentials_1_p_1067242.md": {
+      "sha256": "eecdfafacc0591d5d9cc4a5fdc8671ee718465530e71649f66ac362e2bcf531b",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_domain_driven_design_eric_evans.md": {
+      "sha256": "f6aa48b9dead337525d2666bfb58510f881153744870829e23089c81423b471c",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_effective_javascript_68_specific_ways_david_herman.md": {
+      "sha256": "d436824fddb54a4a15d4256006a58b682d10400c77474626ad3edc5a322f0d1f",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_effective_typescript_dan_vanderkam.md": {
+      "sha256": "1944633affe802253fffe1e9a4b75726fcf4f00ff749b17da98f1590b85520c0",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_eloquent_javascript_marijn_haverbeke.md": {
+      "sha256": "a58dee01075a440e7698a9ae476009b18ce2e5a22b2c7105109b474fda89a50f",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_foundations_of_programming_karl_seguin.md": {
+      "sha256": "b330b31a53b3edf76f0bd20e819638f5fabb883e953ed795b007b733c1a46a45",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_fundamentals_of_software_architecture_richards_ford.md": {
+      "sha256": "66a548f8b58f9c3e85ed35a41768caab4b0f985705c4ae9e85f9d1b684a0ccba",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_google_practitioners_guide_to_mlops.md": {
+      "sha256": "8dc5b412a15b0524f8a4cbc75c4855028fad03e37d9327ef525122ff3bf19c4b",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_graph_databases_oreilly_robinson.md": {
+      "sha256": "d334ee898b4fc9b4efcc1b2fb195d725343fcc258266c95bb6131beefa270dce",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_high_performance_browser_netwo_grigorik_ilya_5527.md": {
+      "sha256": "5707c3144cbd53dfaf3d52721dd91550ac02165c3e177993d18129d224452d65",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_http3_explained_en.md": {
+      "sha256": "6f702d692ce7a28339fca5e6c17030f009ec445be039efd49dc576f2775bd875",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_introduction_to_algorithms_clrs.md": {
+      "sha256": "bc08047aaa1bb25a22c620eb1578b048a6af2b6b732f735478128fc5ef53138b",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_javascript_notes_for_professionals.md": {
+      "sha256": "d853c7d2ce578f06a30b3436462e97a421356f41155a70caade11b144ef7aa45",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_junior_to_senior_and_software_engineer_books_curated.md": {
+      "sha256": "cccb4ac42ec2438a8bdfd84ae9de637eef74071f1df9fbf7a4b650eec30f5214",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_llm_prompt_engineering_simplified_kalyan.md": {
+      "sha256": "40a3b2dc8c0835cfe08560747c8e91da8fd194256804cbc6bfb18e3969115594",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_making_sense_of_stream_processing_martin_kleppmann.md": {
+      "sha256": "453cb642a5ecd0e20d588735b47e029b6bf034961cd74008314f396d7fd1f14c",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_microservices_antipatterns_and_pitfalls_mark_richards.md": {
+      "sha256": "a1d1417c098f4558e611b9662725ad577cb32c8e15fbf6f500b58155dde60cc4",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_modelling_extremal_events_embrechts_kluppelberg_mikosch.md": {
+      "sha256": "afd53edc1f1ec4a338958a17bcc0933324a4f0d75dc9249c5c050e10240c4020",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_nicolas_c_zakas_maintainable_javascript.md": {
+      "sha256": "aa8ce8460a5430f905141eab5383c458f91883aae5e68c4066104f4b45a89afc",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_nodejs_design_patterns_casciaro.md": {
+      "sha256": "394a8893fc1f73801020ee4dd70d0758738ee098ef3b665147a4dcf5b6a3ebf3",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_nodejs_notes_for_professionals.md": {
+      "sha256": "61ea0ac2a1dce0d4b1e361b33e2f014bfea32be7d2e5135ee4aad1fbee45a1df",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_pro_mern_stack_full_stack.md": {
+      "sha256": "2133bf723a58b1b692f4941b45d615d25dfccc1cbe516404bd601dffc84a7781",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_prompt_engineering_generative_ai_oreilly.md": {
+      "sha256": "7bf141b5924b54b5ea0c398d71b51c38f6318d34c309a36de3b9c80eb14f87eb",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_prompt_engineering_google_lee_boonstra.md": {
+      "sha256": "d6c3a01dd920fdbc6c072391f442d09f8a6196459e178eb5d1f79d7220e8266c",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_reactjs_notes_for_professionals.md": {
+      "sha256": "b4496e3bafa566ee3fbb7145a059c404da0ae38650bf3dd8391bb3d5cb5ead4a",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_refactor_like_a_superhero_and_load_bearing.md": {
+      "sha256": "9adfbd77ebd6f427b67965016f9ee4f5bbd10f90c48dd4ab4fca7e92ed37afb0",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_refactoring_improving_the_design_of_existing_code_2nd_edition_martin_fowler.md": {
+      "sha256": "1f960603a9fdd2c30d5b07b2933d8cf7a8f39b4c105cfd6b2bd64af24f10c25c",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_refactoring_improving_the_design_of_existing_code_fowler.md": {
+      "sha256": "ff023c5529fea680e7c394b7f876dad23ba2dd095be97ab9e1870febe3593b1e",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_regular_expressions_cookbook_goyvaerts_levithan.md": {
+      "sha256": "3a37f2be810adf6c256395efb9787c99c3ff8115fa5327e2a903e12e38a33bb1",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_rest_api_design_rulebook_mark_masse.md": {
+      "sha256": "caf6bfe4e932e44a3486f36b072d9ed1c49919cbc3dfa2b23aec5aefd973513f",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_restful_web_apis_richardson_amundsen_ruby.md": {
+      "sha256": "df4388c17990f7520e4739284f131517c559a0ee89456d100fb10f65965bc13f",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_restful_web_services_oreilly_richardson.md": {
+      "sha256": "a288347523ead293add098e322b17120fd4572ab3e7cafcab116195be410268e",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_scalability_rules_abbott_fisher.md": {
+      "sha256": "3c0545a4b3b7279692e91a559a0ed3bcb7030569bec4ae78db941dfbec507bf8",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_scalable_architectures_distributed_systems.md": {
+      "sha256": "0a150262b514c5f46397c6458a62009733fbc3949de67d4e2278bd8e2d537cac",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_scalable_web_sites_cal_henderson.md": {
+      "sha256": "456a7ca4b320bb4128df1c67aa903b21d9ed44505f6ac615257818aa4cbb8f3c",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_secrets_of_the_javascript_ninja_2nd_edition_resig_bibeault.md": {
+      "sha256": "ba0063e3a5b2aa9a160e293de0f981495e3af653558df036685de558b25f5945",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_software_architecture_patterns_mark_richards.md": {
+      "sha256": "66a46d0f33b4344efffbfc408ecd97ba9bbdecf9e1dd0e31e85730c0ae7b9571",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_software_architecture_the_hard_parts_ford_richards_sadalage.md": {
+      "sha256": "74d50568de324a276439ff97549d5ad29d6790850bca08d1114dd4d6b111c89c",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_software_engineering_at_google_winters_manshreck_wright_full.md": {
+      "sha256": "f5089a9743751ac651e802cdaea18b6cc1da70bb679ad2617d7e29545a047eb9",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_sql_performance_explained_markus_winand.md": {
+      "sha256": "b1cf5a73e29e4344fcc6d1c626376ab884e25ce7fb7c53995b92f31c5845af18",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_surprises_in_probability_henk_tijms.md": {
+      "sha256": "823c74c76d9edeedb21f5634f4dd28fbb7dd58663fdb5cac6c1296b3728f396c",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_system_design_interview_by_alex_xu.md": {
+      "sha256": "c5f1ee01215c854d93a1e8e63cd28bb659494ff4362408cdc28998b236064f74",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_tackling_ts_book_2020_05_03.md": {
+      "sha256": "330ae20167d94f6c26eba67661d78866d6f1282af3918664a52e0adaf09bb3d5",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_tdd_extensive_tutorial_and_accidental_cto_scaling.md": {
+      "sha256": "8d418b276b23f36bdad70bca54d1dd0184597397ddc266ce346abd274959f7bc",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_the_clean_coder_robert_martin.md": {
+      "sha256": "ec376788796c9447dc2480bfe832331048564765a72aa861eb30cf352fff47ed",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_the_databases_handbook.md": {
+      "sha256": "d25e5c8d18d2095e6b10ee2b7280e1aa1f1fede6c5e85fae43cfefcb1296a9f7",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_the_definitive_guide_to_sqlite_owens.md": {
+      "sha256": "7218928841a3f78fe8f7f7f7ceafefb8bd5926580dd0c78a009c51b462aecea8",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_the_design_of_web_apis_2nd_edition_manning_9781633438149.md": {
+      "sha256": "96adc29737a8f761a407d1f4691d3e3e91653c34a0325fff60e935b842f999be",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_the_little_redis_key_value_book.md": {
+      "sha256": "044e6ea58b2e305cf66326d2b3233603653ad7bd1f9611fbb47c287251af6f65",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_the_pragmatic_programmer_20th_anniversary_2nd_edition_thomas_hunt.md": {
+      "sha256": "e8000c75af9afe1c190445f7a18086165eeaa6f41543c261db600927e7f4ed89",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_typescript_deep_dive_espanol_y_ddd_espanol.md": {
+      "sha256": "fc2f0dec2429814cff1f3c7e806a1d8c5272489e69cf0d1ca2fa259debd0964d",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_typescript_notes_for_professionals.md": {
+      "sha256": "6ba60bdfa150488f815a9f15e103ab708cdf8326aeb8163d0bd23493b76ce21b",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_understanding_distributed_systems_roberto_vitillo.md": {
+      "sha256": "256af287dceac7893b2a8a62335a5441c76deb573d0c8b6a658a412851ba269f",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_web_scalability_for_startup_engineers_artur_ejsmont.md": {
+      "sha256": "b11e28174daa8e004e232f7a88d329f31b73cc2996704f9cef77b9b31ef91ba5",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_working_effectively_with_legacy_code_michael_feathers_full.md": {
+      "sha256": "0f2d330b41532efbdc7137f4251428bc593d8c942521797cf6353492e9735182",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/book_you_dont_know_js_yet_kyle_simpson.md": {
+      "sha256": "fbee9d41b2c350aec22a68536abef47ee54d5329658b756a3032df749895c95c",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/building_applications_with_ai_agents_and_mult.md": {
+      "sha256": "354795c8b14b8cbff2f1a89c07412dfcbbd1dffa40e4869931f0afcccb2dff30",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/CANON_60_FUENTES_CANONICAS_INDEX.md": {
+      "sha256": "b164dac2d4181c3895315731be1b8c599ca2beef467fba6eebce581f9f1a6ec7",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/CANON_60_INGESTA_MASIVA_MASTER_DOSSIER.md": {
+      "sha256": "f71e5e9d9aae520fdd3e2eaeda99baf325f2b23daadebb8369fb01b01c249555",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/CANON_AGENTIC_01_FOUNDATIONAL_PAPERS.md": {
+      "sha256": "a60d9fac76a1207c6814dc01071010fe55484299b797a8b170f975fff72f6ee4",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/CANON_AGENTIC_02_FRAMEWORKS_ORCHESTRATION.md": {
+      "sha256": "9d5c9e3025205d613f15b2947cec6b271d4d45a12a13aebd81588aef6624f6c7",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/CANON_AGENTIC_03_SOTA_OPEN_SOURCE_AND_TOOLING.md": {
+      "sha256": "61303bf775d35d72c0c790747d15ad2b62e99c859f04ff832eda4ef3288a6f2c",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/CANON_ALGORITHM_DESIGN_MANUAL_SKIENA.md": {
+      "sha256": "1c5df0be0bba551220247a0bda80f2fa70ecfef1c763f79488d9246278543605",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/CANON_ANTI_HALLUCINATION_AND_AGENT_PRECISION_DOSSIER.md": {
+      "sha256": "2d3855b8aa7cdf4257b80562d6a80029675722838a65fdd5c0d8ae190d562f69",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/CANON_BOOKS_SOFTWARE_FACTORIES_AND_AI_ENGINEERING.md": {
+      "sha256": "1167de1885da3b41ece44c00d17fee07625d70252dc993a33c7be22f6ce32b97",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/CANON_BUILDING_MICROSERVICES_SAM_NEWMAN.md": {
+      "sha256": "6e654246ecff0eb7752e17eab11257767c4614a2ba04a0aca6594b3782b91574",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/CANON_COURSES_AGENTIC_AI_AND_SYSTEMS.md": {
+      "sha256": "17bceca9740fa15c880b38a9f63ea0fc29990baf53fd16f63fc77acea43b48ca",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/CANON_DISTRIBUTED_SYSTEMS_TANENBAUM.md": {
+      "sha256": "d35bc95f2e44dbe4c9da1376ea447190cabce1cd721f6ec224f0a040047717d0",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/CANON_JAVASCRIPT_GOOD_PARTS_CROCKFORD.md": {
+      "sha256": "acd4769cc7e291fbe1b067f0d8aa6bb7c504cafbad5ee5cafbfe1d0c5666edda",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/CANON_MYTHICAL_MAN_MONTH_BROOKS.md": {
+      "sha256": "f5d69b2d4d9aa2a2e7c053ed686a3203163e80774038c797ec90cc8cae31c461",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/CANON_THE_TWELVE_FACTOR_APP.md": {
+      "sha256": "fefea409a4d40062a4696906ec0725fb41ba1a24653821900d48124c1d47461f",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/CANON_TIDY_FIRST_KENT_BECK.md": {
+      "sha256": "c152a5ad3f9ba21ead3f6cb802b0200e40b6364eaf3e9cf9fa088af7f4ce09a0",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/CANON_TOOLING_AND_REPOSITORIES_AI_SOFTWARE_FACTORY.md": {
+      "sha256": "ea9bd055ce101c2cd49d22a4473c84143e30b923d879078f616a7a6af0db7eae",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/clean_architecture.md": {
+      "sha256": "3fafd070f27a4f55d6b7dd4da1ddef8d0074fdec890ecdd59b4dae8e2fdfd956",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/codigo_limpio_spanish.md": {
+      "sha256": "7b1cd384e7f2f5d1e5f5334d00ff5cd3a8e3c18fcc0038296c6850bcd7ff60b3",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/COURSE_12_FACTOR_AGENTS_IN_PRODUCTION_DEX_HORTHY.md": {
+      "sha256": "5009cdeef470b50cc2507629d42efcd16bdf1c4988e47c0e840c709d068b85d2",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/course_andrej_karpathy_intro_to_llms.md": {
+      "sha256": "f6fc72246ab26e7c98e69c02d30ceab40838020dd742bb331a21d53f91e7a660",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/COURSE_END_TO_END_LLM_POST_TRAINING_PRODUCTION.md": {
+      "sha256": "03e702a345f425de0f72c4a7642585c84f812c62eed63eca6567003647dd230a",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/course_end_to_end_llm_post_training.md": {
+      "sha256": "c4369439764800f328ecf73b1d17a8d52ba6557dedc53c513ab49c600929bc79",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/course_freecodecamp_langgraph_ai_agents.md": {
+      "sha256": "93def8d7eb86f441cabb98003e93349a8d67904da1334339b847154f29372e48",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/course_freecodecamp_rag_javascript.md": {
+      "sha256": "c3087a641a70534edb177ed9f6714b1850be461b82ab7e7837e09b670094a7bc",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/database_internals.md": {
+      "sha256": "fd168ab08109e72058ef6db36695a63a775439727071696702b80d08dfa4b5c2",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/designing_data_intensive_applications.md": {
+      "sha256": "d1c64c43c1359f23ad27c6c42dc5dda5b486dbabb1806c7ae9eab622168b29ef",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/designing_ml_systems.md": {
+      "sha256": "323e3d7bf3c1e4a0f9d064dc52c6439ad3429cacafd4bb569d59dcb470f7ec6a",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/generative_ai_design_patterns.md": {
+      "sha256": "07d92af28ac3ce1c1b24d20b426a3bee062b3ddc45f8708f7c233aef0188a0d2",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/generative_ai_langchain.md": {
+      "sha256": "0165eb8b0cd5e0658afd388fe3c3744411c755afda519de16859799b5c3fde28",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/hands_on_large_language_models.md": {
+      "sha256": "716acf3815b64d2029239c3cfa77e2d6e66b5ef1bcf9c36121a7a6b8b848d0d7",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/high_output_management.md": {
+      "sha256": "25a37f564c250dd58ef6ecc4f45f9e00a5ff4a820c9cad0a4ca498959fde7f11",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/hooked_habit_forming.md": {
+      "sha256": "bc55d2a6bab572b4946c3b94ea160c59df5536f723d06e884cd28c8d42bc44ec",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/human_compatible.md": {
+      "sha256": "9303769efaa9ca9a05b23cf26b820383d6c2e8db86833fbc9fa6adf38d343e7d",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/LIBRARY_INGEST_03A_ARCHITECTURE_DDD_AND_TESTING_45_BOOKS_2026.md": {
+      "sha256": "fafd374dceb02587c052c1a6a7241fc164765332c72c71dcfcc18117f6737bac",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/LIBRARY_INGEST_03B_JAVASCRIPT_TYPESCRIPT_AND_ALGORITHMS_46_BOOKS_2026.md": {
+      "sha256": "8129d9d7efc041c295df8abc98782fa44e225d4e5db6f94fdcac91581f0d672e",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/LIBRARY_INGEST_04_DATABASES_SQL_APIS_AND_DISTRIBUTED_SYSTEMS_34_BOOKS_2026.md": {
+      "sha256": "a6f901aa5bc4589744eaff446c47283339461d0b3c9a4aa6ee6a87c262486f32",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/LIBRARY_INGEST_07_NEWBOOKS_POEAA_TEAM_TOPOLOGIES_TIDY_FIRST_SHIFFMAN_NYSTROM_ALBERS_THALER_EPSTEIN_2026.md": {
+      "sha256": "fde9e3403676d1ce032569a304fc54f48e968ed13462fd8faee956ef7886fd00",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/MASTERCLASS_HARNESS_ENGINEERING_AND_AGENT_EVALS_2026.md": {
+      "sha256": "bf68e54a6f1459fc48a968bf3fec4c687245d7f2fdf0958496d398c7edaef242",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/MATT_POCOCK_ARSENAL_ANALYSIS_2026.md": {
+      "sha256": "fc5da83438940b6a396c2f760ef3261bf88d672127055fdf278496592a11d407",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/nudge_thaler_sunstein.md": {
+      "sha256": "b673e29d473eae81b6875fa4896d4b84e357c57f95d763bb6489ab6eb009d786",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/pro_typescript.md": {
+      "sha256": "d21dded8db37b020940ab8d8f11fd04e40d5af3e370dc0be162a9ae9ce189272",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/reinforcement_learning_sutton_barto.md": {
+      "sha256": "972ccc2bb99887dbc2737fa887715bd90b729b867e9750a852697e4356eaedb9",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/release_it.md": {
+      "sha256": "f5ead7a7ceff30397c69d45230aff282f4bddabf713ccb69bbd57e046a46c620",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/site_reliability_engineering_google.md": {
+      "sha256": "bbb399732d0507270c6d52a60bace73fc95c82ebce5e05391b8e332528b7b4bd",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/system_design_interview_vol_2.md": {
+      "sha256": "bdccbd338122a0fc631b290696f6e4e26e09a30eb400f4f43445c21d4d7fa92c",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/TECNOLOGIAS_SOTA_STACK_CANON_2026.md": {
+      "sha256": "2b87bedf1b69b91b35d511fa948cc40c1c57c2bf3ef2533dbb57c90256c92e2c",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/the_pragmatic_programmer.md": {
+      "sha256": "2ba2235038c9c43dc0a88824590ffb4aa4f09ffde2647084113c7dc924de0d17",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/architecture_and_books/the_society_of_mind.md": {
+      "sha256": "a63a06c5ad932a7721af097e96472fdca5cb50ec7a53bde622c9bbc9c56dc1bd",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/cybersecurity/book_advanced_api_security_siriwardena.md": {
+      "sha256": "1d4a342b86705f682c4543f7923af9d9cd6b15686d58a1124b9a7e3db91cb8ca",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/cybersecurity/book_attacking_network_protocols_forshaw.md": {
+      "sha256": "9b7a163bfd8267f0c12c8387327ca08dff6f5897a1b41581db5ae499b7c9926b",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/cybersecurity/book_bug_bounty_bootcamp_the_guide_to_finding_and_reporting_web_v.md": {
+      "sha256": "9946c455ee056508d798b20dc6af7b9c99df0a11fc86921149a5ad41c041d433",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/cybersecurity/book_bug_bounty_playbook_v2.md": {
+      "sha256": "fa9eef77cdfac0b5199dbecf3647d328ff10e1d94559cc11ddd353a6f34fd8d4",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/cybersecurity/book_cryptography_and_network_security_share.md": {
+      "sha256": "31095ab185a390ffd393b6e1d751ace6cab87625ee764017d73e0747f6192710",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/cybersecurity/book_dokumen_pub_applied_cryptography_second_edition_protocols_al.md": {
+      "sha256": "1b788b2162d2e1141e7a7d4ccf502e265b50b827dff5efce48e5f0f5ed5caad0",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/cybersecurity/book_dokumen_pub_cybersecurity_essentials_9781119362395_978111936.md": {
+      "sha256": "3e2376077526971959d73a667ce921f2ab47392ad8460e91a257a0ac57948496",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/cybersecurity/book_dokumen_pub_dark_web_secrets_ethical_hacking_amp_cybersecuri.md": {
+      "sha256": "b6ec9942cbede46bb70b86ee2150d7541795d5f1d63419690458d30eb9beec90",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/cybersecurity/book_dokumen_pub_ethical_hacking_from_beginner_to_advanced_learn_.md": {
+      "sha256": "ec5727d34ff909d9bf1ca902791f9714f1b80108068d562b163a7322fb690163",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/cybersecurity/book_dokumen_pub_practical_cryptography_for_developers_9786190008.md": {
+      "sha256": "830c150648447b432b600ae44213ad2067773b923a4b94d8a5f41223c2ed838c",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/cybersecurity/book_dokumen_pub_python_ethical_hacking_from_scratch_978183882950.md": {
+      "sha256": "dab28cc50310f46bccc5983e89acf99158da72e624049405c02ab4c648a28730",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/cybersecurity/book_dokumen_pub_secure_apis_design_build_and_implement_1.md": {
+      "sha256": "04b6046dddeffca579ee04f9abd502206351970c44b1eab4712ccd741faaebf5",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/cybersecurity/book_dokumen_pub_taming_the_hacking_storm_a_framework_for_defeati.md": {
+      "sha256": "6f36fed590e5e6715d93afda72102f5e4c140e30625e60153662796d4bc12709",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/cybersecurity/book_dokumen_pub_web_app_hacking_carnage_amp_pwnage_cyber_secrets.md": {
+      "sha256": "9a21a4a83007ed4c8dacfe4b6efc6727e68c42493649ebfbf45d0937b8c74964",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/cybersecurity/book_dokumen_pub_web_application_security_2nbsped_9781098143930.md": {
+      "sha256": "ba0c3e10662ef602c7776438ec210221596a45e6ca7862a6f8af88562de960c0",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/cybersecurity/book_hacking_apis_early_access.md": {
+      "sha256": "5e4c848adba207b15b845e16f3d26366b74e1c5224aa76c2fccb7e840e90c65f",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/cybersecurity/book_hacking_exposed_web_applications_3.md": {
+      "sha256": "f26f00aaa051287187b413ce7f33ac692d8025711af5c964fff8df251f1cdb99",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/cybersecurity/book_hacking_the_art_of_exploitation_2nd_edition_by_jon_erickson.md": {
+      "sha256": "661077404e32f5c000f0af4b1c2a4d2b21acd33ef643f64915dbcfcb05561ac7",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/cybersecurity/book_mastering_modern_web_penetration_testing.md": {
+      "sha256": "4a28ec0560b0c1b624069864d4350b3d2db917c1b64c294dae0051799782a71e",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/cybersecurity/book_network_security_essentials.md": {
+      "sha256": "4110912daa7cc7ce31485341207cb2fc7b831730cc696dc6396e2bc601fa1c4a",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/cybersecurity/book_owasp_api_security_top_10.md": {
+      "sha256": "d9f65b20dd213eac8e8e0ac5f3527cdc4532fd0ed1b55e23da9b4eeb55ec8edf",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/cybersecurity/book_owasp_web_security_testing_guide_v42.md": {
+      "sha256": "8ffb9c87c5522657a4318ed4622825cb5bb72b49c3892e2e701b01d0cd53adb0",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/cybersecurity/book_practical_cloud_security_dotson.md": {
+      "sha256": "13b4c3b92c718648d9202b8214a8ce3926a9dff07c2ff84da8cf746a07187c35",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/cybersecurity/book_python_web_penetration_testing_cookbook.md": {
+      "sha256": "70a3ec7b5906e2c469b83ad92566fa82ef062ea30ee70f2180da95eae2b32259",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/cybersecurity/book_securing_the_api_stronghold.md": {
+      "sha256": "ed648676088c45eae687e0b05a5744edc81691f9c59c30fee0120029296df246",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/cybersecurity/book_serious_cryptography_aumasson.md": {
+      "sha256": "a37f2703bce7e7439ac899ef71a0e66b38dc8094ff43094332e54c649f04543d",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/cybersecurity/book_the_basics_of_hacking_and_penetration_testing_engebretson.md": {
+      "sha256": "68762b3a606bc716f2ab0e846dd03f3b635929b738ed99b2502cadb7ddbdfde8",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/cybersecurity/book_the_hacker_playbook_peter_kim.md": {
+      "sha256": "5814885789669603ac9e48c56ba39ffbabf5f99a8fb2c9c94b267d43e6d8eacf",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/cybersecurity/book_the_joy_of_cryptography_rosulek.md": {
+      "sha256": "b5dfd4fe1d5e0b6ac2a75d712c7ef8b8115e325c8f4bec25004b6fbf26205958",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/cybersecurity/book_the_tangled_web_michal_zalewski.md": {
+      "sha256": "b2fd56a1e8435a0e19fe6c7082d269180d501286c84255c4ac10e9c8a1c6dfcd",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/cybersecurity/book_thecodebook.md": {
+      "sha256": "752f72c8d042ee89b1a0fbaea914ec0c45ad4be13ad4b882927a1f0be513caca",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/cybersecurity/book_web_application_hackers_handbook_stuttard_pinto.md": {
+      "sha256": "9d15f43db5f310de05514b2847f4008cd668a8963c25b333efb090761564a6da",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/cybersecurity/book_web_application_hacking_advanced_sql_injection_and_data_stor.md": {
+      "sha256": "863c53c386e7469941b828f209d42f837c351e04657ac54bc94634acc4fa9f55",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/cybersecurity/book_web_application_security_andrew_hoffman_oreilly_2020.md": {
+      "sha256": "0a1ba5f38dac6425b8f0aa48aa063ba9e24d3d9e1b8543a31a99b6036a092a5d",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/cybersecurity/book_web_hacking_101.md": {
+      "sha256": "93035bce5345b3a34725dd1595833167bad8ba38aead7269390e9e6e537abc2e",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/cybersecurity/book_web_penetration_testing_for_beginners_kali.md": {
+      "sha256": "37295e206ff9b974e8b91a7b52390760634f70022ba5d46da14b91837a0d9003",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/cybersecurity/book_web_penetration_testing_with_kali_linux.md": {
+      "sha256": "d63fbe8cf167b1e2be036285f6977b2088f520fc8444db5a67d52e73b99cdfe6",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/cybersecurity/book_xss_cheat_sheet.md": {
+      "sha256": "76fc235cdd497cf23c69a4371f17d386a914c2f16fbef066fe24f722bed7d1d3",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/cybersecurity/book_zseanos_methodology.md": {
+      "sha256": "70566117d46c94253a0b2f6ff321dce162f66e19e00b06b0277900f1d8ede801",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/cybersecurity/CANON_CYBERSECURITY_COURSES_AND_AUDIT_ARSENAL.md": {
+      "sha256": "69e4bbc9f902d7faf05f401c9e501685fed8b0778d66e51f9ff827f04709308c",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/cybersecurity/CANON_REAL_WORLD_CRYPTOGRAPHY_DAVID_WONG.md": {
+      "sha256": "afc9d565d7c152d1009c9867a7c9d74340aba0903035b5a926db690fb72f4615",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/cybersecurity/CANON_REALTIME_STREAM_ARCHITECTURE_AND_VULNERABILITY_DEFENSE.md": {
+      "sha256": "5a95b2d5f73dd1e532984c504822b34f34e91574cf194a31113e4f8e772353d8",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/cybersecurity/CANON_SECURITY_ENGINEERING_ROSS_ANDERSON.md": {
+      "sha256": "4da8825cbcdb54eb75df9ba2415fb7e96e665c2ca807a9c83d9a65a950514e12",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/cybersecurity/CANON_SEMINAL_CRYPTOGRAPHY_PAPERS_AND_PROTOCOLS.md": {
+      "sha256": "2a9e99b01b32e74e8b5f04b4798e8133c0112581cd11b36a095abd00c4c0d6e2",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/cybersecurity/CANON_SOCIAL_ENGINEERING_HUMAN_HACKING.md": {
+      "sha256": "82c9b600632101ea9c6c7b04995bffb1387e598d9672410c185678af6a73d937",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/cybersecurity/CANON_THREAT_MODELING_ADAM_SHOSTACK.md": {
+      "sha256": "3ad2d1335548d60de7686cd9003640fe303a36d0f5d122b5e97a983d6f178c4a",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/cybersecurity/HFT_V22_STREAM_ARCHITECTURE_AND_VULNERABILITY_DEFENSE.md": {
+      "sha256": "0407db108d0e00c5debc0aef37990b5ab80f8f0f83d9198435672cc1c24402c5",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/cybersecurity/LIBRARY_INGEST_05_CYBERSECURITY_CRYPTOGRAPHY_AND_OAUTH_21_BOOKS_2026.md": {
+      "sha256": "a23eb6cd1aa0d6cf1c7a094ed10f30586da1e022e4a47a9606666609699183e2",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/INDEX.md": {
+      "sha256": "afee2d7dc9b845107713dc4370487b7a8f551ffa888c3a115797f9805d4a8064",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/motion_and_animation/BENCHMARK_TIER1_MOTION_AND_3D_LIBRARIES.md": {
+      "sha256": "91e089139a7c9e29fd86cb3eb440cf47bd5fe86a3ef21167b7c0a77425e59f6d",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/motion_and_animation/book_3d_game_shaders_for_beginners_lettier.md": {
+      "sha256": "ff838a246bc8478dd0d3aa6bf17241ce54c58236be69dfe799a8da12b11e1951",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/motion_and_animation/book_animating_short_stories_narrative_and_visual_design_cheryl_briggs.md": {
+      "sha256": "a1007de46fdc1eccd94391c8d28ef1bd2696183d97f560e4f3301656b9230348",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/motion_and_animation/book_animation_at_work_rachel_nabors.md": {
+      "sha256": "4f047654ff62b4e2cba9639c347589a24b3e5fe09ea38b35beba75397bb1810f",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/motion_and_animation/book_cinematography_theory_and_practice_3rd_edition_blain_brown.md": {
+      "sha256": "b876101e500a2012c3997a5a2b44cbafe2a944244017a485916da27a97448e28",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/motion_and_animation/book_core_html5_canvas_graphics_animation_david_geary.md": {
+      "sha256": "38a622bbc04622d5dcc2aefc32a0f67b7ab45c43d1efea22445b66eb62c56f4d",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/motion_and_animation/book_css_animation_101_donovan_hutchinson.md": {
+      "sha256": "e247b7e23fc3c6fbdd54c6f15d418e2c515bae39dc45ce01a4ad129395afd480",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/motion_and_animation/book_css_animations_and_transitions_en.md": {
+      "sha256": "407c167670b4c79809913c88b70d24d97193519c2b789e1dd50aab4c480c407c",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/motion_and_animation/book_design_for_motion_fundamentals_and_techniques_2nd_ed_austin_shaw.md": {
+      "sha256": "69dd578f2a2ae4b4561ae78ab3673d06d00f127598df4969adc6d7b75e0a160a",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/motion_and_animation/book_design_in_motion_applying_design_principles_to_filmmaking_penny_hilton.md": {
+      "sha256": "199357554e621d9a4e32c3cb17124149faed77c490a8d4ad69bfd5948b09fd4e",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/motion_and_animation/book_designing_audio_effect_plugins_in_cpp_dsp_theory_will_pirkle.md": {
+      "sha256": "c90c4affa13bda8ec653abc08fe68720ea4bfe989e4545aff2dcaa71298b889b",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/motion_and_animation/book_designing_sound_procedural_audio_andy_farnell.md": {
+      "sha256": "f9245f13d22a6e2b182618f47ab23c19f2391d47350bf58e0d185b2db65c52cd",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/motion_and_animation/book_elemental_magic_vol_2_special_effects_animation_joseph_gilland.md": {
+      "sha256": "e22beff23671e30f7ac15163234437f49f036bba9e291e9dc9ce49ecc0183734",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/motion_and_animation/book_en_el_momento_del_parpadeo_montaje_cinematografico_walter_murch.md": {
+      "sha256": "7342fa7f4662283d11ab20070adc8bd38cecd3b4cd74201ce810e22d110d196f",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/motion_and_animation/book_game_feel_steve_swink.md": {
+      "sha256": "5f2b38883472dcf3ad53b35d0f21f582b72eb5c36e795c9975ccc45311e96e6c",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/motion_and_animation/book_html5_canvas_animation_notes_for_professionals.md": {
+      "sha256": "575dd4b2c72094aaf360e585dc364da7f68b32c3abda54548c2317d19f2529ee",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/motion_and_animation/book_la_audiovision_imagen_y_sonido_michel_chion.md": {
+      "sha256": "17f448dbf3f9a87aa54387e2fd0d0566b9d8d15a17d42d1acb5585850bfebf30",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/motion_and_animation/book_learning_html5_canvas_svg_webgl_programming.md": {
+      "sha256": "b2089b0ef9cabffa152e6b079a572d767dfef7d7e17e3b78382c7bf4e1e1aa7c",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/motion_and_animation/book_mastering_audio_the_art_and_the_science_bob_katz.md": {
+      "sha256": "c9e7e77411f0595c1a00c386eb9263ca62420202033ff83c8dc305959d126247",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/motion_and_animation/book_microsound_granular_and_particle_synthesis_curtis_roads.md": {
+      "sha256": "3bc10488a447438050a66a4a2051bc2fa88c8bdc9c0674114338dc94fb917da3",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/motion_and_animation/book_mixing_secrets_for_the_small_studio_mike_senior.md": {
+      "sha256": "590d9e31feb74c1bae90b1f531a8c12d313d2a0a89069738bb5cab8b283c0fcb",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/motion_and_animation/book_musimathics_vol_1_mathematical_foundations_of_music_gareth_loy.md": {
+      "sha256": "0012d11275b949f418b69daab395c003325fd35a6ba2b0e0da669a81f48effac",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/motion_and_animation/book_psychoacoustics_facts_and_models_hugo_fastl_eberhard_zwicker.md": {
+      "sha256": "5fa72e96175fbefe02f8e74f6106b39d165679cb546519196e5407c6439df44c",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/motion_and_animation/book_sonic_interaction_design_karmen_franinovic_stefania_serafin.md": {
+      "sha256": "acf66bbf467d644dad0b6aa8866cfdebdc3cc74c1fb4c2ace59cedfa74d24e67",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/motion_and_animation/book_the_animator_s_survival_kit.md": {
+      "sha256": "a98f073c91f2d07b1b09dd93582afc6a753bd07854b6335e7ddb37cd0ac89903",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/motion_and_animation/book_the_audio_programming_book_richard_boulanger_victor_lazzarini.md": {
+      "sha256": "44ee14e46556e4ea3777b97c4f04267be8f3e262f012c38f39b323e688d96514",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/motion_and_animation/book_the_game_audio_strategy_guide_gina_zdanowicz_spencer_bambrick.md": {
+      "sha256": "39727b3c04a28d4e201a1dd4f92cf5b33afa160c6e537b05fdd9a07b441e83c7",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/motion_and_animation/book_the_illusion_of_life_disney_animation_frank_thomas_ollie_johnston.md": {
+      "sha256": "67a453fd8ffd6ecc628077b8ac7c28d5df384bc0d7f8a30d0aaf20ce7667b5e8",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/motion_and_animation/book_the_nature_of_code_simulating_natural_systems_daniel_shiffman.md": {
+      "sha256": "311ae6eac3b843005f11d37afb51ebc91d31a6571e87b59cf5b6b482d4dfa1e0",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/motion_and_animation/CANON_3D_PBR_LIGHTING_AND_CINEMATOGRAPHY.md": {
+      "sha256": "22b6b411ff42886443bfcd7678d94b557af48fd6f166178b478efdf41831fcf3",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/motion_and_animation/CANON_3D_TECHNICAL_ART_AND_SHADERS_GUIDE.md": {
+      "sha256": "54bded4c763d38a5b588f7db56463e5a8d8166c7b8b0cbf8ea1f4813e6864770",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/motion_and_animation/CANON_60FPS_RENDER_AND_MOTION_OPTIMIZATION_PIPELINE.md": {
+      "sha256": "86dd83c3798ffbc15792dfee8867bd34c1b56bc9dcb002be9c294c5b1a499fa2",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/motion_and_animation/CANON_ANIMATION_PRINCIPLES_ILLUSION_OF_LIFE_DISNEY.md": {
+      "sha256": "8de56f123eb7c9f35340010b951b85db7f24011f406902ca7869b5fe70f2422b",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/motion_and_animation/CANON_BOOK_ANIMATION_AT_WORK_RACHEL_NABORS.md": {
+      "sha256": "53bad7ea1fb574f83682a6c4eb1efa0f6af79a0bef3e1e058ec1631d3094a438",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/motion_and_animation/CANON_GAME_FEEL_VIRTUAL_SENSATION_SWINK.md": {
+      "sha256": "bd43fa718f5fd0a8e59765e09b30ec8aace1d98e4e90704e240ea34344484d45",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/motion_and_animation/CANON_GRAPHIC_DESIGN_AGENTS_FRAMEWORK.md": {
+      "sha256": "0bc70818bd8e08bed883066ebc26c3897445bc136c9a30bfd15ceeb54a060a06",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/motion_and_animation/CANON_LOW_LEVEL_GRAPHICS_METAL_GPU_SHADERS.md": {
+      "sha256": "ec89d9a03f9ee0052d83d5304d85046f1ca4d8d55be4001d57416a0cdf035f58",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/motion_and_animation/CANON_MOTION_AND_ANIMATION_BIBLES_COMPENDIUM.md": {
+      "sha256": "415665ea5d409d80e61931c98d299614cb13776756c07fe560fd354faad2c16d",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/motion_and_animation/CANON_PROCEDURAL_MOTION_GRAPHICS_CODING.md": {
+      "sha256": "16f5ee9568ea100a4726400b185ee54abfefe4ac5b306f8a4436d37e8eede87c",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/motion_and_animation/CANON_WEBGPU_THREEJS_SHADER_ECOSYSTEM.md": {
+      "sha256": "478e8ea849812c4599de3a2cbd774a71df71ea034414f693500398fcd633f740",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/motion_and_animation/CANON_WOW_EFFECT_SOFTWARE_ARCHITECTURE.md": {
+      "sha256": "93300c409c6634048623117b620a8ed222265671cb9b5c05f1640f9af807291c",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/motion_and_animation/creating_web_animations_kirupa.md": {
+      "sha256": "8c8dba9ae4aa8144446f5ce25903c81db960223ffadebf07e58b0357230f9d5b",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/motion_and_animation/LIBRARY_INGEST_02_MOTION_SHADERS_GAME_ENGINE_AND_AUDIO_25_BOOKS_2026.md": {
+      "sha256": "f3446c7eca1fccd823908c603d8af3c95437e0d56f573ba1db57097be5c9238d",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/motion_and_animation/MASTERCLASS_KHAN_ACADEMY_BEZIER_CURVES_MATHEMATICS.md": {
+      "sha256": "4b8df743c53480f9ceead62604d41258e5b5e575df232131a1d232cb5d9ca187",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/motion_and_animation/MASTERCLASS_WWDC18_DESIGNING_FLUID_INTERFACES.md": {
+      "sha256": "e9b2cbd495735a9d729da37c593b3eff12e7f49c6c94ba8e8724b07ee550d04c",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/motion_and_animation/MASTERCLASS_WWDC23_ANIMATE_WITH_SPRINGS.md": {
+      "sha256": "551600ca34a6e2cc775c761c7a05b49b4956174860f7fcd59c69b610ccdc9581",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/motion_and_animation/SCORING_FOSS_MOTION_3D_AND_INTERACTION_LIBRARIES.md": {
+      "sha256": "5947155e5a25dee1e6e7caf04c02d6d12cf732916deb769b9995d3928a215231",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/motion_and_animation/SOTA_UI_GAMIFICATION_3D_MOTION_TOOLKIT.md": {
+      "sha256": "5baae99e7a0efa50bc8edeb1fca583f236125a38dcbaa042e4ba79c8d2654913",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/REPOSITORIES_INTELLIGENCE_REPORT_2026.md": {
+      "sha256": "b905a19cbca640bea372adef7019a75b748dcc8cacbd404d804015ae01d98501",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/software_factory/book_accelerate_high_performing_technology_organisations_forsgren.md": {
+      "sha256": "8593aede25ea5aae724f06a015ac58452e602cca64a5f72e5ded2488cb6892ea",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/software_factory/book_automated_root_cause_analysis.md": {
+      "sha256": "6c0c08c18907e36c4208eaa1a9ce13736a95cb066991b01807490745caf9d155",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/software_factory/book_frontend_debugging_and_web_development_glossary.md": {
+      "sha256": "c8ca6548d759381b6f0d255037d3c3ab41c5517dbbfaf85a460dd99c3efe55f1",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/software_factory/book_getting_real_37signals_basecamp.md": {
+      "sha256": "e916c428ec93354f6334b1fb9ec5584ef5b33310aefd9d89dc0cc4212310070c",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/software_factory/book_information_retrieval_search_engines_mit_press.md": {
+      "sha256": "b1ac3dd240a2f5ad70f1d1c059aec2234deb92ea5edccd45950d938aaca8fb83",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/software_factory/book_k6_load_testing_guideline.md": {
+      "sha256": "9a17d841e7a27ca5295d60a409b35692aecbb47c2330247865dc733b6e9a9b1f",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/software_factory/book_mature_optimization_web_performance_carlos_bueno.md": {
+      "sha256": "45582895f2088b07aa26d72fc630e259ccd5e7aecd73f2dc6cb138c7a64c1c6f",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/software_factory/book_modern_software_engineering_david_farley.md": {
+      "sha256": "f61d7daaa160bb30ccb9f46f473b5780b35866b707e06c5d8d1e83e1bb7d1789",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/software_factory/book_practical_modern_javascript_bevacqua.md": {
+      "sha256": "3c24949653882042dc4c37b7c25b08a1afb8db3365c097f1c0d49aa7f5e2848f",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/software_factory/book_pro_git_chacon_straub.md": {
+      "sha256": "4c26c4e73628290878f616a05217f66a338a48e7c20609ca99ae85fc5fa5c503",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/software_factory/book_site_reliability_engineering.md": {
+      "sha256": "a36c214b0ba9ce1a8fbeff070bcfe841e73e333e2a2914c86c1305b986b98689",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/software_factory/book_test_driven_development_by_example_kent_beck.md": {
+      "sha256": "554d9dcc5c520a0aa789d3408f5f208a647984b20a9c8127850932371e6e43e5",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/software_factory/book_test_driven_javascript_development_johansen.md": {
+      "sha256": "8bf8e93a84c84ac1ffd531de48c1237d248f6fd774bf51120256101560a55234",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/software_factory/book_the_art_of_unit_testing_osherove.md": {
+      "sha256": "8430328045981b1c469a081dcfab6f48df7416b185bd5ca4ee1bd4d85a703311",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/software_factory/book_the_effective_engineer_edmond_lau.md": {
+      "sha256": "ba3b28b89f9564c292e5c07bc77c5af141f64b81737a40e88e9ee7cfb7bdc84e",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/software_factory/book_the_varnish_http_edge_caching_book.md": {
+      "sha256": "b2d3e1afd54449a07b8995d0dc8a9b470fc17420fefa111257357968bf3500d7",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/software_factory/book_unit_testing_principles_practices_and_patterns_khorikov.md": {
+      "sha256": "0ebb3b3a321b9ddea95cb4470731951fc5fe57192de28bb791df4b66c1f9bdcf",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/software_factory/book_using_nodejs_for_ui_testing_teixeira.md": {
+      "sha256": "7c22043859dcfcce58d3ca79ef4070c5248e443291835f250b91cbaec6896e36",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/software_factory/book_your_code_as_a_crime_scene_adam_tornhill.md": {
+      "sha256": "477ab322f889b73c39bae39750701a465c0691b1f4e3c02a22b77d465ad073d6",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/software_factory/deterministic_agentic_ai_xstate_stately_and_statecharts_treatise_2026.md": {
+      "sha256": "44c39f6f7164eeaea0ff7fa18c5a1c36f74f93b855f9f0a5c34e8460deb68786",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/software_factory/jev_and_cognitive_memory_pipelines_master_treatise_2026.md": {
+      "sha256": "829d8d41be42d61a3a7374cb9f0c9509f5d4525290f86fef86b825e7e94c0feb",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/sources/ADDY_OSMANI_ARSENAL_ANALYSIS_2026.md": {
+      "sha256": "7a58260fb4de1e7d51078c91f978cd3db20006e510010236536b50813d0fce01",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/streaming_and_overlays/book_art_of_game_design_jesse_schell.md": {
+      "sha256": "c8021473d5dc32166e97f21cd20fad26d196dad904cbb62c8ed0b28556723310",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/streaming_and_overlays/book_designing_games_tynan_sylvester.md": {
+      "sha256": "8df57445ca53f177ed9ee7127314b4054dfc415cd9312c9b6b29dd04a8f624cc",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/streaming_and_overlays/book_even_ninja_monkeys_like_to_play_marczewski.md": {
+      "sha256": "35519dad0b1f707afd33b87c23cbef1a0c56c6db1f8b442f8c986bd5534f28e9",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/streaming_and_overlays/book_for_the_win_kevin_werbach.md": {
+      "sha256": "afaea1c71f7685732f41f238507f0eaa32a80b3e13c6e08107b7ebd62121bbfe",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/streaming_and_overlays/book_game_mechanics_advanced_game_design_adams_dormans.md": {
+      "sha256": "53eed2c150a9211c52ee4805bda4979894a1e578bcf5c764925a4c0258d42348",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/streaming_and_overlays/book_gamification_revolution_zichermann.md": {
+      "sha256": "56bed76c3028fa8227e6d2d55f387aa4abf46a998ed8d991692218adbbee75fa",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/streaming_and_overlays/book_level_up_scott_rogers.md": {
+      "sha256": "b7bb78d1827b7382c04ca0846a8561202b808f15303288dcba0851e5ffe336fd",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/streaming_and_overlays/book_rules_of_play_salen_zimmerman.md": {
+      "sha256": "585d64d4563bd690c20d298af872888c4e87a34db9b6c6ede0655e3f6c27c463",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/streaming_and_overlays/KWS_EDGE_AUDIO_STREAMING_SOTA.md": {
+      "sha256": "a53ddb14c3dcc4d27f6e59b99f60a12c8674e92a180371767b72517ce847a174",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/streaming_and_overlays/LIBRARY_INGEST_06_GAMIFICATION_PSYCHOLOGY_CRO_AND_AI_22_BOOKS_2026.md": {
+      "sha256": "afe64dd34769fcec30868d9633a88b2c82dbb4b1357ff7adea0dd94f92b520da",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/streaming_and_overlays/websockets_masterclass_hussein_nasser.md": {
+      "sha256": "73fb336678986d49c0075e467f9d6d4783b26300297a1dd990ed345704415e0c",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/UI_RECIPES_CATALOG.md": {
+      "sha256": "76c2af5508c1856d07220955e9a8631afe3e6b619f87265fab6e1d2bc8c2a331",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_100_things_every_designer_needs_to_know_about_people_what_ma.md": {
+      "sha256": "2d18a9ad38fd9808395e1b458c2f19107e33002d1fe439d236bccc77d6b2abe8",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_accessibility_for_everyone_laura_kalbag.md": {
+      "sha256": "c0b86f50f4459e5595a742eeeca5847919266af9b9015afd575aef50eb7f044f",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_adaptive_web_design.md": {
+      "sha256": "99b8bcae0069a8aa6ece8d38ae1caa0ce0e1ec1f7ec1392e58a138c72b652221",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_atomic_design_brad_frost.md": {
+      "sha256": "ddcaae47550c134aef872acdac23b96bf662412d6aa1450a4d5aacdc4a13e8dc",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_atomic_design.md": {
+      "sha256": "75f4fecefa66dbc914d085659d5bfe9d013f6f0566486f752c47f92becbd5a79",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_color_and_light_a_guide_for_the_realist_painter.md": {
+      "sha256": "2007854a4076d1db8694f9ccde6fcf5ed57ff533e7e748442bffefcbbb034dae",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_color_vision_and_colorimetry_theory_and_applications_daniel_.md": {
+      "sha256": "87cf2c0560f9372fd3c352e25458ecfb92867be8aad82fbfda337e077660fb1a",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_css_mastery_advanced_web_standards_budd_bjorklund.md": {
+      "sha256": "d030f5f15cae8e6323c7360d063c9b8e5a77ac53e3e6384b4fc7dee416fc2be3",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_css_notes_for_professionals.md": {
+      "sha256": "d2269be6ec99988dc38f7a348b0d2f051e3cfe949b1c46265b0ce6b01024be45",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_css_pocket_reference_eric_meyer.md": {
+      "sha256": "64b0cf6cc2b31e749b945080e491d04d22c8c2a8ec41e140f991a94222126c11",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_css_secrets_lea_verou.md": {
+      "sha256": "67ea22c8c0ecf2059450bab994973fa754b497e4e4d88c4659a096cc12f2c28d",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_design_of_everyday_things_don_norman.md": {
+      "sha256": "7382f707d6a27daaced6ded0680bbe1b3e8c68371b3d24d667bf501f1ea12ed7",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_design_systems_handbook_marco_suarez_jina_anne_katie_sylor_m.md": {
+      "sha256": "9b3f11f596942e4f9f458eedab8a356edf7ea276ce5e748da0feddd277653571",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_designing_brand_identity_6th_edition_alina_wheeler_rob_meyerson.md": {
+      "sha256": "6f5f904b623df0303c8a82452edec6285985d61eed218fe48e33cf13ce9c4682",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_designing_for_performance_lara_hogan.md": {
+      "sha256": "9a6308f49278a2a5114d09e9a46ccc18bf2f567772b82b7aba7f60f3b0997755",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_designing_interfaces_jenifer_tidwell.md": {
+      "sha256": "f81e93c6b28ff2451f814e243badf18a7706be9a67066630bc8029da4b9cb31e",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_designing_interfaces_patterns_for_effective_interaction_desi.md": {
+      "sha256": "9d4c1adab9f50c418324885a60f2adacaf491102b3273e75feb844c054e50b1b",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_designing_mobile_interfaces.md": {
+      "sha256": "62e09130acde4d02a85c8bc976c03bdd53b0b0336bdc14f204cc3e4a1f56ba7d",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_designing_user_interfaces_micha_malewicz_diana_malewicz_z_li.md": {
+      "sha256": "c924bf5403a65a3c5db6cdd8fa025a396b1b8cf1ee1c41cac3e3bfa6ca388ab9",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_designing_ux_forms_create_forms_that_don_t_drive_your_users_.md": {
+      "sha256": "01662d57841b6976be6630a1b9ac3c1cc808f7a36f987ad95e1a4f3583ea3ada",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_designing_with_css_grid_layout_rachel_andrew.md": {
+      "sha256": "7f4b794e64aabec58b457ff9212c3312e037da2ba1193df64758440999788331",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_dokumen_pub_css_optimization_basics_9780991148059.md": {
+      "sha256": "eaaaf6dbc45b3026396ce13dc7e6a4cc4c143c71b6242aa51d51e0b2df42dd30",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_dokumen_pub_css_the_definitive_guide_visual_presentation_for.md": {
+      "sha256": "6b43f4f52453eb4e4c84f0eab0ca15cc2ac14346be9ad73ecc7e1f4433fa7e6a",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_dokumen_pub_html_and_css_the_comprehensive_guide_1nbsped_149.md": {
+      "sha256": "122f8453d656bae83b09b9909b157ee7e1b7ad749c564965eb64ad8ee269c882",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_dont_just_roll_the_dice_software_pricing_davidson.md": {
+      "sha256": "9d1d059d416709a3c0647493968baf76708da66d0983b13638c6b8d1f12397d6",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_dont_make_me_think_revisited_a_common_sense_approach_to_web_.md": {
+      "sha256": "6e706424865db1eebbe157f08a5b1d9b1b0868a1d3bac0ddb0b88586793fb09e",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_ebook_manual_en_dive_into_html5.md": {
+      "sha256": "7157cd161b0a89034d532850a690b78da1560400e9114f1eedbd2f49c6cfd33a",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_el_diseno_emocional_don_norman.md": {
+      "sha256": "4c2267cbf367fedfbf378fa981e52fa7ae25276c523366bd97eb521bd8e13a4f",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_elements_of_typographic_style_bringhurst.md": {
+      "sha256": "9c612bec2c19352a2f7df562170c0d0c910b4233bc81d5c90556d1cd6c0ab7df",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_emotional_design_why_we_love_or_hate_everyday_things_donald_.md": {
+      "sha256": "cb3a819a2529e7926ff9eeadd11518647cd7576eaa031db1c7eacc285b84923b",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_fixing_bad_ux_designs_lisandra_maioli_z_library.md": {
+      "sha256": "aff22ca98468d5e54ebe89cfd007080d73ba40928aa4978c91813983ca1542ef",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_flow_mihaly_csikszentmihalyi.md": {
+      "sha256": "18de193723cf26c7a4979c8eeae74b24c1e9f54971c15c19901da2abbde1845a",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_fogg_behavior_model_bj_fogg.md": {
+      "sha256": "dece704cbc9047c9915b033c42e39b9dcc692143fe8425d26e09badf63548aa9",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_frontend_architecture_design_systems_godbolt.md": {
+      "sha256": "65c112997aa31c305ba7f629fa532a46a45124ff648250c8952faa9049e57854",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_fundamentals_of_game_design_3rd_edition_ernest_adams.md": {
+      "sha256": "7363f0bb1d0cea6263a63d7d1b5c83744b625026f9d5dde80764f9d683561011",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_how_to_build_a_website_with_html.md": {
+      "sha256": "cb709fb1e1130efe146339bd4e14628d3956c6cab2d682fd5e330e62d65b04d1",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_html_and_css_design_and_build_websites_jon_duckett.md": {
+      "sha256": "01adaa0d2d9e6cd1203bed248b1b9690d1abc61d20af01883f411fd2a36c3c30",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_html_and_css_the_good_parts_ben_henick.md": {
+      "sha256": "2b5bfd676eb55a7e9286c7f3d2522cca1e5f0e7130fda8b15cb958cc5e21aa4f",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_html_tutorial_pdf.md": {
+      "sha256": "550ad15a20c485a6b4c8a3536a3eb1ee0183816f5118df084a83593cdf8708fc",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_html5_and_css3_responsive_web_design_cookbook_lagrone.md": {
+      "sha256": "e2aa51b5f06207215565824a99848da6c8a925dabd2f9088fe1ff57078942d2d",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_html5_notes_for_professionals.md": {
+      "sha256": "0983a217e8f48ad24928abbcd00be729a0db9f4147376c0bc162f39542aeb6f3",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_laying_the_foundations_a_book_about_design_systems.md": {
+      "sha256": "4579e77a5b38fb8fc07b763be4edd2d1a0da125fcb74d8ef6e1cf3b5b760b663",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_lean_ux_gothelf_seiden.md": {
+      "sha256": "1a96500372f31d1284a0ee09e2a765ef7a39aa4ec1ee737d35fe475285d0ee08",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_learning_web_design_5th_edition.md": {
+      "sha256": "f4a54559caa619f005817f1a7097bc85ffda993ff5ea680e8174eb721f80c00e",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_misbehaving_richard_thaler.md": {
+      "sha256": "76598a4a5f7181fbb0aff059ca5c4b65df9daa7e3fe8f924a5b8ed2787c8f780",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_mueller_brockmann_josef_grid_systems_in_graphic_design_raste.md": {
+      "sha256": "6bccdbf6702f65a90e8697089f059478d194c38cb189f0eac279b580f7f71bf2",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_neuro_web_design_what_makes_them_click_susan_m_weinschenk_z_.md": {
+      "sha256": "6f71e37584b105d033b79c4ef74db390e09e43c0d65800f98a71dc0d1a5d4f7d",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_never_split_the_difference_chris_voss.md": {
+      "sha256": "3f2f81cbfc68b9f44c0f0d9698a89f2b747c1cf5c54630a1012dd6a6ce6915fb",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_plus_color_color_theory_harmony_chromatic_systems.md": {
+      "sha256": "e7976d0a30c5533e4f0064803366165279604f62e955c34ab9b6dc7f3b174146",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_practical_ui_patterns_for_design_systems_fast_track_interact.md": {
+      "sha256": "0f6ad0ccfe2c5851de2c8272ae286e6688228d466a27aa80bead20f19aabfe18",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_pro_html5_and_css3_design_patterns_bowers.md": {
+      "sha256": "18d073a2850b7ca0de71c18dcfb3e9d2d92ff06d8f2bf5f58f73d62156876298",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_semantic_html_and_css_optimization_meiert.md": {
+      "sha256": "447373b21c8a9bcf08359a2578d0fcb49b95911c98f22ba834807f21434f7ed2",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_steve_schoger_adam_wathan_refactoring_ui_2018.md": {
+      "sha256": "22930101f873e4c4c8e9a93666762a9ddfdd65de07babf64458fb3d7b0fdfcdf",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_strategic_writing_for_ux_drive_engagement_conversion_and_ret.md": {
+      "sha256": "94dd1937ec9ac5e9e4554e687d75000671731893b0e87ccd06f603d6338af065",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_stylin_with_css_a_designers_guide_wyke_smith.md": {
+      "sha256": "131741da919869be19c30b7977633754369863f5bf6f7947db15da6b5674c138",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_the_art_of_game_design_lenses_jesse_schell.md": {
+      "sha256": "4d174432afbb99ba6992c0b595626f60e41354d69b6fc6cc497cdc4b62c0b050",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_the_book_of_css3_peter_gasston.md": {
+      "sha256": "e74d3de394ad58437bc3ca1605ea40be5952d4eea0ff910e7d7be6178f63fdc0",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_the_design_of_everyday_things_by_don_norman.md": {
+      "sha256": "1aed9ee4f475223d24300052625f20465fd62885e6dc5d50a88218b790a4d673",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_the_designers_dictionary_of_color_sean_adams_z_library.md": {
+      "sha256": "dbb4a4b211a917704616355a3d0bfe407cde1a9ae32d3724add3148e8c3fc7cf",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_the_gamers_brain_celia_hodent.md": {
+      "sha256": "65c1a2dd1647181020e4f6fde3bb4a5764085cf7791ca7e8168e41e3b2c773b2",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_the_visual_display_of_quantitative_information.md": {
+      "sha256": "6ff4e1175918d3f5b29d5a9b4e49e750b2cbcb04c281ff8f8e49e9d89274fc9d",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_the_visual_story_visual_structure_film_digital_media_bruce_block.md": {
+      "sha256": "fff509f88ec88a17529ac06133b84b17c7735b79cbf98b71b72deed1f66e0804",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_ui_design_systems_mastery_completo.md": {
+      "sha256": "84e64782962670c5c8d3ac1e65e70ba2452717b4d6c7cc2f60743fc7b0571f1e",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_ui_pedia_completo.md": {
+      "sha256": "3ab221c132a0ffa6d0fc386bd52de38c1cb3366cc454ac099a532f0cf288b761",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_universal_principles_of_design_revised_and_updated_125_ways_.md": {
+      "sha256": "d5c86ad982c8370af5c9f1e33e27b11ded7649445869a7d0b21095fb067c2034",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_ux_writing_designing_user_centered_content_team_ira_jason_c_.md": {
+      "sha256": "29bb2a34ae91b12f312f784ecf11d7b02fa6ba91adaa177c2c2c9b50889f4878",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_web_form_design_luke_wroblewski.md": {
+      "sha256": "fb003aa396a66cbcf40ae1e06820939c08546bd30b7a66d03c5a39fd46da43f6",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/book_web_ui_design_for_the_human_eye_principles_of_visual_consist.md": {
+      "sha256": "8350c20fea0adfcff6e30e02ddd397af6241d21b7d7e44d4c97d2c1afe4df5b1",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/CANON_100_THINGS_DESIGNER_PEOPLE_WEINSCHENK.md": {
+      "sha256": "18ecb692570d880813c5c406552fc6878d7fc06d109b781c963942094510bac4",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/CANON_21ST_DEV_DESIGN_ENGINEERING_AND_COMPONENT_MARKETPLACE.md": {
+      "sha256": "b650fd04a199f572dcb4da73a2d67b0365f9e35657afb505893530e10f5a28d9",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/CANON_ACCESSIBILITY_FOR_EVERYONE_KALBAG.md": {
+      "sha256": "df3350ad471f0b87c63a28bd8ec8a2397847c0bd4ccaabccbe1906932bbd5940",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/CANON_ALGORITHMIC_GAME_THEORY.md": {
+      "sha256": "56bf5c5241743138c65c19db9170060b66d14419c9ebf20de7c0cd7e92b81df4",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/CANON_ATTENTION_MERCHANTS_TIM_WU.md": {
+      "sha256": "ed6126e835e7e314d920bab05df4606022233b06c438b0e530f74cd8cfe17124",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/CANON_BOOK_ATOMIC_DESIGN_BRAD_FROST.md": {
+      "sha256": "ca20902623581779131b2efe04c1362b1c33c65af42e39543b63351b4c51b7b0",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/CANON_BOOK_DESIGNING_FOR_PERFORMANCE_LARA_HOGAN.md": {
+      "sha256": "ec19503079fd740a3b96bf53b8caa0625e272b0f390b19a7b8ac3adbe2e94554",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/CANON_BOOK_DESIGNING_INTERFACES_JENIFER_TIDWELL.md": {
+      "sha256": "ca68e0b9970ff0450e837167d466cbed5ee751ecf4856c9c03c84127a50fde8f",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/CANON_BOOK_MOBILE_USABILITY_JAKOB_NIELSEN.md": {
+      "sha256": "7b0c5f6f4e80d2788a7a26ba4858a43e1508722609fed68dccea1656d96a2457",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/CANON_BOOK_WEB_FORM_DESIGN_LUKE_WROBLEWSKI.md": {
+      "sha256": "37bec6f1e7806a93445eae3cbe752ea2d8cd2a9dd3ed03d3eea26b38bb8b020d",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/CANON_CONTINUOUS_DISCOVERY_HABITS_TERESA_TORRES.md": {
+      "sha256": "c841971a13caacebe6c1fa9c8715cf6336e6ad6ef74579a388b9c5271a44ca25",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/CANON_DESIGNING_FOR_EMOTION_WALTER.md": {
+      "sha256": "be6d8d84db478721c17effccc96973131694f411e7537f150c0bb69af39bee14",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/CANON_DESIGNING_FOR_TOUCH_JOSH_CLARK.md": {
+      "sha256": "3261bee16ff64fc78c8e0f110b49ca93bc914b402671572133f1b003c41d6e4d",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/CANON_ELEMENTS_OF_TYPOGRAPHIC_STYLE_AND_GRIDS.md": {
+      "sha256": "55875792105d6c29c5572305c114cdc1ea51a30baf76e3f8a54cd967be65f519",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/CANON_EXPERIENCE_ECONOMY_PINE_GILMORE.md": {
+      "sha256": "503c582b0c2c45faf260413c24c976604c5607c078d82e88c47d45229abf91d9",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/CANON_FOR_THE_WIN_GAMIFICATION_WERBACH.md": {
+      "sha256": "9d9ad735d547b62f302b881e2300f3d8c15f379ce35720da4a07686c5c0f5e5e",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/CANON_GOLDEN_RATIO_DESIGN_SOURCES_AND_PROPORTIONS.md": {
+      "sha256": "25f009dbb9af190b79537a3b8fab65257e58cfaea3aae464872ab6a065bb7261",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/CANON_GOLDEN_RATIO_UI_MATHEMATICAL_SYNTHESIS.md": {
+      "sha256": "00c8641c84e1be6f1155e12c1aff5fe2c25df790469e587882b377f98accfd72",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/CANON_MISBEHAVING_RICHARD_THALER.md": {
+      "sha256": "7f9189ffb48234a81358ea8cd838da0baad9470627f362f7b4fac09b157f53f5",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/CANON_MONETIZING_INNOVATION_SIMON_KUCHER.md": {
+      "sha256": "5393dfd4d48a141bd7aa73dcdf0b15b92541f2e1a228ab3a7ffea777b59e275f",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/CANON_PLATFORM_REVOLUTION_SCALE_NETWORK_EFFECTS.md": {
+      "sha256": "f06217b0bdba232b38674584f095c61802e7e3f862728440c594c037af091bfe",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/CANON_PREDICTABLY_IRRATIONAL_ARIELY_TRAMPAS_DESEO.md": {
+      "sha256": "2e1b17a72e24877fa00c175281d4ae2fac3a79f5696e03ae79a5253868913a16",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/CANON_SCARCITY_ESCASEZ_BANDWIDTH_TAX.md": {
+      "sha256": "7e3c76cdfa7709953c44b1d6214235a3260871b847591278fc29f743beaef3a8",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/CANON_THE_PARADOX_OF_CHOICE_BARRY_SCHWARTZ.md": {
+      "sha256": "d05370f703cdc90f1214ace2e0f9fe23baeda3f49e75c0eb43a73cf82be26b98",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/CANON_THINKING_FAST_AND_SLOW_KAHNEMAN.md": {
+      "sha256": "3287c49d3609a9db66b454e43cde30307d221eda06df22b79fad01a36f4c4620",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/CANON_USER_STORY_MAPPING_JEFF_PATTON.md": {
+      "sha256": "4069f99d99564ee8c35827c2bcd6177ca610f7943512b0748ac4372e962d9cee",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/designing_with_the_mind_in_mind.md": {
+      "sha256": "af642aaaf6ba3980b55b60e6abd5bab33f1ff63196638e281a926725f47e6fac",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/FOSS_UX_UI_SQUAD_TOOLS_SOTA_2026.md": {
+      "sha256": "28889bee3c353ee859d5938ef88e78d5589755184404b1230a0cc84d8670c920",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/GAME_THEORY_GROWTH_LOOPS_Y_DUNBAR_QUORUM.md": {
+      "sha256": "2e83cfd3253370f80790ccab4f4bc805ff6bf56c05d9c718f5b44f79316a3532",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/laws_of_ux_using_psychology_to_design_better_.md": {
+      "sha256": "aa069f38c762f14fb03bdfa1edf4153f1422cfc47dcc3e39cc8a19e7b4842b34",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/LIBRARY_INGEST_01_UI_UX_TYPOGRAPHY_AND_CSS_39_BOOKS_2026.md": {
+      "sha256": "0382522393be31a15366723bdd87ae70415c97e13a97212a3dd54c4e394dd25c",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/MASTERCLASS_BRAD_FROST_MAINTAINING_DESIGN_SYSTEMS.md": {
+      "sha256": "743801f0fa28384b9683c549994e79b793c86afdf7a8bcefdbc187d5ac9c9bc0",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/MASTERCLASS_FRONTEND_MASTERS_UI_SYSTEM_DESIGN_PERF.md": {
+      "sha256": "fbb5bd2c67c566fae9cdbbf0f14738ae3afadd6bca75ac58bf60cf088285a323",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/MASTERCLASS_NNGROUP_AESTHETIC_AND_MINIMALIST_DESIGN.md": {
+      "sha256": "459ae3c94e28d75fca46c730726bd8aeb585181d9d3586595ffd9fbef5eaf6be",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/MASTERCLASS_NNGROUP_FITTS_LAW_BUTTONS_AND_LINKS.md": {
+      "sha256": "ffd11fbdf2c5a9b016ca375dafd84e1846209219135478faa2a293d04c0efe61",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/MASTERCLASS_NNGROUP_FITTS_LAW_IN_GUIS.md": {
+      "sha256": "efe44d8a702f7a773188b0edd41f0e14ebcbe6ca51ec1894735b38b004f490fe",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/MASTERCLASS_NNGROUP_FLAT_VS_DEEP_HIERARCHIES.md": {
+      "sha256": "d20c886aba2dd19cd1abc4bf438e46b40fe297c6dd936427b78329dae0b0b7b0",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/MASTERCLASS_WEBDEV_RESPONSIVE_ADAPTIVE_UI_DESIGN.md": {
+      "sha256": "45671dfdd82d0f794402924394764426c84b09d6ea3a99a0cf12234da06be890",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    },
+    "knowledge/ui_ux_design/next_gen_css_una_kravets_chrome_devs.md": {
+      "sha256": "d9fef90ca54032dc30d7ed97fe36d75c59a885c20bd7938911855d29dab74a03",
+      "tier": "TIER_2_TIMELESS_PRINCIPLES",
+      "authorityBoost": 1.15
+    }
+  }
+}

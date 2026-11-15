@@ -323,8 +323,8 @@ export const SQUADS = {
     id: 'squad_1',
     roleFile: '.agents/agency/roles/tech-scout.md',
     name: 'Squad 1 — Tech Scout & Research Intelligence',
-    mission: 'Gathers primary documentation, audits permissive licenses, and queries Omni-RAG v5.',
-    skills: ['research-mode', 'kb-retrieval', 'firecrawl', 'finops-context-budget']
+    mission: 'Gathers primary documentation, curates clean-room educational sources/videos/OSS tools, audits permissive licenses, and queries Omni-RAG v5.',
+    skills: ['research-mode', 'kb-retrieval', 'firecrawl', 'finops-context-budget', 'clean-room-course-harvester']
   },
   squad_2: {
     id: 'squad_2',
@@ -336,16 +336,16 @@ export const SQUADS = {
   squad_3: {
     id: 'squad_3',
     roleFile: '.agents/agency/roles/copywriting-cro-strategist.md',
-    name: 'Squad 3 — Copywriting, Behavioral CRO & Pricing Strategist',
-    mission: 'Optimizes value propositions, Fogg B=MAP conversion triggers, and zero confirm-shaming flows.',
-    skills: ['copywriting', 'cro', 'pricing-and-onboarding-cro', 'marketing-psychology', 'marketingskills']
+    name: 'Squad 3 — Copywriting, Explorable Lesson Prose & CRO Strategist',
+    mission: 'Optimizes value propositions, authors 5-beat neutral-Spanish explorable lessons (<=110 words), Fogg B=MAP triggers, and zero confirm-shaming flows.',
+    skills: ['copywriting', 'cro', 'pricing-and-onboarding-cro', 'marketing-psychology', 'marketingskills', 'explorable-lesson-author']
   },
   squad_4: {
     id: 'squad_4',
     roleFile: '.agents/agency/roles/ux-designer.md',
     name: 'Squad 4 — Design Systems, OKLCH Tokens & UI/UX Architect',
-    mission: 'Maintains W3C DTCG 2025.10 OKLCH tokens, Utopia clamp() fluid scales, and 67 MIT design styles.',
-    skills: ['frontend-design', 'modern-frontend-design', 'design-system', 'layout-primitives-architect', 'minimal-surface-hierarchy']
+    mission: 'Maintains W3C DTCG 2025.10 OKLCH tokens, Utopia clamp() fluid scales, ethical gamification UX, and 67 MIT design styles.',
+    skills: ['frontend-design', 'modern-frontend-design', 'design-system', 'layout-primitives-architect', 'minimal-surface-hierarchy', 'gamification-and-project-coach']
   },
   squad_5: {
     id: 'squad_5',
@@ -371,25 +371,36 @@ export const SQUADS = {
   squad_8: {
     id: 'squad_8',
     roleFile: '.agents/agency/roles/product-spec-architect.md',
-    name: 'Squad 8 — Product Discovery & Spec-Kit Architect',
-    mission: 'Selects SPLE stack (astro-edge v7 / fullstack-saas-edge / vanilla-edge) and authors .specify contracts.',
-    skills: ['modularity', 'constraint-driven-development', 'grill-me']
+    name: 'Squad 8 — Product Discovery, Curriculum DAG & Spec-Kit Architect',
+    mission: 'Selects SPLE stack, synthesizes autonomous UNESCO/Biggs/Merrill curriculum DAGs, and authors .specify contracts.',
+    skills: ['modularity', 'constraint-driven-development', 'grill-me', 'pedagogical-curriculum-architect']
   },
   squad_9: {
     id: 'squad_9',
     roleFile: '.agents/agency/roles/senior-coder.md',
-    name: 'Squad 9 — Senior Frontend & Islands Engineer',
-    mission: 'Implements Astro 7 Islands, semantic HTML5, zero-bloat CSS primitives, and TDD runtime controllers.',
-    skills: ['baseline-ui', 'emil-design-eng', 'code-structure', 'test-driven-development']
+    name: 'Squad 9 — Senior Frontend, Islands & Socratic Tutor Engineer',
+    mission: 'Implements Astro 7 Islands, semantic HTML5, zero-bloat CSS primitives, dual Socratic quiz controllers, and TDD runtime logic.',
+    skills: ['baseline-ui', 'emil-design-eng', 'code-structure', 'test-driven-development', 'socratic-tutor-and-assessor']
   },
   squad_10: {
     id: 'squad_10',
     roleFile: '.agents/agency/roles/qa-auditor.md',
-    name: 'Squad 10 — Independent Coverage & Visual Regression QA',
-    mission: 'Executes read-only RYUX v2.14.2, odiff-bin SIMD, Playwright v1.65 / Stagehand v4.4 AX verification.',
+    name: 'Squad 10 — Blind Read-Only Coverage, Pedagogical Readability & Visual QA',
+    mission: 'Executes blind read-only RYUX v2.14.2, readability_es.mjs, canon compliance, odiff-bin SIMD, and Playwright/Stagehand AX verification.',
+    writeCodeAllowed: false,
+    blindPedagogicalQa: true,
+    auditScripts: ['tools/audit/readability_es.mjs', 'tools/audit/ryux_design_gate.mjs'],
     skills: ['cto-hitl-visual-gate', 'ui-test', 'break-ui', 'silent-failure-hunter', 'evidence-driven-testing']
   }
 };
+
+export const REQUIRED_EDUCATIONAL_SKILLS = Object.freeze([
+  'pedagogical-curriculum-architect',
+  'clean-room-course-harvester',
+  'explorable-lesson-author',
+  'socratic-tutor-and-assessor',
+  'gamification-and-project-coach'
+]);
 
 export function verifySquadAlignment() {
   const missingSkills = [];
@@ -399,6 +410,7 @@ export function verifySquadAlignment() {
   const orgMdPath = path.join(ROOT, '.agents', 'agency', 'ORGANIZATION.md');
 
   const squadRoleSlugs = new Set();
+  const assignedSkillsSet = new Set();
   for (const [key, squad] of Object.entries(SQUADS)) {
     const roleSlug = path.basename(squad.roleFile, '.md');
     squadRoleSlugs.add(roleSlug);
@@ -407,6 +419,7 @@ export function verifySquadAlignment() {
       missingRoles.push({ squad: key, roleFile: squad.roleFile });
     }
     for (const skill of squad.skills) {
+      assignedSkillsSet.add(skill);
       const skillPath = path.join(skillsDir, skill);
       if (!fs.existsSync(skillPath)) {
         missingSkills.push({ squad: key, skill });
@@ -447,12 +460,34 @@ export function verifySquadAlignment() {
     missingOrgSlugs.length === 0 &&
     extraOrgSlugs.length === 0;
 
+  const missingEducationalSkills = REQUIRED_EDUCATIONAL_SKILLS.filter((s) => !assignedSkillsSet.has(s));
+  const registry = loadMcpRoleRegistry();
+  const qaWaveReadOnly = registry?.waves?.wave_3a_coverage_verifier?.writeCodeAllowed === false;
+  const qaRolePermReadOnly = registry?.rolePermissions?.['qa-auditor']?.writeCodeAllowed === false;
+  const qaRoleMdPath = path.join(ROOT, SQUADS.squad_10.roleFile);
+  const qaRoleMdText = fs.existsSync(qaRoleMdPath) ? fs.readFileSync(qaRoleMdPath, 'utf8') : '';
+  const qaToolsLine = (qaRoleMdText.match(/^tools:\s*(.+)$/m) || [])[1] || '';
+  const qaToolsForbidWrite = !/\b(?:Write|Edit)\b/i.test(qaToolsLine);
+  const qaAuditorReadOnly =
+    SQUADS.squad_10.writeCodeAllowed === false &&
+    qaWaveReadOnly &&
+    qaRolePermReadOnly &&
+    qaToolsForbidWrite;
+
   return {
-    valid: missingSkills.length === 0 && missingRoles.length === 0 && topologySynced,
+    valid:
+      missingSkills.length === 0 &&
+      missingRoles.length === 0 &&
+      topologySynced &&
+      missingEducationalSkills.length === 0 &&
+      qaAuditorReadOnly,
     squadCount: Object.keys(SQUADS).length,
     rolesDirCount: rolesDirSlugs.length,
     organizationCount: orgSlugs.length,
     topologySynced,
+    educationalSkillsAssigned: missingEducationalSkills.length === 0,
+    missingEducationalSkills,
+    qaAuditorReadOnly,
     missingSkills,
     missingRoles,
     topologyMismatches: { extraRoleFiles, missingOrgSlugs, extraOrgSlugs }

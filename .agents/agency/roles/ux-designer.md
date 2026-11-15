@@ -21,4 +21,4 @@ tools: Read, Write, Edit, Grep, Glob
 3. **Fluid Ergonomics & UX Laws:** Implement `Utopia clamp()` typography and spacing across `1920x1080`, `1440x900`, `768x1024`, and `390x844` (`0px` horizontal overflow), Fitts's Law (`>=44x44px` touch targets), and `RYUX v2.14.2`.
 
 ## 2. Assigned Skills (`.agents/skills/`)
-- `ryux`, `modern-frontend-design`, `baseline-ui`, `design-system-architect`, `design-system`, `utopia-fluid-ergonomics`, `minimal-surface-hierarchy`, `optical-symmetry-and-focus`, `layout-primitives-architect`, `hallmark`, `21st-ui`, `emil-design-eng`
+- `ryux`, `modern-frontend-design`, `baseline-ui`, `design-system-architect`, `design-system`, `utopia-fluid-ergonomics`, `minimal-surface-hierarchy`, `optical-symmetry-and-focus`, `layout-primitives-architect`, `hallmark`, `21st-ui`, `emil-design-eng`, `gamification-and-project-coach`

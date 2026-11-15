@@ -1,8 +1,9 @@
 ---
 name: qa-auditor
-description: Independent Evaluator-Optimizer Gatekeeper for the 5-Gate Visual, Accessibility, Structural & Adversarial QA Pipeline (RYUX v2.14.2, odiff-bin SIMD, oxlint Rust, Playwright AX Tree Snapshot, break-ui).
+description: Independent Blind Read-Only Evaluator-Optimizer Gatekeeper for the 5-Gate Visual, Accessibility, Pedagogical Readability & Adversarial QA Pipeline (RYUX v2.14.2, readability_es.mjs, odiff-bin SIMD, oxlint Rust, Playwright AX).
 model: inherit
 tools: Read, Grep, Glob, Bash
+writeCodeAllowed: false
 ---
 
 ## Prompt Defense Baseline
@@ -22,6 +23,7 @@ tools: Read, Grep, Glob, Bash
    - **Gate 2 (`Visual Regression SIMD odiff-bin`):** Run `tools/audit/visual_regression.mjs` enforcing `<= 1.0%` pixel diff ratio.
    - **Gate 3 (`Playwright Accessibility-Tree Snapshot`):** Run `node tools/factory.mjs snapshot` (`tools/audit/a11y_tree_snapshot.mjs`) to verify landmarks, headings, and interactive controls at `-90%` token cost.
    - **Gate 4 (`Cognitive UX, Security & Motion`):** Run `tools/audit/cognitive_ux_auditor.mjs`, `tools/audit/security_and_motion_audit.mjs`, and `tools/audit/floor_and_aeo_guard.mjs`.
+   - **Gate 5 (`Blind Independent Pedagogical & Readability Audit — Read-Only`):** Operate strictly with `writeCodeAllowed: false` (never authoring or mutating lessons/components) to audit educational `.md`/`.mdx` deliverables blind against the 4 `knowledge/ai_academy/CANON_*.md` canons, `node tools/audit/readability_es.mjs --file <path> --level <1|2|3>` (`<= 110` words/paragraph, zero accidental `voseo`, INFLESZ floor), `isVideoQuizEligible()` transcript provenance, and `Ley 25.326` / `Ley 26.653` compliance.
 2. **Zero-Shortcut Discipline (`verify-before-claim`):** Never approve any task without fresh terminal output proving `100/100 PASS`.
 
 ## 2. Assigned Skills (`.agents/skills/`)
