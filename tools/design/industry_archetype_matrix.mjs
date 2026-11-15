@@ -116,7 +116,12 @@ export const ARCHETYPE_CLI_ALIASES = {
   inmobiliaria: 'luxury-architecture-and-real-estate',
   portfolio: 'luxury-architecture-and-real-estate',
   luxury: 'luxury-architecture-and-real-estate',
-  'luxury-architecture-and-real-estate': 'luxury-architecture-and-real-estate'
+  'luxury-architecture-and-real-estate': 'luxury-architecture-and-real-estate',
+
+  education: 'academic-editorial-education',
+  educacion: 'academic-editorial-education',
+  academia: 'academic-editorial-education',
+  'academic-editorial-education': 'academic-editorial-education'
 };
 
 /**
@@ -881,6 +886,109 @@ export const INDUSTRY_VISUAL_ARCHETYPES = {
       'Never crowd photography with heavy drop shadows or thick borders.',
       'Never use bounce/elastic animations; use slow, cinematic exponential ease-out.'
     ]
+  },
+  'academic-editorial-education': {
+    id: 'academic-editorial-education',
+    cliAlias: 'education',
+    title: 'Open AI Academy & Explorable Editorial Education',
+    creativeNorthStar: 'Calm Explorable Editorial & Inclusive Pedagogical Clarity',
+    surfaceModes: ['Read', 'Operate'],
+    primarySurfaceMode: 'Read',
+    polarity: 'dual-theme-daylight-paper-and-calm-slate',
+    apcaContrastFloor: 85,
+    wcagTier: 'AA+',
+    requiresTabularNums: true,
+    allows3dEffects: false,
+    tokens: {
+      colors: {
+        primary: 'oklch(34% 0.13 245)',
+        secondary: 'oklch(42% 0.04 250)',
+        tertiary: 'oklch(42% 0.14 245)',
+        'level-acquire': 'oklch(42% 0.13 162)',
+        'level-deepen': 'oklch(42% 0.14 245)',
+        'level-create': 'oklch(41% 0.14 38)',
+        surface: 'oklch(98.5% 0.004 250)',
+        'surface-raised': 'oklch(96.2% 0.007 250)',
+        'surface-deep': 'oklch(93.5% 0.012 250)',
+        'text-primary': 'oklch(18% 0.015 250)',
+        'text-secondary': 'oklch(35% 0.016 250)',
+        'border-hairline': 'oklch(22% 0.015 250 / 0.14)',
+        success: 'oklch(44% 0.13 155)',
+        warning: 'oklch(52% 0.14 68)',
+        danger: 'oklch(48% 0.17 26)'
+      },
+      typography: {
+        display: {
+          fontFamily: "'Newsreader', 'Instrument Serif', Georgia, serif",
+          fontSize: 'clamp(2.15rem, 3.6vw, 3.25rem)',
+          fontWeight: 500,
+          lineHeight: 1.12,
+          letterSpacing: '-0.02em'
+        },
+        h1: {
+          fontFamily: "'Newsreader', 'Instrument Serif', Georgia, serif",
+          fontSize: 'clamp(1.95rem, 3.1vw, 2.75rem)',
+          fontWeight: 500,
+          lineHeight: 1.15,
+          letterSpacing: '-0.018em'
+        },
+        h2: {
+          fontFamily: "system-ui, -apple-system, 'Segoe UI', sans-serif",
+          fontSize: 'clamp(1.35rem, 2.1vw, 1.85rem)',
+          fontWeight: 600,
+          lineHeight: 1.24,
+          letterSpacing: '-0.012em'
+        },
+        h3: {
+          fontFamily: "system-ui, -apple-system, 'Segoe UI', sans-serif",
+          fontSize: 'clamp(1.125rem, 1.5vw, 1.35rem)',
+          fontWeight: 600,
+          lineHeight: 1.32,
+          letterSpacing: '-0.008em'
+        },
+        body: {
+          fontFamily: "system-ui, -apple-system, 'Segoe UI', sans-serif",
+          fontSize: 'clamp(1.03rem, 0.98rem + 0.25vw, 1.125rem)',
+          fontWeight: 400,
+          lineHeight: 1.72,
+          letterSpacing: '0em'
+        },
+        mono: {
+          fontFamily: "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace",
+          fontSize: '0.875rem',
+          fontWeight: 400,
+          lineHeight: 1.55,
+          letterSpacing: '0em',
+          fontFeature: "'tnum' 1"
+        }
+      },
+      rounded: {
+        none: '0px',
+        xs: '4px',
+        sm: '6px',
+        md: '8px',
+        lg: '12px'
+      },
+      spacing: {
+        xs: '8px',
+        sm: '16px',
+        md: '24px',
+        lg: '40px',
+        xl: '64px',
+        '2xl': '96px'
+      }
+    },
+    dos: [
+      'Constrain lesson reading measure strictly between 60ch and 70ch (canonical 65ch) with >= 1.65 line-height and clean h1 -> h2 -> h3 hierarchy.',
+      'Apply OKLCH 90/8/2 chromatic restraint with 3 semantic level accents (Acquire/Principiante, Deepen/Intermedio, Create/Avanzado) verified in both light and dark themes.',
+      'Pair privacy-preserving video facades (youtube-nocookie.com / OER) with a clear local-storage notice and accessible text synthesis.',
+      'Honor prefers-reduced-motion: reduce, tabular-nums for token/metric counters, and WCAG 2.2 AA+ (APCA Lc >= 85).'
+    ],
+    donts: [
+      'Never include SaaS pricing tables (#pricing), hidden paywalls, streaks, countdown timers, or public leaderboards.',
+      'Never inject 3D WebGPU shaders, PBR filler, unmuted autoplay media, or layout-thrashing animations in Read mode.',
+      'Never exceed 110 words per instructional paragraph or violate neutral international Spanish (tú) readability floors.'
+    ]
   }
 };
 
@@ -939,7 +1047,7 @@ export const IMPECCABLE_62_ANTI_SLOP_RULES = [
   // Category 4: Motion, 3D & Interaction Choreography (Rules 43-52)
   { id: 'slop-43-elastic-bounce-easing', category: 'motion', title: 'No dated bounce or elastic overshoot easing on standard UI', pattern: /cubic-bezier\([^)]*1\.[3-9]\d*\)/i },
   { id: 'slop-44-slow-operational-transitions', category: 'motion', title: 'Fintech & ERP micro-interactions stay fast (<150ms-200ms)', checkFn: (doc, arch) => !['fintech-and-banking', 'enterprise-erp-database'].includes(arch) || /150ms|200ms|Operate/i.test(doc) },
-  { id: 'slop-45-3d-effects-in-erp-or-law', category: 'motion', title: 'No distracting 3D WebGPU effects in ERP, Law Firm, or Healthcare', checkFn: (doc, arch) => !['enterprise-erp-database', 'law-firm-and-advisory', 'healthcare-and-clinic'].includes(arch) || /zero distracting 3D|Never use.*3D|allows3dEffects:\s*false/i.test(doc) },
+  { id: 'slop-45-3d-effects-in-erp-or-law', category: 'motion', title: 'No distracting 3D WebGPU effects in ERP, Law Firm, Healthcare, or Education', checkFn: (doc, arch) => !['enterprise-erp-database', 'law-firm-and-advisory', 'healthcare-and-clinic', 'academic-editorial-education'].includes(arch) || /zero distracting 3D|Never.*3D|allows3dEffects:\s*false/i.test(doc) },
   { id: 'slop-46-missing-fps-watchdog-in-streamer', category: 'motion', title: 'Streamer/Gaming archetype enforces 60-FPS Watchdog for shaders/particles', checkFn: (doc, arch) => arch !== 'streamer-and-gaming-creator' || /60-FPS Watchdog|60 FPS/i.test(doc) },
   { id: 'slop-47-identical-scroll-entrance-every-section', category: 'motion', title: 'No identical fade-up entrance on every single section', pattern: /identical-fade-up-every-section/i },
   { id: 'slop-48-missing-reduced-motion-respect', category: 'motion', title: 'Honors prefers-reduced-motion media query', checkFn: (doc) => /prefers-reduced-motion|reduced-motion|Accessibility/i.test(doc) },
@@ -1187,6 +1295,34 @@ export const ARCHETYPE_FUNCTIONAL_INVARIANTS = Object.freeze({
     regulatoryAndSeoRequirements: [
       'Architectural credits, property prospectus disclaimers, and private client confidentiality',
       'Schema.org ArchitectureFirm + Residence JSON-LD @graph + llms.txt'
+    ]
+  },
+  'academic-editorial-education': {
+    archetypeId: 'academic-editorial-education',
+    cliAlias: 'education',
+    primarySurfaceMode: 'Read',
+    trustHierarchy: [
+      'Open-access pedagogical clarity (100% $0 free, zero hidden paywalls or subscriptions) in first viewport',
+      'Triangulated primary sources (UNESCO, OECD, NIST, W3C) + OER/youtube-nocookie video facade with local-storage notice',
+      'Client-side explorable micro-labs (js-tiktoken, ts-fsrs) and isolated opaque-origin Socratic tutor sandbox'
+    ],
+    apcaContrastFloors: { headlineLc: 90, bodyLc: 85, secondaryLc: 72, wcagTier: 'AA+' },
+    cognitiveLaws: {
+      foggBehaviorModel: 'Calm low-friction progressive mastery across 3 semantic levels without streaks or pressure',
+      hicksLawMaxNavItems: 5,
+      fittsLawMinTouchPx: 48,
+      readingMeasureCh: [60, 70],
+      requiresTabularNumerals: true
+    },
+    acousticSafetyLimits: {
+      maxPeakDbfs: -18.0,
+      defaultMuted: true,
+      iso226NotchHz: 3250,
+      autoplayGestureGate: true
+    },
+    regulatoryAndSeoRequirements: [
+      'Explicit local-storage privacy notice beside external video facade & zero server PII storage',
+      'Schema.org EducationalOrganization + Course JSON-LD @graph + sitemap.xml + llms.txt'
     ]
   }
 });
@@ -1486,6 +1622,35 @@ export const OPEN_MORPHOLOGICAL_DESIGN_SPACE = Object.freeze({
       'split-complementary'
     ],
     allowedMotionProfiles: ['fluid-silk-inertia', 'crisp-editorial-snap', 'magnetic-precision-spring']
+  },
+  'academic-editorial-education': {
+    archetypeId: 'academic-editorial-education',
+    fixedVisualTemplateImposed: false,
+    allowsBespokeMorphologyMutation: true,
+    allowedGridTopologies: [
+      'swiss-asymmetric-editorial',
+      'editorial-magazine-spread',
+      'split-screen-sticky-narrative',
+      'tufte-high-density-data'
+    ],
+    allowedHeroArchitectures: [
+      'numbered-editorial-index-hero',
+      'minimalist-high-trust-authority',
+      'command-first-search-hero',
+      'live-interactive-product-sandbox'
+    ],
+    allowedComponentMorphologies: [
+      { nav: 'minimal-editorial-header', corner: '6px-tecnico', material: 'paper-editorial' },
+      { nav: 'vertical-side-rail', corner: '0px-recto', material: 'raw-ink-swiss-border' },
+      { nav: 'minimal-editorial-header', corner: '0px-recto', material: 'paper-editorial' }
+    ],
+    allowedGamutMasks: [
+      'atmospheric-analogous',
+      'warm-cool-duotone',
+      'triadic-muted-earth',
+      'achromatic-with-hyper-accent'
+    ],
+    allowedMotionProfiles: ['crisp-editorial-snap']
   }
 });
 
@@ -1765,6 +1930,123 @@ export function compileDesignMdContent(archetypeObj, projectMeta = {}) {
   const yamlSpacing = Object.entries(s)
     .map(([k, v]) => `  ${k}: "${v}"`)
     .join('\n');
+
+  if (archetypeObj.id === 'academic-editorial-education') {
+    return `---
+version: "2026.10"
+name: "${projName} (${archetypeObj.title})"
+description: "${archetypeObj.creativeNorthStar} — Mode: Read"
+archetype: "${archetypeObj.id}"
+surfaceMode: "Read"
+allows3dEffects: false
+apcaContrastFloor: ${archetypeObj.apcaContrastFloor}
+readingMeasureCh: "65ch"
+chromaticProportion: "90-8-2-oklch"
+brandDnaVector:
+  gridTopology: "${defaultDna.gridTopology}"
+  heroArchitecture: "${defaultDna.heroArchitecture}"
+  navVariant: "${defaultDna.componentMorphology?.nav || 'minimal-editorial-header'}"
+  cornerGeometry: "${defaultDna.componentMorphology?.corner || '6px-tecnico'}"
+  surfaceMaterial: "paper-editorial"
+  gamutMaskType: "${defaultDna.gamutMaskType}"
+  fontPairingProfile: "editorial-broadsheet-newsreader-jakarta"
+  scrollChoreography: "native-view-transitions-morph"
+  morphologicalDivergenceScore: ${defaultDna.morphologicalDivergenceScore ?? 0.88}
+  aestheticHarmonyScore: ${defaultDna.aestheticHarmonyScore ?? 0.94}
+colors:
+${yamlColors}
+typography:
+${yamlTypography}
+rounded:
+${yamlRounded}
+spacing:
+${yamlSpacing}
+components:
+  button-primary:
+    backgroundColor: "{colors.primary}"
+    textColor: "{colors.surface}"
+    typography: "{typography.body}"
+    rounded: "{rounded.sm}"
+    padding: "12px 20px"
+  button-secondary:
+    backgroundColor: "{colors.surface-raised}"
+    textColor: "{colors.text-primary}"
+    rounded: "{rounded.sm}"
+    padding: "12px 20px"
+  card-surface:
+    backgroundColor: "{colors.surface-raised}"
+    textColor: "{colors.text-primary}"
+    rounded: "{rounded.md}"
+    padding: "24px"
+  input-control:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.text-primary}"
+    rounded: "{rounded.xs}"
+    padding: "12px 16px"
+---
+
+# DESIGN.md — ${projName}
+
+## Overview
+
+- **Industry Archetype:** \`${archetypeObj.id}\` (${archetypeObj.title})
+- **Creative North Star:** ${archetypeObj.creativeNorthStar}
+- **Impeccable Surface Mode:** \`Read\` (Secondary: \`Operate\` for client-side micro-explorables)
+- **Atmospheric Polarity:** \`${archetypeObj.polarity}\` (Accessible Light & Dark Mode with WCAG 2.2 AA+ and APCA \`Lc >= ${archetypeObj.apcaContrastFloor}\`)
+- **Spatial & 3D Restraint:** \`allows3dEffects: false\` — Zero distracting 3D shaders, zero PBR filler, and zero background audio loops in \`Read\` mode.
+- **Pedagogical Readability Contract:** Neutral international Spanish (\`tú\`), paragraphs \`<= 110\` words, and verified \`readability_es.mjs\` INFLESZ floors across all 3 levels.
+
+## Colors
+
+All colors are authored in perceptual **W3C DTCG 2025.10 OKLCH 90/8/2** space (90% calm reading ground, 8% hairline structure, 2% semantic focal accents) with APCA contrast \`Lc >= ${archetypeObj.apcaContrastFloor}\`.
+
+- **Surface Ground (\`{colors.surface}\` / \`{colors.surface-raised}\`):** Warm daylight paper (\`oklch(98.5% 0.004 250)\`) and calm night slate (\`oklch(16% 0.012 250)\`) — never glaring \`#ffffff\` or untinted \`#000000\`.
+- **3 Semantic Level Accents:**
+  - **Level 1 — Principiante / Adquirir (\`{colors.level-acquire}\`):** Emerald-sage clarity (\`H: 162\`).
+  - **Level 2 — Intermedio / Profundizar (\`{colors.level-deepen}\`):** Editorial sapphire (\`H: 245\`).
+  - **Level 3 — Avanzado / Crear (\`{colors.level-create}\`):** Warm terracotta-ochre (\`H: 38\`).
+- **Text Hierarchy (\`{colors.text-primary}\` / \`{colors.text-secondary}\`):** Hue-tinted editorial ink with themed \`::selection\` and visible \`:focus-visible\` rings.
+- **Semantic Status (\`{colors.success}\`, \`{colors.warning}\`, \`{colors.danger}\`):** Paired with explicit text labels (never color alone).
+
+## Typography
+
+- **Fluid Scale (\`clamp()\`):** Utopia fluid typographic scale tuned for calm long-form study across \`375px\`, \`768px\`, and \`1440px\`.
+- **Clean Heading Hierarchy (\`h1 -> h2 -> h3\`):** Editorial display \`{typography.h1}\` (${t.h1.fontFamily}), section \`{typography.h2}\`, and subsection \`{typography.h3}\` with zero skipped heading levels.
+- **Reading Measure (\`60ch–70ch\`):** Instructional prose is strictly constrained to \`max-width: 65ch\` (\`60ch\` to \`70ch\`) with comfortable \`line-height: ${t.body.lineHeight}\`.
+- **Quantitative & Token Precision (\`{typography.mono}\`):** Mandatory \`font-variant-numeric: tabular-nums\` (\`tnum\`) on token counters, video timestamps (\`MM:SS\`), and mastery metrics.
+
+## Layout
+
+- **Editorial Reading Column (\`gridTopology: ${defaultDna.gridTopology}\`):** Centered single-column reading flow (\`65ch\`) with generous vertical rhythm (\`{spacing.xl}\` / \`{spacing.2xl}\`) and \`>= 35%\` open whitespace.
+- **Multi-Viewport Ergonomics:** Zero horizontal overflow across \`1440px\`, \`768px\`, and \`375px\`; interactive touch targets \`>= 48x48px\` (\`>= 44x44px\` minimum) with \`8px\` separation.
+- **Zero SaaS Clutter:** No \`#pricing\` tables, no promotional popups, and no multi-column card soup competing with lesson comprehension.
+
+## Elevation & Depth
+
+- **Paper-Editorial Hierarchy:** Surfaces separate via subtle OKLCH luminance steps (\`{colors.surface}\` -> \`{colors.surface-raised}\`) and \`1px solid\` hairline borders (\`{colors.border-hairline}\`) — zero drop-shadow halos or ghost cards.
+- **Calm Native Transitions:** Discrete \`@view-transition\` navigation (\`160ms cubic-bezier(0.22, 1, 0.36, 1)\`), \`@starting-style\` disclosures, and strict \`@media (prefers-reduced-motion: reduce)\` zero-motion compliance.
+
+## Shapes
+
+- **Restrained Editorial Radii:** \`none: ${r.none}\`, \`xs: ${r.xs}\`, \`sm: ${r.sm}\`, \`md: ${r.md}\`, \`lg: ${r.lg}\` — crisp scholarly geometry without \`999px\` container pills.
+
+## Components
+
+- **Multi-Video Privacy Facade:** \`lite-youtube-embed\` (\`youtube-nocookie.com\`) + Wikimedia/Internet Archive OER player with explicit local-storage notice before third-party iframe activation and 3-bullet text synthesis.
+- **Token Explorer Micro-Lab:** Client-side \`js-tiktoken\` interactive counter with \`tabular-nums\` live feedback and zero server calls.
+- **Isolated Socratic Tutor Shell:** Sanitized via \`DOMPurify\` (\`RETURN_TRUSTED_TYPE: true\`) and isolated inside \`<iframe sandbox="allow-scripts">\` (without \`allow-same-origin\`) over \`Valibot\`-validated \`postMessage\`.
+- **Overlays & Disclosures:** Native HTML5 \`<details>\` and \`<dialog>\` elements with full keyboard accessibility.
+
+## Do's and Don'ts
+
+### Do
+${archetypeObj.dos.map((d) => `- ${d}`).join('\n')}
+
+### Do Not
+${archetypeObj.donts.map((d) => `- ${d}`).join('\n')}
+- Never violate any of the **62 deterministic Anti-Slop rules** of \`pbakaus/impeccable\`.
+`;
+  }
 
   return `---
 version: "2026.10"
@@ -2141,7 +2423,7 @@ export function generateProductAndDesignMd(projectRoot, archetypeInput = 'saas',
  * Self-Test Suite (`node tools/design/industry_archetype_matrix.mjs --self-test`)
  */
 export function runIndustryArchetypeSelfTest() {
-  const requiredCliAliases = ['abogacia', 'fintech', 'erp', 'ecommerce', 'streamer', 'clinica', 'saas', 'lujo'];
+  const requiredCliAliases = ['abogacia', 'fintech', 'erp', 'ecommerce', 'streamer', 'clinica', 'saas', 'lujo', 'education'];
   const results = [];
   const seenNorthStars = new Set();
 

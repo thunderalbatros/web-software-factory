@@ -1,0 +1,128 @@
+{
+  "charter_version": 1,
+  "project_slug": "academia-ia",
+  "project_name": "Academia IA",
+  "compliance_profile": "education",
+  "commercial_mode": false,
+  "funding_model": "voluntary_donations_without_exclusive_benefits",
+  "forbidden_revenue_channels": [
+    "paywall",
+    "pro_plan",
+    "advertising",
+    "commercial_sponsorship",
+    "exclusive_donor_benefits"
+  ],
+  "code_license": "MIT",
+  "content_license": "CC-BY-NC-SA-4.0",
+  "inbound_license_policy": {
+    "MIT": {
+      "direct_adapt_allowed": true,
+      "derivative_license_required": "CC-BY-NC-SA-4.0",
+      "commercial_use_allowed": 1,
+      "obligations_es": "Conservar el aviso de copyright y la licencia MIT del fragmento adaptado."
+    },
+    "Apache-2.0": {
+      "direct_adapt_allowed": true,
+      "derivative_license_required": "CC-BY-NC-SA-4.0",
+      "commercial_use_allowed": 1,
+      "obligations_es": "Conservar NOTICE, licencia y declarar los cambios realizados."
+    },
+    "CC-BY-4.0": {
+      "direct_adapt_allowed": true,
+      "derivative_license_required": "CC-BY-NC-SA-4.0",
+      "commercial_use_allowed": 1,
+      "obligations_es": "Atribución completa (autor, título, enlace, licencia) e indicar si hubo cambios."
+    },
+    "CC-BY-NC-4.0": {
+      "direct_adapt_allowed": true,
+      "derivative_license_required": "CC-BY-NC-SA-4.0",
+      "commercial_use_allowed": 0,
+      "obligations_es": "Atribución completa; uso exclusivamente no comercial."
+    },
+    "CC-BY-NC-SA-4.0": {
+      "direct_adapt_allowed": true,
+      "derivative_license_required": "CC-BY-NC-SA-4.0",
+      "commercial_use_allowed": 0,
+      "obligations_es": "Atribución completa; la obra derivada se publica bajo CC-BY-NC-SA-4.0."
+    },
+    "CC-BY-SA-4.0": {
+      "direct_adapt_allowed": true,
+      "derivative_license_required": "CC-BY-SA-4.0",
+      "commercial_use_allowed": 1,
+      "obligations_es": "Atribución completa y trazabilidad SPDX por pieza. ShareAlike exige que cualquier ficha o recurso adaptado desde CC-BY-SA-4.0 conserve su licencia derivada CC-BY-SA-4.0 propia (sin relicenciar ese fragmento como CC-BY-NC-SA-4.0)."
+    },
+    "CLEAN_ROOM_ONLY": {
+      "direct_adapt_allowed": false,
+      "derivative_license_required": "CLEAN_ROOM_ORIGINAL",
+      "commercial_use_allowed": 0,
+      "obligations_es": "Solo hechos y estructura; redacción, ejemplos y orden 100% originales."
+    }
+  },
+  "architecture": {
+    "framework": "astro",
+    "framework_version_range": "^7.4.11",
+    "starlight_allowed": false,
+    "layout": "custom_minimalist",
+    "design_tokens": "W3C DTCG 2025.10 OKLCH 90/8/2",
+    "hosting": "cloudflare_workers_static_assets",
+    "production_server_cost_usd": 0,
+    "progress_storage": "local_first_browser",
+    "login_required": false,
+    "legal_frameworks": ["AR-Ley-25326-datos-personales", "AR-Ley-26653-accesibilidad-web"]
+  },
+  "levels": [
+    {
+      "id": "principiante",
+      "unesco_stage": "acquire",
+      "programming_code_allowed": false,
+      "scope_es": "Panorama completo de tecnologías y herramientas de IA actuales (gratuitas y pagas) aplicadas a problemas cotidianos y a potenciar oficios y profesiones reales. Toda herramienta paga exige una alternativa gratuita verificada sin tarjeta."
+    },
+    {
+      "id": "intermedio",
+      "unesco_stage": "deepen",
+      "programming_code_allowed": true,
+      "scope_es": "Asume dominio de herramientas de IA como usuario. Construcción de productos, servicios, bots y RAG sobre bases de datos con prioridad Open-Source y gratuita, adaptado a los recursos y objetivos de cada estudiante."
+    },
+    {
+      "id": "avanzado",
+      "unesco_stage": "create",
+      "programming_code_allowed": true,
+      "scope_es": "Sistemas compuestos, ciberseguridad aplicada a IA y Software Factories con prioridad Open-Source y gratuita, adaptado dinámicamente mediante arquetipos locales (hardware, presupuesto $0 vs. nube, objetivo)."
+    }
+  ],
+  "lesson_policy": {
+    "max_new_concepts_per_lesson": 3,
+    "max_words_per_block": 110,
+    "videos_per_lesson_min": 2,
+    "videos_per_lesson_max": 3,
+    "quiz_questions_per_lesson": 3,
+    "quiz_evidence_sources": ["lesson_text", "verified_video_anchors"],
+    "quiz_eligible_anchor_statuses": ["oer_transcript_verified", "multimodal_verified", "human_verified"],
+    "free_alternative_required_for_paid_tools": true,
+    "free_alternative_allowed_tiers": ["free_no_card", "open_source_local"],
+    "oss_stack_list_per_stage": true,
+    "curriculum_designed_by": "agent_team_with_cto_hitl_approval"
+  },
+  "media_policy": {
+    "allowed_video_origins": [
+      "https://www.youtube-nocookie.com",
+      "https://archive.org",
+      "https://commons.wikimedia.org",
+      "https://upload.wikimedia.org"
+    ],
+    "video_platform_hosts": {
+      "youtube": ["www.youtube-nocookie.com"],
+      "archive_org": ["archive.org", "www.archive.org"],
+      "wikimedia": ["commons.wikimedia.org", "upload.wikimedia.org"]
+    },
+    "derived_requirements": [
+      {
+        "origin": "https://i.ytimg.com",
+        "directive": "img-src",
+        "reason_es": "lite-youtube-embed carga la miniatura del video desde i.ytimg.com antes del clic; sin este origen la fachada queda en blanco. Requiere aprobación del CTO en la Etapa 3C (CSP)."
+      }
+    ],
+    "external_generative_image_fallbacks_allowed": false
+  }
+}
+

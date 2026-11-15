@@ -45,6 +45,7 @@ import {
   runJevSleepTimeConsolidationCycle
 } from './intelligence/jev_memory_pipeline.mjs';
 import { syncProjectStatechartSnapshot } from './orchestrator/deterministic_agent_statechart.mjs';
+import { hasStandaloneUnsafeEval, validateHeadersForProfile } from './lib/csp_builder.mjs';
 import { createRequire } from 'node:module';
 
 const requireCjs = createRequire(import.meta.url);
@@ -61,7 +62,10 @@ const TESTBENCH_AUDIT_PATH = path.join(ROOT, 'tools', 'audit', 'component_testbe
 const TESTBENCH_DOCS_PATH = path.join(ROOT, 'docs', 'audit_snapshots', 'component_testbench.html');
 
 export function evaluateCybersecurityTrafficLight(projectCfgInput = null) {
-  const projectCfg = projectCfgInput || loadProjectConfig();
+  const projectCfg =
+    typeof projectCfgInput === 'string'
+      ? loadProjectConfig(projectCfgInput)
+      : projectCfgInput || loadProjectConfig();
   const projRoot = projectCfg?.projectRoot || ROOT;
   const projDistHeaders = path.join(projRoot, 'dist', '_headers');
   const projPublicHeaders = path.join(projRoot, 'public', '_headers');
@@ -74,24 +78,31 @@ export function evaluateCybersecurityTrafficLight(projectCfgInput = null) {
     path.join(ROOT, 'templates', 'vanilla-edge', 'public', '_headers')
   ];
   let headersValid = true;
+  if (projectCfg?.complianceProfile === 'education' && projectHeaderCandidates.length === 0) {
+    headersValid = false;
+  }
   for (const hp of headerPaths) {
     if (!fs.existsSync(hp)) {
       headersValid = false;
       break;
     }
     const raw = fs.readFileSync(hp, 'utf8');
+    const isProjectHeader = projectHeaderCandidates.includes(hp);
+    const profileToCheck =
+      isProjectHeader && projectCfg?.complianceProfile === 'education' ? 'education' : 'standard-web';
     const hasRequiredHeaders =
       raw.includes("default-src 'self'") &&
       raw.includes("object-src 'none'") &&
       raw.includes("base-uri 'self'") &&
       raw.includes("frame-ancestors 'none'") &&
       raw.includes('upgrade-insecure-requests') &&
-      !raw.includes('unsafe-eval') &&
+      !hasStandaloneUnsafeEval(raw) &&
       raw.includes('max-age=63072000; includeSubDomains; preload') &&
       raw.includes('X-Content-Type-Options: nosniff') &&
       raw.includes('Referrer-Policy: strict-origin-when-cross-origin') &&
       raw.includes('Permissions-Policy:') &&
-      raw.includes('Cross-Origin-Opener-Policy: same-origin');
+      raw.includes('Cross-Origin-Opener-Policy: same-origin') &&
+      (profileToCheck !== 'education' || validateHeadersForProfile(raw, 'education').valid);
     if (!hasRequiredHeaders) {
       headersValid = false;
       break;
@@ -172,6 +183,8 @@ export function evaluateCybersecurityTrafficLight(projectCfgInput = null) {
 
   return {
     allPassed,
+    score: allPassed ? 100 : 0,
+    color: allPassed ? 'VERDE' : 'ROJO',
     escudoNavegador: escudoNavegadorOk ? 'ACTIVO' : 'FALLO',
     controlLibrerias: controlLibreriasOk ? 'ACTIVO' : 'FALLO',
     proteccionFormularios: proteccionFormulariosOk ? 'ACTIVO' : 'FALLO',
@@ -216,6 +229,14 @@ async function handleNuevo(args) {
   const stackFlag = parseCliFlag(args, '--stack', parseCliFlag(args, '--template', ''));
   const rubroFlag = parseCliFlag(args, '--archetype', parseCliFlag(args, '--rubro', ''));
   const estiloFlag = parseCliFlag(args, '--style', parseCliFlag(args, '--estilo', ''));
+  const isNonInteractive = Boolean(positionalName) || !process.stdin.isTTY;
+
+  if (isNonInteractive && !stackFlag) {
+    console.error(
+      '\n❌ [ERROR_MISSING_EXPLICIT_STACK] En modo no interactivo debés indicar explícitamente `--stack astro-edge` o `--stack vanilla-edge` (se eliminó el fallback silencioso a vanilla-edge).\n   Ejemplo: node tools/cto_command_center.mjs nuevo academia-ia --stack astro-edge --archetype education --style stripe-editorial\n'
+    );
+    process.exit(1);
+  }
 
   const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
   try {
@@ -224,20 +245,21 @@ async function handleNuevo(args) {
       : await askQuestionCli(rl, '1. ¿Cómo se llama el proyecto o sitio web?', 'sitio-demo');
     const plantilla = stackFlag
       ? stackFlag
-      : (positionalName ? 'vanilla-edge' : await askQuestionCli(rl, '2. ¿Qué plantilla preferís? (vanilla-edge / astro-edge)', 'vanilla-edge'));
-    const rubro = rubroFlag
+      : await askQuestionCli(rl, '2. ¿Qué plantilla preferís? (vanilla-edge / astro-edge)', 'astro-edge');
+    const rubro = (rubroFlag
       ? rubroFlag
-      : (positionalName ? 'saas-b2b' : await askQuestionCli(
+      : (isNonInteractive ? 'saas-b2b' : await askQuestionCli(
           rl,
-          '3. ¿Qué tipo de sitio es? (saas-b2b / ecommerce / marketing / portfolio)',
+          '3. ¿Qué tipo de sitio es? (saas-b2b / ecommerce / marketing / portfolio / education)',
           'saas-b2b'
-        ));
+        ))).toLowerCase();
+    const defaultStyleForRubro = rubro === 'education' ? 'stripe-editorial' : 'bento';
     const estilo = estiloFlag
       ? estiloFlag
-      : (positionalName ? 'bento' : await askQuestionCli(
+      : (isNonInteractive ? defaultStyleForRubro : await askQuestionCli(
           rl,
           '4. ¿Qué estilo visual preferís? (bento / linear-style / stripe-editorial / swiss-grid)',
-          'bento'
+          defaultStyleForRubro
         ));
 
     const slug = nombre.toLowerCase().replace(/[^a-z0-9-]+/g, '-').replace(/(^-|-$)/g, '') || 'sitio-demo';
@@ -266,7 +288,9 @@ async function handleNuevo(args) {
     const { initPrdInterviewFiles } = await import('./orchestrator/lean_prd_architect.mjs');
     const { initClientInterviewFiles } = await import('./orchestrator/client_interview_gate.mjs');
     generateProductAndDesignMd(projDir, rubro);
-    forgeDatabaseArchitecture(projDir, 'edge-d1');
+    if (rubro !== 'education') {
+      forgeDatabaseArchitecture(projDir, 'edge-d1');
+    }
     const prdInit = initPrdInterviewFiles(slug, rubro, { autoApprove: false, overwrite: true });
     const interviewInit = initClientInterviewFiles(slug, rubro, { autoApprove: false, overwrite: true });
     recordProjectAuditScore(projDir, 100, 'APROBADO');
@@ -1616,7 +1640,11 @@ async function main() {
   }
 }
 
-main().catch((err) => {
-  console.error('❌ Error en el Centro de Comando del CTO:', err.message);
-  process.exit(1);
-});
+const isMainCtoCli =
+  process.argv[1] && path.resolve(process.argv[1]) === path.resolve(__filename);
+if (isMainCtoCli) {
+  main().catch((err) => {
+    console.error('❌ Error en el Centro de Comando del CTO:', err.message);
+    process.exit(1);
+  });
+}

@@ -1,0 +1,56 @@
+---
+layout: ../../layouts/LessonEditorialLayout.astro
+title: "Búsqueda aumentada local (RAG) con SQLite y vectores abiertos"
+description: "Lección semilla del Nivel 2 (Intermedio · UNESCO Profundizar): similitud coseno, índice híbrido FTS5 y respuestas con citas verificables."
+level: 2
+levelSlug: "intermedio"
+unescoStageLabel: "Profundizar"
+lessonSlug: "l2-rag-local-sqlite"
+introduced_terms:
+  - "embeddings"
+  - "similitud"
+  - "vectorial"
+  - "recuperación"
+  - "fragmentos"
+tiktokenSample: "Consulta local en SQLite FTS5: devolver los tres pasajes con cita exacta antes de redactar la respuesta."
+defaultTutorQuestion: "¿Por qué conviene combinar búsqueda exacta FTS5 con vectores en lugar de usar solo embeddings?"
+---
+
+import TemmlEquation from '../../components/TemmlEquation.astro';
+
+# Búsqueda aumentada local (RAG) con SQLite y vectores abiertos
+
+Cuando conectas un modelo abierto a tus propios manuales, evitas que responda de memoria. Primero recuperas los pasajes pertinentes de tu base local y luego pides una síntesis sujeta a esas citas.
+
+Este patrón funciona en una computadora estándar sin pagar servidores externos. Solo necesitas dividir tus documentos en bloques breves y guardarlos en un archivo `SQLite` bajo tu control.
+
+## Cómo mide cercanía un índice híbrido
+
+Los *embeddings* convierten cada párrafo en una lista de números reales. Para estimar qué pasaje se parece más a tu pregunta, medimos el ángulo entre ambos vectores con la similitud coseno:
+
+<TemmlEquation
+  latex="\operatorname{sim}(\mathbf{q}, \mathbf{d}) = \frac{\mathbf{q} \cdot \mathbf{d}}{\lVert \mathbf{q} \rVert_2 \, \lVert \mathbf{d} \rVert_2}"
+  caption="Similitud coseno compilada en build a MathML nativo con Temml (0 KB de JS en el navegador)."
+/>
+
+### Por qué unir texto exacto y vectores
+
+Los vectores capturan ideas parecidas aunque cambien las palabras, pero a veces fallan con códigos de pieza o artículos de ley exactos. Al unir `FTS5` con vectores obtienes precisión léxica y contexto semántico a la vez.
+
+```js
+// Consulta local en Node.js v24 con SQLite nativo (costo de servidor $0.00 USD)
+import { DatabaseSync } from 'node:sqlite';
+
+const db = new DatabaseSync(':memory:');
+db.exec('CREATE VIRTUAL TABLE docs USING fts5(slug, body);');
+db.prepare('INSERT INTO docs (slug, body) VALUES (?, ?)').run(
+  'guia-rag',
+  'Verifica cada respuesta exigiendo el identificador exacto del pasaje fuente.'
+);
+
+const hits = db.prepare('SELECT slug, body FROM docs WHERE docs MATCH ? LIMIT 3').all('pasaje');
+```
+
+### Regla de oro antes de mostrar la salida
+
+Exige que el programa devuelva siempre la cita literal junto al texto generado. Si ningún fragmento supera el umbral mínimo, el asistente debe responder con honestidad que no consta en tus documentos.

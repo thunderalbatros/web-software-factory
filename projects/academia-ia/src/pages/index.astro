@@ -1,0 +1,127 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TiktokenExplorer from '../components/TiktokenExplorer.astro';
+import { loadLocalAcademySnapshot } from '../lib/academy-data.mjs';
+
+const snapshot = loadLocalAcademySnapshot();
+const levelMeta = [
+  {
+    num: 1,
+    slug: 'principiante',
+    unesco: 'Adquirir',
+    title: 'Nivel 1 · Principiante (Uso cotidiano y oficios sin programar)',
+    href: '/niveles/principiante/',
+    summary: snapshot.charter.levels[0].scope_es
+  },
+  {
+    num: 2,
+    slug: 'intermedio',
+    unesco: 'Profundizar',
+    title: 'Nivel 2 · Intermedio (Bots, automatización y RAG Open-Source)',
+    href: '/niveles/intermedio/',
+    summary: snapshot.charter.levels[1].scope_es
+  },
+  {
+    num: 3,
+    slug: 'avanzado',
+    unesco: 'Crear',
+    title: 'Nivel 3 · Avanzado (Sistemas compuestos, seguridad y Software Factories)',
+    href: '/niveles/avanzado/',
+    summary: snapshot.charter.levels[2].scope_es
+  }
+];
+---
+<BaseLayout
+  title="Academia IA — Plataforma Educativa Abierta en Español"
+  description="Aprende inteligencia artificial desde cero hasta sistemas compuestos con diseño editorial calmado (65ch), herramientas Open-Source y privacidad local-first."
+  canonicalPath="/"
+>
+  <div class="level-kicker">
+    <span>UNESCO: Adquirir → Profundizar → Crear</span>
+    <span>·</span>
+    <span>Servidor $0.00 USD · Acceso Libre</span>
+  </div>
+
+  <h1 class="editorial-h1">Inteligencia artificial clara, abierta y aplicable en español</h1>
+  <p class="lead-summary">
+    Un recorrido riguroso y sereno diseñado para estudiar sin prisa, sin muros de pago y sin entregar tus datos personales. Todo tu avance permanece en tu propio navegador.
+  </p>
+
+  <div class="card-actions-row">
+    <a class="btn-primary" href="/niveles/principiante/">Comenzar Nivel 1 · Adquirir</a>
+    <a class="btn-editorial" href="#recorrido-unesco">Explorar los 3 niveles</a>
+  </div>
+
+  <section class="editorial-panel" data-pagefind-search aria-label="Buscador local de lecciones">
+    <h2 class="editorial-h2">Búsqueda instantánea en el temario (Pagefind local)</h2>
+    <div class="control-field">
+      <label class="control-label" for="academia-search-input">Buscar conceptos, herramientas libres o niveles</label>
+      <input
+        id="academia-search-input"
+        type="search"
+        class="editorial-input"
+        placeholder="Ejemplo: tokens, SQLite, privacidad, sandbox..."
+        data-pagefind-input
+      />
+    </div>
+    <p class="tutor-status-line" data-pagefind-status aria-live="polite"></p>
+    <ul class="search-results-list" data-pagefind-results></ul>
+  </section>
+
+  <section id="recorrido-unesco" aria-label="Tres niveles de progresión UNESCO">
+    <h2 class="editorial-h2">Tres niveles alineados con competencias UNESCO y OCDE</h2>
+    <p>
+      Cada etapa combina explicación breve en español neutro (máximo <span class="tabular-metric">110</span> palabras por bloque), fuentes verificadas con trazabilidad SPDX y herramientas gratuitas sin tarjeta.
+    </p>
+
+    <ul class="levels-index-list">
+      {levelMeta.map((lvl) => (
+        <li class="level-index-card" data-card-level={String(lvl.num)}>
+          <h3 class="editorial-h3">{lvl.title}</h3>
+          <p>{lvl.summary}</p>
+          <div class="card-actions-row">
+            <a class="btn-editorial" href={lvl.href}>Abrir lección semilla de {lvl.unesco}</a>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="editorial-panel" aria-label="Adaptación local a tu equipo">
+    <h2 class="editorial-h2">Adapta los laboratorios a tu equipo (sin guardar datos en servidores)</h2>
+    <p>
+      Elige una plantilla técnica local (<code>academy_learner_archetypes</code>) para priorizar herramientas acordes a tu memoria RAM y presupuesto cero.
+    </p>
+    <div class="control-field">
+      <label class="control-label" for="learner-archetype-select">Tu entorno técnico actual</label>
+      <select id="learner-archetype-select" class="editorial-select" data-archetype-select>
+        {snapshot.archetypes.map((arch) => (
+          <option
+            value={arch.archetype_id}
+            data-stack={(arch.recommended_oss_stack_json || []).join(', ')}
+          >
+            {arch.title_es} ({arch.hardware_tier})
+          </option>
+        ))}
+      </select>
+    </div>
+    <p class="tutor-status-line" data-archetype-summary aria-live="polite"></p>
+  </section>
+
+  <TiktokenExplorer />
+
+  <section aria-label="Proyectos integradores abiertos">
+    <h2 class="editorial-h2">Seis proyectos reales con herramientas libres ({snapshot.tracks.length} rutas)</h2>
+    <ul class="tools-list">
+      {snapshot.tracks.slice(0, 3).map((track) => (
+        <li class="tool-item">
+          <h3 class="editorial-h3">{track.title_es}</h3>
+          <p>
+            Árbol de habilidad: <code>{track.skill_tree}</code> · Stack libre base:{' '}
+            {(track.free_tools_stack_json || []).map((t) => t.name).join(' · ')}
+          </p>
+        </li>
+      ))}
+    </ul>
+  </section>
+</BaseLayout>

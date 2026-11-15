@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "2026.36.1",
+  "gateId": "GATE_1_PRD_AND_BRAND_IDENTITY",
+  "projectSlug": "academia-ia",
+  "prdInterviewStatus": "COMPLETED_BY_CTO",
+  "createdAt": "2026-11-15T05:28:42.812Z",
+  "approvedAt": "2026-11-15T06:18:20.427Z",
+  "approvedBy": "CTO_HITL_APPROVED",
+  "blocks": {
+    "block1_business_identity_and_problem": {
+      "officialBrandName": "Academia IA",
+      "brandTagline": "Plataforma educativa abierta, minimalista e inclusiva sobre IA y tecnologías emergentes en español",
+      "industryCategory": "education",
+      "resolvedArchetypeId": "academic-editorial-education",
+      "coreOffering": "Recorrido pedagógico abierto en 3 niveles UNESCO (Principiante/Adquirir sin código, Intermedio/Profundizar y Avanzado/Crear con prioridad Open-Source y costo $0.00 USD de servidor).",
+      "coreProblemSolved": "Elimina los muros de pago, la sobrecarga cognitiva y la dependencia de plataformas cerradas enseñando IA práctica, ética y verificable con progreso local-first y alternativas gratuitas sin tarjeta."
+    },
+    "block2_target_audience_and_objections": {
+      "targetDemographic": "Estudiantes, trabajadores, oficios reales, docentes y desarrolladores hispanohablantes (Open Educational Platform ($0 Server, Voluntary Donations Without Exclusive Benefits))",
+      "businessModelType": "Open Educational Platform ($0 Server, Voluntary Donations Without Exclusive Benefits)",
+      "visitContextMobileVsDesktop": "55% móvil (lectura calmada en columna 65ch y repaso offline PWA) y 45% desktop (laboratorios interactivos, código y proyectos integradores)",
+      "topThreeBuyerObjections": [
+        "¿Necesito saber programar o pagar suscripciones con tarjeta para aprender IA útil en mi oficio?",
+        "¿Van a guardar mis datos personales en un servidor o bloquear lecciones detrás de un plan Pro?",
+        "¿Puedo practicar con una PC básica y presupuesto $0 sin GPU propia?"
+      ],
+      "uniqueValueProposition": "Academia IA une rigor pedagógico UNESCO/OCDE, diseño editorial OKLCH 90/8/2 de lectura calmada (65ch), micro-explorables reales en el navegador y soberanía Open-Source sin login ni muros de pago."
+    },
+    "block3_existing_brand_identity_lock": {
+      "brandIdentityMode": "PARTIAL_BRAND_EVOLUTION",
+      "lockClientPalette": false,
+      "logoAssets": {
+        "primaryLogoPath": "public/favicon.svg",
+        "isotipoPath": "public/favicon.svg",
+        "darkVariantLogoPath": "public/favicon.svg",
+        "lightVariantLogoPath": "public/favicon.svg",
+        "usageRules": "Marca editorial limpia con isotipo geométrico SVG (< 2 KB), área de aislamiento de 12px y contraste APCA Lc >= 85 en tema claro y oscuro."
+      },
+      "officialPalette": {
+        "primaryBrandColor": "oklch(34% 0.13 245)",
+        "secondaryBrandColor": "oklch(42% 0.04 250)",
+        "accentBrandColor": "oklch(40% 0.12 162)",
+        "surfaceLightColor": "oklch(98.5% 0.004 250)",
+        "surfaceDarkColor": "oklch(16% 0.012 250)"
+      },
+      "officialTypography": {
+        "displayFont": "'Newsreader', 'Instrument Serif', Georgia, serif",
+        "sansFont": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
+        "monoFont": "'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace",
+        "allowFactoryTypographyPairing": false
+      }
+    },
+    "block4_aesthetic_style_and_references": {
+      "desiredAestheticStyle": "Editorial minimalista de lectura calmada (65ch, OKLCH 90/8/2 con 3 acentos semánticos de nivel y cero relleno 3D)",
+      "atmospherePreference": "dual-theme-toggle",
+      "referenceSites": [
+        {
+          "url": "https://distill.pub",
+          "rescueAspect": "Claridad de artículos explorables interactivos y rigor tipográfico académico"
+        },
+        {
+          "url": "https://ciechanow.ski",
+          "rescueAspect": "Micro-simulaciones autoexplicativas en el navegador sin distracciones visuales"
+        }
+      ]
+    },
+    "block5_capabilities_and_cro_goals": {
+      "primaryCta": "Comenzar Nivel 1 · Adquirir",
+      "primaryCtaChannel": "Navegación directa local-first sin registro",
+      "secondaryCta": "Explorar los 3 Niveles UNESCO",
+      "requiredCapabilities": [
+        "Layout editorial propio en Astro 7.4.11 (65ch, OKLCH 90/8/2 con matiz por nivel, tema claro/oscuro WCAG 2.2 AA)",
+        "Fachada multi-video (youtube-nocookie + OER) con aviso breve de almacenamiento local al reproducir y síntesis textual",
+        "Micro-explorable real de conteo de tokens BPE en cliente con js-tiktoken y ecuaciones MathML con temml (0 KB JS)",
+        "Tutor socrático aislado en iframe sandbox='allow-scripts' comunicado vía postMessage (Valibot) + DOMPurify Trusted Types"
+      ]
+    },
+    "block6_real_assets_social_proof_and_legal": {
+      "realMediaAssetsPaths": [
+        "public/favicon.svg",
+        "data/academy/project_charter.json"
+      ],
+      "realSocialProof": [
+        "Currículo alineado con marcos abiertos UNESCO (Adquirir -> Profundizar -> Crear) y alfabetización en IA OCDE/UE",
+        "Código MIT y contenido CC-BY-NC-SA-4.0 con trazabilidad SPDX verificada en data/academy/*.json"
+      ],
+      "languageAndTone": "Español neutro internacional (tú) en lecciones (<= 110 palabras por párrafo); claridad serena y rigurosa.",
+      "mandatoryOperationalData": {
+        "address": "Plataforma Educativa Abierta 100% Digital (Cloudflare Edge Static Assets)",
+        "phone": "No aplica (sin venta telefónica)",
+        "whatsapp": "No aplica (sin embudo comercial)",
+        "businessHours": "Acceso libre 24/7 con soporte offline vía PWA",
+        "legalEntityName": "Academia IA — Código MIT · Contenido CC-BY-NC-SA-4.0 · Cumplimiento Ley 25.326 (local-first) y Ley 26.653 (WCAG 2.2 AA)"
+      }
+    },
+    "block7_explicit_non_goals_and_success_metrics": {
+      "explicitNonGoals": [
+        "Cero muros de pago, cero sección #pricing, cero plan Pro, cero publicidad y cero patrocinios comerciales",
+        "Cero rachas punitivas (streaks), cero leaderboards públicos y cero temporizadores de urgencia",
+        "Cero @astrojs/starlight, cero shaders 3D WebGPU decorativos, cero audio de fondo y cero Pollinations",
+        "Cero cuentas de usuario o almacenamiento de claves API/datos personales en servidores"
+      ],
+      "expectedSuccessMetrics": [
+        "0 violaciones WCAG 2.2 AA en @axe-core/playwright (tema claro y oscuro)",
+        "0 errores de consola y 0 violaciones de CSP o Trusted Types en Chromium",
+        "LCP <= 1800 ms, CLS = 0.000 y jsHeapUsedMB < 64 MB"
+      ]
+    }
+  }
+}

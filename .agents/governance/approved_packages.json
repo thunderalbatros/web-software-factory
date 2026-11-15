@@ -1,6 +1,6 @@
 {
   "$schema": "https://webfactory.local/schemas/approved-packages-v1.json",
-  "version": "2026.11.14",
+  "version": "2026.11.15",
   "policy": "ZERO_TRUST_ANTI_SLOPSQUATTING",
   "forbidFloatingVersions": ["*", "latest", "next", "canary", "x"],
   "requireLockfile": true,
@@ -13,6 +13,7 @@
     "@astrojs/mdx",
     "@astrojs/rss",
     "@astrojs/sitemap",
+    "@axe-core/playwright",
     "@biomejs/biome",
     "@browserbasehq/stagehand",
     "@cloudflare/workers-types",
@@ -22,12 +23,14 @@
     "@playwright/test",
     "@tursodatabase/database",
     "@upstash/context7-mcp",
+    "@vite-pwa/astro",
     "apca-w3",
     "astro",
     "astro-expressive-code",
     "axe-core",
     "better-auth",
     "chrome-devtools-mcp",
+    "dexie",
     "dnum",
     "dompurify",
     "drizzle-kit",
@@ -35,10 +38,12 @@
     "esbuild",
     "fzstd",
     "hono",
+    "js-tiktoken",
     "lightningcss",
     "lighthouse",
     "lite-youtube-embed",
     "minisearch",
+    "nanostores",
     "odiff-bin",
     "oxfmt",
     "oxlint",
@@ -67,6 +72,7 @@
   ],
   "verifiedExactVersions": {
     "root": {
+      "@axe-core/playwright": "4.14.0",
       "@google/genai": "3.3.0",
       "oxlint": "1.93.0",
       "oxlint-tsgolint": "7.0.2007",
@@ -75,12 +81,19 @@
       "playwright-core": "1.65.1"
     },
     "templates/astro-edge": {
+      "astro": "7.4.11",
       "@astrojs/mdx": "8.1.6",
+      "@vite-pwa/astro": "2.0.2",
       "astro-expressive-code": "0.44.3",
+      "dexie": "4.4.7",
+      "dompurify": "3.4.18",
+      "js-tiktoken": "1.0.21",
+      "lite-youtube-embed": "0.3.4",
+      "nanostores": "1.5.5",
       "pagefind": "1.6.0",
       "temml": "0.14.0",
-      "lite-youtube-embed": "0.3.4",
-      "ts-fsrs": "6.0.0"
+      "ts-fsrs": "6.0.0",
+      "valibot": "1.5.0"
     }
   },
   "excludedPackagesNotes": {

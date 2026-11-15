@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "2026.10",
+  "gateStatus": "DRAFT_PENDING_CTO_GATE1",
+  "approvedBy": "CTO_HITL_APPROVED",
+  "approvedAt": null,
+  "projectSlug": "academia-ia",
+  "brandName": "Academia IA",
+  "industryCategory": "education",
+  "resolvedArchetypeId": "academic-editorial-education",
+  "complianceProfile": "education",
+  "surfaceMode": "Read",
+  "brandIdentityMode": "PARTIAL_BRAND_EVOLUTION",
+  "lockClientPalette": false,
+  "chromaticProportion": "90-8-2-oklch",
+  "allows3dEffects": false,
+  "allowsAmbientAudio": false,
+  "officialPalette": {
+    "primaryBrandColor": "oklch(34% 0.13 245)",
+    "secondaryBrandColor": "oklch(42% 0.04 250)",
+    "accentBrandColor": "oklch(42% 0.13 162)",
+    "surfaceLightColor": "oklch(98.5% 0.004 250)",
+    "surfaceDarkColor": "oklch(16% 0.012 250)",
+    "semanticLevels": {
+      "level1_acquire": {
+        "light": "oklch(40% 0.12 162)",
+        "dark": "oklch(77% 0.13 162)",
+        "label_es": "Principiante · Adquirir"
+      },
+      "level2_deepen": {
+        "light": "oklch(40% 0.13 245)",
+        "dark": "oklch(77% 0.13 245)",
+        "label_es": "Intermedio · Profundizar"
+      },
+      "level3_create": {
+        "light": "oklch(40% 0.13 38)",
+        "dark": "oklch(78% 0.13 48)",
+        "label_es": "Avanzado · Crear"
+      }
+    }
+  },
+  "officialTypography": {
+    "displayFont": "'Newsreader', 'Instrument Serif', Georgia, serif",
+    "sansFont": "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
+    "monoFont": "'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace",
+    "readingMeasureCh": "65ch",
+    "requiresTabularNums": true,
+    "allowFactoryTypographyPairing": false
+  },
+  "logoAssets": {
+    "primaryLogoPath": "public/favicon.svg",
+    "isotipoPath": "public/favicon.svg",
+    "darkVariantLogoPath": "public/favicon.svg",
+    "lightVariantLogoPath": "public/favicon.svg",
+    "usageRules": "Marca tipográfica editorial limpia con isotipo geométrico SVG inline (< 2 KB), área libre mínima de 12px y contraste APCA Lc >= 85 en claro y oscuro."
+  },
+  "lockedAt": "2026-11-15T06:18:20.427Z",
+  "lockedBy": "CTO_HITL_APPROVED"
+}

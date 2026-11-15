@@ -1,0 +1,49 @@
+{
+  "schema_version": 2,
+  "table": "academy_sources",
+  "row_count": 3,
+  "rows": [
+    {
+      "authority_tier": "GOLD",
+      "authors": "OECD & European Commission AI Office",
+      "commercial_use_allowed": 1,
+      "derivative_license_required": "CC-BY-NC-SA-4.0",
+      "license": "CC-BY-4.0",
+      "published_at": "2025-05-01",
+      "source_id": "oecd-eu-ai-literacy-2025",
+      "title": "AI Literacy Framework for Citizens and Learners",
+      "url": "https://oecd.ai/en/ai-principles",
+      "usage_policy": "DIRECT_ADAPT_TRANSLATE",
+      "verified_at": "2026-11-15",
+      "verified_http_status": 200
+    },
+    {
+      "authority_tier": "GOLD",
+      "authors": "UNESCO",
+      "commercial_use_allowed": 1,
+      "derivative_license_required": "CC-BY-SA-4.0",
+      "license": "CC-BY-SA-4.0",
+      "published_at": "2024-09-01",
+      "source_id": "unesco-ai-competency-2024",
+      "title": "AI Competency Framework for Students and Teachers (Acquire, Deepen, Create)",
+      "url": "https://www.unesco.org/en/digital-education/ai-future-learning",
+      "usage_policy": "DIRECT_ADAPT_TRANSLATE",
+      "verified_at": "2026-11-15",
+      "verified_http_status": 200
+    },
+    {
+      "authority_tier": "GOLD",
+      "authors": "Vaswani et al. / Open Technical Literature",
+      "commercial_use_allowed": 0,
+      "derivative_license_required": "CLEAN_ROOM_ORIGINAL",
+      "license": "CLEAN_ROOM_ONLY",
+      "published_at": "2017-06-12",
+      "source_id": "vaswani-attention-clean-room",
+      "title": "Scaled Dot-Product Attention & BPE Tokenization Foundations (Clean-Room Facts)",
+      "url": "https://arxiv.org/abs/1706.03762",
+      "usage_policy": "CLEAN_ROOM_FACTS_ONLY",
+      "verified_at": "2026-11-15",
+      "verified_http_status": 200
+    }
+  ]
+}

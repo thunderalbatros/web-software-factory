@@ -1,0 +1,67 @@
+---
+import { Tiktoken } from 'js-tiktoken/lite';
+import cl100kBase from 'js-tiktoken/ranks/cl100k_base';
+
+const {
+  sampleText = 'La inteligencia artificial no consulta verdades absolutas: divide tu frase en tokens y estima probabilidades.',
+  heading = 'Laboratorio interactivo: tokenizador BPE real en tu navegador (js-tiktoken)'
+} = Astro.props;
+
+const ssrEncoder = new Tiktoken(cl100kBase);
+const initialTokens = ssrEncoder.encode(sampleText);
+const initialCharCount = [...sampleText].length;
+const initialRatio = initialTokens.length > 0 ? (initialCharCount / initialTokens.length).toFixed(2) : '0.00';
+const initialChips = initialTokens.slice(0, 36).map((tokenId) => {
+  let decodedPiece = '';
+  try {
+    decodedPiece = ssrEncoder.decode([tokenId]);
+  } catch {
+    decodedPiece = '·';
+  }
+  return {
+    tokenId,
+    visiblePiece: decodedPiece.replace(/ /g, '␣').replace(/\n/g, '↵') || '∅'
+  };
+});
+---
+<section class="editorial-panel" data-tiktoken-explorer aria-label="Explorador interactivo de tokens">
+  <h2 class="editorial-h2">{heading}</h2>
+  <p>
+    Escribe o modifica cualquier oración en español para observar en tiempo real cómo el codificador <code>cl100k_base</code> fragmenta sílabas, espacios y signos en identificadores numéricos sin enviar nada a servidores externos.
+  </p>
+
+  <div class="control-field">
+    <label class="control-label" for="tiktoken-prompt-input">Texto de entrada para tokenizar localmente</label>
+    <textarea
+      id="tiktoken-prompt-input"
+      class="editorial-textarea"
+      data-tiktoken-input
+      rows="3"
+    >{sampleText}</textarea>
+  </div>
+
+  <div class="tiktoken-metrics-grid" aria-live="polite">
+    <div class="metric-tile">
+      <span class="metric-label">Tokens BPE (cl100k_base)</span>
+      <span class="token-count-value" data-tiktoken-count>{initialTokens.length}</span>
+    </div>
+    <div class="metric-tile">
+      <span class="metric-label">Caracteres Unicode</span>
+      <span class="token-count-value" data-tiktoken-chars>{initialCharCount}</span>
+    </div>
+    <div class="metric-tile">
+      <span class="metric-label">Caracteres por token</span>
+      <span class="token-count-value" data-tiktoken-ratio>{initialRatio}</span>
+    </div>
+  </div>
+
+  <h3 class="editorial-h3">Subpalabras e identificadores numéricos generados</h3>
+  <div class="token-chips-wrap" data-tiktoken-chips aria-label="Fragmentos de tokens detectados">
+    {initialChips.map((chip) => (
+      <span class="token-chip">
+        <span>{chip.visiblePiece}</span>
+        <span class="token-chip-id">#{chip.tokenId}</span>
+      </span>
+    ))}
+  </div>
+</section>

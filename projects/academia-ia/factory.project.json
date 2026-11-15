@@ -1,0 +1,63 @@
+{
+  "id": "academia-ia",
+  "name": "Academia IA",
+  "domain": "https://academia-ia.pages.dev",
+  "version": "1.0.0",
+  "archetype": "education",
+  "stack": "astro-edge",
+  "complianceProfile": "education",
+  "paths": {
+    "entryHtml": "src/pages/index.astro",
+    "distDir": "dist",
+    "workerEntry": null,
+    "tokensPath": "tokens/design.tokens.json",
+    "designCssPath": "src/styles/design-tokens.css",
+    "selectorCachePath": "memory/selector_cache.json",
+    "sourceDirs": [
+      "src",
+      "public"
+    ],
+    "dataFiles": [
+      "data/academy/project_charter.json",
+      "data/academy/archetypes.json",
+      "data/academy/tracks.json",
+      "data/academy/sources.json",
+      "data/academy/videos.json",
+      "data/academy/tools.json"
+    ],
+    "overlays": [],
+    "requiredOverlaysInAudit": [],
+    "coreJsFiles": []
+  },
+  "aeo": {
+    "requiredLlmsHeaders": [
+      "# Academia IA"
+    ]
+  },
+  "invariants": {
+    "requireObsOverlays": false,
+    "requireControlPanelTelemetryPill": false,
+    "requireKickWinnerCircuit": false,
+    "requireZeroDemoUsersPurge": false,
+    "maxDistSizeMb": 50
+  },
+  "sdd": {
+    "targetUsers": [
+      "Estudiantes Hispanohablantes",
+      "Autodidactas y Profesionales",
+      "Docentes e Investigadores"
+    ],
+    "visualTheme": "OKLCH 90/8/2 Editorial Read Mode (65ch) + 3 Semantic Level Accents + WCAG 2.2 AA+",
+    "architectureTier": "Astro 7.4.11 Static + Cloudflare Workers Static Assets ($0.00 USD Server)"
+  },
+  "surfaceMode": "Read",
+  "industryArchetype": "academic-editorial-education",
+  "dbTier": "static-json-and-indexeddb",
+  "design": {
+    "industryArchetype": "academic-editorial-education",
+    "surfaceMode": "Read",
+    "creativeNorthStar": "Calm Explorable Editorial & Inclusive Pedagogical Clarity",
+    "apcaContrastFloor": 85,
+    "requiresTabularNums": true
+  }
+}

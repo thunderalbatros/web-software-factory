@@ -1,0 +1,10 @@
+name = "academia-ia"
+compatibility_date = "2025-10-15"
+
+[placement]
+mode = "smart"
+
+[assets]
+directory = "./dist"
+binding = "ASSETS"
+not_found_handling = "404-page"

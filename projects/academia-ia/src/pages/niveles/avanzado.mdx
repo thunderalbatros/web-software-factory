@@ -1,0 +1,57 @@
+---
+layout: ../../layouts/LessonEditorialLayout.astro
+title: "Sistemas compuestos seguros: CSP por hashes, Trusted Types y sandboxes opacos"
+description: "Lección semilla del Nivel 3 (Avanzado · UNESCO Crear): fronteras de confianza, defensa contra inyección y validación determinista en Software Factories."
+level: 3
+levelSlug: "avanzado"
+unescoStageLabel: "Crear"
+lessonSlug: "l3-seguridad-y-factories"
+introduced_terms:
+  - "inyección"
+  - "aislamiento"
+  - "determinista"
+  - "criptográficos"
+  - "validación"
+  - "compuestos"
+tiktokenSample: "Toda salida de un modelo generativo es entrada no confiable: valida esquemas con Valibot y aísla el renderizado."
+defaultTutorQuestion: "¿Qué ocurre si agregas por error allow-same-origin junto a allow-scripts en el iframe del tutor?"
+---
+
+import TemmlEquation from '../../components/TemmlEquation.astro';
+
+# Sistemas compuestos seguros y fronteras de confianza
+
+Un sistema moderno rara vez depende de una sola llamada a un modelo. Combina recuperadores, validadores de esquema, herramientas acotadas y compuertas automáticas que verifican cada paso antes de aceptar un cambio.
+
+En este diseño, toda respuesta producida por un modelo debe tratarse como un dato externo no confiable. Si insertas su salida directo en el documento, una instrucción oculta puede ejecutar código no autorizado.
+
+## Probabilidad acumulada de acierto en cadenas largas
+
+Cuando encadenas varias etapas sin control intermedio, los pequeños fallos se multiplican rápido. Si cada paso acierta con tasa $p$ independiente en $k$ eslabones sin revisión, la fiabilidad total cae según:
+
+<TemmlEquation
+  latex="R_{\text{cadena}}(k) = \prod_{i=1}^{k} p_i \quad \Longrightarrow \quad 0.92^{5} \approx 0.659"
+  caption="Caída exponencial de fiabilidad sin compuertas intermedias, renderizada en MathML puro con Temml."
+/>
+
+### Defensa en profundidad en el navegador
+
+Para cortar ese riesgo aplicamos tres barreras reales en esta misma página. Primero, la cabecera `Content-Security-Policy` autoriza solo scripts con huella `sha256` exacta calculada tras compilar el sitio.
+
+Segundo, `require-trusted-types-for 'script'` bloquea sumideros peligrosos salvo que pasen por `DOMPurify` devolviendo `TrustedHTML`. Tercero, el marco opcional del tutor corre sin `allow-same-origin`.
+
+```js
+// Validación estricta de mensajes postMessage desde un iframe de origen opaco ("null")
+import * as v from 'valibot';
+
+const RespuestaTutorSchema = v.strictObject({
+  type: v.literal('SOCRATIC_RESPONSE'),
+  requestId: v.pipe(v.string(), v.minLength(4), v.maxLength(64)),
+  hintStep: v.pipe(v.number(), v.integer(), v.minValue(1), v.maxValue(3)),
+  markdownOrHtml: v.pipe(v.string(), v.minLength(2), v.maxLength(2400))
+});
+```
+
+### Compuertas deterministas antes de publicar
+
+En una *Software Factory* seria ningún agente aprueba su propio trabajo. Pruebas reales en navegador verifican cero errores de consola, cero fugas de políticas y accesibilidad completa antes de tu firma humana.

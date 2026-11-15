@@ -958,6 +958,46 @@ export function compileSpecFromInterview(slug = 'agencia-alfa', options = {}) {
   fs.writeFileSync(mdPath, updatedInterviewMd, 'utf8');
   fs.writeFileSync(specMdInterviewPath, updatedInterviewMd, 'utf8');
 
+  const projCfgPath = path.join(projectDir, 'factory.project.json');
+  const projCfg = fs.existsSync(projCfgPath) ? JSON.parse(fs.readFileSync(projCfgPath, 'utf8')) : null;
+  const isCuratedEducationProfile =
+    projCfg?.complianceProfile === 'education' || b1.industryArchetype === 'education';
+  const existingSpecPath = path.join(projectDir, 'SPEC.md');
+  const existingProductPath = path.join(projectDir, 'PRODUCT.md');
+  const existingDesignPath = path.join(projectDir, 'DESIGN.md');
+
+  // Preserve curated Read-mode contracts for `education` (never inject 3D/Sonic filler or SaaS lead forms)
+  if (
+    isCuratedEducationProfile &&
+    fs.existsSync(existingSpecPath) &&
+    fs.existsSync(existingProductPath) &&
+    fs.existsSync(existingDesignPath)
+  ) {
+    const stampedSpec = fs
+      .readFileSync(existingSpecPath, 'utf8')
+      .replace(/PENDING_CTO_SPEC_INPUT|PENDING_CTO_PRD_INPUT/g, interview.specInterviewStatus);
+    fs.writeFileSync(existingSpecPath, stampedSpec, 'utf8');
+
+    const stampedDesign = fs
+      .readFileSync(existingDesignPath, 'utf8')
+      .replace(/PENDING_CTO_SPEC_INPUT|PENDING_CTO_PRD_INPUT/g, interview.specInterviewStatus);
+    fs.writeFileSync(existingDesignPath, stampedDesign, 'utf8');
+
+    return {
+      passed: interview.specInterviewStatus === 'COMPLETED_BY_CTO',
+      projectSlug: slug,
+      prdInterviewStatus: 'COMPLETED_BY_CTO',
+      specInterviewStatus: interview.specInterviewStatus,
+      brandIdentityMode: brandMode,
+      lockClientPalette: lockPalette,
+      specPath: existingSpecPath,
+      productPath: existingProductPath,
+      designPath: existingDesignPath,
+      bespokeDna,
+      sonicPatch: { seedId: 'silent-read-mode-education' }
+    };
+  }
+
   // 1. Write SPEC.md mapping 1:1 [INV-01]..[INV-07] from PRD_LEAN.md to [REQ-01]..[REQ-12] + Bespoke Morphology Justification
   const specPath = path.join(projectDir, 'SPEC.md');
   const specContent = `# SPEC.md — Especificación Técnica Ejecutable Compilada desde Doble Entrevista (\`${slug}\`)

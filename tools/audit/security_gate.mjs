@@ -38,6 +38,7 @@ import {
   verifyZeroTrustJwtAndCookie,
   evaluateZanzibarRelationAccess
 } from '../security/identity_and_commerce_guard.mjs';
+import { hasStandaloneUnsafeEval, validateHeadersForProfile } from '../lib/csp_builder.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -139,21 +140,69 @@ export function verifyPiiRedactorSelfTest() {
  *   - Suppression of `Server` and `X-Powered-By` headers
  *   - Zero `.map` source maps exposed in `dist/`
  */
-export function auditEdgeWorkersAndDist(rootDir = ROOT) {
+export function auditEdgeWorkersAndDist(rootDir = ROOT, options = {}) {
   const issues = [];
   const workerPaths = [];
+  const staticEducationProjects = [];
+  const filterProjectSlug = options.projectSlug ? String(options.projectSlug).trim() : '';
 
   for (const baseFolder of ['templates', 'projects']) {
+    if (filterProjectSlug && baseFolder === 'templates') continue;
     const absBase = path.join(rootDir, baseFolder);
     if (!fs.existsSync(absBase)) continue;
     for (const entry of fs.readdirSync(absBase, { withFileTypes: true })) {
       if (!entry.isDirectory()) continue;
-      const candidateWorker = path.join(absBase, entry.name, 'worker', 'index.js');
+      if (filterProjectSlug && baseFolder === 'projects' && entry.name !== filterProjectSlug) continue;
+
+      const projDir = path.join(absBase, entry.name);
+      const manifestPath = path.join(projDir, 'factory.project.json');
+      let complianceProfile = 'standard-web';
+      if (fs.existsSync(manifestPath)) {
+        try {
+          const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+          complianceProfile = manifest.complianceProfile || (manifest.archetype === 'education' ? 'education' : 'standard-web');
+        } catch (_) {}
+      }
+
+      const candidateWorker = path.join(projDir, 'worker', 'index.js');
       if (fs.existsSync(candidateWorker)) {
         workerPaths.push(candidateWorker);
+      } else if (baseFolder === 'projects' && complianceProfile === 'education') {
+        staticEducationProjects.push(projDir);
+        const pubHeadersPath = path.join(projDir, 'public', '_headers');
+        if (!fs.existsSync(pubHeadersPath)) {
+          issues.push(`[EDU-STATIC-CSP] ${entry.name}/public/_headers ausente en proyecto estático education.`);
+        } else {
+          const pubRaw = fs.readFileSync(pubHeadersPath, 'utf8');
+          if (hasStandaloneUnsafeEval(pubRaw)) {
+            issues.push(`[EDU-STATIC-CSP] ${entry.name}/public/_headers contiene el token prohibido 'unsafe-eval'.`);
+          }
+          const headerCheck = validateHeadersForProfile(pubRaw, 'education');
+          if (!headerCheck.valid) {
+            for (const errMsg of headerCheck.issues) {
+              issues.push(`[EDU-STATIC-CSP] ${entry.name}/public/_headers: ${errMsg}`);
+            }
+          }
+        }
       }
-      const distDir = path.join(absBase, entry.name, 'dist');
+
+      const distDir = path.join(projDir, 'dist');
       if (fs.existsSync(distDir)) {
+        if (baseFolder === 'projects' && complianceProfile === 'education') {
+          const distHeadersPath = path.join(distDir, '_headers');
+          if (!fs.existsSync(distHeadersPath)) {
+            issues.push(`[EDU-STATIC-DIST] ${entry.name}/dist/_headers ausente tras el build estático.`);
+          } else {
+            const distRaw = fs.readFileSync(distHeadersPath, 'utf8');
+            const distCheck = validateHeadersForProfile(distRaw, 'education');
+            if (!distCheck.valid) {
+              for (const errMsg of distCheck.issues) {
+                issues.push(`[EDU-STATIC-DIST] ${entry.name}/dist/_headers: ${errMsg}`);
+              }
+            }
+          }
+        }
+
         const stack = [distDir];
         while (stack.length > 0) {
           const curr = stack.pop();
@@ -161,7 +210,7 @@ export function auditEdgeWorkersAndDist(rootDir = ROOT) {
             const full = path.join(curr, item.name);
             if (item.isDirectory()) stack.push(full);
             else if (item.name.endsWith('.map')) {
-              issues.push(`[A10:2025-SOURCEMAP] Source map expuesto en producción: ${ path.relative(rootDir, full) }`);
+              issues.push(`[A10:2025-SOURCEMAP] Source map expuesto en producción: ${path.relative(rootDir, full)}`);
             }
           }
         }
@@ -211,6 +260,7 @@ export function auditEdgeWorkersAndDist(rootDir = ROOT) {
   return {
     passed: issues.length === 0,
     workersChecked: workerPaths.length,
+    staticEducationProjectsChecked: staticEducationProjects.length,
     issues
   };
 }
@@ -457,8 +507,8 @@ export function runSecurityQuarantineGate(options = {}) {
     );
   }
 
-  // 4. Run Deterministic Edge Worker & Dist Audit (OWASP ASVS v5.0 / A01:2025 / A10:2025)
-  const edgeAudit = auditEdgeWorkersAndDist(targetDir);
+  // 4. Run Deterministic Edge Worker & Static Education Dist Audit (OWASP ASVS v5.0 / A01:2025 / A10:2025)
+  const edgeAudit = auditEdgeWorkersAndDist(targetDir, { projectSlug: options.projectSlug || '' });
   if (!edgeAudit.passed) {
     reasons.push(...edgeAudit.issues);
   }
@@ -539,9 +589,12 @@ export {
 export const runSecurityGate = runSecurityQuarantineGate;
 
 if (process.argv[1] && path.resolve(process.argv[1]) === __filename) {
-  const res = runSecurityQuarantineGate({ fast: process.argv.includes('--fast') });
+  const cliArgs = process.argv.slice(2);
+  const projIdx = cliArgs.indexOf('--project');
+  const projectSlug = projIdx >= 0 && cliArgs[projIdx + 1] ? path.basename(cliArgs[projIdx + 1]) : '';
+  const res = runSecurityQuarantineGate({ fast: cliArgs.includes('--fast'), projectSlug });
   console.log(
-    `[SECURITY-GATE] Status: ${res.status} (Score: ${res.score.toFixed(1)} / 100.0) | SCA: ${res.supplyChainPassed} | SAST: ${res.astPassed} (${res.astLatencyMs}ms) | Workers: ${res.edgeWorkerAudit.workersChecked} OK | Zizmor v1.30 Workflows: ${res.workflowAudit.workflowsChecked} OK | AgentOS Kernel (ASI01-10): ${res.governanceKernelAudit.passed} (${res.governanceKernelAudit.avgLatencyMs}ms) | MCP Audit: ${res.mcpSecurityAudit.scoreRatio} SARIF | Postgres RLS + KMS + Ory: ${res.enterpriseDbAndIdentityAudit.passed} | Gitleaks+Entropy: ${res.secretEntropyAudit.filesScanned} files OK | PII Redactor: ${res.piiRedactorAudit.passed}`
+    `[SECURITY-GATE] Status: ${res.status} (Score: ${res.score.toFixed(1)} / 100.0) | SCA: ${res.supplyChainPassed} | SAST: ${res.astPassed} (${res.astLatencyMs}ms) | Workers: ${res.edgeWorkerAudit.workersChecked} OK | StaticEdu: ${res.edgeWorkerAudit.staticEducationProjectsChecked} OK | Zizmor v1.30 Workflows: ${res.workflowAudit.workflowsChecked} OK | AgentOS Kernel (ASI01-10): ${res.governanceKernelAudit.passed} (${res.governanceKernelAudit.avgLatencyMs}ms) | MCP Audit: ${res.mcpSecurityAudit.scoreRatio} SARIF | Postgres RLS + KMS + Ory: ${res.enterpriseDbAndIdentityAudit.passed} | Gitleaks+Entropy: ${res.secretEntropyAudit.filesScanned} files OK | PII Redactor: ${res.piiRedactorAudit.passed}`
   );
   if (!res.passed) {
     for (const r of res.reasons) console.error(`  ❌ ${redactPiiEntities(r)}`);

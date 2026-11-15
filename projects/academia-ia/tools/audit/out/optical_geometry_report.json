@@ -1,0 +1,38 @@
+{
+  "generatedAt": "2026-11-15T06:16:33.065Z",
+  "project": "academia-ia",
+  "complianceProfile": "education",
+  "surfaceMode": "Read",
+  "viewportsVerified": [
+    375,
+    768,
+    1440
+  ],
+  "zeroHorizontalScroll": true,
+  "zeroClippingOrOverlap": true,
+  "fitts44pxMobileVerified": true,
+  "perceptualContrastVerified": true,
+  "apcaLightLc": 101.2,
+  "apcaDarkLc": 99.1,
+  "temporal4StagesVerified": true,
+  "lcpMs": 556,
+  "clsScore": 0,
+  "fpsMeasured": 63,
+  "cdpPerformanceAndA11y": {
+    "jsHeapUsedMB": 22.53,
+    "layoutDurationMs": 322.33,
+    "recalcStyleDurationMs": 61.69,
+    "axNodeCount": 658,
+    "a11yTreeHealthy": true
+  },
+  "visualHarmonyAndMotion": {
+    "opticalHarmonyMetrics": {
+      "whitespaceRatio": 0.562,
+      "axialAlignmentScore": 1,
+      "geometricRhythmConsistency": 0.96
+    },
+    "motionKeyframeStrip": {
+      "all4KeyframesVerified": true
+    }
+  }
+}

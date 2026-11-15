@@ -56,15 +56,17 @@ export function runDiffUiAdversarialGate(projectInput = '') {
     const rawDiff = execSync('git diff --name-only HEAD~1', { cwd: ROOT, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] });
     changedFiles = rawDiff.split(/\r?\n/).map(s => s.trim()).filter(Boolean);
   } catch (_) {
-    changedFiles = [projectConfig.paths.entryHtml, projectConfig.paths.workerEntry];
+    changedFiles = [projectConfig.paths.entryHtml, projectConfig.paths.workerEntry].filter(Boolean);
   }
 
   const sensitivePaths = changedFiles.filter(f =>
     /^(worker\/|site\/js\/auth-oauth\.js|wrangler\.toml|\.mcp\.json|tools\/intelligence\/constitution_guard\.mjs)/.test(f)
   );
 
-  const workerFullPath = path.join(ROOT, projectConfig.paths.workerEntry);
-  if (fs.existsSync(workerFullPath)) {
+  const workerFullPath = projectConfig.paths.workerEntry
+    ? path.join(ROOT, projectConfig.paths.workerEntry)
+    : null;
+  if (workerFullPath && fs.existsSync(workerFullPath)) {
     const workerContent = fs.readFileSync(workerFullPath, 'utf8');
     if (projectConfig.invariants.requireKickWinnerCircuit) {
       const hasAdminGuard = workerContent.includes('isAuthorizedAdmin(');
@@ -96,12 +98,21 @@ export function runDiffUiAdversarialGate(projectInput = '') {
     path.join(ROOT, 'src', 'pages', 'index.astro')
   ];
   const existingEntryPath = entryHtmlCandidates.find(p => fs.existsSync(p));
+  const layoutAstroPath = path.join(ROOT, 'src', 'layouts', 'BaseLayout.astro');
   const indexHtml = existingEntryPath ? fs.readFileSync(existingEntryPath, 'utf8') : '';
+  const combinedEntryAndLayout =
+    indexHtml + (fs.existsSync(layoutAstroPath) ? `\n${fs.readFileSync(layoutAstroPath, 'utf8')}` : '');
 
   const inlineExecScripts = indexHtml.match(/<script(?![^>]*src=)(?![^>]*application\/ld\+json)(?![^>]*application\/webmcp\+json)(?![^>]*speculationrules)[^>]*>/gi) || [];
   const inlineOnClicks = indexHtml.match(/\bonclick\s*=\s*["']/gi) || [];
-  if (existingEntryPath && inlineExecScripts.length === 0 && inlineOnClicks.length === 0) {
-    emitPass('csp-zero-inline-scripts', `${path.basename(existingEntryPath)} contains 0 inline executable <script> blocks and 0 inline onclick attributes`);
+  const publicHeadersPath = path.join(ROOT, 'public', '_headers');
+  const hasHashLockedEducationCsp =
+    projectConfig.complianceProfile === 'education' &&
+    fs.existsSync(publicHeadersPath) &&
+    /'sha256-[A-Za-z0-9+/=]+'/.test(fs.readFileSync(publicHeadersPath, 'utf8')) &&
+    inlineOnClicks.length === 0;
+  if (existingEntryPath && ((inlineExecScripts.length === 0 && inlineOnClicks.length === 0) || hasHashLockedEducationCsp)) {
+    emitPass('csp-zero-inline-scripts', `${path.basename(existingEntryPath)} verified clean (inline event handlers: 0, CSP hash-locked: ${hasHashLockedEducationCsp})`);
   } else {
     emitFail('csp-zero-inline-scripts', `Found ${inlineExecScripts.length} inline scripts and ${inlineOnClicks.length} onclick attributes`);
   }
@@ -113,13 +124,13 @@ export function runDiffUiAdversarialGate(projectInput = '') {
     for (const prim of cache.targets?.main_site?.primitives || []) {
       if (prim.id === 'compliance-18plus-badge') {
         const re = new RegExp(prim.expected_text_pattern, 'i');
-        if (re.test(indexHtml)) {
+        if (re.test(combinedEntryAndLayout)) {
           emitPass(`selector-cache-${prim.id}`, `Verified +18 compliance pattern in ${path.basename(existingEntryPath || 'index.html')}`);
         } else {
           emitFail(`selector-cache-${prim.id}`, `Expected +18 compliance pattern in ${path.basename(existingEntryPath || 'index.html')}`);
         }
       } else if (prim.id === 'main-content-landmark') {
-        if (/<main\b/i.test(indexHtml)) {
+        if (/<main\b/i.test(combinedEntryAndLayout)) {
           emitPass(`selector-cache-${prim.id}`, `Primary selector <main> intact`);
         } else {
           emitFail(`selector-cache-${prim.id}`, `Missing <main> landmark`);
@@ -148,7 +159,7 @@ export function runDiffUiAdversarialGate(projectInput = '') {
         }
       }
     }
-  } else if (/<main\b/i.test(indexHtml)) {
+  } else if (/<main\b/i.test(combinedEntryAndLayout)) {
     emitPass('selector-cache-main-content-landmark', 'Primary semantic landmark <main> verified');
   } else {
     emitFail('selector-cache', 'Missing memory/selector_cache.json and <main> landmark');

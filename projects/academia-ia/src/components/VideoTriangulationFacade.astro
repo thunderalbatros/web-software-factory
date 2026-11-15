@@ -1,0 +1,79 @@
+---
+import 'lite-youtube-embed/src/lite-yt-embed.css';
+
+const { videos = [], sectionHeading = 'Triangulación audiovisual verificada (2 fuentes sin rastreo previo)' } = Astro.props;
+
+const preparedVideos = videos.map((v, idx) => {
+  const isYoutube = v.source_platform === 'youtube' && v.youtube_id;
+  const embedUrl = isYoutube
+    ? `https://www.youtube-nocookie.com/embed/${v.youtube_id}?rel=0`
+    : v.external_video_url || 'https://archive.org/embed/unesco-ai-competency-overview';
+  const providerLabel = isYoutube ? 'YouTube sin cookies (youtube-nocookie.com)' : 'Recurso Educativo Abierto (archive.org)';
+  return {
+    ...v,
+    index: idx,
+    embedUrl,
+    providerLabel
+  };
+});
+---
+<section class="video-facade-box" data-video-facade aria-label="Videos educativos complementarios">
+  <h2 class="editorial-h2">{sectionHeading}</h2>
+  <p>
+    Cada lección contrasta entre dos y tres explicaciones complementarias. Ningún proveedor externo recibe conexiones hasta que tú decides reproducir un video, y cuentas abajo con la síntesis verificada por marca de tiempo.
+  </p>
+
+  <div class="video-tabs-row" role="tablist" aria-label="Seleccionar fuente de video">
+    {preparedVideos.map((vid, idx) => (
+      <button
+        type="button"
+        role="tab"
+        class="video-tab-btn"
+        id={`tab-${vid.video_id}`}
+        aria-controls={`panel-${vid.video_id}`}
+        aria-selected={idx === 0 ? 'true' : 'false'}
+        data-video-tab={vid.video_id}
+      >
+        Video {idx + 1} · {vid.source_platform === 'youtube' ? 'YouTube-NoCookie' : 'OER Archive.org'}
+      </button>
+    ))}
+  </div>
+
+  {preparedVideos.map((vid, idx) => (
+    <div
+      id={`panel-${vid.video_id}`}
+      role="tabpanel"
+      aria-labelledby={`tab-${vid.video_id}`}
+      data-video-panel={vid.video_id}
+      hidden={idx !== 0}
+    >
+      <div class="video-stage" data-video-stage>
+        <p><strong>{vid.title}</strong></p>
+        <p>{vid.channel_title} · Licencia: <code>{vid.license}</code> · Subtítulos: <code>{vid.caption_mode}</code></p>
+        <button
+          type="button"
+          class="btn-primary"
+          data-video-play
+          data-embed-url={vid.embedUrl}
+          data-video-title={vid.title}
+        >
+          Reproducir en {vid.providerLabel}
+        </button>
+      </div>
+
+      <p class="video-privacy-notice" role="note">
+        <strong>Aviso de almacenamiento local y privacidad:</strong> Antes del clic no se carga ningún iframe externo. Al reproducir este video desde <code>{vid.source_platform === 'youtube' ? 'youtube-nocookie.com' : 'archive.org'}</code>, el reproductor externo puede usar almacenamiento local técnico en tu navegador para recordar volumen o subtítulos.
+      </p>
+
+      <h3 class="editorial-h3">Síntesis textual accesible y anclas verificadas ({vid.anchors_status})</h3>
+      <ul class="video-anchors-list">
+        {(vid.transcript_anchors_json || []).map((anchor) => (
+          <li>
+            <span class="video-anchor-time">[{anchor.timestamp_mmss}]</span>{' '}
+            <strong>{anchor.concept_es}:</strong> {anchor.verifiable_fact_es}
+          </li>
+        ))}
+      </ul>
+    </div>
+  ))}
+</section>

@@ -23,6 +23,174 @@ import { generateSoftwareSpec } from './intelligence/spec_generator.mjs';
 import { runDiffUiAdversarialGate } from './audit/diff_ui_adversarial.mjs';
 import { verifyConstitutionLock } from './intelligence/constitution_guard.mjs';
 import { compileDesignTokens } from './design/token_compiler.mjs';
+import { generateHeadersFileContent } from './lib/csp_builder.mjs';
+
+export const OFFICIAL_FACTORY_ARCHETYPES = Object.freeze([
+  'saas-b2b',
+  'ecommerce',
+  'marketing',
+  'portfolio',
+  'education'
+]);
+
+function applyStaticEducationScaffoldVariant(targetDir, { slug, displayName, domain, templateName }) {
+  // 1. Remove unnecessary SaaS/Turnstile form Worker for 100% static education projects
+  const workerDir = path.join(targetDir, 'worker');
+  if (fs.existsSync(workerDir)) {
+    fs.rmSync(workerDir, { recursive: true, force: true });
+  }
+
+  // 2. Configure factory.project.json for complianceProfile: "education" & Surface Mode: "Read"
+  const manifestFile = path.join(targetDir, 'factory.project.json');
+  if (fs.existsSync(manifestFile)) {
+    const manifestObj = JSON.parse(fs.readFileSync(manifestFile, 'utf8'));
+    manifestObj.complianceProfile = 'education';
+    manifestObj.surfaceMode = 'Read';
+    manifestObj.industryArchetype = 'academic-editorial-education';
+    manifestObj.dbTier = 'static-json-and-indexeddb';
+    manifestObj.paths = {
+      ...(manifestObj.paths || {}),
+      workerEntry: null,
+      sourceDirs: templateName === 'astro-edge' ? ['src', 'public'] : ['site']
+    };
+    manifestObj.sdd = {
+      ...(manifestObj.sdd || {}),
+      targetUsers: ['Estudiantes Hispanohablantes', 'Autodidactas y Profesionales', 'Docentes'],
+      visualTheme: 'OKLCH 90/8/2 Editorial Read Mode (65ch) + 3 Semantic Level Accents + WCAG 2.2 AA+',
+      architectureTier:
+        templateName === 'astro-edge'
+          ? 'Astro 7.4 Static + Cloudflare Workers Static Assets ($0 Server)'
+          : 'Static HTML/CSS/JS + Cloudflare Workers Static Assets ($0 Server)'
+    };
+    fs.writeFileSync(manifestFile, JSON.stringify(manifestObj, null, 2) + '\n', 'utf8');
+  }
+
+  // 3. Write deterministic education _headers via single-source csp_builder.mjs
+  const eduHeaders = generateHeadersFileContent('education');
+  const publicDir = path.join(targetDir, 'public');
+  fs.mkdirSync(publicDir, { recursive: true });
+  fs.writeFileSync(path.join(publicDir, '_headers'), eduHeaders, 'utf8');
+
+  // 4. Replace SaaS #pricing / trigger_primary_cta scaffold with clean 100% static Read-mode scaffold
+  if (templateName === 'astro-edge') {
+    const baseLayoutPath = path.join(targetDir, 'src', 'layouts', 'BaseLayout.astro');
+    const indexAstroPath = path.join(targetDir, 'src', 'pages', 'index.astro');
+    if (fs.existsSync(baseLayoutPath)) {
+      fs.writeFileSync(
+        baseLayoutPath,
+        `---
+const {
+  title = "${displayName} — Academia Abierta de IA",
+  description = "${displayName} — Plataforma educativa 100% gratuita y estática en español neutro (Astro 7.4, OKLCH 90/8/2, WCAG 2.2 AA)."
+} = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  <link rel="stylesheet" href="/styles/design-tokens.css">
+  <link rel="stylesheet" href="/styles/ui-primitives.css">
+  <link rel="stylesheet" href="/styles/motion-engine.css">
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+  <link rel="alternate" type="text/markdown" href="/llms.txt" title="Agentic AI Documentation (llms.txt)">
+  <script type="application/webmcp+json" id="webmcp-manifest">
+  {
+    "schemaVersion": "2026.1-webmcp",
+    "site": "${displayName}",
+    "llmsTxt": "/llms.txt",
+    "securityPolicy": "zero-trust-agentic-2026",
+    "tools": [
+      {
+        "name": "get_academy_curriculum",
+        "description": "Retrieve open educational levels, OER sources, and curriculum metadata for ${displayName}.",
+        "endpoint": "/llms.txt",
+        "readOnly": true,
+        "requiresUserConfirmation": false
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "name": "${displayName}",
+        "url": "${domain}"
+      },
+      {
+        "@type": "EducationalOrganization",
+        "name": "${displayName}",
+        "url": "${domain}"
+      }
+    ]
+  }
+  </script>
+  <script type="speculationrules">
+  {
+    "prerender": [{ "where": { "href_matches": "/*" }, "eagerness": "moderate" }],
+    "prefetch": [{ "where": { "href_matches": "/*" }, "eagerness": "moderate" }]
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header" aria-label="Navegación académica">
+    <nav class="container site-nav" aria-label="Menú educativo">
+      <a href="/"><strong>${displayName}</strong></a>
+      <ul class="site-nav-links">
+        <li><a href="#niveles">Niveles</a></li>
+        <li><a href="#metodologia">Metodología</a></li>
+      </ul>
+    </nav>
+  </header>
+  <slot />
+  <footer class="site-footer" aria-label="Pie de página académico">
+    <div class="container">
+      <small>&copy; 2026 ${displayName} (${slug}). Educación abierta y gratuita sin muros de pago.</small>
+    </div>
+  </footer>
+</body>
+</html>
+`,
+        'utf8'
+      );
+    }
+
+    if (fs.existsSync(indexAstroPath)) {
+      fs.writeFileSync(
+        indexAstroPath,
+        `---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout>
+  <main id="main-content" class="container prose-editorial" aria-label="Contenido educativo principal">
+    <section id="niveles" class="section-block" aria-label="Ruta de aprendizaje abierta">
+      <h1>${displayName}</h1>
+      <p>Aprende inteligencia artificial paso a paso con lecciones claras, laboratorios interactivos en tu navegador y fuentes abiertas verificadas, siempre 100% gratis.</p>
+      <h2>Tres niveles progresivos de dominio</h2>
+      <h3>1. Principiante · Adquirir criterio</h3>
+      <p>Comprende cómo predice palabras un modelo de lenguaje y verifica cada dato antes de usarlo.</p>
+      <h3>2. Intermedio · Profundizar con herramientas abiertas</h3>
+      <p>Organiza flujos reproducibles, mide tokens reales y contrasta resultados con evidencia primaria.</p>
+      <h3>3. Avanzado · Crear sistemas verificables</h3>
+      <p>Diseña arquitecturas locales y evalúa calidad con criterios objetivos sin depender de servicios cerrados.</p>
+    </section>
+    <section id="metodologia" class="section-block" aria-label="Principios pedagógicos">
+      <h2>Aprendizaje activo sin muros de pago</h2>
+      <p>Tu progreso vive únicamente en el almacenamiento local de tu propio dispositivo, sin cuentas obligatorias ni suscripciones ocultas.</p>
+    </section>
+  </main>
+</BaseLayout>
+`,
+        'utf8'
+      );
+    }
+  }
+}
 
 function parseFlag(argv, flagName, defaultValue = '') {
   for (let i = 0; i < argv.length; i++) {
@@ -141,12 +309,16 @@ async function main() {
   if (subcommand === 'new' || subcommand === 'init') {
     const rawSlug = parseFlag(argv, '--name', argv[1] && !argv[1].startsWith('--') ? argv[1] : '');
     if (!rawSlug || rawSlug.startsWith('--')) {
-      console.error('Usage: node tools/factory.mjs new <project-slug> [--template vanilla-edge|astro-edge|fullstack-saas-edge] [--archetype saas-b2b|ecommerce|marketing|portfolio] [--style <67-styles>] [--out <dir>]');
+      console.error('Usage: node tools/factory.mjs new <project-slug> [--template vanilla-edge|astro-edge|fullstack-saas-edge] [--archetype saas-b2b|ecommerce|marketing|portfolio|education] [--style <67-styles>] [--out <dir>]');
       process.exit(1);
     }
     const slug = rawSlug.toLowerCase().replace(/[^a-z0-9-]+/g, '-').replace(/(^-|-$)/g, '');
     const templateName = parseFlag(argv, '--template', parseFlag(argv, '--stack', 'vanilla-edge'));
-    const archetype = parseFlag(argv, '--archetype', 'saas-b2b');
+    const archetype = parseFlag(argv, '--archetype', 'saas-b2b').toLowerCase();
+    if (!OFFICIAL_FACTORY_ARCHETYPES.includes(archetype)) {
+      console.error(`❌ Invalid --archetype "${archetype}". Allowed official values: ${OFFICIAL_FACTORY_ARCHETYPES.join(', ')}`);
+      process.exit(1);
+    }
     const styleName = parseFlag(argv, '--style', '');
     const outFlag = parseFlag(argv, '--out', '');
     const displayName = parseFlag(
@@ -180,10 +352,27 @@ async function main() {
 
     copyTemplateWithPlaceholders(templateDir, targetDir, replacements);
 
+    // Inject real npm package name (`slug`) when cloning a template (e.g. astro-edge-template -> <slug>)
+    const clonedPkgPath = path.join(targetDir, 'package.json');
+    if (fs.existsSync(clonedPkgPath)) {
+      try {
+        const clonedPkg = JSON.parse(fs.readFileSync(clonedPkgPath, 'utf8'));
+        clonedPkg.name = slug;
+        fs.writeFileSync(clonedPkgPath, JSON.stringify(clonedPkg, null, 2) + '\n', 'utf8');
+      } catch (_) {}
+    }
+
+    // Apply clean 100% static education variant without touching SaaS templates
+    if (archetype === 'education') {
+      applyStaticEducationScaffoldVariant(targetDir, { slug, displayName, domain, templateName });
+    }
+
     // Initialize Spec-Kit constitution & initial project spec
     generateSoftwareSpec(
       `${displayName} Core Web Experience`,
-      `Initial architecture and high-conversion web experience for ${displayName} (${archetype}).`,
+      archetype === 'education'
+        ? `Open-access static educational platform for ${displayName} (Surface Mode: Read, strict CSP + Trusted Types).`
+        : `Initial architecture and high-conversion web experience for ${displayName} (${archetype}).`,
       { projectDir: targetDir }
     );
 
@@ -198,7 +387,7 @@ async function main() {
         if (fs.existsSync(manifestFile)) {
           const manifestObj = JSON.parse(fs.readFileSync(manifestFile, 'utf8'));
           manifestObj.design = { ...(manifestObj.design || {}), styleSkill: styleName, styleGuidePath: '.specify/memory/style-guide.md' };
-          fs.writeFileSync(manifestFile, JSON.stringify(manifestObj, null, 2), 'utf8');
+          fs.writeFileSync(manifestFile, JSON.stringify(manifestObj, null, 2) + '\n', 'utf8');
         }
       } else {
         console.warn(`⚠️ Style "${styleName}" not found in awesome-design-skills. Run "node tools/factory.mjs styles" to list all 67 styles.`);
@@ -209,11 +398,11 @@ async function main() {
     compileDesignTokens({
       projectDir: targetDir,
       archetype,
-      style: styleName || 'bento'
+      style: styleName || (archetype === 'education' ? 'stripe-editorial' : 'bento')
     });
 
     // Unify Lifecycle Seam with cto_command_center.mjs ([ENGRANAJE-01]):
-    // Initialize PRODUCT.md, DESIGN.md, Dual-DB Architecture, Dual Interview Gates (#1 & #2) & XState v5 Statechart
+    // Initialize PRODUCT.md, DESIGN.md, Dual-DB Architecture (non-education), Dual Interview Gates (#1 & #2) & XState v5 Statechart
     try {
       const { generateProductAndDesignMd } = await import('./design/industry_archetype_matrix.mjs');
       const { forgeDatabaseArchitecture } = await import('./db/dual_database_forge.mjs');
@@ -222,7 +411,9 @@ async function main() {
       const { syncProjectStatechartSnapshot } = await import('./orchestrator/deterministic_agent_statechart.mjs');
 
       generateProductAndDesignMd(targetDir, archetype);
-      forgeDatabaseArchitecture(targetDir, 'edge-d1');
+      if (archetype !== 'education') {
+        forgeDatabaseArchitecture(targetDir, 'edge-d1');
+      }
       if (!outFlag) {
         initPrdInterviewFiles(slug, archetype, { autoApprove: false, overwrite: false });
         initClientInterviewFiles(slug, archetype, { autoApprove: false, overwrite: false });
@@ -232,13 +423,15 @@ async function main() {
       console.warn(`⚠️ [Lifecycle Seam Init] ${seamErr.message}`);
     }
 
-    // Save active project state in .agents/memory/active_project.json and initialize audit score
-    setActiveProject(slug, {
-      name: displayName,
-      stack: templateName,
-      archetype,
-      style: styleName || 'bento'
-    });
+    // Save active project state in .agents/memory/active_project.json (when inside projects/) and initialize audit score
+    if (!outFlag) {
+      setActiveProject(slug, {
+        name: displayName,
+        stack: templateName,
+        archetype,
+        style: styleName || (archetype === 'education' ? 'stripe-editorial' : 'bento')
+      });
+    }
     recordProjectAuditScore(targetDir, 100, 'APROBADO');
 
     console.log('\n====================================================================');

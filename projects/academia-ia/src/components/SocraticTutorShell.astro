@@ -1,0 +1,56 @@
+---
+import { buildOpaqueTutorSandboxSrcdoc } from '../lib/socratic-tutor-sandbox.mjs';
+
+const {
+  levelId = 'principiante',
+  lessonSlug = 'semilla-tokens',
+  defaultQuestion = '¿Por qué debo verificar las cifras que redacta un asistente de lenguaje?'
+} = Astro.props;
+
+const srcdoc = buildOpaqueTutorSandboxSrcdoc({ title: 'Sandbox Opaco Tutor Socrático Academia IA' });
+---
+<section
+  class="editorial-panel"
+  data-tutor-shell
+  data-tutor-level={levelId}
+  data-tutor-lesson={lessonSlug}
+  aria-label="Tutor socrático aislado"
+>
+  <h2 class="editorial-h2">Tutor socrático en sandbox de origen opaco</h2>
+  <p>
+    Este asistente pedagógico corre aislado dentro de un marco con <code>sandbox="allow-scripts"</code> sin <code>allow-same-origin</code>: carece de acceso a tu <code>IndexedDB</code> o <code>localStorage</code>, valida mensajes con <code>Valibot</code> y sanea toda respuesta con <code>DOMPurify</code> y <code>TrustedHTML</code>.
+  </p>
+
+  <div class="control-field">
+    <label class="control-label" for={`tutor-q-${levelId}`}>Tu duda o hipótesis sobre la lección</label>
+    <input
+      id={`tutor-q-${levelId}`}
+      type="text"
+      class="editorial-input"
+      data-tutor-input
+      value={defaultQuestion}
+    />
+  </div>
+
+  <div class="card-actions-row">
+    <button type="button" class="tutor-action-btn" data-tutor-ask>
+      Solicitar pista socrática gradual
+    </button>
+  </div>
+
+  <div class="tutor-response-box" data-tutor-output aria-live="polite">
+    <p>Pulsa el botón para recibir una pregunta guía sin revelar la solución completa de golpe.</p>
+  </div>
+
+  <p class="tutor-status-line" data-tutor-status>
+    Inicializando verificación de aislamiento opaco...
+  </p>
+
+  <iframe
+    class="tutor-sandbox-frame"
+    title={`Contenedor aislado de origen opaco para tutor socrático (${levelId})`}
+    sandbox="allow-scripts"
+    srcdoc={srcdoc}
+    data-tutor-iframe
+  ></iframe>
+</section>

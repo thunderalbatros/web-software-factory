@@ -220,12 +220,21 @@ export function loadProjectConfig(inputPath = '') {
   const id = rawConfig.id || path.basename(projectRoot).toLowerCase();
   const archetype = rawConfig.archetype || 'standard-web';
   const stack = rawConfig.stack || 'vanilla-edge';
-  const complianceProfile = rawConfig.complianceProfile || (archetype === 'streamer-casino-suite' ? 'gambling-18plus' : 'standard-web');
+  const complianceProfile =
+    rawConfig.complianceProfile ||
+    (archetype === 'streamer-casino-suite'
+      ? 'gambling-18plus'
+      : archetype === 'education'
+        ? 'education'
+        : 'standard-web');
 
   const pathsCfg = rawConfig.paths || {};
   const entryHtml = pathsCfg.entryHtml || (isStudioRoot ? 'templates/vanilla-edge/index.html' : 'index.html');
   const distDir = pathsCfg.distDir || 'dist';
-  const workerEntry = pathsCfg.workerEntry || (isStudioRoot ? 'templates/vanilla-edge/worker/index.js' : 'worker/index.js');
+  const workerEntry =
+    pathsCfg.workerEntry === null || complianceProfile === 'education'
+      ? null
+      : (pathsCfg.workerEntry || (isStudioRoot ? 'templates/vanilla-edge/worker/index.js' : 'worker/index.js'));
   const tokensPath = pathsCfg.tokensPath || 'tokens/design.tokens.json';
   const designCssPath = pathsCfg.designCssPath || (
     isStudioRoot
@@ -240,7 +249,9 @@ export function loadProjectConfig(inputPath = '') {
     ? pathsCfg.sourceDirs
     : (isStudioRoot
       ? ['templates/vanilla-edge/site', 'templates/vanilla-edge/worker', 'templates/astro-edge/worker']
-      : (stack === 'astro-edge' ? ['src', 'public', 'worker'] : ['site', 'worker']));
+      : complianceProfile === 'education'
+        ? ['src', 'public']
+        : (stack === 'astro-edge' ? ['src', 'public', 'worker'] : ['site', 'worker']));
 
   const overlays = Array.isArray(pathsCfg.overlays) ? pathsCfg.overlays : [];
   const requiredOverlaysInAudit = Array.isArray(pathsCfg.requiredOverlaysInAudit)

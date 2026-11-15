@@ -1,0 +1,346 @@
+{
+  "schema_version": 2,
+  "table": "academy_project_tracks",
+  "row_count": 6,
+  "rows": [
+    {
+      "free_tools_stack_json": [
+        {
+          "name": "SVG + Web Animations / Motion Canvas",
+          "role": "Gráficos vectoriales y ritmo visual",
+          "tier": "open_source_local"
+        },
+        {
+          "name": "Krita / Blender",
+          "role": "Ilustración cuadro a cuadro o escena 3D",
+          "tier": "open_source_local"
+        },
+        {
+          "name": "Kdenlive",
+          "role": "Montaje y exportación",
+          "tier": "open_source_local"
+        }
+      ],
+      "milestone_rubric_json": [
+        {
+          "criteria": [
+            "Historia clara en 15 a 30 segundos",
+            "Respeto de derechos de imagen"
+          ],
+          "level": "Acquire",
+          "milestone": 1,
+          "title_es": "Guion gráfico de 4 escenas y paleta OKLCH coherente"
+        },
+        {
+          "criteria": [
+            "Subtítulos visibles",
+            "Cero parpadeos bruscos"
+          ],
+          "level": "Deepen",
+          "milestone": 2,
+          "title_es": "Animación fluida respetando prefers-reduced-motion"
+        },
+        {
+          "criteria": [
+            "Audio nivelado",
+            "Licencia abierta declarada"
+          ],
+          "level": "Create",
+          "milestone": 3,
+          "title_es": "Exportación optimizada con créditos de autoría humana e IA"
+        }
+      ],
+      "pro_tools_optional_json": [
+        {
+          "name": "Generadores de video por IA pagos",
+          "note": "Solo para planos imposibles de ilustrar o filmar."
+        }
+      ],
+      "skill_tree": "crear",
+      "title_es": "Animación Corta o Pieza Audiovisual",
+      "track_id": "animacion-corta"
+    },
+    {
+      "free_tools_stack_json": [
+        {
+          "name": "n8n (edición comunitaria autoalojada)",
+          "role": "Orquestación visual por nodos",
+          "tier": "open_source_local"
+        },
+        {
+          "name": "Google Apps Script",
+          "role": "Automatización de correo, calendario y hojas",
+          "tier": "free_no_card"
+        },
+        {
+          "name": "APIs de IA con cuota gratuita",
+          "role": "Clasificación y resumen",
+          "tier": "freemium_capped"
+        }
+      ],
+      "milestone_rubric_json": [
+        {
+          "criteria": [
+            "Qué dato entra",
+            "Qué dato sensible se redacta antes de enviarlo"
+          ],
+          "level": "Acquire",
+          "milestone": 1,
+          "title_es": "Mapa entrada-proceso-salida y filtro de privacidad"
+        },
+        {
+          "criteria": [
+            "Aprobación manual antes de enviar mensajes"
+          ],
+          "level": "Deepen",
+          "milestone": 2,
+          "title_es": "Flujo funcional con validación de errores y pausa humana"
+        },
+        {
+          "criteria": [
+            "3 casos borde probados",
+            "Plan de reversión sin IA"
+          ],
+          "level": "Create",
+          "milestone": 3,
+          "title_es": "Bitácora de pruebas reales con registro de ahorro de tiempo"
+        }
+      ],
+      "pro_tools_optional_json": [
+        {
+          "name": "Planes pagos de automatización",
+          "note": "Solo si superas las ejecuciones mensuales del plan gratuito."
+        }
+      ],
+      "skill_tree": "cotidiano",
+      "title_es": "Bot o Flujo Automatizado Útil",
+      "track_id": "bot-automatizado"
+    },
+    {
+      "free_tools_stack_json": [
+        {
+          "name": "Krita / Inkscape",
+          "role": "Viñetas, globos de texto y entintado",
+          "tier": "open_source_local"
+        },
+        {
+          "name": "Generadores de imagen con cuota gratuita",
+          "role": "Exploración de fondos y composición",
+          "tier": "freemium_capped"
+        },
+        {
+          "name": "HTML Grid para lectura móvil",
+          "role": "Publicación en tira vertical responsiva",
+          "tier": "open_source_local"
+        }
+      ],
+      "milestone_rubric_json": [
+        {
+          "criteria": [
+            "Voz narrativa propia",
+            "Cero imitación del estilo de artistas vivos por nombre"
+          ],
+          "level": "Acquire",
+          "milestone": 1,
+          "title_es": "Biblia de 2 personajes y guion de 4 a 6 viñetas"
+        },
+        {
+          "criteria": [
+            "Contraste claro en globos",
+            "Texto alternativo por viñeta"
+          ],
+          "level": "Deepen",
+          "milestone": 2,
+          "title_es": "Consistencia visual y tipografía legible"
+        },
+        {
+          "criteria": [
+            "Navegación por teclado",
+            "Nota de proceso creativo"
+          ],
+          "level": "Create",
+          "milestone": 3,
+          "title_es": "Edición final en lector accesible lista para Portfolio"
+        }
+      ],
+      "pro_tools_optional_json": [
+        {
+          "name": "Suites de ilustración pagas",
+          "note": "Útiles solo para series largas con consistencia estricta."
+        }
+      ],
+      "skill_tree": "crear",
+      "title_es": "Cómic Digital o Narrativa Visual Ilustrada",
+      "track_id": "comic-digital"
+    },
+    {
+      "free_tools_stack_json": [
+        {
+          "name": "Strudel / Tone.js + Web Audio API",
+          "role": "Síntesis procedural y patrones rítmicos",
+          "tier": "open_source_local"
+        },
+        {
+          "name": "Audacity + LMMS",
+          "role": "Edición multipista y mezcla",
+          "tier": "open_source_local"
+        },
+        {
+          "name": "Bibliotecas de sonidos CC0",
+          "role": "Efectos libres de regalías",
+          "tier": "free_no_card"
+        }
+      ],
+      "milestone_rubric_json": [
+        {
+          "criteria": [
+            "Cero imitación de voces registradas sin permiso"
+          ],
+          "level": "Acquire",
+          "milestone": 1,
+          "title_es": "Intención emocional, tempo y estructura A-B de 30 segundos"
+        },
+        {
+          "criteria": [
+            "Sin saturación",
+            "Bucle limpio sin clics"
+          ],
+          "level": "Deepen",
+          "milestone": 2,
+          "title_es": "Mezcla por capas (ritmo, armonía, textura)"
+        },
+        {
+          "criteria": [
+            "Volumen balanceado",
+            "Descripción accesible de la escena"
+          ],
+          "level": "Create",
+          "milestone": 3,
+          "title_es": "Banda sonora exportada con ficha de stems y atribución"
+        }
+      ],
+      "pro_tools_optional_json": [
+        {
+          "name": "Generadores musicales por IA pagos",
+          "note": "Solo si necesitas licencias comerciales cerradas."
+        }
+      ],
+      "skill_tree": "crear",
+      "title_es": "Música Original o Banda Sonora",
+      "track_id": "musica-banda-sonora"
+    },
+    {
+      "free_tools_stack_json": [
+        {
+          "name": "Plantillas de prompts versionadas + checklist Markdown",
+          "role": "Procedimiento operativo reproducible",
+          "tier": "open_source_local"
+        },
+        {
+          "name": "LibreOffice Calc",
+          "role": "Tablero de seguimiento, costos y métricas",
+          "tier": "open_source_local"
+        },
+        {
+          "name": "Asistentes con fuentes citadas (plan gratuito)",
+          "role": "Síntesis documental",
+          "tier": "freemium_capped"
+        }
+      ],
+      "milestone_rubric_json": [
+        {
+          "criteria": [
+            "Anonimización de clientes y precios antes del prompt"
+          ],
+          "level": "Acquire",
+          "milestone": 1,
+          "title_es": "Auditoría de una tarea real y política de datos confidenciales"
+        },
+        {
+          "criteria": [
+            "Cero citas inventadas",
+            "Plan B manual si cae la API"
+          ],
+          "level": "Deepen",
+          "milestone": 2,
+          "title_es": "Flujo asistido en 3 pasos con matriz de verificación factual"
+        },
+        {
+          "criteria": [
+            "Ahorro medido en minutos",
+            "Tasa de error validada con revisión humana"
+          ],
+          "level": "Create",
+          "milestone": 3,
+          "title_es": "Manual replicable con métricas antes y después"
+        }
+      ],
+      "pro_tools_optional_json": [
+        {
+          "name": "Planes empresariales de asistentes de IA",
+          "note": "Conviene pagar solo si superas los límites o necesitas retención cero de datos."
+        }
+      ],
+      "skill_tree": "trabajo",
+      "title_es": "Sistema Profesional para Trabajo o Emprendimiento",
+      "track_id": "sistema-profesional"
+    },
+    {
+      "free_tools_stack_json": [
+        {
+          "name": "Astro + CSS Baseline",
+          "role": "Estructura estática rápida",
+          "tier": "open_source_local"
+        },
+        {
+          "name": "Cloudflare Workers Static Assets",
+          "role": "Publicación gratuita en la red",
+          "tier": "free_no_card"
+        },
+        {
+          "name": "Asistentes de IA con plan gratuito",
+          "role": "Redacción y revisión de HTML",
+          "tier": "freemium_capped"
+        }
+      ],
+      "milestone_rubric_json": [
+        {
+          "criteria": [
+            "Objetivo claro",
+            "Cero datos personales expuestos"
+          ],
+          "level": "Acquire",
+          "milestone": 1,
+          "title_es": "Boceto estructural y propuesta en 60 palabras"
+        },
+        {
+          "criteria": [
+            "Contraste APCA legible",
+            "Objetivos táctiles de 44 x 44 como mínimo"
+          ],
+          "level": "Deepen",
+          "milestone": 2,
+          "title_es": "Prototipo navegable accesible sin scroll horizontal"
+        },
+        {
+          "criteria": [
+            "Cero enlaces rotos",
+            "Explicación del rol humano"
+          ],
+          "level": "Create",
+          "milestone": 3,
+          "title_es": "Auditoría factual, pruebas en móvil y publicación en Portfolio"
+        }
+      ],
+      "pro_tools_optional_json": [
+        {
+          "name": "Dominio propio",
+          "note": "Opcional si quieres una dirección personalizada; el subdominio edge es gratuito."
+        }
+      ],
+      "skill_tree": "crear",
+      "title_es": "Sitio Web o Portfolio Interactivo",
+      "track_id": "sitio-web"
+    }
+  ]
+}

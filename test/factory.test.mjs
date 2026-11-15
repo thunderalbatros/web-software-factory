@@ -2,7 +2,9 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import crypto from 'node:crypto';
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
+import { spawnSync } from 'node:child_process';
 import { verifyCtoApprovalToken } from '../tools/feedback/client_feedback_triage_agent.mjs';
 import {
   verifyTurnstileTokenServerSide,
@@ -1327,7 +1329,8 @@ test('Stage 3B.1: multi-line YAML round-trip preserves all 26 canon URLs and CTO
   assert.equal(serializedWrapped2, serializedWrapped1, 'Expected serializeCanonFrontmatter to be 100% byte-idempotent');
   assert.deepEqual(parsedWrapped2.sources, parsedWrapped1.sources);
 
-  // 2. Verify real canons in knowledge/ai_academy/ cannot be programmatically forged outside interactive human TTY
+  // 2. Verify real canons in knowledge/ai_academy/ already carry human CTO signature (TIER_1_SOTA_2026 at 1.35x)
+  //    and remain protected against programmatic forgery outside interactive human TTY
   const realCanonFiles = curate.listAcademyCanonFiles();
   assert.equal(realCanonFiles.length, 4, 'Expected 4 canonical treatises in knowledge/ai_academy/');
   assert.throws(
@@ -1336,12 +1339,27 @@ test('Stage 3B.1: multi-line YAML round-trip preserves all 26 canon URLs and CTO
     'Expected direct programmatic approval on real knowledge/ai_academy/ file to be blocked'
   );
 
-  // 3. Runtime promotion test on isolated temporary copies in os.tmpdir()
+  for (const realFile of realCanonFiles) {
+    const realRaw = fs.readFileSync(realFile, 'utf8');
+    const realFm = sanitizer.parseGovernanceFrontmatter(realRaw);
+    const realTier = sanitizer.classifyEpistemicTier(realFile, realRaw);
+    assert.equal(realFm.approvalStatus, 'APPROVED_BY_CTO', `Expected APPROVED_BY_CTO in ${path.basename(realFile)}`);
+    assert.equal(realFm.approvedBy, 'CTO', `Expected approved_by: CTO in ${path.basename(realFile)}`);
+    assert.equal(realTier.epistemicTier, 'TIER_1_SOTA_2026');
+    assert.equal(realTier.authorityBoost, 1.35);
+  }
+
+  // 3. Runtime promotion test (PENDING_CTO_REVIEW -> APPROVED_BY_CTO) on isolated temporary copies in os.tmpdir()
   const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'academy-canons-3b1-'));
   try {
     const tempFiles = realCanonFiles.map((srcPath) => {
       const destPath = path.join(tempDir, path.basename(srcPath));
-      fs.copyFileSync(srcPath, destPath);
+      const parsed = curate.parseFullCanonSources(fs.readFileSync(srcPath, 'utf8'));
+      const pendingMeta = { ...parsed.meta, approval_status: 'PENDING_CTO_REVIEW' };
+      delete pendingMeta.approved_by;
+      delete pendingMeta.approved_at;
+      const pendingDoc = `${curate.serializeCanonFrontmatter(pendingMeta, parsed.sources)}\n\n${parsed.body.replace(/^\r?\n+/, '')}`;
+      fs.writeFileSync(destPath, pendingDoc, 'utf8');
       return destPath;
     });
 
@@ -1351,6 +1369,8 @@ test('Stage 3B.1: multi-line YAML round-trip preserves all 26 canon URLs and CTO
       const fmBefore = sanitizer.parseGovernanceFrontmatter(rawBefore);
       const fullBefore = curate.parseFullCanonSources(rawBefore);
 
+      assert.equal(fmBefore.approvalStatus, 'PENDING_CTO_REVIEW');
+      assert.equal(fmBefore.approvedBy, null);
       assert.equal(fmBefore.hasStructuredVerifiedSources, true, `Expected structured sources in ${path.basename(tempFile)}`);
       assert.equal(fmBefore.hasHttp200VerifiedSources, true, `Expected HTTP 200 sources in ${path.basename(tempFile)}`);
       curate.validateCanonSourcesIntegrity(fullBefore.sources, {
@@ -1408,21 +1428,236 @@ test('Stage 3B.1: multi-line YAML round-trip preserves all 26 canon URLs and CTO
     }
     assert.equal(afterUrls.length, 26);
     assert.deepEqual(afterUrls, beforeUrls, 'Expected all 26 URLs to remain 100% intact after CTO approval round-trip');
-
-    // Confirm real canons in knowledge/ai_academy/ remained untouched in PENDING_CTO_REVIEW (1.15x)
-    for (const realFile of realCanonFiles) {
-      const realRaw = fs.readFileSync(realFile, 'utf8');
-      const realFm = sanitizer.parseGovernanceFrontmatter(realRaw);
-      const realTier = sanitizer.classifyEpistemicTier(realFile, realRaw);
-      assert.equal(realFm.approvalStatus, 'PENDING_CTO_REVIEW');
-      assert.equal(realFm.approvedBy, null);
-      assert.equal(realTier.epistemicTier, 'TIER_2_VERIFIED_DRAFT');
-      assert.equal(realTier.authorityBoost, 1.15);
-    }
   } finally {
     fs.rmSync(tempDir, { recursive: true, force: true });
   }
 });
+
+// ============================================================================
+// 24. STAGE 3C — EDUCATION PROFILE, EXPLICIT --STACK & SAAS NON-CONTAMINATION
+// ============================================================================
+test('Stage 3C — cto_command_center requires explicit --stack non-interactively and isolates education from SaaS', () => {
+  const missingStackRun = spawnSync(
+    process.execPath,
+    [path.join(FACTORY_ROOT, 'tools', 'cto_command_center.mjs'), 'nuevo', 'tmp-no-stack-check', '--archetype', 'education'],
+    { cwd: FACTORY_ROOT, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] }
+  );
+  assert.notEqual(missingStackRun.status, 0, 'Expected non-interactive cto:nuevo without --stack to fail');
+  const combinedOut = `${missingStackRun.stdout || ''}\n${missingStackRun.stderr || ''}`;
+  assert.match(combinedOut, /ERROR_MISSING_EXPLICIT_STACK|--stack/i);
+
+  // Template package.json must have valid npm name (no {{PROJECT_ID}})
+  const astroTplPkg = JSON.parse(
+    fs.readFileSync(path.join(FACTORY_ROOT, 'templates', 'astro-edge', 'package.json'), 'utf8')
+  );
+  assert.equal(astroTplPkg.name, 'astro-edge-template');
+  assert.equal(astroTplPkg.dependencies.astro, '7.4.11');
+
+  // SaaS vanilla-edge template remains 100% intact (#pricing + Turnstile Worker)
+  const vanillaHtml = fs.readFileSync(path.join(FACTORY_ROOT, 'templates', 'vanilla-edge', 'index.html'), 'utf8');
+  const vanillaWorker = fs.readFileSync(path.join(FACTORY_ROOT, 'templates', 'vanilla-edge', 'worker', 'index.js'), 'utf8');
+  assert.match(vanillaHtml, /id="pricing"/);
+  assert.match(vanillaWorker, /turnstile/i);
+
+  // Instantiated projects/academia-ia is 100% static education without Worker or #pricing
+  const academiaDir = path.join(FACTORY_ROOT, 'projects', 'academia-ia');
+  const academiaProj = JSON.parse(fs.readFileSync(path.join(academiaDir, 'factory.project.json'), 'utf8'));
+  const academiaPkg = JSON.parse(fs.readFileSync(path.join(academiaDir, 'package.json'), 'utf8'));
+  assert.equal(academiaProj.archetype, 'education');
+  assert.equal(academiaProj.complianceProfile, 'education');
+  assert.equal(academiaProj.surfaceMode, 'Read');
+  assert.equal(academiaProj.paths.workerEntry, null);
+  assert.equal(academiaPkg.name, 'academia-ia');
+  assert.equal(fs.existsSync(path.join(academiaDir, 'worker', 'index.js')), false);
+
+  // Human HITL gates must NOT be auto-approved by agents
+  const prdState = JSON.parse(fs.readFileSync(path.join(academiaDir, 'PRD_INTERVIEW_STATE.json'), 'utf8'));
+  const specState = JSON.parse(fs.readFileSync(path.join(academiaDir, 'CLIENT_BRIEF_INTERVIEW.json'), 'utf8'));
+  assert.equal(prdState.approvedBy, null);
+  assert.equal(specState.approvedBy, null);
+});
+
+// ============================================================================
+// 25. STAGE 3C — SINGLE-SOURCE CSP + TRUSTED TYPES & Wasm-Unsafe-Eval GUARD
+// ============================================================================
+test('Stage 3C — csp_builder enforces charter origins, sha256 hashes, Trusted Types, and distinguishes wasm-unsafe-eval from unsafe-eval', async () => {
+  const csp = await import('../tools/lib/csp_builder.mjs');
+
+  assert.equal(csp.hasStandaloneUnsafeEval("script-src 'self' 'wasm-unsafe-eval' 'inline-speculation-rules'"), false);
+  assert.equal(csp.hasStandaloneUnsafeEval("script-src 'self' 'unsafe-eval'"), true);
+  assert.equal(csp.hasStandaloneUnsafeEval("script-src 'self' 'wasm-unsafe-eval' 'unsafe-eval'"), true);
+
+  const tmpProj = fs.mkdtempSync(path.join(os.tmpdir(), 'wf-csp-3c-'));
+  try {
+    const distDir = path.join(tmpProj, 'dist');
+    fs.mkdirSync(distDir, { recursive: true });
+    fs.writeFileSync(
+      path.join(distDir, 'index.html'),
+      '<!doctype html><html lang="es"><head><style>body{margin:0}</style><script>window.__ok=1;</script></head><body><p style="color:red">Hola</p></body></html>',
+      'utf8'
+    );
+
+    const compiled = csp.compileStaticDistCspAndHeaders(tmpProj, {
+      profile: 'education',
+      distDir,
+      syncPublicHeaders: true
+    });
+    assert.equal(compiled.validation.valid, true, JSON.stringify(compiled.validation.issues));
+    assert.equal(compiled.styleExtraction.rewrittenAttributes, 1);
+
+    const rewrittenHtml = fs.readFileSync(path.join(distDir, 'index.html'), 'utf8');
+    assert.equal(/\bstyle\s*=/i.test(rewrittenHtml), false, 'Inline style attribute should be extracted to CSS');
+
+    const headersRaw = fs.readFileSync(path.join(tmpProj, 'public', '_headers'), 'utf8');
+    assert.match(headersRaw, /'wasm-unsafe-eval'/);
+    assert.match(headersRaw, /'inline-speculation-rules'/);
+    assert.match(headersRaw, /https:\/\/www\.youtube-nocookie\.com/);
+    assert.match(headersRaw, /https:\/\/archive\.org/);
+    assert.match(headersRaw, /https:\/\/i\.ytimg\.com/);
+    assert.match(headersRaw, /require-trusted-types-for 'script'/);
+    assert.match(headersRaw, /trusted-types default dompurify astro-island/);
+    assert.equal(headersRaw.includes("'unsafe-inline'"), false);
+    assert.equal(csp.hasStandaloneUnsafeEval(headersRaw), false);
+    assert.equal(/pollinations/i.test(headersRaw), false);
+  } finally {
+    fs.rmSync(tmpProj, { recursive: true, force: true });
+  }
+});
+
+// ============================================================================
+// 26. STAGE 3C — SOCRATIC TUTOR OPAQUE SANDBOX & VALIBOT + DOMPURIFY (V-07)
+// ============================================================================
+test('Stage 3C — socratic_tutor_sandbox blocks allow-same-origin, validates postMessage with Valibot, and sanitizes HTML', async () => {
+  const tutor = await import('../tools/lib/socratic_tutor_sandbox.mjs');
+
+  assert.equal(tutor.validateOpaqueSandboxAttribute('allow-scripts').valid, true);
+  assert.equal(tutor.validateOpaqueSandboxAttribute('allow-scripts allow-same-origin').valid, false);
+  assert.equal(tutor.validateOpaqueSandboxAttribute('').valid, false);
+  assert.equal(tutor.validateOpaqueSandboxAttribute('allow-scripts allow-top-navigation').valid, false);
+
+  const mockWindow = {};
+  const validReady = tutor.validateTutorInboundPostMessage(
+    {
+      origin: 'null',
+      source: mockWindow,
+      data: {
+        channel: 'ACADEMIA_TUTOR_V1',
+        type: 'TUTOR_SANDBOX_READY',
+        sandboxOrigin: 'null',
+        storageBlocked: true,
+        parentDomBlocked: true
+      }
+    },
+    mockWindow
+  );
+  assert.equal(validReady.ok, true);
+
+  const spoofedOrigin = tutor.validateTutorInboundPostMessage(
+    {
+      origin: 'https://evil.example',
+      source: mockWindow,
+      data: {
+        channel: 'ACADEMIA_TUTOR_V1',
+        type: 'TUTOR_SANDBOX_READY',
+        sandboxOrigin: 'null',
+        storageBlocked: true,
+        parentDomBlocked: true
+      }
+    },
+    mockWindow
+  );
+  assert.equal(spoofedOrigin.ok, false);
+  assert.match(spoofedOrigin.reason, /NON_OPAQUE_ORIGIN_REJECTED/);
+
+  const cleaned = String(
+    tutor.sanitizeTutorHtmlToTrustedType(
+      '<p onclick="alert(1)" style="color:red"><strong>Pista:</strong> revisa <code>tokens</code><script>evil()</script><iframe src="https://evil.example"></iframe></p>'
+    )
+  );
+  assert.equal(cleaned.includes('<script'), false);
+  assert.equal(cleaned.includes('<iframe'), false);
+  assert.equal(cleaned.includes('onclick'), false);
+  assert.equal(cleaned.includes('style='), false);
+  assert.match(cleaned, /<strong>Pista:<\/strong>/);
+});
+
+// ============================================================================
+// 27. STAGE 3C — CLEAN-ROOM UX METRICS IN REA_REVERSE_ENGINEERING_BRIDGE (F-16)
+// ============================================================================
+test('Stage 3C — rea_reverse_engineering_bridge clean_room_ux_metrics purges 100% of copyrighted copy and assets', async () => {
+  const rea = await import('../tools/intelligence/rea_reverse_engineering_bridge.mjs');
+  const proprietaryHtml = `
+    <main><article>
+      <h1>Proprietary Course Copyright 2026 Secret Corp</h1>
+      <p>Exclusive copyrighted paragraph that must never appear in clean room metrics output.</p>
+      <img src="https://cdn.secretcorp.example/hero-copyrighted.png" alt="Protected brand artwork" />
+    </article></main>
+  `;
+  const proprietaryCss = `
+    article { max-width: 66ch; line-height: 1.7; font-size: clamp(1rem, 1.2vw, 1.15rem); transition: opacity 180ms ease-out; }
+    @media (prefers-reduced-motion: reduce) { article { transition: none; } }
+  `;
+
+  const res = rea.extractCleanRoomUxMetrics(
+    { html: proprietaryHtml, css: proprietaryCss },
+    { referenceLabel: 'external-course-audit' }
+  );
+  assert.equal(res.ok, true);
+  assert.equal(res.mode, 'clean_room_ux_metrics');
+  assert.ok(res.measured_evidence);
+  assert.ok(res.design_inference);
+  assert.equal(res.copyright_hygiene.verbatimTextRetainedChars, 0);
+  assert.equal(res.copyright_hygiene.externalAssetUrlsRetained, 0);
+
+  const serialized = JSON.stringify(res);
+  assert.equal(serialized.includes('Secret Corp'), false);
+  assert.equal(serialized.includes('Exclusive copyrighted paragraph'), false);
+  assert.equal(serialized.includes('hero-copyrighted.png'), false);
+  assert.ok(res.measured_evidence.typography.chMeasures.includes(66));
+  assert.ok(res.measured_evidence.motionTimings.prefersReducedMotionQueriesCount >= 1);
+});
+
+// ============================================================================
+// 28. STAGE 3C — PROFILE-SCOPED GATES (COGNITIVE UX & STATIC SECURITY TRAFFIC LIGHT)
+// ============================================================================
+test('Stage 3C — cognitive_ux_auditor and evaluateCybersecurityTrafficLight adapt cleanly for education vs gambling', async () => {
+  const { runCognitiveUxAudit } = await import('../tools/audit/cognitive_ux_auditor.mjs');
+  const { evaluateCybersecurityTrafficLight } = await import('../tools/cto_command_center.mjs');
+
+  // Temporary education fixture with paid-entry wording (gambling-only rule must NOT fire) but missing video storage notice
+  const tmpEdu = fs.mkdtempSync(path.join(os.tmpdir(), 'wf-cog-edu-'));
+  try {
+    fs.mkdirSync(path.join(tmpEdu, 'src', 'pages'), { recursive: true });
+    fs.writeFileSync(
+      path.join(tmpEdu, 'src', 'pages', 'index.astro'),
+      '<main><h1>Curso Abierto</h1><p>No existe entrada paga en eventos externos.</p><div data-video-facade="youtube-nocookie.com"></div></main>',
+      'utf8'
+    );
+    const auditMissingNotice = runCognitiveUxAudit({
+      id: 'tmp-edu',
+      projectRoot: tmpEdu,
+      complianceProfile: 'education',
+      paths: { entryHtml: 'src/pages/index.astro' }
+    });
+    assert.equal(
+      auditMissingNotice.findings.some((f) => f.type === 'PAID_ENTRY_VIOLATION'),
+      false,
+      'Gambling PAID_ENTRY_VIOLATION must not fire in education profile'
+    );
+    assert.equal(
+      auditMissingNotice.findings.some((f) => f.type === 'MISSING_VIDEO_LOCAL_STORAGE_NOTICE'),
+      true,
+      'Education profile must require local-storage notice next to external video facade'
+    );
+  } finally {
+    fs.rmSync(tmpEdu, { recursive: true, force: true });
+  }
+
+  const cyberLight = evaluateCybersecurityTrafficLight('academia-ia');
+  assert.equal(cyberLight.score, 100);
+  assert.equal(cyberLight.color, 'VERDE');
+});
+
 
 
 

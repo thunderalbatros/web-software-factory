@@ -1,0 +1,171 @@
+---
+import '../styles/editorial-education.css';
+
+const {
+  title = 'Academia IA — Educación Abierta en Inteligencia Artificial',
+  description = 'Plataforma educativa abierta, minimalista e inclusiva en español sobre tecnologías emergentes e inteligencia artificial (UNESCO Adquirir, Profundizar y Crear).',
+  levelNumber = 0,
+  canonicalPath = '/'
+} = Astro.props;
+
+const canonicalUrl = `https://academia-ia.pages.dev${canonicalPath}`;
+---
+<!doctype html>
+<html lang="es" data-theme="light" data-level={levelNumber > 0 ? String(levelNumber) : undefined}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <script is:inline>
+      (function () {
+        window.__cspViolations = [];
+        document.addEventListener('securitypolicyviolation', function (ev) {
+          window.__cspViolations.push({
+            violatedDirective: ev.violatedDirective,
+            effectiveDirective: ev.effectiveDirective,
+            blockedURI: ev.blockedURI,
+            disposition: ev.disposition
+          });
+        });
+        try {
+          var saved = window.localStorage.getItem('academia_ia_theme');
+          if (saved === 'dark' || saved === 'light') {
+            document.documentElement.setAttribute('data-theme', saved);
+          }
+        } catch (e) {}
+        if (window.trustedTypes && window.trustedTypes.createPolicy) {
+          var sanitizeHtmlFallback = function (input) {
+            return String(input || '')
+              .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '')
+              .replace(/\son[a-z]+\s*=/gi, ' data-blocked-handler=');
+          };
+          var allowSameOriginUrl = function (input) {
+            var resolved = new URL(String(input || ''), window.location.origin);
+            if (resolved.origin !== window.location.origin) {
+              throw new TypeError('Blocked cross-origin script URL under Trusted Types');
+            }
+            return resolved.href;
+          };
+          try {
+            if (!window.trustedTypes.defaultPolicy) {
+              window.trustedTypes.createPolicy('default', {
+                createHTML: sanitizeHtmlFallback,
+                createScriptURL: allowSameOriginUrl,
+                createScript: function () {
+                  throw new TypeError('Dynamic string script evaluation is forbidden');
+                }
+              });
+            }
+          } catch (e) {}
+          try {
+            window.trustedTypes.createPolicy('astro-island', {
+              createHTML: sanitizeHtmlFallback,
+              createScriptURL: allowSameOriginUrl
+            });
+          } catch (e) {}
+        }
+      })();
+    </script>
+    <script type="application/ld+json" is:inline>
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "EducationalOrganization",
+            "@id": "https://academia-ia.pages.dev/#organization",
+            "name": "Academia IA",
+            "url": "https://academia-ia.pages.dev/",
+            "inLanguage": "es",
+            "isAccessibleForFree": true,
+            "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+          },
+          {
+            "@type": "Course",
+            "name": "Academia IA — Recorrido UNESCO Adquirir, Profundizar y Crear",
+            "description": "Plataforma educativa abierta en español sobre inteligencia artificial y tecnologías emergentes sin muros de pago.",
+            "provider": { "@id": "https://academia-ia.pages.dev/#organization" },
+            "inLanguage": "es",
+            "isAccessibleForFree": true
+          }
+        ]
+      }
+    </script>
+    <script type="speculationrules" is:inline>
+      {"prerender":[{"where":{"href_matches":"/niveles/*"},"eagerness":"moderate"}]}
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#contenido-principal">Saltar al contenido de lectura</a>
+
+    <header class="editorial-header">
+      <div class="header-inner">
+        <a class="brand-link" href="/">
+          <img class="brand-mark" src="/favicon.svg" width="28" height="28" alt="" />
+          <span>Academia IA</span>
+        </a>
+
+        <nav class="editorial-nav" aria-label="Niveles pedagógicos UNESCO">
+          <a class="nav-link" href="/" aria-current={canonicalPath === '/' ? 'page' : undefined}>
+            Inicio
+          </a>
+          <a
+            class="nav-link"
+            data-nav-level="1"
+            href="/niveles/principiante/"
+            aria-current={canonicalPath === '/niveles/principiante/' ? 'page' : undefined}
+          >
+            1 · Principiante
+          </a>
+          <a
+            class="nav-link"
+            data-nav-level="2"
+            href="/niveles/intermedio/"
+            aria-current={canonicalPath === '/niveles/intermedio/' ? 'page' : undefined}
+          >
+            2 · Intermedio
+          </a>
+          <a
+            class="nav-link"
+            data-nav-level="3"
+            href="/niveles/avanzado/"
+            aria-current={canonicalPath === '/niveles/avanzado/' ? 'page' : undefined}
+          >
+            3 · Avanzado
+          </a>
+          <button
+            type="button"
+            class="theme-toggle-btn"
+            data-theme-toggle
+            aria-pressed="false"
+            aria-label="Alternar entre tema claro y tema oscuro"
+          >
+            <span data-theme-label>Tema: Claro</span>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main id="contenido-principal" class="editorial-main" data-reading-surface="true" data-pagefind-body>
+      <div class="prose-editorial">
+        <slot />
+      </div>
+    </main>
+
+    <footer class="editorial-footer">
+      <div class="footer-inner">
+        <p>
+          <strong>Academia IA</strong> · Educación abierta en español sin muros de pago ni cuentas obligatorias. Progreso local en tu propio navegador conforme a la Ley 25.326 y accesibilidad WCAG 2.2 AA conforme a la Ley 26.653.
+        </p>
+        <p>
+          Código bajo licencia <code>MIT</code> · Contenido educativo bajo licencia <code>CC-BY-NC-SA-4.0</code> (piezas derivadas <code>CC-BY-SA-4.0</code> conservan su bloque SPDX propio). Costo de servidor en producción: <span class="tabular-metric">$0.00 USD</span>.
+        </p>
+      </div>
+    </footer>
+
+    <script src="../scripts/editorial-client.mjs"></script>
+  </body>
+</html>

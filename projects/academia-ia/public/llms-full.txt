@@ -1,0 +1,126 @@
+# Academia IA
+
+> Plataforma educativa abierta, minimalista e inclusiva en español sobre inteligencia artificial y tecnologías emergentes (UNESCO Adquirir -> Profundizar -> Crear). Costo de servidor $0.00 USD, privacidad local-first (Ley 25.326) y accesibilidad WCAG 2.2 AA (Ley 26.653).
+
+## Rutas Pedagógicas Principales
+- [Inicio](https://academia-ia.pages.dev/): Índice editorial de 3 niveles UNESCO, buscador local Pagefind y selector de arquetipos técnicos sin rastreo.
+- [Nivel 1 · Principiante](https://academia-ia.pages.dev/niveles/principiante/): Uso cotidiano y en oficios reales sin código; toda herramienta paga incluye alternativa gratuita sin tarjeta.
+- [Nivel 2 · Intermedio](https://academia-ia.pages.dev/niveles/intermedio/): Búsqueda aumentada local (RAG) con SQLite FTS5, vectores abiertos y ecuaciones MathML (Temml 0 KB JS).
+- [Nivel 3 · Avanzado](https://academia-ia.pages.dev/niveles/avanzado/): Sistemas compuestos seguros, CSP por hashes SHA-256, Trusted Types, sandboxes opacos y Software Factories.
+- [Manifiesto Completo para Agentes](/llms-full.txt): Contratos técnicos, licencias abiertas (MIT / CC-BY-NC-SA-4.0) e invariantes de seguridad.
+
+---
+
+# PRD_LEAN.md — Academia IA (Borrador Gate #1)
+
+> **Proyecto:** `academia-ia` · **Perfil de Cumplimiento:** `education` · **Modo de Superficie:** `Read`
+> **Estado de Compuerta:** `DRAFT_PENDING_CTO_GATE1` (`approvedBy: null` — pendiente de firma humana del CTO)
+> **Fuente Maestra:** Derivado 1:1 de `docs/PRD_ACADEMIA_IA_MASTER.md` y `data/academy/project_charter.json`
+
+---
+
+## 1. Propósito e Identidad del Producto
+
+Construir la plataforma educativa abierta en español más completa, dinámica, minimalista e inclusiva sobre tecnologías emergentes e inteligencia artificial, estructurada en tres niveles alineados con el marco de competencias **UNESCO** (*Adquirir → Profundizar → Crear*) y con la alfabetización en IA de la **OCDE/UE**:
+
+1. **Nivel 1 — Principiante (*Adquirir*):** Panorama claro y aplicable de herramientas de IA actuales (gratuitas y pagas) para la vida cotidiana, oficios y profesiones reales, **sin código de programación** (`programming_code_allowed: false`). Toda herramienta paga exige mostrar una alternativa gratuita verificada sin tarjeta (`free_no_card` u `open_source_local`).
+2. **Nivel 2 — Intermedio (*Profundizar*):** Construcción práctica de productos, bots, flujos automatizados y RAG sobre bases de datos con prioridad **Open-Source y costo \$0**, adaptado a los recursos técnicos de cada estudiante mediante plantillas locales (`academy_learner_archetypes`).
+3. **Nivel 3 — Avanzado (*Crear*):** Diseño de sistemas compuestos de IA, ciberseguridad aplicada a modelos generativos y *Software Factories* gobernadas por pruebas deterministas.
+
+---
+
+## 2. Invariantes de Producto y Gobernanza (`[INV-01]` a `[INV-07]`)
+
+- **`[INV-01]` Acceso Abierto real y Costo de Servidor \$0.00 USD:** Sitio 100 % estático sobre **Cloudflare Workers Static Assets** (`commercial_mode: false`, financiamiento exclusivo por donaciones voluntarias sin beneficios exclusivos). Prohibidos muros de pago, planes Pro, publicidad o patrocinios comerciales.
+- **`[INV-02]` Privacidad Local-First (Ley 25.326):** Cero inicio de sesión obligatorio, cero telemetría invasiva y cero bases de datos de alumnos en servidores. Todo el progreso, repaso espaciado (`ts-fsrs`) y selección de arquetipo técnico vive en el navegador (`IndexedDB` vía `Dexie` / `localStorage`) con exportación abierta.
+- **`[INV-03]` Inclusión y Accesibilidad Web (Ley 26.653 / WCAG 2.2 AA+):** Contraste perceptual APCA `Lc >= 85`, navegación completa por teclado, objetivos táctiles `>= 48x48px`, tema claro/oscuro accesible, respeto estricto de `prefers-reduced-motion: reduce` y síntesis textual verificada para cada video.
+- **`[INV-04]` Carga Cognitiva Controlada y Español Neutro (`readability_es.mjs`):** Párrafos de hasta `110` palabras, máximo `3` conceptos nuevos por lección, ancho de lectura editorial entre `60ch` y `70ch` (`65ch` canónico) y pisos INFLESZ verificados por nivel (`>= 65` Principiante, `>= 55` Intermedio, `>= 45` Avanzado).
+- **`[INV-05]` Triangulación Audiovisual Limpia y Aviso de Privacidad:** Entre `2` y `3` videos complementarios por lección exclusivamente desde orígenes permitidos (`youtube-nocookie.com`, `archive.org`, `commons.wikimedia.org`, `upload.wikimedia.org`) mediante fachada diferida con aviso breve de almacenamiento local antes de cargar el reproductor externo.
+- **`[INV-06]` Soberanía Tecnológica y Alternativa Gratuita Obligatoria:** Toda referencia a una herramienta comercial (`paid_pro_reference` o `freemium_capped`) debe vincular una alternativa verificada en `free_no_card` u `open_source_local`.
+- **`[INV-07]` Trazabilidad de Licencias (`MIT` código / `CC-BY-NC-SA-4.0` contenido):** Cumplimiento estricto de `inbound_license_policy` (`CC-BY-SA-4.0` conserva su bloque SPDX propio; fuentes `CLEAN_ROOM_ONLY` solo admiten hechos verificados con redacción 100 % original).
+
+---
+
+## 3. Frontera de Alcance (`Explicit Non-Goals`)
+
+Quedan explícitamente **FUERA** del alcance y prohibidos por contrato:
+- Tablas de precios SaaS (`#pricing`), carritos de compra, muros de pago, cupones de escasez o confirm-shaming.
+- Mecánicas adictivas: rachas punitivas (*streaks*), tablas de clasificación públicas (*leaderboards*), temporizadores de urgencia o recompensas variables.
+- Uso de `@astrojs/starlight` (se exige layout editorial propio y minimalista en Astro `7.4.11`).
+- Shaders WebGPU 3D decorativos, materiales PBR de relleno o audio de fondo automático en modo `Read`.
+- Generadores externos de imágenes al vuelo (como Pollinations) o carga de scripts de terceros fuera de `'self'`.
+- Almacenamiento en servidor de claves API del estudiante: cualquier modo BYOK opcional opera únicamente en memoria/local dentro de un `<iframe sandbox="allow-scripts">` de origen opaco.
+
+---
+
+## 4. Criterios de Éxito Medibles
+
+- `0` violaciones WCAG 2.2 AA en `@axe-core/playwright` (tanto en tema claro como en tema oscuro).
+- `0` errores de consola y `0` violaciones de `Content-Security-Policy` o `Trusted Types` en runtime Chromium.
+- `LCP <= 1800 ms`, `CLS = 0.000` y `jsHeapUsedMB < 64 MB` sobre el build estático de producción.
+- Aprobación en verde de `security_gate.mjs`, `ryux_design_gate.mjs` (`Read`), `cognitive_ux_auditor.mjs` (`education`) y `floor_and_aeo_guard.mjs`.
+
+---
+
+# SPEC.md — Especificación Técnica de Academia IA (Borrador Gate #2)
+
+> **Proyecto:** `academia-ia` · **Stack:** `astro-edge` (`astro@7.4.11` exacto) · **Perfil:** `education` (`Surface Mode: Read`)
+> **Estado de Compuerta:** `DRAFT_PENDING_CTO_GATE2` (`approvedBy: null` — pendiente de firma humana del CTO)
+> **Entradas Contractuales:** `docs/PRD_ACADEMIA_IA_MASTER.md`, `data/academy/project_charter.json`, `PRD_LEAN.md` y `BRAND_IDENTITY_LOCK.json`
+
+---
+
+## 1. Arquitectura Estática de Costo Servidor \$0.00 USD
+
+- **Motor de Compilación:** `astro@7.4.11` (`output: 'static'`, `vite.build.sourcemap: false`, `build.inlineStylesheets: 'never'`) sin `@astrojs/starlight` y sin `worker/index.js` de formularios.
+- **Integraciones Oficiales Pineadas:**
+  - `astro-expressive-code@0.44.3` (bloques de código accesibles en niveles Intermedio y Avanzado, cero bloques de código en Principiante).
+  - `@astrojs/mdx@8.1.6` + plugin determinista con `temml@0.14.0` para compilar fórmulas LaTeX a **MathML nativo (`0 KB` de JS en cliente)**.
+  - `@vite-pwa/astro@2.0.2` para lectura offline de lecciones y manifiesto web limpio.
+  - Post-build determinista: índice de búsqueda estático con `pagefind@1.6.0`, generación de `sitemap.xml`, `llms.txt` + `llms-full.txt`, extracción de atributos `style="..."` a hoja CSS cacheable y sellado de `public/_headers` + `dist/_headers` mediante `tools/lib/csp_builder.mjs`.
+- **Datos Autónomos en el Proyecto:** Copia local sincronizada en `projects/academia-ia/data/academy/{project_charter,archetypes,tracks,sources,videos,tools}.json` bajo esquema relacional v2 validado con `Valibot`.
+
+---
+
+## 2. Seguridad Zero-Trust: CSP Única con Hashes + Trusted Types + Sandbox Opaco
+
+- **Fuente Única de CSP (`tools/lib/csp_builder.mjs`):**
+  - `default-src 'self'`
+  - `script-src 'self' 'wasm-unsafe-eval' 'inline-speculation-rules' 'sha256-...'` (hashes reales calculados sobre `dist/`; prohibido `'unsafe-inline'` y prohibido `'unsafe-eval'`)
+  - `style-src 'self' 'sha256-...'` (sin `'unsafe-inline'`)
+  - `frame-src 'self' https://www.youtube-nocookie.com https://archive.org`
+  - `media-src 'self' https://archive.org https://upload.wikimedia.org https://commons.wikimedia.org`
+  - `img-src 'self' data: blob: https://i.ytimg.com https://upload.wikimedia.org`
+  - `connect-src 'self'` · `object-src 'none'` · `base-uri 'self'` · `frame-ancestors 'none'`
+  - `require-trusted-types-for 'script'` · `trusted-types default dompurify astro-island`
+- **Aislamiento del Tutor Socrático / BYOK (`src/lib/socratic-tutor-sandbox.mjs`):**
+  - El contenedor del tutor se ejecuta en `<iframe sandbox="allow-scripts">` (**jamás** `allow-same-origin`), operando con `window.origin === "null"` y sin acceso a `IndexedDB`, `localStorage`, `cookies` ni DOM de la página principal.
+  - Comunicación exclusivamente por `postMessage` validada con esquemas estrictos `Valibot` (`TutorOutboundPromptSchema` / `TutorInboundMessageSchema`).
+  - Todo fragmento renderizado en el documento principal atraviesa `DOMPurify.sanitize(..., { RETURN_TRUSTED_TYPE: true })` en la misma línea del sumidero DOM.
+
+---
+
+## 3. Diseño Editorial en Modo `Read` (Cero Relleno 3D/Sonoro)
+
+- **Columna de Lectura (`65ch`):** Ancho de línea estricto entre `60ch` y `70ch`, `line-height: 1.72`, escala tipográfica fluida con `clamp()` y jerarquía semántica limpia `h1 -> h2 -> h3`.
+- **Sistema Cromático OKLCH 90/8/2:** `90 %` superficie papel/pizarra calmada, `8 %` bordes capilares y superficies elevadas, `2 %` acentos semánticos de nivel (`--color-level-acquire`, `--color-level-deepen`, `--color-level-create`) verificados en modo claro y modo oscuro con contraste APCA `Lc >= 85`.
+- **Precisión Numérica y Movimiento Calmado:** `font-variant-numeric: tabular-nums` en contadores de tokens, tiempos `MM:SS` y métricas; `@view-transition { navigation: auto; }` discreto y anulación total de animaciones bajo `@media (prefers-reduced-motion: reduce)`.
+
+---
+
+## 4. Matriz de Requisitos Ejecutables (`[REQ-01]` a `[REQ-12]`)
+
+| ID | Requisito Técnico | Invariante Origen | Verificación Determinista |
+| :--- | :--- | :--- | :--- |
+| `[REQ-01]` | Build 100 % estático en Astro `7.4.11` (`sourcemap: false`, sin `#pricing` ni Worker de leads) | `[INV-01]` | `build_dist.mjs` + `security_gate.mjs` |
+| `[REQ-02]` | Almacenamiento local-first (`Dexie`/`localStorage`) sin login ni PII en servidor | `[INV-02]` | Inspección AST + `cognitive_ux_auditor.mjs` |
+| `[REQ-03]` | Piso WCAG 2.2 AA (`0` violaciones `@axe-core/playwright` en tema claro y oscuro) | `[INV-03]` | `certify_academia_runtime.mjs` |
+| `[REQ-04]` | Columna `60ch–70ch` (`65ch`), `clamp()`, `tabular-nums` y jerarquía `h1->h2->h3` | `[INV-03]`, `[INV-04]` | `ryux_design_gate.mjs` (`Read`) |
+| `[REQ-05]` | Prosa en español neutro (`tú`), bloques `<= 110` palabras e INFLESZ por nivel | `[INV-04]` | `readability_es.mjs` + `ryux_design_gate.mjs` |
+| `[REQ-06]` | Fachada multi-video (`youtube-nocookie` + OER) con aviso local junto al reproductor y síntesis textual | `[INV-03]`, `[INV-05]` | `cognitive_ux_auditor.mjs` + Playwright |
+| `[REQ-07]` | Micro-explorable real de tokenización BPE con `js-tiktoken` en cliente (`0` llamadas externas) | `[INV-01]`, `[INV-04]` | Playwright runtime interaction |
+| `[REQ-08]` | Ecuaciones compiladas en build con `temml` a MathML nativo (`0 KB` JS extra) | `[INV-01]`, `[INV-03]` | Inspección DOM `<math>` en niveles 2 y 3 |
+| `[REQ-09]` | Tutor socrático aislado en `<iframe sandbox="allow-scripts">` + `Valibot` + `DOMPurify` TrustedHTML | `[INV-02]` | Playwright runtime (`origin === 'null'`) |
+| `[REQ-10]` | CSP estricta con hashes `sha256-...` reales + `require-trusted-types-for 'script'` (`0` violaciones) | `[INV-01]`, `[INV-02]` | `csp_builder.mjs` + `securitypolicyviolation` listener |
+| `[REQ-11]` | 3 páginas semilla funcionales (`/niveles/principiante/`, `/niveles/intermedio/`, `/niveles/avanzado/`) leyendo `data/academy/*.json` | `[INV-06]`, `[INV-07]` | Build + navegación Playwright |
+| `[REQ-12]` | Presupuesto de rendimiento: `LCP <= 1800 ms`, `CLS = 0.000`, `jsHeapUsedMB < 64 MB` + `pagefind`, `sitemap.xml` y `llms.txt` | `[INV-01]`, `[INV-03]` | `certify_academia_runtime.mjs` + `floor_and_aeo_guard.mjs` |

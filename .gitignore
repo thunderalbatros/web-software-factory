@@ -71,6 +71,7 @@ desktop.ini
 
 # Local intelligence & RAG index caches
 .cache/
+.astro/
 
 # SQLite runtime databases (contain user data - never version them)
 core/*.db

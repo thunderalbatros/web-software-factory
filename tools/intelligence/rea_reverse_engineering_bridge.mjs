@@ -325,20 +325,359 @@ export function runReaBridgeSelfTest() {
     `  [${flow3Ok ? 'PASS' : 'FAIL'}] 4. Flow 3 (audit-mobile-apk-package -> Secrets: 0, HTTPS Scheme: ${flow3.checks.httpsSchemeEnforced})`
   );
 
-  const allPassed = reg.passed && flow1Ok && flow2Ok && flow3Ok;
+  const flow4 = extractCleanRoomUxMetrics({
+    html: '<header><h1>Texto propietario protegido © MarcaAjena 2026</h1></header><main><article><img src="https://cdn.marca-ajena.example/hero-copyright.jpg" alt="Foto exclusiva"><svg><path d="M10 10 H 90 V 90 H 10 Z"/></svg><p>Párrafo editorial exclusivo que jamás debe copiarse ni retenerse.</p></article></main>',
+    css: ':root { --bg: oklch(0.98 0.005 250); --ink: oklch(0.20 0.015 250); } [data-theme="dark"] { --bg: oklch(0.15 0.01 250); } main article { max-width: 65ch; font-family: "ProprietarySerifPro", Georgia, serif; font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem); line-height: 1.68; font-variant-numeric: tabular-nums; display: grid; transition: opacity 180ms cubic-bezier(0.22, 1, 0.36, 1), transform 0.24s ease-out; background-image: url("https://cdn.marca-ajena.example/bg-secret.webp"); } @media (prefers-reduced-motion: reduce) { main article { transition: none; } }'
+  });
+  const serializedFlow4 = JSON.stringify(flow4);
+  const flow4Ok =
+    flow4.ok &&
+    flow4.mode === 'clean_room_ux_metrics' &&
+    !serializedFlow4.includes('MarcaAjena') &&
+    !serializedFlow4.includes('hero-copyright.jpg') &&
+    !serializedFlow4.includes('ProprietarySerifPro') &&
+    flow4.measured_evidence.typography.chMeasures.includes(65) &&
+    flow4.design_inference.inferredSurfaceMode === 'Read';
+  console.log(
+    `  [${flow4Ok ? 'PASS' : 'FAIL'}] 5. Flow 4 (clean_room_ux_metrics -> measured_evidence vs design_inference, 0 chars copyright retained)`
+  );
+
+  const allPassed = reg.passed && flow1Ok && flow2Ok && flow3Ok && flow4Ok;
   console.log('--------------------------------------------------------------------');
-  console.log(`🏆 MORLUTO/REA BRIDGE SELF-TEST: ${allPassed ? 'PASSED (4/4 Checks Green)' : 'FAILED'}`);
+  console.log(`🏆 MORLUTO/REA BRIDGE SELF-TEST: ${allPassed ? 'PASSED (5/5 Checks Green)' : 'FAILED'}`);
   console.log('====================================================================\n');
 
   return { passed: allPassed };
 }
 
+/**
+ * Flow 4 (`clean_room_ux_metrics` — F-16):
+ * Extracts strictly structural CSS/typographic/layout/transition metrics while purging 100%
+ * of copyrighted prose text, alt/title copy, proprietary font names, SVG vector paths, and asset URLs.
+ * Separates output strictly into `measured_evidence` (deterministic measurements) vs.
+ * `design_inference` (explicitly tagged design hypotheses).
+ */
+export function extractCleanRoomUxMetrics(targetOrSource = '', options = {}) {
+  let rawHtmlCombined = '';
+  let rawCssCombined = '';
+  let sourceKind = 'inline_buffer';
+
+  if (targetOrSource && typeof targetOrSource === 'object' && !Array.isArray(targetOrSource)) {
+    rawHtmlCombined = String(targetOrSource.html || '');
+    rawCssCombined = String(targetOrSource.css || '');
+  } else {
+    const rawTarget = String(targetOrSource || '').trim();
+    if (rawTarget) {
+      const resolved = path.resolve(FACTORY_ROOT, rawTarget);
+      if (fs.existsSync(resolved)) {
+        sourceKind = 'filesystem_readonly';
+        const stat = fs.statSync(resolved);
+        const files = [];
+        if (stat.isDirectory()) {
+          const walk = (dir, depth = 0) => {
+            if (depth > 4) return;
+            for (const ent of fs.readdirSync(dir, { withFileTypes: true })) {
+              if (['node_modules', '.git', 'dist', '.cache'].includes(ent.name)) continue;
+              const fp = path.join(dir, ent.name);
+              if (ent.isDirectory()) walk(fp, depth + 1);
+              else if (/\.(?:html|astro|css)$/i.test(ent.name)) files.push(fp);
+            }
+          };
+          walk(resolved);
+        } else {
+          files.push(resolved);
+        }
+
+        for (const f of files.slice(0, 40)) {
+          const content = fs.readFileSync(f, 'utf8');
+          if (f.toLowerCase().endsWith('.css')) {
+            rawCssCombined += `\n${content}`;
+          } else {
+            rawHtmlCombined += `\n${content}`;
+            for (const m of content.matchAll(/<style\b[^>]*>([\s\S]*?)<\/style>/gi)) {
+              rawCssCombined += `\n${m[1]}`;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // 1. Purge copyrighted text nodes, SVG vector paths, and external/local media URLs
+  let purgedTextNodesCount = 0;
+  let purgedAssetUrlsCount = 0;
+  let purgedSvgPathsCount = 0;
+
+  // Strip Astro frontmatter (`--- ... ---`), comments, scripts, styles from HTML before counting landmarks
+  const htmlNoFrontmatter = rawHtmlCombined.replace(/^---[\s\S]*?---/m, '');
+  const htmlWithoutScripts = htmlNoFrontmatter
+    .replace(/<!--[\s\S]*?-->/g, '')
+    .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '')
+    .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, '');
+
+  const strippedSvgHtml = htmlWithoutScripts.replace(/\bd\s*=\s*(?:"[^"]+"|'[^']+')/gi, () => {
+    purgedSvgPathsCount++;
+    return '';
+  });
+
+  const strippedUrlHtml = strippedSvgHtml.replace(
+    /\b(?:src|href|poster|srcset)\s*=\s*(?:"([^"]+)"|'([^']+)')/gi,
+    (_, dq, sq) => {
+      const val = (dq ?? sq ?? '').trim();
+      if (val && !val.startsWith('#')) purgedAssetUrlsCount++;
+      return '';
+    }
+  );
+
+  // Strip all human text nodes (`>text<`) and prose attributes (`alt`, `title`, `aria-label`, `placeholder`, `content`)
+  const skeletonHtml = strippedUrlHtml
+    .replace(/\b(?:alt|title|aria-label|placeholder|content)\s*=\s*(?:"[^"]*"|'[^']*')/gi, () => {
+      purgedTextNodesCount++;
+      return '';
+    })
+    .replace(/>([^<]+)</g, (_, textNode) => {
+      if (textNode && textNode.trim().length > 0) purgedTextNodesCount++;
+      return '><';
+    });
+
+  // Purge CSS comments, @font-face blocks, url(...) assets, and content: "..." strings
+  const cleanCss = rawCssCombined
+    .replace(/\/\*[\s\S]*?\*\//g, '')
+    .replace(/@font-face\s*\{[^}]*\}/gi, () => {
+      purgedAssetUrlsCount++;
+      return '';
+    })
+    .replace(/url\(\s*(['"]?)([^'")]+)\1\s*\)/gi, () => {
+      purgedAssetUrlsCount++;
+      return 'url(purged)';
+    })
+    .replace(/content\s*:\s*(?:"[^"]*"|'[^']*')/gi, () => {
+      purgedTextNodesCount++;
+      return 'content: ""';
+    });
+
+  // 2. Extract deterministic `measured_evidence`
+  const landmarkTags = ['header', 'nav', 'main', 'article', 'section', 'aside', 'footer', 'dialog', 'figure'];
+  const semanticLandmarkCounts = {};
+  for (const tag of landmarkTags) {
+    const matches = skeletonHtml.match(new RegExp(`<${tag}\\b`, 'gi'));
+    if (matches && matches.length > 0) {
+      semanticLandmarkCounts[tag] = matches.length;
+    }
+  }
+
+  const headingLevelsPresent = [...new Set((skeletonHtml.match(/<h([1-6])\b/gi) || []).map((h) => h.slice(1).toLowerCase()))].sort();
+
+  const chMeasures = [...new Set([...cleanCss.matchAll(/\b(\d+(?:\.\d+)?)ch\b/gi)].map((m) => Number(m[1])))]
+    .filter((n) => Number.isFinite(n) && n > 0)
+    .sort((a, b) => a - b);
+
+  const lineHeights = [
+    ...new Set(
+      [...cleanCss.matchAll(/line-height\s*:\s*(\d+(?:\.\d+)?)(?:\s*[;}]|$)/gim)]
+        .map((m) => Number(m[1]))
+        .filter((n) => n >= 0.8 && n <= 3.0)
+    )
+  ].sort((a, b) => a - b);
+
+  const remSizes = [...cleanCss.matchAll(/font-size\s*:\s*[^;{}]*?(\d+(?:\.\d+)?)rem/gi)]
+    .map((m) => Number(m[1]))
+    .filter((n) => Number.isFinite(n) && n > 0)
+    .sort((a, b) => a - b);
+
+  const GENERIC_FAMILIES = new Set(['sans-serif', 'serif', 'monospace', 'system-ui', 'ui-sans-serif', 'ui-serif', 'ui-monospace']);
+  const genericFontFamilies = new Set();
+  for (const fm of cleanCss.matchAll(/font-family\s*:\s*([^;{}]+)/gi)) {
+    const tokens = fm[1]
+      .split(',')
+      .map((t) => t.trim().replace(/^['"]|['"]$/g, '').toLowerCase());
+    for (const tok of tokens) {
+      if (GENERIC_FAMILIES.has(tok)) genericFontFamilies.add(tok);
+    }
+  }
+
+  const clampDeclarationsCount = (cleanCss.match(/\bclamp\s*\(/gi) || []).length;
+  const tabularNumsDetected = /\btabular-nums\b/i.test(cleanCss);
+  const gridDeclarationsCount = (cleanCss.match(/display\s*:\s*(?:inline-)?grid\b/gi) || []).length;
+  const flexDeclarationsCount = (cleanCss.match(/display\s*:\s*(?:inline-)?flex\b/gi) || []).length;
+  const maxContainerWidths = [
+    ...new Set(
+      [...cleanCss.matchAll(/max-width\s*:\s*min\([^)]+\)|max-width\s*:\s*(\d+(?:\.\d+)?(?:ch|rem|px|%))/gi)].map((m) =>
+        m[0].replace(/^max-width\s*:\s*/i, '').trim()
+      )
+    )
+  ].slice(0, 12);
+
+  const oklchTokenCount = (cleanCss.match(/\boklch\s*\(/gi) || []).length;
+  const hexColorCount = (cleanCss.match(/#[0-9a-fA-F]{3,8}\b/g) || []).length;
+  const lightDarkThemeSelectorsDetected =
+    /\[data-theme\s*=\s*["']?(?:dark|light)["']?\]|prefers-color-scheme\s*:\s*(?:dark|light)|\blight-dark\s*\(/i.test(cleanCss);
+
+  // Motion & Transition timings (normalized to milliseconds)
+  const transitionDurationsMs = [];
+  const easingCurves = new Set();
+  let compositeOnlyPropertiesCount = 0;
+  let layoutThrashingPropertiesCount = 0;
+
+  for (const tm of cleanCss.matchAll(/transition(?:-duration|-timing-function|-property)?\s*:\s*([^;{}]+)/gi)) {
+    const val = tm[1];
+    for (const dm of val.matchAll(/(\d+(?:\.\d+)?)(ms|s)\b/gi)) {
+      const num = Number(dm[1]);
+      const unit = dm[2].toLowerCase();
+      const ms = unit === 's' ? Math.round(num * 1000) : Math.round(num);
+      if (ms > 0) transitionDurationsMs.push(ms);
+    }
+    for (const em of val.matchAll(/cubic-bezier\(\s*-?\d+(?:\.\d+)?\s*,\s*-?\d+(?:\.\d+)?\s*,\s*-?\d+(?:\.\d+)?\s*,\s*-?\d+(?:\.\d+)?\s*\)|\b(?:ease-in-out|ease-out|ease-in|linear)\b/gi)) {
+      easingCurves.add(em[0].replace(/\s+/g, ''));
+    }
+    if (/\b(?:transform|opacity)\b/i.test(val)) compositeOnlyPropertiesCount++;
+    if (/\b(?:top|left|right|bottom|width|height|margin|padding)\b/i.test(val)) layoutThrashingPropertiesCount++;
+  }
+
+  const uniqueDurationsMs = [...new Set(transitionDurationsMs)].sort((a, b) => a - b);
+  const prefersReducedMotionQueriesCount = (cleanCss.match(/prefers-reduced-motion\s*:\s*reduce/gi) || []).length;
+
+  const measured_evidence = {
+    sourceKind,
+    typography: {
+      clampDeclarationsCount,
+      chMeasures,
+      lineHeights,
+      fontSizeRemRange: remSizes.length > 0 ? [remSizes[0], remSizes[remSizes.length - 1]] : null,
+      genericFontFamilies: [...genericFontFamilies].sort(),
+      tabularNumsDetected
+    },
+    layout: {
+      semanticLandmarkCounts,
+      headingLevelsPresent,
+      gridDeclarationsCount,
+      flexDeclarationsCount,
+      maxContainerWidths
+    },
+    chromaticStructure: {
+      oklchTokenCount,
+      hexColorCount,
+      lightDarkThemeSelectorsDetected
+    },
+    motionTimings: {
+      transitionDurationsMs: uniqueDurationsMs,
+      easingCurves: [...easingCurves].sort(),
+      compositeOnlyPropertiesCount,
+      layoutThrashingPropertiesCount,
+      prefersReducedMotionQueriesCount
+    }
+  };
+
+  // 3. Derive separated `design_inference` (never mixed into `measured_evidence`)
+  const hasEditorialChMeasure = chMeasures.some((c) => c >= 55 && c <= 75);
+  const hasComfortableReadingLeading = lineHeights.some((lh) => lh >= 1.55 && lh <= 1.85);
+  let inferredSurfaceMode = 'Persuade';
+  if (hasEditorialChMeasure && (hasComfortableReadingLeading || Boolean(semanticLandmarkCounts.article))) {
+    inferredSurfaceMode = 'Read';
+  } else if (tabularNumsDetected && gridDeclarationsCount >= 3 && !semanticLandmarkCounts.article) {
+    inferredSurfaceMode = 'Operate';
+  }
+
+  const readingErgonomicsAssessment = hasEditorialChMeasure
+    ? 'optimal-editorial-60-70ch'
+    : chMeasures.length > 0
+      ? 'custom-character-measure'
+      : 'unconstrained-or-viewport-fluid';
+
+  const motionDisciplineAssessment =
+    layoutThrashingPropertiesCount > 0
+      ? 'mixed-layout-transitions'
+      : compositeOnlyPropertiesCount > 0
+        ? 'compositor-60fps-disciplined'
+        : 'static-minimal';
+
+  const design_inference = {
+    epistemicStatus: 'DESIGN_INFERENCE_HYPOTHESIS',
+    inferredSurfaceMode,
+    readingErgonomicsAssessment,
+    motionDisciplineAssessment,
+    accessibilityPostureHypothesis:
+      prefersReducedMotionQueriesCount > 0 && lightDarkThemeSelectorsDetected
+        ? 'inclusive-dual-theme-with-reduced-motion'
+        : prefersReducedMotionQueriesCount > 0
+          ? 'reduced-motion-aware'
+          : 'baseline-unspecified',
+    targetOptionLabel: options.referenceLabel ? 'clean-room-structural-benchmark' : 'anonymous-structural-sample'
+  };
+
+  return {
+    ok: true,
+    mode: 'clean_room_ux_metrics',
+    cleanRoomCompliant: true,
+    copyright_hygiene: {
+      purgedTextNodesCount,
+      purgedAssetUrlsCount,
+      purgedSvgPathsCount,
+      verbatimTextRetainedChars: 0,
+      externalAssetUrlsRetained: 0
+    },
+    measured_evidence,
+    design_inference
+  };
+}
+
+function startCompactMcpStdioServer() {
+  process.stdin.setEncoding('utf8');
+  let buffer = '';
+  process.stdin.on('data', (chunk) => {
+    buffer += chunk;
+    const lines = buffer.split(/\r?\n/);
+    buffer = lines.pop() || '';
+    for (const line of lines) {
+      if (!line.trim()) continue;
+      try {
+        const req = JSON.parse(line);
+        if (req.method === 'tools/list') {
+          process.stdout.write(
+            `${JSON.stringify({
+              jsonrpc: '2.0',
+              id: req.id ?? null,
+              result: {
+                tools: [
+                  { name: 'clean_room_ux_metrics', description: 'Extract Clean-Room UX structural CSS/typography/motion metrics separating measured_evidence vs design_inference with zero copyright retention.' },
+                  { name: 'analyze_reference_web_or_bundle', description: 'Compile Clean-Room functional & mathematical specification.' },
+                  { name: 'inspect_sqlite_wal_snapshot', description: 'Read-only SQLite/WAL header inspection.' }
+                ]
+              }
+            })}\n`
+          );
+        } else if (req.method === 'tools/call' && req.params?.name === 'clean_room_ux_metrics') {
+          const result = extractCleanRoomUxMetrics(req.params?.arguments?.target || req.params?.arguments || {});
+          process.stdout.write(
+            `${JSON.stringify({
+              jsonrpc: '2.0',
+              id: req.id ?? null,
+              result: { content: [{ type: 'text', text: JSON.stringify(result) }] }
+            })}\n`
+          );
+        }
+      } catch {
+        // Ignore malformed non-JSON-RPC frames on stdio
+      }
+    }
+  });
+}
+
 const isMain = process.argv[1] && path.resolve(process.argv[1]) === path.resolve(__filename);
 if (isMain) {
   const args = process.argv.slice(2);
+  const modeIdx = args.indexOf('--mode');
+  const explicitMode = modeIdx >= 0 && args[modeIdx + 1] ? args[modeIdx + 1] : '';
   if (args.includes('--self-test')) {
     const res = runReaBridgeSelfTest();
     process.exit(res.passed ? 0 : 1);
+  } else if (args.includes('--mcp')) {
+    startCompactMcpStdioServer();
+  } else if (explicitMode === 'clean_room_ux_metrics' || args.includes('--clean-room-ux')) {
+    const target = args.find((a, idx) => !a.startsWith('--') && idx !== modeIdx + 1) || 'projects/academia-ia';
+    const res = extractCleanRoomUxMetrics(target);
+    console.log(JSON.stringify(res, null, 2));
+    process.exit(res.ok ? 0 : 1);
   } else {
     const target = args.find((a) => !a.startsWith('--')) || 'projects/agencia-alfa';
     const res = analyzeReferenceWebOrBundle(target);

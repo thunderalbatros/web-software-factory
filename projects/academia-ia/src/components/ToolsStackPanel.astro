@@ -1,0 +1,34 @@
+---
+const { tools = [], heading = 'Herramientas verificadas y alternativas gratuitas sin tarjeta' } = Astro.props;
+---
+<section aria-label="Herramientas y alternativas abiertas">
+  <h2 class="editorial-h2">{heading}</h2>
+  <p>
+    En cumplimiento del contrato abierto de Academia IA, toda referencia comercial enlaza una alternativa gratuita verificada sin tarjeta (<code>free_no_card</code>) o de código abierto local (<code>open_source_local</code>).
+  </p>
+  <ul class="tools-list">
+    {tools.map((tool) => (
+      <li class="tool-item">
+        <h3 class="editorial-h3">{tool.name}</h3>
+        <p>
+          Categoría de acceso: <code>{tool.pricing_tier}</code>
+          {tool.spdx_license ? <> · Licencia SPDX: <code>{tool.spdx_license}</code></> : null}
+          {' · '}Hardware mínimo: <code>{tool.min_hardware_tier}</code>
+        </p>
+        <p>{tool.when_to_pay_verdict_es} {tool.quota_notes_es}</p>
+        <p><strong>Higiene de privacidad:</strong> {tool.privacy_opt_out_steps_es}</p>
+        {tool.freeAlternative ? (
+          <p>
+            <strong>Alternativa gratuita sin tarjeta verificada:</strong>{' '}
+            <a href={tool.freeAlternative.official_url} rel="noopener noreferrer">{tool.freeAlternative.name}</a>{' '}
+            (<code>{tool.freeAlternative.pricing_tier}</code>)
+          </p>
+        ) : (
+          <p>
+            <a href={tool.official_url} rel="noopener noreferrer">Documentación y acceso oficial ({tool.tool_id})</a>
+          </p>
+        )}
+      </li>
+    ))}
+  </ul>
+</section>

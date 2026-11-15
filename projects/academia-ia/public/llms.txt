@@ -1,0 +1,10 @@
+# Academia IA
+
+> Plataforma educativa abierta, minimalista e inclusiva en español sobre inteligencia artificial y tecnologías emergentes (UNESCO Adquirir -> Profundizar -> Crear). Costo de servidor $0.00 USD, privacidad local-first (Ley 25.326) y accesibilidad WCAG 2.2 AA (Ley 26.653).
+
+## Rutas Pedagógicas Principales
+- [Inicio](https://academia-ia.pages.dev/): Índice editorial de 3 niveles UNESCO, buscador local Pagefind y selector de arquetipos técnicos sin rastreo.
+- [Nivel 1 · Principiante](https://academia-ia.pages.dev/niveles/principiante/): Uso cotidiano y en oficios reales sin código; toda herramienta paga incluye alternativa gratuita sin tarjeta.
+- [Nivel 2 · Intermedio](https://academia-ia.pages.dev/niveles/intermedio/): Búsqueda aumentada local (RAG) con SQLite FTS5, vectores abiertos y ecuaciones MathML (Temml 0 KB JS).
+- [Nivel 3 · Avanzado](https://academia-ia.pages.dev/niveles/avanzado/): Sistemas compuestos seguros, CSP por hashes SHA-256, Trusted Types, sandboxes opacos y Software Factories.
+- [Manifiesto Completo para Agentes](/llms-full.txt): Contratos técnicos, licencias abiertas (MIT / CC-BY-NC-SA-4.0) e invariantes de seguridad.

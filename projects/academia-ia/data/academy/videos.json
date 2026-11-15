@@ -1,0 +1,187 @@
+{
+  "schema_version": 2,
+  "table": "academy_videos",
+  "row_count": 6,
+  "rows": [
+    {
+      "anchors_status": "oer_transcript_verified",
+      "caption_mode": "sub_es_nativo",
+      "channel_title": "3Blue1Brown (Subtítulos verificados en español)",
+      "duration_iso": "PT27M14S",
+      "embeddable": 1,
+      "external_video_url": null,
+      "license": "YOUTUBE_STANDARD_EMBED_ONLY",
+      "pedagogical_role": "conceptual_anchor",
+      "source_platform": "youtube",
+      "title": "Qué es realmente un modelo de lenguaje y cómo predice el siguiente token",
+      "topic_tags": [
+        "principiante",
+        "tokens",
+        "prediccion"
+      ],
+      "transcript_anchors_json": [
+        {
+          "concept_es": "Predicción probabilística del siguiente fragmento",
+          "source_method": "oer_transcript",
+          "timestamp_mmss": "01:45",
+          "verifiable_fact_es": "Un modelo de lenguaje calcula probabilidades sobre fragmentos de texto llamados tokens en lugar de consultar hechos garantizados."
+        },
+        {
+          "concept_es": "Verificación humana obligatoria",
+          "source_method": "oer_transcript",
+          "timestamp_mmss": "06:20",
+          "verifiable_fact_es": "Al muestrear tokens probables, el sistema puede redactar afirmaciones fluidas pero falsas que requieren contraste con fuentes primarias."
+        }
+      ],
+      "verified_at": "2026-11-15",
+      "video_id": "vid-l1-llm-intro-yt",
+      "youtube_id": "LPZh9BOjkQs"
+    },
+    {
+      "anchors_status": "human_verified",
+      "caption_mode": "audio_es",
+      "channel_title": "Internet Archive · Recursos Educativos Abiertos UNESCO",
+      "duration_iso": "PT6M30S",
+      "embeddable": 1,
+      "external_video_url": "https://archive.org/embed/unesco-ai-competency-overview",
+      "license": "CC-BY-SA-4.0",
+      "pedagogical_role": "practical_walkthrough",
+      "source_platform": "archive_org",
+      "title": "Uso responsable de asistentes de IA en el trabajo diario sin exponer datos privados",
+      "topic_tags": [
+        "principiante",
+        "privacidad",
+        "oficios"
+      ],
+      "transcript_anchors_json": [
+        {
+          "concept_es": "Anonimización previa al prompt",
+          "source_method": "human_review",
+          "timestamp_mmss": "02:10",
+          "verifiable_fact_es": "Nunca se deben incluir documentos de identidad, historias clínicas ni claves privadas al consultar asistentes en la nube."
+        }
+      ],
+      "verified_at": "2026-11-15",
+      "video_id": "vid-l1-privacidad-oer",
+      "youtube_id": null
+    },
+    {
+      "anchors_status": "oer_transcript_verified",
+      "caption_mode": "sub_es_nativo",
+      "channel_title": "3Blue1Brown (Subtítulos verificados en español)",
+      "duration_iso": "PT26M09S",
+      "embeddable": 1,
+      "external_video_url": null,
+      "license": "YOUTUBE_STANDARD_EMBED_ONLY",
+      "pedagogical_role": "conceptual_anchor",
+      "source_platform": "youtube",
+      "title": "Vectores semánticos, atención y búsqueda por similitud en sistemas RAG",
+      "topic_tags": [
+        "intermedio",
+        "rag",
+        "embeddings"
+      ],
+      "transcript_anchors_json": [
+        {
+          "concept_es": "Representación vectorial de significado",
+          "source_method": "oer_transcript",
+          "timestamp_mmss": "03:15",
+          "verifiable_fact_es": "Los embeddings proyectan frases en vectores numéricos donde conceptos cercanos comparten mayor similitud coseno."
+        },
+        {
+          "concept_es": "Anclaje documental antes de responder",
+          "source_method": "oer_transcript",
+          "timestamp_mmss": "11:40",
+          "verifiable_fact_es": "Un flujo RAG recupera pasajes reales de tu base local antes de redactar la respuesta, reduciendo invenciones sin cita."
+        }
+      ],
+      "verified_at": "2026-11-15",
+      "video_id": "vid-l2-embeddings-yt",
+      "youtube_id": "wjZofJX0v4M"
+    },
+    {
+      "anchors_status": "human_verified",
+      "caption_mode": "sub_es_nativo",
+      "channel_title": "Internet Archive · Colección Open-Source Data Engineering",
+      "duration_iso": "PT8M45S",
+      "embeddable": 1,
+      "external_video_url": "https://archive.org/embed/sqlite-fts5-hybrid-retrieval-oer",
+      "license": "CC-BY-4.0",
+      "pedagogical_role": "practical_walkthrough",
+      "source_platform": "archive_org",
+      "title": "Búsqueda híbrida léxica y vectorial con SQLite FTS5 en equipos modestos",
+      "topic_tags": [
+        "intermedio",
+        "sqlite",
+        "local-first"
+      ],
+      "transcript_anchors_json": [
+        {
+          "concept_es": "Combinación BM25 más similitud vectorial",
+          "source_method": "human_review",
+          "timestamp_mmss": "04:05",
+          "verifiable_fact_es": "Combinar coincidencia exacta FTS5 con vectores captura tanto códigos exactos como sinónimos conceptuales."
+        }
+      ],
+      "verified_at": "2026-11-15",
+      "video_id": "vid-l2-sqlite-rag-oer",
+      "youtube_id": null
+    },
+    {
+      "anchors_status": "oer_transcript_verified",
+      "caption_mode": "sub_es_nativo",
+      "channel_title": "Andrej Karpathy · Subtítulos técnicos en español",
+      "duration_iso": "PT59M58S",
+      "embeddable": 1,
+      "external_video_url": null,
+      "license": "YOUTUBE_STANDARD_EMBED_ONLY",
+      "pedagogical_role": "deep_dive_case",
+      "source_platform": "youtube",
+      "title": "Seguridad en modelos generativos, inyección de instrucciones y fronteras de confianza",
+      "topic_tags": [
+        "avanzado",
+        "seguridad",
+        "sistemas-compuestos"
+      ],
+      "transcript_anchors_json": [
+        {
+          "concept_es": "Inyección indirecta de instrucciones",
+          "source_method": "oer_transcript",
+          "timestamp_mmss": "42:10",
+          "verifiable_fact_es": "Todo texto externo leído por un agente debe tratarse como dato no confiable y aislarse de herramientas con permisos de escritura."
+        }
+      ],
+      "verified_at": "2026-11-15",
+      "video_id": "vid-l3-llm-security-yt",
+      "youtube_id": "zjkBMFhNj_g"
+    },
+    {
+      "anchors_status": "human_verified",
+      "caption_mode": "sub_es_nativo",
+      "channel_title": "Internet Archive · OWASP & Web Security OER",
+      "duration_iso": "PT9M20S",
+      "embeddable": 1,
+      "external_video_url": "https://archive.org/embed/csp-trusted-types-sandbox-oer",
+      "license": "CC-BY-4.0",
+      "pedagogical_role": "practical_walkthrough",
+      "source_platform": "archive_org",
+      "title": "Defensa en profundidad con CSP por hashes, Trusted Types y sandboxes de origen opaco",
+      "topic_tags": [
+        "avanzado",
+        "csp",
+        "trusted-types"
+      ],
+      "transcript_anchors_json": [
+        {
+          "concept_es": "Aislamiento sin allow-same-origin",
+          "source_method": "human_review",
+          "timestamp_mmss": "03:50",
+          "verifiable_fact_es": "Un iframe con sandbox='allow-scripts' sin allow-same-origin recibe origen null y no puede leer IndexedDB ni almacenamiento del documento padre."
+        }
+      ],
+      "verified_at": "2026-11-15",
+      "video_id": "vid-l3-sandbox-csp-oer",
+      "youtube_id": null
+    }
+  ]
+}

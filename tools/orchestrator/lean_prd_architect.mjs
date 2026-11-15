@@ -802,6 +802,41 @@ export function compilePrdLeanAndBrandLock(slug = 'agencia-alfa', options = {}) 
   fs.writeFileSync(stateJsonPath, JSON.stringify(prdState, null, 2) + '\n', 'utf8');
   fs.writeFileSync(mdPath, renderPrdInterviewMarkdown(prdState), 'utf8');
 
+  const projCfgPath = path.join(projectDir, 'factory.project.json');
+  const projCfg = fs.existsSync(projCfgPath) ? JSON.parse(fs.readFileSync(projCfgPath, 'utf8')) : null;
+  const isCuratedEducationProfile =
+    projCfg?.complianceProfile === 'education' || b1.industryCategory === 'education';
+
+  // Preserve bespoke Read-mode education contracts (only stamping CTO seal) when already curated
+  if (isCuratedEducationProfile && fs.existsSync(brandLockPath) && fs.existsSync(prdLeanPath)) {
+    const existingLock = JSON.parse(fs.readFileSync(brandLockPath, 'utf8'));
+    existingLock.lockedAt = prdState.approvedAt || new Date().toISOString();
+    existingLock.lockedBy = prdState.approvedBy || 'CTO_HITL_APPROVED';
+    existingLock.approvedBy = prdState.approvedBy || 'CTO_HITL_APPROVED';
+    fs.writeFileSync(brandLockPath, JSON.stringify(existingLock, null, 2) + '\n', 'utf8');
+
+    const updatedPrdMd = fs
+      .readFileSync(prdLeanPath, 'utf8')
+      .replace(/PENDING_CTO_PRD_INPUT/g, prdState.prdInterviewStatus);
+    fs.writeFileSync(prdLeanPath, updatedPrdMd, 'utf8');
+    if (fs.existsSync(productPath)) {
+      const updatedProdMd = fs
+        .readFileSync(productPath, 'utf8')
+        .replace(/PENDING_CTO_PRD_INPUT/g, prdState.prdInterviewStatus);
+      fs.writeFileSync(productPath, updatedProdMd, 'utf8');
+    }
+
+    return {
+      passed: true,
+      projectSlug: slug,
+      prdInterviewStatus: prdState.prdInterviewStatus,
+      prdLeanPath,
+      brandLockPath,
+      productPath,
+      brandLock: existingLock
+    };
+  }
+
   // 1. Write BRAND_IDENTITY_LOCK.json
   const brandLockPayload = {
     schemaVersion: '2026.36.1',

@@ -1,0 +1,139 @@
+{
+  "schema_version": 2,
+  "table": "academy_tools",
+  "row_count": 6,
+  "rows": [
+    {
+      "domain_stage_tags": [
+        "principiante",
+        "acquire"
+      ],
+      "free_alternative_id": "duck-ai-no-card",
+      "http_status": 200,
+      "is_open_source": 0,
+      "last_checked_at": "2026-11-15",
+      "min_hardware_tier": "basic_cpu_cloud",
+      "name": "Asistentes Comerciales por Suscripción (Referencia)",
+      "official_url": "https://openai.com/chatgpt/pricing/",
+      "pricing_tier": "paid_pro_reference",
+      "privacy_opt_out_steps_es": "Desactiva el entrenamiento con tus conversaciones en Configuración -> Controles de datos antes de pegar textos laborales.",
+      "professions_tags": "docencia,administracion,comercio,oficios",
+      "quota_notes_es": "Suscripción mensual opcional; nunca obligatoria para completar ningún módulo de Academia IA.",
+      "repo_or_docs_url": "https://help.openai.com/",
+      "skill_tree_tags": "cotidiano,trabajo",
+      "spdx_license": "",
+      "tool_id": "chatgpt-plus-ref",
+      "when_to_pay_verdict_es": "Solo si tu trabajo diario supera los límites gratuitos y ya validaste el flujo con alternativas sin tarjeta."
+    },
+    {
+      "domain_stage_tags": [
+        "principiante",
+        "acquire"
+      ],
+      "free_alternative_id": null,
+      "http_status": 200,
+      "is_open_source": 0,
+      "last_checked_at": "2026-11-15",
+      "min_hardware_tier": "basic_cpu_cloud",
+      "name": "Duck.ai (Modelos Abiertos sin Cuenta ni Tarjeta)",
+      "official_url": "https://duck.ai/",
+      "pricing_tier": "free_no_card",
+      "privacy_opt_out_steps_es": "Anonimiza tu dirección IP por diseño y guarda el historial solo en tu propio navegador si tú lo eliges.",
+      "professions_tags": "cotidiano,docencia,oficios,estudiantes",
+      "quota_notes_es": "Acceso gratuito diario sin registro ni tarjeta bancaria a modelos abiertos como Llama y Mistral.",
+      "repo_or_docs_url": "https://duckduckgo.com/duckduckgo-help-pages/duckai/",
+      "skill_tree_tags": "cotidiano,trabajo",
+      "spdx_license": "",
+      "tool_id": "duck-ai-no-card",
+      "when_to_pay_verdict_es": "Alternativa gratuita verificada sin tarjeta para practicar redacción, síntesis y verificación."
+    },
+    {
+      "domain_stage_tags": [
+        "principiante",
+        "acquire"
+      ],
+      "free_alternative_id": null,
+      "http_status": 200,
+      "is_open_source": 1,
+      "last_checked_at": "2026-11-15",
+      "min_hardware_tier": "basic_cpu_cloud",
+      "name": "Whisper.cpp / Transcripción Local Abierta",
+      "official_url": "https://github.com/ggml-org/whisper.cpp",
+      "pricing_tier": "open_source_local",
+      "privacy_opt_out_steps_es": "Se ejecuta 100 % en tu equipo sin enviar grabaciones de voz a servidores externos.",
+      "professions_tags": "periodismo,docencia,salud,oficios",
+      "quota_notes_es": "Sin límites de minutos ni suscripciones.",
+      "repo_or_docs_url": "https://github.com/ggml-org/whisper.cpp",
+      "skill_tree_tags": "cotidiano,trabajo",
+      "spdx_license": "MIT",
+      "tool_id": "whisper-cpp-local",
+      "when_to_pay_verdict_es": "Software libre local y gratuito bajo licencia MIT."
+    },
+    {
+      "domain_stage_tags": [
+        "intermedio",
+        "deepen"
+      ],
+      "free_alternative_id": null,
+      "http_status": 200,
+      "is_open_source": 1,
+      "last_checked_at": "2026-11-15",
+      "min_hardware_tier": "mid_16gb",
+      "name": "Ollama (Ejecución Local de Modelos Cuantizados)",
+      "official_url": "https://ollama.com/",
+      "pricing_tier": "open_source_local",
+      "privacy_opt_out_steps_es": "Escucha únicamente en 127.0.0.1 por defecto; ningún prompt sale de tu red local.",
+      "professions_tags": "desarrollo,datos,automatizacion",
+      "quota_notes_es": "Gratuito e ilimitado en tu propio hardware.",
+      "repo_or_docs_url": "https://github.com/ollama/ollama",
+      "skill_tree_tags": "trabajo,crear",
+      "spdx_license": "MIT",
+      "tool_id": "ollama-local",
+      "when_to_pay_verdict_es": "Motor local MIT recomendado para bots privados y laboratorios RAG."
+    },
+    {
+      "domain_stage_tags": [
+        "intermedio",
+        "deepen"
+      ],
+      "free_alternative_id": null,
+      "http_status": 200,
+      "is_open_source": 1,
+      "last_checked_at": "2026-11-15",
+      "min_hardware_tier": "basic_cpu_cloud",
+      "name": "SQLite + FTS5 / sqlite-vec",
+      "official_url": "https://www.sqlite.org/fts5.html",
+      "pricing_tier": "open_source_local",
+      "privacy_opt_out_steps_es": "Archivo único local bajo tu control directo sin cuentas en la nube.",
+      "professions_tags": "desarrollo,datos,documentacion",
+      "quota_notes_es": "Dominio público / MIT, costo de servidor $0.00 USD.",
+      "repo_or_docs_url": "https://github.com/asg017/sqlite-vec",
+      "skill_tree_tags": "trabajo,crear",
+      "spdx_license": "MIT",
+      "tool_id": "sqlite-vec-oss",
+      "when_to_pay_verdict_es": "Base híbrida léxica y vectorial ideal para RAG ligero sin infraestructura paga."
+    },
+    {
+      "domain_stage_tags": [
+        "avanzado",
+        "create"
+      ],
+      "free_alternative_id": null,
+      "http_status": 200,
+      "is_open_source": 1,
+      "last_checked_at": "2026-11-15",
+      "min_hardware_tier": "basic_cpu_cloud",
+      "name": "Oxc (oxlint) + Valibot + Playwright Core",
+      "official_url": "https://oxc.rs/",
+      "pricing_tier": "open_source_local",
+      "privacy_opt_out_steps_es": "Verificación estática y en navegador local sin telemetría externa.",
+      "professions_tags": "arquitectura,seguridad,calidad",
+      "quota_notes_es": "100 % Open-Source bajo licencias MIT y Apache-2.0.",
+      "repo_or_docs_url": "https://github.com/oxc-project/oxc",
+      "skill_tree_tags": "crear,emprender",
+      "spdx_license": "MIT",
+      "tool_id": "oxc-valibot-playwright",
+      "when_to_pay_verdict_es": "Núcleo determinista gratuito para auditar sistemas compuestos y Software Factories."
+    }
+  ]
+}

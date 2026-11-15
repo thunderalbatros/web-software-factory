@@ -1,0 +1,229 @@
+{
+  "timestamp": "2026-11-15T06:05:50.053Z",
+  "projectId": "academia-ia",
+  "compressionMetrics": {
+    "rawHtmlDomBytes": 18414,
+    "prunedAxTreeBytes": 3069,
+    "tokenReductionPercent": 83.3
+  },
+  "stagehandSelectorCache": {
+    "totalPrimitives": 4,
+    "intactOrHealed": 4,
+    "primitives": [
+      {
+        "id": "header-navigation-landmark",
+        "operation": "observe",
+        "primary_selector": "header",
+        "fallback_selectors": [
+          "nav[aria-label]",
+          "[role='banner']"
+        ],
+        "required": true,
+        "verified_selector": "header",
+        "status": "INTACT"
+      },
+      {
+        "id": "main-content-landmark",
+        "operation": "extract",
+        "primary_selector": "main",
+        "fallback_selectors": [
+          "#main-content",
+          "[role='main']"
+        ],
+        "required": true,
+        "verified_selector": "main",
+        "status": "INTACT"
+      },
+      {
+        "id": "primary-focal-cta",
+        "operation": "act",
+        "primary_selector": "[data-cta='primary']",
+        "fallback_selectors": [
+          ".btn-primary",
+          "main a[href]",
+          "main button"
+        ],
+        "required": true,
+        "verified_selector": ".btn-primary",
+        "status": "SELF_HEALED"
+      },
+      {
+        "id": "footer-landmark",
+        "operation": "observe",
+        "primary_selector": "footer",
+        "fallback_selectors": [
+          ".site-footer",
+          "[role='contentinfo']"
+        ],
+        "required": true,
+        "verified_selector": "footer",
+        "status": "INTACT"
+      }
+    ]
+  },
+  "landmarksCount": 8,
+  "headingsCount": 7,
+  "controlsCount": 12,
+  "landmarks": [
+    {
+      "ref": "L1",
+      "tag": "header",
+      "id": null,
+      "ariaLabel": null
+    },
+    {
+      "ref": "L2",
+      "tag": "nav",
+      "id": null,
+      "ariaLabel": "Niveles pedagógicos UNESCO"
+    },
+    {
+      "ref": "L3",
+      "tag": "main",
+      "id": "contenido-principal",
+      "ariaLabel": null
+    },
+    {
+      "ref": "L4",
+      "tag": "section",
+      "id": null,
+      "ariaLabel": "Buscador local de lecciones"
+    },
+    {
+      "ref": "L5",
+      "tag": "section",
+      "id": "recorrido-unesco",
+      "ariaLabel": "Tres niveles de progresión UNESCO"
+    },
+    {
+      "ref": "L6",
+      "tag": "section",
+      "id": null,
+      "ariaLabel": "Adaptación local a tu equipo"
+    },
+    {
+      "ref": "L7",
+      "tag": "section",
+      "id": null,
+      "ariaLabel": "Proyectos integradores abiertos"
+    },
+    {
+      "ref": "L8",
+      "tag": "footer",
+      "id": null,
+      "ariaLabel": null
+    }
+  ],
+  "headings": [
+    {
+      "ref": "H1",
+      "level": "h1",
+      "text": "Inteligencia artificial clara, abierta y aplicable en español"
+    },
+    {
+      "ref": "H2",
+      "level": "h2",
+      "text": "Búsqueda instantánea en el temario (Pagefind local)"
+    },
+    {
+      "ref": "H3",
+      "level": "h2",
+      "text": "Tres niveles alineados con competencias UNESCO y OCDE"
+    },
+    {
+      "ref": "H4",
+      "level": "h3",
+      "text": "{lvl.title}"
+    },
+    {
+      "ref": "H5",
+      "level": "h2",
+      "text": "Adapta los laboratorios a tu equipo (sin guardar datos en servidores)"
+    },
+    {
+      "ref": "H6",
+      "level": "h2",
+      "text": "Seis proyectos reales con herramientas libres ({snapshot.tracks.length} rutas)"
+    },
+    {
+      "ref": "H7",
+      "level": "h3",
+      "text": "{track.title_es}"
+    }
+  ],
+  "controls": [
+    {
+      "ref": "E1",
+      "role": "a",
+      "name": "Saltar al contenido de lectura",
+      "selector": "a"
+    },
+    {
+      "ref": "E2",
+      "role": "a",
+      "name": "Academia IA",
+      "selector": "a"
+    },
+    {
+      "ref": "E3",
+      "role": "a",
+      "name": "Inicio",
+      "selector": "a"
+    },
+    {
+      "ref": "E4",
+      "role": "a",
+      "name": "1 · Principiante",
+      "selector": "a"
+    },
+    {
+      "ref": "E5",
+      "role": "a",
+      "name": "2 · Intermedio",
+      "selector": "a"
+    },
+    {
+      "ref": "E6",
+      "role": "a",
+      "name": "3 · Avanzado",
+      "selector": "a"
+    },
+    {
+      "ref": "E7",
+      "role": "button",
+      "name": "Alternar entre tema claro y tema oscuro",
+      "selector": "button"
+    },
+    {
+      "ref": "E8",
+      "role": "a",
+      "name": "Comenzar Nivel 1 · Adquirir",
+      "selector": "a"
+    },
+    {
+      "ref": "E9",
+      "role": "a",
+      "name": "Explorar los 3 niveles",
+      "selector": "a"
+    },
+    {
+      "ref": "E10",
+      "role": "input",
+      "name": "Ejemplo: tokens, SQLite, privacidad, sandbox...",
+      "selector": "#academia-search-input"
+    },
+    {
+      "ref": "E11",
+      "role": "a",
+      "name": "Abrir lección semilla de {lvl.unesco}",
+      "selector": "a"
+    },
+    {
+      "ref": "E12",
+      "role": "select",
+      "name": "{snapshot.archetypes.map((arch) => (\n          \n       ",
+      "selector": "#learner-archetype-select"
+    }
+  ],
+  "ariaSnapshotPreview": "- text: \"0 ? String(levelNumber) : undefined}>\"\n- link \"Saltar al contenido de lectura\":\n  - /url: \"#contenido-principal\"\n- banner:\n  - link \"Academia IA\":\n    - /url: /\n  - navigation \"Niveles pedagógicos UNESCO\":\n    - link \"Inicio\":\n      - /url: /\n    - link \"1 · Principiante\":\n      - /url: /niveles/principiante/\n    - link \"2 · Intermedio\":\n      - /url: /niveles/intermedio/\n    - link \"3 · Avanzado\":\n      - /url: /niveles/avanzado/\n    - button \"Alternar entre tema claro y tema oscuro\": \"Tema: Claro\"\n- main:\n  - text: \"UNESCO: Adquirir → Profundizar → Crear · Servidor $0.00 USD · Acceso Libre\"\n  - heading \"Inteligencia artificial clara, abierta y aplicable en español\" [level=1]\n  - paragraph: Un recorrido riguroso y sereno diseñado para estudiar sin prisa, sin muros de pago y sin entregar tus datos personales. Todo tu avance permanece en tu propio navegador.\n  - link \"Comenzar Nivel 1 · Adquirir\":\n    - /url: /niveles/principiante/\n  - link \"Explorar los 3 niveles\":\n    - /url: \"#recorrido-unesco\"\n  - region \"Buscador local de lecciones\":\n    - heading \"Búsqueda instantánea en el temario (Pagefind local)\" [level=2]\n    - text: Buscar conceptos, herramientas libres o niveles"
+}

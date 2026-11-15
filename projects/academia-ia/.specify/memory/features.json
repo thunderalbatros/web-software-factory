@@ -1,0 +1,16 @@
+[
+  {
+    "id": "FEAT-001",
+    "slug": "academia-ia-core-web-experience",
+    "title": "Academia Ia Core Web Experience",
+    "description": "Open-access static educational platform for Academia Ia (Surface Mode: Read, strict CSP + Trusted Types).",
+    "passes": false,
+    "verification_command": "node tools/factory.mjs gate --project academia-ia",
+    "acceptance_criteria": [
+      "Zero UI layout thrashing or horizontal overflow across 1440px, 768px, and 390px viewports.",
+      "100% WCAG 2.2 AA accessibility compliance (semantic landmarks <main>, <nav>, ARIA labels, APCA contrast).",
+      "Zero inline executable <script> blocks or inline onclick handlers (strict CSP compliance)."
+    ],
+    "updated_at": "2026-11-15T05:28:42.540Z"
+  }
+]

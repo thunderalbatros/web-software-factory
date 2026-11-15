@@ -1,0 +1,10 @@
+---
+import { renderLatexToMathml } from '../lib/rehype-temml-mathml.mjs';
+
+const { latex = '', caption = 'Expresión matemática renderizada en MathML sin JS en cliente' } = Astro.props;
+const mathmlHtml = renderLatexToMathml(latex, true);
+---
+<figure class="editorial-math-block" role="group" aria-label={caption}>
+  <div set:html={mathmlHtml} />
+  <figcaption class="video-privacy-notice">{caption}</figcaption>
+</figure>

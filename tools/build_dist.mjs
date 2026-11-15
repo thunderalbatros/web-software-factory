@@ -11,21 +11,25 @@ import { synthesizeProceduralSoundFromDesignCriteria } from './media/sonic_and_m
 import { forge3dSceneOrEffect } from './design/shader_and_3d_forge.mjs';
 import { generateBrandIntroVideo } from './media/programmatic_video_forge.mjs';
 import { verifyAndEmitOpenApiContract } from './audit/api_contract_verifier.mjs';
+import { compileStaticDistCspAndHeaders, generateHeadersFileContent } from './lib/csp_builder.mjs';
 
 const projectConfig = loadProjectConfig();
 const root = projectConfig.projectRoot;
 const dist = path.join(root, projectConfig.paths.distDir);
+const isEducationProfile = projectConfig.complianceProfile === 'education' || projectConfig.archetype === 'education';
 
 console.log(`=== BUILDING CLOUDFLARE PRODUCTION PAYLOAD (${projectConfig.id} -> dist/) ===\n`);
 
 // 0. Apply Bespoke Morphology & Industry Interactive Widget to project DOM before copying to dist/
-try {
-  const morphRes = applyBespokeMorphologyToProjectDom(projectConfig.id);
-  console.log(
-    `• Applied Bespoke DOM Morphology (grid: ${morphRes.gridTopology}, hero: ${morphRes.heroArchitecture}, nav: ${morphRes.navVariant}, widget: ${morphRes.industry})`
-  );
-} catch (err) {
-  console.warn(`• [BespokeMorphology] Warning: ${err.message}`);
+if (!isEducationProfile) {
+  try {
+    const morphRes = applyBespokeMorphologyToProjectDom(projectConfig.id);
+    console.log(
+      `• Applied Bespoke DOM Morphology (grid: ${morphRes.gridTopology}, hero: ${morphRes.heroArchitecture}, nav: ${morphRes.navVariant}, widget: ${morphRes.industry})`
+    );
+  } catch (err) {
+    console.warn(`• [BespokeMorphology] Warning: ${err.message}`);
+  }
 }
 
 function copyRecursive(src, dest) {
@@ -286,6 +290,7 @@ async function minifyDistAssets() {
 }
 
 // 4a. Inject Psychoacoustic Sonic Identity (full sonicPatch), 3D Scene Runtime & Procedural Brand Intro Player BEFORE minification
+if (!isEducationProfile) {
 try {
   const interviewJsonPath = path.join(root, 'CLIENT_BRIEF_INTERVIEW.json');
   let sonicConfig = {
@@ -404,6 +409,7 @@ try {
 } catch (err) {
   console.warn(`• [Audio/3D/Intro Pre-Minify] Warning: ${err.message}`);
 }
+}
 
 // 4b. Compile dynamic /llms.txt and /llms-full.txt (Agentic SEO & GEO Discovery Manifests) from PRD_LEAN.md, SPEC.md & DESIGN.md
 try {
@@ -513,40 +519,25 @@ function injectHtmlCacheBusters(dirPath) {
     }
   }
 }
-injectHtmlCacheBusters(dist);
+if (projectConfig.stack !== 'astro-edge') {
+  injectHtmlCacheBusters(dist);
+}
 
-// 5. Generate Cloudflare _headers (Security, Hardened CSP, CORP, Early Hints, Immutable Hashing)
+// 5. Generate Cloudflare _headers via Single-Source CSP Builder (Security, Hardened CSP, CORP, Immutable Hashing)
 console.log('• Generating Cloudflare _headers...');
-const headersContent = `/*
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'inline-speculation-rules' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
-  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
-  X-Content-Type-Options: nosniff
-  Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()
-  Cross-Origin-Opener-Policy: same-origin
-  Cross-Origin-Resource-Policy: same-origin
-  X-Frame-Options: DENY
-  Link: </site/css/bundle.css>; rel=preload; as=style
-
-/site/css/*
-  Cache-Control: public, max-age=31536000, immutable
-
-/site/js/*
-  Cache-Control: public, max-age=31536000, immutable
-
-/data/*
-  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
-
-/site/images/*
-  Cache-Control: public, max-age=31536000, immutable
-
-/assets/*
-  Cache-Control: public, max-age=31536000, immutable
-
-/_astro/*
-  Cache-Control: public, max-age=31536000, immutable
-`;
-fs.writeFileSync(path.join(dist, '_headers'), headersContent.trim() + '\n', 'utf8');
+if (isEducationProfile) {
+  compileStaticDistCspAndHeaders(root, {
+    profile: 'education',
+    distDir: dist,
+    syncPublicHeaders: true
+  });
+} else {
+  const headersContent = generateHeadersFileContent({
+    profile: projectConfig.complianceProfile || 'standard-web',
+    preloadCssHref: projectConfig.stack === 'astro-edge' ? null : '/site/css/bundle.css'
+  });
+  fs.writeFileSync(path.join(dist, '_headers'), headersContent, 'utf8');
+}
 
 // 5b. Generate Dynamic OpenGraph Social Preview Card (og-image.svg) in dist/
 try {

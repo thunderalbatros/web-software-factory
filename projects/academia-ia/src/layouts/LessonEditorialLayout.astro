@@ -1,0 +1,54 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import ToolsStackPanel from '../components/ToolsStackPanel.astro';
+import VideoTriangulationFacade from '../components/VideoTriangulationFacade.astro';
+import TiktokenExplorer from '../components/TiktokenExplorer.astro';
+import SocraticTutorShell from '../components/SocraticTutorShell.astro';
+import { getLevelBundle } from '../lib/academy-data.mjs';
+
+const { frontmatter = {} } = Astro.props;
+const levelNumber = Number(frontmatter.level || 1);
+const levelSlug = frontmatter.levelSlug || 'principiante';
+const unescoLabel = frontmatter.unescoStageLabel || 'Adquirir';
+const canonicalPath = `/niveles/${levelSlug}/`;
+
+const bundle = getLevelBundle(levelSlug);
+---
+<BaseLayout
+  title={`${frontmatter.title || 'Lección Semilla'} — Academia IA`}
+  description={frontmatter.description || bundle.levelConfig.scope_es}
+  levelNumber={levelNumber}
+  canonicalPath={canonicalPath}
+>
+  <div class="level-kicker">
+    <span>Nivel {levelNumber} · UNESCO {unescoLabel}</span>
+    <span>·</span>
+    <span>Licencia {bundle.charter.content_license}</span>
+  </div>
+
+  <article aria-label={frontmatter.title}>
+    <slot />
+  </article>
+
+  <ToolsStackPanel
+    tools={bundle.tools}
+    heading={` Ecosistema abierto y alternativas sin tarjeta (${levelSlug})`.trim()}
+  />
+
+  <VideoTriangulationFacade
+    videos={bundle.videos}
+    sectionHeading={`Videos complementarios verificados del nivel ${levelNumber} (${bundle.videos.length} fuentes)`}
+  />
+
+  {frontmatter.includeTiktoken !== false && (
+    <TiktokenExplorer
+      sampleText={frontmatter.tiktokenSample || 'Un modelo de lenguaje divide cada frase en tokens antes de calcular probabilidades.'}
+    />
+  )}
+
+  <SocraticTutorShell
+    levelId={levelSlug}
+    lessonSlug={frontmatter.lessonSlug || `semilla-${levelSlug}`}
+    defaultQuestion={frontmatter.defaultTutorQuestion || '¿Cómo aplico esta idea sin exponer datos privados?'}
+  />
+</BaseLayout>
