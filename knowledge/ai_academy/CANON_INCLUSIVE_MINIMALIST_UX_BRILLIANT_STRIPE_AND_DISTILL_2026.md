@@ -12,42 +12,42 @@ sources:
     section_or_quote: "W3C Recommendation WCAG 2.2: SC 1.4.4 Resize Text (200%), SC 2.4.7 Focus Visible, SC 2.5.8 Target Size Minimum (24x24), SC 2.5.5 Target Size Enhanced (44x44), SC 2.3.3 Animation from Interactions."
     http_status: 200
     verified_at: "2026-11-15"
-    accessed_at: "2026-11-15T02:40:21.045Z"
+    accessed_at: "2026-11-15T04:11:07.997Z"
   - claim_id: "C3-LEY26653-02"
     claim_summary: "La Ley Nacional 26.653 de Accesibilidad de la Información en las Páginas Web (Argentina) reconoce el derecho de acceso igualitario a contenidos digitales sin barreras sensoriales, motrices o cognitivas."
     url: "https://www.argentina.gob.ar/normativa/nacional/ley-26653-175694/texto"
     section_or_quote: "Ley 26.653 — Accesibilidad de la Información en las Páginas Web (República Argentina): igualdad real de oportunidades y diseño accesible para personas con discapacidad."
     http_status: 200
     verified_at: "2026-11-15"
-    accessed_at: "2026-11-15T02:40:21.209Z"
+    accessed_at: "2026-11-15T04:11:08.179Z"
   - claim_id: "C3-ONTI-03"
     claim_summary: "El Observatorio de Accesibilidad Digital (ONTI Argentina) alinea los estándares técnicos nacionales de accesibilidad web con las pautas internacionales WCAG del W3C."
     url: "https://www.argentina.gob.ar/jefatura/innovacion-publica/onti/accesibilidad-web"
     section_or_quote: "Observatorio de Accesibilidad Digital (ONTI): pautas técnicas de accesibilidad web y verificación de barreras digitales."
     http_status: 200
     verified_at: "2026-11-15"
-    accessed_at: "2026-11-15T02:40:40.330Z"
+    accessed_at: "2026-11-15T04:11:42.143Z"
   - claim_id: "C3-CSSCOLOR4-04"
     claim_summary: "W3C CSS Color Module Level 4 estandariza el espacio de color perceptual OKLCH (luminosidad perceptual L, croma C y tono H) con uniformidad superior a sRGB hexadecimal."
     url: "https://www.w3.org/TR/css-color-4/"
     section_or_quote: "W3C CSS Color Module Level 4 — Section 9.4 Specifying Lab and LCH: oklch() cylindrical perceptual lightness, chroma, and hue."
     http_status: 200
     verified_at: "2026-11-15"
-    accessed_at: "2026-11-15T02:40:40.535Z"
+    accessed_at: "2026-11-15T04:11:42.324Z"
   - claim_id: "C3-DTCG-05"
     claim_summary: "El W3C Design Tokens Community Group (DTCG) define el formato interoperable de tokens de diseño para sistematizar color, tipografía y espaciado."
     url: "https://www.w3.org/community/design-tokens/"
     section_or_quote: "W3C Design Tokens Community Group: standard file format and interoperable token specifications across tools and platforms."
     http_status: 200
     verified_at: "2026-11-15"
-    accessed_at: "2026-11-15T02:40:40.771Z"
+    accessed_at: "2026-11-15T04:11:42.545Z"
   - claim_id: "C3-APCA-06"
     claim_summary: "El modelo abierto SAPC-APCA calcula el contraste perceptual de luminancia (Lc) considerando polaridad texto/fondo y peso tipográfico para lectura prolongada."
     url: "https://github.com/Myndex/SAPC-APCA"
     section_or_quote: "Myndex/SAPC-APCA: Accessible Perceptual Contrast Algorithm predicting supra-threshold reading contrast (Lc)."
     http_status: 200
     verified_at: "2026-11-15"
-    accessed_at: "2026-11-15T02:40:41.321Z"
+    accessed_at: "2026-11-15T04:11:42.844Z"
 ---
 
 # Canon: UX Minimalista, Claridad Cognitiva e Inclusión Universal para Educación en IA

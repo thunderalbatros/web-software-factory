@@ -1280,6 +1280,151 @@ test('Stage 3B (d): verifySquadAlignment() passes 100% with all 5 educational sk
   }
 });
 
+test('Stage 3B.1: multi-line YAML round-trip preserves all 26 canon URLs and CTO approval transform promotes temp copies from TIER_2_VERIFIED_DRAFT (1.15x) to TIER_1_SOTA_2026 (1.35x)', async () => {
+  const os = await import('node:os');
+  const curate = await import('../tools/intelligence/curate_and_verify_canons.mjs');
+  const sanitizer = await import('../tools/intelligence/rag_library_sanitizer.mjs');
+
+  // 1. Multi-line wrapped YAML round-trip idempotency (wrapped quotes, next-line url:, folded >- with leading hyphen)
+  const wrappedCanonFixture = [
+    '---',
+    'canon_id: "CANON_WRAPPED_YAML_TEST"',
+    'title: "Prueba de Round-Trip',
+    '  Idempotente Multi-Línea"',
+    'domain: "ai_academy"',
+    'approval_status: "PENDING_CTO_REVIEW"',
+    'epistemic_tier_target: "TIER_1_SOTA_2026"',
+    'language_register: "es-neutral-tu"',
+    'sources:',
+    '  - claim_id: "C4-KST-04"',
+    '    claim_summary: "La \\"Teoría de Espacios de Conocimiento\\" (Doignon y Falmagne, 1999)',
+    '      modela formalmente el dominio mediante relaciones de precedencia."',
+    '    url:',
+    '      "https://api.crossref.org/works/10.1007/978-3-642-58625-5"',
+    '    section_or_quote: >-',
+    '      Doignon, J.',
+    '      -P., & Falmagne, J.-C. (1999). Knowledge Spaces.',
+    '    http_status: 200',
+    '    verified_at: "2026-11-15"',
+    '    accessed_at: "2026-11-15T03:32:53.975Z"',
+    '---',
+    '',
+    '# Cuerpo de prueba [C4-KST-04]'
+  ].join('\n');
+
+  const parsedWrapped1 = curate.parseFullCanonSources(wrappedCanonFixture);
+  const fmWrapped1 = sanitizer.parseGovernanceFrontmatter(wrappedCanonFixture);
+  assert.equal(parsedWrapped1.sources.length, 1);
+  assert.equal(fmWrapped1.sources.length, 1);
+  assert.equal(fmWrapped1.hasStructuredVerifiedSources, true);
+  assert.equal(fmWrapped1.hasHttp200VerifiedSources, true);
+  assert.equal(parsedWrapped1.sources[0].url, 'https://api.crossref.org/works/10.1007/978-3-642-58625-5');
+  assert.ok(parsedWrapped1.sources[0].claim_summary.includes('"Teoría de Espacios de Conocimiento"'));
+
+  const serializedWrapped1 = curate.serializeCanonFrontmatter(parsedWrapped1.meta, parsedWrapped1.sources);
+  const parsedWrapped2 = curate.parseFullCanonSources(`${serializedWrapped1}\n\n${parsedWrapped1.body}`);
+  const serializedWrapped2 = curate.serializeCanonFrontmatter(parsedWrapped2.meta, parsedWrapped2.sources);
+  assert.equal(serializedWrapped2, serializedWrapped1, 'Expected serializeCanonFrontmatter to be 100% byte-idempotent');
+  assert.deepEqual(parsedWrapped2.sources, parsedWrapped1.sources);
+
+  // 2. Verify real canons in knowledge/ai_academy/ cannot be programmatically forged outside interactive human TTY
+  const realCanonFiles = curate.listAcademyCanonFiles();
+  assert.equal(realCanonFiles.length, 4, 'Expected 4 canonical treatises in knowledge/ai_academy/');
+  assert.throws(
+    () => curate.applyCtoApprovalTransformToFiles([realCanonFiles[0]]),
+    /CTO_APPROVAL_GUARD/,
+    'Expected direct programmatic approval on real knowledge/ai_academy/ file to be blocked'
+  );
+
+  // 3. Runtime promotion test on isolated temporary copies in os.tmpdir()
+  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'academy-canons-3b1-'));
+  try {
+    const tempFiles = realCanonFiles.map((srcPath) => {
+      const destPath = path.join(tempDir, path.basename(srcPath));
+      fs.copyFileSync(srcPath, destPath);
+      return destPath;
+    });
+
+    const beforeUrls = [];
+    for (const tempFile of tempFiles) {
+      const rawBefore = fs.readFileSync(tempFile, 'utf8');
+      const fmBefore = sanitizer.parseGovernanceFrontmatter(rawBefore);
+      const fullBefore = curate.parseFullCanonSources(rawBefore);
+
+      assert.equal(fmBefore.hasStructuredVerifiedSources, true, `Expected structured sources in ${path.basename(tempFile)}`);
+      assert.equal(fmBefore.hasHttp200VerifiedSources, true, `Expected HTTP 200 sources in ${path.basename(tempFile)}`);
+      curate.validateCanonSourcesIntegrity(fullBefore.sources, {
+        requireHttp200: true,
+        contextLabel: path.basename(tempFile)
+      });
+
+      const tierBefore = sanitizer.classifyEpistemicTier(tempFile, rawBefore);
+      assert.equal(tierBefore.epistemicTier, 'TIER_2_VERIFIED_DRAFT');
+      assert.equal(tierBefore.authorityBoost, 1.15);
+
+      for (const s of fullBefore.sources) {
+        beforeUrls.push(`${s.claim_id}::${s.url}`);
+      }
+    }
+    assert.equal(beforeUrls.length, 26, `Expected 26 total verified canon claims, got ${beforeUrls.length}`);
+    assert.ok(
+      beforeUrls.includes('C4-KST-04::https://api.crossref.org/works/10.1007/978-3-642-58625-5'),
+      'Expected C4-KST-04 Crossref URL to be present'
+    );
+
+    const approvalResult = curate.applyCtoApprovalTransformToFiles(tempFiles, {
+      nowIso: '2026-11-15T04:00:00.000Z'
+    });
+    assert.equal(approvalResult.ok, true);
+    assert.equal(approvalResult.approved_by, 'CTO');
+    assert.equal(approvalResult.files.length, 4);
+
+    const afterUrls = [];
+    for (const tempFile of tempFiles) {
+      const rawAfter = fs.readFileSync(tempFile, 'utf8');
+      const fmAfter = sanitizer.parseGovernanceFrontmatter(rawAfter);
+      const fullAfter = curate.parseFullCanonSources(rawAfter);
+
+      assert.equal(fmAfter.hasStructuredVerifiedSources, true);
+      assert.equal(fmAfter.hasHttp200VerifiedSources, true);
+      assert.equal(fmAfter.approvedBy, 'CTO');
+      assert.equal(fmAfter.approvalStatus, 'APPROVED_BY_CTO');
+      curate.validateCanonSourcesIntegrity(fullAfter.sources, {
+        requireHttp200: true,
+        contextLabel: path.basename(tempFile)
+      });
+
+      // Verify both disk-resolved and raw-buffer classification promote immediately to TIER_1_SOTA_2026 (1.35x)
+      const tierAfterDisk = sanitizer.classifyEpistemicTier(tempFile);
+      const tierAfterRaw = sanitizer.classifyEpistemicTier(tempFile, rawAfter);
+      assert.equal(tierAfterDisk.epistemicTier, 'TIER_1_SOTA_2026');
+      assert.equal(tierAfterDisk.authorityBoost, 1.35);
+      assert.equal(tierAfterRaw.epistemicTier, 'TIER_1_SOTA_2026');
+      assert.equal(tierAfterRaw.authorityBoost, 1.35);
+
+      for (const s of fullAfter.sources) {
+        afterUrls.push(`${s.claim_id}::${s.url}`);
+      }
+    }
+    assert.equal(afterUrls.length, 26);
+    assert.deepEqual(afterUrls, beforeUrls, 'Expected all 26 URLs to remain 100% intact after CTO approval round-trip');
+
+    // Confirm real canons in knowledge/ai_academy/ remained untouched in PENDING_CTO_REVIEW (1.15x)
+    for (const realFile of realCanonFiles) {
+      const realRaw = fs.readFileSync(realFile, 'utf8');
+      const realFm = sanitizer.parseGovernanceFrontmatter(realRaw);
+      const realTier = sanitizer.classifyEpistemicTier(realFile, realRaw);
+      assert.equal(realFm.approvalStatus, 'PENDING_CTO_REVIEW');
+      assert.equal(realFm.approvedBy, null);
+      assert.equal(realTier.epistemicTier, 'TIER_2_VERIFIED_DRAFT');
+      assert.equal(realTier.authorityBoost, 1.15);
+    }
+  } finally {
+    fs.rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
+
 
 
 

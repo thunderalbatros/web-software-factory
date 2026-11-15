@@ -12,42 +12,42 @@ sources:
     section_or_quote: "Self-Determination Theory (SDT): autonomy, competence, and relatedness support high-quality intrinsic motivation and engagement."
     http_status: 200
     verified_at: "2026-11-15"
-    accessed_at: "2026-11-15T02:40:36.968Z"
+    accessed_at: "2026-11-15T04:11:23.817Z"
   - claim_id: "C2-SDT-DOI-02"
     claim_summary: "Las recompensas controladoras o punitivas erosionan la motivación intrínseca frente a la retroalimentación informativa orientada al dominio."
     url: "https://api.crossref.org/works/10.1037/0003-066X.55.1.68"
     section_or_quote: "Ryan, R. M., & Deci, E. L. (2000). Self-determination theory and the facilitation of intrinsic motivation, social development, and well-being. American Psychologist, 55(1), 68-78."
     http_status: 200
     verified_at: "2026-11-15"
-    accessed_at: "2026-11-15T02:40:37.565Z"
+    accessed_at: "2026-11-15T04:11:24.427Z"
   - claim_id: "C2-TSFSRS-03"
     claim_summary: "El paquete open-source ts-fsrs implementa en TypeScript/ESM el algoritmo Free Spaced Repetition Scheduler (FSRS) ejecutable íntegramente en el cliente sin servidor."
     url: "https://github.com/open-spaced-repetition/ts-fsrs"
     section_or_quote: "open-spaced-repetition/ts-fsrs: TypeScript implementation of Free Spaced Repetition Scheduler supporting ES modules in browser and Node."
     http_status: 200
     verified_at: "2026-11-15"
-    accessed_at: "2026-11-15T02:40:38.072Z"
+    accessed_at: "2026-11-15T04:11:24.908Z"
   - claim_id: "C2-VALIBOT-04"
     claim_summary: "Valibot provee validación modular de esquemas estructurales con tree-shaking extremo apta para ejecución en navegador y Edge."
     url: "https://github.com/fabian-hiller/valibot"
     section_or_quote: "open-circle/valibot: modular and type-safe schema library designed for minimal bundle size."
     http_status: 200
     verified_at: "2026-11-15"
-    accessed_at: "2026-11-15T02:40:38.716Z"
+    accessed_at: "2026-11-15T04:11:25.593Z"
   - claim_id: "C2-WEBCRYPTO-05"
     claim_summary: "La API estándar SubtleCrypto del navegador provee primitivas criptográficas nativas como PBKDF2 y AES-GCM sin dependencias externas."
     url: "https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto"
     section_or_quote: "MDN Web APIs SubtleCrypto: deriveKey (PBKDF2) and encrypt/decrypt (AES-GCM) in secure browser contexts."
     http_status: 200
     verified_at: "2026-11-15"
-    accessed_at: "2026-11-15T02:40:39.540Z"
+    accessed_at: "2026-11-15T04:11:26.533Z"
   - claim_id: "C2-LEY25326-06"
     claim_summary: "La Ley Nacional 25.326 de Protección de los Datos Personales (Argentina) regula el consentimiento informado, finalidad, seguridad y derechos de acceso, rectificación y supresión."
     url: "https://www.argentina.gob.ar/normativa/nacional/ley-25326-64790/texto"
     section_or_quote: "Ley 25.326 — Protección de los Datos Personales (República Argentina): principios generales, licitud, seguridad de los datos y derechos de los titulares."
     http_status: 200
     verified_at: "2026-11-15"
-    accessed_at: "2026-11-15T02:40:39.598Z"
+    accessed_at: "2026-11-15T04:11:26.605Z"
 ---
 
 # Canon: Gamificación Ética sin Patrones Oscuros, Tutor de Costo Cero y Soberanía Local-First

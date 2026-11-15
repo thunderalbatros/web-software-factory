@@ -18,6 +18,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import {
+  parseCanonFrontmatterDocument,
   parseGovernanceFrontmatter,
   classifyEpistemicTier
 } from './rag_library_sanitizer.mjs';
@@ -27,6 +28,7 @@ const __dirname = path.dirname(__filename);
 const ROOT = path.resolve(__dirname, '..', '..');
 const ACADEMY_CANONS_DIR = path.join(ROOT, 'knowledge', 'ai_academy');
 const AUDIT_OUTPUT_PATH = path.join(ROOT, 'data', 'academy', 'canon_citations_audit.json');
+const HUMAN_TTY_CAPABILITY = Symbol('HUMAN_TTY_CAPABILITY');
 
 const ANTI_BOT_TITLE_PATTERNS = [
   /client challenge/i,
@@ -37,7 +39,29 @@ const ANTI_BOT_TITLE_PATTERNS = [
   /access denied/i
 ];
 
-function listAcademyCanonFiles(dir = ACADEMY_CANONS_DIR) {
+const CANONICAL_META_KEYS = new Set([
+  'canon_id',
+  'title',
+  'domain',
+  'approval_status',
+  'approved_by',
+  'approved_at',
+  'epistemic_tier_target',
+  'language_register',
+  'sources'
+]);
+
+const CANONICAL_SOURCE_KEYS = new Set([
+  'claim_id',
+  'claim_summary',
+  'url',
+  'section_or_quote',
+  'http_status',
+  'verified_at',
+  'accessed_at'
+]);
+
+export function listAcademyCanonFiles(dir = ACADEMY_CANONS_DIR) {
   if (!fs.existsSync(dir)) return [];
   return fs
     .readdirSync(dir)
@@ -46,62 +70,64 @@ function listAcademyCanonFiles(dir = ACADEMY_CANONS_DIR) {
     .map((f) => path.join(dir, f));
 }
 
-function parseFullCanonSources(rawContent = '') {
-  const normalized = String(rawContent || '').replace(/\r\n/g, '\n');
-  const fmMatch = normalized.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
-  if (!fmMatch) {
-    return { hasFrontmatter: false, meta: {}, sources: [], body: normalized };
-  }
-  const yaml = fmMatch[1];
-  const body = fmMatch[2];
-  const meta = {};
-  const topScalarRegex = /^([a-zA-Z0-9_]+)\s*:\s*["']?([^"'\n]+)["']?\s*$/gm;
-  let m;
-  while ((m = topScalarRegex.exec(yaml)) !== null) {
-    if (m[1] !== 'sources') {
-      meta[m[1]] = m[2].trim();
-    }
-  }
-
-  const sources = [];
-  const lines = yaml.split('\n');
-  let inSources = false;
-  let current = null;
-  for (const line of lines) {
-    if (/^sources\s*:\s*$/.test(line)) {
-      inSources = true;
-      continue;
-    }
-    if (inSources) {
-      if (/^[a-zA-Z0-9_]+\s*:/.test(line)) {
-        if (current) sources.push(current);
-        current = null;
-        inSources = false;
-        continue;
-      }
-      const itemStart = line.match(/^\s*-\s+([a-zA-Z0-9_]+)\s*:\s*(.+)$/);
-      if (itemStart) {
-        if (current) sources.push(current);
-        current = {};
-        const val = itemStart[2].trim().replace(/^["']|["']$/g, '');
-        current[itemStart[1]] = itemStart[1] === 'http_status' ? Number(val) : val;
-        continue;
-      }
-      const propMatch = line.match(/^\s+([a-zA-Z0-9_]+)\s*:\s*(.+)$/);
-      if (propMatch && current) {
-        const key = propMatch[1];
-        const rawVal = propMatch[2].trim().replace(/^["']|["']$/g, '');
-        current[key] = key === 'http_status' ? Number(rawVal) : rawVal;
-      }
-    }
-  }
-  if (current) sources.push(current);
-
-  return { hasFrontmatter: true, meta, sources, body, rawYaml: yaml };
+export function parseFullCanonSources(rawContent = '') {
+  return parseCanonFrontmatterDocument(rawContent);
 }
 
-function serializeCanonFrontmatter(meta, sources) {
-  const esc = (v) => String(v ?? '').replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+export function validateCanonSourcesIntegrity(
+  sources = [],
+  { requireHttp200 = true, contextLabel = 'canon' } = {}
+) {
+  if (!Array.isArray(sources) || sources.length === 0) {
+    throw new Error(`[CANON_YAML_INTEGRITY] ${contextLabel}: sources list must be non-empty.`);
+  }
+  const isoDateRx = /^\d{4}-\d{2}-\d{2}/;
+  const isoTsRx = /^\d{4}-\d{2}-\d{2}T/;
+
+  for (let idx = 0; idx < sources.length; idx++) {
+    const s = sources[idx] || {};
+    const label = s.claim_id || `index_${idx}`;
+    for (const reqKey of ['claim_id', 'claim_summary', 'url', 'section_or_quote']) {
+      if (typeof s[reqKey] !== 'string' || s[reqKey].trim().length === 0) {
+        throw new Error(
+          `[CANON_YAML_INTEGRITY] ${contextLabel} (${label}): missing or empty required field "${reqKey}".`
+        );
+      }
+    }
+    if (!/^https:\/\/\S+$/i.test(s.url.trim())) {
+      throw new Error(
+        `[CANON_YAML_INTEGRITY] ${contextLabel} (${label}): url must start with https:// (got "${s.url}").`
+      );
+    }
+    if (requireHttp200) {
+      if (Number(s.http_status) !== 200) {
+        throw new Error(
+          `[CANON_YAML_INTEGRITY] ${contextLabel} (${label}): expected http_status 200, got ${s.http_status}.`
+        );
+      }
+      if (!isoDateRx.test(String(s.verified_at || ''))) {
+        throw new Error(
+          `[CANON_YAML_INTEGRITY] ${contextLabel} (${label}): invalid or missing verified_at "${s.verified_at}".`
+        );
+      }
+      if (!isoTsRx.test(String(s.accessed_at || ''))) {
+        throw new Error(
+          `[CANON_YAML_INTEGRITY] ${contextLabel} (${label}): invalid or missing accessed_at "${s.accessed_at}".`
+        );
+      }
+    }
+  }
+  return true;
+}
+
+export function serializeCanonFrontmatter(meta = {}, sources = []) {
+  const esc = (v) =>
+    String(v ?? '')
+      .replace(/\r?\n\s*/g, ' ')
+      .trim()
+      .replace(/\\/g, '\\\\')
+      .replace(/"/g, '\\"');
+
   const headerLines = [
     '---',
     `canon_id: "${esc(meta.canon_id)}"`,
@@ -117,8 +143,23 @@ function serializeCanonFrontmatter(meta, sources) {
   }
   headerLines.push(`epistemic_tier_target: "${esc(meta.epistemic_tier_target || 'TIER_1_SOTA_2026')}"`);
   headerLines.push(`language_register: "${esc(meta.language_register || 'es-neutral-tu')}"`);
+
+  for (const [extraMetaKey, extraMetaVal] of Object.entries(meta)) {
+    if (!CANONICAL_META_KEYS.has(extraMetaKey) && extraMetaVal !== undefined && extraMetaVal !== null) {
+      headerLines.push(`${extraMetaKey}: "${esc(extraMetaVal)}"`);
+    }
+  }
+
   headerLines.push('sources:');
   for (const s of sources) {
+    if (!s || typeof s.claim_id !== 'string' || !s.claim_id.trim()) {
+      throw new Error('[CANON_YAML_INTEGRITY] Refusing to serialize source entry without claim_id.');
+    }
+    if (typeof s.url !== 'string' || !/^https:\/\/\S+$/i.test(s.url.trim())) {
+      throw new Error(
+        `[CANON_YAML_INTEGRITY] Refusing to serialize source "${s.claim_id}" without valid https:// url.`
+      );
+    }
     headerLines.push(`  - claim_id: "${esc(s.claim_id)}"`);
     headerLines.push(`    claim_summary: "${esc(s.claim_summary)}"`);
     headerLines.push(`    url: "${esc(s.url)}"`);
@@ -126,6 +167,16 @@ function serializeCanonFrontmatter(meta, sources) {
     headerLines.push(`    http_status: ${Number(s.http_status || 0)}`);
     headerLines.push(`    verified_at: "${esc(s.verified_at)}"`);
     headerLines.push(`    accessed_at: "${esc(s.accessed_at)}"`);
+
+    for (const [extraKey, extraVal] of Object.entries(s)) {
+      if (!CANONICAL_SOURCE_KEYS.has(extraKey) && extraVal !== undefined && extraVal !== null) {
+        if (typeof extraVal === 'number' && Number.isFinite(extraVal)) {
+          headerLines.push(`    ${extraKey}: ${extraVal}`);
+        } else {
+          headerLines.push(`    ${extraKey}: "${esc(extraVal)}"`);
+        }
+      }
+    }
   }
   headerLines.push('---');
   return headerLines.join('\n');
@@ -231,6 +282,7 @@ export async function verifyAcademyCanonsLive({
       }
 
       const enriched = {
+        ...src,
         claim_id: src.claim_id,
         claim_summary: src.claim_summary,
         url: src.url,
@@ -324,6 +376,88 @@ export async function verifyAcademyCanonsLive({
   return report;
 }
 
+/**
+ * Decoupled frontmatter validation + CTO approval promotion transform.
+ * Direct programmatic calls against the real `knowledge/ai_academy/` directory are strictly blocked
+ * unless invoked through `runHumanOnlyCtoApprove` inside an interactive human TTY session;
+ * unit tests exercise this exact runtime path on isolated copies in `os.tmpdir()`.
+ */
+export function applyCtoApprovalTransformToFiles(
+  filePaths = [],
+  { nowIso = new Date().toISOString(), _ttyCapability = null } = {}
+) {
+  if (!Array.isArray(filePaths) || filePaths.length === 0) {
+    throw new Error('[CTO_APPROVAL_GUARD] No canon files provided for approval.');
+  }
+
+  const realAcademyPrefix = `${path.resolve(ACADEMY_CANONS_DIR).toLowerCase()}${path.sep}`;
+  const realAcademyExact = path.resolve(ACADEMY_CANONS_DIR).toLowerCase();
+  const approvedFiles = [];
+
+  for (const targetPath of filePaths) {
+    const absPath = path.resolve(targetPath);
+    const absLower = absPath.toLowerCase();
+    const isInsideRealAcademyDir =
+      absLower === realAcademyExact || absLower.startsWith(realAcademyPrefix);
+
+    if (isInsideRealAcademyDir && _ttyCapability !== HUMAN_TTY_CAPABILITY) {
+      throw new Error(
+        `[CTO_APPROVAL_GUARD] Forbidden: programmatic approval of real canon "${path.basename(absPath)}" in knowledge/ai_academy/ is blocked outside an interactive human TTY --cto-approve session.`
+      );
+    }
+
+    const raw = fs.readFileSync(absPath, 'utf8');
+    const parsed = parseFullCanonSources(raw);
+    const fmCheck = parseGovernanceFrontmatter(raw);
+
+    if (
+      !parsed.hasFrontmatter ||
+      !(fmCheck.hasStructuredVerifiedSources && fmCheck.hasHttp200VerifiedSources)
+    ) {
+      throw new Error(
+        `[CTO_APPROVAL_GUARD] Cannot approve ${path.basename(absPath)}: all sources must be structured and HTTP 200 verified first (--verify-urls).`
+      );
+    }
+
+    validateCanonSourcesIntegrity(parsed.sources, {
+      requireHttp200: true,
+      contextLabel: path.basename(absPath)
+    });
+
+    const updatedMeta = {
+      ...parsed.meta,
+      approval_status: 'APPROVED_BY_CTO',
+      approved_by: 'CTO',
+      approved_at: nowIso
+    };
+    const serializedFm = serializeCanonFrontmatter(updatedMeta, parsed.sources);
+    const nextContent = `${serializedFm}\n\n${parsed.body.replace(/^\n+/, '')}`;
+
+    // Verify lossless round-trip before persisting to disk
+    const postCheck = parseGovernanceFrontmatter(nextContent);
+    if (
+      !postCheck.hasStructuredVerifiedSources ||
+      !postCheck.hasHttp200VerifiedSources ||
+      postCheck.approvedBy !== 'CTO' ||
+      postCheck.sources.length !== parsed.sources.length
+    ) {
+      throw new Error(
+        `[CTO_APPROVAL_GUARD] Round-trip integrity check failed for ${path.basename(absPath)}.`
+      );
+    }
+
+    fs.writeFileSync(absPath, nextContent, 'utf8');
+    approvedFiles.push(absPath);
+  }
+
+  return {
+    ok: true,
+    approved_by: 'CTO',
+    approved_at: nowIso,
+    files: approvedFiles
+  };
+}
+
 function runHumanOnlyCtoApprove(argv) {
   // Hard anti-forgery guard: block CI, non-interactive pipes/subprocesses, and agent runners
   if (
@@ -360,30 +494,28 @@ function runHumanOnlyCtoApprove(argv) {
     process.exit(1);
   }
 
-  const nowIso = new Date().toISOString();
-  const approved = [];
-  for (const fullPath of selected) {
-    const raw = fs.readFileSync(fullPath, 'utf8');
-    const parsed = parseFullCanonSources(raw);
-    const fmCheck = parseGovernanceFrontmatter(raw);
-    if (!fmCheck.hasVerifiedSources) {
-      console.error(
-        `❌ [CTO_APPROVAL_GUARD] Cannot approve ${path.basename(fullPath)}: all sources must be HTTP 200 verified first (--verify-urls).`
-      );
-      process.exit(1);
-    }
-    const updatedMeta = {
-      ...parsed.meta,
-      approval_status: 'APPROVED_BY_CTO',
-      approved_by: 'CTO',
-      approved_at: nowIso
-    };
-    const serializedFm = serializeCanonFrontmatter(updatedMeta, parsed.sources);
-    fs.writeFileSync(fullPath, `${serializedFm}\n\n${parsed.body.replace(/^\n+/, '')}`, 'utf8');
-    approved.push(path.relative(ROOT, fullPath).replace(/\\/g, '/'));
+  try {
+    const res = applyCtoApprovalTransformToFiles(selected, {
+      nowIso: new Date().toISOString(),
+      _ttyCapability: HUMAN_TTY_CAPABILITY
+    });
+    const relApproved = res.files.map((f) => path.relative(ROOT, f).replace(/\\/g, '/'));
+    console.log(
+      JSON.stringify(
+        {
+          ok: true,
+          approved_by: res.approved_by,
+          approved_at: res.approved_at,
+          files: relApproved
+        },
+        null,
+        2
+      )
+    );
+  } catch (err) {
+    console.error(`❌ ${err.message}`);
+    process.exit(1);
   }
-
-  console.log(JSON.stringify({ ok: true, approved_by: 'CTO', approved_at: nowIso, files: approved }, null, 2));
 }
 
 const isDirectCli =

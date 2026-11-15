@@ -187,8 +187,297 @@ export const LEGACY_TECH_REPLACEMENT_TABLE = [
   }
 ];
 
-function stripQuotes(val = '') {
-  return String(val || '').trim().replace(/^(['"])([\s\S]*)\1$/, '$2').trim();
+function isDoubleQuoteClosed(str = '') {
+  const trimmed = String(str || '').trim();
+  if (!trimmed.startsWith('"')) return true;
+  let escaped = false;
+  for (let i = 1; i < trimmed.length; i++) {
+    const ch = trimmed[i];
+    if (escaped) {
+      escaped = false;
+      continue;
+    }
+    if (ch === '\\') {
+      escaped = true;
+      continue;
+    }
+    if (ch === '"') {
+      const tail = trimmed.slice(i + 1).trim();
+      return tail === '' || tail.startsWith('#');
+    }
+  }
+  return false;
+}
+
+function unescapeDoubleQuotedYaml(str = '') {
+  const trimmed = String(str || '').trim();
+  let escaped = false;
+  let endQuoteIdx = -1;
+  for (let i = 1; i < trimmed.length; i++) {
+    const ch = trimmed[i];
+    if (escaped) {
+      escaped = false;
+      continue;
+    }
+    if (ch === '\\') {
+      escaped = true;
+      continue;
+    }
+    if (ch === '"') {
+      endQuoteIdx = i;
+      break;
+    }
+  }
+  const inner = endQuoteIdx !== -1 ? trimmed.slice(1, endQuoteIdx) : trimmed.replace(/^"|"$/g, '');
+  let out = '';
+  for (let i = 0; i < inner.length; i++) {
+    const ch = inner[i];
+    if (ch === '\\' && i + 1 < inner.length) {
+      const next = inner[++i];
+      if (next === 'n') out += '\n';
+      else if (next === 'r') out += '\r';
+      else if (next === 't') out += '\t';
+      else if (next === '"') out += '"';
+      else if (next === '\\') out += '\\';
+      else if (next === '/') out += '/';
+      else out += next;
+    } else {
+      out += ch;
+    }
+  }
+  return out;
+}
+
+function isSingleQuoteClosed(str = '') {
+  const trimmed = String(str || '').trim();
+  if (!trimmed.startsWith("'")) return true;
+  let i = 1;
+  while (i < trimmed.length) {
+    if (trimmed[i] === "'") {
+      if (trimmed[i + 1] === "'") {
+        i += 2;
+        continue;
+      }
+      const tail = trimmed.slice(i + 1).trim();
+      return tail === '' || tail.startsWith('#');
+    }
+    i++;
+  }
+  return false;
+}
+
+function unescapeSingleQuotedYaml(str = '') {
+  const trimmed = String(str || '').trim();
+  let i = 1;
+  let out = '';
+  while (i < trimmed.length) {
+    if (trimmed[i] === "'") {
+      if (trimmed[i + 1] === "'") {
+        out += "'";
+        i += 2;
+        continue;
+      }
+      break;
+    }
+    out += trimmed[i];
+    i++;
+  }
+  return out;
+}
+
+function consumeYamlScalarValue(lines, startIdx, rawRest, propIndent) {
+  let idx = startIdx;
+  let rest = String(rawRest ?? '').trim();
+
+  if (rest === '') {
+    let peek = idx + 1;
+    while (peek < lines.length && (!lines[peek].trim() || /^\s*#/.test(lines[peek]))) {
+      peek++;
+    }
+    if (peek < lines.length) {
+      const nextIndent = lines[peek].match(/^(\s*)/)[1].length;
+      if (nextIndent > propIndent) {
+        idx = peek;
+        rest = lines[idx].trim();
+      } else {
+        return { value: '', nextIdx: idx };
+      }
+    } else {
+      return { value: '', nextIdx: idx };
+    }
+  }
+
+  // Block scalar (`>`, `>-`, `|`, `|-`)
+  if (/^[>|][-+]?$/.test(rest)) {
+    const folded = rest.startsWith('>');
+    const blockLines = [];
+    let blockIndent = null;
+    while (idx + 1 < lines.length) {
+      const candidate = lines[idx + 1];
+      if (!candidate.trim()) {
+        let lookahead = idx + 2;
+        while (lookahead < lines.length && !lines[lookahead].trim()) lookahead++;
+        if (lookahead < lines.length) {
+          const laIndent = lines[lookahead].match(/^(\s*)/)[1].length;
+          if (laIndent > propIndent && (blockIndent === null || laIndent >= blockIndent)) {
+            idx++;
+            blockLines.push('');
+            continue;
+          }
+        }
+        break;
+      }
+      const ind = candidate.match(/^(\s*)/)[1].length;
+      if (ind <= propIndent || (blockIndent !== null && ind < blockIndent)) break;
+      if (blockIndent === null) blockIndent = ind;
+      idx++;
+      blockLines.push(candidate.slice(blockIndent));
+    }
+    const joined = folded
+      ? blockLines.map((l) => l.trim()).filter(Boolean).join(' ')
+      : blockLines.join('\n').trimEnd();
+    return { value: joined, nextIdx: idx };
+  }
+
+  // Double-quoted scalar (single-line or multi-line folded)
+  if (rest.startsWith('"')) {
+    let acc = rest;
+    while (!isDoubleQuoteClosed(acc) && idx + 1 < lines.length) {
+      idx++;
+      const cont = lines[idx].trim();
+      if (acc.endsWith('\\') && !acc.endsWith('\\\\')) {
+        acc = acc.slice(0, -1) + cont;
+      } else {
+        acc = `${acc} ${cont}`;
+      }
+    }
+    return { value: unescapeDoubleQuotedYaml(acc), nextIdx: idx };
+  }
+
+  // Single-quoted scalar (single-line or multi-line folded)
+  if (rest.startsWith("'")) {
+    let acc = rest;
+    while (!isSingleQuoteClosed(acc) && idx + 1 < lines.length) {
+      idx++;
+      acc = `${acc} ${lines[idx].trim()}`;
+    }
+    return { value: unescapeSingleQuotedYaml(acc), nextIdx: idx };
+  }
+
+  // Plain unquoted scalar with deeper-indented continuation lines
+  let acc = rest;
+  while (idx + 1 < lines.length) {
+    const nextLine = lines[idx + 1];
+    if (!nextLine.trim() || /^\s*#/.test(nextLine)) break;
+    const nextIndent = nextLine.match(/^(\s*)/)[1].length;
+    if (nextIndent <= propIndent) break;
+    idx++;
+    acc = `${acc} ${nextLine.trim()}`;
+  }
+  return { value: acc.trim(), nextIdx: idx };
+}
+
+function coerceSourceFieldValue(key, value) {
+  if ((key === 'http_status' || key === 'verified_http_status') && /^-?\d+$/.test(String(value).trim())) {
+    return Number(String(value).trim());
+  }
+  return value;
+}
+
+/**
+ * Shared multi-line-safe YAML frontmatter parser for educational canons & RAG governance (`0` network calls).
+ * Parses top-of-file `--- ... ---` ONLY so body text cannot spoof `approved_by: "CTO"`.
+ */
+export function parseCanonFrontmatterDocument(rawText = '') {
+  const norm = String(rawText || '').replace(/\r\n/g, '\n');
+  const fmMatch = norm.match(/^---\n([\s\S]*?)\n---(?:\n([\s\S]*)|$)/);
+  if (!fmMatch) {
+    return {
+      hasFrontmatter: false,
+      meta: {},
+      sources: [],
+      body: norm,
+      rawYaml: ''
+    };
+  }
+
+  const yamlBlock = fmMatch[1];
+  const body = fmMatch[2] ?? '';
+  const lines = yamlBlock.split('\n');
+  const meta = {};
+  const sources = [];
+  let inSources = false;
+  let sourcesItemIndent = null;
+  let currentSource = null;
+  let currentPropIndent = 4;
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    if (!line.trim() || /^\s*#/.test(line)) continue;
+
+    if (/^[a-zA-Z0-9_]+\s*:/.test(line)) {
+      if (currentSource) {
+        sources.push(currentSource);
+        currentSource = null;
+      }
+      const idx = line.indexOf(':');
+      const key = line.slice(0, idx).trim();
+      const rest = line.slice(idx + 1);
+      if (key === 'sources') {
+        inSources = true;
+        sourcesItemIndent = null;
+      } else {
+        inSources = false;
+        const { value, nextIdx } = consumeYamlScalarValue(lines, i, rest, 0);
+        meta[key] = value;
+        i = nextIdx;
+      }
+      continue;
+    }
+
+    if (inSources) {
+      const itemMatch = line.match(/^(\s*)-\s*(.*)$/);
+      if (itemMatch && (sourcesItemIndent === null || itemMatch[1].length === sourcesItemIndent)) {
+        if (sourcesItemIndent === null) {
+          sourcesItemIndent = itemMatch[1].length;
+        }
+        if (currentSource) sources.push(currentSource);
+        currentSource = {};
+        currentPropIndent = sourcesItemIndent + 2;
+
+        const firstKv = itemMatch[2].match(/^([a-zA-Z0-9_]+)\s*:\s*(.*)$/);
+        if (firstKv) {
+          const keyName = firstKv[1].trim();
+          const keyOffsetInTail = line.slice(itemMatch[1].length + 1).indexOf(keyName);
+          currentPropIndent = itemMatch[1].length + 1 + Math.max(1, keyOffsetInTail);
+          const { value, nextIdx } = consumeYamlScalarValue(lines, i, firstKv[2], currentPropIndent);
+          currentSource[keyName] = coerceSourceFieldValue(keyName, value);
+          i = nextIdx;
+        }
+        continue;
+      }
+
+      if (currentSource) {
+        const propMatch = line.match(/^(\s+)([a-zA-Z0-9_]+)\s*:\s*(.*)$/);
+        if (propMatch && (sourcesItemIndent === null || propMatch[1].length > sourcesItemIndent)) {
+          currentPropIndent = propMatch[1].length;
+          const propKey = propMatch[2].trim();
+          const { value, nextIdx } = consumeYamlScalarValue(lines, i, propMatch[3], currentPropIndent);
+          currentSource[propKey] = coerceSourceFieldValue(propKey, value);
+          i = nextIdx;
+        }
+      }
+    }
+  }
+  if (currentSource) sources.push(currentSource);
+
+  return {
+    hasFrontmatter: true,
+    meta,
+    sources,
+    body,
+    rawYaml: yamlBlock
+  };
 }
 
 /**
@@ -196,9 +485,8 @@ function stripQuotes(val = '') {
  * Parses top-of-file `--- ... ---` ONLY so body text cannot spoof `approved_by: "CTO"`.
  */
 export function parseGovernanceFrontmatter(rawText = '') {
-  const norm = String(rawText || '').replace(/\r\n/g, '\n');
-  const fmMatch = norm.match(/^---\n([\s\S]*?)\n---(?:\n|$)/);
-  if (!fmMatch) {
+  const doc = parseCanonFrontmatterDocument(rawText);
+  if (!doc.hasFrontmatter) {
     return {
       hasFrontmatter: false,
       approvedBy: null,
@@ -209,51 +497,9 @@ export function parseGovernanceFrontmatter(rawText = '') {
     };
   }
 
-  const yamlBlock = fmMatch[1];
-  const lines = yamlBlock.split('\n');
-  let approvedBy = null;
-  let approvalStatus = null;
-  const sources = [];
-  let inSources = false;
-  let currentSource = null;
-
-  for (const line of lines) {
-    if (!line.trim() || /^\s*#/.test(line)) continue;
-
-    if (/^[a-zA-Z0-9_]+\s*:/.test(line)) {
-      if (currentSource) {
-        sources.push(currentSource);
-        currentSource = null;
-      }
-      const idx = line.indexOf(':');
-      const key = line.slice(0, idx).trim();
-      const rest = stripQuotes(line.slice(idx + 1));
-      inSources = key === 'sources';
-      if (key === 'approved_by' && rest) approvedBy = rest;
-      if (key === 'approval_status' && rest) approvalStatus = rest;
-      continue;
-    }
-
-    if (inSources) {
-      const itemStart = line.match(/^\s*-\s*(.*)$/);
-      if (itemStart) {
-        if (currentSource) sources.push(currentSource);
-        currentSource = {};
-        const firstKv = itemStart[1].match(/^([a-zA-Z0-9_]+)\s*:\s*(.*)$/);
-        if (firstKv) {
-          currentSource[firstKv[1].trim()] = stripQuotes(firstKv[2]);
-        }
-        continue;
-      }
-      if (currentSource) {
-        const kv = line.match(/^\s+([a-zA-Z0-9_]+)\s*:\s*(.*)$/);
-        if (kv) {
-          currentSource[kv[1].trim()] = stripQuotes(kv[2]);
-        }
-      }
-    }
-  }
-  if (currentSource) sources.push(currentSource);
+  const approvedBy = doc.meta.approved_by || null;
+  const approvalStatus = doc.meta.approval_status || null;
+  const { sources } = doc;
 
   const isoDateRx = /^\d{4}-\d{2}-\d{2}/;
   const hasStructuredVerifiedSources =
@@ -331,11 +577,11 @@ function resolveFullRawTextOffline(relPosixPath, providedRawText = '', options =
     if (!st.isFile()) return rawStr;
     const cached = diskFileMetaCache.get(absCandidate);
     let diskContent;
-    if (cached && cached.mtimeMs === st.mtimeMs) {
+    if (cached && cached.mtimeMs === st.mtimeMs && cached.size === st.size) {
       diskContent = cached.content;
     } else {
       diskContent = fs.readFileSync(absCandidate, 'utf8');
-      diskFileMetaCache.set(absCandidate, { mtimeMs: st.mtimeMs, content: diskContent });
+      diskFileMetaCache.set(absCandidate, { mtimeMs: st.mtimeMs, size: st.size, content: diskContent });
     }
     if (rawStr.length === 0 || rawStr.startsWith('[Doc: ')) {
       return diskContent;

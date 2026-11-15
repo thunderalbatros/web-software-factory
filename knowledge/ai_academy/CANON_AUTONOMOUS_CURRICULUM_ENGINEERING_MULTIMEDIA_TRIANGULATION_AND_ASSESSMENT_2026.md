@@ -12,49 +12,49 @@ sources:
     section_or_quote: "Biggs, J. (1996). Enhancing teaching through constructive alignment. Higher Education, 32(3), 347-364."
     http_status: 200
     verified_at: "2026-11-15"
-    accessed_at: "2026-11-15T02:40:18.784Z"
+    accessed_at: "2026-11-15T04:11:05.426Z"
   - claim_id: "C4-MERRILL-02"
     claim_summary: "Los Primeros Principios de Instrucción de M. David Merrill (2002) demuestran que el aprendizaje efectivo se centra en tareas reales y progresa por cuatro fases: activación, demostración, aplicación e integración."
     url: "https://api.crossref.org/works/10.1007/BF02505024"
     section_or_quote: "Merrill, M. D. (2002). First principles of instruction. Educational Technology Research and Development, 50(3), 43-59."
     http_status: 200
     verified_at: "2026-11-15"
-    accessed_at: "2026-11-15T02:40:19.449Z"
+    accessed_at: "2026-11-15T04:11:06.124Z"
   - claim_id: "C4-GAGNE-03"
     claim_summary: "Los Nueve Eventos de Instrucción de Robert Gagné articulan las condiciones internas y externas del aprendizaje desde captar la atención y activar saberes previos hasta evaluar el desempeño y promover la transferencia."
     url: "https://api.crossref.org/works/10.1037/h0022886"
     section_or_quote: "Gagné, R. M. instructional conditions and structured sequence of learning events supporting retention and transfer."
     http_status: 200
     verified_at: "2026-11-15"
-    accessed_at: "2026-11-15T02:40:19.616Z"
+    accessed_at: "2026-11-15T04:11:06.292Z"
   - claim_id: "C4-KST-04"
     claim_summary: "La Teoría de Espacios de Conocimiento (Doignon y Falmagne, 1999) modela formalmente el dominio mediante relaciones de precedencia (grafos acíclicos de prerrequisitos) y estados de conocimiento factibles."
     url: "https://api.crossref.org/works/10.1007/978-3-642-58625-5"
     section_or_quote: "Doignon, J.-P., & Falmagne, J.-C. (1999). Knowledge Spaces. Springer-Verlag Berlin Heidelberg."
     http_status: 200
     verified_at: "2026-11-15"
-    accessed_at: "2026-11-15T02:40:19.788Z"
+    accessed_at: "2026-11-15T04:11:06.460Z"
   - claim_id: "C4-UNESCO-05"
     claim_summary: "UNESCO estructura la progresión formativa en IA en tres etapas (Acquire, Deepen, Create) integrando mentalidad centrada en el ser humano, ética, técnicas de IA y diseño de sistemas."
     url: "https://www.unesco.org/en/articles/ai-competency-framework-students"
     section_or_quote: "UNESCO AI competency framework for students: Acquire, Deepen, and Create progression levels."
     http_status: 200
     verified_at: "2026-11-15"
-    accessed_at: "2026-11-15T02:40:19.953Z"
+    accessed_at: "2026-11-15T04:11:06.630Z"
   - claim_id: "C4-WCAG22-06"
     claim_summary: "WCAG 2.2 exige alternativas textuales y subtítulos/transcripciones para medios temporales pregrabados a fin de garantizar equivalencia sensorial."
     url: "https://www.w3.org/TR/WCAG22/"
     section_or_quote: "W3C WCAG 2.2 Guideline 1.2 Time-based Media: captions and accessible alternatives for prerecorded audio/video."
     http_status: 200
     verified_at: "2026-11-15"
-    accessed_at: "2026-11-15T02:40:21.045Z"
+    accessed_at: "2026-11-15T04:11:07.997Z"
   - claim_id: "C4-LEY26653-07"
     claim_summary: "La Ley 26.653 (Argentina) exige accesibilidad integral de contenidos multimedia y educativos publicados en la web."
     url: "https://www.argentina.gob.ar/normativa/nacional/ley-26653-175694/texto"
     section_or_quote: "Ley 26.653 — Accesibilidad de la Información en las Páginas Web (República Argentina)."
     http_status: 200
     verified_at: "2026-11-15"
-    accessed_at: "2026-11-15T02:40:21.209Z"
+    accessed_at: "2026-11-15T04:11:08.179Z"
 ---
 
 # Canon: Ingeniería Curricular Autónoma, Triangulación Multimedia, Stack Open-Source y Evaluación Dual

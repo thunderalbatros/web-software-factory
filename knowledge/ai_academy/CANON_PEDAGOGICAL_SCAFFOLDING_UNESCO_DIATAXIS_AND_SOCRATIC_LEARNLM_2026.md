@@ -12,49 +12,49 @@ sources:
     section_or_quote: "AI competency framework for students: three progression levels (Understand/Acquire, Apply/Deepen, Create) across human-centred mindset, ethics, techniques and system design."
     http_status: 200
     verified_at: "2026-11-15"
-    accessed_at: "2026-11-15T02:40:19.953Z"
+    accessed_at: "2026-11-15T04:11:06.630Z"
   - claim_id: "C1-EU-AI-ACT-02"
     claim_summary: "El Reglamento Europeo de IA (Reglamento UE 2024/1689, Artículo 4) establece obligaciones de alfabetización en IA (AI Literacy) para comprender capacidades, límites, riesgos y supervisión humana."
     url: "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai"
     section_or_quote: "EU AI Act regulatory framework: AI literacy provisions (Article 4, applicable from February 2025) and risk-aware human oversight."
     http_status: 200
     verified_at: "2026-11-15"
-    accessed_at: "2026-11-15T02:40:41.829Z"
+    accessed_at: "2026-11-15T04:11:43.548Z"
   - claim_id: "C1-OECD-03"
     claim_summary: "Los Principios de IA de la OCDE exigen transparencia, explicabilidad, robustez, privacidad y supervisión centrada en las personas."
     url: "https://oecd.ai/en/ai-principles"
     section_or_quote: "OECD AI Principles (updated May 2024): inclusive growth, human-centered values, transparency and explainability, robustness, security and accountability."
     http_status: 200
     verified_at: "2026-11-15"
-    accessed_at: "2026-11-15T02:40:42.447Z"
+    accessed_at: "2026-11-15T04:11:44.354Z"
   - claim_id: "C1-DIATAXIS-04"
     claim_summary: "Diátaxis separa la documentación y enseñanza técnica según la necesidad cognitiva del usuario entre estudio/comprensión (Tutorials/Explanation) y ejecución práctica orientada a metas (How-to/Reference)."
     url: "https://diataxis.fr/"
     section_or_quote: "Diátaxis structures documentation around four distinct user needs along two axes: study vs work (action) and acquisition vs application."
     http_status: 200
     verified_at: "2026-11-15"
-    accessed_at: "2026-11-15T02:40:43.557Z"
+    accessed_at: "2026-11-15T04:11:45.653Z"
   - claim_id: "C1-SWELLER-05"
     claim_summary: "La Teoría de la Carga Cognitiva de John Sweller demuestra que la memoria de trabajo es limitada y que los ejemplos resueltos graduales reducen la carga extrínseca frente al ensayo-error sin guía."
     url: "https://api.crossref.org/works/10.1207/s15516709cog1202_4"
     section_or_quote: "Sweller, J. (1988). Cognitive Load During Problem Solving: Effects on Learning. Cognitive Science, 12(2), 257-285."
     http_status: 200
     verified_at: "2026-11-15"
-    accessed_at: "2026-11-15T02:40:43.843Z"
+    accessed_at: "2026-11-15T04:11:46.011Z"
   - claim_id: "C1-LEARNLM-06"
     claim_summary: "LearnLM fundamenta la tutoría generativa efectiva en aprendizaje activo, gestión de carga cognitiva, adaptación al nivel del estudiante, estímulo de la curiosidad y profundización metacognitiva sin entregar la solución directa de inmediato."
     url: "https://arxiv.org/abs/2412.16429"
     section_or_quote: "arXiv:2412.16429 — LearnLM: Improving Gemini for Learning (pedagogical instruction following: inspire active learning, manage cognitive load, adapt to learner, stimulate curiosity, deepen metacognition)."
     http_status: 200
     verified_at: "2026-11-15"
-    accessed_at: "2026-11-15T02:40:44.332Z"
+    accessed_at: "2026-11-15T04:11:46.508Z"
   - claim_id: "C1-BLOOM-07"
     claim_summary: "La revisión de la Taxonomía de Bloom por Krathwohl (2002) organiza los procesos cognitivos desde recordar y comprender hasta aplicar, analizar, evaluar y crear."
     url: "https://api.crossref.org/works/10.1207/s15430421tip4104_2"
     section_or_quote: "Krathwohl, D. R. (2002). A Revision of Bloom's Taxonomy: An Overview. Theory Into Practice, 41(4), 212-218."
     http_status: 200
     verified_at: "2026-11-15"
-    accessed_at: "2026-11-15T02:40:44.357Z"
+    accessed_at: "2026-11-15T04:11:46.557Z"
 ---
 
 # Canon: Andamiaje Pedagógico SOTA — UNESCO, Diátaxis, Carga Cognitiva y Tutoría Socrática LearnLM

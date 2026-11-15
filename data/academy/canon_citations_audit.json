@@ -1,6 +1,6 @@
 {
   "schema": "academy-canon-citations-audit-v1",
-  "generated_at": "2026-11-15T02:40:44.545Z",
+  "generated_at": "2026-11-15T04:11:46.752Z",
   "canons_total": 4,
   "claims_total": 26,
   "claims_http_200": 26,
@@ -16,7 +16,7 @@
       "approved_by": null,
       "epistemic_tier": "TIER_2_VERIFIED_DRAFT",
       "authority_boost": 1.15,
-      "sha256_lf": "80c23b76b218b15659dd46c7a319db1b08ee2c6a3c3c5808a617c7fc143a3c27",
+      "sha256_lf": "5d0b829f7da8453037fcd742016473c696877141613a5b524d49c7e613ca53c8",
       "claims_count": 7,
       "verified_200_count": 7,
       "inline_citations_count": 9,
@@ -31,7 +31,7 @@
       "approved_by": null,
       "epistemic_tier": "TIER_2_VERIFIED_DRAFT",
       "authority_boost": 1.15,
-      "sha256_lf": "e9804351017b9a84e33754f341be5af3969aa1c3457c93e4696ee81e3deb0cf4",
+      "sha256_lf": "1e3a1cd0eb9d395a922a5a61c8fe7790ea51963046bb91172fce13ebf11774c9",
       "claims_count": 6,
       "verified_200_count": 6,
       "inline_citations_count": 7,
@@ -46,7 +46,7 @@
       "approved_by": null,
       "epistemic_tier": "TIER_2_VERIFIED_DRAFT",
       "authority_boost": 1.15,
-      "sha256_lf": "615dcfc322463c45e99393f699d92e9600117b5a4f38bcde5eed3bbe25a80b6a",
+      "sha256_lf": "190eb64c1f36d3d6774af5aa8165eedcd1cdae12d3df74869b7ae9649936083e",
       "claims_count": 6,
       "verified_200_count": 6,
       "inline_citations_count": 8,
@@ -61,7 +61,7 @@
       "approved_by": null,
       "epistemic_tier": "TIER_2_VERIFIED_DRAFT",
       "authority_boost": 1.15,
-      "sha256_lf": "fc598e9f87d87562a46b4f6988f2de86d99caee8ddd51556b7aa92a792385c1f",
+      "sha256_lf": "ed65375b1673822a9c386498859e13164df1ef4ba8d610511506758a7d874a7a",
       "claims_count": 7,
       "verified_200_count": 7,
       "inline_citations_count": 7,
@@ -79,7 +79,7 @@
       "section_or_quote": "Biggs, J. (1996). Enhancing teaching through constructive alignment. Higher Education, 32(3), 347-364.",
       "http_status": 200,
       "verified_at": "2026-11-15",
-      "accessed_at": "2026-11-15T02:40:18.784Z",
+      "accessed_at": "2026-11-15T04:11:05.426Z",
       "final_url": "https://api.crossref.org/works/10.1007/BF00138871"
     },
     {
@@ -91,7 +91,7 @@
       "section_or_quote": "Merrill, M. D. (2002). First principles of instruction. Educational Technology Research and Development, 50(3), 43-59.",
       "http_status": 200,
       "verified_at": "2026-11-15",
-      "accessed_at": "2026-11-15T02:40:19.449Z",
+      "accessed_at": "2026-11-15T04:11:06.124Z",
       "final_url": "https://api.crossref.org/works/10.1007/BF02505024"
     },
     {
@@ -103,7 +103,7 @@
       "section_or_quote": "Gagné, R. M. instructional conditions and structured sequence of learning events supporting retention and transfer.",
       "http_status": 200,
       "verified_at": "2026-11-15",
-      "accessed_at": "2026-11-15T02:40:19.616Z",
+      "accessed_at": "2026-11-15T04:11:06.292Z",
       "final_url": "https://api.crossref.org/works/10.1037/h0022886"
     },
     {
@@ -115,7 +115,7 @@
       "section_or_quote": "Doignon, J.-P., & Falmagne, J.-C. (1999). Knowledge Spaces. Springer-Verlag Berlin Heidelberg.",
       "http_status": 200,
       "verified_at": "2026-11-15",
-      "accessed_at": "2026-11-15T02:40:19.788Z",
+      "accessed_at": "2026-11-15T04:11:06.460Z",
       "final_url": "https://api.crossref.org/works/10.1007/978-3-642-58625-5"
     },
     {
@@ -127,7 +127,7 @@
       "section_or_quote": "UNESCO AI competency framework for students: Acquire, Deepen, and Create progression levels.",
       "http_status": 200,
       "verified_at": "2026-11-15",
-      "accessed_at": "2026-11-15T02:40:19.953Z",
+      "accessed_at": "2026-11-15T04:11:06.630Z",
       "final_url": "https://www.unesco.org/en/articles/ai-competency-framework-students"
     },
     {
@@ -139,7 +139,7 @@
       "section_or_quote": "W3C WCAG 2.2 Guideline 1.2 Time-based Media: captions and accessible alternatives for prerecorded audio/video.",
       "http_status": 200,
       "verified_at": "2026-11-15",
-      "accessed_at": "2026-11-15T02:40:21.045Z",
+      "accessed_at": "2026-11-15T04:11:07.997Z",
       "final_url": "https://www.w3.org/TR/WCAG22/"
     },
     {
@@ -151,7 +151,7 @@
       "section_or_quote": "Ley 26.653 — Accesibilidad de la Información en las Páginas Web (República Argentina).",
       "http_status": 200,
       "verified_at": "2026-11-15",
-      "accessed_at": "2026-11-15T02:40:21.209Z",
+      "accessed_at": "2026-11-15T04:11:08.179Z",
       "final_url": "https://www.argentina.gob.ar/normativa/nacional/ley-26653-175694/texto"
     },
     {
@@ -163,7 +163,7 @@
       "section_or_quote": "Self-Determination Theory (SDT): autonomy, competence, and relatedness support high-quality intrinsic motivation and engagement.",
       "http_status": 200,
       "verified_at": "2026-11-15",
-      "accessed_at": "2026-11-15T02:40:36.968Z",
+      "accessed_at": "2026-11-15T04:11:23.817Z",
       "final_url": "https://selfdeterminationtheory.org/theory/"
     },
     {
@@ -175,7 +175,7 @@
       "section_or_quote": "Ryan, R. M., & Deci, E. L. (2000). Self-determination theory and the facilitation of intrinsic motivation, social development, and well-being. American Psychologist, 55(1), 68-78.",
       "http_status": 200,
       "verified_at": "2026-11-15",
-      "accessed_at": "2026-11-15T02:40:37.565Z",
+      "accessed_at": "2026-11-15T04:11:24.427Z",
       "final_url": "https://api.crossref.org/works/10.1037/0003-066X.55.1.68"
     },
     {
@@ -187,7 +187,7 @@
       "section_or_quote": "open-spaced-repetition/ts-fsrs: TypeScript implementation of Free Spaced Repetition Scheduler supporting ES modules in browser and Node.",
       "http_status": 200,
       "verified_at": "2026-11-15",
-      "accessed_at": "2026-11-15T02:40:38.072Z",
+      "accessed_at": "2026-11-15T04:11:24.908Z",
       "final_url": "https://github.com/open-spaced-repetition/ts-fsrs"
     },
     {
@@ -199,7 +199,7 @@
       "section_or_quote": "open-circle/valibot: modular and type-safe schema library designed for minimal bundle size.",
       "http_status": 200,
       "verified_at": "2026-11-15",
-      "accessed_at": "2026-11-15T02:40:38.716Z",
+      "accessed_at": "2026-11-15T04:11:25.593Z",
       "final_url": "https://github.com/open-circle/valibot"
     },
     {
@@ -211,7 +211,7 @@
       "section_or_quote": "MDN Web APIs SubtleCrypto: deriveKey (PBKDF2) and encrypt/decrypt (AES-GCM) in secure browser contexts.",
       "http_status": 200,
       "verified_at": "2026-11-15",
-      "accessed_at": "2026-11-15T02:40:39.540Z",
+      "accessed_at": "2026-11-15T04:11:26.533Z",
       "final_url": "https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto"
     },
     {
@@ -223,7 +223,7 @@
       "section_or_quote": "Ley 25.326 — Protección de los Datos Personales (República Argentina): principios generales, licitud, seguridad de los datos y derechos de los titulares.",
       "http_status": 200,
       "verified_at": "2026-11-15",
-      "accessed_at": "2026-11-15T02:40:39.598Z",
+      "accessed_at": "2026-11-15T04:11:26.605Z",
       "final_url": "https://www.argentina.gob.ar/normativa/nacional/ley-25326-64790/texto"
     },
     {
@@ -235,7 +235,7 @@
       "section_or_quote": "W3C Recommendation WCAG 2.2: SC 1.4.4 Resize Text (200%), SC 2.4.7 Focus Visible, SC 2.5.8 Target Size Minimum (24x24), SC 2.5.5 Target Size Enhanced (44x44), SC 2.3.3 Animation from Interactions.",
       "http_status": 200,
       "verified_at": "2026-11-15",
-      "accessed_at": "2026-11-15T02:40:21.045Z",
+      "accessed_at": "2026-11-15T04:11:07.997Z",
       "final_url": "https://www.w3.org/TR/WCAG22/"
     },
     {
@@ -247,7 +247,7 @@
       "section_or_quote": "Ley 26.653 — Accesibilidad de la Información en las Páginas Web (República Argentina): igualdad real de oportunidades y diseño accesible para personas con discapacidad.",
       "http_status": 200,
       "verified_at": "2026-11-15",
-      "accessed_at": "2026-11-15T02:40:21.209Z",
+      "accessed_at": "2026-11-15T04:11:08.179Z",
       "final_url": "https://www.argentina.gob.ar/normativa/nacional/ley-26653-175694/texto"
     },
     {
@@ -259,7 +259,7 @@
       "section_or_quote": "Observatorio de Accesibilidad Digital (ONTI): pautas técnicas de accesibilidad web y verificación de barreras digitales.",
       "http_status": 200,
       "verified_at": "2026-11-15",
-      "accessed_at": "2026-11-15T02:40:40.330Z",
+      "accessed_at": "2026-11-15T04:11:42.143Z",
       "final_url": "https://www.argentina.gob.ar/jefatura/innovacion-ciencia-y-tecnologia/tics/onti/observatorio-de-accesibilidad-digital"
     },
     {
@@ -271,7 +271,7 @@
       "section_or_quote": "W3C CSS Color Module Level 4 — Section 9.4 Specifying Lab and LCH: oklch() cylindrical perceptual lightness, chroma, and hue.",
       "http_status": 200,
       "verified_at": "2026-11-15",
-      "accessed_at": "2026-11-15T02:40:40.535Z",
+      "accessed_at": "2026-11-15T04:11:42.324Z",
       "final_url": "https://www.w3.org/TR/css-color-4/"
     },
     {
@@ -283,7 +283,7 @@
       "section_or_quote": "W3C Design Tokens Community Group: standard file format and interoperable token specifications across tools and platforms.",
       "http_status": 200,
       "verified_at": "2026-11-15",
-      "accessed_at": "2026-11-15T02:40:40.771Z",
+      "accessed_at": "2026-11-15T04:11:42.545Z",
       "final_url": "https://www.w3.org/community/design-tokens/"
     },
     {
@@ -295,7 +295,7 @@
       "section_or_quote": "Myndex/SAPC-APCA: Accessible Perceptual Contrast Algorithm predicting supra-threshold reading contrast (Lc).",
       "http_status": 200,
       "verified_at": "2026-11-15",
-      "accessed_at": "2026-11-15T02:40:41.321Z",
+      "accessed_at": "2026-11-15T04:11:42.844Z",
       "final_url": "https://github.com/Myndex/SAPC-APCA"
     },
     {
@@ -307,7 +307,7 @@
       "section_or_quote": "AI competency framework for students: three progression levels (Understand/Acquire, Apply/Deepen, Create) across human-centred mindset, ethics, techniques and system design.",
       "http_status": 200,
       "verified_at": "2026-11-15",
-      "accessed_at": "2026-11-15T02:40:19.953Z",
+      "accessed_at": "2026-11-15T04:11:06.630Z",
       "final_url": "https://www.unesco.org/en/articles/ai-competency-framework-students"
     },
     {
@@ -319,7 +319,7 @@
       "section_or_quote": "EU AI Act regulatory framework: AI literacy provisions (Article 4, applicable from February 2025) and risk-aware human oversight.",
       "http_status": 200,
       "verified_at": "2026-11-15",
-      "accessed_at": "2026-11-15T02:40:41.829Z",
+      "accessed_at": "2026-11-15T04:11:43.548Z",
       "final_url": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai"
     },
     {
@@ -331,7 +331,7 @@
       "section_or_quote": "OECD AI Principles (updated May 2024): inclusive growth, human-centered values, transparency and explainability, robustness, security and accountability.",
       "http_status": 200,
       "verified_at": "2026-11-15",
-      "accessed_at": "2026-11-15T02:40:42.447Z",
+      "accessed_at": "2026-11-15T04:11:44.354Z",
       "final_url": "https://oecd.ai/en/ai-principles"
     },
     {
@@ -343,7 +343,7 @@
       "section_or_quote": "Diátaxis structures documentation around four distinct user needs along two axes: study vs work (action) and acquisition vs application.",
       "http_status": 200,
       "verified_at": "2026-11-15",
-      "accessed_at": "2026-11-15T02:40:43.557Z",
+      "accessed_at": "2026-11-15T04:11:45.653Z",
       "final_url": "https://diataxis.fr/"
     },
     {
@@ -355,7 +355,7 @@
       "section_or_quote": "Sweller, J. (1988). Cognitive Load During Problem Solving: Effects on Learning. Cognitive Science, 12(2), 257-285.",
       "http_status": 200,
       "verified_at": "2026-11-15",
-      "accessed_at": "2026-11-15T02:40:43.843Z",
+      "accessed_at": "2026-11-15T04:11:46.011Z",
       "final_url": "https://api.crossref.org/works/10.1207/s15516709cog1202_4"
     },
     {
@@ -367,7 +367,7 @@
       "section_or_quote": "arXiv:2412.16429 — LearnLM: Improving Gemini for Learning (pedagogical instruction following: inspire active learning, manage cognitive load, adapt to learner, stimulate curiosity, deepen metacognition).",
       "http_status": 200,
       "verified_at": "2026-11-15",
-      "accessed_at": "2026-11-15T02:40:44.332Z",
+      "accessed_at": "2026-11-15T04:11:46.508Z",
       "final_url": "https://arxiv.org/abs/2412.16429"
     },
     {
@@ -379,7 +379,7 @@
       "section_or_quote": "Krathwohl, D. R. (2002). A Revision of Bloom's Taxonomy: An Overview. Theory Into Practice, 41(4), 212-218.",
       "http_status": 200,
       "verified_at": "2026-11-15",
-      "accessed_at": "2026-11-15T02:40:44.357Z",
+      "accessed_at": "2026-11-15T04:11:46.557Z",
       "final_url": "https://api.crossref.org/works/10.1207/s15430421tip4104_2"
     }
   ]
