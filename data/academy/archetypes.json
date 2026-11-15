@@ -1,0 +1,97 @@
+{
+  "schema_version": 2,
+  "table": "academy_learner_archetypes",
+  "row_count": 4,
+  "rows": [
+    {
+      "archetype_id": "creador_multimedia_oss",
+      "budget_mode": "hybrid_free_tiers",
+      "cloud_sandbox_fallbacks_json": [
+        {
+          "name": "Hugging Face Spaces",
+          "quota_verified": false
+        }
+      ],
+      "goal_category": "crear",
+      "hardware_tier": "mid_16gb",
+      "notes_es": "Plantilla técnica sin datos personales. Sin generadores externos de imágenes en el perfil education.",
+      "recommended_oss_stack_json": [
+        "Krita",
+        "Blender",
+        "Inkscape",
+        "Audacity",
+        "LMMS",
+        "Kdenlive",
+        "whisper.cpp"
+      ],
+      "title_es": "Creador multimedia con herramientas libres"
+    },
+    {
+      "archetype_id": "gpu_local_sovereign",
+      "budget_mode": "self_hosted_local",
+      "cloud_sandbox_fallbacks_json": [],
+      "goal_category": "emprender",
+      "hardware_tier": "local_gpu",
+      "notes_es": "Plantilla técnica sin datos personales. Prioriza ejecución local para material confidencial.",
+      "recommended_oss_stack_json": [
+        "llama.cpp / Ollama",
+        "vLLM",
+        "ComfyUI",
+        "PostgreSQL + pgvector",
+        "Qdrant"
+      ],
+      "title_es": "Equipo con GPU local, soberanía de datos"
+    },
+    {
+      "archetype_id": "pc_basica_zero_cost",
+      "budget_mode": "zero_cost",
+      "cloud_sandbox_fallbacks_json": [
+        {
+          "name": "Google Colab (plan gratuito)",
+          "quota_verified": false
+        },
+        {
+          "name": "Hugging Face Spaces",
+          "quota_verified": false
+        },
+        {
+          "name": "Kaggle Notebooks",
+          "quota_verified": false
+        }
+      ],
+      "goal_category": "cotidiano",
+      "hardware_tier": "basic_cpu_cloud",
+      "notes_es": "Plantilla técnica sin datos personales. Las cuotas gratuitas cambian: verificar antes de recomendar.",
+      "recommended_oss_stack_json": [
+        "Navegador moderno (Firefox o Chromium)",
+        "LibreOffice",
+        "Demos de IA en el navegador con Transformers.js"
+      ],
+      "title_es": "PC básica, presupuesto cero"
+    },
+    {
+      "archetype_id": "pc_media_hybrid_free",
+      "budget_mode": "hybrid_free_tiers",
+      "cloud_sandbox_fallbacks_json": [
+        {
+          "name": "Gemini API (cuota gratuita)",
+          "quota_verified": false
+        },
+        {
+          "name": "Groq (cuota gratuita)",
+          "quota_verified": false
+        }
+      ],
+      "goal_category": "trabajo",
+      "hardware_tier": "mid_16gb",
+      "notes_es": "Plantilla técnica sin datos personales. Validar requisitos de RAM de cada modelo antes de recomendarlo.",
+      "recommended_oss_stack_json": [
+        "Ollama con modelos pequeños cuantizados",
+        "Open WebUI",
+        "n8n (edición comunitaria)",
+        "SQLite"
+      ],
+      "title_es": "PC media (16 GB), mezcla local y nube gratuita"
+    }
+  ]
+}

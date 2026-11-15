@@ -39,6 +39,10 @@ data/*.db
 data/*.db.bak
 data/*.cache*
 data/*.dat*
+# Academia IA: SQLite is a derived artifact (source of truth = data/academy/*.json + data/migrations/*.sql)
+data/*.sqlite*
+data/academy.sqlite*
+data/backups/
 
 # Local UI Knowledge Base & Reference Repos (Cloned locally for research)
 references/

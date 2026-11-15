@@ -539,514 +539,40 @@ export function deduplicateAndVacuumSqliteFts5() {
   };
 }
 
-/**
- * Preloaded 6 canonical Boss Project tracks (`academy_project_tracks`).
- */
-export const DEFAULT_ACADEMY_PROJECT_TRACKS = [
-  {
-    track_id: 'sitio-web',
-    title_es: 'Sitio Web o Portfolio Interactivo',
-    skill_tree: 'crear',
-    free_tools_stack_json: JSON.stringify([
-      { name: 'Astro + CSS Baseline', role: 'Estructura estática rápida', tier: 'open_source_local' },
-      { name: 'Cloudflare Workers Static Assets', role: 'Publicación gratuita en la red', tier: 'free_no_card' },
-      { name: 'Gemini / Claude Free Tier', role: 'Asistencia de redacción y revisión HTML', tier: 'freemium_capped' }
-    ]),
-    pro_tools_optional_json: JSON.stringify([
-      { name: 'Dominio propio (.com / .ar)', note: 'Opcional si quieres dirección personalizada; el subdominio edge es gratis.' }
-    ]),
-    milestone_rubric_json: JSON.stringify([
-      { milestone: 1, level: 'Acquire', title_es: 'Boceto estructural y propuesta en 60 palabras', criteria: ['Objetivo claro', 'Cero datos personales expuestos'] },
-      { milestone: 2, level: 'Deepen', title_es: 'Prototipo navegable accesible sin scroll horizontal', criteria: ['Contraste APCA legible', 'Botones táctiles >= 44px'] },
-      { milestone: 3, level: 'Create', title_es: 'Auditoría factual, pruebas en móvil y publicación en Portfolio', criteria: ['Cero enlaces rotos', 'Explicación del rol humano'] }
-    ])
-  },
-  {
-    track_id: 'bot-automatizado',
-    title_es: 'Bot o Flujo Automatizado Útil',
-    skill_tree: 'cotidiano',
-    free_tools_stack_json: JSON.stringify([
-      { name: 'n8n Self-Hosted / Community', role: 'Orquestación visual por nodos', tier: 'open_source_local' },
-      { name: 'Google Apps Script', role: 'Automatización de correo, calendario y hojas sin servidor', tier: 'free_no_card' },
-      { name: 'Groq / Gemini Free API', role: 'Clasificación y resumen con cuota gratuita', tier: 'freemium_capped' }
-    ]),
-    pro_tools_optional_json: JSON.stringify([
-      { name: 'Cloudflare Workers / Make Pro', note: 'Solo si necesitas más de 1,000 ejecuciones automáticas al mes.' }
-    ]),
-    milestone_rubric_json: JSON.stringify([
-      { milestone: 1, level: 'Acquire', title_es: 'Mapa entrada-proceso-salida y filtro de privacidad', criteria: ['Qué dato entra', 'Qué dato sensible se redacta antes de enviarlo'] },
-      { milestone: 2, level: 'Deepen', title_es: 'Flujo funcional con validación de errores y pausa humana', criteria: ['Aprobación manual antes de enviar correos/mensajes'] },
-      { milestone: 3, level: 'Create', title_es: 'Bitácora de pruebas reales con registro de ahorros de tiempo', criteria: ['3 casos borde probados', 'Plan de reversión sin IA'] }
-    ])
-  },
-  {
-    track_id: 'animacion-corta',
-    title_es: 'Animación Corta o Pieza Audiovisual',
-    skill_tree: 'crear',
-    free_tools_stack_json: JSON.stringify([
-      { name: 'SVG + Web Animations / Motion Canvas', role: 'Gráficos vectoriales nítidos y ritmo visual', tier: 'open_source_local' },
-      { name: 'Krita / Blender', role: 'Ilustración cuadro a cuadro o escena 3D sin licencias', tier: 'open_source_local' },
-      { name: 'Pollinations / Clipchamp Free', role: 'Bocetos de referencia y montaje básico', tier: 'free_no_card' }
-    ]),
-    pro_tools_optional_json: JSON.stringify([
-      { name: 'Runway / Veo Vertex API', note: 'Solo recomendable para planos B-roll fotográficos imposibles de ilustrar.' }
-    ]),
-    milestone_rubric_json: JSON.stringify([
-      { milestone: 1, level: 'Acquire', title_es: 'Guion gráfico de 4 escenas y paleta OKLCH coherente', criteria: ['Historia clara en 15–30 segundos', 'Respeto de derechos de imagen'] },
-      { milestone: 2, level: 'Deepen', title_es: 'Animación fluida respetando prefers-reduced-motion', criteria: ['Subtítulos visibles', 'Cero parpadeos bruscos'] },
-      { milestone: 3, level: 'Create', title_es: 'Exportación optimizada con créditos de autoría humana/IA', criteria: ['Audio nivelado', 'Licencia abierta declarada'] }
-    ])
-  },
-  {
-    track_id: 'comic-digital',
-    title_es: 'Cómic Digital o Narrativa Visual Ilustrada',
-    skill_tree: 'crear',
-    free_tools_stack_json: JSON.stringify([
-      { name: 'Krita / Inkscape', role: 'Maquetación de viñetas, globos de texto y entintado libre', tier: 'open_source_local' },
-      { name: 'Pollinations Flux / Imagen Free Quota', role: 'Exploración visual de fondos y bocetos de composición', tier: 'free_no_card' },
-      { name: 'HTML Grid Lectura Móvil', role: 'Publicación tipo tira vertical responsiva', tier: 'open_source_local' }
-    ]),
-    pro_tools_optional_json: JSON.stringify([
-      { name: 'Clip Studio Paint / Midjourney', note: 'Útiles únicamente si ilustras series largas comerciales con consistencia estricta.' }
-    ]),
-    milestone_rubric_json: JSON.stringify([
-      { milestone: 1, level: 'Acquire', title_es: 'Biblia de 2 personajes y guion de 4 a 6 viñetas', criteria: ['Voz narrativa humana propia', 'Cero copia de estilo de artistas vivos por nombre'] },
-      { milestone: 2, level: 'Deepen', title_es: 'Consistencia visual por semillas/referencias y tipografía legible', criteria: ['Contraste claro en globos', 'Texto alternativo por viñeta'] },
-      { milestone: 3, level: 'Create', title_es: 'Edición final en lector accesible lista para Portfolio', criteria: ['Navegación por teclado', 'Nota de proceso creativo'] }
-    ])
-  },
-  {
-    track_id: 'musica-banda-sonora',
-    title_es: 'Música Original o Banda Sonora',
-    skill_tree: 'crear',
-    free_tools_stack_json: JSON.stringify([
-      { name: 'Strudel / Tone.js + Web Audio API', role: 'Síntesis procedural y patrones rítmicos en navegador', tier: 'open_source_local' },
-      { name: 'Audacity + LMMS', role: 'Edición multipista, mezcla y limpieza gratuita', tier: 'open_source_local' },
-      { name: 'Freesound CC0 + ZzFX', role: 'Efectos de sonido libres de regalías', tier: 'free_no_card' }
-    ]),
-    pro_tools_optional_json: JSON.stringify([
-      { name: 'Suno Pro / Vertex Lyria', note: 'Necesario solo para licencias comerciales cerradas de canciones vocales largas.' }
-    ]),
-    milestone_rubric_json: JSON.stringify([
-      { milestone: 1, level: 'Acquire', title_es: 'Intención emocional, tempo BPM y estructura A-B de 30s', criteria: ['Cero imitación de voces registradas sin permiso'] },
-      { milestone: 2, level: 'Deepen', title_es: 'Mezcla por capas (ritmo, armonía, textura) con Web Audio o LMMS', criteria: ['Sin saturación (<= -1.0 dBTP)', 'Bucle limpio sin clics'] },
-      { milestone: 3, level: 'Create', title_es: 'Banda sonora exportada con ficha de stems y atribución CC', criteria: ['Volumen integrado balanceado', 'Descripción accesible de la escena'] }
-    ])
-  },
-  {
-    track_id: 'sistema-profesional',
-    title_es: 'Sistema Profesional para Trabajo o Emprendimiento',
-    skill_tree: 'emprender',
-    free_tools_stack_json: JSON.stringify([
-      { name: 'Plantillas de Prompts Versionadas + Checklist Markdown', role: 'Procedimiento operativo estándar reproducible', tier: 'open_source_local' },
-      { name: 'LibreOffice Calc / Google Sheets', role: 'Tablero de seguimiento, costos y métricas', tier: 'free_no_card' },
-      { name: 'NotebookLM / Claude Free / ChatGPT Free', role: 'Síntesis con fuentes citadas', tier: 'freemium_capped' }
-    ]),
-    pro_tools_optional_json: JSON.stringify([
-      { name: 'Google Workspace AI / ChatGPT Plus / Claude Pro', note: 'Conviene pagar solo si superas los límites diarios y la privacidad empresarial (zero-data-retention) lo exige.' }
-    ]),
-    milestone_rubric_json: JSON.stringify([
-      { milestone: 1, level: 'Acquire', title_es: 'Auditoría de tarea real y política de datos confidenciales', criteria: ['Anonimización de clientes/precios antes del prompt'] },
-      { milestone: 2, level: 'Deepen', title_es: 'Flujo asistido en 3 pasos con matriz de verificación factual', criteria: ['Cero citas inventadas', 'Plan B manual si cae la API'] },
-      { milestone: 3, level: 'Create', title_es: 'Manual replicable con métricas antes/después publicado en Portfolio', criteria: ['Ahorro medido en minutos', 'Tasa de error humano-en-el-bucle validada'] }
-    ])
-  }
-];
-
-function serializeJsonField(val, fallback = '[]') {
-  if (typeof val === 'string') return val;
-  if (val === undefined || val === null) return fallback;
-  return JSON.stringify(val);
-}
-
-/**
- * Initializes the 4 AI Academy relational tables, indexes, and 6 canonical project tracks
- * inside `.cache/omni_rag_fts5.sqlite` (safe & idempotent on any open/rebuild).
- */
-export function initAcademyRelationalSchema(dbOverride = null) {
-  if (!DatabaseSyncClass && !dbOverride) {
-    return { ready: false, reason: 'SQLITE_UNAVAILABLE' };
-  }
-  let db = dbOverride;
-  let ownsDb = false;
-  if (!db) {
-    if (!fs.existsSync(CACHE_DIR)) fs.mkdirSync(CACHE_DIR, { recursive: true });
-    db = new DatabaseSyncClass(SQLITE_FTS_FILE);
-    ownsDb = true;
-  }
-
-  try {
-    db.exec('PRAGMA journal_mode = WAL; PRAGMA synchronous = NORMAL; PRAGMA busy_timeout = 5000; PRAGMA foreign_keys = ON;');
-    db.exec(`
-      CREATE TABLE IF NOT EXISTS academy_sources (
-        source_id TEXT PRIMARY KEY,
-        title TEXT NOT NULL,
-        authors TEXT DEFAULT '',
-        url TEXT DEFAULT '',
-        license TEXT NOT NULL CHECK(license IN ('MIT','Apache-2.0','CC-BY-4.0','CC-BY-SA-4.0','CC-BY-NC-4.0','CC-BY-NC-SA-4.0','CLEAN_ROOM_ONLY')),
-        usage_policy TEXT NOT NULL CHECK(usage_policy IN ('DIRECT_ADAPT_TRANSLATE','CLEAN_ROOM_FACTS_ONLY')),
-        authority_tier TEXT NOT NULL CHECK(authority_tier IN ('GOLD','SILVER')),
-        published_at TEXT DEFAULT '',
-        verified_http_status INTEGER DEFAULT 0,
-        verified_at TEXT DEFAULT ''
-      );
-      CREATE INDEX IF NOT EXISTS idx_academy_sources_license ON academy_sources(license, usage_policy);
-      CREATE INDEX IF NOT EXISTS idx_academy_sources_tier ON academy_sources(authority_tier);
-
-      CREATE TABLE IF NOT EXISTS academy_videos (
-        video_id TEXT PRIMARY KEY,
-        youtube_id TEXT UNIQUE NOT NULL,
-        title TEXT NOT NULL,
-        channel_title TEXT DEFAULT '',
-        duration_iso TEXT DEFAULT '',
-        embeddable INTEGER NOT NULL DEFAULT 1,
-        caption_mode TEXT NOT NULL CHECK(caption_mode IN ('audio_es','sub_es_nativo','sub_es_autotraducido')),
-        topic_tags TEXT DEFAULT '[]',
-        verified_at TEXT DEFAULT ''
-      );
-      CREATE INDEX IF NOT EXISTS idx_academy_videos_caption_mode ON academy_videos(caption_mode, embeddable);
-
-      CREATE TABLE IF NOT EXISTS academy_tools (
-        tool_id TEXT PRIMARY KEY,
-        name TEXT NOT NULL,
-        official_url TEXT NOT NULL,
-        pricing_tier TEXT NOT NULL CHECK(pricing_tier IN ('free_no_card','open_source_local','freemium_capped','paid_pro_reference')),
-        free_alternative_id TEXT DEFAULT '',
-        when_to_pay_verdict_es TEXT DEFAULT '',
-        quota_notes_es TEXT DEFAULT '',
-        privacy_opt_out_steps_es TEXT DEFAULT '',
-        skill_tree_tags TEXT DEFAULT '',
-        professions_tags TEXT DEFAULT '',
-        http_status INTEGER DEFAULT 0,
-        last_checked_at TEXT DEFAULT ''
-      );
-      CREATE INDEX IF NOT EXISTS idx_academy_tools_pricing ON academy_tools(pricing_tier);
-      CREATE INDEX IF NOT EXISTS idx_academy_tools_free_alt ON academy_tools(free_alternative_id);
-
-      CREATE TABLE IF NOT EXISTS academy_project_tracks (
-        track_id TEXT PRIMARY KEY,
-        title_es TEXT NOT NULL,
-        skill_tree TEXT NOT NULL CHECK(skill_tree IN ('cotidiano','trabajo','crear','emprender')),
-        free_tools_stack_json TEXT NOT NULL DEFAULT '[]',
-        pro_tools_optional_json TEXT NOT NULL DEFAULT '[]',
-        milestone_rubric_json TEXT NOT NULL DEFAULT '[]'
-      );
-      CREATE INDEX IF NOT EXISTS idx_academy_tracks_skill_tree ON academy_project_tracks(skill_tree);
-    `);
-
-    const seedTrackStmt = db.prepare(`
-      INSERT OR IGNORE INTO academy_project_tracks (
-        track_id, title_es, skill_tree, free_tools_stack_json, pro_tools_optional_json, milestone_rubric_json
-      ) VALUES (?, ?, ?, ?, ?, ?)
-    `);
-    for (const track of DEFAULT_ACADEMY_PROJECT_TRACKS) {
-      seedTrackStmt.run(
-        track.track_id,
-        track.title_es,
-        track.skill_tree,
-        track.free_tools_stack_json,
-        track.pro_tools_optional_json,
-        track.milestone_rubric_json
-      );
-    }
-
-    return { ready: true };
-  } finally {
-    if (ownsDb) {
-      try { db.close(); } catch (_) {}
-    }
-  }
-}
-
-function withAcademySqliteDb(options = {}, fn) {
-  const provided = options?.db || null;
-  if (provided) {
-    initAcademyRelationalSchema(provided);
-    return fn(provided);
-  }
-  if (!DatabaseSyncClass) {
-    throw new Error('SQLite DatabaseSync is unavailable in this Node runtime.');
-  }
-  if (cachedSqliteDb) {
-    initAcademyRelationalSchema(cachedSqliteDb);
-    return fn(cachedSqliteDb);
-  }
-  if (!fs.existsSync(CACHE_DIR)) fs.mkdirSync(CACHE_DIR, { recursive: true });
-  const db = new DatabaseSyncClass(SQLITE_FTS_FILE);
-  try {
-    initAcademyRelationalSchema(db);
-    return fn(db);
-  } finally {
-    try { db.close(); } catch (_) {}
-  }
-}
-
-export function upsertAcademySource(record, options = {}) {
-  return withAcademySqliteDb(options, (db) => {
-    db.prepare(`
-      INSERT INTO academy_sources (
-        source_id, title, authors, url, license, usage_policy, authority_tier, published_at, verified_http_status, verified_at
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-      ON CONFLICT(source_id) DO UPDATE SET
-        title = excluded.title,
-        authors = excluded.authors,
-        url = excluded.url,
-        license = excluded.license,
-        usage_policy = excluded.usage_policy,
-        authority_tier = excluded.authority_tier,
-        published_at = excluded.published_at,
-        verified_http_status = excluded.verified_http_status,
-        verified_at = excluded.verified_at
-    `).run(
-      String(record.source_id),
-      String(record.title || ''),
-      String(record.authors || ''),
-      String(record.url || ''),
-      String(record.license),
-      String(record.usage_policy),
-      String(record.authority_tier),
-      String(record.published_at || ''),
-      Number(record.verified_http_status ?? 0),
-      String(record.verified_at || new Date().toISOString())
-    );
-    return db.prepare('SELECT * FROM academy_sources WHERE source_id = ?').get(String(record.source_id));
-  });
-}
-
-export function getAcademySource(sourceId, options = {}) {
-  return withAcademySqliteDb(options, (db) =>
-    db.prepare('SELECT * FROM academy_sources WHERE source_id = ?').get(String(sourceId)) || null
-  );
-}
-
-export function listAcademySources(filters = {}, options = {}) {
-  return withAcademySqliteDb(options, (db) => {
-    const clauses = [];
-    const params = [];
-    if (filters.license) {
-      clauses.push('license = ?');
-      params.push(String(filters.license));
-    }
-    if (filters.usage_policy) {
-      clauses.push('usage_policy = ?');
-      params.push(String(filters.usage_policy));
-    }
-    if (filters.authority_tier) {
-      clauses.push('authority_tier = ?');
-      params.push(String(filters.authority_tier));
-    }
-    const where = clauses.length ? `WHERE ${clauses.join(' AND ')}` : '';
-    return db.prepare(`SELECT * FROM academy_sources ${where} ORDER BY source_id ASC`).all(...params);
-  });
-}
-
-export function deleteAcademySource(sourceId, options = {}) {
-  return withAcademySqliteDb(options, (db) => {
-    const res = db.prepare('DELETE FROM academy_sources WHERE source_id = ?').run(String(sourceId));
-    return { deleted: Number(res.changes || 0) > 0 };
-  });
-}
-
-export function upsertAcademyVideo(record, options = {}) {
-  return withAcademySqliteDb(options, (db) => {
-    const embedInt = record.embeddable === false || Number(record.embeddable) === 0 ? 0 : 1;
-    db.prepare(`
-      INSERT INTO academy_videos (
-        video_id, youtube_id, title, channel_title, duration_iso, embeddable, caption_mode, topic_tags, verified_at
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-      ON CONFLICT(video_id) DO UPDATE SET
-        youtube_id = excluded.youtube_id,
-        title = excluded.title,
-        channel_title = excluded.channel_title,
-        duration_iso = excluded.duration_iso,
-        embeddable = excluded.embeddable,
-        caption_mode = excluded.caption_mode,
-        topic_tags = excluded.topic_tags,
-        verified_at = excluded.verified_at
-    `).run(
-      String(record.video_id),
-      String(record.youtube_id),
-      String(record.title || ''),
-      String(record.channel_title || ''),
-      String(record.duration_iso || ''),
-      embedInt,
-      String(record.caption_mode),
-      serializeJsonField(record.topic_tags, '[]'),
-      String(record.verified_at || new Date().toISOString())
-    );
-    return db.prepare('SELECT * FROM academy_videos WHERE video_id = ?').get(String(record.video_id));
-  });
-}
-
-export function getAcademyVideo(idOrYoutubeId, options = {}) {
-  return withAcademySqliteDb(options, (db) =>
-    db
-      .prepare('SELECT * FROM academy_videos WHERE video_id = ? OR youtube_id = ? LIMIT 1')
-      .get(String(idOrYoutubeId), String(idOrYoutubeId)) || null
-  );
-}
-
-export function listAcademyVideos(filters = {}, options = {}) {
-  return withAcademySqliteDb(options, (db) => {
-    const clauses = [];
-    const params = [];
-    if (filters.caption_mode) {
-      clauses.push('caption_mode = ?');
-      params.push(String(filters.caption_mode));
-    }
-    if (filters.embeddable !== undefined) {
-      clauses.push('embeddable = ?');
-      params.push(filters.embeddable ? 1 : 0);
-    }
-    const where = clauses.length ? `WHERE ${clauses.join(' AND ')}` : '';
-    return db.prepare(`SELECT * FROM academy_videos ${where} ORDER BY video_id ASC`).all(...params);
-  });
-}
-
-export function deleteAcademyVideo(videoId, options = {}) {
-  return withAcademySqliteDb(options, (db) => {
-    const res = db.prepare('DELETE FROM academy_videos WHERE video_id = ?').run(String(videoId));
-    return { deleted: Number(res.changes || 0) > 0 };
-  });
-}
-
-export function upsertAcademyTool(record, options = {}) {
-  return withAcademySqliteDb(options, (db) => {
-    db.prepare(`
-      INSERT INTO academy_tools (
-        tool_id, name, official_url, pricing_tier, free_alternative_id,
-        when_to_pay_verdict_es, quota_notes_es, privacy_opt_out_steps_es,
-        skill_tree_tags, professions_tags, http_status, last_checked_at
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-      ON CONFLICT(tool_id) DO UPDATE SET
-        name = excluded.name,
-        official_url = excluded.official_url,
-        pricing_tier = excluded.pricing_tier,
-        free_alternative_id = excluded.free_alternative_id,
-        when_to_pay_verdict_es = excluded.when_to_pay_verdict_es,
-        quota_notes_es = excluded.quota_notes_es,
-        privacy_opt_out_steps_es = excluded.privacy_opt_out_steps_es,
-        skill_tree_tags = excluded.skill_tree_tags,
-        professions_tags = excluded.professions_tags,
-        http_status = excluded.http_status,
-        last_checked_at = excluded.last_checked_at
-    `).run(
-      String(record.tool_id),
-      String(record.name || ''),
-      String(record.official_url || ''),
-      String(record.pricing_tier),
-      String(record.free_alternative_id || ''),
-      String(record.when_to_pay_verdict_es || ''),
-      String(record.quota_notes_es || ''),
-      String(record.privacy_opt_out_steps_es || ''),
-      serializeJsonField(record.skill_tree_tags, ''),
-      serializeJsonField(record.professions_tags, ''),
-      Number(record.http_status ?? 0),
-      String(record.last_checked_at || new Date().toISOString())
-    );
-    return db.prepare('SELECT * FROM academy_tools WHERE tool_id = ?').get(String(record.tool_id));
-  });
-}
-
-export function getAcademyTool(toolId, options = {}) {
-  return withAcademySqliteDb(options, (db) =>
-    db.prepare('SELECT * FROM academy_tools WHERE tool_id = ?').get(String(toolId)) || null
-  );
-}
-
-export function listAcademyTools(filters = {}, options = {}) {
-  return withAcademySqliteDb(options, (db) => {
-    const clauses = [];
-    const params = [];
-    if (filters.pricing_tier) {
-      clauses.push('pricing_tier = ?');
-      params.push(String(filters.pricing_tier));
-    }
-    if (filters.skill_tree) {
-      clauses.push('skill_tree_tags LIKE ?');
-      params.push(`%${String(filters.skill_tree)}%`);
-    }
-    const where = clauses.length ? `WHERE ${clauses.join(' AND ')}` : '';
-    return db.prepare(`SELECT * FROM academy_tools ${where} ORDER BY tool_id ASC`).all(...params);
-  });
-}
-
-export function deleteAcademyTool(toolId, options = {}) {
-  return withAcademySqliteDb(options, (db) => {
-    const res = db.prepare('DELETE FROM academy_tools WHERE tool_id = ?').run(String(toolId));
-    return { deleted: Number(res.changes || 0) > 0 };
-  });
-}
-
-export function upsertAcademyProjectTrack(record, options = {}) {
-  return withAcademySqliteDb(options, (db) => {
-    db.prepare(`
-      INSERT INTO academy_project_tracks (
-        track_id, title_es, skill_tree, free_tools_stack_json, pro_tools_optional_json, milestone_rubric_json
-      ) VALUES (?, ?, ?, ?, ?, ?)
-      ON CONFLICT(track_id) DO UPDATE SET
-        title_es = excluded.title_es,
-        skill_tree = excluded.skill_tree,
-        free_tools_stack_json = excluded.free_tools_stack_json,
-        pro_tools_optional_json = excluded.pro_tools_optional_json,
-        milestone_rubric_json = excluded.milestone_rubric_json
-    `).run(
-      String(record.track_id),
-      String(record.title_es || ''),
-      String(record.skill_tree),
-      serializeJsonField(record.free_tools_stack_json, '[]'),
-      serializeJsonField(record.pro_tools_optional_json, '[]'),
-      serializeJsonField(record.milestone_rubric_json, '[]')
-    );
-    return db.prepare('SELECT * FROM academy_project_tracks WHERE track_id = ?').get(String(record.track_id));
-  });
-}
-
-export function getAcademyProjectTrack(trackId, options = {}) {
-  return withAcademySqliteDb(options, (db) =>
-    db.prepare('SELECT * FROM academy_project_tracks WHERE track_id = ?').get(String(trackId)) || null
-  );
-}
-
-export function listAcademyProjectTracks(filters = {}, options = {}) {
-  return withAcademySqliteDb(options, (db) => {
-    const clauses = [];
-    const params = [];
-    if (filters.skill_tree) {
-      clauses.push('skill_tree = ?');
-      params.push(String(filters.skill_tree));
-    }
-    const where = clauses.length ? `WHERE ${clauses.join(' AND ')}` : '';
-    return db.prepare(`SELECT * FROM academy_project_tracks ${where} ORDER BY track_id ASC`).all(...params);
-  });
-}
-
-export function deleteAcademyProjectTrack(trackId, options = {}) {
-  return withAcademySqliteDb(options, (db) => {
-    const res = db.prepare('DELETE FROM academy_project_tracks WHERE track_id = ?').run(String(trackId));
-    return { deleted: Number(res.changes || 0) > 0 };
-  });
-}
-
-export function getAcademyRelationalStats(options = {}) {
-  if (!DatabaseSyncClass && !options?.db) {
-    return { tablesReady: false, reason: 'SQLITE_UNAVAILABLE' };
-  }
-  return withAcademySqliteDb(options, (db) => {
-    const sources = db.prepare('SELECT COUNT(*) AS c FROM academy_sources').get().c;
-    const videos = db.prepare('SELECT COUNT(*) AS c FROM academy_videos').get().c;
-    const tools = db.prepare('SELECT COUNT(*) AS c FROM academy_tools').get().c;
-    const trackRows = db.prepare('SELECT track_id FROM academy_project_tracks ORDER BY track_id ASC').all();
-    return {
-      tablesReady: true,
-      academy_sources: Number(sources || 0),
-      academy_videos: Number(videos || 0),
-      academy_tools: Number(tools || 0),
-      academy_project_tracks: trackRows.length,
-      project_track_ids: trackRows.map((r) => r.track_id)
-    };
-  });
-}
+// AI Academy relational store lives in a dedicated, versioned DB (data/academy.sqlite,
+// source of truth data/academy/*.json). Re-exported to preserve rag_pipeline's public API.
+// The disposable FTS cache (.cache/omni_rag_fts5.sqlite) must never host academy_* tables.
+export {
+  DEFAULT_ACADEMY_PROJECT_TRACKS,
+  DEFAULT_ACADEMY_LEARNER_ARCHETYPES,
+  initAcademyRelationalSchema,
+  upsertAcademySource,
+  getAcademySource,
+  listAcademySources,
+  deleteAcademySource,
+  upsertAcademyVideo,
+  getAcademyVideo,
+  listAcademyVideos,
+  deleteAcademyVideo,
+  upsertAcademyTool,
+  getAcademyTool,
+  listAcademyTools,
+  deleteAcademyTool,
+  upsertAcademyLearnerArchetype,
+  getAcademyLearnerArchetype,
+  listAcademyLearnerArchetypes,
+  deleteAcademyLearnerArchetype,
+  upsertAcademyProjectTrack,
+  getAcademyProjectTrack,
+  listAcademyProjectTracks,
+  deleteAcademyProjectTrack,
+  getAcademyRelationalStats,
+  exportAcademyToVersionedJson,
+  importAcademyFromVersionedJson,
+  purgeLegacyAcademyTablesFromCache,
+  isVideoQuizEligible
+} from './academy_store.mjs';
+import { getAcademyRelationalStats as getAcademyStoreStats } from './academy_store.mjs';
 
 /**
  * Surgically ingests or updates specific Markdown files into `.cache/omni_rag_fts5.sqlite`
@@ -1058,8 +584,7 @@ export function ingestMarkdownFilesIntoSqliteFts5(filePaths = []) {
   }
   invalidateIndexCache();
   const db = new DatabaseSyncClass(SQLITE_FTS_FILE);
-  db.exec('PRAGMA journal_mode = WAL; PRAGMA synchronous = NORMAL; PRAGMA busy_timeout = 5000; PRAGMA foreign_keys = ON;');
-  initAcademyRelationalSchema(db);
+  db.exec('PRAGMA journal_mode = WAL; PRAGMA synchronous = NORMAL; PRAGMA busy_timeout = 5000;');
 
   const delSourceStmt = db.prepare('DELETE FROM chunks_fts WHERE source = ?');
   const delIdStmt = db.prepare('DELETE FROM chunks_fts WHERE id = ?');
@@ -1125,13 +650,9 @@ function buildOrOpenSqliteFts5Index(chunks, forceRebuild = false) {
     }
     const dbExists = fs.existsSync(SQLITE_FTS_FILE);
     if (!forceRebuild && dbExists) {
-      if (cachedSqliteDb) {
-        initAcademyRelationalSchema(cachedSqliteDb);
-        return cachedSqliteDb;
-      }
+      if (cachedSqliteDb) return cachedSqliteDb;
       const db = new DatabaseSyncClass(SQLITE_FTS_FILE);
-      db.exec('PRAGMA journal_mode = WAL; PRAGMA synchronous = NORMAL; PRAGMA busy_timeout = 5000; PRAGMA foreign_keys = ON;');
-      initAcademyRelationalSchema(db);
+      db.exec('PRAGMA journal_mode = WAL; PRAGMA synchronous = NORMAL; PRAGMA busy_timeout = 5000;');
       const row = db
         .prepare('SELECT COUNT(*) AS cnt, COUNT(DISTINCT id) AS uniq FROM chunks_fts')
         .get();
@@ -1164,13 +685,14 @@ function buildOrOpenSqliteFts5Index(chunks, forceRebuild = false) {
       db.exec('PRAGMA journal_mode = WAL; PRAGMA synchronous = NORMAL; PRAGMA busy_timeout = 5000; PRAGMA foreign_keys = ON;');
     } catch (_) {
       if (fs.existsSync(SQLITE_FTS_FILE)) {
-        try { fs.unlinkSync(SQLITE_FTS_FILE); } catch (_) {}
+        // Never delete blindly: keep a timestamped copy of the corrupt cache for forensics.
+        const corruptBackup = `${SQLITE_FTS_FILE}.${new Date().toISOString().replace(/[:.]/g, '-')}.corrupt`;
+        try { fs.renameSync(SQLITE_FTS_FILE, corruptBackup); } catch (_) {}
       }
       db = new DatabaseSyncClass(SQLITE_FTS_FILE);
       db.exec('PRAGMA journal_mode = WAL; PRAGMA synchronous = NORMAL; PRAGMA busy_timeout = 5000; PRAGMA foreign_keys = ON;');
     }
 
-    initAcademyRelationalSchema(db);
     db.exec('DROP TABLE IF EXISTS chunks_fts;');
     db.exec(`
       CREATE VIRTUAL TABLE IF NOT EXISTS chunks_fts USING fts5(
@@ -1324,7 +846,6 @@ export function getOrBuildMiniSearchIndex(force = false) {
       const stats = fs.statSync(SQLITE_FTS_FILE);
       if (now - stats.mtimeMs < 30 * 24 * 3_600_000) {
         const sqliteDb = cachedSqliteDb || new DatabaseSyncClass(SQLITE_FTS_FILE);
-        initAcademyRelationalSchema(sqliteDb);
         const rows = sqliteDb
           .prepare(
             "SELECT id, source, category, snippet, title, section, text FROM chunks_fts WHERE category != 'canon-book' LIMIT 100000"
@@ -1920,9 +1441,12 @@ Output pure markdown text and cite the specific sources used.`;
 export async function getClusterStats() {
   const indexData = getOrBuildMiniSearchIndex();
   const graphData = getLoadedGraphData(false);
-  const academyRel = DatabaseSyncClass
-    ? getAcademyRelationalStats(indexData.sqliteDb ? { db: indexData.sqliteDb } : {})
-    : { tablesReady: false };
+  let academyRel;
+  try {
+    academyRel = getAcademyStoreStats();
+  } catch (academyErr) {
+    academyRel = { tablesReady: false, error: academyErr.message };
+  }
   const stats = {
     local_omni_rag_v5: {
       chunks_count: indexData.chunks.length,
@@ -1966,10 +1490,11 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     const idx = getOrBuildMiniSearchIndex(true);
     const localIdx = ensureLocalKnowledgeIndex(true);
     const sum = localIdx.epistemicSummary || {};
-    const relStats = DatabaseSyncClass ? getAcademyRelationalStats(idx.sqliteDb ? { db: idx.sqliteDb } : {}) : { tablesReady: false };
+    let relStats;
+    try { relStats = getAcademyStoreStats(); } catch (relErr) { relStats = { tablesReady: false, error: relErr.message }; }
     console.log(`✅ Built ${idx.chunks.length} contextual chunks | CodeGraph: ${g?.codeGraph?.nodes?.length || 0} files | WikiGraph: ${g?.wikiGraph?.edges?.length || 0} [[wikilinks]] in ${Date.now() - t0}ms.`);
     console.log(`🏛️  Epistemic Governance (.agents/memory/knowledge_index.json): TIER_1_SOTA_2026=${sum.TIER_1_SOTA_2026 || 0} docs (x1.35) | TIER_2_TIMELESS_PRINCIPLES=${sum.TIER_2_TIMELESS_PRINCIPLES || 0} docs (x1.15) | TIER_3_LEGACY_SYNTAX_GUARD=${sum.TIER_3_LEGACY_SYNTAX_GUARD_CHUNKS || 0} guarded chunks.`);
-    console.log(`🗄️  AI Academy SQLite Tables: ready=${relStats.tablesReady} | tracks=${relStats.academy_project_tracks ?? 0} | sources=${relStats.academy_sources ?? 0} | videos=${relStats.academy_videos ?? 0} | tools=${relStats.academy_tools ?? 0}`);
+    console.log(`🗄️  AI Academy DB (${relStats.db_path || 'data/academy.sqlite'} v${relStats.user_version ?? '?'}): ready=${relStats.tablesReady} | tracks=${relStats.academy_project_tracks ?? 0} | archetypes=${relStats.academy_learner_archetypes ?? 0} | sources=${relStats.academy_sources ?? 0} | videos=${relStats.academy_videos ?? 0} | tools=${relStats.academy_tools ?? 0}`);
   } else if (process.argv.includes('--stats')) {
     console.log('📊 Checking Omni-RAG v5 & Qdrant Stats...');
     getClusterStats().then(s => console.log(JSON.stringify(s, null, 2)));

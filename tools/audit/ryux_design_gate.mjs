@@ -130,55 +130,63 @@ export function runRyuxDesignGate() {
     !hasSlopText && hasMainAndHeading ? 'Clean copy & semantic focal hierarchy verified' : 'Found placeholder slop or missing <main>/<h1>'
   );
 
-  // 7. 3-Viewport Optical Geometry, Zero-Overlap, Zero-Clipping & APCA Perceptual Contrast (375px, 768px, 1440px)
-  const factoryRoot = path.resolve(path.dirname(__filename), '..', '..');
-  const projectOptReportPath = path.join(ROOT, 'tools', 'audit', 'out', 'optical_geometry_report.json');
-  const factoryOptReportPath = path.join(factoryRoot, 'tools', 'audit', 'out', 'optical_geometry_report.json');
-  const optReportPath = fs.existsSync(projectOptReportPath) ? projectOptReportPath : factoryOptReportPath;
+  // 7. 3-Viewport Optical Geometry, Zero-Overlap, Zero-Clipping & APCA Perceptual Contrast (Fail-Closed)
+  const optReportPath = path.join(ROOT, 'tools', 'audit', 'out', 'optical_geometry_report.json');
+  let hasOptGeoEvidence = false;
   let optGeo = {
-    viewportsVerified: [1440, 768, 375],
-    zeroHorizontalScroll: true,
-    zeroClippingOrOverlap: true,
-    fitts44pxMobileVerified: true,
-    perceptualContrastVerified: true,
-    temporal4StagesVerified: true,
-    clsScore: 0,
-    fpsMeasured: 60
+    viewportsVerified: [],
+    zeroHorizontalScroll: false,
+    zeroClippingOrOverlap: false,
+    fitts44pxMobileVerified: false,
+    perceptualContrastVerified: false,
+    temporal4StagesVerified: false,
+    clsScore: Number.POSITIVE_INFINITY,
+    fpsMeasured: 0
   };
   if (fs.existsSync(optReportPath)) {
     try {
-      optGeo = { ...optGeo, ...JSON.parse(fs.readFileSync(optReportPath, 'utf8')) };
-    } catch (_) {}
+      const parsedOpt = JSON.parse(fs.readFileSync(optReportPath, 'utf8'));
+      if (parsedOpt && typeof parsedOpt === 'object') {
+        optGeo = { ...optGeo, ...parsedOpt };
+        hasOptGeoEvidence = true;
+      }
+    } catch (_) {
+      hasOptGeoEvidence = false;
+    }
   }
 
   addCheck(
     'ryux-optical-geometry-3vp',
     '3-Viewport Optical Geometry (375px / 768px / 1440px Zero-Overlap, APCA Contrast & Fitts 44x44px Touch)',
-    optGeo.zeroHorizontalScroll &&
-      optGeo.zeroClippingOrOverlap &&
-      optGeo.perceptualContrastVerified &&
-      optGeo.fitts44pxMobileVerified,
-    `Viewports=[${(optGeo.viewportsVerified || [1440, 768, 375]).join(', ')}px], ZeroHScroll=${optGeo.zeroHorizontalScroll}, ZeroOverlap=${optGeo.zeroClippingOrOverlap}, APCAContrast=${optGeo.perceptualContrastVerified}, Fitts44pxMobile=${optGeo.fitts44pxMobileVerified}`
+    hasOptGeoEvidence &&
+      Boolean(
+        optGeo.zeroHorizontalScroll &&
+          optGeo.zeroClippingOrOverlap &&
+          optGeo.perceptualContrastVerified &&
+          optGeo.fitts44pxMobileVerified
+      ),
+    hasOptGeoEvidence
+      ? `Viewports=[${(optGeo.viewportsVerified || []).join(', ')}px], ZeroHScroll=${optGeo.zeroHorizontalScroll}, ZeroOverlap=${optGeo.zeroClippingOrOverlap}, APCAContrast=${optGeo.perceptualContrastVerified}, Fitts44pxMobile=${optGeo.fitts44pxMobileVerified}`
+      : 'MISSING_EVIDENCE: optical_geometry_report.json not found'
   );
 
   addCheck(
     'ryux-gpu-60fps-cls',
     '60-FPS GPU Compositor Motion & Zero-CLS (< 0.05) across 4 Temporal Stages',
-    Number(optGeo.fpsMeasured || 60) >= 55 && Number(optGeo.clsScore || 0) < 0.05,
-    `FPS=${optGeo.fpsMeasured || 60} (>=55), CLS=${Number(optGeo.clsScore || 0).toFixed(2)} (<0.05), 4-StageTemporal=${optGeo.temporal4StagesVerified}`
+    hasOptGeoEvidence && Number(optGeo.fpsMeasured) >= 55 && Number(optGeo.clsScore) < 0.05,
+    hasOptGeoEvidence
+      ? `FPS=${optGeo.fpsMeasured} (>=55), CLS=${Number(optGeo.clsScore).toFixed(2)} (<0.05), 4-StageTemporal=${optGeo.temporal4StagesVerified}`
+      : 'MISSING_EVIDENCE: optical_geometry_report.json not found'
   );
 
-  const cdpPerf = optGeo.cdpPerformanceAndA11y || {
-    jsHeapUsedMB: 4.0,
-    layoutDurationMs: 3.2,
-    recalcStyleDurationMs: 2.1,
-    a11yTreeHealthy: true
-  };
+  const cdpPerf = hasOptGeoEvidence ? optGeo.cdpPerformanceAndA11y : null;
   addCheck(
     'ryux-cdp-perf-and-ax-tree',
     'Chrome DevTools CDP Telemetry (JSHeapUsedSize, LayoutDuration, RecalcStyleDuration & FullAXTree)',
-    Number(cdpPerf.jsHeapUsedMB ?? 4.0) < 64 && cdpPerf.a11yTreeHealthy !== false,
-    `JSHeap=${cdpPerf.jsHeapUsedMB ?? 4.0}MB, Layout=${cdpPerf.layoutDurationMs ?? 3.2}ms, RecalcStyle=${cdpPerf.recalcStyleDurationMs ?? 2.1}ms, AXTreeHealthy=${cdpPerf.a11yTreeHealthy !== false}`
+    Boolean(cdpPerf && typeof cdpPerf.jsHeapUsedMB === 'number' && cdpPerf.jsHeapUsedMB < 64 && cdpPerf.a11yTreeHealthy === true),
+    cdpPerf
+      ? `JSHeap=${cdpPerf.jsHeapUsedMB}MB, Layout=${cdpPerf.layoutDurationMs}ms, RecalcStyle=${cdpPerf.recalcStyleDurationMs}ms, AXTreeHealthy=${cdpPerf.a11yTreeHealthy === true}`
+      : 'MISSING_EVIDENCE: cdpPerformanceAndA11y telemetry absent'
   );
 
   // 10. Google Labs DESIGN.md + Impeccable v4.6 (62 Anti-Slop Rules & 4 Surface Modes)
@@ -249,7 +257,8 @@ export function runRyuxDesignGate() {
     hasMuteControlSupport &&
     videoBudgetOk &&
     hasSonicVideoSection &&
-    Number(optGeo.fpsMeasured || 60) >= 55;
+    hasOptGeoEvidence &&
+    Number(optGeo.fpsMeasured) >= 55;
 
   addCheck(
     'ryux-audio-video-ergonomics-and-budget',
@@ -318,23 +327,17 @@ export function runRyuxDesignGate() {
   const divergenceOk = activeDna.morphologicalDivergenceScore >= MIN_DIVERGENCE_THRESHOLD;
   const harmonyOk = activeDna.aestheticHarmonyScore >= MIN_HARMONY_SCORE;
 
-  const optHarmony = optGeo.visualHarmonyAndMotion?.opticalHarmonyMetrics || {
-    whitespaceRatio: 0.48,
-    whitespaceBalanced: true,
-    axialAlignmentScore: 0.96,
-    axialAlignmentPassed: true,
-    geometricRhythmConsistency: 0.95,
-    geometricRhythmPassed: true
-  };
-  const motionStrip = optGeo.visualHarmonyAndMotion?.motionKeyframeStrip || {
-    all4KeyframesVerified: true
-  };
-  const opticalAndMotionPassed =
-    optHarmony.whitespaceRatio >= 0.35 &&
-    optHarmony.whitespaceRatio <= 0.68 &&
-    optHarmony.axialAlignmentScore >= 0.90 &&
-    optHarmony.geometricRhythmConsistency >= 0.90 &&
-    Boolean(motionStrip.all4KeyframesVerified);
+  const optHarmony = hasOptGeoEvidence ? optGeo.visualHarmonyAndMotion?.opticalHarmonyMetrics : null;
+  const motionStrip = hasOptGeoEvidence ? optGeo.visualHarmonyAndMotion?.motionKeyframeStrip : null;
+  const opticalAndMotionPassed = Boolean(
+    optHarmony &&
+      motionStrip &&
+      optHarmony.whitespaceRatio >= 0.35 &&
+      optHarmony.whitespaceRatio <= 0.68 &&
+      optHarmony.axialAlignmentScore >= 0.90 &&
+      optHarmony.geometricRhythmConsistency >= 0.90 &&
+      motionStrip.all4KeyframesVerified === true
+  );
 
   const uiPrimitivesRaw = readFirstExisting([
     'dist/css/ui-primitives.css',
@@ -358,12 +361,12 @@ export function runRyuxDesignGate() {
     'ryux-intra-category-uniqueness-and-bespoke-dna',
     'Intra-Category Uniqueness (Divergence >= 0.70), Birkhoff Harmony (>= 0.85), 3 Optical Metrics & 4-Frame Motion Strip',
     check14Passed,
-    `Grid=${activeDna.gridTopology}, Hero=${activeDna.heroArchitecture}, Div=${activeDna.morphologicalDivergenceScore} (>=0.70), Harmony=${activeDna.aestheticHarmonyScore} (>=0.85), Whitespace=${optHarmony.whitespaceRatio}, Axial=${optHarmony.axialAlignmentScore}, Rhythm=${optHarmony.geometricRhythmConsistency}, 4Keyframes=${Boolean(motionStrip.all4KeyframesVerified)}`
+    `Grid=${activeDna.gridTopology}, Hero=${activeDna.heroArchitecture}, Div=${activeDna.morphologicalDivergenceScore} (>=0.70), Harmony=${activeDna.aestheticHarmonyScore} (>=0.85), Whitespace=${optHarmony?.whitespaceRatio ?? 'MISSING'}, Axial=${optHarmony?.axialAlignmentScore ?? 'MISSING'}, Rhythm=${optHarmony?.geometricRhythmConsistency ?? 'MISSING'}, 4Keyframes=${Boolean(motionStrip?.all4KeyframesVerified)}`
   );
 
   const passedCount = checks.filter(c => c.passed).length;
-  const score = Math.round((passedCount / checks.length) * 100);
-  const passed = passedCount === checks.length;
+  const score = !hasOptGeoEvidence ? 0 : Math.round((passedCount / checks.length) * 100);
+  const passed = hasOptGeoEvidence && passedCount === checks.length;
 
   return {
     timestamp: new Date().toISOString(),
@@ -374,6 +377,7 @@ export function runRyuxDesignGate() {
     styleSkill: projectCfg.design?.styleSkill || 'default-90-8-2-oklch',
     score,
     passed,
+    ...(hasOptGeoEvidence ? {} : { reason: 'MISSING_EVIDENCE' }),
     passedCount,
     totalChecks: checks.length,
     opticalGeometry: optGeo,
@@ -403,8 +407,8 @@ export async function runAutonomousAestheticRepairLoop(options = {}) {
       passNumber: iter,
       maxPasses: maxIterations
     });
-    const cogScore = Number(cogRes?.score ?? 100);
-    const vlmScore = Number(vlmRes?.score ?? 100);
+    const cogScore = Number(cogRes?.score ?? 0);
+    const vlmScore = Number(vlmRes?.score ?? 0);
     const combinedScore = Math.min(ryuxRes.score, cogScore, vlmScore);
 
     const failedRyux = ryuxRes.checks.filter(c => !c.passed);

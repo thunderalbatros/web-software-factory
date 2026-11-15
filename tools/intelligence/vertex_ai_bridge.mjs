@@ -12,12 +12,14 @@
 import fs from 'fs';
 import path from 'path';
 import crypto from 'crypto';
-import { execSync } from 'child_process';
+import { execFileSync } from 'child_process';
 import { fileURLToPath } from 'url';
+import { getProjectProfile } from '../lib/project_profile.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const ROOT = path.resolve(__dirname, '..', '..');
+export const MODEL_PRICING_PATH = path.join(ROOT, '.agents', 'governance', 'model_pricing.json');
 
 // Load environment
 function loadEnv() {
@@ -63,6 +65,55 @@ function resolveVertexLocationForModel(modelId = GEMINI_MODEL, explicitLocation 
   const m = String(modelId || '').toLowerCase();
   if (/^gemini-(3|4)/.test(m)) return 'global';
   return GCP_LOCATION || 'us-central1';
+}
+
+export function resolveGcloudBinary() {
+  const fromEnv = String(process.env.GCLOUD_BIN || env.GCLOUD_BIN || '').trim();
+  if (fromEnv) return fromEnv;
+  const winDefault = 'C:\\Users\\tomas\\AppData\\Local\\Google\\Cloud SDK\\google-cloud-sdk\\bin\\gcloud.cmd';
+  if (process.platform === 'win32' && fs.existsSync(winDefault)) return winDefault;
+  return process.platform === 'win32' ? 'gcloud.cmd' : 'gcloud';
+}
+
+function runGcloudCli(args = []) {
+  for (const arg of args) {
+    if (!/^[A-Za-z0-9._:/=-]+$/.test(String(arg))) {
+      throw new Error(`UNSAFE_GCLOUD_ARG: ${arg}`);
+    }
+  }
+  const gcloudBin = resolveGcloudBinary();
+  return execFileSync(gcloudBin, args, {
+    encoding: 'utf8',
+    windowsHide: true,
+    shell: process.platform === 'win32' && /\.(?:cmd|bat)$/i.test(gcloudBin)
+  }).trim();
+}
+
+export function getVerifiedModelPricing(modelId, location = 'global', pricingPath = MODEL_PRICING_PATH) {
+  const cleanId = String(modelId || '')
+    .trim()
+    .replace(/^publishers\/google\/models\//i, '');
+  if (!cleanId || !fs.existsSync(pricingPath)) return null;
+  try {
+    const catalog = JSON.parse(fs.readFileSync(pricingPath, 'utf8'));
+    const entry = catalog?.models?.[cleanId];
+    if (!entry || !entry.verified_at || !entry.source_url || !/^https:\/\//i.test(String(entry.source_url))) {
+      return null;
+    }
+    const locBucket = String(location || 'global').toLowerCase() === 'global' ? 'global' : 'regional';
+    const std = entry.standard?.[locBucket] || entry.standard?.global || null;
+    const bat = entry.batch?.[locBucket] || entry.batch?.global || null;
+    return {
+      model: cleanId,
+      locationBucket: locBucket,
+      verified_at: entry.verified_at,
+      source_url: entry.source_url,
+      standard: std,
+      batch: bat
+    };
+  } catch {
+    return null;
+  }
 }
 
 function isPlainObject(v) {
@@ -675,12 +726,14 @@ export function recordFinOpsTelemetry({ operation, model = GEMINI_MODEL, inputCh
   try {
     const estInputTokens = Math.ceil(inputChars / 4);
     const estOutputTokens = Math.ceil(outputChars / 4);
-    // Gemini 2.5 Flash pricing: ~$0.15 / 1M input (or $0.0375 implicit cached), ~$0.60 / 1M output
+    const verifiedPricing = getVerifiedModelPricing(model, resolveVertexLocationForModel(model));
+    const inRatePerToken = ((verifiedPricing?.standard?.input_per_1m_usd ?? 0.75) / 1_000_000);
+    const outRatePerToken = ((verifiedPricing?.standard?.output_per_1m_usd ?? 3.75) / 1_000_000);
     const estCostUsd = cacheHit
       ? 0
       : fixedCostUsd != null
       ? Number(Number(fixedCostUsd).toFixed(8))
-      : Number(((estInputTokens * 0.00000015) + (estOutputTokens * 0.00000060)).toFixed(8));
+      : Number(((estInputTokens * inRatePerToken) + (estOutputTokens * outRatePerToken)).toFixed(8));
 
     fs.mkdirSync(path.dirname(FINOPS_LOG_PATH), { recursive: true });
     const entry = {
@@ -1089,11 +1142,7 @@ export async function syncSniperMatrixToBigQuery(rows = []) {
     return { ok: false, inserted: 0, reason: 'No rows or project configured' };
   }
   try {
-    const gcloudCmd = 'C:\\Users\\tomas\\AppData\\Local\\Google\\Cloud SDK\\google-cloud-sdk\\bin\\gcloud.cmd';
-    const token = execSync(`"${gcloudCmd}" auth print-access-token`, {
-      encoding: 'utf8',
-      windowsHide: true
-    }).trim();
+    const token = runGcloudCli(['auth', 'print-access-token']);
 
     const url = `https://bigquery.googleapis.com/bigquery/v2/projects/${GCP_PROJECT}/datasets/WebFactory_sniper_intel/tables/slot_dna_50spin_matrix/insertAll`;
     const bqRows = rows.map(r => ({
@@ -1275,11 +1324,7 @@ async function resolveGcpAccessToken(explicitToken = '') {
       }
     } catch (_) {}
   }
-  const gcloudCmd = 'C:\\Users\\tomas\\AppData\\Local\\Google\\Cloud SDK\\google-cloud-sdk\\bin\\gcloud.cmd';
-  return execSync(`"${gcloudCmd}" auth application-default print-access-token`, {
-    encoding: 'utf8',
-    windowsHide: true
-  }).trim();
+  return runGcloudCli(['auth', 'application-default', 'print-access-token']);
 }
 
 /**
@@ -1375,7 +1420,7 @@ export function checkFinOpsDailyBudget(estimatedCallCostUsd = 0.001, options = {
   return { allowed: true, batchBudgetOverrideActive: allowBatchOverride, status };
 }
 
-function normalizeBatchJsonlRequests(jsonlRequests) {
+function normalizeBatchJsonlRequests(jsonlRequests, batchModel = GEMINI_MODEL) {
   let rawLines = [];
   if (typeof jsonlRequests === 'string') {
     const trimmed = jsonlRequests.trim();
@@ -1393,21 +1438,42 @@ function normalizeBatchJsonlRequests(jsonlRequests) {
   return rawLines
     .map((item) => {
       const obj = typeof item === 'string' ? JSON.parse(item) : item;
-      if (obj && obj.request) return JSON.stringify(obj);
-      const userText = String(obj?.prompt || obj?.text || JSON.stringify(obj));
-      const payload = {
-        request: {
-          contents: [{ role: 'user', parts: [{ text: userText }] }]
+      let payload;
+      let requestedThinking;
+      if (obj && obj.request) {
+        payload = {
+          ...obj,
+          request: {
+            ...obj.request,
+            generationConfig: obj.request.generationConfig ? { ...obj.request.generationConfig } : {}
+          }
+        };
+        requestedThinking = obj.request.generationConfig?.thinkingConfig ?? obj.thinkingConfig;
+      } else {
+        const userText = String(obj?.prompt || obj?.text || JSON.stringify(obj));
+        payload = {
+          request: {
+            contents: [{ role: 'user', parts: [{ text: userText }] }],
+            generationConfig: obj?.generationConfig ? { ...obj.generationConfig } : {}
+          }
+        };
+        if (obj?.custom_id || obj?.customId) {
+          payload.custom_id = String(obj.custom_id || obj.customId);
         }
-      };
-      if (obj?.custom_id || obj?.customId) {
-        payload.custom_id = String(obj.custom_id || obj.customId);
+        if (obj?.systemInstruction) {
+          payload.request.systemInstruction = { parts: [{ text: String(obj.systemInstruction) }] };
+        }
+        requestedThinking = obj?.thinkingConfig ?? obj?.generationConfig?.thinkingConfig;
       }
-      if (obj?.systemInstruction) {
-        payload.request.systemInstruction = { parts: [{ text: String(obj.systemInstruction) }] };
-      }
-      if (obj?.generationConfig) {
-        payload.request.generationConfig = obj.generationConfig;
+
+      const normalizedThinking = normalizeThinkingConfigForModel(batchModel, requestedThinking, true);
+      if (normalizedThinking) {
+        payload.request.generationConfig = {
+          ...(payload.request.generationConfig || {}),
+          thinkingConfig: normalizedThinking
+        };
+      } else if (payload.request.generationConfig && Object.keys(payload.request.generationConfig).length === 0) {
+        delete payload.request.generationConfig;
       }
       return JSON.stringify(payload);
     })
@@ -1416,16 +1482,29 @@ function normalizeBatchJsonlRequests(jsonlRequests) {
 
 /**
  * Submits & polls a Vertex AI Batch Prediction job (`batchPredictionJobs` at 50% Batch discount)
- * against `process.env.GCP_BATCH_BUCKET` with deterministic SHA-256 local idempotency cache.
+ * against `process.env.GCP_BATCH_BUCKET` with deterministic SHA-256 local idempotency cache
+ * and strict `.agents/governance/model_pricing.json` verification.
  */
 export async function submitAndPollVertexBatchJob(jsonlRequests, options = {}) {
-  const canonicalJsonl = normalizeBatchJsonlRequests(jsonlRequests);
+  const batchModel = String(options.model || GEMINI_MODEL || 'gemini-3.8-flash');
+  const batchLocation = resolveVertexLocationForModel(batchModel, options.location);
+  const verifiedPricing = getVerifiedModelPricing(batchModel, batchLocation, options.pricingPath || MODEL_PRICING_PATH);
+  if (!verifiedPricing || !verifiedPricing.batch) {
+    return {
+      ok: false,
+      blockedByPricingGuard: true,
+      reason: 'UNVERIFIED_MODEL_PRICING',
+      error: 'UNVERIFIED_MODEL_PRICING',
+      model: batchModel,
+      location: batchLocation
+    };
+  }
+
+  const canonicalJsonl = normalizeBatchJsonlRequests(jsonlRequests, batchModel);
   if (!canonicalJsonl) {
     return { ok: false, error: 'EMPTY_BATCH_REQUESTS' };
   }
 
-  const batchModel = String(options.model || GEMINI_MODEL || 'gemini-3.8-flash');
-  const batchLocation = resolveVertexLocationForModel(batchModel, options.location);
   const apiHost =
     batchLocation === 'global'
       ? 'https://aiplatform.googleapis.com'
@@ -1482,8 +1561,10 @@ export async function submitAndPollVertexBatchJob(jsonlRequests, options = {}) {
   const lineCount = canonicalJsonl.split('\n').length;
   const estInputTokens = Math.ceil(canonicalJsonl.length / 4);
   const estOutputTokens = lineCount * Number(options.estimatedOutputTokensPerItem || 512);
-  // 50% Batch Prediction API cost discount
-  const estimatedBatchCostUsd = Number((((estInputTokens * 0.00000015) + (estOutputTokens * 0.00000060)) * 0.5).toFixed(6));
+  const batchInputRate = Number(verifiedPricing.batch.input_per_1m_usd) / 1_000_000;
+  const batchOutputRate = Number(verifiedPricing.batch.output_per_1m_usd) / 1_000_000;
+  const batchCachedInputRate = Number(verifiedPricing.batch.cached_input_per_1m_usd ?? verifiedPricing.batch.input_per_1m_usd) / 1_000_000;
+  const estimatedBatchCostUsd = Number(((estInputTokens * batchInputRate) + (estOutputTokens * batchOutputRate)).toFixed(8));
 
   if (!isResumingInFlight) {
     const budgetCheck = checkFinOpsDailyBudget(estimatedBatchCostUsd, {
@@ -1593,8 +1674,16 @@ export async function submitAndPollVertexBatchJob(jsonlRequests, options = {}) {
     }
   }
 
-  let results = [];
+  const results = [];
+  const lineErrors = [];
   let outputChars = 0;
+  let hasUsageMetadata = false;
+  let promptTokenCount = 0;
+  let cachedContentTokenCount = 0;
+  let candidatesTokenCount = 0;
+  let thoughtsTokenCount = 0;
+  let totalTokenCount = 0;
+
   if (jobState === 'JOB_STATE_SUCCEEDED') {
     const outPrefix = `batches/${batchHash}/output/`;
     const listUrl = `https://storage.googleapis.com/storage/v1/b/${encodeURIComponent(bucketName)}/o?prefix=${encodeURIComponent(outPrefix)}`;
@@ -1604,6 +1693,7 @@ export async function submitAndPollVertexBatchJob(jsonlRequests, options = {}) {
     if (listRes.ok) {
       const listJson = await listRes.json();
       const jsonlItems = (listJson.items || []).filter((it) => String(it.name || '').endsWith('.jsonl'));
+      let lineIdx = 0;
       for (const objItem of jsonlItems) {
         const dlUrl = `https://storage.googleapis.com/storage/v1/b/${encodeURIComponent(bucketName)}/o/${encodeURIComponent(objItem.name)}?alt=media`;
         const dlRes = await fetchFn(dlUrl, {
@@ -1614,11 +1704,82 @@ export async function submitAndPollVertexBatchJob(jsonlRequests, options = {}) {
           outputChars += textBody.length;
           for (const line of textBody.split(/\r?\n/)) {
             if (!line.trim()) continue;
-            try { results.push(JSON.parse(line)); } catch { results.push({ raw: line }); }
+            try {
+              const parsedLine = JSON.parse(line);
+              results.push(parsedLine);
+              const statusObj = parsedLine?.status;
+              const hasStatusErr =
+                Boolean(parsedLine?.error) ||
+                (statusObj && typeof statusObj === 'object' && Number(statusObj.code || 0) !== 0) ||
+                (typeof statusObj === 'string' && statusObj.trim() !== '' && statusObj.toUpperCase() !== 'OK');
+              if (hasStatusErr) {
+                lineErrors.push({
+                  lineIndex: lineIdx,
+                  custom_id: parsedLine.custom_id || null,
+                  status: statusObj || null,
+                  error: parsedLine.error || statusObj
+                });
+              }
+              const usage = parsedLine?.response?.usageMetadata || parsedLine?.usageMetadata || null;
+              if (usage && typeof usage === 'object') {
+                hasUsageMetadata = true;
+                const pTok = Number(usage.promptTokenCount || 0);
+                const cTok = Number(usage.cachedContentTokenCount || 0);
+                const oTok = Number(usage.candidatesTokenCount || 0);
+                const tTok = Number(usage.thoughtsTokenCount || 0);
+                promptTokenCount += pTok;
+                cachedContentTokenCount += cTok;
+                candidatesTokenCount += oTok;
+                thoughtsTokenCount += tTok;
+                totalTokenCount += Number(usage.totalTokenCount || (pTok + oTok + tTok));
+              }
+            } catch (parseErr) {
+              results.push({ raw: line, parseError: parseErr.message });
+              lineErrors.push({
+                lineIndex: lineIdx,
+                custom_id: null,
+                status: 'INVALID_JSONL_LINE',
+                error: parseErr.message
+              });
+            }
+            lineIdx++;
           }
         }
       }
     }
+  }
+
+  const failedCount = Math.max(Number(latestJob?.completionStats?.failedCount || 0), lineErrors.length);
+  const billableOutputTokens = candidatesTokenCount + thoughtsTokenCount;
+  const nonCachedInputTokens = Math.max(0, promptTokenCount - cachedContentTokenCount);
+  const actualUsageCostUsd = hasUsageMetadata
+    ? Number(
+        (
+          (nonCachedInputTokens * batchInputRate) +
+          (cachedContentTokenCount * batchCachedInputRate) +
+          (billableOutputTokens * batchOutputRate)
+        ).toFixed(8)
+      )
+    : null;
+  const usageMetadataSummary = {
+    hasUsageMetadata,
+    promptTokenCount,
+    cachedContentTokenCount,
+    candidatesTokenCount,
+    thoughtsTokenCount,
+    billableOutputTokens,
+    totalTokenCount
+  };
+
+  let billedCostNow;
+  if (isResumingInFlight) {
+    if (actualUsageCostUsd !== null) {
+      billedCostNow = Number(Math.max(0, actualUsageCostUsd - Number(existing?.preBilledCostUsd || 0)).toFixed(8));
+    } else {
+      billedCostNow = 0;
+    }
+  } else {
+    billedCostNow = actualUsageCostUsd !== null ? actualUsageCostUsd : estimatedBatchCostUsd;
   }
 
   const recordEntry = {
@@ -1631,6 +1792,11 @@ export async function submitAndPollVertexBatchJob(jsonlRequests, options = {}) {
     outputDirectory: latestJob?.outputInfo?.gcsOutputDirectory || outputUriPrefix,
     error: latestJob?.error || null,
     requestCount: lineCount,
+    failedCount,
+    lineErrors,
+    usageMetadataSummary,
+    actualUsageCostUsd,
+    preBilledCostUsd: isResumingInFlight ? Number(existing?.preBilledCostUsd || 0) : billedCostNow,
     outputChars,
     results,
     updatedAt: new Date().toISOString()
@@ -1642,8 +1808,7 @@ export async function submitAndPollVertexBatchJob(jsonlRequests, options = {}) {
     fs.writeFileSync(cachePath, JSON.stringify(batchCache, null, 2), 'utf8');
   } catch (_) {}
 
-  const billedCostNow = isResumingInFlight ? 0 : estimatedBatchCostUsd;
-  if (!isResumingInFlight) {
+  if (billedCostNow > 0 || !isResumingInFlight) {
     recordFinOpsTelemetry({
       operation: 'vertex_batch_prediction_50pct',
       model: batchModel,
@@ -1661,6 +1826,8 @@ export async function submitAndPollVertexBatchJob(jsonlRequests, options = {}) {
     batchHash,
     billedCostUsd: billedCostNow,
     batchDiscountPct: 50,
+    pricingVerifiedAt: verifiedPricing.verified_at,
+    pricingSourceUrl: verifiedPricing.source_url,
     ...recordEntry
   };
 }
@@ -1775,17 +1942,32 @@ export async function audit3dSceneAndVisualGateWithGemini({
   const budgetCheck = checkFinOpsDailyBudget(preferProModel ? 0.005 : 0.0005);
 
   const ryuxReportPath = path.join(projectRoot, 'tools', 'audit', 'ryux_gate_report.json');
-  let localRyuxScore = 98;
+  let parsedRyux = null;
+  let localRyuxScore = null;
   if (fs.existsSync(ryuxReportPath)) {
     try {
-      const parsedRyux = JSON.parse(fs.readFileSync(ryuxReportPath, 'utf8'));
-      localRyuxScore = Number(parsedRyux.score ?? 98);
+      const candidate = JSON.parse(fs.readFileSync(ryuxReportPath, 'utf8'));
+      if (candidate && typeof candidate.score === 'number' && Number.isFinite(candidate.score)) {
+        parsedRyux = candidate;
+        localRyuxScore = Number(candidate.score);
+      }
     } catch (ryuxErr) {
       process.env.VERTEX_LAST_DIAGNOSTIC = `ryux_read_warn:${ryuxErr.message}`;
     }
   }
 
-  if (budgetCheck.allowed && imagePath && fs.existsSync(imagePath)) {
+  const hasImageEvidence = Boolean(imagePath && fs.existsSync(imagePath));
+  if (localRyuxScore === null && !hasImageEvidence) {
+    return {
+      ok: false,
+      passed: false,
+      score: 0,
+      reason: 'MISSING_EVIDENCE',
+      floorRequired: 92
+    };
+  }
+
+  if (budgetCheck.allowed && hasImageEvidence) {
     const res = await auditVisualDesign({
       imagePathOrBuffer: imagePath,
       urlOrContext: '3D WebGPU / Spark 3DGS / Dioramas HDR Canvas & APCA Readability Gate (>= 92/100)'
@@ -1798,37 +1980,59 @@ export async function audit3dSceneAndVisualGateWithGemini({
         outputChars: res.report.length,
         cacheHit: false
       });
+      if (localRyuxScore === null) {
+        return {
+          ok: false,
+          passed: false,
+          score: 0,
+          reason: 'MISSING_EVIDENCE',
+          floorRequired: 92,
+          report: res.report
+        };
+      }
       return {
+        ok: localRyuxScore >= 92,
         passed: localRyuxScore >= 92,
-        score: Math.max(92, localRyuxScore),
+        score: localRyuxScore,
         floorRequired: 92,
-        zeroBlackCanvas: true,
-        apcaReadabilityPreserved: true,
-        agxToneMappingVerified: true,
+        zeroBlackCanvas: Boolean(parsedRyux?.zeroBlackCanvas),
+        apcaReadabilityPreserved: Boolean(parsedRyux?.apcaReadabilityPreserved),
+        agxToneMappingVerified: Boolean(parsedRyux?.agxToneMappingVerified),
         modelUsed: modelToUse,
         report: res.report
       };
     }
   }
 
+  if (localRyuxScore === null) {
+    return {
+      ok: false,
+      passed: false,
+      score: 0,
+      reason: 'MISSING_EVIDENCE',
+      floorRequired: 92
+    };
+  }
+
   return {
+    ok: localRyuxScore >= 92,
     passed: localRyuxScore >= 92,
-    score: Math.max(92, localRyuxScore),
+    score: localRyuxScore,
     floorRequired: 92,
-    zeroBlackCanvas: true,
-    apcaReadabilityPreserved: true,
-    agxToneMappingVerified: true,
-    modelUsed: `${modelToUse} (Deterministic Gate Parity)`
+    zeroBlackCanvas: Boolean(parsedRyux?.zeroBlackCanvas),
+    apcaReadabilityPreserved: Boolean(parsedRyux?.apcaReadabilityPreserved),
+    agxToneMappingVerified: Boolean(parsedRyux?.agxToneMappingVerified),
+    modelUsed: `${modelToUse} (Deterministic Evidence Gate)`
   };
 }
 
 /**
- * 4. Google Cloud KMS (HSM-backed) Customer Master Key (CMK) Wrapper with WebCrypto `crypto.subtle` Fallback
- * Supports 90-day automatic key rotation (`rotationPeriodDays: 90`) and respects the $1.50 USD/day FinOps shield.
+ * 4. Development-Only Local Simulated Envelope Key Wrapper (Strict Production Guard)
+ * Throws a hard error when `NODE_ENV === 'production'` so simulated local key material is never used in prod.
  */
-const LOCAL_DEV_CMK_MATERIAL = crypto
+const DEV_ONLY_SIMULATED_CMK_MATERIAL = crypto
   .createHash('sha256')
-  .update(`webfactory-gcp-kms-hsm-cmk-v2026:${GCP_PROJECT || 'local-studio'}`)
+  .update(`webfactory-dev-only-simulated-cmk-v2026:${GCP_PROJECT || 'local-studio'}`)
   .digest();
 
 export async function wrapAndUnwrapKeyWithGcpKms({
@@ -1839,6 +2043,10 @@ export async function wrapAndUnwrapKeyWithGcpKms({
   cryptoKey = 'zone-restricted-pii-cmk',
   rotationPeriodDays = 90
 } = {}) {
+  if (String(process.env.NODE_ENV || '').trim().toLowerCase() === 'production') {
+    throw new Error('PRODUCTION_KMS_REQUIRED: Simulated local key wrapping is forbidden when NODE_ENV=production.');
+  }
+
   const budgetCheck = checkFinOpsDailyBudget(0.0001);
   if (!budgetCheck.allowed) {
     throw new Error(`GCP KMS blocked by FinOps guardrail: ${budgetCheck.reason}`);
@@ -1854,7 +2062,7 @@ export async function wrapAndUnwrapKeyWithGcpKms({
     if (subtle) {
       const cmkCryptoKey = await subtle.importKey(
         'raw',
-        LOCAL_DEV_CMK_MATERIAL,
+        DEV_ONLY_SIMULATED_CMK_MATERIAL,
         { name: 'AES-GCM', length: 256 },
         false,
         ['encrypt']
@@ -1866,8 +2074,8 @@ export async function wrapAndUnwrapKeyWithGcpKms({
       const authTag = encryptedBuf.subarray(encryptedBuf.length - 16);
 
       recordFinOpsTelemetry({
-        operation: 'gcp_kms_wrap_dek',
-        model: 'gcp-cloud-kms-hsm-aes256-gcm',
+        operation: 'dev_only_simulated_kms_wrap_dek',
+        model: 'dev-only-simulated-aes256-gcm',
         inputChars: rawDek.length,
         outputChars: encryptedBuf.length,
         cacheHit: true,
@@ -1876,7 +2084,8 @@ export async function wrapAndUnwrapKeyWithGcpKms({
 
       return {
         kmsResourceName,
-        protectionLevel: 'HSM_OR_WEBCRYPTO_SUBTLE_FALLBACK',
+        protectionLevel: 'DEV_ONLY_SIMULATED_WEBCRYPTO_WRAP',
+        simulatedDevOnly: true,
         rotationPeriodDays,
         nextRotationDueIso: new Date(Date.now() + rotationPeriodDays * 86400_000).toISOString(),
         ivBase64: iv.toString('base64'),
@@ -1885,12 +2094,13 @@ export async function wrapAndUnwrapKeyWithGcpKms({
       };
     }
 
-    const cipher = crypto.createCipheriv('aes-256-gcm', LOCAL_DEV_CMK_MATERIAL, iv);
+    const cipher = crypto.createCipheriv('aes-256-gcm', DEV_ONLY_SIMULATED_CMK_MATERIAL, iv);
     const ciphertext = Buffer.concat([cipher.update(rawDek), cipher.final()]);
     const authTag = cipher.getAuthTag();
     return {
       kmsResourceName,
-      protectionLevel: 'NODE_CRYPTO_FALLBACK',
+      protectionLevel: 'DEV_ONLY_SIMULATED_NODE_CRYPTO_WRAP',
+      simulatedDevOnly: true,
       rotationPeriodDays,
       nextRotationDueIso: new Date(Date.now() + rotationPeriodDays * 86400_000).toISOString(),
       ivBase64: iv.toString('base64'),
@@ -1910,7 +2120,7 @@ export async function wrapAndUnwrapKeyWithGcpKms({
     if (subtle) {
       const cmkCryptoKey = await subtle.importKey(
         'raw',
-        LOCAL_DEV_CMK_MATERIAL,
+        DEV_ONLY_SIMULATED_CMK_MATERIAL,
         { name: 'AES-GCM', length: 256 },
         false,
         ['decrypt']
@@ -1920,7 +2130,7 @@ export async function wrapAndUnwrapKeyWithGcpKms({
       return Buffer.from(plainAb);
     }
 
-    const decipher = crypto.createDecipheriv('aes-256-gcm', LOCAL_DEV_CMK_MATERIAL, iv);
+    const decipher = crypto.createDecipheriv('aes-256-gcm', DEV_ONLY_SIMULATED_CMK_MATERIAL, iv);
     decipher.setAuthTag(authTag);
     return Buffer.concat([decipher.update(ciphertext), decipher.final()]);
   }
@@ -1928,8 +2138,27 @@ export async function wrapAndUnwrapKeyWithGcpKms({
   throw new Error(`Unsupported KMS operation: ${operation}`);
 }
 
+const AR_CUIT_PREFIXES = new Set(['20', '23', '24', '27', '30', '33', '34']);
+const AR_CUIT_WEIGHTS = [5, 4, 3, 2, 7, 6, 5, 4, 3, 2];
+
+export function isValidMod11Cuit(rawCuit = '') {
+  const digits = String(rawCuit || '').replace(/\D+/g, '');
+  if (digits.length !== 11) return false;
+  const prefix = digits.slice(0, 2);
+  if (!AR_CUIT_PREFIXES.has(prefix)) return false;
+  let sum = 0;
+  for (let i = 0; i < 10; i++) {
+    sum += Number(digits[i]) * AR_CUIT_WEIGHTS[i];
+  }
+  const rem = sum % 11;
+  const checkDigit = Number(digits[10]);
+  if (rem === 0) return checkDigit === 0;
+  if (rem === 1) return (prefix === '23' || prefix === '33') && (checkDigit === 9 || checkDigit === 4);
+  return checkDigit === 11 - rem;
+}
+
 /**
- * 5. Presidio-Pattern PII Detection & Anonymization Filter before writing logs or sending traces to AI models.
+ * 5. Presidio-Pattern PII Detection & Anonymization Filter (incl. Argentine DNI context/dots & Modulo-11 CUIT/CUIL).
  */
 export function anonymizePresidioPiiForLogsAndAi(input = '') {
   if (input === null || input === undefined) return '';
@@ -1937,6 +2166,20 @@ export function anonymizePresidioPiiForLogsAndAi(input = '') {
   sanitized = sanitized
     .replace(/\bBearer\s+[A-Za-z0-9\-._~+/]+=*\b/gi, 'Bearer <PRESIDIO_AUTH_TOKEN>')
     .replace(/\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b/g, '<PRESIDIO_EMAIL_ADDRESS>')
+    .replace(
+      /\b((?:CUIT|CUIL)\s*[:#-]?\s*)?((?:20|23|24|27|30|33|34)-\d{8}-\d)\b/gi,
+      (full, label = '', candidate) =>
+        isValidMod11Cuit(candidate) ? `${label ? `${label.trim()} ` : ''}<PRESIDIO_AR_CUIT_CUIL>` : full
+    )
+    .replace(
+      /\b((?:CUIT|CUIL)\s*[:#-]?\s*)((?:20|23|24|27|30|33|34)\d{9})\b/gi,
+      (full, label, candidate) => (isValidMod11Cuit(candidate) ? `${label}<PRESIDIO_AR_CUIT_CUIL>` : full)
+    )
+    .replace(
+      /\b(D\.?N\.?I\.?(?:\s*(?:N[°ºo.]?|nro\.?))?\s*[:#-]?\s*)(?:\d{1,2}\.\d{3}\.\d{3}|\d{7,8})\b/gi,
+      '$1<PRESIDIO_AR_DNI>'
+    )
+    .replace(/(?<![\d.])\b\d{1,2}\.\d{3}\.\d{3}\b(?![.\d])/g, '<PRESIDIO_AR_DNI>')
     .replace(/\b(?:\d[ -]*?){13,19}\b/g, '<PRESIDIO_CREDIT_CARD_PAN>')
     .replace(/(?:\+\d{1,3}[\s-]?)?\(?\d{2,4}\)?[\s.-]\d{3,4}[\s.-]\d{3,4}\b/g, '<PRESIDIO_PHONE_NUMBER>')
     .replace(/\b\d{3}-\d{2}-\d{4}\b/g, '<PRESIDIO_NATIONAL_ID>');
@@ -2128,53 +2371,74 @@ export async function evaluateVisualArchetypeWithVlm({
   archetype = '',
   screenshots = ['1440px', '768px', '375px'],
   passNumber = 1,
-  maxPasses = 2
+  maxPasses = 2,
+  optGeoReportPath = ''
 } = {}) {
   const boundedMaxPasses = Math.min(2, Math.max(1, Number(maxPasses || 2)));
   const currentPass = Math.min(boundedMaxPasses, Math.max(1, Number(passNumber || 1)));
 
-  const {
-    resolveIndustryArchetype,
-    lintDesignMd,
-    generateProductAndDesignMd
-  } = await import('../design/industry_archetype_matrix.mjs');
-
   const designMdPath = path.join(projectRoot, 'DESIGN.md');
-  if (!fs.existsSync(designMdPath)) {
-    generateProductAndDesignMd(projectRoot, archetype || 'saas');
+  const optGeoPath = optGeoReportPath
+    ? path.resolve(optGeoReportPath)
+    : path.join(projectRoot, 'tools', 'audit', 'out', 'optical_geometry_report.json');
+
+  const missingEvidence = [];
+  if (!fs.existsSync(designMdPath)) missingEvidence.push('DESIGN.md');
+  if (!fs.existsSync(optGeoPath)) missingEvidence.push('tools/audit/out/optical_geometry_report.json');
+  if (missingEvidence.length > 0) {
+    return {
+      ok: false,
+      passed: false,
+      score: 0,
+      reason: 'MISSING_EVIDENCE',
+      missingEvidence
+    };
   }
+
+  let optGeo;
+  try {
+    const parsedOpt = JSON.parse(fs.readFileSync(optGeoPath, 'utf8'));
+    if (!parsedOpt || typeof parsedOpt !== 'object') throw new Error('invalid_opt_geo');
+    optGeo = {
+      zeroHorizontalScroll: false,
+      zeroClippingOrOverlap: false,
+      fitts44pxMobileVerified: false,
+      perceptualContrastVerified: false,
+      clsScore: Number.POSITIVE_INFINITY,
+      fpsMeasured: 0,
+      ...parsedOpt
+    };
+  } catch {
+    return {
+      ok: false,
+      passed: false,
+      score: 0,
+      reason: 'MISSING_EVIDENCE',
+      missingEvidence: ['tools/audit/out/optical_geometry_report.json']
+    };
+  }
+
+  const { resolveIndustryArchetype, lintDesignMd } = await import('../design/industry_archetype_matrix.mjs');
 
   const lintReport = lintDesignMd(designMdPath, { archetype });
   const archObj = resolveIndustryArchetype(archetype || lintReport.archetype);
 
-  const optGeoPath = path.join(ROOT, 'tools', 'audit', 'out', 'optical_geometry_report.json');
-  let optGeo = {
-    zeroHorizontalScroll: true,
-    zeroClippingOrOverlap: true,
-    fitts44pxMobileVerified: true,
-    perceptualContrastVerified: true,
-    clsScore: 0.0,
-    fpsMeasured: 60
-  };
-  if (fs.existsSync(optGeoPath)) {
-    try {
-      optGeo = { ...optGeo, ...JSON.parse(fs.readFileSync(optGeoPath, 'utf8')) };
-    } catch (_) {}
-  }
-
-  // Pillar 1: Client Archetype Fidelity (25 pts)
-  const archetypeFidelityScore = lintReport.passed ? 25 : Math.max(15, 25 - lintReport.summary.errors * 3);
+  // Pillar 1: Client Archetype Fidelity (25 pts) — no artificial consolation floor
+  const archetypeFidelityScore = lintReport.passed ? 25 : Math.max(0, 25 - lintReport.summary.errors * 5);
 
   // Pillar 2: Optical Hierarchy & Scannability of Persuade/Operate/Read/Experience Mode (25 pts)
   const hierarchyOk = Boolean(optGeo.zeroHorizontalScroll && optGeo.zeroClippingOrOverlap && optGeo.fitts44pxMobileVerified);
-  const opticalHierarchyScore = hierarchyOk ? 25 : 18;
+  const opticalHierarchyScore = hierarchyOk ? 25 : 0;
 
   // Pillar 3: Zero Presence of the 62 AI Slop Patterns (25 pts)
-  const antiSlopScore = Math.round((lintReport.passedRulesCount / lintReport.totalRulesChecked) * 25);
+  const antiSlopScore = Math.round((lintReport.passedRulesCount / Math.max(1, lintReport.totalRulesChecked)) * 25);
 
   // Pillar 4: 60FPS / CLS 0.00 / APCA Technical Telemetry (25 pts)
-  const telemetryOk = Number(optGeo.fpsMeasured ?? 60) >= 55 && Number(optGeo.clsScore ?? 0) <= 0.05 && optGeo.perceptualContrastVerified !== false;
-  const technicalTelemetryScore = telemetryOk ? 25 : 17;
+  const telemetryOk =
+    Number(optGeo.fpsMeasured) >= 55 &&
+    Number(optGeo.clsScore) <= 0.05 &&
+    optGeo.perceptualContrastVerified === true;
+  const technicalTelemetryScore = telemetryOk ? 25 : 0;
 
   const totalScore =
     archetypeFidelityScore + opticalHierarchyScore + antiSlopScore + technicalTelemetryScore;
@@ -2204,8 +2468,8 @@ export async function evaluateVisualArchetypeWithVlm({
       technicalTelemetry60FpsClsApca: {
         score: technicalTelemetryScore,
         max: 25,
-        fps: Number(optGeo.fpsMeasured ?? 60),
-        cls: Number(optGeo.clsScore ?? 0.0),
+        fps: Number(optGeo.fpsMeasured),
+        cls: Number(optGeo.clsScore),
         apcaFloor: archObj.apcaContrastFloor
       }
     },
@@ -2265,8 +2529,25 @@ export function generateFreePollinationsImageWithCheck({
   width = 1280,
   height = 720,
   seed = 42,
-  model = 'flux'
+  model = 'flux',
+  projectSlug = '',
+  complianceProfile = '',
+  charter = undefined,
+  useCharter = false
 } = {}) {
+  const profile = getProjectProfile({ slug: projectSlug, complianceProfile, charter, useCharter });
+  if (!profile.externalGenerativeFallbacksAllowed) {
+    return {
+      ok: false,
+      blocked: true,
+      reason: 'POLLINATIONS_BLOCKED_FOR_EDUCATION_PROFILE',
+      complianceProfile: profile.complianceProfile,
+      provider: 'pollinations-free-tier',
+      costUsd: 0.0,
+      imageUrl: null
+    };
+  }
+
   const sanitizedPrompt = String(prompt || '')
     .replace(/\s+/g, ' ')
     .trim();
@@ -2494,12 +2775,28 @@ export async function routeMultimediaGeneration({
   fps = 60,
   forcePollinationsFallback = false,
   simulateBudgetExhausted = false,
-  recordSpend = false
+  recordSpend = false,
+  projectSlug = '',
+  complianceProfile = '',
+  charter = undefined,
+  useCharter = false
 } = {}) {
+  const profile = getProjectProfile({ slug: projectSlug, complianceProfile, charter, useCharter });
   const resolved = resolveMultimediaTierAndEngine({ requestedTier, engine, taskType });
   const budgetCheck = checkFinOpsDailyBudget(resolved.estimatedCostUsd);
   const shouldFallbackToPollinations =
     forcePollinationsFallback || simulateBudgetExhausted || (!budgetCheck.allowed && resolved.estimatedCostUsd > 0);
+
+  if (!profile.externalGenerativeFallbacksAllowed && (shouldFallbackToPollinations || resolved.engine === 'pollinations-free-multimedia')) {
+    return {
+      ok: false,
+      blocked: true,
+      reason: 'POLLINATIONS_BLOCKED_FOR_EDUCATION_PROFILE',
+      complianceProfile: profile.complianceProfile,
+      requestedTierId: resolved.tierId,
+      costUsd: 0.0
+    };
+  }
 
   if (shouldFallbackToPollinations) {
     const encodedPrompt = encodeURIComponent(`${prompt} (${archetype})`);
@@ -2547,8 +2844,12 @@ export async function routeMultimediaGeneration({
     tierPayload = {
       synthesisMode: 'LOCAL_BROWSER_WEBAUDIO_AND_VECTOR_CANVAS',
       zeroNetworkOverheadUiSfx: true,
-      enginesAvailable: MULTIMEDIA_FINOPS_TIERS.TIER_0_ZERO_COST.engines,
-      pollinationsFallbackUrl: `https://image.pollinations.ai/prompt/${encodedPrompt}?width=1280&height=720&seed=108&model=flux&nologo=true`
+      enginesAvailable: profile.externalGenerativeFallbacksAllowed
+        ? MULTIMEDIA_FINOPS_TIERS.TIER_0_ZERO_COST.engines
+        : MULTIMEDIA_FINOPS_TIERS.TIER_0_ZERO_COST.engines.filter((e) => e !== 'pollinations-free-multimedia'),
+      pollinationsFallbackUrl: profile.externalGenerativeFallbacksAllowed
+        ? `https://image.pollinations.ai/prompt/${encodedPrompt}?width=1280&height=720&seed=108&model=flux&nologo=true`
+        : null
     };
   } else if (resolved.tierId === 'TIER_1_GCP_CLOUD_RUN_SERVERLESS_GPU') {
     const cloudRunEndpoint =

@@ -103,38 +103,52 @@ export function runCognitiveUxAudit() {
     });
   }
 
-  // 4. Fitts's Law (44x44px Touch Targets on Mobile 375px) & Optical Collision Verification
+  // 4. Fitts's Law (44x44px Touch Targets on Mobile 375px) & Optical Collision Verification (Fail-Closed)
   const optReportPath = path.join(ROOT, 'tools', 'audit', 'out', 'optical_geometry_report.json');
-  let fitts44pxVerified = true;
-  let zeroCollisionsVerified = true;
+  let hasOptEvidence = false;
+  let fitts44pxVerified = false;
+  let zeroCollisionsVerified = false;
   if (fs.existsSync(optReportPath)) {
     try {
       const optGeo = JSON.parse(fs.readFileSync(optReportPath, 'utf8'));
-      if (optGeo.fitts44pxMobileVerified === false) {
-        fitts44pxVerified = false;
+      hasOptEvidence = Boolean(optGeo && typeof optGeo === 'object');
+      fitts44pxVerified = optGeo.fitts44pxMobileVerified === true;
+      zeroCollisionsVerified = optGeo.zeroClippingOrOverlap === true && optGeo.zeroHorizontalScroll === true;
+      if (!fitts44pxVerified) {
         findings.push({
           type: 'FITTS_LAW_TOUCH_TARGET_BELOW_44PX',
           severity: 'HIGH',
-          message: 'Interactive button or link has touch target < 44x44px on Mobile 375px viewport.'
+          message: 'Interactive button or link has touch target < 44x44px on Mobile 375px viewport (or unverified).'
         });
       }
-      if (optGeo.zeroClippingOrOverlap === false || optGeo.zeroHorizontalScroll === false) {
-        zeroCollisionsVerified = false;
+      if (!zeroCollisionsVerified) {
         findings.push({
           type: 'OPTICAL_GEOMETRY_OVERLAP_OR_OVERFLOW',
           severity: 'HIGH',
           message: 'Detected horizontal scroll overflow, text clipping, or element bounding-box collision across 375px/768px/1440px.'
         });
       }
-    } catch (_) {}
+    } catch (_) {
+      hasOptEvidence = false;
+    }
+  }
+  if (!hasOptEvidence) {
+    findings.push({
+      type: 'MISSING_EVIDENCE',
+      severity: 'HIGH',
+      message: 'Missing or unreadable optical_geometry_report.json evidence.'
+    });
   }
 
-  const score = Math.max(0, 100 - findings.length * 15);
+  const score = !hasOptEvidence ? 0 : Math.max(0, 100 - findings.length * 15);
+  const passed = hasOptEvidence && findings.length === 0;
   return {
     timestamp: new Date().toISOString(),
     projectId: projectCfg.id,
     complianceProfile: projectCfg.complianceProfile,
+    passed,
     score,
+    ...(hasOptEvidence ? {} : { reason: 'MISSING_EVIDENCE' }),
     modalsChecked,
     fitts44pxVerified,
     zeroCollisionsVerified,

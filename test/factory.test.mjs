@@ -492,7 +492,7 @@ test('rag_pipeline preserves all 10 original exports and operates the 4 AI Acade
           },
           { db }
         ),
-      /CHECK constraint failed/i
+      /ACADEMY_VALIDATION_FAILED|CHECK constraint failed/i
     );
 
     const stats = rag.getAcademyRelationalStats({ db });
@@ -580,5 +580,419 @@ test('rag_pipeline preserves all 10 original exports and operates the 4 AI Acade
     if (fs.existsSync(tempGlobalCache)) fs.rmSync(tempGlobalCache, { force: true });
   }
 });
+
+test('Stage 3A (a): gates fail closed with MISSING_EVIDENCE and never inflate scores with Math.max(92)', async () => {
+  const bridge = await import('../tools/intelligence/vertex_ai_bridge.mjs');
+  const emptyDir = path.join(FACTORY_ROOT, '.cache', `test_fail_closed_${Date.now()}`);
+  fs.mkdirSync(emptyDir, { recursive: true });
+  try {
+    const gateNoEvidence = await bridge.audit3dSceneAndVisualGateWithGemini({ projectRoot: emptyDir });
+    assert.equal(gateNoEvidence.passed, false);
+    assert.equal(gateNoEvidence.score, 0);
+    assert.equal(gateNoEvidence.reason, 'MISSING_EVIDENCE');
+
+    const vlmNoEvidence = await bridge.evaluateVisualArchetypeWithVlm({ projectRoot: emptyDir });
+    assert.equal(vlmNoEvidence.passed, false);
+    assert.equal(vlmNoEvidence.score, 0);
+    assert.equal(vlmNoEvidence.reason, 'MISSING_EVIDENCE');
+    assert.equal(fs.existsSync(path.join(emptyDir, 'DESIGN.md')), false);
+
+    // Verify real failing score is preserved (no Math.max(92, score) floor)
+    const auditDir = path.join(emptyDir, 'tools', 'audit');
+    fs.mkdirSync(auditDir, { recursive: true });
+    fs.writeFileSync(path.join(auditDir, 'ryux_gate_report.json'), JSON.stringify({ score: 74 }), 'utf8');
+    const gateLowScore = await bridge.audit3dSceneAndVisualGateWithGemini({ projectRoot: emptyDir });
+    assert.equal(gateLowScore.passed, false);
+    assert.equal(gateLowScore.score, 74);
+  } finally {
+    fs.rmSync(emptyDir, { recursive: true, force: true });
+  }
+});
+
+test('Stage 3A (b & c): Valibot rejects javascript: URLs and paid tools without free alternatives, and blocks deleting referenced free tools', async () => {
+  const store = await import('../tools/intelligence/academy_store.mjs');
+  const { DatabaseSync } = await import('node:sqlite');
+  const tempDbPath = path.join(FACTORY_ROOT, '.cache', `test_academy_valibot_${Date.now()}.sqlite`);
+  const db = new DatabaseSync(tempDbPath);
+
+  try {
+    store.initAcademyRelationalSchema(db);
+
+    // (b.1) Reject javascript: URLs across sources, tools, and videos
+    assert.throws(
+      () =>
+        store.upsertAcademySource(
+          {
+            source_id: 'xss-src',
+            title: 'XSS Probe',
+            url: 'javascript:alert(1)',
+            license: 'MIT',
+            usage_policy: 'DIRECT_ADAPT_TRANSLATE',
+            authority_tier: 'SILVER'
+          },
+          { db }
+        ),
+      /URL_MUST_BE_HTTPS/
+    );
+
+    assert.throws(
+      () =>
+        store.upsertAcademyTool(
+          {
+            tool_id: 'xss-tool',
+            name: 'XSS Tool',
+            official_url: 'javascript:alert(1)',
+            pricing_tier: 'free_no_card'
+          },
+          { db }
+        ),
+      /URL_MUST_BE_HTTPS/
+    );
+
+    // (b.2) Reject paid tool without free_alternative_id or pointing to non-existent / non-free alternative
+    assert.throws(
+      () =>
+        store.upsertAcademyTool(
+          {
+            tool_id: 'paid-no-alt',
+            name: 'Paid Tool Without Alternative',
+            official_url: 'https://example.com/pro',
+            pricing_tier: 'paid_pro_reference'
+          },
+          { db }
+        ),
+      /PAID_TOOL_REQUIRES_FREE_ALTERNATIVE/
+    );
+
+    store.upsertAcademyTool(
+      {
+        tool_id: 'capped-freemium',
+        name: 'Freemium Tool',
+        official_url: 'https://example.com/freemium',
+        pricing_tier: 'freemium_capped'
+      },
+      { db }
+    );
+    assert.throws(
+      () =>
+        store.upsertAcademyTool(
+          {
+            tool_id: 'paid-bad-alt',
+            name: 'Paid Pointing To Freemium',
+            official_url: 'https://example.com/paid',
+            pricing_tier: 'paid_pro_reference',
+            free_alternative_id: 'capped-freemium'
+          },
+          { db }
+        ),
+      /FREE_ALTERNATIVE_NOT_FREE/
+    );
+
+    // (c) Valid OSS free alternative + paid tool => block deletion of the referenced free alternative
+    store.upsertAcademyTool(
+      {
+        tool_id: 'ollama-local',
+        name: 'Ollama',
+        official_url: 'https://ollama.com/',
+        pricing_tier: 'open_source_local',
+        is_open_source: 1,
+        spdx_license: 'MIT',
+        min_hardware_tier: 'mid_16gb'
+      },
+      { db }
+    );
+    store.upsertAcademyTool(
+      {
+        tool_id: 'claude-pro-ref',
+        name: 'Claude Pro',
+        official_url: 'https://claude.ai/',
+        pricing_tier: 'paid_pro_reference',
+        free_alternative_id: 'ollama-local'
+      },
+      { db }
+    );
+
+    assert.throws(
+      () => store.deleteAcademyTool('ollama-local', { db }),
+      /TOOL_REFERENCED_AS_FREE_ALTERNATIVE/
+    );
+
+    // Once dependent paid tool is removed, deleting the free alternative succeeds
+    assert.equal(store.deleteAcademyTool('claude-pro-ref', { db }).deleted, true);
+    assert.equal(store.deleteAcademyTool('ollama-local', { db }).deleted, true);
+  } finally {
+    try { db.close(); } catch (_) {}
+    for (const suffix of ['', '-wal', '-shm']) {
+      if (fs.existsSync(`${tempDbPath}${suffix}`)) fs.rmSync(`${tempDbPath}${suffix}`, { force: true });
+    }
+  }
+});
+
+test('Stage 3A (d & e): zero academy_* tables in .cache/omni_rag_fts5.sqlite + byte-identical deterministic JSON export & deferred-FK round-trip', async () => {
+  const store = await import('../tools/intelligence/academy_store.mjs');
+  const { getProjectProfile } = await import('../tools/lib/project_profile.mjs');
+  const { DatabaseSync } = await import('node:sqlite');
+
+  // Charter & profile contract check
+  const eduProfile = getProjectProfile('academia-ia');
+  assert.equal(eduProfile.complianceProfile, 'education');
+  assert.equal(eduProfile.commercialMode, false);
+  assert.equal(eduProfile.externalGenerativeFallbacksAllowed, false);
+
+  // (d) Verify 0 academy_* tables inside disposable .cache/omni_rag_fts5.sqlite
+  const ftsCachePath = path.join(FACTORY_ROOT, '.cache', 'omni_rag_fts5.sqlite');
+  if (fs.existsSync(ftsCachePath)) {
+    const cacheDb = new DatabaseSync(ftsCachePath);
+    try {
+      const legacyTables = cacheDb
+        .prepare("SELECT name FROM sqlite_master WHERE type = 'table' AND name LIKE 'academy\\_%' ESCAPE '\\'")
+        .all();
+      assert.equal(legacyTables.length, 0, `Unexpected academy_* tables in RAG cache: ${JSON.stringify(legacyTables)}`);
+    } finally {
+      cacheDb.close();
+    }
+  }
+
+  // (e) Byte-identical consecutive exports + full JSON <-> SQLite round-trip (incl. deferred FK order)
+  const workDir = path.join(FACTORY_ROOT, '.cache', `test_academy_roundtrip_${Date.now()}`);
+  const jsonDirA = path.join(workDir, 'jsonA');
+  const jsonDirB = path.join(workDir, 'jsonB');
+  fs.mkdirSync(workDir, { recursive: true });
+  const db1 = new DatabaseSync(path.join(workDir, 'db1.sqlite'));
+  const db2 = new DatabaseSync(path.join(workDir, 'db2.sqlite'));
+
+  try {
+    store.initAcademyRelationalSchema(db1);
+    const ver1 = db1.prepare('PRAGMA user_version').get().user_version;
+    assert.equal(ver1, 2);
+
+    // Verify seeded tracks & learner archetypes
+    const sistemaProf = store.getAcademyProjectTrack('sistema-profesional', { db: db1 });
+    assert.equal(sistemaProf.skill_tree, 'trabajo');
+    assert.equal(store.listAcademyLearnerArchetypes({}, { db: db1 }).length, 4);
+
+    // Insert paid tool alphabetically BEFORE its free alternative ('alpha-pro' -> 'zeta-oss')
+    store.upsertAcademyTool(
+      {
+        tool_id: 'zeta-oss',
+        name: 'Zeta OSS',
+        official_url: 'https://zeta.example.org/',
+        pricing_tier: 'open_source_local',
+        is_open_source: 1,
+        spdx_license: 'Apache-2.0'
+      },
+      { db: db1 }
+    );
+    store.upsertAcademyTool(
+      {
+        tool_id: 'alpha-pro',
+        name: 'Alpha Pro',
+        official_url: 'https://alpha.example.org/',
+        pricing_tier: 'paid_pro_reference',
+        free_alternative_id: 'zeta-oss'
+      },
+      { db: db1 }
+    );
+    store.upsertAcademySource(
+      {
+        source_id: 'nc-course-01',
+        title: 'Curso Abierto NC',
+        url: 'https://example.org/curso',
+        license: 'CC-BY-NC-SA-4.0',
+        usage_policy: 'DIRECT_ADAPT_TRANSLATE',
+        authority_tier: 'GOLD',
+        verified_http_status: 200,
+        verified_at: '2026-11-14T20:00:00Z'
+      },
+      { db: db1 }
+    );
+    store.upsertAcademyVideo(
+      {
+        video_id: 'oer-wikimedia-01',
+        source_platform: 'wikimedia',
+        external_video_url: 'https://commons.wikimedia.org/wiki/File:Demo.webm',
+        title: 'Introducción Visual Abierta',
+        caption_mode: 'sub_es_nativo',
+        license: 'CC-BY-SA-4.0',
+        pedagogical_role: 'conceptual_anchor',
+        anchors_status: 'oer_transcript_verified',
+        transcript_anchors_json: [
+          {
+            timestamp_mmss: '01:15',
+            concept_es: 'Qué es un modelo de lenguaje',
+            verifiable_fact_es: 'Predice el siguiente fragmento de texto según probabilidades.',
+            source_method: 'oer_transcript'
+          }
+        ]
+      },
+      { db: db1 }
+    );
+
+    // Commercial mode guard rejects NC source if commercial_mode === true
+    assert.throws(
+      () =>
+        store.exportAcademyToVersionedJson(jsonDirA, {
+          db: db1,
+          charter: { commercial_mode: true }
+        }),
+      /COMMERCIAL_MODE_BLOCKS_NON_COMMERCIAL_SOURCES/
+    );
+
+    const exp1 = store.exportAcademyToVersionedJson(jsonDirA, { db: db1 });
+    const bytesPass1 = Object.fromEntries(
+      store.ACADEMY_TABLES.map(({ file }) => [file, fs.readFileSync(path.join(jsonDirA, file))])
+    );
+    const exp2 = store.exportAcademyToVersionedJson(jsonDirA, { db: db1 });
+    for (const f of exp2.files) {
+      assert.equal(f.changed, false, `Expected second consecutive export to report changed=false for ${f.file}`);
+    }
+    for (const { file } of store.ACADEMY_TABLES) {
+      const afterBuf = fs.readFileSync(path.join(jsonDirA, file));
+      assert.equal(Buffer.compare(bytesPass1[file], afterBuf), 0, `Byte drift on consecutive export for ${file}`);
+      assert.ok(afterBuf.toString('utf8').endsWith('\n'), `${file} must end with trailing LF`);
+    }
+
+    // Round-trip import into fresh db2 ('alpha-pro' precedes 'zeta-oss' in tools.json -> tests deferred FK)
+    store.initAcademyRelationalSchema(db2);
+    const imp = store.importAcademyFromVersionedJson(jsonDirA, { db: db2 });
+    assert.equal(imp.counts.academy_tools, 2);
+    const expRoundTrip = store.exportAcademyToVersionedJson(jsonDirB, { db: db2 });
+    assert.deepEqual(
+      expRoundTrip.files.map((x) => x.sha256),
+      exp1.files.map((x) => x.sha256)
+    );
+  } finally {
+    try { db1.close(); } catch (_) {}
+    try { db2.close(); } catch (_) {}
+    fs.rmSync(workDir, { recursive: true, force: true });
+  }
+});
+
+test('Stage 3A (f): Batch blocks unpriced models, normalizes thinkingConfig + usageMetadata/thoughtsTokenCount, guards prod KMS, blocks Pollinations in education, and validates Mod-11 CUIT & contextual DNI', async () => {
+  const bridge = await import('../tools/intelligence/vertex_ai_bridge.mjs');
+
+  // 1. Unverified model blocked BEFORE any network call
+  let callsOnUnpriced = 0;
+  const blockedBatch = await bridge.submitAndPollVertexBatchJob([{ prompt: 'Should block' }], {
+    model: 'gemini-99-unverified-imaginary',
+    gcsBucket: 'gs://test-academia-batch',
+    project: 'test-project',
+    accessToken: 'test-token',
+    fetchImpl: async () => {
+      callsOnUnpriced++;
+      return new Response('{}', { status: 200 });
+    }
+  });
+  assert.equal(blockedBatch.ok, false);
+  assert.equal(blockedBatch.blockedByPricingGuard, true);
+  assert.equal(blockedBatch.reason, 'UNVERIFIED_MODEL_PRICING');
+  assert.equal(callsOnUnpriced, 0);
+
+  // 2. Per-line thinkingConfig + exact usageMetadata (incl. thoughtsTokenCount) + failedCount/lineErrors
+  const tempBatchCache = path.join(FACTORY_ROOT, '.cache', `test_batch_usage_${Date.now()}.json`);
+  let uploadedJsonlBody = '';
+  const usageMockFetch = async (url, init) => {
+    if (String(url).includes('upload/storage')) {
+      uploadedJsonlBody = String(init?.body || '');
+      return new Response(JSON.stringify({ name: 'batches/test/input.jsonl' }), { status: 200 });
+    }
+    if (String(url).endsWith('/batchPredictionJobs')) {
+      return new Response(
+        JSON.stringify({ name: 'projects/p/locations/global/batchPredictionJobs/job-u1', state: 'JOB_STATE_SUCCEEDED' }),
+        { status: 200 }
+      );
+    }
+    if (String(url).includes('/o?prefix=')) {
+      return new Response(JSON.stringify({ items: [{ name: 'batches/test/output/predictions.jsonl' }] }), { status: 200 });
+    }
+    const outLines = [
+      JSON.stringify({
+        custom_id: 'line-ok',
+        response: {
+          candidates: [{ content: { parts: [{ text: '{"summary":"ok"}' }] } }],
+          usageMetadata: { promptTokenCount: 1000, candidatesTokenCount: 400, thoughtsTokenCount: 600, totalTokenCount: 2000 }
+        }
+      }),
+      JSON.stringify({
+        custom_id: 'line-err',
+        status: { code: 4, message: 'DEADLINE_EXCEEDED' }
+      })
+    ].join('\n') + '\n';
+    return new Response(outLines, { status: 200 });
+  };
+
+  try {
+    const batchRes = await bridge.submitAndPollVertexBatchJob(
+      [{ custom_id: 'line-ok', prompt: 'Summarize' }, { custom_id: 'line-err', prompt: 'Timeout probe' }],
+      {
+        model: 'gemini-3.8-flash',
+        location: 'global',
+        gcsBucket: 'gs://test-academia-batch',
+        project: 'test-project',
+        accessToken: 'test-token',
+        cachePath: tempBatchCache,
+        fetchImpl: usageMockFetch,
+        pollIntervalMs: 1
+      }
+    );
+    assert.equal(batchRes.ok, true);
+    const uploadedLines = uploadedJsonlBody.trim().split('\n').map((l) => JSON.parse(l));
+    assert.equal(uploadedLines.length, 2);
+    assert.deepEqual(uploadedLines[0].request.generationConfig.thinkingConfig, { thinkingBudget: 0 });
+    assert.deepEqual(uploadedLines[1].request.generationConfig.thinkingConfig, { thinkingBudget: 0 });
+    assert.equal(batchRes.failedCount, 1);
+    assert.equal(batchRes.lineErrors.length, 1);
+    assert.equal(batchRes.lineErrors[0].custom_id, 'line-err');
+    assert.equal(batchRes.usageMetadataSummary.thoughtsTokenCount, 600);
+    assert.equal(batchRes.usageMetadataSummary.billableOutputTokens, 1000);
+    // gemini-3.8-flash batch global: 1000 input * ($0.375 / 1M) + 1000 output(400+600) * ($1.875 / 1M) = 0.000375 + 0.001875 = 0.00225
+    assert.equal(batchRes.billedCostUsd, 0.00225);
+  } finally {
+    if (fs.existsSync(tempBatchCache)) fs.rmSync(tempBatchCache, { force: true });
+  }
+
+  // 3. Simulated local KMS throws hard error when NODE_ENV === 'production'
+  const prevNodeEnv = process.env.NODE_ENV;
+  process.env.NODE_ENV = 'production';
+  try {
+    await assert.rejects(() => bridge.wrapAndUnwrapKeyWithGcpKms({ operation: 'wrap' }), /PRODUCTION_KMS_REQUIRED/);
+  } finally {
+    if (prevNodeEnv === undefined) delete process.env.NODE_ENV;
+    else process.env.NODE_ENV = prevNodeEnv;
+  }
+
+  // 4. Pollinations blocked when complianceProfile === 'education'
+  const pollBlocked = bridge.generateFreePollinationsImageWithCheck({
+    prompt: 'Diagrama limpio',
+    complianceProfile: 'education'
+  });
+  assert.equal(pollBlocked.ok, false);
+  assert.equal(pollBlocked.blocked, true);
+  assert.equal(pollBlocked.reason, 'POLLINATIONS_BLOCKED_FOR_EDUCATION_PROFILE');
+
+  const routeBlocked = await bridge.routeMultimediaGeneration({
+    forcePollinationsFallback: true,
+    complianceProfile: 'education'
+  });
+  assert.equal(routeBlocked.ok, false);
+  assert.equal(routeBlocked.blocked, true);
+
+  // 5. Argentine Modulo-11 CUIT & contextual/dotted DNI without false positives on standalone integers
+  assert.equal(bridge.isValidMod11Cuit('20-12345678-6'), true);
+  assert.equal(bridge.isValidMod11Cuit('20-12345678-9'), false);
+
+  const piiSample =
+    'Alumno DNI: 38456789, otro D.N.I. 40.123.456, punteado 31.222.333, CUIT 20-12345678-6, CUIT falso 20-12345678-9, orden 12345678 precio 95000 fecha 20261114.';
+  const redacted = bridge.anonymizePresidioPiiForLogsAndAi(piiSample);
+  assert.ok(!redacted.includes('38456789'), `Expected contextual DNI redacted: ${redacted}`);
+  assert.ok(!redacted.includes('40.123.456'), `Expected contextual dotted DNI redacted: ${redacted}`);
+  assert.ok(!redacted.includes('31.222.333'), `Expected dotted DNI redacted: ${redacted}`);
+  assert.ok(!redacted.includes('20-12345678-6'), `Expected valid Mod-11 CUIT redacted: ${redacted}`);
+  assert.ok(redacted.includes('20-12345678-9'), `Invalid check-digit CUIT should not match Mod-11: ${redacted}`);
+  assert.ok(redacted.includes('orden 12345678'), `Standalone 8-digit integer must not be false-positively redacted: ${redacted}`);
+  assert.ok(redacted.includes('precio 95000'), `Standalone price must remain intact: ${redacted}`);
+  assert.ok(redacted.includes('fecha 20261114'), `Standalone YYYYMMDD integer must remain intact: ${redacted}`);
+});
+
 
 
