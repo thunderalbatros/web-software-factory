@@ -2,7 +2,9 @@
 canon_id: "CANON_INCLUSIVE_MINIMALIST_UX_2026"
 title: "UX Minimalista, Claridad Cognitiva e Inclusión Universal para Educación en IA"
 domain: "ai_academy"
-approval_status: "PENDING_CTO_REVIEW"
+approval_status: "APPROVED_BY_CTO"
+approved_by: "CTO"
+approved_at: "2026-11-15T04:25:26.339Z"
 epistemic_tier_target: "TIER_1_SOTA_2026"
 language_register: "es-neutral-tu"
 sources:

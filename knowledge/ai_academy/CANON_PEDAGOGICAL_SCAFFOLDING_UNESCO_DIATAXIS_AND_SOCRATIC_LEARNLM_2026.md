@@ -2,7 +2,9 @@
 canon_id: "CANON_PEDAGOGICAL_SCAFFOLDING_2026"
 title: "Andamiaje Pedagógico SOTA — UNESCO, Diátaxis, Carga Cognitiva y Tutoría Socrática LearnLM"
 domain: "ai_academy"
-approval_status: "PENDING_CTO_REVIEW"
+approval_status: "APPROVED_BY_CTO"
+approved_by: "CTO"
+approved_at: "2026-11-15T04:25:26.339Z"
 epistemic_tier_target: "TIER_1_SOTA_2026"
 language_register: "es-neutral-tu"
 sources:

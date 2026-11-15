@@ -2,7 +2,9 @@
 canon_id: "CANON_ETHICAL_GAMIFICATION_2026"
 title: "Gamificación Ética sin Patrones Oscuros, Tutor de Costo Cero y Soberanía Local-First"
 domain: "ai_academy"
-approval_status: "PENDING_CTO_REVIEW"
+approval_status: "APPROVED_BY_CTO"
+approved_by: "CTO"
+approved_at: "2026-11-15T04:25:26.339Z"
 epistemic_tier_target: "TIER_1_SOTA_2026"
 language_register: "es-neutral-tu"
 sources:
