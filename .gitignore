@@ -74,3 +74,12 @@ core/*.db-shm
 core/*.db-wal
 *.db-shm
 *.db-wal
+
+# Transient Run & Live Telemetry Artifacts + Mutable Memory Caches (preserve immutable governance baselines)
+.agents/runs/
+.agents/memory/*
+!.agents/memory/constitution_lock.json
+!.agents/memory/temporal_ledger.json
+!.agents/memory/tom_swe_model.json
+!.agents/memory/instincts/
+!.agents/memory/instincts/**
