@@ -220,7 +220,7 @@ export function runCognitiveUxAudit(projectInput = '') {
           message: 'Detected horizontal scroll overflow, text clipping, or element bounding-box collision across 375px/768px/1440px.'
         });
       }
-    } catch (_) {
+    } catch {
       hasOptEvidence = false;
     }
   }

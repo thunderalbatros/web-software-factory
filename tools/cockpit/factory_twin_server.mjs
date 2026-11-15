@@ -1297,28 +1297,31 @@ export function createFactoryTwinServer() {
         const action = String(body.action || 'approve_hitl');
         const note = String(body.note || '');
         const current = loadCurrentFactoryState();
+        const targetProjectSlug = String(body.projectSlug || current.projectSlug || 'agencia-alfa');
 
         let updatedState;
         let approvedTicketResult = null;
         if (action === 'approve_hitl' || action === 'approve_interview' || action === 'approve_prd_interview' || action === 'approve_ticket') {
           try {
-            compilePrdLeanAndBrandLock(current.projectSlug || 'agencia-alfa', { approve: true });
-            compileSpecFromInterview(current.projectSlug || 'agencia-alfa', { approve: true, refreshFromPrd: true });
-          } catch (_) {}
+            compilePrdLeanAndBrandLock(targetProjectSlug, { approve: true });
+            compileSpecFromInterview(targetProjectSlug, { approve: true, refreshFromPrd: true });
+          } catch {}
           try {
             let pendingTicketId = body.ticketId || '';
             if (!pendingTicketId && fs.existsSync(FEEDBACK_LEDGER_PATH)) {
               const ledger = JSON.parse(fs.readFileSync(FEEDBACK_LEDGER_PATH, 'utf8'));
-              const waitingTicket = (ledger.tickets || []).find((t) => t.status === 'WAITING_CTO_TRIAGE_APPROVAL');
+              const waitingTicket = (ledger.tickets || []).find(
+                (t) => t.status === 'WAITING_CTO_TRIAGE_APPROVAL' && (!body.projectSlug || t.projectSlug === targetProjectSlug)
+              );
               if (waitingTicket) pendingTicketId = waitingTicket.ticketId;
             }
             if (pendingTicketId) {
               approvedTicketResult = await executeApprovedTicketFix(pendingTicketId, { approvedByCto: true });
             }
-          } catch (_) {}
+          } catch {}
           updatedState = emitFactoryTelemetryEvent({
             eventType: 'CTO_HITL_APPROVED',
-            projectSlug: current.projectSlug,
+            projectSlug: targetProjectSlug,
             rpiStage: 'Implementation',
             rpiStageOrder: 6,
             agentUpdates: [
@@ -1480,14 +1483,14 @@ export async function runCockpitSelfTest() {
     });
     const simJson = await simRes.json();
 
-    // 4. Verify interactive HITL button endpoint
+    // 4. Verify interactive HITL button endpoint (strictly scoped to CI fixture `agencia-alfa` so self-tests never auto-approve unapproved projects)
     const hitlRes = await fetch(`${baseUrl}/api/hitl-action`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'X-Cockpit-Token': server.cockpitCsrfToken
       },
-      body: JSON.stringify({ action: 'approve_hitl' })
+      body: JSON.stringify({ action: 'approve_hitl', projectSlug: 'agencia-alfa' })
     });
     const hitlJson = await hitlRes.json();
 

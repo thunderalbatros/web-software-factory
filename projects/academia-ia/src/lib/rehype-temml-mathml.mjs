@@ -53,3 +53,4 @@ export function rehypeTemmlMathml() {
     visit(tree);
   };
 }
+

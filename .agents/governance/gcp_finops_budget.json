@@ -114,15 +114,16 @@
     }
   },
   "telemetrySummary": {
-    "lastUpdatedAt": "2026-10-29T17:37:11.402Z",
-    "todaySpendUsd": 0,
-    "remainingDailyBudgetUsd": 1.5,
-    "remainingCreditUsd": 90,
+    "lastUpdatedAt": "2026-11-15T06:45:14.931Z",
+    "todaySpendUsd": 0.046783,
+    "remainingDailyBudgetUsd": 1.4532,
+    "remainingCreditUsd": 69.9526,
     "lastMultimediaOperation": {
-      "operation": "programmatic_video_forge_shader-hud",
-      "tierId": "TIER_1_GCP_CLOUD_RUN_SERVERLESS_GPU",
-      "engine": "stable-audio-open",
-      "webmBytes": 527
+      "timestamp": "2026-11-15T06:45:14.919Z",
+      "tierId": "TIER_2_VERTEX_AI_NATIVE_PREMIUM",
+      "engine": "es-US-Studio-B",
+      "estimatedAssetCostUsd": 0.02,
+      "billedCostUsd": 0
     }
   }
 }

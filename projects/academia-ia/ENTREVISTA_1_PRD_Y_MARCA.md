@@ -1,6 +1,6 @@
 # 🏛️ ENTREVISTA #1 OBLIGATORIA: PRODUCTO (`PRD_LEAN.md`) E IDENTIDAD DE MARCA — `academia-ia`
 
-> **Estado de Compuerta #1:** `COMPLETED_BY_CTO`
+> **Estado de Compuerta #1:** `PENDING_CTO_PRD_INPUT`
 > **Regla Estricta Anti-Invención:** Está prohibido generar `PRD_LEAN.md`, pasar a la Entrevista #2 (`SPEC.md` técnico con `npm run cto:entrevista`) o ejecutar `npm run cto:construir` hasta que completes/revises este documento o `PRD_INTERVIEW_STATE.json` y apruebes explícitamente con:
 > `npm run cto:entrevista-prd -- academia-ia --aprobar`
 

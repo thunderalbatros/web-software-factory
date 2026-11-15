@@ -46,3 +46,4 @@ Quedan explícitamente **FUERA** del alcance y prohibidos por contrato:
 - `0` errores de consola y `0` violaciones de `Content-Security-Policy` o `Trusted Types` en runtime Chromium.
 - `LCP <= 1800 ms`, `CLS = 0.000` y `jsHeapUsedMB < 64 MB` sobre el build estático de producción.
 - Aprobación en verde de `security_gate.mjs`, `ryux_design_gate.mjs` (`Read`), `cognitive_ux_auditor.mjs` (`education`) y `floor_and_aeo_guard.mjs`.
+

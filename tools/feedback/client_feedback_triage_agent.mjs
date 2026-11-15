@@ -991,6 +991,7 @@ export async function runClientFeedbackTriageSelfTest() {
   const stage1Res = await analyzeTicketAndProposeSpec(
     {
       ticketId: 'tkt-selftest01',
+      projectSlug: 'agencia-alfa',
       clientId: 'client-alfa-001',
       sourceChannel: 'client_feedback_widget',
       sectionSelector: '#hero-cta',
@@ -999,7 +1000,7 @@ export async function runClientFeedbackTriageSelfTest() {
       message:
         'Por favor cambiar el texto del botón principal del hero a "Agendar Auditoría Ejecutiva" con mi tarjeta 4532 1111 2222 3333.'
     },
-    { skipSlackWebhook: true }
+    { skipSlackWebhook: true, projectSlug: 'agencia-alfa' }
   );
   const deltaAbs = path.join(FACTORY_ROOT, stage1Res.deltaSpecPath || '');
   const reportAbs = path.join(FACTORY_ROOT, stage1Res.triageReportPath || '');

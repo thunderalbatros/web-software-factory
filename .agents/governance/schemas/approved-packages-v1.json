@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Web Software Factory Approved Packages Governance Schema v1",
+  "type": "object",
+  "required": [
+    "version",
+    "policy",
+    "forbidFloatingVersions",
+    "requireLockfile",
+    "requireSubresourceIntegrity",
+    "approvedPackages"
+  ],
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "type": "string" },
+    "policy": { "type": "string" },
+    "forbidFloatingVersions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "requireLockfile": { "type": "boolean" },
+    "requireSubresourceIntegrity": { "type": "boolean" },
+    "approvedPackages": {
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "verifiedExactVersions": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": { "type": "string" }
+      }
+    }
+  },
+  "additionalProperties": true
+}

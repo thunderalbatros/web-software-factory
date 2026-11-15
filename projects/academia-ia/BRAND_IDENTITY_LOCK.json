@@ -1,7 +1,7 @@
 {
   "schemaVersion": "2026.10",
   "gateStatus": "DRAFT_PENDING_CTO_GATE1",
-  "approvedBy": "CTO_HITL_APPROVED",
+  "approvedBy": null,
   "approvedAt": null,
   "projectSlug": "academia-ia",
   "brandName": "Academia IA",
@@ -52,7 +52,5 @@
     "darkVariantLogoPath": "public/favicon.svg",
     "lightVariantLogoPath": "public/favicon.svg",
     "usageRules": "Marca tipográfica editorial limpia con isotipo geométrico SVG inline (< 2 KB), área libre mínima de 12px y contraste APCA Lc >= 85 en claro y oscuro."
-  },
-  "lockedAt": "2026-11-15T06:18:20.427Z",
-  "lockedBy": "CTO_HITL_APPROVED"
+  }
 }

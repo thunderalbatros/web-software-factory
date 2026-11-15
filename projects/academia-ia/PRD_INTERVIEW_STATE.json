@@ -2,10 +2,10 @@
   "schemaVersion": "2026.36.1",
   "gateId": "GATE_1_PRD_AND_BRAND_IDENTITY",
   "projectSlug": "academia-ia",
-  "prdInterviewStatus": "COMPLETED_BY_CTO",
+  "prdInterviewStatus": "PENDING_CTO_PRD_INPUT",
   "createdAt": "2026-11-15T05:28:42.812Z",
-  "approvedAt": "2026-11-15T06:18:20.427Z",
-  "approvedBy": "CTO_HITL_APPROVED",
+  "approvedAt": null,
+  "approvedBy": null,
   "blocks": {
     "block1_business_identity_and_problem": {
       "officialBrandName": "Academia IA",

@@ -359,7 +359,7 @@ async function main() {
         const clonedPkg = JSON.parse(fs.readFileSync(clonedPkgPath, 'utf8'));
         clonedPkg.name = slug;
         fs.writeFileSync(clonedPkgPath, JSON.stringify(clonedPkg, null, 2) + '\n', 'utf8');
-      } catch (_) {}
+      } catch {}
     }
 
     // Apply clean 100% static education variant without touching SaaS templates

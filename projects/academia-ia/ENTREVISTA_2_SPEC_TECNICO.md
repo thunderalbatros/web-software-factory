@@ -1,7 +1,7 @@
 # ⚙️ ENTREVISTA #2 OBLIGATORIA: ESPECIFICACIÓN TÉCNICA (`SPEC.md` & `DESIGN.md`) — `academia-ia`
 
-> **Estado de Compuerta #2 (`specInterviewStatus`):** `COMPLETED_BY_CTO`
-> **Pre-Requisito Compuerta #1 (`PRD_LEAN.md` + `BRAND_IDENTITY_LOCK.json`):** `COMPLETED_BY_CTO` (`brandIdentityMode: PARTIAL_BRAND_EVOLUTION`, `lockClientPalette: false`)
+> **Estado de Compuerta #2 (`specInterviewStatus`):** `PENDING_CTO_SPEC_INPUT`
+> **Pre-Requisito Compuerta #1 (`PRD_LEAN.md` + `BRAND_IDENTITY_LOCK.json`):** `PENDING_CTO_SPEC_INPUT` (`brandIdentityMode: PARTIAL_BRAND_EVOLUTION`, `lockClientPalette: false`)
 > **Regla de Gobernanza:** Una vez aprobada la Entrevista #1, completá/revisá estos 10 bloques técnicos y ejecutá:
 > `npm run cto:entrevista -- academia-ia --aprobar`
 
