@@ -60,7 +60,7 @@
   },
   "architecture": {
     "framework": "astro",
-    "framework_version_range": "^7.4.11",
+    "framework_version_range": "7.4.11",
     "starlight_allowed": false,
     "layout": "custom_minimalist",
     "design_tokens": "W3C DTCG 2025.10 OKLCH 90/8/2",

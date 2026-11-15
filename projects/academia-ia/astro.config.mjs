@@ -1,12 +1,11 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'astro/config';
 import astroExpressiveCode from 'astro-expressive-code';
 import mdx from '@astrojs/mdx';
 import { AstroPWAIntegration as AstroPWA } from '@vite-pwa/astro';
-import { compileStaticDistCspAndHeaders } from '../../tools/lib/csp_builder.mjs';
+import { compileStaticDistCspAndHeaders } from './src/lib/csp-builder.mjs';
 
 const PROJECT_ROOT = path.dirname(fileURLToPath(import.meta.url));
 const SITE_ORIGIN = 'https://academia-ia.pages.dev';
@@ -70,24 +69,39 @@ function generateSitemapAndAgenticManifests(distDir) {
 }
 
 async function runPagefindIndexing(distDir) {
+  const pf = await import('pagefind');
   try {
-    const pf = await import('pagefind');
     const { index } = await pf.createIndex();
-    if (index) {
-      await index.addDirectory({ path: distDir });
-      await index.writeFiles({ outputPath: path.join(distDir, 'pagefind') });
-      if (typeof pf.close === 'function') {
-        await pf.close();
-      }
-      return;
+    if (!index) {
+      throw new Error('Pagefind createIndex() returned no index instance.');
     }
-  } catch {
-    /* fallback to CLI */
+    const routes = collectRoutePaths(distDir);
+    for (const route of routes) {
+      const relHtml = route === '/' ? 'index.html' : `${route.replace(/^\/+|\/+$/g, '')}/index.html`;
+      const htmlPath = path.join(distDir, relHtml);
+      if (fs.existsSync(htmlPath)) {
+        await index.addHTMLFile({
+          url: route,
+          content: fs.readFileSync(htmlPath, 'utf8')
+        });
+      }
+    }
+    const { files, errors } = await index.getFiles();
+    if (Array.isArray(errors) && errors.length > 0) {
+      throw new Error(`Pagefind getFiles() errors: ${errors.join('; ')}`);
+    }
+    const pagefindOutDir = path.join(distDir, 'pagefind');
+    fs.mkdirSync(pagefindOutDir, { recursive: true });
+    for (const file of files || []) {
+      const destPath = path.join(pagefindOutDir, file.path);
+      fs.mkdirSync(path.dirname(destPath), { recursive: true });
+      fs.writeFileSync(destPath, file.content);
+    }
+  } finally {
+    if (typeof pf.close === 'function') {
+      await pf.close();
+    }
   }
-  execSync(`npx --no-install pagefind --site "${distDir}"`, {
-    cwd: PROJECT_ROOT,
-    stdio: 'inherit'
-  });
 }
 
 function academiaPrePwaPostBuildIntegration() {
@@ -174,8 +188,33 @@ export default defineConfig({
         ]
       },
       generateSW: {
-        globPatterns: ['**/*.{html,js,css,svg,json,wasm,pf_meta,pf_index,pf_fragment}'],
-        maximumFileSizeToCacheInBytes: 5 * 1024 * 1024
+        navigateFallback: null,
+        globPatterns: ['**/*.{html,css,js,svg,ico}'],
+        globIgnores: ['**/cl100k_base*.js', '**/pagefind/**'],
+        runtimeCaching: [
+          {
+            urlPattern: /\/_astro\/cl100k_base.*\.(?:js|mjs)$/,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'academia-tiktoken-dict-v1',
+              expiration: {
+                maxEntries: 4,
+                maxAgeSeconds: 60 * 60 * 24 * 30
+              }
+            }
+          },
+          {
+            urlPattern: /\/pagefind\/.*/,
+            handler: 'StaleWhileRevalidate',
+            options: {
+              cacheName: 'academia-pagefind-index-v1',
+              expiration: {
+                maxEntries: 64,
+                maxAgeSeconds: 60 * 60 * 24 * 7
+              }
+            }
+          }
+        ]
       }
     }),
     academiaFinalCspSealIntegration()

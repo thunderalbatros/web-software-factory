@@ -1,0 +1,83 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Web Software Factory GCP FinOps Budget Governance Schema v2",
+  "type": "object",
+  "required": [
+    "version",
+    "policy",
+    "totalPromotionalCreditUsd",
+    "maxDailySpendUsd",
+    "allow24x7Instances",
+    "enforceImplicitContextCache",
+    "forbidExplicitPaidCacheStorage",
+    "multimediaTiers",
+    "pricingTableUsd"
+  ],
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "type": "string" },
+    "policy": { "type": "string" },
+    "totalPromotionalCreditUsd": { "type": "number", "minimum": 0 },
+    "maxDailySpendUsd": { "type": "number", "minimum": 0 },
+    "allow24x7Instances": { "type": "boolean" },
+    "enforceImplicitContextCache": { "type": "boolean" },
+    "forbidExplicitPaidCacheStorage": { "type": "boolean" },
+    "multimediaTiers": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["tierId", "costRangeUsd", "defaultCostUsd", "engines", "description"],
+        "properties": {
+          "tierId": { "type": "string" },
+          "costRangeUsd": {
+            "type": "array",
+            "items": { "type": "number", "minimum": 0 },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "defaultCostUsd": { "type": "number", "minimum": 0 },
+          "hardware": { "type": "string" },
+          "engines": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "description": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "pricingTableUsd": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "perImageUsd": { "type": "number", "minimum": 0 },
+          "perAssetUsd": { "type": "number", "minimum": 0 },
+          "inputPer1MUsd": { "type": "number", "minimum": 0 },
+          "outputPer1MUsd": { "type": "number", "minimum": 0 },
+          "tier": { "type": "string" },
+          "sampleRateHz": { "type": "number" },
+          "fps": { "type": "number" },
+          "wordLevelTimestamps": { "type": "boolean" },
+          "description": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "telemetrySummary": {
+      "type": "object",
+      "properties": {
+        "lastUpdatedAt": { "type": "string" },
+        "todaySpendUsd": { "type": "number", "minimum": 0 },
+        "remainingDailyBudgetUsd": { "type": "number" },
+        "remainingCreditUsd": { "type": "number" },
+        "lastMultimediaOperation": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

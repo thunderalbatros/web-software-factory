@@ -18,6 +18,7 @@
       "type": "array",
       "items": { "type": "string" }
     },
+    "enforceExactPinnedVersions": { "type": "boolean" },
     "requireLockfile": { "type": "boolean" },
     "requireSubresourceIntegrity": { "type": "boolean" },
     "approvedPackages": {

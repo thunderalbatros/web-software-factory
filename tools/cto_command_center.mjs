@@ -361,10 +361,14 @@ async function handleEntrevistaPrd(args) {
     compilePrdLeanAndBrandLock,
     verifyPrdInterviewGate
   } = await import('./orchestrator/lean_prd_architect.mjs');
-  const projectCfg = loadProjectConfig();
   const nonFlags = args.filter((a) => !a.startsWith('--'));
+  const projectCfg = loadProjectConfig(nonFlags[0] || '');
   const slug = nonFlags[0] || projectCfg.id || 'agencia-alfa';
-  const industry = nonFlags[1] || projectCfg.industryArchetype || projectCfg.archetype || 'saas';
+  const defaultIndustry =
+    projectCfg.complianceProfile === 'education'
+      ? 'education'
+      : projectCfg.industryArchetype || projectCfg.archetype || 'saas';
+  const industry = nonFlags[1] || defaultIndustry;
   const shouldApprove = args.includes('--aprobar') || args.includes('--approve');
 
   initPrdInterviewFiles(slug, industry, { autoApprove: shouldApprove });
@@ -398,10 +402,14 @@ async function handleEntrevista(args) {
   const { initClientInterviewFiles, compileSpecFromInterview, verifyClientInterviewGate } = await import(
     './orchestrator/client_interview_gate.mjs'
   );
-  const projectCfg = loadProjectConfig();
   const nonFlags = args.filter((a) => !a.startsWith('--'));
+  const projectCfg = loadProjectConfig(nonFlags[0] || '');
   const slug = nonFlags[0] || projectCfg.id || 'agencia-alfa';
-  const industry = nonFlags[1] || projectCfg.industryArchetype || projectCfg.archetype || 'saas';
+  const defaultIndustry =
+    projectCfg.complianceProfile === 'education'
+      ? 'education'
+      : projectCfg.industryArchetype || projectCfg.archetype || 'saas';
+  const industry = nonFlags[1] || defaultIndustry;
   const shouldApprove = args.includes('--aprobar') || args.includes('--approve');
 
   // Gate #1 Prerequisite Check
@@ -438,8 +446,13 @@ async function handleEntrevista(args) {
   }
 }
 
-async function handleConstruir() {
-  const projectCfg = loadProjectConfig();
+async function handleConstruir(args = []) {
+  const nonFlags = (args || []).filter((a) => !a.startsWith('--'));
+  const projectCfg = loadProjectConfig(nonFlags[0] || '');
+  const effectiveIndustry =
+    projectCfg.complianceProfile === 'education'
+      ? 'education'
+      : projectCfg.industryArchetype || projectCfg.archetype || 'saas';
   console.log('\n====================================================================');
   console.log(`🏗️  CONSTRUYENDO Y AUDITANDO TU SITIO WEB [${projectCfg.id}] (MODO AUTOMÁTICO)`);
   console.log('====================================================================\n');
@@ -450,15 +463,12 @@ async function handleConstruir() {
   const { verifyDualInterviewGates, compileSpecFromInterview } = await import(
     './orchestrator/client_interview_gate.mjs'
   );
-  const dualGate = verifyDualInterviewGates(
-    projectCfg.id,
-    projectCfg.industryArchetype || projectCfg.archetype || 'saas'
-  );
+  const dualGate = verifyDualInterviewGates(projectCfg.id, effectiveIndustry);
   if (!dualGate.passed) {
     console.error(`\n❌ ${dualGate.message}\n`);
     process.exit(1);
   }
-  compileSpecFromInterview(projectCfg.id);
+  compileSpecFromInterview(projectCfg.id, { industry: effectiveIndustry });
 
   // 0. Adaptive Depth Routing (SWE-AF) + HumanLayer 6-Stage RPI + OpenHands StuckDetector + Beads Graph
   const { classifyAdaptiveDepthLane, loadBeadsTaskGraph } = await import('./orchestrator/adaptive_depth_router.mjs');
@@ -484,7 +494,9 @@ async function handleConstruir() {
 
   // 1. Compile Tokens (respecting BRAND_IDENTITY_LOCK.json), Apply Bespoke Morphology to DOM, & Build Production Dist
   compileDesignTokens({ projectDir: projectCfg.projectRoot });
-  applyBespokeMorphologyToProjectDom(projectCfg.id);
+  if (projectCfg.complianceProfile !== 'education' && projectCfg.stack === 'vanilla-edge') {
+    applyBespokeMorphologyToProjectDom(projectCfg.id);
+  }
   execSync(`node "${path.join(ROOT, 'tools', 'build_dist.mjs')}" --project "${projectCfg.projectRoot}"`, { cwd: ROOT, stdio: 'inherit' });
 
   // 2. Execute Parallel DAG Bolt (Wave 1 CRISP Outline -> Wave 2A Tracer-Bullet -> Wave 2B Fill-In -> Wave 3 Visual/Security/JEV Audit)

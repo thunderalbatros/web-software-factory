@@ -18,7 +18,7 @@ const srcdoc = buildOpaqueTutorSandboxSrcdoc({ title: 'Sandbox Opaco Tutor Socr�
 >
   <h2 class="editorial-h2">Tutor socrático en sandbox de origen opaco</h2>
   <p>
-    Este asistente pedagógico corre aislado dentro de un marco con <code>sandbox="allow-scripts"</code> sin <code>allow-same-origin</code>: carece de acceso a tu <code>IndexedDB</code> o <code>localStorage</code>, valida mensajes con <code>Valibot</code> y sanea toda respuesta con <code>DOMPurify</code> y <code>TrustedHTML</code>.
+    Este asistente pedagógico corre aislado dentro de un marco con <code>sandbox="allow-scripts"</code> sin <code>allow-same-origin</code>: carece de acceso a tu <code>IndexedDB</code> o <code>localStorage</code>, se comunica por un <code>MessageChannel</code> dedicado 1:1 validado con <code>Valibot</code> y sanea toda respuesta con <code>DOMPurify</code> y <code>TrustedHTML</code>.
   </p>
 
   <div class="control-field">

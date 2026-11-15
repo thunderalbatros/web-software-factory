@@ -9,8 +9,9 @@
     "acceptance_criteria": [
       "Zero UI layout thrashing or horizontal overflow across 1440px, 768px, and 390px viewports.",
       "100% WCAG 2.2 AA accessibility compliance (semantic landmarks <main>, <nav>, ARIA labels, APCA contrast).",
-      "Zero inline executable <script> blocks or inline onclick handlers (strict CSP compliance)."
+      "Zero inline executable <script> blocks or inline onclick handlers (strict CSP compliance).",
+      "100% static Read-mode architecture (0 backend Worker API endpoints, Trusted Types enforced, 1:1 MessageChannel tutor sandbox)."
     ],
-    "updated_at": "2026-11-15T05:28:42.540Z"
+    "updated_at": "2026-11-15T08:21:32.882Z"
   }
 ]

@@ -77,10 +77,12 @@ function checkPackageAllowlist(rootDir = ROOT) {
   }
 
   const approvedSet = new Set(Array.isArray(policy.approvedPackages) ? policy.approvedPackages : []);
+  const enforceExactPinned = policy.enforceExactPinnedVersions !== false;
+  const exactSemverRegex = /^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?(?:\+[0-9A-Za-z.-]+)?$/;
   const forbiddenFloating = new Set(
     Array.isArray(policy.forbidFloatingVersions)
       ? policy.forbidFloatingVersions.map((v) => String(v).toLowerCase())
-      : ["*", "latest", "next", "canary", "x"]
+      : ["*", "latest", "next", "canary", "x", "^", "~"]
   );
 
   const pkgFiles = collectFiles(rootDir, (name) => name === "package.json");
@@ -122,12 +124,14 @@ function checkPackageAllowlist(rootDir = ROOT) {
           });
         }
 
+        const hasFloatingRangePrefix = /^[\^~><=|]/.test(ver) || /\|\||\s-\s/.test(ver);
         if (
           !ver ||
           forbiddenFloating.has(verLower) ||
           ver === "*" ||
           verLower.includes("latest") ||
-          /^(?:https?|git|file|github):/i.test(ver)
+          /^(?:https?|git|file|github):/i.test(ver) ||
+          (enforceExactPinned && (hasFloatingRangePrefix || !exactSemverRegex.test(ver)))
         ) {
           issues.push({
             rule: "FLOATING_OR_UNPINNED_VERSION",
@@ -135,7 +139,7 @@ function checkPackageAllowlist(rootDir = ROOT) {
             file: relPath,
             package: depName,
             version: ver,
-            message: `Floating or untrusted version specifier "${ver}" for "${depName}" in ${relPath}. Use explicit semver ranges.`
+            message: `Floating or unpinned version specifier "${ver}" for "${depName}" in ${relPath}. Pin exact semver versions without ^ or ~ ranges (-E).`
           });
         }
       }
@@ -151,55 +155,35 @@ function checkPackageAllowlist(rootDir = ROOT) {
 }
 
 /**
- * 2. Lockfile Integrity & npm audit (--audit-level=high --json)
+ * 2. Lockfile Integrity & npm audit (--json across root, tools/audit, templates, and projects)
  */
-function checkLockfileAndVulnerabilities(rootDir = ROOT, skipNetworkAudit = false) {
+export function checkLockfileAndVulnerabilities(rootDir = ROOT, skipNetworkAudit = false) {
   const issues = [];
   const npmLockPath = path.join(rootDir, "package-lock.json");
   const pnpmLockPath = path.join(rootDir, "pnpm-lock.yaml");
-  const rootPkgPath = path.join(rootDir, "package.json");
+
+  const candidateDirs = [
+    rootDir,
+    path.join(rootDir, "tools", "audit"),
+    path.join(rootDir, "templates", "astro-edge")
+  ];
+  const projectsBase = path.join(rootDir, "projects");
+  if (fs.existsSync(projectsBase)) {
+    for (const entry of fs.readdirSync(projectsBase, { withFileTypes: true })) {
+      if (!entry.isDirectory()) continue;
+      const projDir = path.join(projectsBase, entry.name);
+      if (
+        fs.existsSync(path.join(projDir, "package.json")) &&
+        fs.existsSync(path.join(projDir, "package-lock.json"))
+      ) {
+        candidateDirs.push(projDir);
+      }
+    }
+  }
 
   let lockfileType = null;
   if (fs.existsSync(npmLockPath)) {
     lockfileType = "package-lock.json";
-    try {
-      const lock = JSON.parse(fs.readFileSync(npmLockPath, "utf8").replace(/^\uFEFF/, ""));
-      const rootPkg = JSON.parse(fs.readFileSync(rootPkgPath, "utf8").replace(/^\uFEFF/, ""));
-      if (!lock.lockfileVersion || lock.lockfileVersion < 2 || !lock.packages) {
-        issues.push({
-          rule: "LOCKFILE_DOWNGRADE_OR_CORRUPT",
-          severity: "CRITICAL",
-          file: "package-lock.json",
-          message: "package-lock.json must use lockfileVersion >= 2 and include a valid packages tree."
-        });
-      } else {
-        const rootDeps = {
-          ...(rootPkg.dependencies || {}),
-          ...(rootPkg.devDependencies || {})
-        };
-        for (const depName of Object.keys(rootDeps)) {
-          const nodeKey = `node_modules/${depName}`;
-          const rootLockDeps = lock.packages?.[""]?.dependencies || {};
-          const rootLockDevDeps = lock.packages?.[""]?.devDependencies || {};
-          if (!lock.packages[nodeKey] && !rootLockDeps[depName] && !rootLockDevDeps[depName]) {
-            issues.push({
-              rule: "LOCKFILE_DRIFT",
-              severity: "HIGH",
-              file: "package-lock.json",
-              package: depName,
-              message: `Dependency "${depName}" in package.json is missing from package-lock.json.`
-            });
-          }
-        }
-      }
-    } catch (err) {
-      issues.push({
-        rule: "LOCKFILE_PARSE_ERROR",
-        severity: "CRITICAL",
-        file: "package-lock.json",
-        message: `Failed to parse package-lock.json: ${err.message}`
-      });
-    }
   } else if (fs.existsSync(pnpmLockPath)) {
     lockfileType = "pnpm-lock.yaml";
     const content = fs.readFileSync(pnpmLockPath, "utf8");
@@ -220,36 +204,94 @@ function checkLockfileAndVulnerabilities(rootDir = ROOT, skipNetworkAudit = fals
     });
   }
 
-  let auditSummary = { info: 0, low: 0, moderate: 0, high: 0, critical: 0, total: 0 };
-  if (!skipNetworkAudit && fs.existsSync(npmLockPath)) {
+  const auditSummary = { info: 0, low: 0, moderate: 0, high: 0, critical: 0, total: 0 };
+  const auditedRoots = [];
+
+  for (const targetDir of candidateDirs) {
+    const targetPkgPath = path.join(targetDir, "package.json");
+    const targetLockPath = path.join(targetDir, "package-lock.json");
+    if (!fs.existsSync(targetPkgPath) || !fs.existsSync(targetLockPath)) continue;
+
+    const relRoot = path.relative(rootDir, targetDir).replace(/\\/g, "/") || ".";
+    const relLockFile = relRoot === "." ? "package-lock.json" : `${relRoot}/package-lock.json`;
+    auditedRoots.push(relRoot);
+
     try {
-      const stdout = execSync("npm audit --audit-level=high --json", {
-        cwd: rootDir,
-        encoding: "utf8",
-        stdio: ["ignore", "pipe", "pipe"],
-        timeout: 15000
-      });
-      const report = JSON.parse(stdout);
-      auditSummary = report?.metadata?.vulnerabilities || auditSummary;
-    } catch (err) {
-      const rawOut = String(err.stdout || "").trim();
-      if (rawOut.startsWith("{")) {
-        try {
-          const report = JSON.parse(rawOut);
-          auditSummary = report?.metadata?.vulnerabilities || auditSummary;
-          const highCount = Number(auditSummary.high || 0);
-          const critCount = Number(auditSummary.critical || 0);
-          if (highCount > 0 || critCount > 0) {
-            const vulnNames = Object.keys(report.vulnerabilities || {}).join(", ");
+      const lock = JSON.parse(fs.readFileSync(targetLockPath, "utf8").replace(/^\uFEFF/, ""));
+      const targetPkg = JSON.parse(fs.readFileSync(targetPkgPath, "utf8").replace(/^\uFEFF/, ""));
+      if (!lock.lockfileVersion || lock.lockfileVersion < 2 || !lock.packages) {
+        issues.push({
+          rule: "LOCKFILE_DOWNGRADE_OR_CORRUPT",
+          severity: "CRITICAL",
+          file: relLockFile,
+          message: `${relLockFile} must use lockfileVersion >= 2 and include a valid packages tree.`
+        });
+      } else {
+        const directDeps = {
+          ...(targetPkg.dependencies || {}),
+          ...(targetPkg.devDependencies || {})
+        };
+        for (const depName of Object.keys(directDeps)) {
+          const nodeKey = `node_modules/${depName}`;
+          const rootLockDeps = lock.packages?.[""]?.dependencies || {};
+          const rootLockDevDeps = lock.packages?.[""]?.devDependencies || {};
+          if (!lock.packages[nodeKey] && !rootLockDeps[depName] && !rootLockDevDeps[depName]) {
             issues.push({
-              rule: "NPM_AUDIT_VULNERABILITY",
-              severity: critCount > 0 ? "CRITICAL" : "HIGH",
-              file: "package-lock.json",
-              message: `npm audit detected ${critCount} critical and ${highCount} high vulnerabilities (${vulnNames}).`
+              rule: "LOCKFILE_DRIFT",
+              severity: "HIGH",
+              file: relLockFile,
+              package: depName,
+              message: `Dependency "${depName}" in ${relRoot}/package.json is missing from ${relLockFile}.`
             });
           }
-        } catch {
-          // Non-JSON error (e.g. offline network); lockfile integrity still enforced
+        }
+      }
+    } catch (err) {
+      issues.push({
+        rule: "LOCKFILE_PARSE_ERROR",
+        severity: "CRITICAL",
+        file: relLockFile,
+        message: `Failed to parse ${relLockFile}: ${err.message}`
+      });
+    }
+
+    if (!skipNetworkAudit) {
+      const parseAuditReport = (rawJson) => {
+        const report = JSON.parse(rawJson);
+        const vulns = report?.metadata?.vulnerabilities || {};
+        for (const key of ["info", "low", "moderate", "high", "critical", "total"]) {
+          auditSummary[key] += Number(vulns[key] || 0);
+        }
+        const totalVulns = Number(vulns.total || 0);
+        const critCount = Number(vulns.critical || 0);
+        const highCount = Number(vulns.high || 0);
+        if (totalVulns > 0) {
+          const vulnNames = Object.keys(report.vulnerabilities || {}).join(", ");
+          issues.push({
+            rule: "NPM_AUDIT_VULNERABILITY",
+            severity: critCount > 0 ? "CRITICAL" : highCount > 0 ? "HIGH" : "MODERATE",
+            file: relLockFile,
+            message: `npm audit in ${relRoot} detected ${totalVulns} vulnerabilities (${vulnNames}).`
+          });
+        }
+      };
+
+      try {
+        const stdout = execSync("npm audit --json", {
+          cwd: targetDir,
+          encoding: "utf8",
+          stdio: ["ignore", "pipe", "pipe"],
+          timeout: 20000
+        });
+        parseAuditReport(stdout);
+      } catch (err) {
+        const rawOut = String(err.stdout || "").trim();
+        if (rawOut.startsWith("{")) {
+          try {
+            parseAuditReport(rawOut);
+          } catch {
+            // Non-JSON error (e.g. offline network); lockfile integrity still enforced
+          }
         }
       }
     }
@@ -258,6 +300,7 @@ function checkLockfileAndVulnerabilities(rootDir = ROOT, skipNetworkAudit = fals
   return {
     passed: issues.length === 0,
     lockfileType,
+    auditedRoots,
     vulnerabilities: auditSummary,
     issues
   };

@@ -1071,7 +1071,6 @@ export function compileDesignTokens(options = {}) {
     const cssTargets = [
       path.join(FACTORY_ROOT, 'templates', 'vanilla-edge', 'site', 'css', 'design-tokens.css'),
       path.join(FACTORY_ROOT, 'templates', 'astro-edge', 'src', 'styles', 'design-tokens.css'),
-      path.join(FACTORY_ROOT, 'templates', 'astro-edge', 'public', 'styles', 'design-tokens.css'),
       path.join(FACTORY_ROOT, 'templates', 'fullstack-saas-edge', 'site', 'css', 'design-tokens.css')
     ];
     for (const cPath of cssTargets) {
@@ -1084,7 +1083,6 @@ export function compileDesignTokens(options = {}) {
     if (fs.existsSync(masterMotionPath)) {
       const motionCss = fs.readFileSync(masterMotionPath, 'utf8');
       const motionTargets = [
-        path.join(FACTORY_ROOT, 'templates', 'astro-edge', 'public', 'styles', 'motion-engine.css'),
         path.join(FACTORY_ROOT, 'templates', 'vanilla-edge', 'src', 'styles', 'motion-engine.css'),
         path.join(FACTORY_ROOT, 'templates', 'vanilla-edge', 'site', 'css', 'motion-engine.css'),
         path.join(FACTORY_ROOT, 'templates', 'fullstack-saas-edge', 'site', 'css', 'motion-engine.css')
@@ -1123,15 +1121,6 @@ export function compileDesignTokens(options = {}) {
     fs.mkdirSync(path.dirname(cssPath), { recursive: true });
     fs.writeFileSync(cssPath, cssContent, 'utf8');
     writtenFiles.push(cssPath);
-
-    const publicStylesDir = path.join(rootDir, 'public', 'styles');
-    if (fs.existsSync(publicStylesDir)) {
-      const pubCssPath = path.join(publicStylesDir, 'design-tokens.css');
-      if (path.resolve(pubCssPath) !== path.resolve(cssPath)) {
-        fs.writeFileSync(pubCssPath, cssContent, 'utf8');
-        writtenFiles.push(pubCssPath);
-      }
-    }
 
     const projLlms = path.join(rootDir, 'llms.txt');
     if (!fs.existsSync(projLlms)) {

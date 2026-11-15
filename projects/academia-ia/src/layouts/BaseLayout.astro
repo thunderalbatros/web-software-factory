@@ -38,33 +38,43 @@ const canonicalUrl = `https://academia-ia.pages.dev${canonicalPath}`;
           }
         } catch (e) {}
         if (window.trustedTypes && window.trustedTypes.createPolicy) {
-          var sanitizeHtmlFallback = function (input) {
-            return String(input || '')
-              .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '')
-              .replace(/\son[a-z]+\s*=/gi, ' data-blocked-handler=');
+          var rejectRawHtml = function () {
+            throw new TypeError(
+              'Trusted Types: raw HTML assignment is forbidden. Use DOMPurify TrustedHTML or safe DOM APIs.'
+            );
           };
-          var allowSameOriginUrl = function (input) {
+          var allowRestrictedScriptUrl = function (input) {
             var resolved = new URL(String(input || ''), window.location.origin);
             if (resolved.origin !== window.location.origin) {
-              throw new TypeError('Blocked cross-origin script URL under Trusted Types');
+              throw new TypeError('Trusted Types: cross-origin script URL blocked.');
+            }
+            var p = resolved.pathname;
+            var allowed =
+              p === '/sw.js' ||
+              p === '/pagefind/pagefind.js' ||
+              p.indexOf('/_astro/') === 0;
+            if (!allowed) {
+              throw new TypeError('Trusted Types: unauthorized same-origin script URL blocked: ' + p);
             }
             return resolved.href;
+          };
+          var rejectDynamicScript = function () {
+            throw new TypeError('Trusted Types: dynamic string script evaluation is forbidden.');
           };
           try {
             if (!window.trustedTypes.defaultPolicy) {
               window.trustedTypes.createPolicy('default', {
-                createHTML: sanitizeHtmlFallback,
-                createScriptURL: allowSameOriginUrl,
-                createScript: function () {
-                  throw new TypeError('Dynamic string script evaluation is forbidden');
-                }
+                createHTML: rejectRawHtml,
+                createScriptURL: allowRestrictedScriptUrl,
+                createScript: rejectDynamicScript
               });
             }
           } catch (e) {}
           try {
             window.trustedTypes.createPolicy('astro-island', {
-              createHTML: sanitizeHtmlFallback,
-              createScriptURL: allowSameOriginUrl
+              createHTML: rejectRawHtml,
+              createScriptURL: allowRestrictedScriptUrl,
+              createScript: rejectDynamicScript
             });
           } catch (e) {}
         }

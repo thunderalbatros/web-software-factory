@@ -9,14 +9,14 @@
 ## Bloque 1 — Identidad del Negocio y Necesidad que Resuelve
 - **Nombre Oficial de la Empresa / Marca / Proyecto:** Academia IA
 - **Eslogan (`Tagline`):** Plataforma educativa abierta, minimalista e inclusiva sobre IA y tecnologías emergentes en español
-- **Rubro / Categoría Industrial (`abogacia`, `fintech`, `erp`, `ecommerce`, `streamer`, `clinica`, `saas`, `lujo`):** `education`
+- **Rubro / Categoría Industrial (`abogacia`, `fintech`, `erp`, `ecommerce`, `streamer`, `clinica`, `saas`, `lujo`, `education`):** `education`
 - **¿Qué vende u ofrece exactamente?:** Recorrido pedagógico abierto en 3 niveles UNESCO (Principiante/Adquirir sin código, Intermedio/Profundizar y Avanzado/Crear con prioridad Open-Source y costo $0.00 USD de servidor).
 - **¿Qué necesidad, dolor o problema concreto le resuelve este sitio web a sus usuarios o clientes?:** Elimina los muros de pago, la sobrecarga cognitiva y la dependencia de plataformas cerradas enseñando IA práctica, ética y verificable con progreso local-first y alternativas gratuitas sin tarjeta.
 
 ---
 
 ## Bloque 2 — Público Objetivo, Psicología del Comprador y Diferenciación
-- **Perfil del Público Objetivo:** Estudiantes, trabajadores, oficios reales, docentes y desarrolladores hispanohablantes (Open Educational Platform ($0 Server, Voluntary Donations Without Exclusive Benefits)) (Open Educational Platform ($0 Server, Voluntary Donations Without Exclusive Benefits))
+- **Perfil del Público Objetivo:** Estudiantes, trabajadores, oficios reales, docentes y desarrolladores hispanohablantes (Open Educational Platform ($0 Server, Voluntary Donations Without Exclusive Benefits))
 - **Contexto de Visita (Urgencia Móvil vs. Análisis en Desktop):** 55% móvil (lectura calmada en columna 65ch y repaso offline PWA) y 45% desktop (laboratorios interactivos, código y proyectos integradores)
 - **Las 3 Principales Dudas u Objeciones antes de comprar o contratar:**
   1. ¿Necesito saber programar o pagar suscripciones con tarjeta para aprender IA útil en mi oficio?

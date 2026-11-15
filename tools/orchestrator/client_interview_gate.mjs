@@ -26,7 +26,10 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { resolveIndustryArchetype } from '../design/industry_archetype_matrix.mjs';
+import {
+  resolveIndustryArchetype,
+  generateProductAndDesignMd
+} from '../design/industry_archetype_matrix.mjs';
 import {
   synthesizeUniqueBrandDna,
   BRAND_PERSONALITY_TENSIONS
@@ -45,15 +48,47 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 export const ROOT = path.resolve(__dirname, '..', '..');
 
+export const EDUCATION_NULL_SONIC_PRESET = Object.freeze({
+  seedId: 'none-read-mode-silent',
+  archetype: 'education',
+  material: 'paper-editorial',
+  uiSfxMode: 'off',
+  borderRadiusPx: 6,
+  oklch: { L: 0.34, C: 0.13, H: 245 },
+  uses3dOrShaderInHero: false,
+  exportReaperRppSession: false
+});
+
+function resolveSpecProjectTarget(slugOrDir = 'agencia-alfa', options = {}) {
+  if (options?.projectDir) {
+    const abs = path.resolve(options.projectDir);
+    const inRepoProjects = abs.toLowerCase().startsWith(path.join(ROOT, 'projects').toLowerCase() + path.sep);
+    return { projectDir: abs, slug: path.basename(abs), inRepoProjects };
+  }
+  const raw = String(slugOrDir || 'agencia-alfa').trim();
+  if ((path.isAbsolute(raw) || /[\\/]/.test(raw)) && fs.existsSync(path.resolve(raw))) {
+    const abs = path.resolve(raw);
+    const inRepoProjects = abs.toLowerCase().startsWith(path.join(ROOT, 'projects').toLowerCase() + path.sep);
+    return { projectDir: abs, slug: path.basename(abs), inRepoProjects };
+  }
+  return {
+    projectDir: path.join(ROOT, 'projects', raw),
+    slug: raw,
+    inRepoProjects: true
+  };
+}
+
 /**
- * Loads `BRAND_IDENTITY_LOCK.json` and `PRD_INTERVIEW_STATE.json` if present for a project.
+ * Loads `BRAND_IDENTITY_LOCK.json`, `PRD_INTERVIEW_STATE.json`, and `factory.project.json` if present for a project.
  */
-function loadBrandLockAndPrdState(slug = 'agencia-alfa') {
-  const projectDir = path.join(ROOT, 'projects', slug);
+function loadBrandLockAndPrdState(slug = 'agencia-alfa', explicitProjectDir = null) {
+  const projectDir = explicitProjectDir ? path.resolve(explicitProjectDir) : path.join(ROOT, 'projects', slug);
   const brandLockPath = path.join(projectDir, 'BRAND_IDENTITY_LOCK.json');
   const prdStatePath = path.join(projectDir, 'PRD_INTERVIEW_STATE.json');
+  const manifestPath = path.join(projectDir, 'factory.project.json');
   let brandLock = null;
   let prdState = null;
+  let manifest = null;
   if (fs.existsSync(brandLockPath)) {
     try {
       brandLock = JSON.parse(fs.readFileSync(brandLockPath, 'utf8'));
@@ -64,7 +99,12 @@ function loadBrandLockAndPrdState(slug = 'agencia-alfa') {
       prdState = JSON.parse(fs.readFileSync(prdStatePath, 'utf8'));
     } catch (_) {}
   }
-  return { brandLock, prdState };
+  if (fs.existsSync(manifestPath)) {
+    try {
+      manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+    } catch (_) {}
+  }
+  return { brandLock, prdState, manifest };
 }
 
 /**
@@ -74,16 +114,29 @@ function loadBrandLockAndPrdState(slug = 'agencia-alfa') {
 export function buildDefaultInterviewPayload(
   slug = 'agencia-alfa',
   industryInput = 'saas',
-  specStatus = 'PENDING_CTO_SPEC_INPUT'
+  specStatus = 'PENDING_CTO_SPEC_INPUT',
+  options = {}
 ) {
-  const { brandLock, prdState } = loadBrandLockAndPrdState(slug);
-  const effectiveIndustry =
-    brandLock?.industryCategory ||
-    prdState?.blocks?.block1_business_identity_and_problem?.industryCategory ||
-    industryInput;
+  const { projectDir } = resolveSpecProjectTarget(slug, options);
+  const { brandLock, prdState, manifest } = loadBrandLockAndPrdState(slug, projectDir);
+  const isEducation =
+    manifest?.complianceProfile === 'education' ||
+    manifest?.archetype === 'education' ||
+    String(industryInput || '').toLowerCase().trim() === 'education' ||
+    brandLock?.industryCategory === 'education' ||
+    brandLock?.industryCategory === 'academic-editorial-education' ||
+    prdState?.blocks?.block1_business_identity_and_problem?.industryCategory === 'education';
+
+  const effectiveIndustry = isEducation
+    ? 'education'
+    : brandLock?.industryCategory ||
+      prdState?.blocks?.block1_business_identity_and_problem?.industryCategory ||
+      industryInput;
   const arch = resolveIndustryArchetype(effectiveIndustry);
-  const sonicSeed = resolveSonicArchetypePreset(effectiveIndustry);
-  const isLawOrRead = arch.primarySurfaceMode === 'Read' || sonicSeed.archetype === 'abogacia';
+  const sonicSeed = isEducation
+    ? EDUCATION_NULL_SONIC_PRESET
+    : resolveSonicArchetypePreset(effectiveIndustry);
+  const isLawOrRead = isEducation || arch.primarySurfaceMode === 'Read' || sonicSeed.archetype === 'abogacia';
 
   const brandName =
     brandLock?.brandName ||
@@ -95,10 +148,14 @@ export function buildDefaultInterviewPayload(
 
   const primaryCta =
     prdState?.blocks?.block5_capabilities_and_cro_goals?.primaryCta ||
-    'Solicitar Auditoría / Demo Ejecutiva';
+    (isEducation
+      ? 'Comenzar Nivel 1 — Adquirir (100% Gratis, Sin Registro)'
+      : 'Solicitar Auditoría / Demo Ejecutiva');
   const primaryCtaChannel =
     prdState?.blocks?.block5_capabilities_and_cro_goals?.primaryCtaChannel ||
-    'Calendly + WhatsApp Business + Lead Form';
+    (isEducation
+      ? 'Navegación Directa MPA (/niveles/principiante/) + Progreso Local en Navegador'
+      : 'Calendly + WhatsApp Business + Lead Form');
   const brandMode = brandLock?.brandIdentityMode || 'PARTIAL_BRAND_EVOLUTION';
   const lockClientPalette = Boolean(brandLock?.lockClientPalette);
   const clientPalette = brandLock?.officialPalette || {
@@ -109,17 +166,23 @@ export function buildDefaultInterviewPayload(
     surfaceDarkColor: '#0B0F19'
   };
   const clientLogos = brandLock?.logoAssets || {
-    primaryLogoPath: 'public/assets/brand/logo-primary.svg',
-    isotipoPath: 'public/assets/brand/isotipo.svg'
+    primaryLogoPath: isEducation ? 'public/favicon.svg' : 'public/assets/brand/logo-primary.svg',
+    isotipoPath: isEducation ? 'public/favicon.svg' : 'public/assets/brand/isotipo.svg'
   };
 
   const normalizedStatus =
     specStatus === 'COMPLETED_BY_CTO' ? 'COMPLETED_BY_CTO' : 'PENDING_CTO_SPEC_INPUT';
 
+  const eduPages = ['/', '/niveles/principiante/', '/niveles/intermedio/', '/niveles/avanzado/'];
+  const eduDatabaseEngine = 'Static JSON (data/academy/*.json) + Local-First Browser Storage (Dexie/IndexedDB & localStorage)';
+
   return {
     schemaVersion: '2026.36.1',
     gateId: 'GATE_2_TECHNICAL_SPEC_AND_DESIGN',
     projectSlug: slug,
+    complianceProfile: isEducation ? 'education' : manifest?.complianceProfile || 'standard-web',
+    industryArchetype: isEducation ? 'education' : sonicSeed.archetype,
+    surfaceMode: isEducation ? 'Read' : arch.primarySurfaceMode || 'Persuade',
     status: normalizedStatus,
     specInterviewStatus: normalizedStatus,
     prdReferenceStatus: prdState?.prdInterviewStatus || 'PENDING_CTO_PRD_INPUT',
@@ -132,16 +195,24 @@ export function buildDefaultInterviewPayload(
       // Bloque 1: Arquitectura de Páginas y Secciones DOM
       block1_pages_and_dom_architecture: {
         brandName,
-        industryArchetype: sonicSeed.archetype,
+        industryArchetype: isEducation ? 'education' : sonicSeed.archetype,
         resolvedArchetypeId: arch.id,
-        pages: ['Home', 'Soluciones', 'Casos de Éxito', 'Precios', 'Contacto'],
-        domSectionsAndComponents: [
-          'Header Semántico con Navegación Accesible + Mute Toggle + Selector de Tema',
-          `Hero Principal (${brandName}) con Propuesta de Valor [INV-01] y Primary CTA (${primaryCta})`,
-          'Sección de Capacidades Operativas y Derribo de las 3 Objeciones del Comprador [INV-02]',
-          'Bento Grid / Catálogo Filtrable con Prueba Social Verificable [INV-06]',
-          'Formulario de Conversión Validado con Valibot + Footer Legal y Datos Operativos'
-        ]
+        pages: isEducation ? eduPages : ['Home', 'Soluciones', 'Casos de Éxito', 'Precios', 'Contacto'],
+        domSectionsAndComponents: isEducation
+          ? [
+              'Header Editorial Minimalista con Selector de Tema Claro/Oscuro (0 Mute Toggle sonoro)',
+              `Índice Editorial (${brandName}) con 3 Niveles UNESCO (Adquirir, Profundizar, Crear) y Buscador Pagefind`,
+              'Columna de Lectura en Modo Read (65ch, bloques <= 110 palabras en español neutro tú)',
+              'Fachada Multi-Video de Privacidad (youtube-nocookie.com + archive.org) con aviso local y síntesis textual',
+              'Micro-Explorables en Cliente (js-tiktoken BPE + Temml MathML 0 KB JS) y Tutor Socrático en Sandbox Opaco (MessageChannel 1:1)'
+            ]
+          : [
+              'Header Semántico con Navegación Accesible + Mute Toggle + Selector de Tema',
+              `Hero Principal (${brandName}) con Propuesta de Valor [INV-01] y Primary CTA (${primaryCta})`,
+              'Sección de Capacidades Operativas y Derribo de las 3 Objeciones del Comprador [INV-02]',
+              'Bento Grid / Catálogo Filtrable con Prueba Social Verificable [INV-06]',
+              'Formulario de Conversión Validado con Valibot + Footer Legal y Datos Operativos'
+            ]
       },
       // Bloque 2: Contratos Funcionales, Validaciones Valibot y Pure vs. Wired
       block2_functional_contracts_and_valibot: {
@@ -155,32 +226,43 @@ export function buildDefaultInterviewPayload(
           'extreme-long-text-250chars',
           'dark-mode'
         ],
-        valibotSchemas: [
-          'LeadCaptureFormSchema (nombre, email, telefono, mensaje, csrfToken)',
-          'InteractiveCalculatorOrFilterSchema (categoria, presupuesto, urgencia)'
-        ]
+        valibotSchemas: isEducation
+          ? [
+              'TutorOutboundPromptSchema (question, levelId, lessonSlug)',
+              'TutorInboundMessageSchema (TUTOR_SANDBOX_READY | TUTOR_HINT_RESPONSE | TUTOR_ERROR)'
+            ]
+          : [
+              'LeadCaptureFormSchema (nombre, email, telefono, mensaje, csrfToken)',
+              'InteractiveCalculatorOrFilterSchema (categoria, presupuesto, urgencia)'
+            ]
       },
       // Bloque 3: Topología de Grilla y Morfología de Componentes
       block3_grid_topology_and_morphology: {
-        gridTopology: isLawOrRead
+        gridTopology: isEducation
+          ? 'swiss-asymmetric-editorial'
+          : isLawOrRead
           ? 'swiss-editorial-asymmetric-12col'
           : 'bento-modular-kinetic-grid',
-        heroArchitecture: isLawOrRead
+        heroArchitecture: isEducation
+          ? 'numbered-editorial-index-hero'
+          : isLawOrRead
           ? 'split-authority-typographic-hero'
           : 'focal-centered-interactive-stage',
-        surfaceMateriality: sonicSeed.material || 'polymer',
+        surfaceMateriality: isEducation ? 'paper-editorial' : sonicSeed.material || 'polymer',
         intraCategoryDivergenceFloorPct: 70,
         respectBrandIdentityLock: true
       },
       // Bloque 4: Aplicación de Paleta, Contraste APCA y Escalas Tipográficas
       block4_palette_apca_and_typography_scales: {
-        surfaceMode: arch.primarySurfaceMode || 'Persuade',
+        surfaceMode: isEducation ? 'Read' : arch.primarySurfaceMode || 'Persuade',
         brandIdentityMode: brandMode,
         lockClientPalette,
         lockedClientPalette: clientPalette,
         oklchPrimary: sonicSeed.oklch || { L: 0.65, C: 0.16, H: 255 },
         borderRadiusPx: sonicSeed.borderRadiusPx ?? 8,
-        apcaContrastFloors: 'Lc >= 90 (Hero/Headline), Lc >= 75 (Body), Lc >= 60 (Secondary)',
+        apcaContrastFloors: isEducation
+          ? 'Lc >= 85 (Editorial Body & Headlines in Light & Dark Modes, WCAG 2.2 AA+)'
+          : 'Lc >= 90 (Hero/Headline), Lc >= 75 (Body), Lc >= 60 (Secondary)',
         typographyPersonality:
           brandLock?.officialTypography?.displayFont ||
           (isLawOrRead ? 'Editorial Serif + Swiss Sans' : 'Swiss Geometric Sans + Tabular Mono')
@@ -194,8 +276,8 @@ export function buildDefaultInterviewPayload(
         morphologySelectionMode: 'auto-bespoke-criteria',
         animationLevel: isLawOrRead ? 'minimal-editorial' : 'spring-fluid-60fps',
         dampingRatioZeta: isLawOrRead ? 1.0 : 0.78,
-        springPhysics: { stiffness: 280, damping: 24 },
-        useScrollDrivenAnimationsCss: true,
+        springPhysics: isEducation ? null : { stiffness: 280, damping: 24 },
+        useScrollDrivenAnimationsCss: !isEducation,
         useViewTransitionsApi: true,
         respectReducedMotion: true
       },
@@ -206,19 +288,20 @@ export function buildDefaultInterviewPayload(
           : sonicSeed.archetype === 'lujo' || sonicSeed.archetype === 'streamer'
           ? 'glb-viewer'
           : 'shader-hero',
+        uses3dOrShaderInHero: isEducation ? false : !isLawOrRead,
         use3dTiltCards: !isLawOrRead,
-        useWebGpuDiorama: sonicSeed.archetype === 'lujo' || sonicSeed.archetype === 'streamer',
-        canvas3TimestampHistogramWatchdog: true
+        useWebGpuDiorama: !isEducation && (sonicSeed.archetype === 'lujo' || sonicSeed.archetype === 'streamer'),
+        canvas3TimestampHistogramWatchdog: !isEducation
       },
       // Bloque 7: Diseño Sonoro UI SFX, Música de Fondo y Sesión .rpp Reaper
       block7_sonic_ui_sfx_music_and_reaper_rpp: {
         sonicForgeMode: isLawOrRead ? 'off' : 'generative-criteria',
         uiSfxMode: isLawOrRead ? 'off' : sonicSeed.uiSfxMode || 'subtle',
-        material: sonicSeed.material || 'polymer',
+        material: isEducation ? 'paper-editorial' : sonicSeed.material || 'polymer',
         backgroundMusic: 'off',
-        exportReaperRppSession: true,
-        sonicSeedId: sonicSeed.seedId,
-        requiresVisibleMuteButton: true,
+        exportReaperRppSession: isEducation ? false : true,
+        sonicSeedId: isEducation ? 'none-read-mode-silent' : sonicSeed.seedId,
+        requiresVisibleMuteButton: isEducation ? false : true,
         autoplayBlockedUntilGesture: true
       },
       // Bloque 8: Video Intro Programática de Marca y Locución
@@ -227,67 +310,104 @@ export function buildDefaultInterviewPayload(
         introVideoMode: isLawOrRead ? 'none' : 'vector-svg-reveal-3s',
         lockedLogoSvgPath: clientLogos.primaryLogoPath,
         lockedIsotipoSvgPath: clientLogos.isotipoPath,
-        useLockedClientPaletteInVideo: true,
-        maxVideoBudgetMb: 1.8
+        useLockedClientPaletteInVideo: isEducation ? false : true,
+        maxVideoBudgetMb: isEducation ? 0 : 1.8
       },
       // Bloque 9: Base de Datos, Pagos, Autenticación y Edge Worker
       block9_database_payments_auth_and_edge_worker: {
-        databaseTier: sonicSeed.archetype === 'erp' ? 'enterprise-postgres' : 'edge-d1',
-        databaseEngine: 'Cloudflare D1 SQLite + Enterprise PostgreSQL FORCE RLS Ready',
-        paymentGateway: sonicSeed.archetype === 'ecommerce' ? 'Stripe / MercadoPago' : 'none',
-        authMode: 'Ory/Passkeys (OAuth 2.1 PKCE)',
-        workerEndpoints: ['POST /api/leads', 'POST /api/webhooks/payments', 'GET /api/health'],
-        enforceWebhookIdempotencyAndRls: true
+        databaseTier: isEducation
+          ? 'static-json-and-indexeddb'
+          : sonicSeed.archetype === 'erp'
+          ? 'enterprise-postgres'
+          : 'edge-d1',
+        databaseEngine: isEducation
+          ? eduDatabaseEngine
+          : 'Cloudflare D1 SQLite + Enterprise PostgreSQL FORCE RLS Ready',
+        paymentGateway: !isEducation && sonicSeed.archetype === 'ecommerce' ? 'Stripe / MercadoPago' : 'none',
+        authMode: isEducation
+          ? 'none (Anonymous Local-First — Ley 25.326)'
+          : 'Ory/Passkeys (OAuth 2.1 PKCE)',
+        workerEndpoints: isEducation
+          ? []
+          : ['POST /api/leads', 'POST /api/webhooks/payments', 'GET /api/health'],
+        enforceWebhookIdempotencyAndRls: isEducation ? false : true
       },
       // Bloque 10: App Móvil Capacitor 8, Widget Post-Venta y Matriz de Pruebas [REQ-01]..[REQ-12]
       block10_mobile_capacitor_feedback_and_f2p_matrix: {
         enableCapacitor8MobileTarget: false,
-        enablePostSaleFeedbackWidget: true,
-        locales: ['es-AR'],
-        maxCloudApiBudgetUsd: 0.25,
+        enablePostSaleFeedbackWidget: isEducation ? false : true,
+        locales: isEducation ? ['es'] : ['es-AR'],
+        maxCloudApiBudgetUsd: isEducation ? 0.0 : 0.25,
         totalGcpCreditPoolUsd: 90.0,
-        f2pAcceptanceCriteria: [
-          '[REQ-01..03] Identidad PRD_LEAN, Primary CTA >= 48x48px y derribo de 3 objeciones',
-          '[REQ-04..06] BRAND_IDENTITY_LOCK (lockClientPalette), APCA Lc >= 75 y 60 FPS',
-          '[REQ-07..09] Audio/Video <= -18dBFS, Valibot, Idempotencia Webhooks y RLS Multi-Tenant',
-          '[REQ-10..12] SEO/GEO llms.txt, CSP/ASVS v5.0 y Pure Component 5-State Harness >= 95/100'
-        ]
+        f2pAcceptanceCriteria: isEducation
+          ? [
+              '[REQ-01..03] Astro 7.4.11 100% estático ($0 servidor), progreso local-first (Ley 25.326) y 0 violaciones WCAG 2.2 AA',
+              '[REQ-04..06] Columna 60ch–70ch (65ch), español neutro <= 110 palabras (INFLESZ) y fachada multi-video con aviso local',
+              '[REQ-07..09] js-tiktoken BPE local, Temml MathML 0 KB JS y sandbox opaco con MessageChannel 1:1 + Valibot + DOMPurify TrustedHTML',
+              '[REQ-10..12] CSP estricta con hashes sha256 + Trusted Types (default.createHTML lanza TypeError), PWA MPA < 250 KB y autonomía fuera del monorepo'
+            ]
+          : [
+              '[REQ-01..03] Identidad PRD_LEAN, Primary CTA >= 48x48px y derribo de 3 objeciones',
+              '[REQ-04..06] BRAND_IDENTITY_LOCK (lockClientPalette), APCA Lc >= 75 y 60 FPS',
+              '[REQ-07..09] Audio/Video <= -18dBFS, Valibot, Idempotencia Webhooks y RLS Multi-Tenant',
+              '[REQ-10..12] SEO/GEO llms.txt, CSP/ASVS v5.0 y Pure Component 5-State Harness >= 95/100'
+            ]
       },
       // Compatibilidad retroactiva con selectores de fases previas
       block1_commercial_identity: {
         brandName,
-        industryArchetype: sonicSeed.archetype,
+        industryArchetype: isEducation ? 'education' : sonicSeed.archetype,
         resolvedArchetypeId: arch.id,
         valuePropositionOneLiner:
           prdState?.blocks?.block2_target_audience_and_objections?.uniqueValueProposition ||
-          `Plataforma digital de alta conversión para ${brandName} con arquitectura edge y diseño de precisión.`,
-        referenceCompetitors: ['Linear.app', 'Stripe.com', 'Vercel.com']
+          (isEducation
+            ? `Academia abierta y gratuita de inteligencia artificial en español (${brandName}) en modo lectura (Read) a costo servidor $0.`
+            : `Plataforma digital de alta conversión para ${brandName} con arquitectura edge y diseño de precisión.`),
+        referenceCompetitors: isEducation
+          ? ['Distill.pub', 'Brilliant.org', 'Elements of AI']
+          : ['Linear.app', 'Stripe.com', 'Vercel.com']
       },
       block2_target_audience_cro: {
         segment:
           prdState?.blocks?.block2_target_audience_and_objections?.targetDemographic ||
-          'B2B / High-Intent Decision Makers',
-        ageRange: '28-55',
-        purchasingPower: 'High / Enterprise & Professional',
+          (isEducation
+            ? 'Estudiantes hispanohablantes, docentes, trabajadores y autodidactas'
+            : 'B2B / High-Intent Decision Makers'),
+        ageRange: isEducation ? '16-75' : '28-55',
+        purchasingPower: isEducation ? 'Inclusive Open Access ($0 Free Forever)' : 'High / Enterprise & Professional',
         primaryObjection:
           prdState?.blocks?.block2_target_audience_and_objections?.topThreeBuyerObjections?.[0] ||
-          'Tiempo de implementación y retorno de inversión verificable',
+          (isEducation
+            ? '¿Es realmente 100% gratuito sin muros de pago ni cuentas obligatorias?'
+            : 'Tiempo de implementación y retorno de inversión verificable'),
         primaryCta,
         primaryCtaChannel
       },
       block3_sitemap_and_flows: {
-        pages: ['Home', 'Soluciones', 'Casos de Éxito', 'Precios', 'Contacto'],
-        mandatorySections: [
-          'Hero con Propuesta de Valor y Primary CTA',
-          'Bento Grid de Capacidades Core',
-          'Prueba Social y Métricas Verificadas',
-          'Tabla Comparativa / Precios Transparentes',
-          'Formulario de Captura sin Fricción + FAQ'
-        ]
+        pages: isEducation ? eduPages : ['Home', 'Soluciones', 'Casos de Éxito', 'Precios', 'Contacto'],
+        mandatorySections: isEducation
+          ? [
+              'Índice Editorial con 3 Niveles UNESCO y Búsqueda Estática Pagefind',
+              'Columna de Lectura 65ch con Jerarquía Limpia h1 -> h2 -> h3',
+              'Fachada Multi-Video (youtube-nocookie.com + archive.org) con Aviso de Almacenamiento Local',
+              'Micro-Explorables (js-tiktoken + Temml MathML 0 KB JS)',
+              'Tutor Socrático en Sandbox Opaco (MessageChannel 1:1 + Valibot + DOMPurify TrustedHTML)'
+            ]
+          : [
+              'Hero con Propuesta de Valor y Primary CTA',
+              'Bento Grid de Capacidades Core',
+              'Prueba Social y Métricas Verificadas',
+              'Tabla Comparativa / Precios Transparentes',
+              'Formulario de Captura sin Fricción + FAQ'
+            ]
       },
       block4_aesthetic_oklch_typography: {
-        surfaceMode: arch.primarySurfaceMode || 'Persuade',
-        colorTheme: isLawOrRead ? 'Warm Editorial Light' : 'High-Craft Adaptive OKLCH',
+        surfaceMode: isEducation ? 'Read' : arch.primarySurfaceMode || 'Persuade',
+        colorTheme: isEducation
+          ? 'OKLCH 90/8/2 Daylight Paper & Calm Night Slate + 3 Level Accents'
+          : isLawOrRead
+          ? 'Warm Editorial Light'
+          : 'High-Craft Adaptive OKLCH',
         oklchPrimary: sonicSeed.oklch || { L: 0.65, C: 0.16, H: 255 },
         borderRadiusPx: sonicSeed.borderRadiusPx ?? 8,
         typographyPersonality: isLawOrRead
@@ -296,56 +416,83 @@ export function buildDefaultInterviewPayload(
       },
       block5_motion_webgpu_shaders: {
         animationLevel: isLawOrRead ? 'minimal-editorial' : 'spring-fluid-60fps',
+        uses3dOrShaderInHero: isEducation ? false : !isLawOrRead,
         use3dTiltCards: !isLawOrRead,
-        useWebGpuDiorama: sonicSeed.archetype === 'lujo' || sonicSeed.archetype === 'streamer',
+        useWebGpuDiorama: !isEducation && (sonicSeed.archetype === 'lujo' || sonicSeed.archetype === 'streamer'),
         useViewTransitionsApi: true,
-        springPhysics: { stiffness: 280, damping: 24 }
+        springPhysics: isEducation ? null : { stiffness: 280, damping: 24 }
       },
       block6_sonic_music_video: {
         uiSfxMode: isLawOrRead ? 'off' : sonicSeed.uiSfxMode || 'subtle',
-        material: sonicSeed.material || 'polymer',
+        material: isEducation ? 'paper-editorial' : sonicSeed.material || 'polymer',
         backgroundMusic: 'off',
         introVideoMode: isLawOrRead ? 'none' : 'vector-svg-reveal-3s',
-        sonicSeedId: sonicSeed.seedId,
-        requiresVisibleMuteButton: true,
+        sonicSeedId: isEducation ? 'none-read-mode-silent' : sonicSeed.seedId,
+        exportReaperRppSession: isEducation ? false : true,
+        requiresVisibleMuteButton: isEducation ? false : true,
         autoplayBlockedUntilGesture: true
       },
       block7_client_assets_vs_ai: {
-        clientProvidedAssets: [
-          clientLogos.primaryLogoPath,
-          clientLogos.isotipoPath,
-          'Textos Comerciales PRD_LEAN.md'
-        ],
-        factoryAiGeneratedAssets: [
-          'OpenGraph Social Card (og-image.svg)',
-          'Copywriting CRO Optimizado',
-          'Keyframes / Ilustración SOTA'
-        ]
+        clientProvidedAssets: isEducation
+          ? ['public/favicon.svg', 'data/academy/project_charter.json', 'PRD_LEAN.md']
+          : [
+              clientLogos.primaryLogoPath,
+              clientLogos.isotipoPath,
+              'Textos Comerciales PRD_LEAN.md'
+            ],
+        factoryAiGeneratedAssets: isEducation
+          ? ['OpenGraph Vectorial Estático (public/og-image.svg)', 'Manifiestos llms.txt & llms-full.txt (0 generadores externos de imagen)']
+          : [
+              'OpenGraph Social Card (og-image.svg)',
+              'Copywriting CRO Optimizado',
+              'Keyframes / Ilustración SOTA'
+            ]
       },
       block8_technical_backend_integrations: {
-        leadCaptureForm: true,
-        paymentGateway:
-          sonicSeed.archetype === 'ecommerce' ? 'Stripe / MercadoPago' : 'None (Consultation Flow)',
-        authMode: 'OAuth 2.1 PKCE / Session Guard',
-        databaseEngine: 'Cloudflare D1 SQLite + Enterprise PostgreSQL FORCE RLS Ready',
-        externalIntegrations: ['WhatsApp Direct', 'CRM Webhook', 'Privacy-First Analytics']
+        leadCaptureForm: isEducation ? false : true,
+        paymentGateway: isEducation
+          ? 'none'
+          : sonicSeed.archetype === 'ecommerce'
+          ? 'Stripe / MercadoPago'
+          : 'None (Consultation Flow)',
+        authMode: isEducation
+          ? 'none (Anonymous Local-First — Ley 25.326)'
+          : 'OAuth 2.1 PKCE / Session Guard',
+        databaseEngine: isEducation
+          ? eduDatabaseEngine
+          : 'Cloudflare D1 SQLite + Enterprise PostgreSQL FORCE RLS Ready',
+        externalIntegrations: isEducation
+          ? ['youtube-nocookie.com (Click-to-Play Privacy Facade)', 'archive.org OER Media', 'wikimedia.org OER Assets']
+          : ['WhatsApp Direct', 'CRM Webhook', 'Privacy-First Analytics']
       },
       block9_seo_geo_legal_security: {
-        primaryKeywords: [slug.replace(/-/g, ' '), sonicSeed.archetype, 'alta conversión', 'software'],
-        geoTarget: 'es-AR / LATAM / Global',
+        primaryKeywords: isEducation
+          ? [slug.replace(/-/g, ' '), 'inteligencia artificial gratis', 'educación abierta', 'español']
+          : [slug.replace(/-/g, ' '), sonicSeed.archetype, 'alta conversión', 'software'],
+        geoTarget: isEducation ? 'es (América Latina & España)' : 'es-AR / LATAM / Global',
         generateLlmsTxt: true,
-        accessibilityFloor: 'WCAG 2.2 AA+ / APCA Lc >= 75',
-        securityLevel: 'OWASP ASVS v5.0 L2 + Strict CSP + HSTS'
+        accessibilityFloor: isEducation
+          ? 'WCAG 2.2 AA+ / APCA Lc >= 85 (Light & Dark)'
+          : 'WCAG 2.2 AA+ / APCA Lc >= 75',
+        securityLevel: isEducation
+          ? 'Strict Hash CSP + Trusted Types (default throws TypeError) + Opaque Sandbox MessageChannel 1:1'
+          : 'OWASP ASVS v5.0 L2 + Strict CSP + HSTS'
       },
       block10_finops_budget_and_dod: {
-        locales: ['es-AR'],
-        maxCloudApiBudgetUsd: 0.25,
+        locales: isEducation ? ['es'] : ['es-AR'],
+        maxCloudApiBudgetUsd: isEducation ? 0.0 : 0.25,
         totalGcpCreditPoolUsd: 90.0,
-        successMetricsDod: [
-          'RYUX Visual & Sonic Gate >= 95/100',
-          'LCP <= 1.8s & 60 FPS en 4 viewports',
-          '100% de requisitos [REQ-01]..[REQ-12] verificados con Playwright'
-        ]
+        successMetricsDod: isEducation
+          ? [
+              'RYUX Design Gate Read Mode = 100/100 & Security Gate = 100/100',
+              'LCP <= 1.8s, CLS = 0.000, PWA Precache < 250 KB & 0 violaciones CSP/Trusted Types/axe',
+              '100% de autonomía standalone en os.tmpdir() sin acceso a herramientas del monorepo'
+            ]
+          : [
+              'RYUX Visual & Sonic Gate >= 95/100',
+              'LCP <= 1.8s & 60 FPS en 4 viewports',
+              '100% de requisitos [REQ-01]..[REQ-12] verificados con Playwright'
+            ]
       }
     }
   };
@@ -427,15 +574,28 @@ ${(t10.f2pAcceptanceCriteria || []).map((c) => `  - ${c}`).join('\n')}
 }
 
 /**
- * Generates `ENTREVISTA_2_SPEC_TECNICO.md` (and `ENTREVISTA_CLIENTE.md`) + `CLIENT_BRIEF_INTERVIEW.json`.
+ * Generates `ENTREVISTA_2_SPEC_TECNICO.md` (and `ENTREVISTA_CLIENTE.md` for commercial profiles) + `CLIENT_BRIEF_INTERVIEW.json`.
  */
-export function initClientInterviewFiles(slug = 'agencia-alfa', industryInput = 'saas', options = {}) {
-  const projectDir = path.join(ROOT, 'projects', slug);
+export function initClientInterviewFiles(slugOrDir = 'agencia-alfa', industryInput = 'saas', options = {}) {
+  const { projectDir, slug } = resolveSpecProjectTarget(slugOrDir, options);
   fs.mkdirSync(projectDir, { recursive: true });
+
+  const { brandLock, prdState, manifest } = loadBrandLockAndPrdState(slug, projectDir);
+  const isEducation =
+    manifest?.complianceProfile === 'education' ||
+    manifest?.archetype === 'education' ||
+    String(industryInput || '').toLowerCase().trim() === 'education' ||
+    brandLock?.industryCategory === 'education' ||
+    brandLock?.industryCategory === 'academic-editorial-education' ||
+    prdState?.blocks?.block1_business_identity_and_problem?.industryCategory === 'education';
 
   const jsonPath = path.join(projectDir, 'CLIENT_BRIEF_INTERVIEW.json');
   const mdPath = path.join(projectDir, 'ENTREVISTA_CLIENTE.md');
   const specMdInterviewPath = path.join(projectDir, 'ENTREVISTA_2_SPEC_TECNICO.md');
+
+  if (isEducation && fs.existsSync(mdPath)) {
+    fs.rmSync(mdPath, { force: true });
+  }
 
   if (fs.existsSync(jsonPath) && !options.overwrite) {
     const existing = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
@@ -444,7 +604,7 @@ export function initClientInterviewFiles(slug = 'agencia-alfa', industryInput = 
         existing.status === 'COMPLETED_BY_CTO' ? 'COMPLETED_BY_CTO' : 'PENDING_CTO_SPEC_INPUT';
     }
     const rendered = renderInterviewMarkdown(existing);
-    if (!fs.existsSync(mdPath)) {
+    if (!isEducation && !fs.existsSync(mdPath)) {
       fs.writeFileSync(mdPath, rendered, 'utf8');
     }
     if (!fs.existsSync(specMdInterviewPath)) {
@@ -456,17 +616,21 @@ export function initClientInterviewFiles(slug = 'agencia-alfa', industryInput = 
       status: existing.status,
       specInterviewStatus: existing.specInterviewStatus,
       jsonPath,
-      mdPath,
+      mdPath: isEducation ? null : mdPath,
       specMdInterviewPath,
       interview: existing
     };
   }
 
   const initialStatus = options.autoApprove ? 'COMPLETED_BY_CTO' : 'PENDING_CTO_SPEC_INPUT';
-  const payload = buildDefaultInterviewPayload(slug, industryInput, initialStatus);
+  const payload = buildDefaultInterviewPayload(slug, isEducation ? 'education' : industryInput, initialStatus, {
+    projectDir
+  });
   const rendered = renderInterviewMarkdown(payload);
   fs.writeFileSync(jsonPath, JSON.stringify(payload, null, 2) + '\n', 'utf8');
-  fs.writeFileSync(mdPath, rendered, 'utf8');
+  if (!isEducation) {
+    fs.writeFileSync(mdPath, rendered, 'utf8');
+  }
   fs.writeFileSync(specMdInterviewPath, rendered, 'utf8');
 
   return {
@@ -475,7 +639,7 @@ export function initClientInterviewFiles(slug = 'agencia-alfa', industryInput = 
     status: payload.status,
     specInterviewStatus: payload.specInterviewStatus,
     jsonPath,
-    mdPath,
+    mdPath: isEducation ? null : mdPath,
     specMdInterviewPath,
     interview: payload
   };
@@ -486,9 +650,16 @@ export function initClientInterviewFiles(slug = 'agencia-alfa', industryInput = 
  * - If Gate #1 is not `"COMPLETED_BY_CTO"`, returns `HARD_STOP_PRD_INTERVIEW_REQUIRED`.
  * - If Gate #2 is not `"COMPLETED_BY_CTO"`, returns `HARD_STOP_SPEC_INTERVIEW_REQUIRED`.
  */
-export function verifyClientInterviewGate(slug = 'agencia-alfa', industryFallback = 'saas') {
+export function verifyClientInterviewGate(slugOrDir = 'agencia-alfa', industryFallback = 'saas', options = {}) {
+  const { projectDir, slug } = resolveSpecProjectTarget(slugOrDir, options);
+  const { manifest } = loadBrandLockAndPrdState(slug, projectDir);
+  const effectiveFallback =
+    manifest?.complianceProfile === 'education' || manifest?.archetype === 'education'
+      ? 'education'
+      : industryFallback;
+
   // 1. Check Gate #1 (PRD & Brand Identity Lock) first!
-  const prdGate = verifyPrdInterviewGate(slug, industryFallback);
+  const prdGate = verifyPrdInterviewGate(slugOrDir, effectiveFallback, { projectDir });
   if (!prdGate.passed) {
     return {
       passed: false,
@@ -504,12 +675,14 @@ export function verifyClientInterviewGate(slug = 'agencia-alfa', industryFallbac
     };
   }
 
-  const projectDir = path.join(ROOT, 'projects', slug);
   const jsonPath = path.join(projectDir, 'CLIENT_BRIEF_INTERVIEW.json');
   const mdPath = path.join(projectDir, 'ENTREVISTA_2_SPEC_TECNICO.md');
 
   if (!fs.existsSync(jsonPath)) {
-    const initialized = initClientInterviewFiles(slug, industryFallback, { autoApprove: false });
+    const initialized = initClientInterviewFiles(slugOrDir, effectiveFallback, {
+      autoApprove: false,
+      projectDir
+    });
     return {
       passed: false,
       code: 'HARD_STOP_SPEC_INTERVIEW_REQUIRED',
@@ -574,8 +747,15 @@ export function verifyClientInterviewGate(slug = 'agencia-alfa', industryFallbac
  * Explicitly verifies that BOTH Gate #1 (`PRD_INTERVIEW_STATE.json`) and Gate #2 (`CLIENT_BRIEF_INTERVIEW.json`)
  * are `"COMPLETED_BY_CTO"`.
  */
-export function verifyDualInterviewGates(slug = 'agencia-alfa', industryFallback = 'saas') {
-  const prdGate = verifyPrdInterviewGate(slug, industryFallback);
+export function verifyDualInterviewGates(slugOrDir = 'agencia-alfa', industryFallback = 'saas', options = {}) {
+  const { projectDir, slug } = resolveSpecProjectTarget(slugOrDir, options);
+  const { manifest } = loadBrandLockAndPrdState(slug, projectDir);
+  const effectiveFallback =
+    manifest?.complianceProfile === 'education' || manifest?.archetype === 'education'
+      ? 'education'
+      : industryFallback;
+
+  const prdGate = verifyPrdInterviewGate(slugOrDir, effectiveFallback, { projectDir });
   if (!prdGate.passed) {
     return {
       passed: false,
@@ -586,7 +766,7 @@ export function verifyDualInterviewGates(slug = 'agencia-alfa', industryFallback
       message: prdGate.message
     };
   }
-  const specGate = verifyClientInterviewGate(slug, industryFallback);
+  const specGate = verifyClientInterviewGate(slugOrDir, effectiveFallback, { projectDir });
   if (!specGate.passed) {
     return {
       passed: false,
@@ -775,10 +955,16 @@ export function parseEditedSpecMarkdownIntoState(mdContent = '', currentState = 
   // Bloque 9
   const dbLine = matchField('Motor de Datos[^*]*');
   if (dbLine) {
-    const mDb = dbLine.match(/^`?([^`()\s]+)`?\s*(?:\(([^)]+)\))?/);
+    const mDb = dbLine.match(/^`?([^`()\s]+)`?\s*(?:\((.+)\)\s*$)?/);
     if (mDb && b.block9_database_payments_auth_and_edge_worker) {
       b.block9_database_payments_auth_and_edge_worker.databaseTier = stripTicks(mDb[1]);
-      if (mDb[2]) b.block9_database_payments_auth_and_edge_worker.databaseEngine = mDb[2].trim();
+      if (mDb[2]) {
+        const parsedEngine = mDb[2].trim();
+        b.block9_database_payments_auth_and_edge_worker.databaseEngine = parsedEngine;
+        if (b.block8_technical_backend_integrations) {
+          b.block8_technical_backend_integrations.databaseEngine = parsedEngine;
+        }
+      }
     }
   }
   const payLine = matchField('Pasarela de Pagos');
@@ -811,30 +997,47 @@ export function parseEditedSpecMarkdownIntoState(mdContent = '', currentState = 
  *   3. `projects/<slug>/DESIGN.md` (integrating `BRAND_IDENTITY_LOCK.json`, OKLCH tokens, Utopia clamp(), and `## Sonic & Video Identity`)
  *   4. `projects/<slug>/factory.project.json` and `.agents/beads/task_graph.jsonl`.
  */
-export function compileSpecFromInterview(slug = 'agencia-alfa', options = {}) {
+export function compileSpecFromInterview(slugOrDir = 'agencia-alfa', options = {}) {
+  const { projectDir, slug, inRepoProjects } = resolveSpecProjectTarget(slugOrDir, options);
+  const { brandLock: initialBrandLock, prdState: initialPrdState, manifest: initialManifest } =
+    loadBrandLockAndPrdState(slug, projectDir);
+  const isEducation =
+    initialManifest?.complianceProfile === 'education' ||
+    initialManifest?.archetype === 'education' ||
+    String(options.industry || '').toLowerCase().trim() === 'education' ||
+    initialBrandLock?.industryCategory === 'education' ||
+    initialBrandLock?.industryCategory === 'academic-editorial-education' ||
+    initialPrdState?.blocks?.block1_business_identity_and_problem?.industryCategory === 'education';
+  const effectiveIndustry = isEducation ? 'education' : options.industry || 'saas';
+
   // Enforce Gate #1 prerequisite!
-  const prdGate = verifyPrdInterviewGate(slug, options.industry || 'saas');
+  const prdGate = verifyPrdInterviewGate(slugOrDir, effectiveIndustry, { projectDir });
   if (!prdGate.passed) {
     throw new Error(prdGate.message);
   }
 
-  const projectDir = path.join(ROOT, 'projects', slug);
   const jsonPath = path.join(projectDir, 'CLIENT_BRIEF_INTERVIEW.json');
   const mdPath = path.join(projectDir, 'ENTREVISTA_CLIENTE.md');
   const specMdInterviewPath = path.join(projectDir, 'ENTREVISTA_2_SPEC_TECNICO.md');
 
+  if (isEducation && fs.existsSync(mdPath)) {
+    fs.rmSync(mdPath, { force: true });
+  }
+
   // Preserve any manual Markdown edits made by the CTO on disk BEFORE any refresh/init
-  const hadExistingSpecMd = fs.existsSync(specMdInterviewPath) || fs.existsSync(mdPath);
+  const hadExistingSpecMd =
+    fs.existsSync(specMdInterviewPath) || (!isEducation && fs.existsSync(mdPath));
   const existingSpecMdContent = fs.existsSync(specMdInterviewPath)
     ? fs.readFileSync(specMdInterviewPath, 'utf8')
-    : fs.existsSync(mdPath)
+    : !isEducation && fs.existsSync(mdPath)
     ? fs.readFileSync(mdPath, 'utf8')
     : '';
 
   if (!fs.existsSync(jsonPath) || options.refreshFromPrd) {
-    initClientInterviewFiles(slug, options.industry || 'saas', {
+    initClientInterviewFiles(slugOrDir, effectiveIndustry, {
       autoApprove: Boolean(options.approve),
-      overwrite: Boolean(options.refreshFromPrd)
+      overwrite: Boolean(options.refreshFromPrd),
+      projectDir
     });
   }
 
@@ -842,7 +1045,7 @@ export function compileSpecFromInterview(slug = 'agencia-alfa', options = {}) {
   if (hadExistingSpecMd && existingSpecMdContent) {
     interview = parseEditedSpecMarkdownIntoState(existingSpecMdContent, interview);
   }
-  const { brandLock, prdState } = loadBrandLockAndPrdState(slug);
+  const { brandLock } = loadBrandLockAndPrdState(slug, projectDir);
 
   // Sync latest brand identity lock fields into interview
   if (brandLock) {
@@ -872,7 +1075,9 @@ export function compileSpecFromInterview(slug = 'agencia-alfa', options = {}) {
 
   const renderedInterviewMd = renderInterviewMarkdown(interview);
   fs.writeFileSync(jsonPath, JSON.stringify(interview, null, 2) + '\n', 'utf8');
-  fs.writeFileSync(mdPath, renderedInterviewMd, 'utf8');
+  if (!isEducation) {
+    fs.writeFileSync(mdPath, renderedInterviewMd, 'utf8');
+  }
   fs.writeFileSync(specMdInterviewPath, renderedInterviewMd, 'utf8');
 
   const b1 = interview.blocks.block1_commercial_identity;
@@ -905,32 +1110,47 @@ export function compileSpecFromInterview(slug = 'agencia-alfa', options = {}) {
   const t5Block = interview.blocks.block5_motion_physics_and_scroll_60fps || {};
   const bespokeDna = synthesizeUniqueBrandDna({
     projectSlug: slug,
-    industryCategory: b1.industryArchetype,
+    industryCategory: isEducation ? 'education' : b1.industryArchetype,
     brandPersonalityTension:
       t5Block.brandPersonalityTension || 'minimalismo-silencioso vs expresividad-cinetica',
     morphologyMode: t5Block.morphologySelectionMode || 'auto-bespoke-criteria',
-    manualOverrides:
-      t5Block.morphologySelectionMode === 'manual-cto-override'
-        ? {
-            gridTopology: t3Block.gridTopology,
-            heroArchitecture: t3Block.heroArchitecture
-          }
-        : undefined,
-    baseHue: b4.oklchPrimary?.H || 255,
-    persistInLedger: !slug.startsWith('_test')
+    manualOverrides: isEducation
+      ? {
+          gridTopology: 'editorial-single-column-65ch',
+          heroArchitecture: 'editorial-typographic-manifesto'
+        }
+      : t5Block.morphologySelectionMode === 'manual-cto-override'
+      ? {
+          gridTopology: t3Block.gridTopology,
+          heroArchitecture: t3Block.heroArchitecture
+        }
+      : undefined,
+    baseHue: b4.oklchPrimary?.H || (isEducation ? 245 : 255),
+    persistInLedger: inRepoProjects && !slug.startsWith('_test')
   });
 
-  // Synthesize exact psychoacoustic patch from the visual and material criteria
-  const sonicPatch = synthesizeProceduralSoundFromDesignCriteria({
-    archetype: b1.industryArchetype,
-    uiSfxMode: b6.uiSfxMode,
-    material: b6.material,
-    borderRadiusPx: b4.borderRadiusPx,
-    oklch: b4.oklchPrimary,
-    elementWidthPx: 180,
-    elementHeightPx: 48,
-    spring: b5.springPhysics
-  });
+  if (isEducation) {
+    bespokeDna.introChoreographyId = 'none-read-mode';
+    bespokeDna.introAnd3dDecision = {
+      recommendIntroVideo: false,
+      forged3dMode: 'none-static-editorial',
+      uses3dOrShaderInHero: false
+    };
+  }
+
+  // Synthesize exact psychoacoustic patch from the visual and material criteria (or null preset for Read-mode education)
+  const sonicPatch = isEducation
+    ? { ...EDUCATION_NULL_SONIC_PRESET }
+    : synthesizeProceduralSoundFromDesignCriteria({
+        archetype: b1.industryArchetype,
+        uiSfxMode: b6.uiSfxMode,
+        material: b6.material,
+        borderRadiusPx: b4.borderRadiusPx,
+        oklch: b4.oklchPrimary,
+        elementWidthPx: 180,
+        elementHeightPx: 48,
+        spring: b5.springPhysics
+      });
 
   // Persist synthesized bespokeDna and sonicPatch back into CLIENT_BRIEF_INTERVIEW.json so downstream compilers consume the exact DNA
   interview.bespokeDna = {
@@ -955,46 +1175,169 @@ export function compileSpecFromInterview(slug = 'agencia-alfa', options = {}) {
   }
   const updatedInterviewMd = renderInterviewMarkdown(interview);
   fs.writeFileSync(jsonPath, JSON.stringify(interview, null, 2) + '\n', 'utf8');
-  fs.writeFileSync(mdPath, updatedInterviewMd, 'utf8');
+  if (!isEducation) {
+    fs.writeFileSync(mdPath, updatedInterviewMd, 'utf8');
+  }
   fs.writeFileSync(specMdInterviewPath, updatedInterviewMd, 'utf8');
+
+  const updateProjectManifest = () => {
+    const factoryProjPath = path.join(projectDir, 'factory.project.json');
+    if (fs.existsSync(factoryProjPath)) {
+      try {
+        const projJson = JSON.parse(fs.readFileSync(factoryProjPath, 'utf8'));
+        projJson.industryArchetype = isEducation ? 'education' : b1.industryArchetype;
+        projJson.surfaceMode = isEducation ? 'Read' : b4.surfaceMode;
+        if (isEducation) {
+          projJson.complianceProfile = 'education';
+          if (projJson.paths && 'workerEntry' in projJson.paths) {
+            projJson.paths.workerEntry = null;
+          }
+        }
+        projJson.brandIdentityMode = brandMode;
+        projJson.lockClientPalette = lockPalette;
+        projJson.sonicIdentity = isEducation
+          ? {
+              seedId: EDUCATION_NULL_SONIC_PRESET.seedId,
+              uiSfxMode: 'off',
+              material: 'paper-editorial',
+              backgroundMusic: 'off',
+              introVideoMode: 'off'
+            }
+          : {
+              seedId: sonicPatch.seedId,
+              uiSfxMode: b6.uiSfxMode,
+              material: b6.material,
+              backgroundMusic: b6.backgroundMusic,
+              introVideoMode: b6.introVideoMode
+            };
+        projJson.prdInterviewStatus = 'COMPLETED_BY_CTO';
+        projJson.specInterviewStatus = interview.specInterviewStatus;
+        projJson.interviewStatus = interview.status;
+        fs.writeFileSync(factoryProjPath, JSON.stringify(projJson, null, 2) + '\n', 'utf8');
+      } catch (_) {}
+    }
+  };
+
+  const persistTaskGraphBeadIfInRepo = () => {
+    if (!inRepoProjects) return;
+    const beadsDir = path.join(ROOT, '.agents', 'beads');
+    fs.mkdirSync(beadsDir, { recursive: true });
+    const taskGraphPath = path.join(beadsDir, 'task_graph.jsonl');
+    const beadRecord = {
+      id: `bead-interview-${slug}`,
+      projectSlug: slug,
+      compiledAt: new Date().toISOString(),
+      prdInterviewStatus: 'COMPLETED_BY_CTO',
+      specInterviewStatus: interview.specInterviewStatus,
+      interviewStatus: interview.status,
+      brandIdentityMode: brandMode,
+      lockClientPalette: lockPalette,
+      requirementsCount: 12,
+      sonicSeedId: sonicPatch.seedId,
+      uiSfxMode: isEducation ? 'off' : b6.uiSfxMode,
+      agentsAssigned: isEducation
+        ? [
+            'product-strategist',
+            'design-system-architect',
+            'layout-primitives-architect',
+            'security-auditor',
+            'qa-visual-critic'
+          ]
+        : [
+            'product-strategist',
+            'design-system-architect',
+            'layout-primitives-architect',
+            'motion-engineer',
+            'sonic-dsp-director',
+            'security-auditor',
+            'qa-visual-critic'
+          ]
+    };
+    let existingLines = [];
+    if (fs.existsSync(taskGraphPath)) {
+      existingLines = fs
+        .readFileSync(taskGraphPath, 'utf8')
+        .split(/\r?\n/)
+        .filter((l) => l.trim() && !l.includes(`"id":"bead-interview-${slug}"`));
+    }
+    existingLines.push(JSON.stringify(beadRecord));
+    fs.writeFileSync(taskGraphPath, existingLines.join('\n') + '\n', 'utf8');
+  };
 
   const projCfgPath = path.join(projectDir, 'factory.project.json');
   const projCfg = fs.existsSync(projCfgPath) ? JSON.parse(fs.readFileSync(projCfgPath, 'utf8')) : null;
   const isCuratedEducationProfile =
-    projCfg?.complianceProfile === 'education' || b1.industryArchetype === 'education';
+    isEducation || projCfg?.complianceProfile === 'education' || b1.industryArchetype === 'education';
   const existingSpecPath = path.join(projectDir, 'SPEC.md');
   const existingProductPath = path.join(projectDir, 'PRODUCT.md');
   const existingDesignPath = path.join(projectDir, 'DESIGN.md');
 
-  // Preserve curated Read-mode contracts for `education` (never inject 3D/Sonic filler or SaaS lead forms)
-  if (
-    isCuratedEducationProfile &&
-    fs.existsSync(existingSpecPath) &&
-    fs.existsSync(existingProductPath) &&
-    fs.existsSync(existingDesignPath)
-  ) {
-    const stampedSpec = fs
-      .readFileSync(existingSpecPath, 'utf8')
-      .replace(/PENDING_CTO_SPEC_INPUT|PENDING_CTO_PRD_INPUT/g, interview.specInterviewStatus);
-    fs.writeFileSync(existingSpecPath, stampedSpec, 'utf8');
+  //Read-mode contract handling for `education` (never inject 3D/Sonic filler or SaaS lead forms)
+  if (isCuratedEducationProfile) {
+    if (
+      fs.existsSync(existingSpecPath) &&
+      fs.existsSync(existingProductPath) &&
+      fs.existsSync(existingDesignPath)
+    ) {
+      const stampedSpec = fs
+        .readFileSync(existingSpecPath, 'utf8')
+        .replace(/DRAFT_PENDING_CTO_GATE2|PENDING_CTO_SPEC_INPUT|PENDING_CTO_PRD_INPUT/g, interview.specInterviewStatus);
+      fs.writeFileSync(existingSpecPath, stampedSpec, 'utf8');
 
-    const stampedDesign = fs
-      .readFileSync(existingDesignPath, 'utf8')
-      .replace(/PENDING_CTO_SPEC_INPUT|PENDING_CTO_PRD_INPUT/g, interview.specInterviewStatus);
-    fs.writeFileSync(existingDesignPath, stampedDesign, 'utf8');
+      const stampedDesign = fs
+        .readFileSync(existingDesignPath, 'utf8')
+        .replace(/DRAFT_PENDING_CTO_GATE2|PENDING_CTO_SPEC_INPUT|PENDING_CTO_PRD_INPUT/g, interview.specInterviewStatus);
+      fs.writeFileSync(existingDesignPath, stampedDesign, 'utf8');
+    } else {
+      generateProductAndDesignMd(projectDir, 'education', {
+        name: brandLock?.brandName || b1.brandName
+      });
+      const prdLeanPath = path.join(projectDir, 'PRD_LEAN.md');
+      if (fs.existsSync(prdLeanPath)) {
+        fs.copyFileSync(prdLeanPath, existingProductPath);
+      }
+      const educationSpecContent = `# SPEC.md — Especificación Técnica Editorial en Modo \`Read\` (\`${slug}\`)
+
+> **Estado Compuerta #1 (\`PRD_LEAN.md\`):** \`COMPLETED_BY_CTO\` | **Estado Compuerta #2 (\`SPEC.md\`):** \`${interview.specInterviewStatus}\`  
+> **Modo de Identidad de Marca:** \`${brandMode}\` (\`lockClientPalette: ${lockPalette}\`) | **Arquetipo:** \`education\` | **Modo de Superficie:** \`Read\`  
+> **Arquitectura:** \`100% Static MPA (Cloudflare Workers Static Assets, 0 Worker Endpoints)\`
+
+---
+
+## 1. Trazabilidad 1:1 desde \`PRD_LEAN.md\` (\`[INV-01..07]\`) hacia Requisitos Técnicos (\`[REQ-01]\` a \`[REQ-12]\`)
+
+- **[REQ-01] (Trazable a \`[INV-01]\`) Identidad Editorial y Claridad en Modo \`Read\`:** Renderizar la propuesta pedagógica de \`${brandLock?.brandName || b1.brandName}\` (*"${b1.valuePropositionOneLiner}"*) sin distracciones visuales ni shaders 3D.
+- **[REQ-02] (Trazable a \`[INV-05]\`) Acción Primaria Pedagógica (\`Primary CTA\`):** Implementar **\`${b2.primaryCta}\`** vía \`${b2.primaryCtaChannel}\` con área táctil Fitts \`>= 48x48px\` y cero formularios de captura comercial.
+- **[REQ-03] (Trazable a \`[INV-02]\`) Arquitectura MPA de Lectura Profunda (\`60ch-70ch\`):** Proveer navegación semántica para \`${b3.pages.join(', ')}\` con columna de lectura \`max-width: 65ch\` y jerarquía \`h1 -> h2 -> h3\`.
+- **[REQ-04] (Trazable a \`[INV-03]\`) Contrato \`BRAND_IDENTITY_LOCK.json\`, Escala \`OKLCH 90/8/2\` y \`APCA\`:** Respetar proporción \`OKLCH 90/8/2\`, los 3 acentos semánticos de nivel y contraste \`${b9.accessibilityFloor}\`.
+- **[REQ-05] (Trazable a \`[INV-04]\`) Escala Fluida \`Utopia clamp()\`, \`tabular-nums\` y Legibilidad:** Aplicar \`clamp()\`, \`font-variant-numeric: tabular-nums\` e integración con \`readability_es\`.
+- **[REQ-06] (Trazable a \`[INV-04]\`) Transiciones Discretas y Accesibilidad Motora:** Soportar \`@view-transition { navigation: auto; }\` y respetar \`prefers-reduced-motion: reduce\` con \`0\` audio/video autoplay.
+- **[REQ-07] Silencio Editorial y Triangulación de Video sin Cookies:** Mantener \`uses3dOrShaderInHero: false\`, \`exportReaperRppSession: false\` y fachada \`youtube-nocookie.com\` bajo clic explícito con aviso de almacenamiento local.
+- **[REQ-08] (Trazable a \`[INV-06]\`) Curaduría Clean-Room y OpenGraph:** Integrar activos verificados (${b7.clientProvidedAssets.join(', ')}) y preservar \`dist/og-image.svg\`.
+- **[REQ-09] (Trazable a \`[INV-05]\`) Persistencia Local-First sin Backend:** Operar con \`${b8.databaseEngine}\`, \`0\` endpoints \`/api/leads\` o \`/api/webhooks/payments\`, sin \`LeadCaptureFormSchema\` ni Ory/Passkeys.
+- **[REQ-10] SEO Técnico, \`Pagefind\` y Visibilidad IA (\`llms.txt\` / \`llms-full.txt\`):** Emitir \`llms.txt\`, \`llms-full.txt\`, \`robots.txt\`, \`sitemap.xml\` y \`Schema.org JSON-LD @graph\`.
+- **[REQ-11] Blindaje \`CSP\` con Hashes SHA-256, \`Trusted Types\` y \`MessageChannel\` 1:1:** Compilar \`public/_headers\` desde \`src/lib/csp-builder.mjs\`, bloquear \`default.createHTML\` con \`TypeError\` y aislar el tutor en \`sandbox="allow-scripts"\` mediante \`MessageChannel\` validado con \`Valibot\`.
+- **[REQ-12] (Trazable a \`[INV-07]\`) Frontera \`Explicit Non-Goals\`, PWA MPA \`< 250 KB\` y Costo \`$0\`:** Mantener gasto servidor \`$0 USD\`, precache PWA \`< 250 KB\` (\`navigateFallback: null\`) y cumplir: ${b10.successMetricsDod.join(' | ')}.
+`;
+      fs.writeFileSync(existingSpecPath, educationSpecContent, 'utf8');
+    }
+
+    updateProjectManifest();
+    persistTaskGraphBeadIfInRepo();
 
     return {
       passed: interview.specInterviewStatus === 'COMPLETED_BY_CTO',
       projectSlug: slug,
       prdInterviewStatus: 'COMPLETED_BY_CTO',
       specInterviewStatus: interview.specInterviewStatus,
+      interviewStatus: interview.status,
       brandIdentityMode: brandMode,
       lockClientPalette: lockPalette,
       specPath: existingSpecPath,
       productPath: existingProductPath,
       designPath: existingDesignPath,
       bespokeDna,
-      sonicPatch: { seedId: 'silent-read-mode-education' }
+      sonicPatch
     };
   }
 
@@ -1144,64 +1487,9 @@ ${sonicSectionMarkdown}`;
     fs.writeFileSync(designPath, freshDesign, 'utf8');
   }
 
-  // 4. Update factory.project.json if present
-  const factoryProjPath = path.join(projectDir, 'factory.project.json');
-  if (fs.existsSync(factoryProjPath)) {
-    try {
-      const projJson = JSON.parse(fs.readFileSync(factoryProjPath, 'utf8'));
-      projJson.industryArchetype = b1.industryArchetype;
-      projJson.surfaceMode = b4.surfaceMode;
-      projJson.brandIdentityMode = brandMode;
-      projJson.lockClientPalette = lockPalette;
-      projJson.sonicIdentity = {
-        seedId: sonicPatch.seedId,
-        uiSfxMode: b6.uiSfxMode,
-        material: b6.material,
-        backgroundMusic: b6.backgroundMusic,
-        introVideoMode: b6.introVideoMode
-      };
-      projJson.prdInterviewStatus = 'COMPLETED_BY_CTO';
-      projJson.specInterviewStatus = interview.specInterviewStatus;
-      projJson.interviewStatus = interview.status;
-      fs.writeFileSync(factoryProjPath, JSON.stringify(projJson, null, 2) + '\n', 'utf8');
-    } catch (_) {}
-  }
-
-  // 5. Append/update decomposed tasks in `.agents/beads/task_graph.jsonl`
-  const beadsDir = path.join(ROOT, '.agents', 'beads');
-  fs.mkdirSync(beadsDir, { recursive: true });
-  const taskGraphPath = path.join(beadsDir, 'task_graph.jsonl');
-  const beadRecord = {
-    id: `bead-interview-${slug}`,
-    projectSlug: slug,
-    compiledAt: new Date().toISOString(),
-    prdInterviewStatus: 'COMPLETED_BY_CTO',
-    specInterviewStatus: interview.specInterviewStatus,
-    interviewStatus: interview.status,
-    brandIdentityMode: brandMode,
-    lockClientPalette: lockPalette,
-    requirementsCount: 12,
-    sonicSeedId: sonicPatch.seedId,
-    uiSfxMode: b6.uiSfxMode,
-    agentsAssigned: [
-      'product-strategist',
-      'design-system-architect',
-      'layout-primitives-architect',
-      'motion-engineer',
-      'sonic-dsp-director',
-      'security-auditor',
-      'qa-visual-critic'
-    ]
-  };
-  let existingLines = [];
-  if (fs.existsSync(taskGraphPath)) {
-    existingLines = fs
-      .readFileSync(taskGraphPath, 'utf8')
-      .split(/\r?\n/)
-      .filter((l) => l.trim() && !l.includes(`"id":"bead-interview-${slug}"`));
-  }
-  existingLines.push(JSON.stringify(beadRecord));
-  fs.writeFileSync(taskGraphPath, existingLines.join('\n') + '\n', 'utf8');
+  // 4. Update factory.project.json if present & 5. Append/update decomposed tasks in `.agents/beads/task_graph.jsonl`
+  updateProjectManifest();
+  persistTaskGraphBeadIfInRepo();
 
   return {
     passed: true,

@@ -85,6 +85,60 @@ function computeDirBytes(dirPath) {
   };
 }
 
+function measureSwPrecacheBudget(distDir) {
+  const swPath = path.join(distDir, 'sw.js');
+  if (!fs.existsSync(swPath)) {
+    return {
+      exists: false,
+      precacheEntriesCount: 0,
+      precacheBytes: 0,
+      precacheKilobytes: 0,
+      zeroNavigationFallback: false,
+      excludesHeavyDictionariesAndPagefind: false,
+      withinBudget250Kb: false,
+      entries: []
+    };
+  }
+  const swRaw = fs.readFileSync(swPath, 'utf8');
+  const zeroNavigationFallback = !/\bNavigationRoute\b/.test(swRaw);
+  const urlMatches = [...swRaw.matchAll(/["'`]?url["'`]?\s*:\s*["'`]([^"'`]+)["'`]/g)].map((m) => m[1]);
+  const uniqueUrls = [...new Set(urlMatches.map((u) => u.replace(/^\/+/, '')))];
+
+  let precacheBytes = 0;
+  const entries = [];
+  for (const cleanRel of uniqueUrls) {
+    let absFile = path.join(distDir, cleanRel);
+    if (fs.existsSync(absFile) && fs.statSync(absFile).isDirectory()) {
+      absFile = path.join(absFile, 'index.html');
+    }
+    const sizeBytes = fs.existsSync(absFile) && fs.statSync(absFile).isFile() ? fs.statSync(absFile).size : 0;
+    precacheBytes += sizeBytes;
+    entries.push({ url: cleanRel || '/', bytes: sizeBytes });
+  }
+  const swSelfBytes = fs.statSync(swPath).size;
+  const excludesHeavyDictionariesAndPagefind = uniqueUrls.every(
+    (u) => !/cl100k_base/i.test(u) && !/(?:^|\/)pagefind\//i.test(u)
+  );
+  const precacheKilobytes = Number((precacheBytes / 1024).toFixed(2));
+  const withinBudget250Kb =
+    uniqueUrls.length > 0 &&
+    precacheBytes < 250 * 1024 &&
+    zeroNavigationFallback &&
+    excludesHeavyDictionariesAndPagefind;
+
+  return {
+    exists: true,
+    swFileBytes: swSelfBytes,
+    precacheEntriesCount: uniqueUrls.length,
+    precacheBytes,
+    precacheKilobytes,
+    zeroNavigationFallback,
+    excludesHeavyDictionariesAndPagefind,
+    withinBudget250Kb,
+    entries
+  };
+}
+
 function parseRgbString(rgbStr = '') {
   const m = String(rgbStr).match(/rgba?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)/i);
   if (m) return [Number(m[1]), Number(m[2]), Number(m[3])];
@@ -159,6 +213,7 @@ export async function certifyAcademiaRuntime(projectRoot = DEFAULT_PROJECT_ROOT)
     'education'
   );
   const distStats = computeDirBytes(distDir);
+  const swPrecache = measureSwPrecacheBudget(distDir);
   const srv = await startEphemeralHeadersServer(distDir, publicHeadersPath);
 
   const consoleErrors = [];
@@ -295,10 +350,14 @@ export async function certifyAcademiaRuntime(projectRoot = DEFAULT_PROJECT_ROOT)
           return el && Number(el.textContent) >= 2 && Number(el.textContent) <= 6;
         }, null, { timeout: 8000 });
 
-        // 3. Verify opaque `<iframe sandbox="allow-scripts">` isolation & Valibot + DOMPurify roundtrip
+        // 3. Verify opaque `<iframe sandbox="allow-scripts">` 1:1 MessageChannel isolation & Valibot + DOMPurify roundtrip
         await page.waitForFunction(() => {
           const fr = document.querySelector('iframe[data-tutor-iframe]');
-          return fr && fr.dataset.sandboxReady === 'true';
+          return (
+            fr &&
+            fr.dataset.sandboxReady === 'true' &&
+            fr.dataset.tutorTransport === 'message-channel-1to1'
+          );
         }, null, { timeout: 8000 });
 
         await page.locator('[data-tutor-ask]').click();
@@ -498,6 +557,72 @@ export async function certifyAcademiaRuntime(projectRoot = DEFAULT_PROJECT_ROOT)
     const a11yTreeHealthy = Array.isArray(axTree.nodes) && axTree.nodes.length >= 25;
     await cleanHeapPage.close();
 
+    // Negative Hostile XSS & ScriptURL Exploit Probe in Real Chromium (`[B-04]`) + MPA Real 404 Check (`[A-02]`)
+    const xssProbePage = await context.newPage();
+    await xssProbePage.goto(`${srv.origin}/niveles/intermedio/`, { waitUntil: 'networkidle' });
+    const negativeXssProbe = await xssProbePage.evaluate(async () => {
+      const probeEl = document.createElement('div');
+      let innerHtmlErrorName = null;
+      let innerHtmlErrorMessage = '';
+      try {
+        probeEl.innerHTML = '<img/src=x/onerror=window.__xss=1>';
+      } catch (err) {
+        innerHtmlErrorName = err?.name || 'Error';
+        innerHtmlErrorMessage = String(err?.message || err);
+      }
+
+      let insertAdjacentErrorName = null;
+      try {
+        probeEl.insertAdjacentHTML('beforeend', '<svg/onload=window.__xss=2>');
+      } catch (err) {
+        insertAdjacentErrorName = err?.name || 'Error';
+      }
+
+      let crossOriginScriptErrorName = null;
+      try {
+        const s1 = document.createElement('script');
+        s1.src = 'https://evil.example/payload.js';
+      } catch (err) {
+        crossOriginScriptErrorName = err?.name || 'Error';
+      }
+
+      let unauthorizedSameOriginScriptErrorName = null;
+      try {
+        const s2 = document.createElement('script');
+        s2.src = '/unauthorized-script.js';
+      } catch (err) {
+        unauthorizedSameOriginScriptErrorName = err?.name || 'Error';
+      }
+
+      const missingResp = await fetch('/ruta-inexistente-404-stage3c1');
+
+      return {
+        innerHtmlBlockedWithTypeError: innerHtmlErrorName === 'TypeError',
+        innerHtmlErrorName,
+        innerHtmlErrorMessage,
+        insertAdjacentBlockedWithTypeError: insertAdjacentErrorName === 'TypeError',
+        crossOriginScriptBlockedWithTypeError: crossOriginScriptErrorName === 'TypeError',
+        unauthorizedSameOriginScriptBlockedWithTypeError:
+          unauthorizedSameOriginScriptErrorName === 'TypeError',
+        windowXssUndefined: window.__xss === undefined,
+        probeChildNodesCount: probeEl.childNodes.length,
+        real404Status: missingResp.status
+      };
+    });
+    await xssProbePage.close();
+
+    const negativeXssTrustedTypesCheck = {
+      ...negativeXssProbe,
+      passed:
+        negativeXssProbe.innerHtmlBlockedWithTypeError &&
+        negativeXssProbe.insertAdjacentBlockedWithTypeError &&
+        negativeXssProbe.crossOriginScriptBlockedWithTypeError &&
+        negativeXssProbe.unauthorizedSameOriginScriptBlockedWithTypeError &&
+        negativeXssProbe.windowXssUndefined &&
+        negativeXssProbe.probeChildNodesCount === 0 &&
+        negativeXssProbe.real404Status === 404
+    };
+
     const maxLcpMs = Math.max(...routeMetrics.map((r) => r.lcpMs));
     const maxCls = Math.max(...routeMetrics.map((r) => r.cls));
 
@@ -546,6 +671,8 @@ export async function certifyAcademiaRuntime(projectRoot = DEFAULT_PROJECT_ROOT)
 
     const passed =
       headersValidation.valid &&
+      swPrecache.withinBudget250Kb &&
+      negativeXssTrustedTypesCheck.passed &&
       consoleErrors.length === 0 &&
       pageErrors.length === 0 &&
       cspViolations.length === 0 &&
@@ -562,6 +689,8 @@ export async function certifyAcademiaRuntime(projectRoot = DEFAULT_PROJECT_ROOT)
     return {
       passed,
       distStats,
+      swPrecache,
+      negativeXssTrustedTypesCheck,
       headersValidation,
       consoleErrorsCount: consoleErrors.length,
       consoleErrors,

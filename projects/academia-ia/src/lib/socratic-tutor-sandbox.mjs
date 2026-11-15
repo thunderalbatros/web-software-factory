@@ -1,15 +1,16 @@
 /**
- * socratic-tutor-sandbox.mjs — Socratic / BYOK Tutor Sanitizer & Opaque Sandbox Helper (V-07)
- * ===========================================================================================
+ * socratic-tutor-sandbox.mjs — Socratic / BYOK Tutor Sanitizer & 1:1 MessageChannel Sandbox (Stage 3C.1)
+ * ======================================================================================================
  * Enforces defense-in-depth isolation for optional Socratic/BYOK LLM outputs:
  *   1. All HTML outputs pass through `DOMPurify.sanitize(..., { RETURN_TRUSTED_TYPE: true })`
  *      producing a W3C `TrustedHTML` object under policy `dompurify`.
  *   2. The BYOK worker frame runs inside `<iframe sandbox="allow-scripts">` WITHOUT
  *      `allow-same-origin`, enforcing an opaque `null` origin that cannot read parent
  *      `IndexedDB`, `localStorage`, `sessionStorage`, cookies, or DOM.
- *   3. Parent <-> Sandbox communication occurs strictly via `postMessage` validated at
- *      both ends with `Valibot` `strictObject` schemas (`ACADEMIA_TUTOR_V1`).
- * ===========================================================================================
+ *   3. Initial handshake enforces fail-closed `if (!expectedSourceWindow || event.source !== expectedSourceWindow) return;`
+ *      and immediately upgrades transport to a dedicated 1:1 `MessageChannel` (`port1` <-> `port2`),
+ *      eliminating subsequent `postMessage(..., '*')` and validating every message on `port1` with `Valibot`.
+ * ======================================================================================================
  */
 
 import DOMPurify from 'dompurify';
@@ -24,7 +25,7 @@ const FORBIDDEN_SANDBOX_TOKENS = new Set([
   'allow-top-navigation-by-user-activation',
   'allow-popups-to-escape-sandbox',
   'allow-modals',
-  'allow-Pointer-lock'.toLowerCase()
+  'allow-pointer-lock'
 ]);
 
 export const TUTOR_DOMPURIFY_CONFIG = Object.freeze({
@@ -103,7 +104,7 @@ export function validateOpaqueSandboxAttribute(sandboxAttr = '') {
 }
 
 /**
- * Validates an outbound prompt envelope before posting it to the isolated BYOK iframe.
+ * Validates an outbound prompt envelope before sending it over `port1` to the isolated BYOK iframe.
  */
 export function validateTutorPromptRequest(payload) {
   const parsed = v.safeParse(TutorOutboundPromptSchema, payload);
@@ -117,19 +118,19 @@ export function validateTutorPromptRequest(payload) {
 }
 
 /**
- * Validates an inbound `MessageEvent` coming from the opaque BYOK `<iframe sandbox="allow-scripts">`.
- * Rejects any message whose origin is not `'null'`, whose `source` does not match `expectedWindow`,
- * or whose payload fails `Valibot` `TutorInboundMessageSchema`.
+ * Validates the initial handshake `MessageEvent` coming from the opaque BYOK `<iframe sandbox="allow-scripts">`.
+ * Fail-closed: rejects when `expectedSourceWindow` is missing, when `event.source !== expectedSourceWindow`,
+ * when `event.origin !== 'null'`, or when `Valibot` rejects `event.data`.
  */
 export function validateTutorInboundPostMessage(event, expectedSourceWindow = null) {
   if (!event || typeof event !== 'object') {
     return { ok: false, reason: 'INVALID_EVENT_OBJECT' };
   }
+  if (!expectedSourceWindow || event.source !== expectedSourceWindow) {
+    return { ok: false, reason: 'UNTRUSTED_MESSAGE_SOURCE_WINDOW' };
+  }
   if (event.origin !== 'null') {
     return { ok: false, reason: `NON_OPAQUE_ORIGIN_REJECTED:${String(event.origin)}` };
-  }
-  if (expectedSourceWindow && event.source !== expectedSourceWindow) {
-    return { ok: false, reason: 'UNTRUSTED_MESSAGE_SOURCE_WINDOW' };
   }
   const parsed = v.safeParse(TutorInboundMessageSchema, event.data);
   if (!parsed.success) {
@@ -143,10 +144,26 @@ export function validateTutorInboundPostMessage(event, expectedSourceWindow = nu
 }
 
 /**
+ * Validates every inbound message arriving on the dedicated 1:1 `MessageChannel` (`port1`)
+ * strictly against `TutorInboundMessageSchema` (`Valibot`).
+ */
+export function validateTutorChannelPortMessage(portEvent) {
+  if (!portEvent || typeof portEvent !== 'object') {
+    return { ok: false, reason: 'INVALID_PORT_EVENT_OBJECT' };
+  }
+  const parsed = v.safeParse(TutorInboundMessageSchema, portEvent.data);
+  if (!parsed.success) {
+    return {
+      ok: false,
+      reason: 'VALIBOT_SCHEMA_REJECTED',
+      issues: parsed.issues.map((i) => i.message)
+    };
+  }
+  return { ok: true, data: parsed.output };
+}
+
+/**
  * Sanitizes untrusted LLM/tutor HTML using `DOMPurify` with `RETURN_TRUSTED_TYPE: true`.
- * In browsers with Trusted Types active, returns a native `TrustedHTML` object.
- * In headless Node.js unit tests without a DOM window, applies deterministic tag/attribute allowlisting
- * unless a `purifyInstance` (e.g. `DOMPurify(window)`) is supplied.
  */
 export function sanitizeTutorHtmlToTrustedType(dirtyHtml = '', purifyOverride = null) {
   const raw = String(dirtyHtml ?? '');
@@ -185,8 +202,8 @@ export function renderSanitizedTutorResponse(containerEl, dirtyHtml = '') {
 
 /**
  * Generates the deterministic self-contained `srcdoc` document for `<iframe sandbox="allow-scripts">`.
- * Contains zero external fetches (compatible with `Cross-Origin-Resource-Policy: same-origin` on `Origin: null`)
- * and zero inline `style="..."` attributes (compatible with hash-locked `style-src` without `'unsafe-inline'`).
+ * Enforces strict Trusted Types (`default.createHTML` throws `TypeError`) and upgrades communication
+ * to a dedicated 1:1 `MessageChannel` (`port2`), eliminating subsequent `postMessage(..., '*')`.
  */
 export function buildOpaqueTutorSandboxSrcdoc() {
   return [
@@ -206,10 +223,10 @@ export function buildOpaqueTutorSandboxSrcdoc() {
     '<main><div class="sandbox-pill"><span class="sandbox-dot" aria-hidden="true"></span><span id="sandbox-status">Sandbox aislado activo (origin: null · IndexedDB bloqueado)</span></div></main>',
     '<script>',
     '(function () {',
-    "  if (window.trustedTypes && window.trustedTypes.createPolicy) {",
+    '  if (window.trustedTypes && window.trustedTypes.createPolicy) {',
     '    try {',
     "      window.trustedTypes.createPolicy('default', {",
-    "        createHTML: function (s) { return String(s).replace(/<script/gi, '&lt;script'); },",
+    "        createHTML: function () { throw new TypeError('Raw HTML assignment blocked in BYOK sandbox'); },",
     "        createScript: function () { throw new TypeError('Dynamic script evaluation blocked in BYOK sandbox'); },",
     "        createScriptURL: function () { throw new TypeError('External script URLs blocked in BYOK sandbox'); }",
     '      });',
@@ -237,31 +254,29 @@ export function buildOpaqueTutorSandboxSrcdoc() {
     '    2: "<p><strong>Pista 2 (Contraste):</strong> Compara cómo cambia el conteo de <code>tokens</code> y la precisión cuando divides una instrucción ambigua en pasos concretos.</p>",',
     '    3: "<p><strong>Pista 3 (Criterio propio):</strong> Redacta tu verificación en dos frases: qué evidencia confirma el dato y qué supuesto queda pendiente de validar.</p>"',
     '  };',
-    '  function notifyReady() {',
-    '    if (window.parent && window.parent !== window) {',
-    '      window.parent.postMessage({',
-    '        channel: "ACADEMIA_TUTOR_V1",',
-    '        type: "TUTOR_SANDBOX_READY",',
-    '        sandboxOrigin: String(window.origin),',
-    '        storageBlocked: Boolean(storageBlocked),',
-    '        parentDomBlocked: Boolean(parentDomBlocked)',
-    '      }, "*");',
-    '    }',
+    '  var dedicatedPort = null;',
+    '  function buildReadyPayload() {',
+    '    return {',
+    '      channel: "ACADEMIA_TUTOR_V1",',
+    '      type: "TUTOR_SANDBOX_READY",',
+    '      sandboxOrigin: String(window.origin),',
+    '      storageBlocked: Boolean(storageBlocked),',
+    '      parentDomBlocked: Boolean(parentDomBlocked)',
+    '    };',
     '  }',
-    '  window.addEventListener("message", function (ev) {',
-    '    if (ev.source !== window.parent) return;',
-    '    var d = ev.data;',
+    '  function handlePortPrompt(pev) {',
+    '    if (!dedicatedPort) return;',
+    '    var d = pev && pev.data;',
     '    if (!d || typeof d !== "object" || d.channel !== "ACADEMIA_TUTOR_V1") return;',
-    '    if (d.type === "TUTOR_PING_READY") { notifyReady(); return; }',
     '    if (d.type !== "TUTOR_PROMPT_REQUEST") return;',
     '    var reqId = typeof d.requestId === "string" && /^[a-zA-Z0-9_-]{6,64}$/.test(d.requestId) ? d.requestId : "";',
     '    var lessonId = typeof d.lessonId === "string" && /^[a-z0-9-]{2,80}$/.test(d.lessonId) ? d.lessonId : "";',
     '    var step = Number(d.hintStep) === 2 ? 2 : Number(d.hintStep) === 3 ? 3 : 1;',
     '    if (!reqId || !lessonId) {',
-    '      window.parent.postMessage({ channel: "ACADEMIA_TUTOR_V1", type: "TUTOR_ERROR", code: "INVALID_REQUEST", message: "Solicitud fuera de contrato." }, "*");',
+    '      dedicatedPort.postMessage({ channel: "ACADEMIA_TUTOR_V1", type: "TUTOR_ERROR", code: "INVALID_REQUEST", message: "Solicitud fuera de contrato." });',
     '      return;',
     '    }',
-    '    window.parent.postMessage({',
+    '    dedicatedPort.postMessage({',
     '      channel: "ACADEMIA_TUTOR_V1",',
     '      type: "TUTOR_HINT_RESPONSE",',
     '      requestId: reqId,',
@@ -270,9 +285,25 @@ export function buildOpaqueTutorSandboxSrcdoc() {
     '      htmlFragment: HINTS[step],',
     '      sandboxOrigin: String(window.origin),',
     '      storageBlocked: Boolean(storageBlocked)',
-    '    }, "*");',
+    '    });',
+    '  }',
+    '  window.addEventListener("message", function (ev) {',
+    '    if (!window.parent || ev.source !== window.parent) return;',
+    '    var d = ev.data;',
+    '    if (!d || typeof d !== "object" || d.channel !== "ACADEMIA_TUTOR_V1") return;',
+    '    if (d.type === "TUTOR_INIT_CHANNEL" && ev.ports && ev.ports[0]) {',
+    '      if (dedicatedPort && typeof dedicatedPort.close === "function") {',
+    '        try { dedicatedPort.close(); } catch (_) {}',
+    '      }',
+    '      dedicatedPort = ev.ports[0];',
+    '      dedicatedPort.onmessage = handlePortPrompt;',
+    '      if (typeof dedicatedPort.start === "function") { dedicatedPort.start(); }',
+    '      dedicatedPort.postMessage(buildReadyPayload());',
+    '    }',
     '  });',
-    '  notifyReady();',
+    '  if (!dedicatedPort && window.parent && window.parent !== window) {',
+    '    window.parent.postMessage(buildReadyPayload(), "*");',
+    '  }',
     '})();',
     '</script>',
     '</body>',
@@ -281,7 +312,8 @@ export function buildOpaqueTutorSandboxSrcdoc() {
 }
 
 /**
- * Mounts the parent-side controller for an isolated `<iframe sandbox="allow-scripts">` tutor shell.
+ * Mounts the parent-side controller for an isolated `<iframe sandbox="allow-scripts">` tutor shell
+ * using a dedicated 1:1 `MessageChannel` (`port1` <-> `port2`) validated with `Valibot`.
  */
 export function attachOpaqueTutorBridge({ iframeEl, outputEl, statusEl }) {
   if (!iframeEl || !outputEl) {
@@ -292,16 +324,24 @@ export function attachOpaqueTutorBridge({ iframeEl, outputEl, statusEl }) {
     throw new Error(`OPAQUE_TUTOR_SANDBOX_VIOLATION:${sandboxCheck.reason}`);
   }
 
-  const onMessage = (event) => {
-    const check = validateTutorInboundPostMessage(event, iframeEl.contentWindow);
-    if (!check.ok) return;
+  let activePort = null;
+  let channelReady = false;
+  let channelTransferred = false;
+  const pendingQueue = [];
 
-    const msg = check.data;
+  const handleValidatedInbound = (msg) => {
     if (msg.type === 'TUTOR_SANDBOX_READY') {
-      if (statusEl) {
-        statusEl.textContent = 'Aislamiento activo: origen opaco verificado, sin acceso a tus datos locales.';
-      }
+      channelReady = true;
       iframeEl.dataset.sandboxReady = 'true';
+      iframeEl.dataset.tutorTransport = 'message-channel-1to1';
+      if (statusEl) {
+        statusEl.textContent =
+          'Aislamiento activo: canal dedicado MessageChannel 1:1 verificado, sin acceso a tus datos locales.';
+      }
+      while (pendingQueue.length > 0 && activePort) {
+        const queued = pendingQueue.shift();
+        activePort.postMessage(queued);
+      }
     } else if (msg.type === 'TUTOR_HINT_RESPONSE') {
       renderSanitizedTutorResponse(outputEl, msg.htmlFragment);
       outputEl.dataset.lastRequestId = msg.requestId;
@@ -311,22 +351,57 @@ export function attachOpaqueTutorBridge({ iframeEl, outputEl, statusEl }) {
     }
   };
 
-  window.addEventListener('message', onMessage);
-
-  const pingReady = () => {
-    try {
-      if (iframeEl.contentWindow) {
-        iframeEl.contentWindow.postMessage(
-          { channel: TUTOR_CHANNEL_ID, type: 'TUTOR_PING_READY' },
-          '*'
-        );
+  const initDedicatedChannel = () => {
+    const expectedSourceWindow = iframeEl.contentWindow;
+    if (!expectedSourceWindow) return;
+    if (activePort && typeof activePort.close === 'function') {
+      try {
+        activePort.close();
+      } catch {
+        /* ignore close errors */
       }
+    }
+    channelReady = false;
+    const channel = new MessageChannel();
+    activePort = channel.port1;
+    activePort.onmessage = (portEvent) => {
+      const check = validateTutorChannelPortMessage(portEvent);
+      if (!check.ok) return;
+      handleValidatedInbound(check.data);
+    };
+    if (typeof activePort.start === 'function') {
+      activePort.start();
+    }
+    try {
+      expectedSourceWindow.postMessage(
+        { channel: TUTOR_CHANNEL_ID, type: 'TUTOR_INIT_CHANNEL' },
+        '*',
+        [channel.port2]
+      );
+      channelTransferred = true;
     } catch {
-      /* ignore before contentWindow mounts */
+      /* wait for iframe load or initial ready ping */
     }
   };
-  iframeEl.addEventListener('load', pingReady);
-  pingReady();
+
+  const onWindowHandshake = (event) => {
+    const expectedSourceWindow = iframeEl.contentWindow;
+    if (!expectedSourceWindow || event.source !== expectedSourceWindow) return;
+    const check = validateTutorInboundPostMessage(event, expectedSourceWindow);
+    if (!check.ok) return;
+    if (check.data.type === 'TUTOR_SANDBOX_READY' && !channelReady) {
+      initDedicatedChannel();
+    }
+  };
+
+  const onIframeLoad = () => {
+    channelTransferred = false;
+    initDedicatedChannel();
+  };
+
+  window.addEventListener('message', onWindowHandshake);
+  iframeEl.addEventListener('load', onIframeLoad);
+  initDedicatedChannel();
 
   return {
     requestHint({ lessonId, hintStep = 1, learnerQuestion = 'Solicito pista socrática' }) {
@@ -343,14 +418,24 @@ export function attachOpaqueTutorBridge({ iframeEl, outputEl, statusEl }) {
       if (!validated.ok) {
         throw new Error(`INVALID_TUTOR_PROMPT:${validated.issues.join('; ')}`);
       }
-      if (iframeEl.contentWindow) {
-        iframeEl.contentWindow.postMessage(validated.data, '*');
+      if (channelReady && activePort) {
+        activePort.postMessage(validated.data);
+      } else {
+        pendingQueue.push(validated.data);
+        if (!channelTransferred) {
+          initDedicatedChannel();
+        }
       }
       return requestId;
     },
     destroy() {
-      iframeEl.removeEventListener('load', pingReady);
-      window.removeEventListener('message', onMessage);
+      iframeEl.removeEventListener('load', onIframeLoad);
+      window.removeEventListener('message', onWindowHandshake);
+      if (activePort && typeof activePort.close === 'function') {
+        activePort.close();
+      }
+      activePort = null;
+      channelReady = false;
     }
   };
 }

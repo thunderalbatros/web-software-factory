@@ -13,24 +13,8 @@ import { generateBrandIntroVideo } from './media/programmatic_video_forge.mjs';
 import { verifyAndEmitOpenApiContract } from './audit/api_contract_verifier.mjs';
 import { compileStaticDistCspAndHeaders, generateHeadersFileContent } from './lib/csp_builder.mjs';
 
-const projectConfig = loadProjectConfig();
-const root = projectConfig.projectRoot;
-const dist = path.join(root, projectConfig.paths.distDir);
-const isEducationProfile = projectConfig.complianceProfile === 'education' || projectConfig.archetype === 'education';
-
-console.log(`=== BUILDING CLOUDFLARE PRODUCTION PAYLOAD (${projectConfig.id} -> dist/) ===\n`);
-
-// 0. Apply Bespoke Morphology & Industry Interactive Widget to project DOM before copying to dist/
-if (!isEducationProfile) {
-  try {
-    const morphRes = applyBespokeMorphologyToProjectDom(projectConfig.id);
-    console.log(
-      `• Applied Bespoke DOM Morphology (grid: ${morphRes.gridTopology}, hero: ${morphRes.heroArchitecture}, nav: ${morphRes.navVariant}, widget: ${morphRes.industry})`
-    );
-  } catch (err) {
-    console.warn(`• [BespokeMorphology] Warning: ${err.message}`);
-  }
-}
+const __filename = fileURLToPath(import.meta.url);
+const IS_CLI_MAIN = Boolean(process.argv[1] && path.resolve(process.argv[1]) === path.resolve(__filename));
 
 function copyRecursive(src, dest) {
   if (!fs.existsSync(src)) return;
@@ -46,19 +30,42 @@ function copyRecursive(src, dest) {
   }
 }
 
+export async function runBuildDist(explicitProject = '') {
+const projectConfig = loadProjectConfig(explicitProject);
+const root = projectConfig.projectRoot;
+const dist = path.join(root, projectConfig.paths.distDir);
+const isEducationProfile = projectConfig.complianceProfile === 'education' || projectConfig.archetype === 'education';
+const isStaticWithoutWorker = isEducationProfile || projectConfig.paths?.workerEntry === null;
+
+console.log(`=== BUILDING CLOUDFLARE PRODUCTION PAYLOAD (${projectConfig.id} -> dist/) ===\n`);
+
+// 0. Apply Bespoke Morphology & Industry Interactive Widget to project DOM before copying to dist/
+if (!isEducationProfile) {
+  try {
+    const morphRes = applyBespokeMorphologyToProjectDom(projectConfig.id);
+    console.log(
+      `• Applied Bespoke DOM Morphology (grid: ${morphRes.gridTopology}, hero: ${morphRes.heroArchitecture}, nav: ${morphRes.navVariant}, widget: ${morphRes.industry})`
+    );
+  } catch (err) {
+    console.warn(`• [BespokeMorphology] Warning: ${err.message}`);
+  }
+}
+
 // 1. Clean and recreate dist
 if (fs.existsSync(dist)) {
   fs.rmSync(dist, { recursive: true, force: true });
 }
 fs.mkdirSync(dist, { recursive: true });
 
-try {
-  const openApiRes = verifyAndEmitOpenApiContract(projectConfig.id);
-  console.log(
-    `• Verified OpenAPI 3.1.0 + Valibot Edge Contract (${openApiRes.documentedPathsCount} routes -> dist/openapi.json, parity=${openApiRes.passed ? 'PASS' : 'WARN'})`
-  );
-} catch (err) {
-  console.warn(`• [OpenAPIContract] Warning: ${err.message}`);
+if (!isStaticWithoutWorker) {
+  try {
+    const openApiRes = verifyAndEmitOpenApiContract(projectConfig.id);
+    console.log(
+      `• Verified OpenAPI 3.1.0 + Valibot Edge Contract (${openApiRes.documentedPathsCount} routes -> dist/openapi.json, parity=${openApiRes.passed ? 'PASS' : 'WARN'})`
+    );
+  } catch (err) {
+    console.warn(`• [OpenAPIContract] Warning: ${err.message}`);
+  }
 }
 
 if (projectConfig.stack === 'astro-edge' && fs.existsSync(path.join(root, 'astro.config.mjs'))) {
@@ -69,9 +76,14 @@ if (projectConfig.stack === 'astro-edge' && fs.existsSync(path.join(root, 'astro
   } else {
     console.log('• [Astro Static Scaffold] Copying public/ and rendering static entry shell to dist/...');
     copyRecursive(path.join(root, 'public'), dist);
-    const srcCss = path.join(root, projectConfig.paths.designCssPath);
-    if (fs.existsSync(srcCss)) {
-      copyRecursive(srcCss, path.join(dist, 'styles', 'design-tokens.css'));
+    const srcStylesDir = path.join(root, 'src', 'styles');
+    const injectedLinks = [];
+    if (fs.existsSync(srcStylesDir)) {
+      fs.mkdirSync(path.join(dist, '_astro'), { recursive: true });
+      for (const cssFile of fs.readdirSync(srcStylesDir).filter((f) => f.endsWith('.css')).sort()) {
+        fs.copyFileSync(path.join(srcStylesDir, cssFile), path.join(dist, '_astro', cssFile));
+        injectedLinks.push(`<link rel="stylesheet" href="/_astro/${cssFile}">`);
+      }
     }
     const indexAstroPath = path.join(root, 'src', 'pages', 'index.astro');
     const layoutAstroPath = path.join(root, 'src', 'layouts', 'BaseLayout.astro');
@@ -80,9 +92,12 @@ if (projectConfig.stack === 'astro-edge' && fs.existsSync(path.join(root, 'astro
       const rawLayout = fs.existsSync(layoutAstroPath) ? fs.readFileSync(layoutAstroPath, 'utf8') : '';
       const stripFrontmatter = (s) => s.replace(/^---[\s\S]*?---\s*/, '');
       const bodyHtml = stripFrontmatter(rawAstro);
-      const fullHtml = rawLayout
+      let fullHtml = rawLayout
         ? stripFrontmatter(rawLayout).replace('<slot />', bodyHtml)
         : bodyHtml;
+      if (injectedLinks.length > 0 && /<\/head>/i.test(fullHtml)) {
+        fullHtml = fullHtml.replace(/<\/head>/i, `  ${injectedLinks.join('\n  ')}\n</head>`);
+      }
       fs.writeFileSync(path.join(dist, 'index.html'), fullHtml, 'utf8');
     }
   }
@@ -475,12 +490,19 @@ ${specMdText ? `## 4. Technical Specification (SPEC.md)\n\n${specMdText.trim()}\
 ${designMdText ? `## 5. Design System & Tokens Summary (DESIGN.md)\n\n${designMdText.slice(0, 2400).trim()}\n` : ''}
 `;
 
-  // Preserve existing custom llms.txt if project root has a richer hand-authored one and no PRD_LEAN exists yet
-  if (prdLeanText || specMdText || !fs.existsSync(path.join(dist, 'llms.txt'))) {
-    fs.writeFileSync(path.join(dist, 'llms.txt'), llmsConcise, 'utf8');
+  // Preserve project-generated llms.txt & llms-full.txt (e.g. Astro post-build / static education manifests)
+  const distLlmsPath = path.join(dist, 'llms.txt');
+  const distLlmsFullPath = path.join(dist, 'llms-full.txt');
+  const preserveProjectLlms = isStaticWithoutWorker && fs.existsSync(distLlmsPath);
+  const preserveProjectLlmsFull = isStaticWithoutWorker && fs.existsSync(distLlmsFullPath);
+
+  if (!preserveProjectLlms && (prdLeanText || specMdText || !fs.existsSync(distLlmsPath))) {
+    fs.writeFileSync(distLlmsPath, llmsConcise, 'utf8');
   }
-  fs.writeFileSync(path.join(dist, 'llms-full.txt'), llmsFull, 'utf8');
-  console.log(`• Generated Agentic Discovery Manifests (dist/llms.txt & dist/llms-full.txt)`);
+  if (!preserveProjectLlmsFull) {
+    fs.writeFileSync(distLlmsFullPath, llmsFull, 'utf8');
+  }
+  console.log(`• Verified Agentic Discovery Manifests (dist/llms.txt & dist/llms-full.txt)`);
 } catch (err) {
   console.warn(`• [llms.txt Generator] Warning: ${err.message}`);
 }
@@ -539,19 +561,26 @@ if (isEducationProfile) {
   fs.writeFileSync(path.join(dist, '_headers'), headersContent, 'utf8');
 }
 
-// 5b. Generate Dynamic OpenGraph Social Preview Card (og-image.svg) in dist/
+// 5b. Generate Dynamic OpenGraph Social Preview Card (og-image.svg) in dist/ unless project already emitted its own
 try {
-  const ogRes = generateOpenGraphSvgCard({ project: projectConfig.id });
-  const srcOg = path.join(FACTORY_ROOT, 'templates', 'vanilla-edge', 'public', 'og-image.svg');
-  if (fs.existsSync(srcOg)) {
-    fs.copyFileSync(srcOg, path.join(dist, 'og-image.svg'));
+  const distOgPath = path.join(dist, 'og-image.svg');
+  const projectPublicOgPath = path.join(root, 'public', 'og-image.svg');
+  if (isStaticWithoutWorker && (fs.existsSync(distOgPath) || fs.existsSync(projectPublicOgPath))) {
+    if (!fs.existsSync(distOgPath) && fs.existsSync(projectPublicOgPath)) {
+      fs.copyFileSync(projectPublicOgPath, distOgPath);
+    }
+    console.log(`• Preserved project OpenGraph Social Card (dist/og-image.svg)`);
+  } else {
+    const ogRes = generateOpenGraphSvgCard({ project: projectConfig.id });
+    const srcOg = path.join(FACTORY_ROOT, 'templates', 'vanilla-edge', 'public', 'og-image.svg');
+    if (fs.existsSync(srcOg)) {
+      fs.copyFileSync(srcOg, distOgPath);
+    }
+    console.log(`• Generated OpenGraph Social Card (dist/og-image.svg, ${ogRes.bytes} bytes)`);
   }
-  console.log(`• Generated OpenGraph Social Card (dist/og-image.svg, ${ogRes.bytes} bytes)`);
 } catch (_) {}
 
-// 6. Cloudflare SPA routing is handled natively via wrangler.toml:
-// not_found_handling = "single-page-application" (avoids infinite loops with .html stripping)
-
+// 6. Cloudflare routing is handled natively via wrangler.toml
 
 // 7. Calculate bundle metrics
 function dirMetrics(dirPath) {
@@ -572,6 +601,8 @@ function dirMetrics(dirPath) {
 const { count, totalBytes } = dirMetrics(dist);
 console.log(`\n[SUCCESS] dist/ built cleanly: ${count} files, ${(totalBytes / (1024 * 1024)).toFixed(2)} MB`);
 console.log('Ready for instant zero-card deployment via Cloudflare Pages or Cloudflare Workers Static Assets!\n');
+return { projectConfig, dist, count, totalBytes };
+}
 
 /**
  * Pure Node.js Zero-Dependency PKZIP Archive Builder (node:zlib deflateRawSync + crc32)
@@ -662,15 +693,23 @@ export function createZipArchiveFromDir(sourceDir, outZipPath, skipFileNames = n
 
 /**
  * Exports a 100% Standalone Production Package (Zero-Factory-Dependencies) + <slug>-produccion.zip
- * to both `deliverables/<slug>/` and `C:\Users\tomas\Desktop\Sitios_Entregables\<slug>\`.
+ * to `deliverables/<slug>/` (or `options.outDir`) and optionally mirrors to Desktop on Windows.
  */
-export function exportStandaloneDeliverable(cfg = projectConfig) {
-  const slug = cfg.id || 'sitio-web';
-  const displayName = cfg.name || slug;
-  const projRoot = cfg.projectRoot;
-  const projDist = path.join(projRoot, cfg.paths.distDir || 'dist');
+export function exportStandaloneDeliverable(cfg = null, options = {}) {
+  const resolvedCfg = cfg || loadProjectConfig();
+  const slug = resolvedCfg.id || 'sitio-web';
+  const displayName = resolvedCfg.name || slug;
+  const projRoot = resolvedCfg.projectRoot;
+  const projDist = path.join(projRoot, resolvedCfg.paths?.distDir || 'dist');
+  const isStaticWithoutWorker =
+    resolvedCfg.paths?.workerEntry === null ||
+    resolvedCfg.complianceProfile === 'education' ||
+    resolvedCfg.archetype === 'education';
 
-  const localDeliverableDir = path.join(FACTORY_ROOT, 'deliverables', slug);
+  const localDeliverableDir = options.outDir
+    ? path.resolve(options.outDir)
+    : path.join(FACTORY_ROOT, 'deliverables', slug);
+  const skipDesktopMirror = Boolean(options.skipDesktopMirror || options.outDir);
   const desktopDeliverableDir = path.join('C:\\Users\\tomas\\Desktop\\Sitios_Entregables', slug);
   const zipFileName = `${slug}-produccion.zip`;
 
@@ -680,10 +719,10 @@ export function exportStandaloneDeliverable(cfg = projectConfig) {
   }
   fs.mkdirSync(localDeliverableDir, { recursive: true });
 
-  // 1. Copy minified production dist/
+  // 1. Copy minified production dist/ intact (preserving project dist/llms.txt, dist/llms-full.txt, dist/og-image.svg)
   copyRecursive(projDist, path.join(localDeliverableDir, 'dist'));
 
-  // 2. Copy Zero-Trust _headers and llms.txt to package root (as well as inside dist/)
+  // 2. Copy Zero-Trust _headers and llms.txt / llms-full.txt to package root while preserving dist/ originals intact
   const distHeaders = path.join(projDist, '_headers');
   if (fs.existsSync(distHeaders)) {
     fs.copyFileSync(distHeaders, path.join(localDeliverableDir, '_headers'));
@@ -696,25 +735,55 @@ export function exportStandaloneDeliverable(cfg = projectConfig) {
     fs.copyFileSync(rootLlms, path.join(localDeliverableDir, 'llms.txt'));
     fs.copyFileSync(rootLlms, path.join(localDeliverableDir, 'dist', 'llms.txt'));
   } else {
-    const defaultLlms = `# ${displayName}\n\n> Agentic AI & WebMCP Discovery Manifest (${cfg.archetype} | ${cfg.stack})\n`;
+    const defaultLlms = `# ${displayName}\n\n> Agentic AI & WebMCP Discovery Manifest (${resolvedCfg.archetype} | ${resolvedCfg.stack})\n`;
     fs.writeFileSync(path.join(localDeliverableDir, 'llms.txt'), defaultLlms, 'utf8');
     fs.writeFileSync(path.join(localDeliverableDir, 'dist', 'llms.txt'), defaultLlms, 'utf8');
   }
 
-  // 3. Copy standalone worker/index.js
-  const workerCandidates = [
-    path.join(projRoot, cfg.paths.workerEntry || 'worker/index.js'),
-    path.join(FACTORY_ROOT, 'templates', cfg.stack === 'astro-edge' ? 'astro-edge' : 'vanilla-edge', 'worker', 'index.js')
-  ];
-  const workerDest = path.join(localDeliverableDir, 'worker', 'index.js');
-  fs.mkdirSync(path.dirname(workerDest), { recursive: true });
-  const foundWorker = workerCandidates.find(p => fs.existsSync(p));
-  if (foundWorker) {
-    fs.copyFileSync(foundWorker, workerDest);
+  const distLlmsFull = path.join(projDist, 'llms-full.txt');
+  if (fs.existsSync(distLlmsFull)) {
+    fs.copyFileSync(distLlmsFull, path.join(localDeliverableDir, 'llms-full.txt'));
   }
 
-  // 4. Write preconfigured standalone wrangler.toml
-  const wranglerToml = `name = "${slug}"
+  // Ensure project public/og-image.svg is preserved in dist/ if present in project public/ but missing from dist/
+  const distOg = path.join(localDeliverableDir, 'dist', 'og-image.svg');
+  const publicOg = path.join(projRoot, 'public', 'og-image.svg');
+  if (!fs.existsSync(distOg) && fs.existsSync(publicOg)) {
+    fs.copyFileSync(publicOg, distOg);
+  }
+
+  // 3. Copy standalone worker/index.js ONLY for projects that actually declare a Worker
+  let hasWorkerBundle = false;
+  if (!isStaticWithoutWorker) {
+    const workerCandidates = [
+      path.join(projRoot, resolvedCfg.paths?.workerEntry || 'worker/index.js'),
+      path.join(
+        FACTORY_ROOT,
+        'templates',
+        resolvedCfg.stack === 'astro-edge' ? 'astro-edge' : 'vanilla-edge',
+        'worker',
+        'index.js'
+      )
+    ];
+    const foundWorker = workerCandidates.find((p) => fs.existsSync(p));
+    if (foundWorker) {
+      const workerDest = path.join(localDeliverableDir, 'worker', 'index.js');
+      fs.mkdirSync(path.dirname(workerDest), { recursive: true });
+      fs.copyFileSync(foundWorker, workerDest);
+      hasWorkerBundle = true;
+    }
+  }
+
+  // 4. Write preconfigured standalone wrangler.toml (pure Static Assets when static without Worker)
+  const wranglerToml = isStaticWithoutWorker
+    ? `name = "${slug}"
+compatibility_date = "2026-10-01"
+
+[assets]
+directory = "./dist"
+not_found_handling = "404-page"
+`
+    : `name = "${slug}"
 main = "worker/index.js"
 compatibility_date = "2026-10-01"
 
@@ -724,14 +793,14 @@ not_found_handling = "single-page-application"
 
 [vars]
 PROJECT_ID = "${slug}"
-PROJECT_ARCHETYPE = "${cfg.archetype || 'saas-b2b'}"
+PROJECT_ARCHETYPE = "${resolvedCfg.archetype || 'saas-b2b'}"
 `;
   fs.writeFileSync(path.join(localDeliverableDir, 'wrangler.toml'), wranglerToml, 'utf8');
 
   // 5. Write minimalist Zero-Factory-Dependencies package.json
   const standalonePkg = {
     name: `${slug}-production`,
-    version: cfg.version || '1.0.0',
+    version: resolvedCfg.version || '1.0.0',
     private: true,
     type: 'module',
     description: `Paquete de producción autónomo (Zero-Factory-Dependencies) para ${displayName}`,
@@ -748,6 +817,12 @@ PROJECT_ARCHETYPE = "${cfg.archetype || 'saas-b2b'}"
   );
 
   // 6. Write COMO_PUBLICAR_ESTE_SITIO.md in plain Argentine Spanish
+  const workerBullet = hasWorkerBundle
+    ? `- \`worker/index.js\`: Servidor ultraligero en el borde (Cloudflare Edge Worker).\n`
+    : '';
+  const deployWorkerLabel = isStaticWithoutWorker
+    ? `- **Para Cloudflare Workers Static Assets (100% estático, costo servidor $0):**`
+    : `- **Para Cloudflare Workers + Static Assets (con API en \`worker/index.js\`):**`;
   const guiaPublicacion = `# 🚀 Cómo Publicar tu Sitio Web (${displayName})
 
 Este paquete es **100% autónomo** y ya tiene todo tu sitio web optimizado, minificado y blindado con seguridad Zero-Trust para publicarse gratis en **Cloudflare**.
@@ -773,7 +848,7 @@ Abrí una consola dentro de esta carpeta y ejecutá cualquiera de estos dos coma
   \`\`\`powershell
   npm run deploy:pages
   \`\`\`
-- **Para Cloudflare Workers + Static Assets (con API en \`worker/index.js\`):**
+${deployWorkerLabel}
   \`\`\`powershell
   npm run deploy
   \`\`\`
@@ -783,22 +858,21 @@ Abrí una consola dentro de esta carpeta y ejecutá cualquiera de estos dos coma
 ## 📦 ¿Qué contiene esta carpeta entregable?
 
 - \`dist/\`: Tu sitio web completo minificado y listo para internet.
-- \`_headers\`: Escudo de seguridad bancaria (CSP estricto, HSTS, anti-clonación).
+- \`_headers\`: Escudo de seguridad Zero-Trust (CSP estricto, HSTS, anti-clonación).
 - \`llms.txt\`: Manifiesto optimizado para buscadores de IA (ChatGPT, Perplexity, Gemini, Claude).
-- \`worker/index.js\`: Servidor ultraligero en el borde (Cloudflare Edge Worker).
-- \`wrangler.toml\` y \`package.json\`: Configuración lista para publicar en 1 clic sin depender de la fábrica.
+${workerBullet}- \`wrangler.toml\` y \`package.json\`: Configuración lista para publicar en 1 clic sin depender de la fábrica.
 - \`${zipFileName}\`: Archivo comprimido listo para enviar por correo o subir manualmente.
 `;
   fs.writeFileSync(path.join(localDeliverableDir, 'COMO_PUBLICAR_ESTE_SITIO.md'), guiaPublicacion, 'utf8');
 
   // 6b. Copy Capacitor 8 & Multi-Target Mobile Artifacts if present (capacitor.config.ts, PRODUCT.md, DESIGN.md, tokens/)
   for (const extraRel of ['capacitor.config.ts', 'PRODUCT.md', 'DESIGN.md']) {
-    const srcExtra = path.join(root, extraRel);
+    const srcExtra = path.join(projRoot, extraRel);
     if (fs.existsSync(srcExtra)) {
       fs.copyFileSync(srcExtra, path.join(localDeliverableDir, extraRel));
     }
   }
-  const srcTokensDir = path.join(root, 'tokens');
+  const srcTokensDir = path.join(projRoot, 'tokens');
   if (fs.existsSync(srcTokensDir) && fs.statSync(srcTokensDir).isDirectory()) {
     copyRecursive(srcTokensDir, path.join(localDeliverableDir, 'tokens'));
   }
@@ -807,8 +881,8 @@ Abrí una consola dentro de esta carpeta y ejecutá cualquiera de estos dos coma
   const localZipPath = path.join(localDeliverableDir, zipFileName);
   const zipStats = createZipArchiveFromDir(localDeliverableDir, localZipPath, new Set([zipFileName]));
 
-  // 8. Mirror complete standalone package to Desktop on Windows: C:\Users\tomas\Desktop\Sitios_Entregables\<slug>\
-  if (process.platform === 'win32') {
+  // 8. Mirror complete standalone package to Desktop on Windows unless skipped (e.g. tmpdir tests)
+  if (process.platform === 'win32' && !skipDesktopMirror) {
     try {
       if (fs.existsSync(desktopDeliverableDir)) {
         fs.rmSync(desktopDeliverableDir, { recursive: true, force: true });
@@ -820,20 +894,27 @@ Abrí una consola dentro de esta carpeta y ejecutá cualquiera de estos dos coma
   return {
     slug,
     displayName,
+    isStaticWithoutWorker,
+    hasWorkerBundle,
     localDeliverableDir,
-    desktopDeliverableDir,
+    desktopDeliverableDir: skipDesktopMirror ? null : desktopDeliverableDir,
     zipFileName,
     localZipPath,
-    desktopZipPath: path.join(desktopDeliverableDir, zipFileName),
+    desktopZipPath: skipDesktopMirror ? null : path.join(desktopDeliverableDir, zipFileName),
     zipFileCount: zipStats.fileCount,
     zipSizeKb: Number((zipStats.sizeBytes / 1024).toFixed(1))
   };
 }
 
-if (process.argv.includes('--package')) {
-  const pkgRes = exportStandaloneDeliverable(projectConfig);
-  console.log(`📦 [STANDALONE DELIVERABLE EXPORTED]`);
-  console.log(`  • Local Path   : ${pkgRes.localDeliverableDir}`);
-  console.log(`  • Desktop Path : ${pkgRes.desktopDeliverableDir}`);
-  console.log(`  • ZIP Archive  : ${pkgRes.zipFileName} (${pkgRes.zipSizeKb} KB, ${pkgRes.zipFileCount} files)\n`);
+if (IS_CLI_MAIN) {
+  const buildOutcome = await runBuildDist();
+  if (process.argv.includes('--package')) {
+    const pkgRes = exportStandaloneDeliverable(buildOutcome.projectConfig);
+    console.log(`📦 [STANDALONE DELIVERABLE EXPORTED]`);
+    console.log(`  • Local Path   : ${pkgRes.localDeliverableDir}`);
+    if (pkgRes.desktopDeliverableDir) {
+      console.log(`  • Desktop Path : ${pkgRes.desktopDeliverableDir}`);
+    }
+    console.log(`  • ZIP Archive  : ${pkgRes.zipFileName} (${pkgRes.zipSizeKb} KB, ${pkgRes.zipFileCount} files)\n`);
+  }
 }

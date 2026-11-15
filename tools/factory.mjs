@@ -72,13 +72,39 @@ function applyStaticEducationScaffoldVariant(targetDir, { slug, displayName, dom
   fs.writeFileSync(path.join(publicDir, '_headers'), eduHeaders, 'utf8');
 
   // 4. Replace SaaS #pricing / trigger_primary_cta scaffold with clean 100% static Read-mode scaffold
+  const duplicatePublicStyles = path.join(targetDir, 'public', 'styles');
+  if (fs.existsSync(duplicatePublicStyles)) {
+    fs.rmSync(duplicatePublicStyles, { recursive: true, force: true });
+  }
+  const wranglerPath = path.join(targetDir, 'wrangler.toml');
+  if (fs.existsSync(wranglerPath)) {
+    fs.writeFileSync(
+      wranglerPath,
+      `name = "${slug}"\ncompatibility_date = "2026-10-01"\n\n[assets]\ndirectory = "./dist"\nnot_found_handling = "404-page"\n`,
+      'utf8'
+    );
+  }
   if (templateName === 'astro-edge') {
+    const targetPkgPath = path.join(targetDir, 'package.json');
+    if (fs.existsSync(targetPkgPath)) {
+      try {
+        const targetPkg = JSON.parse(fs.readFileSync(targetPkgPath, 'utf8'));
+        if (targetPkg.dependencies && targetPkg.dependencies['@astrojs/cloudflare']) {
+          delete targetPkg.dependencies['@astrojs/cloudflare'];
+        }
+        fs.writeFileSync(targetPkgPath, JSON.stringify(targetPkg, null, 2) + '\n', 'utf8');
+      } catch {}
+    }
     const baseLayoutPath = path.join(targetDir, 'src', 'layouts', 'BaseLayout.astro');
     const indexAstroPath = path.join(targetDir, 'src', 'pages', 'index.astro');
     if (fs.existsSync(baseLayoutPath)) {
       fs.writeFileSync(
         baseLayoutPath,
         `---
+import '../styles/design-tokens.css';
+import '../styles/ui-primitives.css';
+import '../styles/motion-engine.css';
+
 const {
   title = "${displayName} — Academia Abierta de IA",
   description = "${displayName} — Plataforma educativa 100% gratuita y estática en español neutro (Astro 7.4, OKLCH 90/8/2, WCAG 2.2 AA)."
@@ -91,11 +117,53 @@ const {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{title}</title>
   <meta name="description" content={description}>
-  <link rel="stylesheet" href="/styles/design-tokens.css">
-  <link rel="stylesheet" href="/styles/ui-primitives.css">
-  <link rel="stylesheet" href="/styles/motion-engine.css">
   <link rel="sitemap" type="application/xml" href="/sitemap.xml">
   <link rel="alternate" type="text/markdown" href="/llms.txt" title="Agentic AI Documentation (llms.txt)">
+  <script is:inline>
+    (function () {
+      if (window.trustedTypes && window.trustedTypes.createPolicy) {
+        var rejectRawHtml = function () {
+          throw new TypeError(
+            'Trusted Types: raw HTML assignment is forbidden. Use DOMPurify TrustedHTML or safe DOM APIs.'
+          );
+        };
+        var allowRestrictedScriptUrl = function (input) {
+          var resolved = new URL(String(input || ''), window.location.origin);
+          if (resolved.origin !== window.location.origin) {
+            throw new TypeError('Trusted Types: cross-origin script URL blocked.');
+          }
+          var p = resolved.pathname;
+          var allowed =
+            p === '/sw.js' ||
+            p === '/pagefind/pagefind.js' ||
+            p.indexOf('/_astro/') === 0;
+          if (!allowed) {
+            throw new TypeError('Trusted Types: unauthorized same-origin script URL blocked: ' + p);
+          }
+          return resolved.href;
+        };
+        var rejectDynamicScript = function () {
+          throw new TypeError('Trusted Types: dynamic string script evaluation is forbidden.');
+        };
+        try {
+          if (!window.trustedTypes.defaultPolicy) {
+            window.trustedTypes.createPolicy('default', {
+              createHTML: rejectRawHtml,
+              createScriptURL: allowRestrictedScriptUrl,
+              createScript: rejectDynamicScript
+            });
+          }
+        } catch (e) {}
+        try {
+          window.trustedTypes.createPolicy('astro-island', {
+            createHTML: rejectRawHtml,
+            createScriptURL: allowRestrictedScriptUrl,
+            createScript: rejectDynamicScript
+          });
+        } catch (e) {}
+      }
+    })();
+  </script>
   <script type="application/webmcp+json" id="webmcp-manifest">
   {
     "schemaVersion": "2026.1-webmcp",

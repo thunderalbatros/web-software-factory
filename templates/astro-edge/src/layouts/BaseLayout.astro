@@ -1,4 +1,8 @@
 ---
+import '../styles/design-tokens.css';
+import '../styles/ui-primitives.css';
+import '../styles/motion-engine.css';
+
 const title = "{{PROJECT_NAME}} — Sitio Oficial";
 const description = "{{PROJECT_NAME}} — Construido con Astro 5 + Cloudflare Workers Static Assets desde la Web Software Factory (W3C DTCG 2025.10, OKLCH, WCAG 2.2 AA).";
 ---
@@ -9,9 +13,6 @@ const description = "{{PROJECT_NAME}} — Construido con Astro 5 + Cloudflare Wo
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{title}</title>
   <meta name="description" content={description}>
-  <link rel="stylesheet" href="/styles/design-tokens.css">
-  <link rel="stylesheet" href="/styles/ui-primitives.css">
-  <link rel="stylesheet" href="/styles/motion-engine.css">
   <link rel="sitemap" type="application/xml" href="/sitemap.xml">
   <link rel="alternate" type="text/markdown" href="/llms.txt" title="Agentic AI Documentation (llms.txt)">
   <script type="application/webmcp+json" id="webmcp-manifest">

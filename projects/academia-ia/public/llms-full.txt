@@ -76,15 +76,15 @@ Quedan explícitamente **FUERA** del alcance y prohibidos por contrato:
 - **Integraciones Oficiales Pineadas:**
   - `astro-expressive-code@0.44.3` (bloques de código accesibles en niveles Intermedio y Avanzado, cero bloques de código en Principiante).
   - `@astrojs/mdx@8.1.6` + plugin determinista con `temml@0.14.0` para compilar fórmulas LaTeX a **MathML nativo (`0 KB` de JS en cliente)**.
-  - `@vite-pwa/astro@2.0.2` para lectura offline de lecciones y manifiesto web limpio.
-  - Post-build determinista: índice de búsqueda estático con `pagefind@1.6.0`, generación de `sitemap.xml`, `llms.txt` + `llms-full.txt`, extracción de atributos `style="..."` a hoja CSS cacheable y sellado de `public/_headers` + `dist/_headers` mediante `tools/lib/csp_builder.mjs`.
-- **Datos Autónomos en el Proyecto:** Copia local sincronizada en `projects/academia-ia/data/academy/{project_charter,archetypes,tracks,sources,videos,tools}.json` bajo esquema relacional v2 validado con `Valibot`.
+  - `@vite-pwa/astro@2.0.2` para lectura offline MPA de lecciones (`navigateFallback: null`, precache inicial `< 250 KB`) y manifiesto web limpio.
+  - Post-build determinista: índice de búsqueda estático con `pagefind@1.6.0`, generación de `sitemap.xml`, `llms.txt` + `llms-full.txt`, extracción de atributos `style="..."` a hoja CSS cacheable y sellado de `public/_headers` + `dist/_headers` mediante `src/lib/csp-builder.mjs`.
+- **Datos Autónomos en el Proyecto:** Copia local sincronizada en `projects/academia-ia/data/academy/{project_charter,archetypes,tracks,sources,videos,tools}.json` bajo esquema relacional v2 validado con `Valibot` (cero referencias a `../../`).
 
 ---
 
 ## 2. Seguridad Zero-Trust: CSP Única con Hashes + Trusted Types + Sandbox Opaco
 
-- **Fuente Única de CSP (`tools/lib/csp_builder.mjs`):**
+- **Fuente Única de CSP (`src/lib/csp-builder.mjs`):**
   - `default-src 'self'`
   - `script-src 'self' 'wasm-unsafe-eval' 'inline-speculation-rules' 'sha256-...'` (hashes reales calculados sobre `dist/`; prohibido `'unsafe-inline'` y prohibido `'unsafe-eval'`)
   - `style-src 'self' 'sha256-...'` (sin `'unsafe-inline'`)
@@ -92,11 +92,11 @@ Quedan explícitamente **FUERA** del alcance y prohibidos por contrato:
   - `media-src 'self' https://archive.org https://upload.wikimedia.org https://commons.wikimedia.org`
   - `img-src 'self' data: blob: https://i.ytimg.com https://upload.wikimedia.org`
   - `connect-src 'self'` · `object-src 'none'` · `base-uri 'self'` · `frame-ancestors 'none'`
-  - `require-trusted-types-for 'script'` · `trusted-types default dompurify astro-island`
+  - `require-trusted-types-for 'script'` · `trusted-types default dompurify astro-island` (`default.createHTML` lanza `TypeError`; `default.createScriptURL` restringido a `/sw.js`, `/pagefind/pagefind.js` y `/_astro/*`)
 - **Aislamiento del Tutor Socrático / BYOK (`src/lib/socratic-tutor-sandbox.mjs`):**
   - El contenedor del tutor se ejecuta en `<iframe sandbox="allow-scripts">` (**jamás** `allow-same-origin`), operando con `window.origin === "null"` y sin acceso a `IndexedDB`, `localStorage`, `cookies` ni DOM de la página principal.
-  - Comunicación exclusivamente por `postMessage` validada con esquemas estrictos `Valibot` (`TutorOutboundPromptSchema` / `TutorInboundMessageSchema`).
-  - Todo fragmento renderizado en el documento principal atraviesa `DOMPurify.sanitize(..., { RETURN_TRUSTED_TYPE: true })` en la misma línea del sumidero DOM.
+  - Handshake inicial en fallo cerrado (`event.source === expectedSourceWindow && event.origin === 'null'`) que transfiere un `MessageChannel` dedicado 1:1 (`port1` <-> `port2`), eliminando `postMessage(..., '*')` posterior y validando cada mensaje en `port1` con esquemas estrictos `Valibot` (`TutorOutboundPromptSchema` / `TutorInboundMessageSchema`).
+  - Todo fragmento renderizado en el documento principal usa APIs DOM seguras (`createElement`/`textContent`) o atraviesa la policy `dompurify` con `DOMPurify.sanitize(..., { RETURN_TRUSTED_TYPE: true })`.
 
 ---
 

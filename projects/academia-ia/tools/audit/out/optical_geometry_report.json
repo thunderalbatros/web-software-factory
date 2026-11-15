@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-15T06:16:33.065Z",
+  "generatedAt": "2026-11-15T09:08:15.328Z",
   "project": "academia-ia",
   "complianceProfile": "education",
   "surfaceMode": "Read",
@@ -15,14 +15,14 @@
   "apcaLightLc": 101.2,
   "apcaDarkLc": 99.1,
   "temporal4StagesVerified": true,
-  "lcpMs": 556,
+  "lcpMs": 312,
   "clsScore": 0,
-  "fpsMeasured": 63,
+  "fpsMeasured": 61,
   "cdpPerformanceAndA11y": {
-    "jsHeapUsedMB": 22.53,
-    "layoutDurationMs": 322.33,
-    "recalcStyleDurationMs": 61.69,
-    "axNodeCount": 658,
+    "jsHeapUsedMB": 22.54,
+    "layoutDurationMs": 377.63,
+    "recalcStyleDurationMs": 74.52,
+    "axNodeCount": 663,
     "a11yTreeHealthy": true
   },
   "visualHarmonyAndMotion": {

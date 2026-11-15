@@ -46,6 +46,19 @@ export const VALID_BRAND_IDENTITY_MODES = [
 
 export const VALID_ATMOSPHERE_MODES = ['light-only', 'dark-only', 'dual-theme-toggle'];
 
+function resolvePrdProjectTarget(slugOrDir = 'agencia-alfa', options = {}) {
+  if (options?.projectDir) {
+    const abs = path.resolve(options.projectDir);
+    return { projectDir: abs, slug: path.basename(abs) };
+  }
+  const raw = String(slugOrDir || 'agencia-alfa').trim();
+  if ((path.isAbsolute(raw) || /[\\/]/.test(raw)) && fs.existsSync(path.resolve(raw))) {
+    const abs = path.resolve(raw);
+    return { projectDir: abs, slug: path.basename(abs) };
+  }
+  return { projectDir: path.join(ROOT, 'projects', raw), slug: raw };
+}
+
 /**
  * Builds the structured 7-block payload for Gate #1 (`PRD_INTERVIEW_STATE.json`).
  * New projects always start in `"PENDING_CTO_PRD_INPUT"` unless explicitly approved.
@@ -57,7 +70,12 @@ export function buildDefaultPrdInterviewPayload(
   customOverrides = {}
 ) {
   const arch = resolveIndustryArchetype(industryInput);
-  const sonicSeed = resolveSonicArchetypePreset(industryInput);
+  const isEducation =
+    String(industryInput || '').toLowerCase().trim() === 'education' ||
+    arch.id === 'academic-editorial-education';
+  const sonicSeed = isEducation
+    ? { archetype: 'education', seedId: 'silent-read-mode-education' }
+    : resolveSonicArchetypePreset(industryInput);
   const isLawOrClinic = sonicSeed.archetype === 'abogacia' || sonicSeed.archetype === 'clinica';
   const prettyName = slug
     .split('-')
@@ -73,32 +91,56 @@ export function buildDefaultPrdInterviewPayload(
       officialBrandName: customOverrides.officialBrandName || prettyName || 'Marca Cliente',
       brandTagline:
         customOverrides.brandTagline ||
-        `Soluciones profesionales de alto impacto en ${sonicSeed.archetype}`,
-      industryCategory: sonicSeed.archetype,
+        (isEducation
+          ? `Educación abierta y gratuita de calidad editorial en ${prettyName}`
+          : `Soluciones profesionales de alto impacto en ${sonicSeed.archetype}`),
+      industryCategory: isEducation ? 'education' : sonicSeed.archetype,
       resolvedArchetypeId: arch.id,
       coreOffering:
         customOverrides.coreOffering ||
-        `Servicios y productos especializados de ${prettyName} para clientes exigentes en el rubro ${sonicSeed.archetype}.`,
+        (isEducation
+          ? `Plataforma educativa estática y abierta de ${prettyName} en modo lectura (Read), sin muros de pago ni cuentas obligatorias.`
+          : `Servicios y productos especializados de ${prettyName} para clientes exigentes en el rubro ${sonicSeed.archetype}.`),
       coreProblemSolved:
         customOverrides.coreProblemSolved ||
-        'Elimina la fricción, incertidumbre de precios y demoras operativas ofreciendo respuesta inmediata, autoridad verificable y conversión directa.'
+        (isEducation
+          ? 'Elimina la dispersión, los muros de pago y el rastreo invasivo mediante rutas pedagógicas claras, verificables y accesibles 100% gratis.'
+          : 'Elimina la fricción, incertidumbre de precios y demoras operativas ofreciendo respuesta inmediata, autoridad verificable y conversión directa.')
     },
     block2_target_audience_and_objections: {
       targetDemographic:
         customOverrides.targetDemographic ||
-        'Decisores B2B y compradores calificados de 28 a 58 años en Argentina y LATAM',
-      businessModelType: customOverrides.businessModelType || 'B2B / B2C High-Intent',
+        (isEducation
+          ? 'Estudiantes hispanohablantes, docentes, trabajadores y autodidactas en América Latina y España'
+          : 'Decisores B2B y compradores calificados de 28 a 58 años en Argentina y LATAM'),
+      businessModelType:
+        customOverrides.businessModelType ||
+        (isEducation
+          ? 'Open Educational Platform ($0 Server, Voluntary Donations Without Exclusive Benefits)'
+          : 'B2B / B2C High-Intent'),
       visitContextMobileVsDesktop:
         customOverrides.visitContextMobileVsDesktop ||
-        '65% móvil (consulta rápida y contacto directo por WhatsApp/turno) y 35% desktop (evaluación comparativa detallada)',
-      topThreeBuyerObjections: customOverrides.topThreeBuyerObjections || [
-        '¿Tienen experiencia comprobable y respaldo real en casos similares al mío?',
-        '¿Cuál es el costo transparente, plazo de entrega y garantía sin letra chica?',
-        '¿Qué tan rápido recibo atención humana o solución si surge una urgencia?'
-      ],
+        (isEducation
+          ? '55% lectura móvil en transporte/estudio y 45% práctica interactiva en computadora sin requerir inicio de sesión'
+          : '65% móvil (consulta rápida y contacto directo por WhatsApp/turno) y 35% desktop (evaluación comparativa detallada)'),
+      topThreeBuyerObjections: customOverrides.topThreeBuyerObjections || (
+        isEducation
+          ? [
+              '¿Es realmente 100% gratuito o esconde un muro de pago al avanzar de nivel?',
+              '¿Necesito saber programar o crear una cuenta con mis datos personales para empezar?',
+              '¿Las explicaciones y herramientas recomendadas están verificadas con fuentes primarias abiertas?'
+            ]
+          : [
+              '¿Tienen experiencia comprobable y respaldo real en casos similares al mío?',
+              '¿Cuál es el costo transparente, plazo de entrega y garantía sin letra chica?',
+              '¿Qué tan rápido recibo atención humana o solución si surge una urgencia?'
+            ]
+      ),
       uniqueValueProposition:
         customOverrides.uniqueValueProposition ||
-        `${prettyName} combina atención experta inmediata, resultados auditables y una experiencia digital sin fricción superior a los competidores tradicionales.`
+        (isEducation
+          ? `${prettyName} combina rigor pedagógico UNESCO, privacidad local-first (Ley 25.326), accesibilidad WCAG 2.2 AA+ y laboratorios en el navegador a costo servidor $0.`
+          : `${prettyName} combina atención experta inmediata, resultados auditables y una experiencia digital sin fricción superior a los competidores tradicionales.`)
     },
     block3_existing_brand_identity_lock: {
       brandIdentityMode: defaultBrandMode,
@@ -174,52 +216,111 @@ export function buildDefaultPrdInterviewPayload(
     },
     block5_capabilities_and_cro_goals: {
       primaryCta:
-        customOverrides.primaryCta || 'Solicitar Presupuesto / Agendar Consulta Ahora',
+        customOverrides.primaryCta ||
+        (isEducation
+          ? 'Comenzar Nivel 1 — Adquirir (100% Gratis, Sin Registro)'
+          : 'Solicitar Presupuesto / Agendar Consulta Ahora'),
       primaryCtaChannel:
-        customOverrides.primaryCtaChannel || 'Formulario Calificado + WhatsApp Directo',
+        customOverrides.primaryCtaChannel ||
+        (isEducation
+          ? 'Navegación Directa MPA (/niveles/principiante/) + Progreso Local en Navegador'
+          : 'Formulario Calificado + WhatsApp Directo'),
       secondaryCta:
-        customOverrides.secondaryCta || 'Ver Casos de Éxito y Preguntas Frecuentes',
-      requiredCapabilities: customOverrides.requiredCapabilities || [
-        'Hero de respuesta directa con Propuesta Única de Valor y CTA primario visible sin scroll',
-        'Catálogo / Grilla interactiva de servicios o productos con desglose claro de beneficios',
-        'Bloque de derribo de las 3 objeciones principales y prueba social verificada',
-        'Formulario de contacto validado con integración directa a WhatsApp / CRM'
-      ]
+        customOverrides.secondaryCta ||
+        (isEducation
+          ? 'Explorar Niveles Intermedio y Avanzado'
+          : 'Ver Casos de Éxito y Preguntas Frecuentes'),
+      requiredCapabilities: customOverrides.requiredCapabilities || (
+        isEducation
+          ? [
+              'Columna editorial en modo Read (60ch–70ch, español neutro tú, bloques <= 110 palabras)',
+              'Triangulación de 2 a 3 videos con fachada de privacidad y aviso breve de almacenamiento local',
+              'Micro-explorables en cliente (js-tiktoken BPE, fórmulas Temml MathML 0 KB JS, búsqueda Pagefind)',
+              'Tutor socrático aislado en <iframe sandbox="allow-scripts"> con MessageChannel 1:1, Valibot y DOMPurify TrustedHTML'
+            ]
+          : [
+              'Hero de respuesta directa con Propuesta Única de Valor y CTA primario visible sin scroll',
+              'Catálogo / Grilla interactiva de servicios o productos con desglose claro de beneficios',
+              'Bloque de derribo de las 3 objeciones principales y prueba social verificada',
+              'Formulario de contacto validado con integración directa a WhatsApp / CRM'
+            ]
+      )
     },
     block6_real_assets_social_proof_and_legal: {
-      realMediaAssetsPaths: customOverrides.realMediaAssetsPaths || [
-        'public/assets/brand/logo-primary.svg',
-        'public/assets/brand/isotipo.svg',
-        'public/assets/media/hero-showcase.webp'
-      ],
-      realSocialProof: customOverrides.realSocialProof || [
-        '+150 clientes atendidos con 98% de satisfacción verificada',
-        'Testimonios reales con nombre, cargo y resultados medibles',
-        'Certificaciones profesionales y respaldo institucional verificable'
-      ],
+      realMediaAssetsPaths: customOverrides.realMediaAssetsPaths || (
+        isEducation
+          ? ['public/favicon.svg', 'public/og-image.svg', 'data/academy/project_charter.json']
+          : [
+              'public/assets/brand/logo-primary.svg',
+              'public/assets/brand/isotipo.svg',
+              'public/assets/media/hero-showcase.webp'
+            ]
+      ),
+      realSocialProof: customOverrides.realSocialProof || (
+        isEducation
+          ? [
+              'Fuentes primarias OER y marcos oficiales UNESCO / OCDE verificados con atribución SPDX',
+              'Videos educativos triangulados con marcas de tiempo verificadas y síntesis accesible',
+              'Código bajo licencia MIT y contenido educativo abierto bajo CC-BY-NC-SA-4.0'
+            ]
+          : [
+              '+150 clientes atendidos con 98% de satisfacción verificada',
+              'Testimonios reales con nombre, cargo y resultados medibles',
+              'Certificaciones profesionales y respaldo institucional verificable'
+            ]
+      ),
       languageAndTone:
         customOverrides.languageAndTone ||
-        'Español rioplatense (es-AR) profesional, claro, empático y directo al grano (cero relleno genérico)',
-      mandatoryOperationalData: customOverrides.mandatoryOperationalData || {
-        address: 'Av. del Libertador 1000, CABA, Argentina',
-        phone: '+54 11 4000-0000',
-        whatsapp: '+54 9 11 5000-0000',
-        businessHours: 'Lunes a Viernes de 09:00 a 18:30 hs',
-        socialLinks: ['https://linkedin.com', 'https://instagram.com'],
-        legalEntityName: `${prettyName} S.R.L. — Todos los derechos reservados`
-      }
+        (isEducation
+          ? 'Español neutro internacional (tú), claro, inclusivo y verificable (<= 110 palabras por bloque)'
+          : 'Español rioplatense (es-AR) profesional, claro, empático y directo al grano (cero relleno genérico)'),
+      mandatoryOperationalData: customOverrides.mandatoryOperationalData || (
+        isEducation
+          ? {
+              address: 'Plataforma Educativa Abierta 100% Digital (Sin sede comercial física)',
+              phone: 'N/A (Acceso abierto sin atención telefónica comercial)',
+              whatsapp: 'N/A (Sin captura de leads por mensajería)',
+              businessHours: 'Disponible 24/7 con lectura offline vía PWA MPA ligera',
+              socialLinks: [],
+              legalEntityName: `${prettyName} — Código MIT / Contenido CC-BY-NC-SA-4.0 (Ley 25.326 & Ley 26.653)`
+            }
+          : {
+              address: 'Av. del Libertador 1000, CABA, Argentina',
+              phone: '+54 11 4000-0000',
+              whatsapp: '+54 9 11 5000-0000',
+              businessHours: 'Lunes a Viernes de 09:00 a 18:30 hs',
+              socialLinks: ['https://linkedin.com', 'https://instagram.com'],
+              legalEntityName: `${prettyName} S.R.L. — Todos los derechos reservados`
+            }
+      )
     },
     block7_explicit_non_goals_and_success_metrics: {
-      explicitNonGoals: customOverrides.explicitNonGoals || [
-        'No incluye sistema de facturación AFIP/ARCA embebido en esta fase inicial',
-        'No incluye foro comunitario ni chat en vivo con operadores 24/7 no pactado',
-        'No incluye integraciones con ERPs legados fuera de los endpoints definidos en el alcance'
-      ],
-      expectedSuccessMetrics: customOverrides.expectedSuccessMetrics || [
-        'Claridad de propuesta de valor en menos de 3 segundos (5-Second Test)',
-        'LCP < 1.2s, CLS = 0.00, 60 FPS constantes y puntaje RYUX >= 95/100',
-        'Incremento medible en consultas calificadas / conversiones desde móvil y desktop'
-      ]
+      explicitNonGoals: customOverrides.explicitNonGoals || (
+        isEducation
+          ? [
+              'Prohibido incluir muros de pago, planes Pro, tablas #pricing, publicidad o beneficios exclusivos para donantes',
+              'Prohibido exigir cuentas de usuario en servidor o recolectar datos personales (cumplimiento estricto Ley 25.326)',
+              'Prohibido usar rachas punitivas (streaks), tablas de clasificación (leaderboards) o relleno 3D/sonoro en modo Read'
+            ]
+          : [
+              'No incluye sistema de facturación AFIP/ARCA embebido en esta fase inicial',
+              'No incluye foro comunitario ni chat en vivo con operadores 24/7 no pactado',
+              'No incluye integraciones con ERPs legados fuera de los endpoints definidos en el alcance'
+            ]
+      ),
+      expectedSuccessMetrics: customOverrides.expectedSuccessMetrics || (
+        isEducation
+          ? [
+              '0 violaciones WCAG 2.2 AA en @axe-core/playwright tanto en tema claro como oscuro y contraste APCA Lc >= 85',
+              'LCP <= 1800 ms, CLS = 0.000, jsHeapUsedMB < 64 MB y precache inicial de Service Worker < 250 KB',
+              '0 violaciones CSP/Trusted Types en Chromium real y 100% de autonomía de compilación fuera del monorepo'
+            ]
+          : [
+              'Claridad de propuesta de valor en menos de 3 segundos (5-Second Test)',
+              'LCP < 1.2s, CLS = 0.00, 60 FPS constantes y puntaje RYUX >= 95/100',
+              'Incremento medible en consultas calificadas / conversiones desde móvil y desktop'
+            ]
+      )
     }
   };
 
@@ -258,14 +359,14 @@ export function renderPrdInterviewMarkdown(prdState) {
 ## Bloque 1 — Identidad del Negocio y Necesidad que Resuelve
 - **Nombre Oficial de la Empresa / Marca / Proyecto:** ${b1.officialBrandName}
 - **Eslogan (\`Tagline\`):** ${b1.brandTagline}
-- **Rubro / Categoría Industrial (\`abogacia\`, \`fintech\`, \`erp\`, \`ecommerce\`, \`streamer\`, \`clinica\`, \`saas\`, \`lujo\`):** \`${b1.industryCategory}\`
+- **Rubro / Categoría Industrial (\`abogacia\`, \`fintech\`, \`erp\`, \`ecommerce\`, \`streamer\`, \`clinica\`, \`saas\`, \`lujo\`, \`education\`):** \`${b1.industryCategory}\`
 - **¿Qué vende u ofrece exactamente?:** ${b1.coreOffering}
 - **¿Qué necesidad, dolor o problema concreto le resuelve este sitio web a sus usuarios o clientes?:** ${b1.coreProblemSolved}
 
 ---
 
 ## Bloque 2 — Público Objetivo, Psicología del Comprador y Diferenciación
-- **Perfil del Público Objetivo:** ${b2.targetDemographic} (${b2.businessModelType})
+- **Perfil del Público Objetivo:** ${b2.targetDemographic}${b2.businessModelType && !String(b2.targetDemographic || '').includes(b2.businessModelType) ? ` (${b2.businessModelType})` : ''}
 - **Contexto de Visita (Urgencia Móvil vs. Análisis en Desktop):** ${b2.visitContextMobileVsDesktop}
 - **Las 3 Principales Dudas u Objeciones antes de comprar o contratar:**
 ${b2.topThreeBuyerObjections.map((obj, idx) => `  ${idx + 1}. ${obj}`).join('\n')}
@@ -339,8 +440,8 @@ ${b7.expectedSuccessMetrics.map((m) => `  - ${m}`).join('\n')}
  * Creates `ENTREVISTA_1_PRD_Y_MARCA.md` and `PRD_INTERVIEW_STATE.json` in `projects/<slug>/`.
  * By default starts in `"PENDING_CTO_PRD_INPUT"` unless `options.autoApprove === true`.
  */
-export function initPrdInterviewFiles(slug = 'agencia-alfa', industryInput = 'saas', options = {}) {
-  const projectDir = path.join(ROOT, 'projects', slug);
+export function initPrdInterviewFiles(slugOrDir = 'agencia-alfa', industryInput = 'saas', options = {}) {
+  const { projectDir, slug } = resolvePrdProjectTarget(slugOrDir, options);
   fs.mkdirSync(projectDir, { recursive: true });
 
   const stateJsonPath = path.join(projectDir, 'PRD_INTERVIEW_STATE.json');
@@ -468,20 +569,20 @@ export function validatePrdBlocksCompleteness(prdState) {
  * Verifies Gate #1 (`PRD_INTERVIEW_STATE.json` + `PRD_LEAN.md` + `BRAND_IDENTITY_LOCK.json`).
  * Returns `HARD_STOP_PRD_INTERVIEW_REQUIRED` if not completed and approved by the CTO.
  */
-export function verifyPrdInterviewGate(slug = 'agencia-alfa', industryFallback = 'saas') {
-  const projectDir = path.join(ROOT, 'projects', slug);
+export function verifyPrdInterviewGate(slugOrDir = 'agencia-alfa', industryFallback = 'saas', options = {}) {
+  const { projectDir, slug } = resolvePrdProjectTarget(slugOrDir, options);
   const stateJsonPath = path.join(projectDir, 'PRD_INTERVIEW_STATE.json');
   const mdPath = path.join(projectDir, 'ENTREVISTA_1_PRD_Y_MARCA.md');
   const prdLeanPath = path.join(projectDir, 'PRD_LEAN.md');
   const brandLockPath = path.join(projectDir, 'BRAND_IDENTITY_LOCK.json');
 
   // Ensure the internal diagnostic reference project `agencia-alfa` is pre-sealed so CI runs cleanly
-  if (slug === 'agencia-alfa' && (!fs.existsSync(stateJsonPath) || !fs.existsSync(prdLeanPath) || !fs.existsSync(brandLockPath))) {
+  if (slug === 'agencia-alfa' && path.resolve(projectDir) === path.join(ROOT, 'projects', 'agencia-alfa') && (!fs.existsSync(stateJsonPath) || !fs.existsSync(prdLeanPath) || !fs.existsSync(brandLockPath))) {
     compilePrdLeanAndBrandLock('agencia-alfa', { approve: true, industry: industryFallback });
   }
 
   if (!fs.existsSync(stateJsonPath)) {
-    const initialized = initPrdInterviewFiles(slug, industryFallback, { autoApprove: false });
+    const initialized = initPrdInterviewFiles(slug, industryFallback, { autoApprove: false, projectDir });
     return {
       passed: false,
       code: 'HARD_STOP_PRD_INTERVIEW_REQUIRED',
@@ -513,7 +614,7 @@ export function verifyPrdInterviewGate(slug = 'agencia-alfa', industryFallback =
     }
 
     if (!fs.existsSync(prdLeanPath) || !fs.existsSync(brandLockPath)) {
-      compilePrdLeanAndBrandLock(slug, { approve: true, industry: industryFallback });
+      compilePrdLeanAndBrandLock(slug, { approve: true, industry: industryFallback, projectDir });
     }
 
     return {
@@ -590,12 +691,16 @@ export function parseEditedPrdMarkdownIntoState(mdContent = '', currentState = {
   // Bloque 2
   const demoLine = matchField('Perfil del P[úu]blico Objetivo');
   if (demoLine) {
-    const mDemo = demoLine.match(/^(.*?)\s*\(([^()]+)\)\s*$/);
-    if (mDemo) {
-      b2.targetDemographic = mDemo[1].trim();
-      b2.businessModelType = mDemo[2].trim();
+    if (b2.businessModelType && demoLine.endsWith(`(${b2.businessModelType})`)) {
+      b2.targetDemographic = demoLine.slice(0, -(`(${b2.businessModelType})`.length)).trim();
     } else {
-      b2.targetDemographic = demoLine;
+      const mDemo = demoLine.match(/^(.*?)\s*\(([^()]+)\)\s*$/);
+      if (mDemo) {
+        b2.targetDemographic = mDemo[1].trim();
+        b2.businessModelType = mDemo[2].trim();
+      } else {
+        b2.targetDemographic = demoLine;
+      }
     }
   }
   const visitCtx = matchField('Contexto de Visita \\(Urgencia M[óo]vil vs\\. An[áa]lisis en Desktop\\)');
@@ -734,8 +839,8 @@ export function parseEditedPrdMarkdownIntoState(mdContent = '', currentState = {
  * Compiles `PRD_LEAN.md` (synchronized with `PRODUCT.md`) and `BRAND_IDENTITY_LOCK.json`
  * once the CTO completes and approves Gate #1 (`ENTREVISTA_1_PRD_Y_MARCA.md`).
  */
-export function compilePrdLeanAndBrandLock(slug = 'agencia-alfa', options = {}) {
-  const projectDir = path.join(ROOT, 'projects', slug);
+export function compilePrdLeanAndBrandLock(slugOrDir = 'agencia-alfa', options = {}) {
+  const { projectDir, slug } = resolvePrdProjectTarget(slugOrDir, options);
   const stateJsonPath = path.join(projectDir, 'PRD_INTERVIEW_STATE.json');
   const mdPath = path.join(projectDir, 'ENTREVISTA_1_PRD_Y_MARCA.md');
   const prdLeanPath = path.join(projectDir, 'PRD_LEAN.md');
@@ -748,13 +853,15 @@ export function compilePrdLeanAndBrandLock(slug = 'agencia-alfa', options = {}) 
   if (!fs.existsSync(stateJsonPath)) {
     initPrdInterviewFiles(slug, options.industry || 'saas', {
       autoApprove: Boolean(options.approve),
-      customOverrides: options.customOverrides || {}
+      customOverrides: options.customOverrides || {},
+      projectDir
     });
   } else if (options.customOverrides && typeof options.customOverrides === 'object') {
     initPrdInterviewFiles(slug, options.industry || 'saas', {
       autoApprove: Boolean(options.approve),
       overwrite: true,
-      customOverrides: options.customOverrides
+      customOverrides: options.customOverrides,
+      projectDir
     });
   }
 

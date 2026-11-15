@@ -9,7 +9,7 @@
 ## Bloque 1 — Identidad del Negocio y Necesidad que Resuelve
 - **Nombre Oficial de la Empresa / Marca / Proyecto:** Agencia Alfa
 - **Eslogan (`Tagline`):** Soluciones profesionales de alto impacto en saas
-- **Rubro / Categoría Industrial (`abogacia`, `fintech`, `erp`, `ecommerce`, `streamer`, `clinica`, `saas`, `lujo`):** `saas`
+- **Rubro / Categoría Industrial (`abogacia`, `fintech`, `erp`, `ecommerce`, `streamer`, `clinica`, `saas`, `lujo`, `education`):** `saas`
 - **¿Qué vende u ofrece exactamente?:** Servicios y productos especializados de Agencia Alfa para clientes exigentes en el rubro saas.
 - **¿Qué necesidad, dolor o problema concreto le resuelve este sitio web a sus usuarios o clientes?:** Elimina la fricción, incertidumbre de precios y demoras operativas ofreciendo respuesta inmediata, autoridad verificable y conversión directa.
 

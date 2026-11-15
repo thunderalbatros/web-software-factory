@@ -2,13 +2,16 @@
   "schemaVersion": "2026.36.1",
   "gateId": "GATE_2_TECHNICAL_SPEC_AND_DESIGN",
   "projectSlug": "agencia-alfa",
+  "complianceProfile": "standard-web",
+  "industryArchetype": "saas",
+  "surfaceMode": "Persuade",
   "status": "COMPLETED_BY_CTO",
   "specInterviewStatus": "COMPLETED_BY_CTO",
   "prdReferenceStatus": "COMPLETED_BY_CTO",
   "brandIdentityMode": "PARTIAL_BRAND_EVOLUTION",
   "lockClientPalette": false,
-  "createdAt": "2026-11-15T06:45:26.511Z",
-  "approvedAt": "2026-11-15T06:45:26.511Z",
+  "createdAt": "2026-11-15T09:18:34.750Z",
+  "approvedAt": "2026-11-15T09:18:34.750Z",
   "approvedBy": "CTO_HITL_APPROVED",
   "blocks": {
     "block1_pages_and_dom_architecture": {
@@ -93,6 +96,7 @@
     },
     "block6_webgpu_3d_glb_and_shaders": {
       "forge3dMode": "shader-hero",
+      "uses3dOrShaderInHero": true,
       "use3dTiltCards": true,
       "useWebGpuDiorama": false,
       "canvas3TimestampHistogramWatchdog": true
@@ -190,6 +194,7 @@
     },
     "block5_motion_webgpu_shaders": {
       "animationLevel": "spring-fluid-60fps",
+      "uses3dOrShaderInHero": true,
       "use3dTiltCards": true,
       "useWebGpuDiorama": false,
       "useViewTransitionsApi": true,
@@ -204,6 +209,7 @@
       "backgroundMusic": "off",
       "introVideoMode": "vector-svg-reveal-3s",
       "sonicSeedId": "linear-minimal-tick",
+      "exportReaperRppSession": true,
       "requiresVisibleMuteButton": true,
       "autoplayBlockedUntilGesture": true
     },

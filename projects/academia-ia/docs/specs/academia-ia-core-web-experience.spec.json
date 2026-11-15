@@ -6,27 +6,28 @@
     "archetype": "education",
     "slug": "academia-ia-core-web-experience",
     "title": "Academia Ia Core Web Experience",
-    "created_at": "2026-11-15T05:28:42.540Z",
+    "created_at": "2026-11-15T08:21:32.882Z",
     "author_role": "Squad 0 — Product Spec Agent",
     "problem_statement": "Open-access static educational platform for Academia Ia (Surface Mode: Read, strict CSP + Trusted Types).",
     "target_users": [
       "Estudiantes Hispanohablantes",
       "Autodidactas y Profesionales",
-      "Docentes"
+      "Docentes e Investigadores"
     ],
     "user_experience": {
-      "primary_flow": "User triggers action from UI -> System responds with <100ms INP tactile feedback and deterministic state updates.",
+      "primary_flow": "Learner navigates MPA curriculum -> reads 65ch lesson, explores Pagefind index, and practices in isolated 1:1 MessageChannel sandbox with local browser progress.",
       "error_states": [
-        "Network offline / degraded",
-        "Invalid user input validation",
-        "Rate limit exceeded (HTTP 429)"
+        "Offline navigation served from lightweight MPA Service Worker cache (< 250 KB precache)",
+        "Invalid user input rejected by Valibot schema validation",
+        "Sandboxed tutor MessageChannel schema mismatch rejected fail-closed"
       ],
       "visual_theme": "OKLCH 90/8/2 Editorial Read Mode (65ch) + 3 Semantic Level Accents + WCAG 2.2 AA+"
     },
     "acceptance_criteria": [
       "Zero UI layout thrashing or horizontal overflow across 1440px, 768px, and 390px viewports.",
       "100% WCAG 2.2 AA accessibility compliance (semantic landmarks <main>, <nav>, ARIA labels, APCA contrast).",
-      "Zero inline executable <script> blocks or inline onclick handlers (strict CSP compliance)."
+      "Zero inline executable <script> blocks or inline onclick handlers (strict CSP compliance).",
+      "100% static Read-mode architecture (0 backend Worker API endpoints, Trusted Types enforced, 1:1 MessageChannel tutor sandbox)."
     ]
   },
   "techSpec": {
@@ -36,23 +37,22 @@
     "stack": "astro-edge",
     "slug": "academia-ia-core-web-experience",
     "title": "Academia Ia Core Web Experience — Architecture & Technical Spec",
-    "created_at": "2026-11-15T05:28:42.540Z",
+    "created_at": "2026-11-15T08:21:32.882Z",
     "author_role": "Squad 2 — Technical Architecture Droid",
-    "architecture_tier": "Astro 7.4 Static + Cloudflare Workers Static Assets ($0 Server)",
+    "architecture_tier": "Astro 7.4.11 Static + Cloudflare Workers Static Assets ($0.00 USD Server)",
     "data_contracts": {
       "storage_keys": [
-        "academia-ia_academia-ia-core-web-experience_state"
+        "academia_ia_theme_v1",
+        "academia_ia_progress_v1",
+        "academia_ia_xp_v1"
       ],
-      "event_bus": "academia-ia:academia-ia-core-web-experience-event",
-      "api_endpoints": [
-        "/api/academia-ia-core-web-experience/state",
-        "/api/academia-ia-core-web-experience/action"
-      ]
+      "event_bus": "MessageChannel (1:1 sandbox=\"allow-scripts\")",
+      "api_endpoints": []
     },
     "security_invariants": [
-      "Untrusted input rendered strictly via textContent or escaped template literals.",
-      "Zero eval() or new Function() calls.",
-      "All remote network calls protected by AbortSignal.timeout(2500-3500ms)."
+      "Trusted Types enforced: default.createHTML throws TypeError; dynamic HTML sanitized via DOMPurify (RETURN_TRUSTED_TYPE: true) or safe DOM APIs.",
+      "Zero eval() or new Function() calls; strict CSP generated deterministically from src/lib/csp-builder.mjs.",
+      "Sandboxed tutor communicates over dedicated 1:1 MessageChannel validated with Valibot (0 backend endpoints)."
     ],
     "verification_harness": {
       "gate_command": "node tools/factory.mjs gate --project academia-ia",

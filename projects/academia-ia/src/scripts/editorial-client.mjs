@@ -223,7 +223,7 @@ function initPagefindSearch() {
   const status = wrap.querySelector('[data-pagefind-status]');
   if (!input || !list || !status) return;
 
-  let pagefindMod = null;
+  let pagefindClient = null;
   input.addEventListener('input', async () => {
     const query = String(input.value || '').trim();
     if (query.length < 2) {
@@ -232,14 +232,20 @@ function initPagefindSearch() {
       return;
     }
     try {
-      if (!pagefindMod) {
+      if (!pagefindClient) {
         const pfUrl = new URL('/pagefind/pagefind.js', window.location.origin).href;
-        pagefindMod = await import(/* @vite-ignore */ pfUrl);
-        if (typeof pagefindMod.init === 'function') {
-          await pagefindMod.init();
+        const pagefindMod = await import(/* @vite-ignore */ pfUrl);
+        if (typeof pagefindMod.createInstance === 'function') {
+          pagefindClient = pagefindMod.createInstance({ noWorker: true, basePath: '/pagefind/' });
+          await pagefindClient.init();
+        } else {
+          pagefindClient = pagefindMod;
+          if (typeof pagefindClient.init === 'function') {
+            await pagefindClient.init();
+          }
         }
       }
-      const searchRes = await pagefindMod.search(query);
+      const searchRes = await pagefindClient.search(query);
       const topItems = await Promise.all((searchRes.results || []).slice(0, 4).map((r) => r.data()));
       status.textContent = `Resultados encontrados: ${searchRes.results.length}`;
       const nodes = topItems.map((item) => {

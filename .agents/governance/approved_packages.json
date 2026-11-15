@@ -2,7 +2,8 @@
   "$schema": "./schemas/approved-packages-v1.json",
   "version": "2026.11.15",
   "policy": "ZERO_TRUST_ANTI_SLOPSQUATTING",
-  "forbidFloatingVersions": ["*", "latest", "next", "canary", "x"],
+  "forbidFloatingVersions": ["*", "latest", "next", "canary", "x", "^", "~"],
+  "enforceExactPinnedVersions": true,
   "requireLockfile": true,
   "requireSubresourceIntegrity": true,
   "approvedPackages": [

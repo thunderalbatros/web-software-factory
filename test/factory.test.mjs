@@ -1658,6 +1658,236 @@ test('Stage 3C — cognitive_ux_auditor and evaluateCybersecurityTrafficLight ad
   assert.equal(cyberLight.color, 'VERDE');
 });
 
+// ============================================================================
+// 29. STAGE 3C.1 — 1:1 MESSAGECHANNEL FAIL-CLOSED HANDSHAKE, PARITY & ZERO '../..'
+// ============================================================================
+test('Stage 3C.1 — fail-closed tutor handshake, 1:1 MessageChannel Valibot guard, SHA-256 parity, and zero ../.. imports', async () => {
+  const tutor = await import('../tools/lib/socratic_tutor_sandbox.mjs');
+
+  // Fail-closed when expectedSourceWindow is null or mismatched ([M-02])
+  const missingSource = tutor.validateTutorInboundPostMessage(
+    {
+      origin: 'null',
+      source: {},
+      data: {
+        channel: 'ACADEMIA_TUTOR_V1',
+        type: 'TUTOR_SANDBOX_READY',
+        sandboxOrigin: 'null',
+        storageBlocked: true,
+        parentDomBlocked: true
+      }
+    },
+    null
+  );
+  assert.equal(missingSource.ok, false);
+  assert.equal(missingSource.reason, 'UNTRUSTED_MESSAGE_SOURCE_WINDOW');
+
+  const validPortMsg = tutor.validateTutorChannelPortMessage({
+    data: {
+      channel: 'ACADEMIA_TUTOR_V1',
+      type: 'TUTOR_HINT_RESPONSE',
+      requestId: 'req-test-001',
+      lessonId: 'intermedio-leccion-01',
+      hintStep: 1,
+      htmlFragment: '<p><strong>Pista 1:</strong> revisa los tokens.</p>',
+      sandboxOrigin: 'null',
+      storageBlocked: true
+    }
+  });
+  assert.equal(validPortMsg.ok, true);
+
+  const invalidPortMsg = tutor.validateTutorChannelPortMessage({
+    data: {
+      channel: 'ACADEMIA_TUTOR_V1',
+      type: 'TUTOR_HINT_RESPONSE',
+      requestId: 'bad',
+      lessonId: '../traversal',
+      hintStep: 99
+    }
+  });
+  assert.equal(invalidPortMsg.ok, false);
+
+  // Verify SHA-256 parity between templates/astro-edge/src/lib and projects/academia-ia/src/lib ([B-02])
+  for (const modName of ['csp-builder.mjs', 'socratic-tutor-sandbox.mjs']) {
+    const tplBuf = fs.readFileSync(path.join(FACTORY_ROOT, 'templates', 'astro-edge', 'src', 'lib', modName));
+    const projBuf = fs.readFileSync(path.join(FACTORY_ROOT, 'projects', 'academia-ia', 'src', 'lib', modName));
+    const tplSha = crypto.createHash('sha256').update(tplBuf).digest('hex');
+    const projSha = crypto.createHash('sha256').update(projBuf).digest('hex');
+    assert.equal(projSha, tplSha, `SHA-256 mismatch for ${modName}`);
+    assert.equal(tplBuf.toString('utf8').includes('../..'), false, `${modName} must have 0 parent-monorepo '../..' paths`);
+  }
+
+  // Verify zero parent-monorepo escapes across projects/academia-ia source/config files
+  const academiaRoot = path.resolve(FACTORY_ROOT, 'projects', 'academia-ia');
+  const scanDir = (dir, out = []) => {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      if (['node_modules', 'dist', '.astro'].includes(entry.name)) continue;
+      const full = path.join(dir, entry.name);
+      if (entry.isDirectory()) scanDir(full, out);
+      else if (/\.(?:mjs|js|ts|astro|json|toml)$/.test(entry.name)) out.push(full);
+    }
+    return out;
+  };
+  for (const file of scanDir(academiaRoot)) {
+    const content = fs.readFileSync(file, 'utf8');
+    const relMatches = [...content.matchAll(/['"`]((?:\.\.\/)+[A-Za-z0-9_.*\/-]+)['"`]/g)].map((m) => m[1]);
+    for (const relRef of relMatches) {
+      const resolvedRef = path.resolve(path.dirname(file), relRef);
+      const insideProject =
+        resolvedRef === academiaRoot || resolvedRef.startsWith(academiaRoot + path.sep);
+      assert.equal(
+        insideProject,
+        true,
+        `Relative reference "${relRef}" in ${path.relative(FACTORY_ROOT, file)} escapes project root -> ${resolvedRef}`
+      );
+    }
+  }
+});
+
+// ============================================================================
+// 30. STAGE 3C.1 — STANDALONE AUTONOMY IN OS.TMPDIR(), STATIC DELIVERABLE & GATE #2 ANTI-BOMB
+// ============================================================================
+test('Stage 3C.1 — isolated os.tmpdir() astro build, static exportStandaloneDeliverable (<250KB PWA), and Gate #2 Read preservation', async () => {
+  const { execFileSync } = await import('node:child_process');
+  const { loadProjectConfig } = await import('../tools/project_loader.mjs');
+  const { exportStandaloneDeliverable } = await import('../tools/build_dist.mjs');
+  const { compilePrdLeanAndBrandLock } = await import('../tools/orchestrator/lean_prd_architect.mjs');
+  const { compileSpecFromInterview } = await import('../tools/orchestrator/client_interview_gate.mjs');
+  const { runRyuxDesignGate } = await import('../tools/audit/ryux_design_gate.mjs');
+  const { runSecurityQuarantineGate } = await import('../tools/audit/security_gate.mjs');
+  const { verifyPackageAllowlist } = await import('../tools/supply_chain_guard.mjs');
+
+  // 1. Supply-chain floating range guard rejects ^ and ~ ([M-01])
+  const tmpSca = fs.mkdtempSync(path.join(os.tmpdir(), 'wf-sca-range-'));
+  try {
+    fs.writeFileSync(
+      path.join(tmpSca, 'package.json'),
+      JSON.stringify({ name: 'sca-probe', dependencies: { valibot: '^1.5.0', dompurify: '~3.4.18' } }, null, 2),
+      'utf8'
+    );
+    const scaRes = verifyPackageAllowlist(tmpSca);
+    assert.equal(scaRes.passed, false);
+    assert.equal(scaRes.issues.filter((i) => i.rule === 'FLOATING_OR_UNPINNED_VERSION').length, 2);
+  } finally {
+    fs.rmSync(tmpSca, { recursive: true, force: true });
+  }
+
+  // 2. Copy projects/academia-ia outside monorepo to os.tmpdir() with junction to node_modules ([B-02], [A-01], [A-02])
+  const tmpWs = fs.mkdtempSync(path.join(os.tmpdir(), 'wf-standalone-academia-'));
+  const tmpProj = path.join(tmpWs, 'academia-ia');
+  const tmpDeliverable = path.join(tmpWs, 'deliverable-academia-ia');
+  const prevAllowExternal = process.env.ALLOW_EXTERNAL_PROJECT_ROOT;
+  process.env.ALLOW_EXTERNAL_PROJECT_ROOT = 'true';
+  try {
+    const srcProj = path.join(FACTORY_ROOT, 'projects', 'academia-ia');
+    fs.cpSync(srcProj, tmpProj, {
+      recursive: true,
+      filter: (src) => {
+        const rel = path.relative(srcProj, src).replace(/\\/g, '/');
+        if (!rel) return true;
+        const first = rel.split('/')[0];
+        return first !== 'node_modules' && first !== 'dist' && first !== '.astro';
+      }
+    });
+    fs.symlinkSync(
+      path.join(srcProj, 'node_modules'),
+      path.join(tmpProj, 'node_modules'),
+      process.platform === 'win32' ? 'junction' : 'dir'
+    );
+
+    // Run real astro build in os.tmpdir() where ../../tools and ../../data DO NOT EXIST
+    const astroCli = path.join(tmpProj, 'node_modules', 'astro', 'bin', 'astro.mjs');
+    execFileSync(process.execPath, [astroCli, 'build'], {
+      cwd: tmpProj,
+      stdio: 'pipe',
+      env: { ...process.env, ASTRO_TELEMETRY_DISABLED: '1' }
+    });
+
+    assert.equal(fs.existsSync(path.join(tmpProj, 'dist', 'index.html')), true);
+    assert.equal(fs.existsSync(path.join(tmpProj, 'dist', '_headers')), true);
+
+    // Verify MPA Service Worker precache < 250 KB and 0 NavigationRoute ([A-02])
+    const swRaw = fs.readFileSync(path.join(tmpProj, 'dist', 'sw.js'), 'utf8');
+    assert.equal(/\bNavigationRoute\b/.test(swRaw), false, 'MPA sw.js must not register SPA NavigationRoute');
+    const precacheUrls = [
+      ...new Set(
+        [...swRaw.matchAll(/["'`]?url["'`]?\s*:\s*["'`]([^"'`]+)["'`]/g)].map((m) => m[1].replace(/^\/+/, ''))
+      )
+    ];
+    let precacheBytes = 0;
+    for (const u of precacheUrls) {
+      let f = path.join(tmpProj, 'dist', u);
+      if (fs.existsSync(f) && fs.statSync(f).isDirectory()) {
+        f = path.join(f, 'index.html');
+      }
+      if (fs.existsSync(f) && fs.statSync(f).isFile()) precacheBytes += fs.statSync(f).size;
+      assert.equal(/cl100k_base/i.test(u), false, 'cl100k_base dictionary must not be precached');
+      assert.equal(/(?:^|\/)pagefind\//i.test(u), false, 'pagefind index must not be precached');
+    }
+    assert.ok(precacheBytes > 0 && precacheBytes < 250 * 1024, `Expected precache < 250 KB, got ${precacheBytes} B`);
+
+    // Verify exportStandaloneDeliverable() produces static bundle without worker/index.js ([A-01])
+    const tmpCfg = loadProjectConfig(tmpProj);
+    const exported = exportStandaloneDeliverable(tmpCfg, { outDir: tmpDeliverable });
+    assert.equal(exported.isStaticWithoutWorker, true);
+    assert.equal(fs.existsSync(path.join(tmpDeliverable, 'worker', 'index.js')), false);
+    const exportedWrangler = fs.readFileSync(path.join(tmpDeliverable, 'wrangler.toml'), 'utf8');
+    assert.match(exportedWrangler, /directory\s*=\s*"\.\/dist"/);
+    assert.match(exportedWrangler, /not_found_handling\s*=\s*"404-page"/);
+    assert.equal(/\bmain\s*=/.test(exportedWrangler), false);
+    assert.equal(fs.existsSync(path.join(tmpDeliverable, 'dist', 'llms.txt')), true);
+    assert.equal(fs.existsSync(path.join(tmpDeliverable, 'dist', 'llms-full.txt')), true);
+    const exportedOg = fs.readFileSync(path.join(tmpDeliverable, 'dist', 'og-image.svg'), 'utf8');
+    assert.match(exportedOg, /Academia IA/);
+    assert.equal(/Agencia Alfa/i.test(exportedOg), false);
+
+    // 3. Anti-bomb Gate #2 test on os.tmpdir() copy ([B-01]): compileSpecFromInterview preserves Read mode & 100/100 gates
+    compilePrdLeanAndBrandLock('academia-ia', {
+      approve: true,
+      industry: 'education',
+      projectDir: tmpProj
+    });
+    const gate2Res = compileSpecFromInterview('academia-ia', {
+      approve: true,
+      industry: 'education',
+      refreshFromPrd: true,
+      projectDir: tmpProj
+    });
+    assert.equal(gate2Res.passed, true);
+    const compiledSpec = fs.readFileSync(path.join(tmpProj, 'SPEC.md'), 'utf8');
+    const compiledDesign = fs.readFileSync(path.join(tmpProj, 'DESIGN.md'), 'utf8');
+    const compiledInterview2 = fs.readFileSync(path.join(tmpProj, 'ENTREVISTA_2_SPEC_TECNICO.md'), 'utf8');
+    assert.match(compiledInterview2, /Static JSON \(data\/academy\/\*\.json\)/);
+    assert.match(compiledSpec, /COMPLETED_BY_CTO/);
+    assert.match(compiledSpec, /data\/academy\/\*\.json/);
+    assert.equal(compiledSpec.includes('/api/leads'), false);
+    assert.equal(compiledSpec.includes('LeadCaptureFormSchema'), false);
+    assert.match(compiledDesign, /surfaceMode:\s*"Read"/);
+    assert.equal(/pbrMaterial|cameraFov|Sonic & Video Identity/i.test(compiledDesign), false);
+
+    const ryuxAfterGate2 = runRyuxDesignGate(tmpCfg);
+    assert.equal(ryuxAfterGate2.passed, true, JSON.stringify(ryuxAfterGate2.blockers));
+    assert.equal(ryuxAfterGate2.score, 100);
+
+    const secAfterGate2 = runSecurityQuarantineGate({ fast: true, projectDir: tmpProj });
+    assert.equal(secAfterGate2.passed, true, JSON.stringify(secAfterGate2.reasons));
+    assert.equal(secAfterGate2.score, 100);
+
+    // Confirm repo contracts in projects/academia-ia remain strictly unapproved (null)
+    const repoBrief = JSON.parse(fs.readFileSync(path.join(srcProj, 'CLIENT_BRIEF_INTERVIEW.json'), 'utf8'));
+    const repoPrdState = JSON.parse(fs.readFileSync(path.join(srcProj, 'PRD_INTERVIEW_STATE.json'), 'utf8'));
+    const repoBrandLock = JSON.parse(fs.readFileSync(path.join(srcProj, 'BRAND_IDENTITY_LOCK.json'), 'utf8'));
+    assert.equal(repoBrief.approvedBy, null);
+    assert.equal(repoPrdState.approvedBy, null);
+    assert.equal(repoBrandLock.approvedBy, null);
+  } finally {
+    if (prevAllowExternal === undefined) delete process.env.ALLOW_EXTERNAL_PROJECT_ROOT;
+    else process.env.ALLOW_EXTERNAL_PROJECT_ROOT = prevAllowExternal;
+    fs.rmSync(tmpWs, { recursive: true, force: true });
+  }
+});
+
+
 
 
 

@@ -145,75 +145,83 @@ export function auditEdgeWorkersAndDist(rootDir = ROOT, options = {}) {
   const workerPaths = [];
   const staticEducationProjects = [];
   const filterProjectSlug = options.projectSlug ? String(options.projectSlug).trim() : '';
+  const explicitProjectDir = options.projectDir ? path.resolve(String(options.projectDir)) : '';
 
-  for (const baseFolder of ['templates', 'projects']) {
-    if (filterProjectSlug && baseFolder === 'templates') continue;
-    const absBase = path.join(rootDir, baseFolder);
-    if (!fs.existsSync(absBase)) continue;
-    for (const entry of fs.readdirSync(absBase, { withFileTypes: true })) {
-      if (!entry.isDirectory()) continue;
-      if (filterProjectSlug && baseFolder === 'projects' && entry.name !== filterProjectSlug) continue;
+  const inspectProjectDir = (projDir, labelName, isProjectEntry = true) => {
+    const manifestPath = path.join(projDir, 'factory.project.json');
+    let complianceProfile = 'standard-web';
+    if (fs.existsSync(manifestPath)) {
+      try {
+        const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+        complianceProfile =
+          manifest.complianceProfile || (manifest.archetype === 'education' ? 'education' : 'standard-web');
+      } catch (_) {}
+    }
 
-      const projDir = path.join(absBase, entry.name);
-      const manifestPath = path.join(projDir, 'factory.project.json');
-      let complianceProfile = 'standard-web';
-      if (fs.existsSync(manifestPath)) {
-        try {
-          const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
-          complianceProfile = manifest.complianceProfile || (manifest.archetype === 'education' ? 'education' : 'standard-web');
-        } catch (_) {}
+    const candidateWorker = path.join(projDir, 'worker', 'index.js');
+    if (fs.existsSync(candidateWorker)) {
+      workerPaths.push(candidateWorker);
+    } else if (isProjectEntry && complianceProfile === 'education') {
+      staticEducationProjects.push(projDir);
+      const pubHeadersPath = path.join(projDir, 'public', '_headers');
+      if (!fs.existsSync(pubHeadersPath)) {
+        issues.push(`[EDU-STATIC-CSP] ${labelName}/public/_headers ausente en proyecto estático education.`);
+      } else {
+        const pubRaw = fs.readFileSync(pubHeadersPath, 'utf8');
+        if (hasStandaloneUnsafeEval(pubRaw)) {
+          issues.push(`[EDU-STATIC-CSP] ${labelName}/public/_headers contiene el token prohibido 'unsafe-eval'.`);
+        }
+        const headerCheck = validateHeadersForProfile(pubRaw, 'education');
+        if (!headerCheck.valid) {
+          for (const errMsg of headerCheck.issues) {
+            issues.push(`[EDU-STATIC-CSP] ${labelName}/public/_headers: ${errMsg}`);
+          }
+        }
       }
+    }
 
-      const candidateWorker = path.join(projDir, 'worker', 'index.js');
-      if (fs.existsSync(candidateWorker)) {
-        workerPaths.push(candidateWorker);
-      } else if (baseFolder === 'projects' && complianceProfile === 'education') {
-        staticEducationProjects.push(projDir);
-        const pubHeadersPath = path.join(projDir, 'public', '_headers');
-        if (!fs.existsSync(pubHeadersPath)) {
-          issues.push(`[EDU-STATIC-CSP] ${entry.name}/public/_headers ausente en proyecto estático education.`);
+    const distDir = path.join(projDir, 'dist');
+    if (fs.existsSync(distDir)) {
+      if (isProjectEntry && complianceProfile === 'education') {
+        const distHeadersPath = path.join(distDir, '_headers');
+        if (!fs.existsSync(distHeadersPath)) {
+          issues.push(`[EDU-STATIC-DIST] ${labelName}/dist/_headers ausente tras el build estático.`);
         } else {
-          const pubRaw = fs.readFileSync(pubHeadersPath, 'utf8');
-          if (hasStandaloneUnsafeEval(pubRaw)) {
-            issues.push(`[EDU-STATIC-CSP] ${entry.name}/public/_headers contiene el token prohibido 'unsafe-eval'.`);
-          }
-          const headerCheck = validateHeadersForProfile(pubRaw, 'education');
-          if (!headerCheck.valid) {
-            for (const errMsg of headerCheck.issues) {
-              issues.push(`[EDU-STATIC-CSP] ${entry.name}/public/_headers: ${errMsg}`);
+          const distRaw = fs.readFileSync(distHeadersPath, 'utf8');
+          const distCheck = validateHeadersForProfile(distRaw, 'education');
+          if (!distCheck.valid) {
+            for (const errMsg of distCheck.issues) {
+              issues.push(`[EDU-STATIC-DIST] ${labelName}/dist/_headers: ${errMsg}`);
             }
           }
         }
       }
 
-      const distDir = path.join(projDir, 'dist');
-      if (fs.existsSync(distDir)) {
-        if (baseFolder === 'projects' && complianceProfile === 'education') {
-          const distHeadersPath = path.join(distDir, '_headers');
-          if (!fs.existsSync(distHeadersPath)) {
-            issues.push(`[EDU-STATIC-DIST] ${entry.name}/dist/_headers ausente tras el build estático.`);
-          } else {
-            const distRaw = fs.readFileSync(distHeadersPath, 'utf8');
-            const distCheck = validateHeadersForProfile(distRaw, 'education');
-            if (!distCheck.valid) {
-              for (const errMsg of distCheck.issues) {
-                issues.push(`[EDU-STATIC-DIST] ${entry.name}/dist/_headers: ${errMsg}`);
-              }
-            }
+      const stack = [distDir];
+      while (stack.length > 0) {
+        const curr = stack.pop();
+        for (const item of fs.readdirSync(curr, { withFileTypes: true })) {
+          const full = path.join(curr, item.name);
+          if (item.isDirectory()) stack.push(full);
+          else if (item.name.endsWith('.map')) {
+            issues.push(`[A10:2025-SOURCEMAP] Source map expuesto en producción: ${path.relative(rootDir, full)}`);
           }
         }
+      }
+    }
+  };
 
-        const stack = [distDir];
-        while (stack.length > 0) {
-          const curr = stack.pop();
-          for (const item of fs.readdirSync(curr, { withFileTypes: true })) {
-            const full = path.join(curr, item.name);
-            if (item.isDirectory()) stack.push(full);
-            else if (item.name.endsWith('.map')) {
-              issues.push(`[A10:2025-SOURCEMAP] Source map expuesto en producción: ${path.relative(rootDir, full)}`);
-            }
-          }
-        }
+  if (explicitProjectDir && fs.existsSync(explicitProjectDir)) {
+    inspectProjectDir(explicitProjectDir, path.basename(explicitProjectDir), true);
+  } else {
+    for (const baseFolder of ['templates', 'projects']) {
+      if (filterProjectSlug && baseFolder === 'templates') continue;
+      const absBase = path.join(rootDir, baseFolder);
+      if (!fs.existsSync(absBase)) continue;
+      for (const entry of fs.readdirSync(absBase, { withFileTypes: true })) {
+        if (!entry.isDirectory()) continue;
+        if (filterProjectSlug && baseFolder === 'projects' && entry.name !== filterProjectSlug) continue;
+        inspectProjectDir(path.join(absBase, entry.name), entry.name, baseFolder === 'projects');
       }
     }
   }
@@ -508,7 +516,10 @@ export function runSecurityQuarantineGate(options = {}) {
   }
 
   // 4. Run Deterministic Edge Worker & Static Education Dist Audit (OWASP ASVS v5.0 / A01:2025 / A10:2025)
-  const edgeAudit = auditEdgeWorkersAndDist(targetDir, { projectSlug: options.projectSlug || '' });
+  const edgeAudit = auditEdgeWorkersAndDist(targetDir, {
+    projectSlug: options.projectSlug || options.project || '',
+    projectDir: options.projectDir || ''
+  });
   if (!edgeAudit.passed) {
     reasons.push(...edgeAudit.issues);
   }

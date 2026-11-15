@@ -1,16 +1,16 @@
 # Technical Implementation Plan: Academia Ia Core Web Experience
 
-> **Project:** `academia-ia` | **Architecture Tier:** Astro 7.4 Static + Cloudflare Workers Static Assets ($0 Server)
+> **Project:** `academia-ia` | **Architecture Tier:** Astro 7.4.11 Static + Cloudflare Workers Static Assets ($0.00 USD Server)
 
 ## 1. Data & API Contracts
-- **Storage Keys:** `academia-ia_academia-ia-core-web-experience_state`
-- **Event Bus:** `academia-ia:academia-ia-core-web-experience-event`
-- **Endpoints:** `/api/academia-ia-core-web-experience/state`, `/api/academia-ia-core-web-experience/action`
+- **Storage Keys:** `academia_ia_theme_v1`, `academia_ia_progress_v1`, `academia_ia_xp_v1`
+- **Event Bus:** `MessageChannel (1:1 sandbox="allow-scripts")`
+- **Endpoints:** `None (100% Static MPA — 0 Worker endpoints)`
 
 ## 2. Security & Quality Invariants
-- Untrusted input rendered strictly via textContent or escaped template literals.
-- Zero eval() or new Function() calls.
-- All remote network calls protected by AbortSignal.timeout(2500-3500ms).
+- Trusted Types enforced: default.createHTML throws TypeError; dynamic HTML sanitized via DOMPurify (RETURN_TRUSTED_TYPE: true) or safe DOM APIs.
+- Zero eval() or new Function() calls; strict CSP generated deterministically from src/lib/csp-builder.mjs.
+- Sandboxed tutor communicates over dedicated 1:1 MessageChannel validated with Valibot (0 backend endpoints).
 
 ## 3. Verification Harness
 - Gate Command: `node tools/factory.mjs gate --project academia-ia`

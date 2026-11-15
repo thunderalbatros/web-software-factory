@@ -2,36 +2,39 @@
   "schemaVersion": "2026.36.1",
   "gateId": "GATE_2_TECHNICAL_SPEC_AND_DESIGN",
   "projectSlug": "academia-ia",
+  "complianceProfile": "education",
+  "industryArchetype": "education",
+  "surfaceMode": "Read",
   "status": "PENDING_CTO_SPEC_INPUT",
   "specInterviewStatus": "PENDING_CTO_SPEC_INPUT",
   "prdReferenceStatus": "PENDING_CTO_PRD_INPUT",
   "brandIdentityMode": "PARTIAL_BRAND_EVOLUTION",
   "lockClientPalette": false,
-  "createdAt": "2026-11-15T06:18:20.458Z",
+  "createdAt": "2026-11-15T08:21:32.867Z",
   "approvedAt": null,
   "approvedBy": null,
   "blocks": {
     "block1_pages_and_dom_architecture": {
       "brandName": "Academia IA",
-      "industryArchetype": "saas",
+      "industryArchetype": "education",
       "resolvedArchetypeId": "academic-editorial-education",
       "pages": [
-        "Inicio (/)",
-        "Nivel 1 · Principiante (/niveles/principiante/)",
-        "Nivel 2 · Intermedio (/niveles/intermedio/)",
-        "Nivel 3 · Avanzado (/niveles/avanzado/)"
+        "/",
+        "/niveles/principiante/",
+        "/niveles/intermedio/",
+        "/niveles/avanzado/"
       ],
       "domSectionsAndComponents": [
-        "Header Semántico Editorial + Buscador Estático Pagefind + Selector Accesible Claro/Oscuro",
-        "Índice Editorial de 3 Niveles UNESCO (Adquirir, Profundizar, Crear) + Selector de Arquetipo Local",
-        "Columna de Lectura 65ch con Prosa <= 110 Palabras, Fórmulas MathML (Temml 0 KB JS) y Expressive Code",
-        "Fachada Multi-Video (youtube-nocookie + OER) con Aviso Breve de Almacenamiento Local y Síntesis Textual",
-        "Micro-Explorable Real de Conteo de Tokens (js-tiktoken) + Tutor Socrático en Sandbox Opaco (iframe sandbox='allow-scripts')"
+        "Header Editorial Minimalista con Selector de Tema Claro/Oscuro (0 Mute Toggle sonoro)",
+        "Índice Editorial (Academia IA) con 3 Niveles UNESCO (Adquirir, Profundizar, Crear) y Buscador Pagefind",
+        "Columna de Lectura en Modo Read (65ch, bloques <= 110 palabras en español neutro tú)",
+        "Fachada Multi-Video de Privacidad (youtube-nocookie.com + archive.org) con aviso local y síntesis textual",
+        "Micro-Explorables en Cliente (js-tiktoken BPE + Temml MathML 0 KB JS) y Tutor Socrático en Sandbox Opaco (MessageChannel 1:1)"
       ]
     },
     "block2_functional_contracts_and_valibot": {
       "primaryCta": "Comenzar Nivel 1 · Adquirir",
-      "primaryCtaChannel": "Navegación estática local-first",
+      "primaryCtaChannel": "Navegación directa local-first sin registro",
       "pureComponentsArchitecture": true,
       "stressHarness5StatesRequired": [
         "empty",
@@ -41,13 +44,13 @@
         "dark-mode"
       ],
       "valibotSchemas": [
-        "LeadCaptureFormSchema (nombre, email, telefono, mensaje, csrfToken)",
-        "InteractiveCalculatorOrFilterSchema (categoria, presupuesto, urgencia)"
+        "TutorOutboundPromptSchema (question, levelId, lessonSlug)",
+        "TutorInboundMessageSchema (TUTOR_SANDBOX_READY | TUTOR_HINT_RESPONSE | TUTOR_ERROR)"
       ]
     },
     "block3_grid_topology_and_morphology": {
-      "gridTopology": "interactive-webgl-spatial-canvas",
-      "heroArchitecture": "layered-cards-depth-parallax",
+      "gridTopology": "swiss-asymmetric-editorial",
+      "heroArchitecture": "numbered-editorial-index-hero",
       "surfaceMateriality": "paper-editorial",
       "intraCategoryDivergenceFloorPct": 70,
       "respectBrandIdentityLock": true
@@ -81,388 +84,185 @@
         }
       },
       "oklchPrimary": {
-        "L": 0.15,
-        "C": 0.03,
-        "H": 260
+        "L": 0.34,
+        "C": 0.13,
+        "H": 245
       },
-      "borderRadiusPx": 8,
-      "apcaContrastFloors": "Lc >= 90 (Hero/Headline), Lc >= 75 (Body), Lc >= 60 (Secondary)",
+      "borderRadiusPx": 6,
+      "apcaContrastFloors": "Lc >= 85 (Editorial Body & Headlines in Light & Dark Modes, WCAG 2.2 AA+)",
       "typographyPersonality": "'Newsreader', 'Instrument Serif', Georgia, serif"
     },
     "block5_motion_physics_and_scroll_60fps": {
-      "brandPersonalityTension": "editorial-organico vs ingenieril-geometrico",
+      "brandPersonalityTension": "clasico-atemporal vs vanguardista-disruptivo",
       "availablePersonalityTensions": [
         "clasico-atemporal vs vanguardista-disruptivo",
         "minimalismo-silencioso vs expresividad-cinetica",
         "editorial-organico vs ingenieril-geometrico"
       ],
       "morphologySelectionMode": "auto-bespoke-criteria",
-      "animationLevel": "discrete-calm-editorial",
+      "animationLevel": "minimal-editorial",
       "dampingRatioZeta": 1,
-      "springPhysics": {
-        "stiffness": 280,
-        "damping": 24
-      },
-      "useScrollDrivenAnimationsCss": true,
+      "springPhysics": null,
+      "useScrollDrivenAnimationsCss": false,
       "useViewTransitionsApi": true,
       "respectReducedMotion": true
     },
     "block6_webgpu_3d_glb_and_shaders": {
       "forge3dMode": "none",
+      "uses3dOrShaderInHero": false,
       "use3dTiltCards": false,
       "useWebGpuDiorama": false,
-      "canvas3TimestampHistogramWatchdog": true
+      "canvas3TimestampHistogramWatchdog": false
     },
     "block7_sonic_ui_sfx_music_and_reaper_rpp": {
       "sonicForgeMode": "off",
       "uiSfxMode": "off",
       "material": "paper-editorial",
       "backgroundMusic": "off",
-      "exportReaperRppSession": true,
-      "sonicSeedId": "linear-minimal-tick",
-      "requiresVisibleMuteButton": true,
+      "exportReaperRppSession": false,
+      "sonicSeedId": "none-read-mode-silent",
+      "requiresVisibleMuteButton": false,
       "autoplayBlockedUntilGesture": true
     },
     "block8_programmatic_video_intro_and_voiceover": {
-      "videoForgeMode": "none",
+      "videoForgeMode": "off",
       "introVideoMode": "none",
       "lockedLogoSvgPath": "public/favicon.svg",
       "lockedIsotipoSvgPath": "public/favicon.svg",
-      "useLockedClientPaletteInVideo": true,
-      "maxVideoBudgetMb": 1.8
+      "useLockedClientPaletteInVideo": false,
+      "maxVideoBudgetMb": 0
     },
     "block9_database_payments_auth_and_edge_worker": {
       "databaseTier": "static-json-and-indexeddb",
-      "databaseEngine": "Static JSON (data/academy/*.json",
+      "databaseEngine": "Static JSON (data/academy/*.json) + Local-First Browser Storage (Dexie/IndexedDB & localStorage)",
       "paymentGateway": "none",
-      "authMode": "Ory/Passkeys (OAuth 2.1 PKCE)",
-      "workerEndpoints": [
-        "POST /api/leads",
-        "POST /api/webhooks/payments",
-        "GET /api/health"
-      ],
-      "enforceWebhookIdempotencyAndRls": true
+      "authMode": "none (Anonymous Local-First — Ley 25.326)",
+      "workerEndpoints": [],
+      "enforceWebhookIdempotencyAndRls": false
     },
     "block10_mobile_capacitor_feedback_and_f2p_matrix": {
       "enableCapacitor8MobileTarget": false,
-      "enablePostSaleFeedbackWidget": true,
+      "enablePostSaleFeedbackWidget": false,
       "locales": [
-        "es-AR"
+        "es"
       ],
-      "maxCloudApiBudgetUsd": 0.25,
+      "maxCloudApiBudgetUsd": 0,
       "totalGcpCreditPoolUsd": 90,
       "f2pAcceptanceCriteria": [
-        "[REQ-01..03] Identidad PRD_LEAN, Primary CTA >= 48x48px y derribo de 3 objeciones",
-        "[REQ-04..06] BRAND_IDENTITY_LOCK (lockClientPalette), APCA Lc >= 75 y 60 FPS",
-        "[REQ-07..09] Audio/Video <= -18dBFS, Valibot, Idempotencia Webhooks y RLS Multi-Tenant",
-        "[REQ-10..12] SEO/GEO llms.txt, CSP/ASVS v5.0 y Pure Component 5-State Harness >= 95/100"
+        "[REQ-01..03] Astro 7.4.11 100% estático ($0 servidor), progreso local-first (Ley 25.326) y 0 violaciones WCAG 2.2 AA",
+        "[REQ-04..06] Columna 60ch–70ch (65ch), español neutro <= 110 palabras (INFLESZ) y fachada multi-video con aviso local",
+        "[REQ-07..09] js-tiktoken BPE local, Temml MathML 0 KB JS y sandbox opaco con MessageChannel 1:1 + Valibot + DOMPurify TrustedHTML",
+        "[REQ-10..12] CSP estricta con hashes sha256 + Trusted Types (default.createHTML lanza TypeError), PWA MPA < 250 KB y autonomía fuera del monorepo"
       ]
     },
     "block1_commercial_identity": {
       "brandName": "Academia IA",
-      "industryArchetype": "saas",
+      "industryArchetype": "education",
       "resolvedArchetypeId": "academic-editorial-education",
       "valuePropositionOneLiner": "Academia IA une rigor pedagógico UNESCO/OCDE, diseño editorial OKLCH 90/8/2 de lectura calmada (65ch), micro-explorables reales en el navegador y soberanía Open-Source sin login ni muros de pago.",
       "referenceCompetitors": [
-        "Linear.app",
-        "Stripe.com",
-        "Vercel.com"
+        "Distill.pub",
+        "Brilliant.org",
+        "Elements of AI"
       ]
     },
     "block2_target_audience_cro": {
-      "segment": "Estudiantes, trabajadores, oficios reales, docentes y desarrolladores hispanohablantes (Open Educational Platform ($0 Server, Voluntary Donations Without Exclusive Benefits))",
-      "ageRange": "28-55",
-      "purchasingPower": "High / Enterprise & Professional",
+      "segment": "Estudiantes, trabajadores, oficios reales, docentes y desarrolladores hispanohablantes",
+      "ageRange": "16-75",
+      "purchasingPower": "Inclusive Open Access ($0 Free Forever)",
       "primaryObjection": "¿Necesito saber programar o pagar suscripciones con tarjeta para aprender IA útil en mi oficio?",
       "primaryCta": "Comenzar Nivel 1 · Adquirir",
-      "primaryCtaChannel": "Navegación estática local-first"
+      "primaryCtaChannel": "Navegación directa local-first sin registro"
     },
     "block3_sitemap_and_flows": {
       "pages": [
-        "Inicio (/)",
-        "Nivel 1 · Principiante (/niveles/principiante/)",
-        "Nivel 2 · Intermedio (/niveles/intermedio/)",
-        "Nivel 3 · Avanzado (/niveles/avanzado/)"
+        "/",
+        "/niveles/principiante/",
+        "/niveles/intermedio/",
+        "/niveles/avanzado/"
       ],
       "mandatorySections": [
-        "Hero con Propuesta de Valor y Primary CTA",
-        "Bento Grid de Capacidades Core",
-        "Prueba Social y Métricas Verificadas",
-        "Tabla Comparativa / Precios Transparentes",
-        "Formulario de Captura sin Fricción + FAQ"
+        "Índice Editorial con 3 Niveles UNESCO y Búsqueda Estática Pagefind",
+        "Columna de Lectura 65ch con Jerarquía Limpia h1 -> h2 -> h3",
+        "Fachada Multi-Video (youtube-nocookie.com + archive.org) con Aviso de Almacenamiento Local",
+        "Micro-Explorables (js-tiktoken + Temml MathML 0 KB JS)",
+        "Tutor Socrático en Sandbox Opaco (MessageChannel 1:1 + Valibot + DOMPurify TrustedHTML)"
       ]
     },
     "block4_aesthetic_oklch_typography": {
       "surfaceMode": "Read",
-      "colorTheme": "Warm Editorial Light",
+      "colorTheme": "OKLCH 90/8/2 Daylight Paper & Calm Night Slate + 3 Level Accents",
       "oklchPrimary": {
-        "L": 0.15,
-        "C": 0.03,
-        "H": 260
+        "L": 0.34,
+        "C": 0.13,
+        "H": 245
       },
-      "borderRadiusPx": 8,
+      "borderRadiusPx": 6,
       "typographyPersonality": "Editorial Serif + Swiss Sans"
     },
     "block5_motion_webgpu_shaders": {
-      "animationLevel": "discrete-calm-editorial",
+      "animationLevel": "minimal-editorial",
+      "uses3dOrShaderInHero": false,
       "use3dTiltCards": false,
       "useWebGpuDiorama": false,
       "useViewTransitionsApi": true,
-      "springPhysics": {
-        "stiffness": 280,
-        "damping": 24
-      }
+      "springPhysics": null
     },
     "block6_sonic_music_video": {
       "uiSfxMode": "off",
       "material": "paper-editorial",
       "backgroundMusic": "off",
       "introVideoMode": "none",
-      "sonicSeedId": "linear-minimal-tick",
-      "requiresVisibleMuteButton": true,
+      "sonicSeedId": "none-read-mode-silent",
+      "exportReaperRppSession": false,
+      "requiresVisibleMuteButton": false,
       "autoplayBlockedUntilGesture": true
     },
     "block7_client_assets_vs_ai": {
       "clientProvidedAssets": [
         "public/favicon.svg",
-        "public/favicon.svg",
-        "Textos Comerciales PRD_LEAN.md"
+        "data/academy/project_charter.json",
+        "PRD_LEAN.md"
       ],
       "factoryAiGeneratedAssets": [
-        "OpenGraph Social Card (og-image.svg)",
-        "Copywriting CRO Optimizado",
-        "Keyframes / Ilustración SOTA"
+        "OpenGraph Vectorial Estático (public/og-image.svg)",
+        "Manifiestos llms.txt & llms-full.txt (0 generadores externos de imagen)"
       ]
     },
     "block8_technical_backend_integrations": {
-      "leadCaptureForm": true,
+      "leadCaptureForm": false,
       "paymentGateway": "none",
-      "authMode": "OAuth 2.1 PKCE / Session Guard",
-      "databaseEngine": "Cloudflare D1 SQLite + Enterprise PostgreSQL FORCE RLS Ready",
+      "authMode": "none (Anonymous Local-First — Ley 25.326)",
+      "databaseEngine": "Static JSON (data/academy/*.json) + Local-First Browser Storage (Dexie/IndexedDB & localStorage)",
       "externalIntegrations": [
-        "WhatsApp Direct",
-        "CRM Webhook",
-        "Privacy-First Analytics"
+        "youtube-nocookie.com (Click-to-Play Privacy Facade)",
+        "archive.org OER Media",
+        "wikimedia.org OER Assets"
       ]
     },
     "block9_seo_geo_legal_security": {
       "primaryKeywords": [
         "academia ia",
-        "saas",
-        "alta conversión",
-        "software"
+        "inteligencia artificial gratis",
+        "educación abierta",
+        "español"
       ],
-      "geoTarget": "es-AR / LATAM / Global",
+      "geoTarget": "es (América Latina & España)",
       "generateLlmsTxt": true,
-      "accessibilityFloor": "WCAG 2.2 AA+ / APCA Lc >= 75",
-      "securityLevel": "OWASP ASVS v5.0 L2 + Strict CSP + HSTS"
+      "accessibilityFloor": "WCAG 2.2 AA+ / APCA Lc >= 85 (Light & Dark)",
+      "securityLevel": "Strict Hash CSP + Trusted Types (default throws TypeError) + Opaque Sandbox MessageChannel 1:1"
     },
     "block10_finops_budget_and_dod": {
       "locales": [
-        "es-AR"
+        "es"
       ],
-      "maxCloudApiBudgetUsd": 0.25,
+      "maxCloudApiBudgetUsd": 0,
       "totalGcpCreditPoolUsd": 90,
       "successMetricsDod": [
-        "RYUX Visual & Sonic Gate >= 95/100",
-        "LCP <= 1.8s & 60 FPS en 4 viewports",
-        "100% de requisitos [REQ-01]..[REQ-12] verificados con Playwright"
+        "RYUX Design Gate Read Mode = 100/100 & Security Gate = 100/100",
+        "LCP <= 1.8s, CLS = 0.000, PWA Precache < 250 KB & 0 violaciones CSP/Trusted Types/axe",
+        "100% de autonomía standalone en os.tmpdir() sin acceso a herramientas del monorepo"
       ]
     }
-  },
-  "bespokeDna": {
-    "morphologyMode": "auto-bespoke-criteria",
-    "brandPersonalityTension": "editorial-organico vs ingenieril-geometrico",
-    "gridTopology": "interactive-webgl-spatial-canvas",
-    "heroArchitecture": "layered-cards-depth-parallax",
-    "componentMorphology": {
-      "nav": "minimal-editorial-header",
-      "corner": "0px-recto",
-      "material": "paper-editorial"
-    },
-    "gamutMaskType": "achromatic-with-hyper-accent",
-    "fontPairingProfile": "hyper-saas-bricolage-hanken",
-    "fontPairingDetails": {
-      "id": "hyper-saas-bricolage-hanken",
-      "displayFont": "'Bricolage Grotesque', system-ui, sans-serif",
-      "sansFont": "'Hanken Grotesk', system-ui, sans-serif",
-      "monoFont": "'Geist Mono', monospace",
-      "utopiaRatio": 1.333,
-      "utopiaScaleName": "1.333 Perfect Fourth",
-      "constellationFamily": "kinetic-modern"
-    },
-    "motionPhysicsCriteria": {
-      "transitionPhysics": "magnetic-precision-spring",
-      "dampingRatioZeta": 0.82,
-      "stiffness": 290,
-      "damping": 28,
-      "durationMs": 260,
-      "easingCss": "linear(0, 0.3566 9.6%, 0.7852 21.1%, 1.0156 32.2%, 1.0468 53.6%, 1)",
-      "scrollChoreography": "z-depth-layered-parallax"
-    },
-    "introChoreographyId": "intro-low-bilateral-c5bec4",
-    "introAnd3dDecision": {
-      "recommendIntroVideo": false,
-      "deliveryStrategy": "micro-vector-signature-reveal",
-      "blocksInitialNavigation": false,
-      "rationale": "Prioridad en velocidad transaccional y claridad operativa (saas / Persuade): se omite preloader bloqueante y se emplea revelado vectorial instantáneo (intro-low-bilateral-c5bec4).",
-      "introChoreographyId": "intro-low-bilateral-c5bec4",
-      "parametricIntroChoreography": {
-        "choreographyId": "intro-low-bilateral-c5bec4",
-        "isParametric": true,
-        "cameraPath": "low-angle-monumental-tilt",
-        "cameraAngleDeg": 47,
-        "sdfRevealMask": "sdf-bilateral-curtain-split",
-        "lightingRig": "soft-limestone-grazing-daylight",
-        "cutRhythm": "syncopated-2-cut-match-dissolve",
-        "durationSeconds": 3.8,
-        "fps": 60,
-        "totalFrames": 228,
-        "audioSyncFrame": 55,
-        "logoSvgGeometry": {
-          "viewBox": "0 0 512 512",
-          "pathCount": 3,
-          "vectorIntegrityLocked": true
-        }
-      },
-      "uses3dOrShaderInHero": true,
-      "forged3dMode": "sdf3d-5b68950b",
-      "parametric3dShaderConfig": {
-        "parametricId": "sdf3d-5b68950b",
-        "isParametric": true,
-        "sdfMathFunction": "sdOctahedron(p, s) + opTwist(p, k)",
-        "sdfSmoothBlendK": 0.36,
-        "logoSvgAdaptation": {
-          "aspectRatio": 1,
-          "extrudeDepth": 0.12,
-          "bevelSegments": 7
-        },
-        "cameraRig": {
-          "fovDeg": 48,
-          "elevationDeg": 33,
-          "azimuthDeg": 14,
-          "toneMapping": "THREE.AgXToneMapping"
-        },
-        "lightingRig3Point": {
-          "keyAngleDeg": 36,
-          "fillRatio": 0.32,
-          "rimIntensity": 1.12
-        },
-        "fpsWatchdogEnforced": true
-      }
-    },
-    "morphologicalDivergenceScore": 1,
-    "aestheticHarmonyScore": 0.99
-  },
-  "sonicPatch": {
-    "seedId": "linear-minimal-tick",
-    "archetype": "saas",
-    "uiSfxMode": "off",
-    "silentByClientPreference": true,
-    "material": "polymer",
-    "materialLabel": "Polímero / Acrílico Mate",
-    "excitationType": "short-impulse-modal",
-    "waveform": "triangle",
-    "borderRadiusPx": 8,
-    "boubaKikiProfile": "balanced",
-    "oddHarmonicRichness": 0.368,
-    "oklch": {
-      "L": 0.15,
-      "C": 0.03,
-      "H": 260
-    },
-    "spectralCentroidHz": 903,
-    "elementAreaPx2": 8640,
-    "f0Hz": 699.39,
-    "attackMs": 15.72,
-    "decayMs": 6,
-    "Q": 4.5,
-    "modalBank": [
-      {
-        "modeIndex": 1,
-        "ratio": 1,
-        "freqHz": 699.39,
-        "Q": 4.5,
-        "relativeGain": 1,
-        "biquadCoeffs": {
-          "type": "bandpass",
-          "freqHz": 699.39,
-          "Q": 4.5,
-          "b0": 0.045251,
-          "b1": 0,
-          "b2": -0.045251,
-          "a0": 1,
-          "a1": -1.971597,
-          "a2": 0.979888
-        }
-      },
-      {
-        "modeIndex": 2,
-        "ratio": 1.84,
-        "freqHz": 1286.88,
-        "Q": 5.17,
-        "relativeGain": 0.451,
-        "biquadCoeffs": {
-          "type": "bandpass",
-          "freqHz": 1286.88,
-          "Q": 5.17,
-          "b0": 0.082491,
-          "b1": 0,
-          "b2": -0.082491,
-          "a0": 1,
-          "a1": -1.940231,
-          "a2": 0.968089
-        }
-      },
-      {
-        "modeIndex": 3,
-        "ratio": 2.92,
-        "freqHz": 2042.22,
-        "Q": 5.85,
-        "relativeGain": 0.283,
-        "biquadCoeffs": {
-          "type": "bandpass",
-          "freqHz": 2042.22,
-          "Q": 5.85,
-          "b0": 0.129161,
-          "b1": 0,
-          "b2": -0.129161,
-          "a0": 1,
-          "a1": -1.886372,
-          "a2": 0.955843
-        }
-      }
-    ],
-    "synchresis60Fps": {
-      "springStiffness": 280,
-      "springDamping": 24,
-      "peakVelocityOffsetMs": 66.12,
-      "audioTransientOffsetMs": 66.12,
-      "syncDeviationMs": 0,
-      "withinSingleFrame60Fps": true,
-      "maxAllowedDeviationMs": 16.67
-    },
-    "gainPeak": 0.001,
-    "gainPeakDbfs": -60,
-    "maxCeilingDbfs": -18,
-    "releaseFloorLinear": 0.0001,
-    "highPassFilterHz": 30,
-    "iso226NotchFilter": {
-      "enabled": true,
-      "bandHz": [
-        2500,
-        4200
-      ],
-      "centerHz": 3250,
-      "Q": 1.4,
-      "attenuationDb": -5,
-      "inSensitiveBand": false
-    },
-    "maxPolyphony": 4,
-    "voiceStealingMode": "oldest-voice-4ms-exponential-fade",
-    "autoplaySuspendedUntilGesture": true,
-    "respectsPrefersReducedMotion": true,
-    "requiresMuteToggleSelector": "[data-audio-mute-toggle]",
-    "safetyVerified": true
   }
 }

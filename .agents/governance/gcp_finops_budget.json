@@ -1,5 +1,5 @@
 {
-  "$schema": "https://webfactory.local/schemas/gcp-finops-budget-v2.json",
+  "$schema": "./schemas/gcp-finops-budget-v2.json",
   "version": "2026.10.28",
   "policy": "SERVERLESS_ZERO_IDLE_FINOPS_SHIELD",
   "totalPromotionalCreditUsd": 70,
@@ -114,12 +114,12 @@
     }
   },
   "telemetrySummary": {
-    "lastUpdatedAt": "2026-11-15T06:45:14.931Z",
-    "todaySpendUsd": 0.046783,
-    "remainingDailyBudgetUsd": 1.4532,
-    "remainingCreditUsd": 69.9526,
+    "lastUpdatedAt": "2026-11-15T09:17:46.662Z",
+    "todaySpendUsd": 0.084553,
+    "remainingDailyBudgetUsd": 1.4154,
+    "remainingCreditUsd": 69.9148,
     "lastMultimediaOperation": {
-      "timestamp": "2026-11-15T06:45:14.919Z",
+      "timestamp": "2026-11-15T09:17:46.649Z",
       "tierId": "TIER_2_VERTEX_AI_NATIVE_PREMIUM",
       "engine": "es-US-Studio-B",
       "estimatedAssetCostUsd": 0.02,
