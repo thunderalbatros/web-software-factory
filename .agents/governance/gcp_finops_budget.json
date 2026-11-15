@@ -2,7 +2,7 @@
   "$schema": "https://webfactory.local/schemas/gcp-finops-budget-v2.json",
   "version": "2026.10.28",
   "policy": "SERVERLESS_ZERO_IDLE_FINOPS_SHIELD",
-  "totalPromotionalCreditUsd": 90,
+  "totalPromotionalCreditUsd": 70,
   "maxDailySpendUsd": 1.5,
   "allow24x7Instances": false,
   "enforceImplicitContextCache": true,

@@ -30,35 +30,65 @@ const __dirname = path.dirname(__filename);
 const ROOT = path.resolve(__dirname, '..', '..');
 
 /**
- * Runs Oxc Unified Suite (`oxlint` + `oxfmt` + `tsgolint` / `oxc-minify` fast pass) in <200ms
+ * Runs Oxc Unified Suite (`oxlint v1.93.0` + `oxfmt v0.78.0` + `oxlint-tsgolint`)
  * using local native binaries if present, with deterministic fallback.
  */
-export function runOxlintFastPass(targets = ['templates/vanilla-edge/site/js', 'templates/vanilla-edge/worker', 'templates/astro-edge/worker']) {
+export function runOxlintFastPass(
+  targets = ['templates/vanilla-edge/site/js', 'templates/vanilla-edge/worker', 'templates/astro-edge/worker'],
+  options = {}
+) {
   const startMs = performance.now();
   const existingTargets = targets.map(t => path.join(ROOT, t)).filter(p => fs.existsSync(p));
   if (existingTargets.length === 0) {
-    return { passed: true, durationMs: 0, toolchain: 'oxc-full-suite', output: 'No JS targets to lint' };
+    return { passed: true, durationMs: 0, toolchain: 'oxc-v1.93-suite', output: 'No JS/TS targets to lint' };
   }
 
-  const localBin = process.platform === 'win32'
-    ? path.join(ROOT, 'node_modules', '.bin', 'oxlint.cmd')
-    : path.join(ROOT, 'node_modules', '.bin', 'oxlint');
+  const binName = process.platform === 'win32' ? 'oxlint.cmd' : 'oxlint';
+  const localBin = path.join(ROOT, 'node_modules', '.bin', binName);
+  const cmd = fs.existsSync(localBin) ? `"${localBin}"` : 'npx --no-install oxlint';
 
-  const cmd = fs.existsSync(localBin) ? `"${localBin}"` : 'npx oxlint';
+  const hasTsTarget = existingTargets.some((t) => fs.existsSync(path.join(t, 'tsconfig.json')) || fs.existsSync(path.join(path.dirname(t), 'tsconfig.json')));
+  const typeAwareFlag = options.typeAware === true || hasTsTarget ? '--type-aware ' : '';
   const quotedTargets = existingTargets.map(p => `"${p}"`).join(' ');
-  const res = spawnSync(`${cmd} --deny-warnings ${quotedTargets}`, {
+  const res = spawnSync(`${cmd} ${typeAwareFlag}--deny-warnings ${quotedTargets}`, {
     cwd: ROOT,
     shell: true,
     encoding: 'utf8',
-    timeout: 4500
+    timeout: 6500
   });
 
   const durationMs = Math.round(performance.now() - startMs);
   return {
     passed: res.status === 0,
     durationMs,
-    toolchain: 'oxc-full-suite (oxlint + oxfmt + tsgolint)',
+    typeAware: Boolean(typeAwareFlag),
+    toolchain: 'oxc-v1.93 (oxlint + oxfmt + oxlint-tsgolint)',
     output: (res.stdout || '') + (res.stderr || '')
+  };
+}
+
+/**
+ * Runs Oxfmt v0.78 (`oxfmt --check`) on a target file or directory.
+ */
+export function runOxfmtFastCheck(targetPath = 'tools/factory.mjs') {
+  const startMs = performance.now();
+  const absTarget = path.resolve(ROOT, targetPath);
+  if (!fs.existsSync(absTarget)) {
+    return { passed: false, durationMs: 0, output: `Target missing: ${absTarget}` };
+  }
+  const binName = process.platform === 'win32' ? 'oxfmt.cmd' : 'oxfmt';
+  const localBin = path.join(ROOT, 'node_modules', '.bin', binName);
+  const cmd = fs.existsSync(localBin) ? `"${localBin}"` : 'npx --no-install oxfmt';
+  const res = spawnSync(`${cmd} --check "${absTarget}"`, {
+    cwd: ROOT,
+    shell: true,
+    encoding: 'utf8',
+    timeout: 4500
+  });
+  return {
+    passed: res.status === 0,
+    durationMs: Math.round(performance.now() - startMs),
+    output: ((res.stdout || '') + (res.stderr || '')).trim()
   };
 }
 

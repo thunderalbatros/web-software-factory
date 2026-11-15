@@ -1,13 +1,11 @@
 /**
- * Web Software Factory Studio — Google Cloud Platform (GCP) Vertex AI Bridge
+ * Web Software Factory Studio — Google Cloud Platform (GCP) Vertex AI Bridge v2
  * =============================================================================
- * Enterprise-grade generative and multimodal intelligence for modern web design,
- * aesthetic UI auditing, query expansion (HyDE), and RAG synthesis.
- *
- * Backed by:
+ * Enterprise-grade generative, structured JSON/Valibot, Batch Prediction, and
+ * multimodal intelligence backed by Vertex AI + FinOps $70 USD Shield:
  *   - Project: project-6565e6dc-f33c-49ff-b22
- *   - Location: us-central1
- *   - Model: gemini-2.5-flash (with automatic fallback to gemini-1.5-flash)
+ *   - Locations: global (Gemini 3.8/3.5/4.x) + us-central1 (Gemini 2.5, Imagen 3, Batch)
+ *   - Primary Model: gemini-3.8-flash | Econ Fallback: gemini-3.5-flash-lite | Regional: gemini-2.5-flash
  * =============================================================================
  */
 
@@ -50,10 +48,177 @@ function loadEnv() {
 const env = loadEnv();
 const GCP_PROJECT = env.GCP_PROJECT_ID || env.GOOGLE_CLOUD_PROJECT || '';
 const GCP_LOCATION = env.GCP_LOCATION || 'us-central1';
-const GEMINI_MODEL = env.GEMINI_MODEL || 'gemini-2.5-flash';
+const GEMINI_MODEL = env.GEMINI_MODEL || 'gemini-3.8-flash';
+const GEMINI_FALLBACK_MODEL = env.GEMINI_FALLBACK_MODEL || 'gemini-3.5-flash-lite';
+const GEMINI_REGIONAL_FALLBACK_MODEL = 'gemini-2.5-flash';
+const GEMINI_PRO_MODEL = env.GEMINI_PRO_MODEL || 'gemini-4-carbon';
 const GROQ_MODELS = ['openai/gpt-oss-120b', 'qwen/qwen3.8-27b', 'openai/gpt-oss-20b'];
 
-let vertexOrStudioClient = null;
+const vertexClientsByLocation = new Map();
+let studioFallbackClient = null;
+let GoogleGenAIClassCache = null;
+
+function resolveVertexLocationForModel(modelId = GEMINI_MODEL, explicitLocation = '') {
+  if (explicitLocation) return String(explicitLocation);
+  const m = String(modelId || '').toLowerCase();
+  if (/^gemini-(3|4)/.test(m)) return 'global';
+  return GCP_LOCATION || 'us-central1';
+}
+
+function isPlainObject(v) {
+  return Boolean(v && typeof v === 'object' && !Array.isArray(v));
+}
+
+function applyValibotPipeConstraints(targetSchema, pipe = []) {
+  if (!Array.isArray(pipe)) return targetSchema;
+  const out = { ...targetSchema };
+  for (const step of pipe) {
+    if (!step || typeof step !== 'object') continue;
+    if (step.type === 'description' && typeof step.description === 'string') {
+      out.description = step.description;
+    } else if (step.type === 'min_length' && Number.isFinite(step.requirement)) {
+      out.minLength = step.requirement;
+    } else if (step.type === 'max_length' && Number.isFinite(step.requirement)) {
+      out.maxLength = step.requirement;
+    } else if (step.type === 'min_value' && Number.isFinite(step.requirement)) {
+      out.minimum = step.requirement;
+    } else if (step.type === 'max_value' && Number.isFinite(step.requirement)) {
+      out.maximum = step.requirement;
+    } else if (step.type === 'integer') {
+      out.type = 'integer';
+    }
+  }
+  return out;
+}
+
+function convertValibotSchemaToJsonSchema(schema) {
+  if (!isPlainObject(schema) || schema.kind !== 'schema') return schema;
+
+  let jsonSchema;
+  switch (schema.type) {
+    case 'object':
+    case 'strict_object':
+    case 'loose_object':
+    case 'object_with_rest': {
+      const properties = {};
+      const required = [];
+      for (const [key, propSchema] of Object.entries(schema.entries || {})) {
+        const isOptional = propSchema?.type === 'optional' || propSchema?.type === 'exact_optional' || propSchema?.type === 'nullish';
+        if (!isOptional) required.push(key);
+        properties[key] = convertValibotSchemaToJsonSchema(propSchema);
+      }
+      jsonSchema = {
+        type: 'object',
+        properties,
+        additionalProperties: schema.type === 'loose_object'
+      };
+      if (required.length > 0) jsonSchema.required = required;
+      break;
+    }
+    case 'optional':
+    case 'exact_optional':
+      jsonSchema = convertValibotSchemaToJsonSchema(schema.wrapped);
+      break;
+    case 'nullable':
+    case 'nullish': {
+      const inner = convertValibotSchemaToJsonSchema(schema.wrapped);
+      jsonSchema = { anyOf: [inner, { type: 'null' }] };
+      break;
+    }
+    case 'array':
+      jsonSchema = {
+        type: 'array',
+        items: convertValibotSchemaToJsonSchema(schema.item)
+      };
+      break;
+    case 'string':
+      jsonSchema = { type: 'string' };
+      break;
+    case 'number':
+      jsonSchema = { type: 'number' };
+      break;
+    case 'boolean':
+      jsonSchema = { type: 'boolean' };
+      break;
+    case 'literal':
+      jsonSchema = {
+        type: typeof schema.literal === 'boolean' ? 'boolean' : typeof schema.literal === 'number' ? 'number' : 'string',
+        enum: [schema.literal]
+      };
+      break;
+    case 'picklist': {
+      const opts = Array.isArray(schema.options) ? schema.options : [];
+      const allNums = opts.length > 0 && opts.every((o) => typeof o === 'number');
+      jsonSchema = { type: allNums ? 'number' : 'string', enum: opts };
+      break;
+    }
+    case 'enum': {
+      const vals = Object.values(schema.enum || {});
+      jsonSchema = { type: 'string', enum: vals };
+      break;
+    }
+    case 'union':
+      jsonSchema = { anyOf: (schema.options || []).map(convertValibotSchemaToJsonSchema) };
+      break;
+    case 'record':
+      jsonSchema = {
+        type: 'object',
+        additionalProperties: convertValibotSchemaToJsonSchema(schema.value)
+      };
+      break;
+    default:
+      jsonSchema = { type: 'string' };
+      break;
+  }
+
+  return applyValibotPipeConstraints(jsonSchema, schema.pipe);
+}
+
+function normalizeThinkingConfigForModel(modelId, requestedThinkingConfig = undefined, isStructuredJson = false) {
+  const m = String(modelId || '').toLowerCase();
+  const isGemini3 = /^gemini-3/.test(m);
+  const isGemini25 = /^gemini-2\.5/.test(m);
+  const isPro = m.includes('pro') || /^gemini-4/.test(m);
+  const supportsMinimalLevel = /^gemini-3\.(?:0|1|5)/.test(m);
+
+  if (requestedThinkingConfig && typeof requestedThinkingConfig === 'object') {
+    if (isGemini3) {
+      if (requestedThinkingConfig.thinkingLevel) {
+        const lvl = String(requestedThinkingConfig.thinkingLevel).toUpperCase();
+        if (lvl === 'MINIMAL' && !supportsMinimalLevel) {
+          return isPro ? { thinkingLevel: 'LOW' } : { thinkingBudget: 0 };
+        }
+        return { thinkingLevel: lvl };
+      }
+      if (typeof requestedThinkingConfig.thinkingBudget === 'number') {
+        const b = Number(requestedThinkingConfig.thinkingBudget);
+        if (b === 0) return supportsMinimalLevel && !isPro ? { thinkingLevel: 'MINIMAL' } : isPro ? { thinkingLevel: 'LOW' } : { thinkingBudget: 0 };
+        return { thinkingLevel: b > 4096 ? 'HIGH' : b > 1024 ? 'MEDIUM' : 'LOW' };
+      }
+    }
+    if (isGemini25) {
+      if (typeof requestedThinkingConfig.thinkingBudget === 'number') {
+        const budget = isPro ? Math.max(128, requestedThinkingConfig.thinkingBudget) : requestedThinkingConfig.thinkingBudget;
+        return { thinkingBudget: budget };
+      }
+      const lvl = String(requestedThinkingConfig.thinkingLevel || '').toUpperCase();
+      if (lvl === 'MINIMAL') return { thinkingBudget: isPro ? 128 : 0 };
+      if (lvl === 'LOW') return { thinkingBudget: 512 };
+      if (lvl === 'MEDIUM') return { thinkingBudget: 2048 };
+      if (lvl === 'HIGH') return { thinkingBudget: 8192 };
+    }
+    return undefined;
+  }
+
+  if (isStructuredJson) {
+    if (isGemini3) {
+      if (isPro) return { thinkingLevel: 'LOW' };
+      return supportsMinimalLevel ? { thinkingLevel: 'MINIMAL' } : { thinkingBudget: 0 };
+    }
+    if (isGemini25 && !isPro) return { thinkingBudget: 0 };
+  }
+  return undefined;
+}
 
 /**
  * Initializes and retrieves the Gemini client:
@@ -61,38 +226,49 @@ let vertexOrStudioClient = null;
  *      connects via GCP Vertex AI (covered by promotional credits at $0 net cost).
  *   2. Otherwise, if GEMINI_API_KEY / GOOGLE_AI_STUDIO_KEY is set, connects via Google AI Studio Free Tier.
  */
-export async function getVertexClient() {
-  if (vertexOrStudioClient) return vertexOrStudioClient;
+export async function getVertexClient(locationOverride = null) {
+  const targetLocation = String(locationOverride || GCP_LOCATION || 'us-central1');
+  if (vertexClientsByLocation.has(targetLocation)) {
+    return vertexClientsByLocation.get(targetLocation);
+  }
+  if (studioFallbackClient && !GCP_PROJECT) {
+    return studioFallbackClient;
+  }
 
   try {
-    const sdkPath = path.join(ROOT, 'core', 'node_modules', '@google', 'genai', 'dist', 'node', 'index.mjs');
-    let GoogleGenAI;
-    if (fs.existsSync(sdkPath)) {
-      const mod = await import(`file://${sdkPath.replace(/\\/g, '/')}`);
-      GoogleGenAI = mod.GoogleGenAI;
-    } else {
-      const mod = await import('@google/genai');
-      GoogleGenAI = mod.GoogleGenAI;
+    if (!GoogleGenAIClassCache) {
+      const sdkPath = path.join(ROOT, 'node_modules', '@google', 'genai', 'dist', 'node', 'index.mjs');
+      if (fs.existsSync(sdkPath)) {
+        const mod = await import(`file://${sdkPath.replace(/\\/g, '/')}`);
+        GoogleGenAIClassCache = mod.GoogleGenAI;
+      } else {
+        const mod = await import('@google/genai');
+        GoogleGenAIClassCache = mod.GoogleGenAI;
+      }
     }
 
-    const adcPath = env.GOOGLE_APPLICATION_CREDENTIALS || '';
+    const adcPath = String(env.GOOGLE_APPLICATION_CREDENTIALS || '').replace(/\\\\/g, '\\');
     if (adcPath && fs.existsSync(adcPath)) {
       process.env.GOOGLE_APPLICATION_CREDENTIALS = adcPath;
     }
+    const defaultGcloudAdc = process.env.APPDATA
+      ? path.join(process.env.APPDATA, 'gcloud', 'application_default_credentials.json')
+      : '';
 
-    if ((env.USE_VERTEX_AI === 'true' || adcPath) && GCP_PROJECT) {
-      vertexOrStudioClient = new GoogleGenAI({
+    if ((env.USE_VERTEX_AI === 'true' || adcPath || (defaultGcloudAdc && fs.existsSync(defaultGcloudAdc))) && GCP_PROJECT) {
+      const client = new GoogleGenAIClassCache({
         vertexai: true,
         project: GCP_PROJECT,
-        location: GCP_LOCATION
+        location: targetLocation
       });
-      return vertexOrStudioClient;
+      vertexClientsByLocation.set(targetLocation, client);
+      return client;
     }
 
     const apiKey = env.GEMINI_API_KEY || env.GOOGLE_AI_STUDIO_KEY || '';
     if (apiKey) {
-      vertexOrStudioClient = new GoogleGenAI({ apiKey });
-      return vertexOrStudioClient;
+      studioFallbackClient = new GoogleGenAIClassCache({ apiKey });
+      return studioFallbackClient;
     }
 
     return null;
@@ -103,33 +279,88 @@ export async function getVertexClient() {
 }
 
 /**
- * High-Intelligence Text Generation & Synthesis via Vertex AI Gemini 2.5 Flash
+ * High-Intelligence Text & Structured JSON Generation via Vertex AI Gemini
+ * Supports both legacy positional args `(prompt, systemInstruction, model)`
+ * and options object `{ systemInstruction, model, location, responseMimeType, responseSchema, responseJsonSchema, thinkingConfig, maxOutputTokens, temperature, topP }`.
  */
-export async function generateWithVertex(prompt, systemInstruction = '', model = GEMINI_MODEL) {
-  const ai = await getVertexClient();
-  if (!ai) return null;
+export async function generateWithVertex(prompt, optionsOrSystemInstruction = '', modelOverride = GEMINI_MODEL) {
+  const opts = isPlainObject(optionsOrSystemInstruction)
+    ? optionsOrSystemInstruction
+    : { systemInstruction: String(optionsOrSystemInstruction || '') };
 
-  try {
-    const config = {};
-    if (systemInstruction) {
-      config.systemInstruction = { parts: [{ text: systemInstruction }] };
+  const primaryModel = String(opts.model || modelOverride || GEMINI_MODEL);
+  const systemInstruction = String(opts.systemInstruction || '');
+  const rawSchema = opts.responseJsonSchema || opts.responseSchema || null;
+  const convertedSchema = rawSchema
+    ? (rawSchema.kind === 'schema' ? convertValibotSchemaToJsonSchema(rawSchema) : rawSchema)
+    : null;
+  const isOpenApiUppercaseSchema =
+    Boolean(convertedSchema && ['OBJECT', 'ARRAY', 'STRING', 'NUMBER', 'INTEGER', 'BOOLEAN'].includes(String(convertedSchema.type || '')));
+
+  const responseMimeType =
+    opts.responseMimeType || (convertedSchema ? 'application/json' : undefined);
+  const isStructuredJson = responseMimeType === 'application/json' || Boolean(convertedSchema);
+
+  const candidateModels = [
+    primaryModel,
+    GEMINI_FALLBACK_MODEL,
+    GEMINI_REGIONAL_FALLBACK_MODEL
+  ].filter((m, idx, arr) => Boolean(m) && arr.indexOf(m) === idx);
+
+  for (const candidateModel of candidateModels) {
+    const targetLocation = resolveVertexLocationForModel(candidateModel, opts.location || '');
+    const ai = await getVertexClient(targetLocation);
+    if (!ai) return null;
+
+    try {
+      const config = {};
+      if (systemInstruction) {
+        config.systemInstruction = { parts: [{ text: systemInstruction }] };
+      }
+      if (responseMimeType) {
+        config.responseMimeType = responseMimeType;
+      }
+      if (convertedSchema) {
+        if (isOpenApiUppercaseSchema && !opts.responseJsonSchema) {
+          config.responseSchema = convertedSchema;
+        } else {
+          config.responseJsonSchema = convertedSchema;
+        }
+      }
+      if (typeof opts.temperature === 'number') config.temperature = opts.temperature;
+      if (typeof opts.topP === 'number') config.topP = opts.topP;
+      if (typeof opts.maxOutputTokens === 'number') config.maxOutputTokens = opts.maxOutputTokens;
+
+      const normalizedThinking = normalizeThinkingConfigForModel(
+        candidateModel,
+        opts.thinkingConfig,
+        isStructuredJson
+      );
+      if (normalizedThinking) {
+        config.thinkingConfig = normalizedThinking;
+      }
+
+      const response = await ai.models.generateContent({
+        model: candidateModel,
+        contents: prompt,
+        config
+      });
+
+      const outText = response.text || null;
+      if (outText && opts.parseJson) {
+        try {
+          return JSON.parse(outText);
+        } catch {
+          return outText;
+        }
+      }
+      return outText;
+    } catch (err) {
+      console.warn(`[Vertex AI] Generation error (${candidateModel} @ ${targetLocation}): ${err.message}`);
     }
-
-    const response = await ai.models.generateContent({
-      model,
-      contents: prompt,
-      config
-    });
-
-    return response.text || null;
-  } catch (err) {
-    console.warn(`[Vertex AI] Generation error (${model}): ${err.message}`);
-    // Fallback to gemini-1.5-flash if 2.5 has transient quota or region delay
-    if (model !== 'gemini-1.5-flash') {
-      return generateWithVertex(prompt, systemInstruction, 'gemini-1.5-flash');
-    }
-    return null;
   }
+
+  return null;
 }
 
 /**
@@ -333,7 +564,7 @@ Filter out irrelevant candidates (score < 0.40). Sort descending by score.`;
  * Refactoring UI, Practical UI, Every Layout, and Emil Kowalski Motion rules.
  */
 export async function auditVisualDesign({ imagePathOrBuffer, mimeType = 'image/jpeg', urlOrContext = '' }) {
-  const ai = await getVertexClient();
+  const ai = await getVertexClient(resolveVertexLocationForModel(GEMINI_MODEL));
   if (!ai) return { ok: false, error: 'Vertex AI client not available' };
 
   let b64Data = '';
@@ -1014,18 +1245,51 @@ export async function speculativeRagSynthesize(query, hits = []) {
 }
 
 // ============================================================================
-// PHASE 18B: $90 USD GCP FINOPS SHIELD + IMAGEN 3 PBR/3D PLATES + GEMINI 2.5 3D/VISUAL GATE
+// PHASE 18B: $70 USD GCP FINOPS SHIELD + IMAGEN 3 PBR/3D PLATES + BATCH + VLM GATE
 // ============================================================================
 export const GCP_FINOPS_BUDGET_PATH = path.join(ROOT, '.agents', 'governance', 'gcp_finops_budget.json');
+const BATCH_JOBS_CACHE_PATH = path.join(ROOT, '.cache', 'vertex_batch_jobs_cache.json');
+
+async function resolveGcpAccessToken(explicitToken = '') {
+  if (explicitToken) return String(explicitToken).trim();
+  const rawAdc =
+    env.GOOGLE_APPLICATION_CREDENTIALS ||
+    (process.env.APPDATA ? path.join(process.env.APPDATA, 'gcloud', 'application_default_credentials.json') : '');
+  const adcFile = String(rawAdc || '').replace(/\\\\/g, '\\');
+  if (adcFile && fs.existsSync(adcFile)) {
+    try {
+      const creds = JSON.parse(fs.readFileSync(adcFile, 'utf8'));
+      if (creds.refresh_token && creds.client_id && creds.client_secret) {
+        const res = await fetch('https://oauth2.googleapis.com/token', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams({
+            client_id: creds.client_id,
+            client_secret: creds.client_secret,
+            refresh_token: creds.refresh_token,
+            grant_type: 'refresh_token'
+          })
+        });
+        const tokJson = await res.json();
+        if (tokJson.access_token) return tokJson.access_token;
+      }
+    } catch (_) {}
+  }
+  const gcloudCmd = 'C:\\Users\\tomas\\AppData\\Local\\Google\\Cloud SDK\\google-cloud-sdk\\bin\\gcloud.cmd';
+  return execSync(`"${gcloudCmd}" auth application-default print-access-token`, {
+    encoding: 'utf8',
+    windowsHide: true
+  }).trim();
+}
 
 /**
- * 3. FinOps Shield for the $90 USD Google Cloud Credit (`.agents/governance/gcp_finops_budget.json`)
+ * 3. FinOps Shield for the $70 USD Google Cloud Credit (`.agents/governance/gcp_finops_budget.json`)
  * Enforces a strict $1.50 USD / day cap and 100% serverless execution (zero 24/7 instances).
  */
 export function getGcpFinOpsStatus() {
   let budgetPolicy = {
     policy: 'SERVERLESS_ZERO_IDLE_FINOPS_SHIELD',
-    totalPromotionalCreditUsd: 90.0,
+    totalPromotionalCreditUsd: 70.0,
     maxDailySpendUsd: 1.5,
     allow24x7Instances: false
   };
@@ -1062,11 +1326,11 @@ export function getGcpFinOpsStatus() {
     }
   }
 
-  const totalCredit = Number(budgetPolicy.totalPromotionalCreditUsd || 90.0);
+  const totalCredit = Number(budgetPolicy.totalPromotionalCreditUsd || 70.0);
   const dailyCap = Number(budgetPolicy.maxDailySpendUsd || 1.5);
   const remainingCreditUsd = Number(Math.max(0, totalCredit - totalCumulativeSpendUsd).toFixed(4));
   const remainingDailyBudgetUsd = Number(Math.max(0, dailyCap - todaySpendUsd).toFixed(4));
-  const dailyBudgetOk = todaySpendUsd < dailyCap;
+  const dailyBudgetOk = todaySpendUsd < dailyCap && totalCumulativeSpendUsd < totalCredit;
 
   return {
     passed: dailyBudgetOk && budgetPolicy.allow24x7Instances === false,
@@ -1087,18 +1351,318 @@ export function getGcpFinOpsStatus() {
 }
 
 /**
- * Checks whether a planned Vertex AI operation fits within the $1.50 USD/day FinOps shield.
+ * Checks whether a planned Vertex AI operation fits within the $1.50 USD/day FinOps shield
+ * and the hard $70.00 USD credit ceiling. Supports `allowBatchBudgetOverride: true` for authorized batches.
  */
-export function checkFinOpsDailyBudget(estimatedCallCostUsd = 0.001) {
+export function checkFinOpsDailyBudget(estimatedCallCostUsd = 0.001, options = {}) {
   const status = getGcpFinOpsStatus();
-  if (status.todaySpendUsd + estimatedCallCostUsd > status.maxDailySpendUsd) {
+  const est = Number(estimatedCallCostUsd || 0);
+  if (status.totalCumulativeSpendUsd + est > status.totalPromotionalCreditUsd) {
     return {
       allowed: false,
-      reason: `Tope diario FinOps alcanzado ($${status.todaySpendUsd.toFixed(4)} / $${status.maxDailySpendUsd.toFixed(2)} USD/día). Protegiendo crédito de $90 USD.`,
+      reason: `Techo total de crédito FinOps alcanzado ($${status.totalCumulativeSpendUsd.toFixed(4)} / $${status.totalPromotionalCreditUsd.toFixed(2)} USD).`,
       status
     };
   }
-  return { allowed: true, status };
+  const allowBatchOverride = Boolean(options && options.allowBatchBudgetOverride === true);
+  if (!allowBatchOverride && status.todaySpendUsd + est > status.maxDailySpendUsd) {
+    return {
+      allowed: false,
+      reason: `Tope diario FinOps alcanzado ($${status.todaySpendUsd.toFixed(4)} / $${status.maxDailySpendUsd.toFixed(2)} USD/día). Protegiendo crédito de $${status.totalPromotionalCreditUsd.toFixed(2)} USD.`,
+      status
+    };
+  }
+  return { allowed: true, batchBudgetOverrideActive: allowBatchOverride, status };
+}
+
+function normalizeBatchJsonlRequests(jsonlRequests) {
+  let rawLines = [];
+  if (typeof jsonlRequests === 'string') {
+    const trimmed = jsonlRequests.trim();
+    if (trimmed && !trimmed.includes('\n') && fs.existsSync(trimmed)) {
+      rawLines = fs.readFileSync(trimmed, 'utf8').split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
+    } else {
+      rawLines = trimmed.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
+    }
+  } else if (Array.isArray(jsonlRequests)) {
+    rawLines = jsonlRequests;
+  } else {
+    throw new Error('submitAndPollVertexBatchJob requires an Array of request objects or a JSONL string/path.');
+  }
+
+  return rawLines
+    .map((item) => {
+      const obj = typeof item === 'string' ? JSON.parse(item) : item;
+      if (obj && obj.request) return JSON.stringify(obj);
+      const userText = String(obj?.prompt || obj?.text || JSON.stringify(obj));
+      const payload = {
+        request: {
+          contents: [{ role: 'user', parts: [{ text: userText }] }]
+        }
+      };
+      if (obj?.custom_id || obj?.customId) {
+        payload.custom_id = String(obj.custom_id || obj.customId);
+      }
+      if (obj?.systemInstruction) {
+        payload.request.systemInstruction = { parts: [{ text: String(obj.systemInstruction) }] };
+      }
+      if (obj?.generationConfig) {
+        payload.request.generationConfig = obj.generationConfig;
+      }
+      return JSON.stringify(payload);
+    })
+    .join('\n');
+}
+
+/**
+ * Submits & polls a Vertex AI Batch Prediction job (`batchPredictionJobs` at 50% Batch discount)
+ * against `process.env.GCP_BATCH_BUCKET` with deterministic SHA-256 local idempotency cache.
+ */
+export async function submitAndPollVertexBatchJob(jsonlRequests, options = {}) {
+  const canonicalJsonl = normalizeBatchJsonlRequests(jsonlRequests);
+  if (!canonicalJsonl) {
+    return { ok: false, error: 'EMPTY_BATCH_REQUESTS' };
+  }
+
+  const batchModel = String(options.model || GEMINI_MODEL || 'gemini-3.8-flash');
+  const batchLocation = resolveVertexLocationForModel(batchModel, options.location);
+  const apiHost =
+    batchLocation === 'global'
+      ? 'https://aiplatform.googleapis.com'
+      : `https://${batchLocation}-aiplatform.googleapis.com`;
+  const projectId = String(options.project || GCP_PROJECT || env.GCP_PROJECT_ID || '');
+  const rawBucket = String(options.gcsBucket || env.GCP_BATCH_BUCKET || process.env.GCP_BATCH_BUCKET || '').trim();
+  const bucketName = rawBucket.replace(/^gs:\/\//, '').replace(/\/+$/, '');
+  const cachePath = String(options.cachePath || BATCH_JOBS_CACHE_PATH);
+  const fetchFn = options.fetchImpl || globalThis.fetch;
+
+  const batchHash = crypto
+    .createHash('sha256')
+    .update(`${batchLocation}::${batchModel}::${bucketName}::${canonicalJsonl}`)
+    .digest('hex');
+
+  let batchCache = {};
+  if (fs.existsSync(cachePath)) {
+    try {
+      batchCache = JSON.parse(fs.readFileSync(cachePath, 'utf8'));
+    } catch (_) {
+      batchCache = {};
+    }
+  }
+
+  const existing = batchCache[batchHash];
+  if (existing && existing.state === 'JOB_STATE_SUCCEEDED' && !options.forceResubmit) {
+    recordFinOpsTelemetry({
+      operation: 'vertex_batch_idempotent_cache_hit',
+      model: batchModel,
+      inputChars: canonicalJsonl.length,
+      outputChars: Number(existing.outputChars || 0),
+      cacheHit: true,
+      fixedCostUsd: 0
+    });
+    return {
+      ok: true,
+      idempotentCacheHit: true,
+      batchHash,
+      ...existing,
+      billedCostUsd: 0
+    };
+  }
+
+  const inFlightStates = new Set([
+    'JOB_STATE_PENDING',
+    'JOB_STATE_QUEUED',
+    'JOB_STATE_RUNNING',
+    'JOB_STATE_UPDATING'
+  ]);
+  const isResumingInFlight = Boolean(
+    existing && existing.jobName && !options.forceResubmit && inFlightStates.has(existing.state)
+  );
+
+  const lineCount = canonicalJsonl.split('\n').length;
+  const estInputTokens = Math.ceil(canonicalJsonl.length / 4);
+  const estOutputTokens = lineCount * Number(options.estimatedOutputTokensPerItem || 512);
+  // 50% Batch Prediction API cost discount
+  const estimatedBatchCostUsd = Number((((estInputTokens * 0.00000015) + (estOutputTokens * 0.00000060)) * 0.5).toFixed(6));
+
+  if (!isResumingInFlight) {
+    const budgetCheck = checkFinOpsDailyBudget(estimatedBatchCostUsd, {
+      allowBatchBudgetOverride: Boolean(options.allowBatchBudgetOverride)
+    });
+    if (!budgetCheck.allowed) {
+      return {
+        ok: false,
+        blockedByFinOps: true,
+        batchHash,
+        error: budgetCheck.reason,
+        finopsStatus: budgetCheck.status
+      };
+    }
+  }
+
+  if (!bucketName || !projectId) {
+    return {
+      ok: false,
+      batchHash,
+      error: 'MISSING_GCP_BATCH_BUCKET_OR_PROJECT_ID'
+    };
+  }
+
+  const accessToken = await resolveGcpAccessToken(options.accessToken);
+  const inputObject = `batches/${batchHash}/input.jsonl`;
+  const inputUri = existing?.inputUri || `gs://${bucketName}/${inputObject}`;
+  const outputUriPrefix = existing?.outputUriPrefix || `gs://${bucketName}/batches/${batchHash}/output/`;
+
+  let jobName = existing?.jobName || '';
+  let jobState = existing?.state || 'JOB_STATE_PENDING';
+  let latestJob = null;
+
+  if (!isResumingInFlight) {
+    // 1. Upload JSONL payload to ephemeral 7-day GCS bucket
+    const uploadUrl = `https://storage.googleapis.com/upload/storage/v1/b/${encodeURIComponent(bucketName)}/o?uploadType=media&name=${encodeURIComponent(inputObject)}`;
+    const uploadRes = await fetchFn(uploadUrl, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        'Content-Type': 'application/jsonl'
+      },
+      body: `${canonicalJsonl}\n`
+    });
+    if (!uploadRes.ok) {
+      const errTxt = await uploadRes.text();
+      return { ok: false, batchHash, stage: 'gcs_upload', status: uploadRes.status, error: errTxt };
+    }
+
+    // 2. Submit Vertex AI Batch Prediction Job
+    const submitUrl = `${apiHost}/v1/projects/${projectId}/locations/${batchLocation}/batchPredictionJobs`;
+    const submitRes = await fetchFn(submitUrl, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        'Content-Type': 'application/json',
+        'x-goog-user-project': projectId
+      },
+      body: JSON.stringify({
+        displayName: options.displayName || `webfactory-batch-${batchHash.slice(0, 12)}`,
+        model: batchModel.startsWith('publishers/') ? batchModel : `publishers/google/models/${batchModel}`,
+        inputConfig: {
+          instancesFormat: 'jsonl',
+          gcsSource: { uris: [inputUri] }
+        },
+        outputConfig: {
+          predictionsFormat: 'jsonl',
+          gcsDestination: { outputUriPrefix }
+        }
+      })
+    });
+    const submitJson = await submitRes.json();
+    if (!submitRes.ok) {
+      return { ok: false, batchHash, stage: 'batch_submit', status: submitRes.status, error: submitJson };
+    }
+
+    jobState = submitJson.state || 'JOB_STATE_PENDING';
+    jobName = submitJson.name;
+    latestJob = submitJson;
+  }
+
+  const pollEnabled = options.poll !== false;
+  const maxPollAttempts = Number(options.maxPollAttempts || 120);
+  const pollIntervalMs = Number(options.pollIntervalMs || 15_000);
+
+  if (pollEnabled && jobName) {
+    const terminalStates = new Set([
+      'JOB_STATE_SUCCEEDED',
+      'JOB_STATE_FAILED',
+      'JOB_STATE_CANCELLED',
+      'JOB_STATE_PAUSED',
+      'JOB_STATE_EXPIRED'
+    ]);
+    for (let attempt = 0; attempt < maxPollAttempts && !terminalStates.has(jobState); attempt++) {
+      await new Promise((r) => setTimeout(r, pollIntervalMs));
+      const pollUrl = `${apiHost}/v1/${jobName}`;
+      const pollRes = await fetchFn(pollUrl, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          'x-goog-user-project': projectId
+        }
+      });
+      if (pollRes.ok) {
+        latestJob = await pollRes.json();
+        jobState = latestJob.state || jobState;
+      }
+    }
+  }
+
+  let results = [];
+  let outputChars = 0;
+  if (jobState === 'JOB_STATE_SUCCEEDED') {
+    const outPrefix = `batches/${batchHash}/output/`;
+    const listUrl = `https://storage.googleapis.com/storage/v1/b/${encodeURIComponent(bucketName)}/o?prefix=${encodeURIComponent(outPrefix)}`;
+    const listRes = await fetchFn(listUrl, {
+      headers: { Authorization: `Bearer ${accessToken}` }
+    });
+    if (listRes.ok) {
+      const listJson = await listRes.json();
+      const jsonlItems = (listJson.items || []).filter((it) => String(it.name || '').endsWith('.jsonl'));
+      for (const objItem of jsonlItems) {
+        const dlUrl = `https://storage.googleapis.com/storage/v1/b/${encodeURIComponent(bucketName)}/o/${encodeURIComponent(objItem.name)}?alt=media`;
+        const dlRes = await fetchFn(dlUrl, {
+          headers: { Authorization: `Bearer ${accessToken}` }
+        });
+        if (dlRes.ok) {
+          const textBody = await dlRes.text();
+          outputChars += textBody.length;
+          for (const line of textBody.split(/\r?\n/)) {
+            if (!line.trim()) continue;
+            try { results.push(JSON.parse(line)); } catch { results.push({ raw: line }); }
+          }
+        }
+      }
+    }
+  }
+
+  const recordEntry = {
+    jobName,
+    model: batchModel,
+    location: batchLocation,
+    state: jobState,
+    inputUri,
+    outputUriPrefix,
+    outputDirectory: latestJob?.outputInfo?.gcsOutputDirectory || outputUriPrefix,
+    error: latestJob?.error || null,
+    requestCount: lineCount,
+    outputChars,
+    results,
+    updatedAt: new Date().toISOString()
+  };
+
+  batchCache[batchHash] = recordEntry;
+  try {
+    fs.mkdirSync(path.dirname(cachePath), { recursive: true });
+    fs.writeFileSync(cachePath, JSON.stringify(batchCache, null, 2), 'utf8');
+  } catch (_) {}
+
+  const billedCostNow = isResumingInFlight ? 0 : estimatedBatchCostUsd;
+  if (!isResumingInFlight) {
+    recordFinOpsTelemetry({
+      operation: 'vertex_batch_prediction_50pct',
+      model: batchModel,
+      inputChars: canonicalJsonl.length,
+      outputChars,
+      cacheHit: false,
+      fixedCostUsd: billedCostNow
+    });
+  }
+
+  return {
+    ok: jobState === 'JOB_STATE_SUCCEEDED' || (!pollEnabled && Boolean(jobName)),
+    idempotentCacheHit: false,
+    resumedInFlight: isResumingInFlight,
+    batchHash,
+    billedCostUsd: billedCostNow,
+    batchDiscountPct: 50,
+    ...recordEntry
+  };
 }
 
 /**
@@ -1207,7 +1771,7 @@ export async function audit3dSceneAndVisualGateWithGemini({
   projectRoot = ROOT,
   preferProModel = false
 } = {}) {
-  const modelToUse = preferProModel ? 'gemini-2.5-pro' : GEMINI_MODEL;
+  const modelToUse = preferProModel ? GEMINI_PRO_MODEL : GEMINI_MODEL;
   const budgetCheck = checkFinOpsDailyBudget(preferProModel ? 0.005 : 0.0005);
 
   const ryuxReportPath = path.join(projectRoot, 'tools', 'audit', 'ryux_gate_report.json');
@@ -2037,7 +2601,7 @@ export async function routeMultimediaGeneration({
       },
       neuralVoiceoverTts: {
         model: 'gcp-tts-studio-journey',
-        voiceProfile: archetype.includes('law') ? 'en-US-Journey-D' : 'es-AR-Studio-B',
+        voiceProfile: archetype.includes('law') ? 'en-US-Journey-D' : 'es-US-Studio-B',
         wordLevelTimestamps: wordTimestamps,
         sidechainDuckingEnvelope: {
           bandHz: [300, 3500],
@@ -2095,5 +2659,5 @@ if (process.argv[1]?.endsWith('vertex_ai_bridge.mjs')) {
   console.log(`  Location: ${GCP_LOCATION}`);
   console.log(`  Model: ${GEMINI_MODEL}`);
   const finops = syncFinOpsBudgetJsonSummary();
-  console.log(`\n✅ FinOps Status ($90 USD Shield):\n`, JSON.stringify(finops, null, 2));
+  console.log(`\n✅ FinOps Status ($70 USD Shield):\n`, JSON.stringify(finops, null, 2));
 }

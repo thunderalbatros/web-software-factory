@@ -60,7 +60,7 @@
       "id": "context7",
       "category": "knowledge_and_documentation",
       "command": "npx",
-      "args": ["-y", "@upstash/context7-mcp@latest"],
+      "args": ["-y", "@upstash/context7-mcp@4.7.0"],
       "audience": "urn:web-software-factory:mcp:context7",
       "readOnly": true,
       "csprngSession": true,
@@ -75,7 +75,7 @@
       "command": "npx",
       "args": [
         "-y",
-        "chrome-devtools-mcp@latest",
+        "chrome-devtools-mcp@1.13.0",
         "--headless",
         "--isolated",
         "--no-usage-statistics",
@@ -93,7 +93,7 @@
       "id": "playwright",
       "category": "visual_inspection_and_60fps",
       "command": "npx",
-      "args": ["-y", "@playwright/mcp@latest", "--headless"],
+      "args": ["-y", "@playwright/mcp@0.0.85", "--headless"],
       "audience": "urn:web-software-factory:mcp:playwright",
       "readOnly": true,
       "csprngSession": true,
@@ -221,7 +221,7 @@
       "id": "cloudflare-edge-mcp",
       "category": "vcs_fs_db_edge",
       "command": "npx",
-      "args": ["-y", "@cloudflare/mcp-server-cloudflare"],
+      "args": ["-y", "@cloudflare/mcp-server-cloudflare@0.2.0"],
       "audience": "urn:web-software-factory:mcp:cloudflare-edge-mcp",
       "readOnly": true,
       "csprngSession": true,
@@ -236,7 +236,6 @@
       "command": "node",
       "args": ["tools/mcp/mcp_omni_rag_server.mjs", "--profile=blender-mcp"],
       "patternOrigin": "ahujasid/blender-mcp",
-      "vaultPath": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\webgpu-3d-2026\\blender-mcp",
       "audience": "urn:web-software-factory:mcp:blender-mcp",
       "readOnly": false,
       "csprngSession": true,
@@ -251,7 +250,6 @@
       "command": "node",
       "args": ["tools/intelligence/rea_reverse_engineering_bridge.mjs", "--mcp"],
       "patternOrigin": "morluto/rea",
-      "vaultPath": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\final-frontier-2026\\rea",
       "env": {
         "REA_MCP_INPUT_SCHEMA_PROFILE": "compact",
         "REA_MCP_OUTPUT_SCHEMA_PROFILE": "compact"
@@ -267,13 +265,31 @@
         "inspect-sqlite-wal-snapshot",
         "audit-mobile-apk-package"
       ]
+    },
+    "repomix": {
+      "id": "repomix",
+      "category": "knowledge_and_documentation",
+      "command": "npx",
+      "args": ["-y", "repomix@1.19.0", "--mcp"],
+      "audience": "urn:web-software-factory:mcp:repomix",
+      "readOnly": true,
+      "csprngSession": true,
+      "additionalPropertiesFalse": true,
+      "hitlGate": false,
+      "description": "Empaquetado estructural comprimido de repositorios locales/remotos con Tree-sitter sobre MCP SDK v2 (yamadashy/repomix v1.19.0).",
+      "tools": [
+        "pack_codebase",
+        "pack_remote_repository",
+        "read_repomix_output",
+        "grep_repomix_output"
+      ]
     }
   },
   "waves": {
     "wave_1_spec": {
       "waveName": "Ola 1 — Descubrimiento y Especificación (Spec-Kit)",
       "roles": ["product-spec-architect", "tech-scout"],
-      "allowedServers": ["omni-rag-ast", "context7", "rea-agents"],
+      "allowedServers": ["omni-rag-ast", "context7", "rea-agents", "repomix"],
       "writeCodeAllowed": false
     },
     "wave_2_builders": {
@@ -306,12 +322,12 @@
   "rolePermissions": {
     "product-spec-architect": {
       "wave": "wave_1_spec",
-      "allowedServers": ["omni-rag-ast", "context7", "rea-agents"],
+      "allowedServers": ["omni-rag-ast", "context7", "rea-agents", "repomix"],
       "mode": "READ_SPEC_ONLY"
     },
     "tech-scout": {
       "wave": "wave_1_spec",
-      "allowedServers": ["omni-rag-ast", "context7", "rea-agents"],
+      "allowedServers": ["omni-rag-ast", "context7", "rea-agents", "repomix"],
       "mode": "READ_SPEC_ONLY"
     },
     "senior-coder": {
@@ -376,7 +392,8 @@
         "github-mcp",
         "cloudflare-edge-mcp",
         "blender-mcp",
-        "rea-agents"
+        "rea-agents",
+        "repomix"
       ],
       "mode": "GOVERNANCE_SUPERVISOR"
     }

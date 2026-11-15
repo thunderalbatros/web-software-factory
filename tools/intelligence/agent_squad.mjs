@@ -2,7 +2,7 @@
 /**
  * tools/intelligence/agent_squad.mjs — Parallel DAG ("Bolts") Squad Orchestrator & Best-of-N Engine
  * =================================================================================================
- * Orchestrates our 9 Specialized Web Software Factory Roles via:
+ * Orchestrates our 11 Specialized Web Software Factory Roles (`squad_0`..`squad_10`) via:
  *   1. Directed Acyclic Graph (DAG) Execution Waves ("Bolts") using Promise.allSettled.
  *   2. Git Worktree Sandcastle Isolation (tools/lib/sandcastle-runner.mjs).
  *   3. Durable Local Checkpointing (.agents/memory/bolt_checkpoint.json) with --resume support.
@@ -63,6 +63,9 @@ import {
   runJevSleepTimeConsolidationCycle
 } from './jev_memory_pipeline.mjs';
 import { formatOptimalPromptData } from './context_budget.mjs';
+import { executeScopedBeadNode, validateFileLockContainment } from './agent_runner_adapter.mjs';
+
+export { validateFileLockContainment };
 import { syncProjectStatechartSnapshot } from '../orchestrator/deterministic_agent_statechart.mjs';
 import { checkAstDiffOscillationBreaker } from '../audit/local_fullstack_and_component_harness.mjs';
 import { evaluateFullJevOuterAndMetaGate } from './jev_semantic_gate.mjs';
@@ -325,9 +328,9 @@ export const SQUADS = {
   },
   squad_2: {
     id: 'squad_2',
-    roleFile: '.agents/agency/roles/senior-coder.md',
+    roleFile: '.agents/agency/roles/edge-fullstack-architect.md',
     name: 'Squad 2 — Edge Full-Stack & Backend Architect',
-    mission: 'Ensures Cloudflare Workers Static Assets, D1 SQLite, Durable Objects, and clean ESM architecture.',
+    mission: 'Ensures Cloudflare Workers Static Assets, D1 SQLite, Durable Objects, Hono v5, Drizzle 1.0, and clean ESM architecture.',
     skills: ['ponytail', 'caveman', 'cloudflare-durable-objects', 'error-handling', 'number-parsing', 'workers-best-practices']
   },
   squad_3: {
@@ -346,16 +349,16 @@ export const SQUADS = {
   },
   squad_5: {
     id: 'squad_5',
-    roleFile: '.agents/agency/roles/ux-designer.md',
-    name: 'Squad 5 — 60-FPS Motion, View Transitions & CSS Baseline 2026',
-    mission: 'Guarantees 60 FPS composite-only animations, View Transitions API, and prefers-reduced-motion.',
-    skills: ['motion-engineer', 'css-scroll-driven', 'animation-performance', 'baseline-ui', 'vanilla-motion-choreography']
+    roleFile: '.agents/agency/roles/motion-engineer.md',
+    name: 'Squad 5 — 60-FPS Motion, Three.js r187 WebGPU & CSS Baseline 2026',
+    mission: 'Guarantees 60 FPS composite-only animations, Three.js r187 WebGPU/Gaussian Splats, View Transitions API, and prefers-reduced-motion.',
+    skills: ['motion-engineer', 'threejs-r186-tsl-and-gsap-free', 'css-scroll-driven', 'animation-performance', 'baseline-ui', 'vanilla-motion-choreography']
   },
   squad_6: {
     id: 'squad_6',
     roleFile: '.agents/agency/roles/security-engineer.md',
-    name: 'Squad 6 — Security, Adversarial QA & Visual Gate Auditor',
-    mission: 'Executes OWASP ASVS v5.0, Oxlint/AST <500ms, RYUX v2.14.2, odiff-bin SIMD, and Stagehand AX audits.',
+    name: 'Squad 6 — Security & DevSecOps Auditor',
+    mission: 'Executes OWASP ASVS v5.0, Zizmor v1.32, Oxlint v1.93 / AST <500ms, and Edge DAST audits.',
     skills: ['adverse-review', 'break-ui', 'security-audit', 'security-checklist', 'cto-hitl-visual-gate']
   },
   squad_7: {
@@ -364,14 +367,45 @@ export const SQUADS = {
     name: 'Squad 7 — Technical SEO, Agentic AEO/GEO & Edge DevOps',
     mission: 'Maintains llms.txt, Schema.org JSON-LD @graph, Speculation Rules API, and Cloudflare deployments.',
     skills: ['ai-seo-and-geo', 'marketingskills', 'web-perf', 'verify-before-claim', 'kb-writing']
+  },
+  squad_8: {
+    id: 'squad_8',
+    roleFile: '.agents/agency/roles/product-spec-architect.md',
+    name: 'Squad 8 — Product Discovery & Spec-Kit Architect',
+    mission: 'Selects SPLE stack (astro-edge v7 / fullstack-saas-edge / vanilla-edge) and authors .specify contracts.',
+    skills: ['modularity', 'constraint-driven-development', 'grill-me']
+  },
+  squad_9: {
+    id: 'squad_9',
+    roleFile: '.agents/agency/roles/senior-coder.md',
+    name: 'Squad 9 — Senior Frontend & Islands Engineer',
+    mission: 'Implements Astro 7 Islands, semantic HTML5, zero-bloat CSS primitives, and TDD runtime controllers.',
+    skills: ['baseline-ui', 'emil-design-eng', 'code-structure', 'test-driven-development']
+  },
+  squad_10: {
+    id: 'squad_10',
+    roleFile: '.agents/agency/roles/qa-auditor.md',
+    name: 'Squad 10 — Independent Coverage & Visual Regression QA',
+    mission: 'Executes read-only RYUX v2.14.2, odiff-bin SIMD, Playwright v1.65 / Stagehand v4.4 AX verification.',
+    skills: ['cto-hitl-visual-gate', 'ui-test', 'break-ui', 'silent-failure-hunter', 'evidence-driven-testing']
   }
 };
 
 export function verifySquadAlignment() {
   const missingSkills = [];
+  const missingRoles = [];
   const skillsDir = path.join(ROOT, '.agents', 'skills');
+  const rolesDir = path.join(ROOT, '.agents', 'agency', 'roles');
+  const orgMdPath = path.join(ROOT, '.agents', 'agency', 'ORGANIZATION.md');
 
+  const squadRoleSlugs = new Set();
   for (const [key, squad] of Object.entries(SQUADS)) {
+    const roleSlug = path.basename(squad.roleFile, '.md');
+    squadRoleSlugs.add(roleSlug);
+    const roleAbsPath = path.join(ROOT, squad.roleFile);
+    if (!fs.existsSync(roleAbsPath)) {
+      missingRoles.push({ squad: key, roleFile: squad.roleFile });
+    }
     for (const skill of squad.skills) {
       const skillPath = path.join(skillsDir, skill);
       if (!fs.existsSync(skillPath)) {
@@ -381,18 +415,47 @@ export function verifySquadAlignment() {
     try {
       recordSkillExecutionEvidence({
         skillIds: squad.skills.slice(0, 2),
-        roleId: path.basename(squad.roleFile, '.md'),
-        success: missingSkills.length === 0,
+        roleId: roleSlug,
+        success: missingSkills.length === 0 && missingRoles.length === 0,
         fallbackTriggered: false,
         latencyMs: 11.2
       });
     } catch (_) {}
   }
 
+  // L-03: Cross-check exact count and names across `.agents/agency/roles/`, `ORGANIZATION.md`, and `SQUADS`
+  const rolesDirSlugs = fs.existsSync(rolesDir)
+    ? fs.readdirSync(rolesDir).filter((f) => f.endsWith('.md')).map((f) => path.basename(f, '.md'))
+    : [];
+  const orgSlugs = [];
+  if (fs.existsSync(orgMdPath)) {
+    const orgText = fs.readFileSync(orgMdPath, 'utf8');
+    const rowRx = /^\|\s*\*\*(\d+[A-Z]?)\*\*\s*\|\s*[^|]+\|\s*`([a-z0-9-]+)`\s*\|/gm;
+    let m;
+    while ((m = rowRx.exec(orgText)) !== null) {
+      if (m[1] !== '0') orgSlugs.push(m[2]); // Exclude human CTO row **0**
+    }
+  }
+
+  const extraRoleFiles = rolesDirSlugs.filter((s) => !squadRoleSlugs.has(s));
+  const missingOrgSlugs = [...squadRoleSlugs].filter((s) => !orgSlugs.includes(s));
+  const extraOrgSlugs = orgSlugs.filter((s) => !squadRoleSlugs.has(s));
+  const topologySynced =
+    rolesDirSlugs.length === squadRoleSlugs.size &&
+    orgSlugs.length === squadRoleSlugs.size &&
+    extraRoleFiles.length === 0 &&
+    missingOrgSlugs.length === 0 &&
+    extraOrgSlugs.length === 0;
+
   return {
-    valid: missingSkills.length === 0,
+    valid: missingSkills.length === 0 && missingRoles.length === 0 && topologySynced,
     squadCount: Object.keys(SQUADS).length,
-    missingSkills
+    rolesDirCount: rolesDirSlugs.length,
+    organizationCount: orgSlugs.length,
+    topologySynced,
+    missingSkills,
+    missingRoles,
+    topologyMismatches: { extraRoleFiles, missingOrgSlugs, extraOrgSlugs }
   };
 }
 
@@ -732,6 +795,34 @@ export async function runSquadMission(missionTitle = 'Standard SOTA Bolt Pipelin
               durationMs: Math.round(performance.now() - t0),
               primitiveCount,
               forged3dResult
+            };
+          }
+        },
+        {
+          id: 'agent_runner_scoped_synthesis',
+          role: 'senior-coder',
+          run: async () => {
+            const slug = project || 'agencia-alfa';
+            const projRoot = path.join(ROOT, 'projects', slug);
+            const beads = loadBeadsTaskGraph();
+            const targetBead = beads[0] || {
+              id: 'bead-wave2-default',
+              role: 'senior-coder',
+              title: missionTitle,
+              fileLocks: [`projects/${slug}/index.html`]
+            };
+            const runnerRes = await executeScopedBeadNode({
+              beadNode: targetBead,
+              projectSlug: slug,
+              projectDir: fs.existsSync(projRoot) ? projRoot : ROOT,
+              lane: laneDecision.lane,
+              dryRun: !options.persistSynthesis
+            });
+            return {
+              id: 'agent_runner_scoped_synthesis',
+              passed: Boolean(runnerRes.ok && runnerRes.fileLocksVerified),
+              durationMs: Math.round(runnerRes.latencyMs || 0),
+              mode: runnerRes.mode
             };
           }
         }

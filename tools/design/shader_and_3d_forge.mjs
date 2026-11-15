@@ -9,7 +9,8 @@
  *   - `tigerabrodi/webgpu-vfx` & `software-mansion/TypeGPU` (Compute Shader GPU Particles)
  *   - `donmccurdy/glTF-Transform` & `zeux/meshoptimizer` v1.3 (GLB 70%-85% size reduction)
  *   - `openshaders/openshaders` & `Roboticela/Animator`
- *   - Three.js r186 Anti-Deprecation (`WebGPURenderer`, `TSL`, `THREE.Timer`, `RenderPipeline`)
+ *   - Three.js r186-r187 Anti-Deprecation (`WebGPURenderer`, native `SPLATLoader` / `SPZLoader` /
+ *     `GaussianSplat`, `EON` diffuse BRDF, cube-target PMREM IBL, `TSL` auto type promotion, `THREE.Timer`, `RenderPipeline`)
  *   - GSAP Club Free (`SplitText.create` with `tag: "span"`, `autoSplit: true`, `mask: "lines"`)
  * ==========================================================================================
  */
@@ -87,15 +88,15 @@ export const FORGE_3D_PRIMITIVES = {
   'diorama-hero-3d': {
     id: 'diorama-hero-3d',
     aliases: ['diorama-hero-3d', 'diorama-3d', 'diorama'],
-    title: 'Diorama Hero 3D (Three.js r186 WebGPURenderer + AgX + N8AO + Scroll Camera)',
-    vaultSources: ['blendi-remade/dioramas', 'Roboticela/Animator', 'donmccurdy/glTF-Transform'],
+    title: 'Diorama Hero 3D (Three.js r187 WebGPURenderer + EON BRDF + AgX + N8AO + Scroll Camera)',
+    vaultSources: ['blendi-remade/dioramas', 'Roboticela/Animator', 'donmccurdy/glTF-Transform', 'mrdoob/three.js@r187'],
     description:
-      'Escena 3D interactiva con iluminación PBR HDR, AgX tone mapping, THREE.Timer, RenderPipeline TSL y coreografía de cámara vinculada al scroll.',
+      'Escena 3D interactiva con iluminación PBR HDR (cube-target PMREM IBL), EON diffuse BRDF, AgX tone mapping, THREE.Timer, RenderPipeline TSL y coreografía de cámara vinculada al scroll.',
     html: `<section class="wf-diorama-hero-3d surface-elevated" data-primitive="diorama-hero-3d" aria-label="Interactive 3D Product Diorama">
   <div class="wf-diorama-viewport">
     <canvas id="wf-diorama-canvas" class="wf-3d-canvas" width="960" height="540" data-gpu-watchdog="active"></canvas>
     <div class="wf-diorama-overlay">
-      <span class="wf-badge-oklch">WEBGPU R186 • AGX HDR • N8AO</span>
+      <span class="wf-badge-oklch">WEBGPU R187 • EON BRDF • AGX HDR • N8AO</span>
       <h2 class="wf-diorama-headline" data-gsap-split="lines">Iluminación Cinematográfica HDR a 60 FPS</h2>
       <p class="wf-diorama-sub">Renderizado con <code>WebGPURenderer</code>, <code>THREE.Timer</code>, <code>RenderPipeline</code> y compresión <code>meshopt</code>.</p>
     </div>
@@ -107,13 +108,16 @@ export const FORGE_3D_PRIMITIVES = {
 .wf-diorama-overlay { position: relative; z-index: 2; max-width: 65ch; padding: clamp(1.5rem, 3vw, 3rem); text-align: center; pointer-events: none; }
 .wf-diorama-headline { font-size: clamp(1.75rem, 1.2rem + 2.2vw, 3rem); color: oklch(0.97 0.005 260); margin: 0.75rem 0; }
 .wf-diorama-sub { color: oklch(0.82 0.015 260); font-size: clamp(1rem, 0.92rem + 0.35vw, 1.15rem); }`,
-    js: `// Three.js r186 WebGPURenderer + TSL RenderPipeline + GSAP SplitText (2026 Anti-Deprecation Standard)
+    js: `// Three.js r187 WebGPURenderer + EON Diffuse BRDF + Cube-Target PMREM IBL + TSL RenderPipeline
 // Verified: Uses THREE.Timer (never THREE.Clock), THREE.AgXToneMapping, THREE.PCFShadowMap, and RenderPipeline.
 export async function initDioramaHero3D(canvasEl) {
   const config = {
+    threeVersion: '0.187.0',
     renderer: 'WebGPURenderer',
     timerClass: 'THREE.Timer',
     pipelineClass: 'THREE.RenderPipeline',
+    diffuseBrdf: 'EON (Energy-Preserving Oren-Nayar)',
+    pmremIblMode: 'CubeRenderTargetPMREM',
     toneMapping: 'THREE.AgXToneMapping',
     shadowMapType: 'THREE.PCFShadowMap',
     ambientOcclusion: 'N8AO + MipChainBloom',
@@ -127,26 +131,28 @@ export async function initDioramaHero3D(canvasEl) {
   'spark-gaussian-splat': {
     id: 'spark-gaussian-splat',
     aliases: ['spark-gaussian-splat', 'gaussian-splat', '3dgs', 'spark'],
-    title: 'Spark 2.x 3D Gaussian Splatting Viewer (.SPZ / .RAD / .PLY + LoD Splat Tree)',
-    vaultSources: ['sparkjsdev/spark', 'blendi-remade/dioramas'],
+    title: 'Three.js r187 Native GaussianSplat + SPLATLoader / SPZLoader (.SPZ / .SPLAT / .PLY)',
+    vaultSources: ['mrdoob/three.js@r187', 'sparkjsdev/spark', 'blendi-remade/dioramas'],
     description:
-      'Visor embebido de 3D Gaussian Splatting con presupuesto adaptativo de splats (maxSplats: 500K en móvil, 2M en desktop) y streaming progresivo.',
+      'Visor embebido de 3D Gaussian Splatting nativo de Three.js r186-r187 (SPLATLoader / SPZLoader / GaussianSplat) con fallback progresivo Spark LoD y presupuesto adaptativo (500K móvil, 2M desktop).',
     html: `<section class="wf-spark-splat-viewer surface-elevated" data-primitive="spark-gaussian-splat" aria-label="3D Gaussian Splatting Photorealistic Viewer">
   <canvas id="wf-spark-splat-canvas" class="wf-3d-canvas" width="960" height="540" data-max-splats-mobile="500000" data-max-splats-desktop="2000000"></canvas>
   <div class="wf-diorama-overlay">
-    <span class="wf-badge-oklch">SPARK 2.X • 3D GAUSSIAN SPLATTING (.SPZ / .RAD)</span>
-    <h2 class="wf-diorama-headline">Fotorrealismo Volumétrico con LoD Splat Tree</h2>
-    <p class="wf-diorama-sub">Presupuesto adaptativo en GPU: <code>500K splats</code> en móvil y <code>2M splats</code> en desktop a 60 FPS.</p>
+    <span class="wf-badge-oklch">THREE.JS R187 • NATIVE GAUSSIAN SPLAT (.SPZ / .SPLAT)</span>
+    <h2 class="wf-diorama-headline">Fotorrealismo Volumétrico Nativo en WebGPU</h2>
+    <p class="wf-diorama-sub">Cargadores nativos <code>SPLATLoader</code> y <code>SPZLoader</code> con presupuesto adaptativo: <code>500K splats</code> móvil / <code>2M</code> desktop.</p>
   </div>
 </section>`,
     css: `.wf-spark-splat-viewer { position: relative; min-height: 400px; border-radius: 20px; overflow: hidden; background: radial-gradient(circle at 50% 35%, oklch(0.22 0.04 255), oklch(0.13 0.015 260)); }`,
-    js: `// Spark 2.x 3D Gaussian Splatting Adaptive LoD Viewer
+    js: `// Three.js r187 Native GaussianSplat + SPLATLoader / SPZLoader (progressive Spark LoD fallback)
 export function initSparkGaussianSplat(canvasEl, srcUrl = '/assets/scene.spz') {
   const isMobile = typeof window !== 'undefined' && window.matchMedia('(max-width: 768px)').matches;
   const maxSplats = isMobile ? 500_000 : 2_000_000;
   return {
-    engine: 'sparkjsdev/spark@2.x',
-    formatsSupported: ['.spz', '.rad', '.ply'],
+    engine: 'three@0.187.0 (Native GaussianSplat / SPLATLoader / SPZLoader)',
+    fallbackEngine: 'sparkjsdev/spark@2.x',
+    loaders: ['three/addons/loaders/SPLATLoader.js', 'three/addons/loaders/SPZLoader.js'],
+    formatsSupported: ['.spz', '.splat', '.rad', '.ply'],
     lodSplatTree: true,
     maxSplats,
     srcUrl

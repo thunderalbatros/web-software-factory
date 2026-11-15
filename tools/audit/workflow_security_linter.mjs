@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 /**
- * tools/audit/workflow_security_linter.mjs — OWASP GitHub Actions & Zizmor v1.30 Deterministic Linter
+ * tools/audit/workflow_security_linter.mjs — OWASP GitHub Actions & Zizmor v1.32 Deterministic Linter
  * ====================================================================================================
- * Audits all `.yml` / `.yaml` files inside `.github/workflows/` enforcing `zizmor v1.30` (Oct 2026):
+ * Audits all `.yml` / `.yaml` files inside `.github/workflows/` enforcing `zizmor v1.32.0` (Nov 2026):
  *   1. ZIZMOR-01 (Forbidden Triggers): Prohibits `pull_request_target`, insecure `workflow_run`,
  *      and unguarded `issue_comment` triggers.
  *   2. ZIZMOR-02 (Credential Persistence): Requires `persist-credentials: false` on every `actions/checkout`.
@@ -13,11 +13,14 @@
  *      (requires passing Issue titles/bodies, PR metadata, and inputs via `env:` variables).
  *   5. ZIZMOR-05 (Cache Poisoning Defense): Detects unsafe `actions/cache/save` or mutable cache
  *      restoration coupled with `pull_request_target` / untrusted release publishing.
+ *   6. ZIZMOR-06 (Unpinned Action & Reusable Workflow Audit — CVE-2026-102289): Blocks mutable
+ *      third-party `@main/@master/@HEAD` action refs and unpinned reusable workflow calls.
  * ====================================================================================================
  */
 
 import fs from 'node:fs';
 import path from 'node:path';
+import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -138,6 +141,33 @@ export function lintWorkflowYamlContent(rawContent, fileName = 'workflow.yml') {
       currentJobHasPermissions = true;
     }
 
+    // Check `uses:` refs for ZIZMOR-06 (floating third-party branch refs / reusable workflow refs - CVE-2026-102289)
+    const usesMatch = trimmed.match(/^(?:-\s+)?uses\s*:\s*([^\s#]+)/i);
+    if (usesMatch) {
+      const refTarget = usesMatch[1].replace(/['"]/g, '');
+      const isLocalAction = refTarget.startsWith('./');
+      const isOfficialGithubAction = /^actions\/[A-Za-z0-9_.-]+@(?:v\d+|[0-9a-f]{40})$/i.test(refTarget);
+      const isShaPinned = /@[0-9a-f]{40}$/i.test(refTarget);
+      const isReusableWorkflow = /\.ya?ml@/i.test(refTarget);
+      const isMutableBranchRef = /@(main|master|head|latest)\b/i.test(refTarget);
+
+      if (!isLocalAction && (isMutableBranchRef || (isReusableWorkflow && !isShaPinned))) {
+        issues.push({
+          rule: 'ZIZMOR-06-UNPINNED-ACTION-OR-WORKFLOW-REF',
+          file: fileName,
+          line: i + 1,
+          message: `Unpinned GitHub Action or reusable workflow ref '${refTarget}' (CVE-2026-102289 risk). Pin to a 40-char commit SHA.`
+        });
+      } else if (!isLocalAction && !isOfficialGithubAction && !isShaPinned) {
+        issues.push({
+          rule: 'ZIZMOR-06-THIRD-PARTY-TAG-UNPINNED',
+          file: fileName,
+          line: i + 1,
+          message: `Third-party action '${refTarget}' should be pinned to an immutable 40-char commit SHA.`
+        });
+      }
+    }
+
     // Check `actions/checkout` steps for `persist-credentials: false` (ZIZMOR-02)
     if (/uses\s*:\s*actions\/checkout@/i.test(trimmed)) {
       let hasPersistFalse = false;
@@ -218,10 +248,19 @@ export function lintWorkflowYamlContent(rawContent, fileName = 'workflow.yml') {
  */
 export function runWorkflowSecurityLinter(rootDir = ROOT) {
   const workflowsDir = path.join(rootDir, '.github', 'workflows');
+  let nativeZizmorVersion = null;
+  try {
+    const cliCheck = spawnSync('zizmor', ['--version'], { encoding: 'utf8', timeout: 1500 });
+    if (cliCheck.status === 0 && cliCheck.stdout) {
+      nativeZizmorVersion = cliCheck.stdout.trim();
+    }
+  } catch (_) {}
+
   if (!fs.existsSync(workflowsDir)) {
     return {
       passed: false,
-      zizmorVersion: '1.30.0',
+      zizmorVersion: '1.32.0',
+      nativeZizmorVersion,
       workflowsChecked: 0,
       results: [],
       issues: [{ rule: 'WORKFLOWS_DIR_MISSING', file: '.github/workflows', message: 'No existe .github/workflows' }]
@@ -246,7 +285,8 @@ export function runWorkflowSecurityLinter(rootDir = ROOT) {
 
   return {
     passed: allIssues.length === 0,
-    zizmorVersion: '1.30.0',
+    zizmorVersion: '1.32.0',
+    nativeZizmorVersion,
     workflowsChecked: files.length,
     workflowFiles: files,
     results,
@@ -257,7 +297,7 @@ export function runWorkflowSecurityLinter(rootDir = ROOT) {
 if (process.argv[1] && path.resolve(process.argv[1]) === __filename) {
   const report = runWorkflowSecurityLinter();
   console.log('==================================================================');
-  console.log('🛡️  OWASP GITHUB ACTIONS & ZIZMOR v1.30 WORKFLOW LINTER (2026)');
+  console.log('🛡️  OWASP GITHUB ACTIONS & ZIZMOR v1.32.0 WORKFLOW LINTER (2026)');
   console.log('==================================================================');
   for (const r of report.results) {
     console.log(
@@ -266,7 +306,7 @@ if (process.argv[1] && path.resolve(process.argv[1]) === __filename) {
   }
   console.log('------------------------------------------------------------------');
   if (report.passed) {
-    console.log(`✅ [ZIZMOR v1.30 LINTER PASSED] ${report.workflowsChecked} workflows verified with 0 security violations.`);
+    console.log(`✅ [ZIZMOR v1.32.0 LINTER PASSED] ${report.workflowsChecked} workflows verified with 0 security violations.`);
     process.exit(0);
   } else {
     for (const issue of report.issues) {

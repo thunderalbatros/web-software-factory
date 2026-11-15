@@ -406,6 +406,11 @@ export async function auditEightHarnessLayers() {
   const shieldRes = runAgentShieldHarnessAudit();
   const zizmorRes = runWorkflowSecurityLinter();
   const secGateRes = await runSecurityQuarantineGate({ skipNetworkAudit: true });
+  const binExt = process.platform === 'win32' ? '.cmd' : '';
+  const biomeBin = path.join(FACTORY_ROOT, 'node_modules', '.bin', `biome${binExt}`);
+  const oxfmtBin = path.join(FACTORY_ROOT, 'node_modules', '.bin', `oxfmt${binExt}`);
+  const biomeReady = fs.existsSync(biomeBin);
+  const oxfmtReady = fs.existsSync(oxfmtBin);
 
   const l6Passed =
     l6Syntax.every((s) => s.ok) &&
@@ -414,15 +419,17 @@ export async function auditEightHarnessLayers() {
     Number(cleanRes.duplicationPercent || 0) < 4.0 &&
     shieldRes.passed &&
     zizmorRes.passed &&
-    secGateRes.passed;
+    secGateRes.passed &&
+    biomeReady &&
+    oxfmtReady;
 
   layers.push({
     layerNumber: 6,
-    name: 'Deterministic Code & AppSec Gates (Oxc, <4% Dup, AgentShield, Zizmor)',
+    name: 'Deterministic Code & AppSec Gates (Oxc v1.93, Biome v2.6, <4% Dup, AgentShield, Zizmor v1.32)',
     score: l6Passed ? 12.5 : 0,
     maxScore: 12.5,
     passed: l6Passed,
-    evidence: `AST=${astRes.score}/100 (${astRes.latencyMs}ms) | Dup=${cleanRes.duplicationPercent}% | AgentShield=${shieldRes.passed} | Zizmor=${zizmorRes.workflowsChecked} WF | SecGate=${secGateRes.score}/100`
+    evidence: `AST=${astRes.score}/100 (${astRes.latencyMs}ms) | Dup=${cleanRes.duplicationPercent}% | Biome=${biomeReady} | Oxfmt=${oxfmtReady} | Zizmor=${zizmorRes.workflowsChecked} WF | SecGate=${secGateRes.score}/100`
   });
 
   // =========================================================================

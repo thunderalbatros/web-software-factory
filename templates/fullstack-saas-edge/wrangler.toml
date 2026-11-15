@@ -1,0 +1,19 @@
+name = "{{PROJECT_ID}}"
+main = "worker/index.js"
+compatibility_date = "2025-10-15"
+compatibility_flags = ["nodejs_compat"]
+
+[placement]
+mode = "smart"
+
+[assets]
+directory = "./dist"
+binding = "ASSETS"
+not_found_handling = "404-page"
+
+# Uncomment and bind your D1 database ID via `wrangler d1 create {{PROJECT_ID}}-db`
+# [[d1_databases]]
+# binding = "DB"
+# database_name = "{{PROJECT_ID}}-db"
+# database_id = "00000000-0000-0000-0000-000000000000"
+

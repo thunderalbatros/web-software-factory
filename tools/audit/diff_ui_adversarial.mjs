@@ -20,6 +20,16 @@ import { loadProjectConfig, FACTORY_ROOT } from '../lib/project_loader.mjs';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+export function buildPlaywright165FailureConfig() {
+  return {
+    playwrightVersion: '1.65.0',
+    stagehandVersion: '4.4.0',
+    onlyFailures: true,
+    exclusiveFlagPrefix: '--exclusive-',
+    selfHealingAxLocators: true
+  };
+}
+
 export function runDiffUiAdversarialGate(projectInput = '') {
   const projectConfig = loadProjectConfig(projectInput);
   const ROOT = projectConfig.projectRoot;
@@ -191,9 +201,12 @@ export function runDiffUiAdversarialGate(projectInput = '') {
   }
 
   // --------------------------------------------------------------------------
-  // 4. Rust-Speed Oxc (`oxlint`) AST Check on Core Worker & Tools
+  // 4. Rust-Speed Oxc (`oxlint v1.93.0` + `oxlint-tsgolint`) AST Check
   // --------------------------------------------------------------------------
-  const oxlintBin = path.join(FACTORY_ROOT, 'tools', 'audit', 'node_modules', '.bin', process.platform === 'win32' ? 'oxlint.cmd' : 'oxlint');
+  const oxlintBinName = process.platform === 'win32' ? 'oxlint.cmd' : 'oxlint';
+  const rootOxlintBin = path.join(FACTORY_ROOT, 'node_modules', '.bin', oxlintBinName);
+  const auditOxlintBin = path.join(FACTORY_ROOT, 'tools', 'audit', 'node_modules', '.bin', oxlintBinName);
+  const oxlintBin = fs.existsSync(rootOxlintBin) ? rootOxlintBin : auditOxlintBin;
   let oxlintElapsedMs = 0;
   if (fs.existsSync(oxlintBin)) {
     const oxStart = Date.now();
@@ -207,18 +220,18 @@ export function runDiffUiAdversarialGate(projectInput = '') {
         stdio: ['ignore', 'pipe', 'pipe']
       });
       oxlintElapsedMs = Date.now() - oxStart;
-      emitPass('oxc-rust-linter', `oxlint v1.89.0 verified ${path.basename(lintTarget)} & tom_swe_engine.mjs with 0 errors in ${oxlintElapsedMs}ms`);
+      emitPass('oxc-rust-linter', `oxlint v1.93.0 verified ${path.basename(lintTarget)} & tom_swe_engine.mjs with 0 errors in ${oxlintElapsedMs}ms`);
     } catch (err) {
       oxlintElapsedMs = Date.now() - oxStart;
       const out = String(err.stdout || '') + String(err.stderr || '');
       if (out.includes('0 errors')) {
-        emitPass('oxc-rust-linter', `oxlint v1.89.0 verified 0 errors in ${oxlintElapsedMs}ms`);
+        emitPass('oxc-rust-linter', `oxlint v1.93.0 verified 0 errors in ${oxlintElapsedMs}ms`);
       } else {
         emitFail('oxc-rust-linter', `oxlint reported issues: ${out.slice(0, 140)}`);
       }
     }
   } else {
-    emitFail('oxc-rust-linter', 'oxlint binary not found in tools/audit/node_modules/.bin');
+    emitFail('oxc-rust-linter', 'oxlint binary not found in root node_modules/.bin or tools/audit/node_modules/.bin');
   }
 
   const totalElapsedMs = Date.now() - t0;
@@ -232,6 +245,7 @@ export function runDiffUiAdversarialGate(projectInput = '') {
     passRate: `${passRate}%`,
     oxlintElapsedMs,
     totalElapsedMs,
+    playwrightStagehandProfile: buildPlaywright165FailureConfig(),
     markers
   };
 }

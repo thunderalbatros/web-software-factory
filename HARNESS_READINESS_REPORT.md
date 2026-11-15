@@ -1,6 +1,6 @@
 # 🩺 HARNESS READINESS REPORT — Certificación Pre-Vuelo de la Software Factory (Fases 1 a 38.1)
 
-> **Fecha de Certificación:** 2026-10-29T22:57:11.228Z  
+> **Fecha de Certificación:** 2026-11-13T05:39:08.503Z  
 > **Puntaje Global del Harness:** **`100.0 / 100.0`** (`8/8 Capas Operativas en Verde`)  
 > **Matriz de Alineación de Engranajes (Etapas 0 a 6):** **`6/6 ETAPAS ALINEADAS`**  
 > **Simulacro End-to-End (5 Pasos):** **`5/5 PASOS APROBADOS`**  
@@ -18,7 +18,7 @@
 | **Capa 3** | **Context Engineering, RAG & AST (HOT+WARM <= 3,500 tokens)** | **`12.5 / 12.5`** | `PASS` | `BootTokens=2762/3500 (HOT=1898, WARM=864) | OffDomainQuarantined=true | SecurityCatalogs=3/3` |
 | **Capa 4** | **Zero-Trust MCP & Governance Kernel (18/18 SARIF & Role Isolation)** | **`12.5 / 12.5`** | `PASS` | `MCP SARIF=18/18 | SealedEnvelopeBlocked=true | ToolsWriteBlocked=true` |
 | **Capa 5** | **Creator-Verifier Split & Evaluation (Blind Review + F2P/P2P)** | **`12.5 / 12.5`** | `PASS` | `BlindReview=true | HiddenSuite=true | F2P=true | P2P=true` |
-| **Capa 6** | **Deterministic Code & AppSec Gates (Oxc, <4% Dup, AgentShield, Zizmor)** | **`12.5 / 12.5`** | `PASS` | `AST=100/100 (undefinedms) | Dup=0% | AgentShield=true | Zizmor=4 WF | SecGate=100/100` |
+| **Capa 6** | **Deterministic Code & AppSec Gates (Oxc v1.93, Biome v2.6, <4% Dup, AgentShield, Zizmor v1.32)** | **`12.5 / 12.5`** | `PASS` | `AST=100/100 (undefinedms) | Dup=0% | Biome=true | Oxfmt=true | Zizmor=4 WF | SecGate=100/100` |
 | **Capa 7** | **Visual Archetypes, 3D, Dual-DB & Mobile (DESIGN.md, Capacitor 8, KMS/RLS)** | **`12.5 / 12.5`** | `PASS` | `Archetypes=8/8 | 3DPrimitives=4 | KMS_AES256GCM=Verified | CTO_Wired=true` |
 | **Capa 8** | **Self-Evolution & Cryptographic Freeze (Ed25519 agentvcs)** | **`12.5 / 12.5`** | `PASS` | `Ed25519SignatureVerified=true | Commit=avcs_mvtlvuz8 | KeyFingerprint=f80c006e4ada886b` |
 | **TOTAL** | **Salud Integral del Harness (Fases 1–38.1)** | **`100.0 / 100.0`** | **`CERTIFICADO`** | **Cero scripts huérfanos, cero colisiones de archivo, 100% acoplado** |
@@ -53,17 +53,17 @@ Se ejecutó un simulacro completo en una cápsula temporal aislada (eliminada au
 
 | Paso | Etapa del Flujo Real del CTO | Duración | Estado | Detalle |
 |:---:|:---|:---:|:---:|:---|
-| **Paso 1** | Creación de Cápsula de Proyecto Aislada (project_loader + template) | `4ms` | `PASS` | Verificado |
-| **Paso 2** | Dirección de Arte por Industria (PRODUCT.md + DESIGN.md + 62 reglas Impeccable) | `12ms` | `PASS` | fintech-and-banking (62/62 reglas) |
-| **Paso 3** | Enrutamiento Adaptativo SWE-AF + Compuerta HumanLayer 6-Stage RPI | `86ms` | `PASS` | LANE_2_STANDARD_BUILD | RPI 6/6 etapas |
-| **Paso 4** | Compilación W3C DTCG OKLCH + Guardias AST / Security / F2P-P2P / Traceability | `218ms` | `PASS` | Tokens OK | AST 100/100 | F2P/P2P=true | Traceability 1:1 |
-| **Paso 5** | Empaquetado Limpio de Producción (build_dist.mjs -> dist/) | `1119ms` | `PASS` | dist/index.html generado (Exit Code 0) |
+| **Paso 1** | Creación de Cápsula de Proyecto Aislada (project_loader + template) | `10ms` | `PASS` | Verificado |
+| **Paso 2** | Dirección de Arte por Industria (PRODUCT.md + DESIGN.md + 62 reglas Impeccable) | `24ms` | `PASS` | fintech-and-banking (62/62 reglas) |
+| **Paso 3** | Enrutamiento Adaptativo SWE-AF + Compuerta HumanLayer 6-Stage RPI | `193ms` | `PASS` | LANE_2_STANDARD_BUILD | RPI 6/6 etapas |
+| **Paso 4** | Compilación W3C DTCG OKLCH + Guardias AST / Security / F2P-P2P / Traceability | `406ms` | `PASS` | Tokens OK | AST 100/100 | F2P/P2P=true | Traceability 1:1 |
+| **Paso 5** | Empaquetado Limpio de Producción (build_dist.mjs -> dist/) | `4091ms` | `PASS` | dist/index.html generado (Exit Code 0) |
 
 ---
 
 ## 4. Sanitización de Residuos de Pruebas (`--reset-test-artifacts`)
 
-- **Rutas Temporales Limpiadas:** `.agents/beads/task_graph.jsonl (production baseline reset)`.
+- **Rutas Temporales Limpiadas:** `.cache/sandboxes`, `.agents/beads/task_graph.jsonl (production baseline reset)`.
 - **Artefactos Constitucionales y de Memoria Preservados:**
   - `.agents/memory/EXPERIENCE.md`: **ÍNTEGRO**
   - `.agents/skills/SKILL_INDEX.json`: **ÍNTEGRO**

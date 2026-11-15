@@ -35,6 +35,7 @@ function parseFlag(argv, flagName, defaultValue = '') {
 function copyTemplateWithPlaceholders(srcDir, destDir, replacements) {
   fs.mkdirSync(destDir, { recursive: true });
   for (const entry of fs.readdirSync(srcDir, { withFileTypes: true })) {
+    if (['node_modules', '.git', 'dist', '.astro', '.cache'].includes(entry.name)) continue;
     const srcFull = path.join(srcDir, entry.name);
     const destFull = path.join(destDir, entry.name);
     if (entry.isDirectory()) {
@@ -140,7 +141,7 @@ async function main() {
   if (subcommand === 'new' || subcommand === 'init') {
     const rawSlug = parseFlag(argv, '--name', argv[1] && !argv[1].startsWith('--') ? argv[1] : '');
     if (!rawSlug || rawSlug.startsWith('--')) {
-      console.error('Usage: node tools/factory.mjs new <project-slug> [--template vanilla-edge|astro-edge] [--archetype saas-b2b|ecommerce|marketing|portfolio] [--style <67-styles>] [--out <dir>]');
+      console.error('Usage: node tools/factory.mjs new <project-slug> [--template vanilla-edge|astro-edge|fullstack-saas-edge] [--archetype saas-b2b|ecommerce|marketing|portfolio] [--style <67-styles>] [--out <dir>]');
       process.exit(1);
     }
     const slug = rawSlug.toLowerCase().replace(/[^a-z0-9-]+/g, '-').replace(/(^-|-$)/g, '');

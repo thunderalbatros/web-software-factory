@@ -1,0 +1,42 @@
+{
+  "id": "{{PROJECT_ID}}",
+  "name": "{{PROJECT_NAME}}",
+  "domain": "{{PROJECT_DOMAIN}}",
+  "version": "1.0.0",
+  "archetype": "{{PROJECT_ARCHETYPE}}",
+  "stack": "fullstack-saas-edge",
+  "dbTier": "edge-d1",
+  "orm": "drizzle-1.0-rc",
+  "auth": "better-auth-1.7-passkeys",
+  "router": "hono-5-rc",
+  "complianceProfile": "standard-web",
+  "paths": {
+    "entryHtml": "index.html",
+    "distDir": "dist",
+    "workerEntry": "worker/index.js",
+    "tokensPath": "tokens/design.tokens.json",
+    "designCssPath": "site/css/design-tokens.css",
+    "selectorCachePath": "memory/selector_cache.json",
+    "sourceDirs": ["src", "site", "worker"],
+    "dataFiles": [],
+    "overlays": [],
+    "requiredOverlaysInAudit": [],
+    "coreJsFiles": ["worker/index.js", "src/db/drizzle.schema.js"]
+  },
+  "aeo": {
+    "requiredLlmsHeaders": ["# {{PROJECT_NAME}}"]
+  },
+  "invariants": {
+    "requireObsOverlays": false,
+    "requireControlPanelTelemetryPill": false,
+    "requireKickWinnerCircuit": false,
+    "requireZeroDemoUsersPurge": false,
+    "maxDistSizeMb": 50
+  },
+  "sdd": {
+    "targetUsers": ["Primary Visitors", "Authenticated Customers", "Tenant Administrators"],
+    "visualTheme": "OKLCH 90/8/2 Perceptual Palette + Utopia Fluid Typography + Minimal Surface Hierarchy",
+    "architectureTier": "Hono v5 Edge + Drizzle 1.0-rc (D1 / Hyperdrive) + Better Auth v1.7 + Cloudflare Workers Static Assets"
+  }
+}
+

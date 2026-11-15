@@ -27,6 +27,7 @@ import { getActiveRules } from './intelligence/instincts_engine.mjs';
 import { runSupplyChainGuard } from './audit/supply_chain_guard.mjs';
 import { runAstAudit, scanSecurityAndPerformance } from './audit/ast_guard.mjs';
 import { runEvalMatrix } from './intelligence/eval_matrix.mjs';
+import { printCtoHelpCatalog } from './cto/cto_help_catalog.mjs';
 import {
   loadProjectConfig,
   getActiveProject,
@@ -1609,57 +1610,9 @@ async function main() {
     });
   }
   else if (cmd === '--help' || cmd === '-h' || cmd === 'help') {
-    console.log('Comandos disponibles para el CTO:');
-    console.log('  npm run cto:nuevo -- "<nombre-proyecto>"');
-    console.log('  npm run cto:proyectos [-- "<slug>"]');
-    console.log('  npm run cto:construir');
-    console.log('  npm run cto:revisar');
-    console.log('  npm run cto:aprobar');
-    console.log('  npm run cto:empaquetar');
-    console.log('  npm run cto:feedback -- "tu comentario en español"');
-    console.log('  npm run cto:aprender -- "nueva tecnología o efecto visual"');
-    console.log('  npm run cto:evolucionar');
-    console.log('  npm run cto:extraer-diseno -- "https://linear.app"');
-    console.log('  npm run cto:ingerir-libros');
-    console.log('  npm run cto:actualizacion-semanal');
-    console.log('  npm run cto:efecto-3d -- "<diorama-3d | gaussian-splat | shader-hero | particulas-gpu | holo-card>"');
-    console.log('  npm run cto:optimizar-3d -- "<ruta-al-archivo.glb>"');
-    console.log('  npm run cto:gcp-status');
-    console.log('  npm run cto:benchmark');
-    console.log('  npm run cto:mcp-status');
-    console.log('  npm run cto:arquitectura-db -- "<edge-d1 | enterprise-postgres>"');
-    console.log('  npm run cto:destilar-curso [-- "<ruta-a-transcripcion.srt/.txt/.md>"]');
-    console.log('  npm run cto:cosechar-docs');
-    console.log('  npm run cto:arquetipo -- "<ecommerce | fintech | erp | streamer | abogacia | clinica | saas | lujo>"');
-    console.log('  npm run cto:crear-movil');
-    console.log('  npm run cto:investigar-referencia -- "<ruta-o-url>"');
-    console.log('  npm run cto:feedback-cliente -- "<mensaje-del-ticket>"');
+    printCtoHelpCatalog();
   } else {
-    console.log('Comandos disponibles para el CTO:');
-    console.log('  npm run cto:nuevo -- "<nombre-proyecto>"');
-    console.log('  npm run cto:proyectos [-- "<slug>"]');
-    console.log('  npm run cto:construir');
-    console.log('  npm run cto:revisar');
-    console.log('  npm run cto:aprobar');
-    console.log('  npm run cto:empaquetar');
-    console.log('  npm run cto:feedback -- "tu comentario en español"');
-    console.log('  npm run cto:aprender -- "nueva tecnología o efecto visual"');
-    console.log('  npm run cto:evolucionar');
-    console.log('  npm run cto:extraer-diseno -- "https://linear.app"');
-    console.log('  npm run cto:ingerir-libros');
-    console.log('  npm run cto:actualizacion-semanal');
-    console.log('  npm run cto:efecto-3d -- "<diorama-3d | gaussian-splat | shader-hero | particulas-gpu | holo-card>"');
-    console.log('  npm run cto:optimizar-3d -- "<ruta-al-archivo.glb>"');
-    console.log('  npm run cto:gcp-status');
-    console.log('  npm run cto:benchmark');
-    console.log('  npm run cto:mcp-status');
-    console.log('  npm run cto:arquitectura-db -- "<edge-d1 | enterprise-postgres>"');
-    console.log('  npm run cto:destilar-curso [-- "<ruta-a-transcripcion.srt/.txt/.md>"]');
-    console.log('  npm run cto:cosechar-docs');
-    console.log('  npm run cto:arquetipo -- "<ecommerce | fintech | erp | streamer | abogacia | clinica | saas | lujo>"');
-    console.log('  npm run cto:crear-movil');
-    console.log('  npm run cto:investigar-referencia -- "<ruta-o-url>"');
-    console.log('  npm run cto:feedback-cliente -- "<mensaje-del-ticket>"');
+    printCtoHelpCatalog();
   }
 }
 

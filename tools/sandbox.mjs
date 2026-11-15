@@ -93,31 +93,55 @@ export function assertFilesystemContainment(sandboxDir, targetPath) {
  */
 function buildRuntimeFsGuardSource(sandboxRoot) {
   const escapedRoot = JSON.stringify(path.resolve(sandboxRoot));
-  return `// Auto-generated LocalWorktreeSandbox Filesystem Containment Guard
+  return `// Auto-generated LocalWorktreeSandbox Filesystem & Subprocess Containment Guard
 import fs from 'node:fs';
+import cp from 'node:child_process';
+import { syncBuiltinESMExports } from 'node:module';
 import path from 'node:path';
 
 const JAIL_ROOT = ${escapedRoot};
 const NORM_JAIL = process.platform === 'win32' ? JAIL_ROOT.toLowerCase() : JAIL_ROOT;
 
-function checkContainment(target, opName) {
-  if (typeof target !== 'string' && !(target instanceof URL)) return;
+function resolveContainedTarget(target) {
   const raw = target instanceof URL ? target.pathname : String(target);
   const resolved = path.resolve(JAIL_ROOT, raw);
   const norm = process.platform === 'win32' ? resolved.toLowerCase() : resolved;
   const inside = norm === NORM_JAIL || norm.startsWith(NORM_JAIL + path.sep);
+  return { resolved, norm, inside };
+}
+
+function checkContainment(target, opName, errorCode = 'SANDBOX_CONTAINMENT_VIOLATION') {
+  if (typeof target !== 'string' && !(target instanceof URL)) return;
+  const { resolved, inside } = resolveContainedTarget(target);
   if (!inside) {
-    throw new Error(\`SANDBOX_CONTAINMENT_VIOLATION: Blocked \${opName} outside sandbox jail ("\${resolved}")\`);
+    throw new Error(\`\${errorCode}: Blocked \${opName} outside sandbox jail ("\${resolved}")\`);
   }
 }
 
-const MUTATING_SYNC = ['writeFileSync', 'appendFileSync', 'unlinkSync', 'rmSync', 'rmdirSync', 'mkdirSync', 'copyFileSync', 'renameSync'];
+function checkReadContainment(target, opName) {
+  if (typeof target !== 'string' && !(target instanceof URL)) return;
+  const raw = target instanceof URL ? target.pathname : String(target);
+  if (raw.includes('..') || path.isAbsolute(raw)) {
+    const { norm } = resolveContainedTarget(target);
+    const isNodeModules = norm.includes(path.sep + 'node_modules' + path.sep);
+    if (!isNodeModules) {
+      checkContainment(target, opName, 'SANDBOX_READ_ESCAPE_VIOLATION');
+    }
+  }
+}
+
+const MUTATING_SYNC = [
+  'writeFileSync', 'appendFileSync', 'unlinkSync', 'rmSync', 'rmdirSync',
+  'mkdirSync', 'copyFileSync', 'cpSync', 'renameSync', 'symlinkSync',
+  'linkSync', 'truncateSync', 'chmodSync', 'utimesSync'
+];
+const TWO_ARG_MUTATING_SYNC = new Set(['copyFileSync', 'cpSync', 'renameSync', 'symlinkSync', 'linkSync']);
 for (const fnName of MUTATING_SYNC) {
   if (typeof fs[fnName] === 'function') {
     const orig = fs[fnName].bind(fs);
     fs[fnName] = function(p, ...rest) {
       checkContainment(p, fnName);
-      if (fnName === 'copyFileSync' || fnName === 'renameSync') {
+      if (TWO_ARG_MUTATING_SYNC.has(fnName)) {
         checkContainment(rest[0], fnName);
       }
       return orig(p, ...rest);
@@ -127,16 +151,96 @@ for (const fnName of MUTATING_SYNC) {
 
 const origReadFileSync = fs.readFileSync.bind(fs);
 fs.readFileSync = function(p, ...rest) {
-  if (typeof p === 'string' && (p.includes('..') || path.isAbsolute(p))) {
-    const resolved = path.resolve(JAIL_ROOT, p);
-    const norm = process.platform === 'win32' ? resolved.toLowerCase() : resolved;
-    const isNodeModules = norm.includes(path.sep + 'node_modules' + path.sep);
-    if (!isNodeModules) {
-      checkContainment(p, 'readFileSync');
-    }
-  }
+  checkReadContainment(p, 'readFileSync');
   return origReadFileSync(p, ...rest);
 };
+
+// Async fs.promises containment wrappers (L-05 hardening)
+const MUTATING_PROMISES = [
+  'writeFile', 'appendFile', 'unlink', 'rm', 'rmdir', 'mkdir',
+  'copyFile', 'cp', 'rename', 'symlink', 'link',
+  'truncate', 'chmod', 'chown', 'lchown', 'utimes', 'lutimes', 'mkdtemp'
+];
+const READ_PROMISES = ['readFile', 'readdir', 'opendir', 'stat', 'lstat', 'realpath', 'readlink', 'access'];
+const TWO_ARG_MUTATING_PROMISES = new Set(['copyFile', 'cp', 'rename', 'symlink', 'link']);
+if (fs.promises) {
+  for (const fnName of MUTATING_PROMISES) {
+    if (typeof fs.promises[fnName] === 'function') {
+      const orig = fs.promises[fnName].bind(fs.promises);
+      fs.promises[fnName] = async function(p, ...rest) {
+        if (fnName === 'copyFile' || fnName === 'cp') {
+          checkReadContainment(p, \`fs.promises.\${fnName}(src)\`);
+          checkContainment(rest[0], \`fs.promises.\${fnName}(dest)\`);
+        } else {
+          checkContainment(p, \`fs.promises.\${fnName}\`);
+          if (TWO_ARG_MUTATING_PROMISES.has(fnName)) {
+            checkContainment(rest[0], \`fs.promises.\${fnName}(dest)\`);
+          }
+        }
+        return orig(p, ...rest);
+      };
+    }
+  }
+
+  for (const fnName of READ_PROMISES) {
+    if (typeof fs.promises[fnName] === 'function') {
+      const orig = fs.promises[fnName].bind(fs.promises);
+      fs.promises[fnName] = async function(p, ...rest) {
+        checkReadContainment(p, \`fs.promises.\${fnName}\`);
+        return orig(p, ...rest);
+      };
+    }
+  }
+
+  const origPromiseOpen = fs.promises.open.bind(fs.promises);
+  fs.promises.open = async function(p, flags = 'r', ...rest) {
+    const modeStr = String(flags || 'r');
+    if (/[wa+x]/.test(modeStr)) {
+      checkContainment(p, 'fs.promises.open(write)');
+    } else {
+      checkReadContainment(p, 'fs.promises.open(read)');
+    }
+    return origPromiseOpen(p, flags, ...rest);
+  };
+}
+
+// Child-process working directory, fork module path & argument traversal containment guards
+const CP_METHODS = ['exec', 'execSync', 'spawn', 'spawnSync', 'execFile', 'execFileSync', 'fork'];
+for (const fnName of CP_METHODS) {
+  if (typeof cp[fnName] === 'function') {
+    const orig = cp[fnName].bind(cp);
+    cp[fnName] = function(cmd, arg2, arg3, ...rest) {
+      const opts = Array.isArray(arg2) ? (arg3 || {}) : (typeof arg2 === 'object' && arg2 !== null ? arg2 : {});
+      if (opts && opts.cwd) {
+        checkContainment(opts.cwd, \`child_process.\${fnName}(cwd)\`);
+      }
+      if (fnName === 'fork') {
+        checkContainment(cmd, 'child_process.fork(modulePath)');
+      }
+      const cmdStr = String(cmd || '') + ' ' + (Array.isArray(arg2) ? arg2.join(' ') : '');
+      const traversalTokens = cmdStr.match(/\\.\\.[\\\\/][\\w./\\\\-]+/g) || [];
+      for (const tok of traversalTokens) {
+        checkContainment(tok, \`child_process.\${fnName}(arg)\`);
+      }
+      const safeEnv = {};
+      const srcEnv = (opts && opts.env) ? opts.env : process.env;
+      for (const [k, v] of Object.entries(srcEnv)) {
+        if (!/(KEY|TOKEN|SECRET|PASSWORD|CREDENTIAL)$/i.test(k)) {
+          safeEnv[k] = v;
+        }
+      }
+      if (Array.isArray(arg2) && arg3 && typeof arg3 === 'object') {
+        return orig(cmd, arg2, { ...arg3, env: safeEnv }, ...rest);
+      }
+      if (opts && opts === arg2 && typeof arg2 === 'object') {
+        return orig(cmd, { ...arg2, env: safeEnv }, arg3, ...rest);
+      }
+      return orig(cmd, arg2, arg3, ...rest);
+    };
+  }
+}
+
+syncBuiltinESMExports();
 `;
 }
 
@@ -303,9 +407,111 @@ export class LocalWorktreeSandbox {
   }
 
   /**
+   * Executes a JavaScript/ESM test snippet in an isolated child process enforced by
+   * Node 24's native permission model (`--permission --allow-fs-read=<jail> --allow-fs-write=<jail>`).
+   */
+  async execIsolatedSnippet(code, options = {}) {
+    this.init();
+    const timeoutMs = options.timeoutMs || this.timeoutMs || HARD_TIMEOUT_MS;
+    const realJailRoot = fs.realpathSync(this.sandboxDir);
+    const scriptName = `_isolated_${Date.now()}_${Math.random().toString(36).slice(2, 6)}.mjs`;
+    const scriptPath = this.resolvePath(scriptName);
+    const wrappedCode = options.skipJsGuard === true ? `${code}\n` : `import './.jail_fs_guard.mjs';\n${code}\n`;
+    fs.writeFileSync(scriptPath, wrappedCode, 'utf8');
+
+    const realScriptPath = fs.realpathSync(scriptPath);
+    const sanitizedEnv = sanitizeEnvironment(process.env);
+    sanitizedEnv.SANDBOX_ROOT = realJailRoot;
+
+    const readAllowList = [realJailRoot, ...(Array.isArray(options.allowFsRead) ? options.allowFsRead : [])]
+      .filter(Boolean)
+      .join(',');
+    const writeAllowList = [realJailRoot, ...(Array.isArray(options.allowFsWrite) ? options.allowFsWrite : [])]
+      .filter(Boolean)
+      .join(',');
+
+    const nodeArgs = [
+      '--permission',
+      `--allow-fs-read=${readAllowList}`,
+      `--allow-fs-write=${writeAllowList}`,
+      realScriptPath
+    ];
+
+    return new Promise((resolve) => {
+      const startMs = Date.now();
+      const isWin = process.platform === 'win32';
+      const child = spawn(process.execPath, nodeArgs, {
+        cwd: realJailRoot,
+        env: sanitizedEnv,
+        stdio: ['ignore', 'pipe', 'pipe'],
+        windowsHide: true
+      });
+
+      let stdout = '';
+      let stderr = '';
+      let timedOut = false;
+
+      const timer = setTimeout(() => {
+        timedOut = true;
+        try {
+          if (isWin && child.pid) {
+            execSync(`taskkill /PID ${child.pid} /T /F`, { stdio: 'ignore' });
+          } else {
+            child.kill('SIGKILL');
+          }
+        } catch {
+          try { child.kill('SIGKILL'); } catch {}
+        }
+      }, timeoutMs);
+
+      child.stdout.on('data', (chunk) => {
+        stdout += chunk.toString();
+      });
+      child.stderr.on('data', (chunk) => {
+        stderr += chunk.toString();
+      });
+
+      child.on('close', (exitCode) => {
+        clearTimeout(timer);
+        resolve({
+          ok: !timedOut && exitCode === 0,
+          exitCode: timedOut ? 124 : (exitCode ?? 1),
+          timedOut,
+          elapsedMs: Date.now() - startMs,
+          sandboxMode: 'LocalWorktreeSandbox(node-permission)',
+          sandboxDir: realJailRoot,
+          permissionFlags: ['--permission', `--allow-fs-read=${readAllowList}`, `--allow-fs-write=${writeAllowList}`],
+          stdout: stdout.trim(),
+          stderr: timedOut
+            ? `${stderr.trim()}\nSANDBOX_HARD_TIMEOUT: Task exceeded ${timeoutMs}ms limit`.trim()
+            : stderr.trim()
+        });
+      });
+
+      child.on('error', (err) => {
+        clearTimeout(timer);
+        resolve({
+          ok: false,
+          exitCode: 1,
+          timedOut: false,
+          elapsedMs: Date.now() - startMs,
+          sandboxMode: 'LocalWorktreeSandbox(node-permission)',
+          sandboxDir: realJailRoot,
+          permissionFlags: ['--permission', `--allow-fs-read=${readAllowList}`, `--allow-fs-write=${writeAllowList}`],
+          stdout: stdout.trim(),
+          stderr: err.message
+        });
+      });
+    });
+  }
+
+  /**
    * Executes a JavaScript/ESM snippet inside the sandbox with the runtime FS containment guard active.
    */
   async execCode(code, options = {}) {
+    if (options.useNativeNodePermissions) {
+      return this.execIsolatedSnippet(code, options);
+    }
     this.init();
     const scriptName = `_task_${Date.now()}.mjs`;
     const scriptPath = this.resolvePath(scriptName);
@@ -507,6 +713,27 @@ export async function runInHybridSandbox(taskOrCode, options = {}) {
       return await jail.execCommand(taskOrCode, options);
     }
     return await jail.execCode(taskOrCode, options);
+  } finally {
+    if (options.keepAlive !== true) {
+      jail.destroy();
+    }
+  }
+}
+
+/**
+ * Helper wrapper: runs a JS/ESM snippet in a one-shot `LocalWorktreeSandbox` enforced
+ * by Node 24 native permission flags (`--permission --allow-fs-read=<jail> --allow-fs-write=<jail>`),
+ * and destroys the temporary directory automatically on completion.
+ */
+export async function runNodePermissionJailedSnippet(code, options = {}) {
+  const jail = new LocalWorktreeSandbox({
+    timeoutMs: options.timeoutMs || HARD_TIMEOUT_MS,
+    preferWorktree: Boolean(options.preferWorktree),
+    runId: options.runId
+  });
+  try {
+    jail.init();
+    return await jail.execIsolatedSnippet(code, options);
   } finally {
     if (options.keepAlive !== true) {
       jail.destroy();

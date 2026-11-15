@@ -60,7 +60,7 @@ try {
 if (projectConfig.stack === 'astro-edge' && fs.existsSync(path.join(root, 'astro.config.mjs'))) {
   const astroNodeModules = path.join(root, 'node_modules', 'astro');
   if (fs.existsSync(astroNodeModules)) {
-    console.log('• Building Astro 5 project via `npx --no-install astro build`...');
+    console.log('• Building Astro 7 / Vite 8 Environment API project via `npx --no-install astro build`...');
     execSync('npx --no-install astro build', { cwd: root, stdio: 'inherit' });
   } else {
     console.log('• [Astro Static Scaffold] Copying public/ and rendering static entry shell to dist/...');

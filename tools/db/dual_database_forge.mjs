@@ -32,6 +32,9 @@ import {
   wrapAndUnwrapKeyWithGcpKms,
   anonymizePresidioPiiForLogsAndAi
 } from '../intelligence/vertex_ai_bridge.mjs';
+import { openConcurrentSqliteConnection } from './turso_mvcc_bridge.mjs';
+
+export { openConcurrentSqliteConnection };
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -461,6 +464,22 @@ export function forgeDatabaseArchitecture(projectRoot = ROOT, requestedTier = ''
     projectSlug: slug,
     dbTier,
     filesCreated: filesCreated.map((f) => path.relative(projectRoot, f).replace(/\\/g, '/'))
+  };
+}
+
+/**
+ * Generates an edge-ready Hono v5 + Drizzle 1.0-rc + Better Auth 1.7 Passkeys/OAuth2.1 configuration descriptor.
+ */
+export function buildBetterAuthAndHonoEdgeConfig({ projectSlug = 'agencia-alfa', dbTier = 'edge-d1' } = {}) {
+  return {
+    projectSlug,
+    dbTier,
+    router: 'hono@5.0.0-rc.1',
+    orm: 'drizzle-orm@1.0.0-rc.5',
+    auth: 'better-auth@^1.7.22',
+    authMethods: ['passkey-webauthn', 'oauth2.1-pkce'],
+    drizzleAdapterDialect: dbTier === 'enterprise-postgres' ? 'postgresql-hyperdrive' : 'sqlite-d1',
+    concurrentLocalBridge: 'turso-mvcc-or-node-sqlite-wal'
   };
 }
 

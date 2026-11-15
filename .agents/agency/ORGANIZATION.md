@@ -7,11 +7,11 @@
 ---
 
 ## 1. Executive Summary & Philosophy
-Our **Web Software Factory Studio** operates as an elite, multi-disciplinary virtual web agency. Rather than relying on a single monolithic prompt (which suffers from context rot, generic AI-slop copy, and unverified CSS/DOM bugs), every project is executed through **9 specialized roles** governed by explicit **Spec-Kit SDD contracts** (`.specify/`), **W3C DTCG `2025.10` OKLCH design tokens**, and **deterministic Rust/Zig/Playwright verification gates**.
+Our **Web Software Factory Studio** operates as an elite, multi-disciplinary virtual web agency. Rather than relying on a single monolithic prompt (which suffers from context rot, generic AI-slop copy, and unverified CSS/DOM bugs), every project is executed through **11 specialized agent roles (`squad_0`..`squad_10`)** under CTO HITL governance, governed by explicit **Spec-Kit SDD contracts** (`.specify/`), **W3C DTCG `2025.10` OKLCH design tokens**, and **deterministic Rust/Playwright verification gates** (`Oxlint v1.93`, `Oxfmt v0.78`, `Biome v2.6`, `odiff-bin v4.5`, `Playwright v1.65`, `Stagehand v4.4`).
 
 ---
 
-## 2. SOTA 9-Role Topology & Assigned Skills
+## 2. SOTA 11-Role Topology & Assigned Skills
 
 ```
                           [ Tomás — CEO & HITL Principal ]
@@ -26,17 +26,17 @@ Our **Web Software Factory Studio** operates as an elite, multi-disciplinary vir
         │                                │                                │
         └────────────────────────────────┼────────────────────────────────┘
                                          ▼
-        ┌────────────────────────────────┼────────────────────────────────┐
-        ▼                                ▼                                ▼
- [ 5. Frontend & Motion ]    [ 6. Edge Full-Stack ]        [ 7. SEO / AEO / GEO ]
-   (Astro 5 / ViewTrans /      (Cloudflare Workers / D1 /    (llms.txt / llms-full /
-    Scroll-Driven CSS)          Valibot / AES-256-GCM)        JSON-LD / Speculation)
-        │                                │                                │
-        └────────────────────────────────┼────────────────────────────────┘
+        ┌───────────────────┬────────────┴───────────┬───────────────────┐
+        ▼                   ▼                        ▼                   ▼
+ [ 5A. Senior Coder ] [ 5B. Motion & 3D ]  [ 6. Edge Full-Stack ]  [ 7. SEO/AEO/GEO ]
+ (Astro 7 / Islands)  (Three r187 WebGPU)  (Hono v5 / Drizzle 1.0) (llms.txt / JSON-LD)
+        │                   │                        │                   │
+        └───────────────────┴────────────┬───────────┴───────────────────┘
                                          ▼
-                     [ 8. QA, Visual & Security Gatekeeper ]
-                       (RYUX Gate / odiff SIMD / Oxc Rust /
-                        Playwright AX Tree / OWASP ASVS)
+           ┌─────────────────────────────┴─────────────────────────────┐
+           ▼                                                           ▼
+ [ 8A. QA & Visual Gatekeeper ]                         [ 8B. Security & DevSecOps ]
+ (RYUX / odiff SIMD / Stagehand AX)                     (Oxlint v1.93 / Zizmor v1.32)
                                          ▲
                                          │
                      [ 9. Tech Scout & Omni-RAG v5 Curator ]
@@ -45,15 +45,17 @@ Our **Web Software Factory Studio** operates as an elite, multi-disciplinary vir
 | # | Role | Slug | Core Mission | Assigned Skills & Tools |
 | :-: | :--- | :--- | :--- | :--- |
 | **0** | **CEO / HITL Principal** | `tomas` | Defines business goals, approves `/plan` gates, and signs off on visual deliverables. | Human-In-The-Loop (`ToM-SWE` modeled) |
-| **1** | **Orchestrator & ToM-SWE Lead** | `orchestrator` | Decomposes goals into atomic tasks (`<=300 lines`), consults `tom_swe_engine.mjs`, and coordinates handoffs. | `subagent-driven-development`, `tom-swe-modeling`, `verify-before-claim`, `finops-context-budget` |
-| **2** | **Product & Spec-Kit Architect** | `product-spec-architect` | Selects stack (`astro-edge` vs `vanilla-edge`), archetype, and generates `.specify/{constitution,spec,plan,tasks}.md`. | `modularity`, `constraint-driven-development`, `tools/factory.mjs spec` |
-| **3** | **UX & Design Director** | `ux-designer` | Crafts W3C DTCG `2025.10` OKLCH tokens, Utopia `clamp()` scales, wireframes, and binds the 67 MIT style skills. | `ryux`, `modern-frontend-design`, `design-system-architect`, `minimal-surface-hierarchy`, `utopia-fluid-ergonomics`, `21st-ui`, `extract-design` |
-| **4** | **Copywriting & CRO Strategist** | `copywriting-cro-strategist` | Writes conversion-optimized headlines, CTAs, pricing tables, and microcopy (`Fogg B=MAP`, Cialdini, zero AI-slop). | `copywriting`, `cro`, `pricing-and-onboarding-cro`, `marketing-psychology`, `stop-slop`, `hallmark` |
-| **5** | **Senior Frontend & Motion Engineer** | `senior-coder` | Implements Astro 5 Islands or Vanilla JS, View Transitions API, CSS Scroll-Driven Animations, `@starting-style`, `interpolate-size`, and 3D Specular Tilt. | `baseline-ui`, `motion-engineer`, `animation-performance`, `emil-design-eng`, `vanilla-motion-choreography` |
-| **6** | **Edge Full-Stack Architect** | `edge-fullstack-architect` | Builds Cloudflare Workers APIs, D1 SQLite schemas, Write-Through coalescing, OAuth 2.1 PKCE, and `AES-256-GCM` encryption. | `workers-best-practices`, `cloudflare-durable-objects`, `error-handling`, `security-and-hardening` |
-| **7** | **SEO, AEO & GEO Architect** | `seo-aeo-geo-architect` | Optimizes for Google & AI Answer Engines (`llms.txt`, `llms-full.txt`, `sitemap.xml`, `Schema.org JSON-LD`, `Speculation Rules API`). | `ai-seo-and-geo`, `web-quality-skills`, `web-perf`, `tools/audit/floor_and_aeo_guard.mjs` |
-| **8** | **QA, Visual & Security Gatekeeper** | `qa-auditor` | Independent *Evaluator-Optimizer* running `ryux_design_gate`, `odiff-bin` SIMD, `oxlint` Rust, `a11y_tree_snapshot`, and `break-ui`. | `cto-hitl-visual-gate`, `ui-test`, `break-ui`, `security-audit`, `adverse-review`, `silent-failure-hunter` |
-| **9** | **Tech Scout & Omni-RAG Curator** | `tech-scout` | Researches SOTA repos/papers, runs Sandcastle benchmarks, and maintains the `Omni-RAG v5` (`24,746+` chunks) knowledge graph. | `research`, `sandboxed-experiments`, `firecrawl`, `kb-retrieval`, `kb-writing`, `self-evolving-factory` |
+| **1** | **Orchestrator & ToM-SWE Lead** | `orchestrator` | Decomposes goals into atomic tasks (`<=300 lines`), consults `tom_swe_engine.mjs`, and coordinates handoffs (`squad_0`). | `subagent-driven-development`, `verify-before-claim`, `delivery-gate`, `anti-shortcut-discipline`, `claude-council` |
+| **2** | **Product & Spec-Kit Architect** | `product-spec-architect` | Selects stack (`astro-edge` v7 / `fullstack-saas-edge` / `vanilla-edge`) and generates `.specify/{constitution,spec,plan,tasks}.md` (`squad_8`). | `modularity`, `constraint-driven-development`, `grill-me`, `tools/factory.mjs spec` |
+| **3** | **UX & Design Director** | `ux-designer` | Crafts W3C DTCG `2025.10` OKLCH tokens, Utopia `clamp()` scales, wireframes, and binds the 67 MIT style skills (`squad_4`). | `ryux`, `modern-frontend-design`, `design-system`, `layout-primitives-architect`, `minimal-surface-hierarchy` |
+| **4** | **Copywriting & CRO Strategist** | `copywriting-cro-strategist` | Writes conversion-optimized headlines, CTAs, pricing tables, and microcopy (`Fogg B=MAP`, Cialdini, zero AI-slop) (`squad_3`). | `copywriting`, `cro`, `pricing-and-onboarding-cro`, `marketing-psychology`, `stop-slop` |
+| **5A** | **Senior Frontend Engineer** | `senior-coder` | Implements Astro 7 Islands or Vanilla JS, semantic HTML5, zero-bloat CSS primitives, and TDD runtime controllers (`squad_9`). | `baseline-ui`, `emil-design-eng`, `code-structure`, `test-driven-development` |
+| **5B** | **3D WebGPU & Motion Choreographer** | `motion-engineer` | Builds Three.js `r187` `WebGPURenderer` / `TSL` / native `GaussianSplat`, CSS Scroll-Driven Animations, and 60-FPS transitions (`squad_5`). | `motion-engineer`, `threejs-r186-tsl-and-gsap-free`, `css-scroll-driven`, `animation-performance`, `vanilla-motion-choreography` |
+| **6** | **Edge Full-Stack Architect** | `edge-fullstack-architect` | Builds Cloudflare Workers APIs (`Hono v5`), Drizzle `1.0-rc` / D1 + Turso MVCC SQLite, Better Auth `v1.7`, and `AES-256-GCM` encryption (`squad_2`). | `workers-best-practices`, `cloudflare-durable-objects`, `error-handling`, `security-and-hardening` |
+| **7** | **SEO, AEO & GEO Architect** | `seo-aeo-geo-architect` | Optimizes for Google & AI Answer Engines (`llms.txt`, `llms-full.txt`, `sitemap.xml`, `Schema.org JSON-LD`, `Speculation Rules API`) (`squad_7`). | `ai-seo-and-geo`, `marketingskills`, `web-perf`, `tools/audit/floor_and_aeo_guard.mjs` |
+| **8A** | **QA & Visual Gatekeeper (Read-Only)** | `qa-auditor` | Independent *Evaluator-Optimizer* running `ryux_design_gate`, `odiff-bin v4.5` SIMD, `Stagehand v4.4`, `Playwright v1.65`, and `break-ui` (`squad_10`). | `cto-hitl-visual-gate`, `ui-test`, `break-ui`, `silent-failure-hunter`, `evidence-driven-testing` |
+| **8B** | **Security & DevSecOps Auditor** | `security-engineer` | Enforces OWASP ASVS v5.0, `Oxlint v1.93`, `Zizmor v1.32`, MCP Zero-Trust `18/18` SARIF, SBOM CycloneDX, and Edge DAST (`squad_6`). | `adverse-review`, `security-audit`, `security-checklist`, `tools/security_gate.mjs` |
+| **9** | **Tech Scout & Omni-RAG v5 Curator** | `tech-scout` | Researches SOTA repos/papers, packages repos via `repomix` MCP v2, runs Sandcastle benchmarks, and maintains `Omni-RAG v5` (`squad_1`). | `research-mode`, `kb-retrieval`, `firecrawl`, `finops-context-budget` |
 
 ---
 

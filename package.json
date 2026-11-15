@@ -1,9 +1,9 @@
 {
   "name": "web-software-factory-studio",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "private": true,
   "type": "module",
-  "description": "Multi-Project Web Software Factory Studio (ISO/IEC 26550 SPLE, Spec-Kit SDD, W3C DTCG 2025.10 OKLCH, Astro 5 / Vanilla-Edge, LightningCSS, 9-Role Agent Team & Omni-RAG v5.2)",
+  "description": "Multi-Project Web Software Factory Studio (ISO/IEC 26550 SPLE, Spec-Kit SDD, W3C DTCG 2025.10 OKLCH, Astro 7 / Fullstack-SaaS-Edge / Vanilla-Edge, Oxc v1.93 + Biome v2.6, 11-Role Agent Team & Omni-RAG v5.2)",
   "scripts": {
     "cto:nuevo": "node tools/cto_command_center.mjs nuevo",
     "cto:proyectos": "node tools/cto_command_center.mjs proyectos",
@@ -65,24 +65,38 @@
     "audit:diff-ui": "node tools/audit/diff_ui_adversarial.mjs",
     "audit:visual-regression": "node tools/audit/visual_regression.mjs",
     "audit:a11y-snapshot": "node tools/audit/a11y_tree_snapshot.mjs",
-    "audit:eval": "node tools/intelligence/eval_matrix.mjs"
+    "audit:eval": "node tools/intelligence/eval_matrix.mjs",
+    "lint:oxc": "oxlint -c .oxlintrc.json tools",
+    "format:check": "oxfmt --check tools/factory.mjs",
+    "test:playwright": "playwright test --project=chromium"
   },
   "dependencies": {
+    "@biomejs/biome": "2.6.7",
+    "@browserbasehq/stagehand": "^4.4.0",
     "@electric-sql/pglite": "^0.5.13",
-    "@playwright/mcp": "^0.0.83",
+    "@google/genai": "3.3.0",
+    "@playwright/mcp": "^0.0.85",
+    "@tursodatabase/database": "^0.8.3",
     "axe-core": "^4.14.0",
     "dnum": "^2.18.0",
     "fzstd": "^0.1.1",
     "lightningcss": "^1.33.0",
     "minisearch": "^7.1.2",
-    "odiff-bin": "^4.1.2",
-    "oxlint": "^0.16.0",
+    "odiff-bin": "^4.5.0",
+    "oxfmt": "0.78.0",
+    "oxlint": "1.93.0",
+    "oxlint-tsgolint": "7.0.2007",
     "pdf-parse": "^2.4.5",
-    "pixelmatch": "^6.0.0",
-    "playwright-core": "^1.51.0",
+    "pixelmatch": "^8.0.0",
+    "playwright-core": "1.65.1",
     "pngjs": "^7.0.0",
+    "repomix": "1.19.0",
+    "three": "^0.187.0",
     "uplot": "^1.6.32",
     "valibot": "^1.5.0",
     "xstate": "^5.33.3"
+  },
+  "devDependencies": {
+    "wrangler": "^4.161.0"
   }
 }

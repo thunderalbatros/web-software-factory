@@ -100,6 +100,11 @@
         "REA_MCP_OUTPUT_SCHEMA_PROFILE": "compact"
       },
       "disabled": false
+    },
+    "repomix": {
+      "command": "npx",
+      "args": ["-y", "repomix@1.19.0", "--mcp"],
+      "disabled": false
     }
   }
 }
