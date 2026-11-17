@@ -2,6 +2,7 @@ import {
   attachOpaqueTutorBridge,
   validateOpaqueSandboxAttribute
 } from '../lib/socratic-tutor-sandbox.mjs';
+import tiktokenWorkerAssetUrl from './tiktoken-worker.mjs?worker&url';
 
 function initThemeToggle() {
   const root = document.documentElement;
@@ -114,66 +115,93 @@ function initVideoFacades() {
   }
 }
 
-let tiktokenEncoderPromise = null;
-function getTiktokenEncoder() {
-  if (!tiktokenEncoderPromise) {
-    tiktokenEncoderPromise = Promise.all([
-      import('js-tiktoken/lite'),
-      import('js-tiktoken/ranks/cl100k_base')
-    ]).then(([{ Tiktoken }, ranksMod]) => new Tiktoken(ranksMod.default));
+let tiktokenWorkerInstance = null;
+let tiktokenRequestSeq = 0;
+
+function getOrSpawnTiktokenWorker() {
+  if (!tiktokenWorkerInstance) {
+    const resolvedUrl = new URL(tiktokenWorkerAssetUrl, window.location.origin).href;
+    const trustedScriptUrl =
+      window.trustedTypes && window.trustedTypes.defaultPolicy
+        ? window.trustedTypes.defaultPolicy.createScriptURL(resolvedUrl)
+        : resolvedUrl;
+    tiktokenWorkerInstance = new Worker(trustedScriptUrl, { type: 'module' });
   }
-  return tiktokenEncoderPromise;
+  return tiktokenWorkerInstance;
 }
 
 function initTiktokenExplorer() {
   const explorer = document.querySelector('[data-tiktoken-explorer]');
   if (!explorer) return;
 
+  const loadBtn = explorer.querySelector('[data-tiktoken-load]');
+  const statusEl = explorer.querySelector('[data-tiktoken-status]');
   const textarea = explorer.querySelector('[data-tiktoken-input]');
   const countEl = explorer.querySelector('[data-tiktoken-count]');
   const charsEl = explorer.querySelector('[data-tiktoken-chars]');
   const ratioEl = explorer.querySelector('[data-tiktoken-ratio]');
   const chipsEl = explorer.querySelector('[data-tiktoken-chips]');
-  if (!textarea || !countEl || !charsEl || !ratioEl || !chipsEl) return;
+  if (!loadBtn || !textarea || !countEl || !charsEl || !ratioEl || !chipsEl) return;
 
-  const renderTokens = async () => {
-    const encoder = await getTiktokenEncoder();
-    const text = String(textarea.value || '');
-    const tokens = encoder.encode(text);
-    const charLen = [...text].length;
-    const ratio = tokens.length > 0 ? (charLen / tokens.length).toFixed(2) : '0.00';
+  let activated = false;
 
-    countEl.textContent = String(tokens.length);
-    charsEl.textContent = String(charLen);
-    ratioEl.textContent = ratio;
+  const applyWorkerResult = ({ count, chars, ratio, chips }) => {
+    countEl.textContent = String(count);
+    charsEl.textContent = String(chars);
+    ratioEl.textContent = String(ratio);
 
-    const previewSlice = tokens.slice(0, 36);
-    const chipNodes = previewSlice.map((tokenId) => {
+    const chipNodes = (chips || []).map((item) => {
       const chip = document.createElement('span');
       chip.className = 'token-chip';
-      let decodedPiece = '';
-      try {
-        decodedPiece = encoder.decode([tokenId]);
-      } catch {
-        decodedPiece = '·';
-      }
-      const visiblePiece = decodedPiece.replace(/ /g, '␣').replace(/\n/g, '↵') || '∅';
       const textSpan = document.createElement('span');
-      textSpan.textContent = visiblePiece;
+      textSpan.textContent = String(item.visiblePiece || '∅');
       const idSpan = document.createElement('span');
       idSpan.className = 'token-chip-id';
-      idSpan.textContent = `#${tokenId}`;
+      idSpan.textContent = `#${item.tokenId}`;
       chip.append(textSpan, idSpan);
       return chip;
     });
     chipsEl.replaceChildren(...chipNodes);
   };
 
-  textarea.addEventListener('focus', () => {
-    getTiktokenEncoder().catch(() => {});
-  }, { once: true });
+  const requestWorkerTokenize = () => {
+    if (!activated || !tiktokenWorkerInstance) return;
+    tiktokenRequestSeq += 1;
+    tiktokenWorkerInstance.postMessage({
+      id: tiktokenRequestSeq,
+      text: String(textarea.value || '')
+    });
+  };
+
+  loadBtn.addEventListener('click', () => {
+    if (!activated) {
+      activated = true;
+      loadBtn.setAttribute('aria-pressed', 'true');
+      loadBtn.textContent = 'Tokenizador en vivo activo (Web Worker)';
+      if (statusEl) {
+        statusEl.textContent = 'Cargando motor BPE cl100k_base en Web Worker local...';
+      }
+      const worker = getOrSpawnTiktokenWorker();
+      worker.addEventListener('message', (event) => {
+        const data = event?.data;
+        if (!data || Number(data.id) !== tiktokenRequestSeq) return;
+        applyWorkerResult(data);
+        if (statusEl) {
+          statusEl.textContent = `Motor cl100k_base activo en Web Worker (${data.count} tokens medidos localmente).`;
+        }
+      });
+    }
+    requestWorkerTokenize();
+  });
+
   textarea.addEventListener('input', () => {
-    renderTokens().catch(() => {});
+    if (!activated) {
+      if (statusEl) {
+        statusEl.textContent = 'Pulsa "Activar tokenizador en vivo (Web Worker)" para recalcular tu texto.';
+      }
+      return;
+    }
+    requestWorkerTokenize();
   });
 }
 

@@ -48,12 +48,13 @@ const SENSITIVE_ENV_PATTERNS = [
   /SECRET$/i,
   /PASSWORD$/i,
   /CREDENTIAL/i,
+  /CONNECTION_STRING/i,
   /^CLOUDFLARE_/i,
   /^OPENAI_/i,
   /^ANTHROPIC_/i,
   /^GEMINI_/i,
   /^SUPABASE_/i,
-  /^DATABASE_URL$/i,
+  /^(?:DATABASE|DIRECT|SHADOW_DATABASE|POSTGRES|POSTGRESQL|MYSQL|MONGODB|REDIS)_URL$/i,
   /^E2B_API_KEY$/i
 ];
 
@@ -320,7 +321,7 @@ for (const fnName of CP_METHODS) {
       const safeEnv = {};
       const srcEnv = (opts && opts.env) ? opts.env : process.env;
       for (const [k, v] of Object.entries(srcEnv)) {
-        if (!/(KEY|TOKEN|SECRET|PASSWORD|CREDENTIAL)$/i.test(k)) {
+        if (!/(?:KEY$|TOKEN$|SECRET|PASSWORD|CREDENTIAL|CONNECTION_STRING|^(?:DATABASE|DIRECT|SHADOW_DATABASE|POSTGRES|POSTGRESQL|MYSQL|MONGODB|REDIS)_URL$|^CLOUDFLARE_|^OPENAI_|^ANTHROPIC_|^GEMINI_|^SUPABASE_)/i.test(k)) {
           safeEnv[k] = v;
         }
       }

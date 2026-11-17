@@ -114,7 +114,11 @@ export function evaluateSealedEnvelopeSuite({
  * (100% of active assertions in `.agents/memory/regression_assertions.json` remain intact).
  */
 export function verifyF2pAndP2pGate({
-  f2pVerified = true,
+  f2pVerified,
+  f2pTestPassed,
+  p2pVerified,
+  p2pSuitePassed,
+  evidences = [],
   turnCount = 2,
   maxTurns = 20,
   tokensUsed = 6000,
@@ -122,26 +126,34 @@ export function verifyF2pAndP2pGate({
 } = {}) {
   const regPath = path.join(ROOT, '.agents', 'memory', 'regression_assertions.json');
   let activeAssertionsCount = 0;
-  let p2pVerified = true;
+  let p2pRegistryActive = true;
   if (fs.existsSync(regPath)) {
     try {
       const store = JSON.parse(fs.readFileSync(regPath, 'utf8'));
       const active = (store.assertions || []).filter((a) => a.status === 'ACTIVE');
       activeAssertionsCount = active.length;
-      p2pVerified = activeAssertionsCount > 0;
+      p2pRegistryActive = activeAssertionsCount > 0;
     } catch {
-      p2pVerified = false;
+      p2pRegistryActive = false;
     }
   }
+  const rawF2pInput = f2pTestPassed !== undefined ? f2pTestPassed : f2pVerified;
+  const rawP2pInput = p2pSuitePassed !== undefined ? p2pSuitePassed : p2pVerified;
+  const missingEvidence = rawF2pInput === undefined;
+  const resolvedF2p = missingEvidence ? false : Boolean(rawF2pInput);
+  const resolvedP2p =
+    rawP2pInput !== undefined ? Boolean(rawP2pInput) && p2pRegistryActive : Boolean(p2pRegistryActive);
   const withinTurnBudget = Number(turnCount) <= Number(maxTurns);
   const withinTokenBudget = Number(tokensUsed) <= Number(maxTokens);
-  const passed = Boolean(f2pVerified && p2pVerified && withinTurnBudget && withinTokenBudget);
+  const passed = Boolean(resolvedF2p && resolvedP2p && withinTurnBudget && withinTokenBudget);
 
   return {
     passed,
-    f2pVerified: Boolean(f2pVerified),
-    p2pVerified: Boolean(p2pVerified),
+    missingEvidence,
+    f2pVerified: resolvedF2p,
+    p2pVerified: resolvedP2p,
     activeRegressionAssertions: activeAssertionsCount,
+    evidences: Array.isArray(evidences) ? evidences : [],
     withinTurnBudget,
     withinTokenBudget,
     turnCount,

@@ -15,9 +15,124 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { APCAcontrast, sRGBtoY } from 'apca-w3';
 import { loadProjectConfig, FACTORY_ROOT } from '../lib/project_loader.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
+
+function clampByte(n) {
+  return Math.max(0, Math.min(255, Math.round(n)));
+}
+
+function linearToGammaSrgb(c) {
+  const clamped = Math.max(0, Math.min(1, c));
+  return clamped <= 0.0031308 ? 12.92 * clamped : 1.055 * Math.pow(clamped, 1 / 2.4) - 0.055;
+}
+
+function oklchToSrgb(lRaw, chroma, hueDeg) {
+  const hRad = (Number(hueDeg || 0) * Math.PI) / 180;
+  const a = Number(chroma || 0) * Math.cos(hRad);
+  const b = Number(chroma || 0) * Math.sin(hRad);
+  const l = Number(lRaw || 0);
+  const l_ = l + 0.3963377774 * a + 0.2158037573 * b;
+  const m_ = l - 0.1055613458 * a - 0.0638541728 * b;
+  const s_ = l - 0.0894841775 * a - 1.2914855480 * b;
+  const l3 = l_ * l_ * l_;
+  const m3 = m_ * m_ * m_;
+  const s3 = s_ * s_ * s_;
+  const rLin = +4.0767416621 * l3 - 3.3077115913 * m3 + 0.2309699292 * s3;
+  const gLin = -1.2684380046 * l3 + 2.6097574011 * m3 - 0.3413193965 * s3;
+  const bLin = -0.0041960863 * l3 - 0.7034186147 * m3 + 1.7076147010 * s3;
+  return {
+    r: clampByte(linearToGammaSrgb(rLin) * 255),
+    g: clampByte(linearToGammaSrgb(gLin) * 255),
+    b: clampByte(linearToGammaSrgb(bLin) * 255)
+  };
+}
+
+export function parseColorToSrgb(colorInput = '') {
+  if (colorInput && typeof colorInput === 'object' && typeof colorInput.r === 'number') {
+    return { r: clampByte(colorInput.r), g: clampByte(colorInput.g), b: clampByte(colorInput.b) };
+  }
+  const s = String(colorInput || '').trim();
+  const hexMatch = s.match(/^#([0-9a-f]{3}|[0-9a-f]{6})$/i);
+  if (hexMatch) {
+    const h = hexMatch[1];
+    if (h.length === 3) {
+      return {
+        r: parseInt(h[0] + h[0], 16),
+        g: parseInt(h[1] + h[1], 16),
+        b: parseInt(h[2] + h[2], 16)
+      };
+    }
+    return {
+      r: parseInt(h.slice(0, 2), 16),
+      g: parseInt(h.slice(2, 4), 16),
+      b: parseInt(h.slice(4, 6), 16)
+    };
+  }
+  const oklchMatch = s.match(/^oklch\(\s*([\d.]+%?)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*[\d.%]+)?\s*\)$/i);
+  if (oklchMatch) {
+    const lRaw = oklchMatch[1].endsWith('%') ? parseFloat(oklchMatch[1]) / 100 : parseFloat(oklchMatch[1]);
+    return oklchToSrgb(lRaw, parseFloat(oklchMatch[2]), parseFloat(oklchMatch[3]));
+  }
+  const rgbMatch = s.match(/^rgba?\(\s*([\d.]+)[\s,]+([\d.]+)[\s,]+([\d.]+)/i);
+  if (rgbMatch) {
+    return {
+      r: clampByte(parseFloat(rgbMatch[1])),
+      g: clampByte(parseFloat(rgbMatch[2])),
+      b: clampByte(parseFloat(rgbMatch[3]))
+    };
+  }
+  return null;
+}
+
+function srgbRelativeLuminance({ r, g, b }) {
+  const ch = (v) => {
+    const n = v / 255;
+    return n <= 0.04045 ? n / 12.92 : Math.pow((n + 0.055) / 1.055, 2.4);
+  };
+  return 0.2126 * ch(r) + 0.7152 * ch(g) + 0.0722 * ch(b);
+}
+
+export function computeWcagContrastRatio(fgColor, bgColor) {
+  const fg = parseColorToSrgb(fgColor);
+  const bg = parseColorToSrgb(bgColor);
+  if (!fg || !bg) return 0;
+  const l1 = srgbRelativeLuminance(fg);
+  const l2 = srgbRelativeLuminance(bg);
+  const hi = Math.max(l1, l2);
+  const lo = Math.min(l1, l2);
+  return Number(((hi + 0.05) / (lo + 0.05)).toFixed(2));
+}
+
+export function computeApcaLc(fgColor, bgColor) {
+  const fg = parseColorToSrgb(fgColor);
+  const bg = parseColorToSrgb(bgColor);
+  if (!fg || !bg) return 0;
+  return Number(APCAcontrast(sRGBtoY([fg.r, fg.g, fg.b]), sRGBtoY([bg.r, bg.g, bg.b])).toFixed(1));
+}
+
+export function validateDualContrastPair(
+  fgColor,
+  bgColor,
+  { isLargeText = false, minApcaLc = 60 } = {}
+) {
+  const wcagRatio = computeWcagContrastRatio(fgColor, bgColor);
+  const apcaLc = computeApcaLc(fgColor, bgColor);
+  const wcagMinRequired = isLargeText ? 3.0 : 4.5;
+  const wcagPassed = wcagRatio >= wcagMinRequired;
+  const apcaPassed = Math.abs(apcaLc) >= minApcaLc;
+  return {
+    passed: wcagPassed && apcaPassed,
+    wcagPassed,
+    apcaPassed,
+    wcagRatio,
+    wcagMinRequired,
+    apcaLc,
+    minApcaLc
+  };
+}
 
 const ARCHETYPE_PRESETS = {
   'saas-b2b': {
@@ -377,6 +492,30 @@ export function buildDtcgTokensObject(
   const s3Max = Number((s2Max * scaleRatio).toFixed(3));
   const s4Max = Number((s3Max * scaleRatio).toFixed(3));
 
+  const darkCtaInk = `oklch(0.14 0.02 ${cfg.hueCanvas})`;
+  const lightCtaInk = `oklch(0.98 0.005 ${cfg.hueCanvas})`;
+  const darkCtaEval = validateDualContrastPair(darkCtaInk, primaryColorVal, { minApcaLc: 60 });
+  const lightCtaEval = validateDualContrastPair(lightCtaInk, primaryColorVal, { minApcaLc: 60 });
+  const ctaInkVal =
+    darkCtaEval.passed && !lightCtaEval.passed
+      ? darkCtaInk
+      : lightCtaEval.passed && !darkCtaEval.passed
+      ? lightCtaInk
+      : darkCtaEval.wcagRatio >= lightCtaEval.wcagRatio
+      ? darkCtaInk
+      : lightCtaInk;
+
+  const dualContrastValidation = {
+    textPrimaryOnCanvas: validateDualContrastPair(textPrimaryVal, surfaceCanvasVal, { minApcaLc: 75 }),
+    textSecondaryOnCanvas: validateDualContrastPair(textSecondaryVal, surfaceCanvasVal, { minApcaLc: 55 }),
+    ctaInkOnCta: validateDualContrastPair(ctaInkVal, primaryColorVal, { minApcaLc: 60 })
+  };
+  dualContrastValidation.allPassed = Boolean(
+    dualContrastValidation.textPrimaryOnCanvas.passed &&
+      dualContrastValidation.textSecondaryOnCanvas.passed &&
+      dualContrastValidation.ctaInkOnCta.passed
+  );
+
   return {
     $schema: 'https://tr.designtokens.org/format/2025.10/',
     meta: {
@@ -387,7 +526,8 @@ export function buildDtcgTokensObject(
       gamutMaskedTokens: masked.tokens,
       fontPairingProfile: resolvedPairingKey || 'default-archetype-pairing',
       typeScaleRatio: scaleRatio,
-      chromaticRule: '90% Neutral Surface / 8% Supporting Accent / 2% High-Chroma CTA (OKLCH + APCA)',
+      chromaticRule: '90% Neutral Surface / 8% Supporting Accent / 2% High-Chroma CTA (OKLCH + WCAG 2.2 AA + APCA)',
+      dualContrastValidation,
       brandIdentityLock: brandLock
         ? {
             brandIdentityMode: brandLock.brandIdentityMode || 'PARTIAL_BRAND_EVOLUTION',
@@ -418,7 +558,7 @@ export function buildDtcgTokensObject(
         secondary: { $type: 'color', $value: secondaryColorVal, $description: 'Locked secondary client brand color' },
         accent: { $type: 'color', $value: accentColorVal, $description: '8% Supporting brand accent' },
         cta: { $type: 'color', $value: primaryColorVal, $description: '2% High-conversion focal CTA' },
-        ctaInk: { $type: 'color', $value: `oklch(0.14 0.02 ${cfg.hueCanvas})`, $description: 'High-contrast ink on CTA button' }
+        ctaInk: { $type: 'color', $value: ctaInkVal, $description: 'High-contrast ink on CTA button (WCAG 2.2 AA + APCA)' }
       },
       border: {
         subtle: { $type: 'color', $value: 'oklch(1 0 0 / 0.08)', $description: '1px subtle hairline border' },
@@ -1135,9 +1275,10 @@ export function compileDesignTokens(options = {}) {
   }
 
   return {
-    passed: true,
+    passed: Boolean(dtcg.meta?.dualContrastValidation?.allPassed),
     archetype,
     styleSkill: styleName,
+    dualContrastValidation: dtcg.meta?.dualContrastValidation,
     writtenFiles
   };
 }

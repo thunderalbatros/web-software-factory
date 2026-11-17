@@ -31,6 +31,7 @@ import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright-core';
 import { AxeBuilder } from '@axe-core/playwright';
 import { APCAcontrast, sRGBtoY } from 'apca-w3';
+import { validateDualContrastPair } from '../design/token_compiler.mjs';
 import {
   parseHeadersFile,
   resolveHeadersForPathname,
@@ -255,19 +256,21 @@ export function verifyStandaloneBuildOutsideMonorepo(projectRoot = DEFAULT_PROJE
 
 export async function certifyAcademiaRuntime(projectRoot = DEFAULT_PROJECT_ROOT) {
   const distDir = path.join(projectRoot, 'dist');
+  const distHeadersPath = path.join(distDir, '_headers');
   const publicHeadersPath = path.join(projectRoot, 'public', '_headers');
-  if (!fs.existsSync(distDir) || !fs.existsSync(publicHeadersPath)) {
-    throw new Error(`Missing dist/ or public/_headers in ${projectRoot}. Run build first.`);
+  const effectiveHeadersPath = fs.existsSync(distHeadersPath) ? distHeadersPath : publicHeadersPath;
+  if (!fs.existsSync(distDir) || !fs.existsSync(effectiveHeadersPath)) {
+    throw new Error(`Missing dist/ or _headers in ${projectRoot}. Run build first.`);
   }
 
   const standaloneBuildCheck = verifyStandaloneBuildOutsideMonorepo(projectRoot);
   const headersValidation = validateHeadersForProfile(
-    fs.readFileSync(publicHeadersPath, 'utf8'),
+    fs.readFileSync(effectiveHeadersPath, 'utf8'),
     'education'
   );
   const distStats = computeDirBytes(distDir);
   const swPrecache = measureSwPrecacheBudget(distDir);
-  const srv = await startEphemeralHeadersServer(distDir, publicHeadersPath);
+  const srv = await startEphemeralHeadersServer(distDir, effectiveHeadersPath);
 
   const consoleErrors = [];
   const pageErrors = [];
@@ -330,9 +333,23 @@ export async function certifyAcademiaRuntime(projectRoot = DEFAULT_PROJECT_ROOT)
       '/niveles/avanzado/'
     ];
 
+    const requestedUrlsForRoute = [];
+    page.on('request', (req) => {
+      requestedUrlsForRoute.push(req.url());
+    });
+
     for (const route of routes) {
+      requestedUrlsForRoute.length = 0;
       await page.setViewportSize({ width: 1440, height: 900 });
       await page.goto(`${srv.origin}${route}`, { waitUntil: 'networkidle' });
+      const eagerTiktokenRequests = requestedUrlsForRoute.filter((u) =>
+        /(?:cl100k_base|tiktoken-worker)/i.test(u)
+      );
+      if (eagerTiktokenRequests.length > 0) {
+        throw new Error(
+          `Lazy-budget violation on ${route}: BPE/Tiktoken worker loaded before click (${eagerTiktokenRequests.join(', ')})`
+        );
+      }
 
       // Measure LCP & CLS via Performance APIs
       const perfSnapshot = await page.evaluate(async () => {
@@ -395,13 +412,26 @@ export async function certifyAcademiaRuntime(projectRoot = DEFAULT_PROJECT_ROOT)
           }
         }
 
-        // 2. Exercise real js-tiktoken BPE counter
-        const tikInput = page.locator('[data-tiktoken-input]');
-        await tikInput.fill('Hola mundo abierto');
-        await page.waitForFunction(() => {
-          const el = document.querySelector('[data-tiktoken-count]');
-          return el && Number(el.textContent) >= 2 && Number(el.textContent) <= 6;
-        }, null, { timeout: 8000 });
+        // 2. Opt-in Lazy Web Worker js-tiktoken BPE counter (only on Level 1 /niveles/principiante/)
+        if (route === '/niveles/principiante/') {
+          const workerPromise = page.waitForResponse(
+            (res) => /(?:cl100k_base|tiktoken-worker)/i.test(res.url()) && res.status() === 200,
+            { timeout: 8000 }
+          );
+          await page.locator('[data-tiktoken-load]').click();
+          await workerPromise;
+          const tikInput = page.locator('[data-tiktoken-input]');
+          await tikInput.fill('Hola mundo abierto');
+          await page.waitForFunction(() => {
+            const el = document.querySelector('[data-tiktoken-count]');
+            return el && Number(el.textContent) >= 2 && Number(el.textContent) <= 6;
+          }, null, { timeout: 8000 });
+        } else {
+          const explorerCount = await page.locator('[data-tiktoken-explorer]').count();
+          if (explorerCount !== 0) {
+            throw new Error(`Expected 0 TiktokenExplorer panels on ${route}, found ${explorerCount}`);
+          }
+        }
 
         // 3. Verify opaque `<iframe sandbox="allow-scripts">` 1:1 MessageChannel isolation & Valibot + DOMPurify roundtrip
         await page.waitForFunction(() => {
@@ -560,6 +590,13 @@ export async function certifyAcademiaRuntime(projectRoot = DEFAULT_PROJECT_ROOT)
     const darkFgRgb = parseRgbString(darkColors.fg);
     const darkBgRgb = parseRgbString(darkColors.bg);
 
+    const lightDual = lightColors.fg && lightColors.bg
+      ? validateDualContrastPair(lightColors.fg, lightColors.bg, { minApcaLc: 85 })
+      : { passed: false, wcagRatio: 0, apcaLc: 0 };
+    const darkDual = darkColors.fg && darkColors.bg
+      ? validateDualContrastPair(darkColors.fg, darkColors.bg, { minApcaLc: 85 })
+      : { passed: false, wcagRatio: 0, apcaLc: 0 };
+
     const apcaLightLc =
       lightFgRgb && lightBgRgb
         ? Math.abs(Number(APCAcontrast(sRGBtoY(lightFgRgb), sRGBtoY(lightBgRgb)).toFixed(1)))
@@ -568,7 +605,11 @@ export async function certifyAcademiaRuntime(projectRoot = DEFAULT_PROJECT_ROOT)
       darkFgRgb && darkBgRgb
         ? Math.abs(Number(APCAcontrast(sRGBtoY(darkFgRgb), sRGBtoY(darkBgRgb)).toFixed(1)))
         : 0;
-    const perceptualContrastVerified = apcaLightLc >= 85 && apcaDarkLc >= 85;
+    const wcagLightRatio = lightDual.wcagRatio;
+    const wcagDarkRatio = darkDual.wcagRatio;
+    const wcagContrastVerified = wcagLightRatio >= 4.5 && wcagDarkRatio >= 4.5;
+    const perceptualContrastVerified =
+      apcaLightLc >= 85 && apcaDarkLc >= 85 && wcagContrastVerified;
 
     // Measure real rAF FPS over 20 frames
     const fpsMeasured = await page.evaluate(async () => {
@@ -594,7 +635,8 @@ export async function certifyAcademiaRuntime(projectRoot = DEFAULT_PROJECT_ROOT)
     await cleanHeapCdp.send('Performance.enable');
     await cleanHeapCdp.send('HeapProfiler.enable');
     await cleanHeapCdp.send('Accessibility.enable');
-    await cleanHeapPage.goto(`${srv.origin}/niveles/intermedio/`, { waitUntil: 'networkidle' });
+    await cleanHeapPage.goto(`${srv.origin}/niveles/principiante/`, { waitUntil: 'networkidle' });
+    await cleanHeapPage.locator('[data-tiktoken-load]').click();
     await cleanHeapPage.locator('[data-tiktoken-input]').fill('Hola mundo abierto');
     await cleanHeapPage.waitForFunction(() => {
       const el = document.querySelector('[data-tiktoken-count]');
@@ -689,6 +731,9 @@ export async function certifyAcademiaRuntime(projectRoot = DEFAULT_PROJECT_ROOT)
       zeroClippingOrOverlap,
       fitts44pxMobileVerified,
       perceptualContrastVerified,
+      wcagContrastVerified,
+      wcagLightRatio,
+      wcagDarkRatio,
       apcaLightLc,
       apcaDarkLc,
       temporal4StagesVerified: true,

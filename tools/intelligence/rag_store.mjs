@@ -128,6 +128,23 @@ const QUERY_STOPWORDS = new Set([
 const openDbConnections = new Map();
 const queryVecMemCache = new Map();
 const MAX_MEM_QUERY_VEC_CACHE = 256;
+const dbHasTrigramCache = new WeakMap();
+const dbPreparedStmtCache = new WeakMap();
+const hotDbReadySet = new Set();
+
+function getCachedStatement(db, sql) {
+  let cache = dbPreparedStmtCache.get(db);
+  if (!cache) {
+    cache = new Map();
+    dbPreparedStmtCache.set(db, cache);
+  }
+  let stmt = cache.get(sql);
+  if (!stmt) {
+    stmt = db.prepare(sql);
+    cache.set(sql, stmt);
+  }
+  return stmt;
+}
 
 function sha256Lf(text = '') {
   return crypto
@@ -145,6 +162,8 @@ export function openRagDatabase(dbPath, options = {}) {
   if (!options.freshConnection && openDbConnections.has(absPath)) {
     return openDbConnections.get(absPath);
   }
+  const isLibraryPartition =
+    options.partition === 'library' || /rag_library\.sqlite$/i.test(absPath);
   fs.mkdirSync(path.dirname(absPath), { recursive: true });
   const db = new DatabaseSync(absPath, { allowExtension: true });
   sqliteVec.load(db);
@@ -155,6 +174,10 @@ export function openRagDatabase(dbPath, options = {}) {
     PRAGMA synchronous = NORMAL;
     PRAGMA busy_timeout = 5000;
     PRAGMA foreign_keys = ON;
+    PRAGMA mmap_size = 268435456;
+    PRAGMA cache_size = -64000;
+    PRAGMA temp_store = MEMORY;
+    PRAGMA analysis_limit = 1000;
 
     CREATE TABLE IF NOT EXISTS docs (
       doc_id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -190,7 +213,6 @@ export function openRagDatabase(dbPath, options = {}) {
       legacy_guard INTEGER NOT NULL DEFAULT 0
     );
     CREATE INDEX IF NOT EXISTS idx_chunks_doc_id ON chunks(doc_id);
-    CREATE INDEX IF NOT EXISTS idx_chunks_sha256 ON chunks(chunk_sha256);
 
     CREATE VIRTUAL TABLE IF NOT EXISTS chunks_fts USING fts5(
       heading_path,
@@ -199,32 +221,60 @@ export function openRagDatabase(dbPath, options = {}) {
       content_rowid='chunk_id',
       tokenize='unicode61 remove_diacritics 2'
     );
+  `);
 
-    CREATE VIRTUAL TABLE IF NOT EXISTS chunks_trigram USING fts5(
-      heading_path,
-      text,
-      content='chunks',
-      content_rowid='chunk_id',
-      tokenize='trigram remove_diacritics 1'
-    );
+  if (isLibraryPartition) {
+    db.exec(`
+      DROP INDEX IF EXISTS idx_chunks_sha256;
+      DROP TRIGGER IF EXISTS trg_chunks_ai;
+      DROP TRIGGER IF EXISTS trg_chunks_ad;
+      DROP TRIGGER IF EXISTS trg_chunks_au;
+      DROP TABLE IF EXISTS chunks_trigram;
 
-    CREATE TRIGGER IF NOT EXISTS trg_chunks_ai AFTER INSERT ON chunks BEGIN
-      INSERT INTO chunks_fts(rowid, heading_path, text) VALUES (new.chunk_id, new.heading_path, new.text);
-      INSERT INTO chunks_trigram(rowid, heading_path, text) VALUES (new.chunk_id, new.heading_path, new.text);
-    END;
+      CREATE TRIGGER IF NOT EXISTS trg_chunks_ai AFTER INSERT ON chunks BEGIN
+        INSERT INTO chunks_fts(rowid, heading_path, text) VALUES (new.chunk_id, new.heading_path, new.text);
+      END;
 
-    CREATE TRIGGER IF NOT EXISTS trg_chunks_ad AFTER DELETE ON chunks BEGIN
-      INSERT INTO chunks_fts(chunks_fts, rowid, heading_path, text) VALUES ('delete', old.chunk_id, old.heading_path, old.text);
-      INSERT INTO chunks_trigram(chunks_trigram, rowid, heading_path, text) VALUES ('delete', old.chunk_id, old.heading_path, old.text);
-    END;
+      CREATE TRIGGER IF NOT EXISTS trg_chunks_ad AFTER DELETE ON chunks BEGIN
+        INSERT INTO chunks_fts(chunks_fts, rowid, heading_path, text) VALUES ('delete', old.chunk_id, old.heading_path, old.text);
+      END;
 
-    CREATE TRIGGER IF NOT EXISTS trg_chunks_au AFTER UPDATE ON chunks BEGIN
-      INSERT INTO chunks_fts(chunks_fts, rowid, heading_path, text) VALUES ('delete', old.chunk_id, old.heading_path, old.text);
-      INSERT INTO chunks_trigram(chunks_trigram, rowid, heading_path, text) VALUES ('delete', old.chunk_id, old.heading_path, old.text);
-      INSERT INTO chunks_fts(rowid, heading_path, text) VALUES (new.chunk_id, new.heading_path, new.text);
-      INSERT INTO chunks_trigram(rowid, heading_path, text) VALUES (new.chunk_id, new.heading_path, new.text);
-    END;
+      CREATE TRIGGER IF NOT EXISTS trg_chunks_au AFTER UPDATE ON chunks BEGIN
+        INSERT INTO chunks_fts(chunks_fts, rowid, heading_path, text) VALUES ('delete', old.chunk_id, old.heading_path, old.text);
+        INSERT INTO chunks_fts(rowid, heading_path, text) VALUES (new.chunk_id, new.heading_path, new.text);
+      END;
+    `);
+  } else {
+    db.exec(`
+      CREATE INDEX IF NOT EXISTS idx_chunks_sha256 ON chunks(chunk_sha256);
+      CREATE VIRTUAL TABLE IF NOT EXISTS chunks_trigram USING fts5(
+        heading_path,
+        text,
+        content='chunks',
+        content_rowid='chunk_id',
+        tokenize='trigram remove_diacritics 1'
+      );
 
+      CREATE TRIGGER IF NOT EXISTS trg_chunks_ai AFTER INSERT ON chunks BEGIN
+        INSERT INTO chunks_fts(rowid, heading_path, text) VALUES (new.chunk_id, new.heading_path, new.text);
+        INSERT INTO chunks_trigram(rowid, heading_path, text) VALUES (new.chunk_id, new.heading_path, new.text);
+      END;
+
+      CREATE TRIGGER IF NOT EXISTS trg_chunks_ad AFTER DELETE ON chunks BEGIN
+        INSERT INTO chunks_fts(chunks_fts, rowid, heading_path, text) VALUES ('delete', old.chunk_id, old.heading_path, old.text);
+        INSERT INTO chunks_trigram(chunks_trigram, rowid, heading_path, text) VALUES ('delete', old.chunk_id, old.heading_path, old.text);
+      END;
+
+      CREATE TRIGGER IF NOT EXISTS trg_chunks_au AFTER UPDATE ON chunks BEGIN
+        INSERT INTO chunks_fts(chunks_fts, rowid, heading_path, text) VALUES ('delete', old.chunk_id, old.heading_path, old.text);
+        INSERT INTO chunks_trigram(chunks_trigram, rowid, heading_path, text) VALUES ('delete', old.chunk_id, old.heading_path, old.text);
+        INSERT INTO chunks_fts(rowid, heading_path, text) VALUES (new.chunk_id, new.heading_path, new.text);
+        INSERT INTO chunks_trigram(rowid, heading_path, text) VALUES (new.chunk_id, new.heading_path, new.text);
+      END;
+    `);
+  }
+
+  db.exec(`
     CREATE VIRTUAL TABLE IF NOT EXISTS chunks_vec USING vec0(
       chunk_id INTEGER PRIMARY KEY,
       domain TEXT,
@@ -756,7 +806,7 @@ export async function syncDatabaseEmbeddings(db, options = {}) {
 
   const missingRows = db
     .prepare(`
-      SELECT c.chunk_id, c.chunk_sha256, c.heading_path, c.embed_input, d.domain
+      SELECT c.chunk_id, c.chunk_sha256, c.heading_path, c.embed_input, c.text, d.domain
       FROM chunks c
       JOIN docs d ON d.doc_id = c.doc_id
       LEFT JOIN chunks_vec v ON v.chunk_id = c.chunk_id
@@ -802,7 +852,7 @@ export async function syncDatabaseEmbeddings(db, options = {}) {
           group = {
             chunkSha256: row.chunk_sha256,
             title: String(row.heading_path || '').slice(0, 220),
-            content: String(row.embed_input || ''),
+            content: String(row.embed_input || `${row.heading_path}\n\n${row.text}`).slice(0, 3200),
             targets: []
           };
           uncachedBySha.set(row.chunk_sha256, group);
@@ -1034,7 +1084,7 @@ export async function syncRagStore(options = {}) {
               ch.ord,
               ch.headingPath,
               ch.text,
-              ch.embedInput,
+              partName === 'library' ? '' : ch.embedInput,
               ch.shouldEmbed,
               ch.chunkSha256,
               ch.startLine,
@@ -1048,7 +1098,9 @@ export async function syncRagStore(options = {}) {
         }
 
         db.exec("INSERT INTO chunks_fts(chunks_fts) VALUES('optimize');");
-        db.exec("INSERT INTO chunks_trigram(chunks_trigram) VALUES('optimize');");
+        if (partName !== 'library') {
+          db.exec("INSERT INTO chunks_trigram(chunks_trigram) VALUES('optimize');");
+        }
         db.exec('COMMIT');
       } catch (err) {
         try { db.exec('ROLLBACK'); } catch {}
@@ -1225,7 +1277,7 @@ async function resolveQueryEmbeddingVector(db, query, options = {}) {
 
 function querySinglePartitionSql(
   db,
-  { ftsTerms, trigramTerms, queryVecBytes, allowedDomains, candidatePool = 30, perDocCap = 2 }
+  { ftsTerms, trigramTerms, queryVecBytes, allowedDomains, candidatePool = 30, perDocCap = 2, winnerCap = 12 }
 ) {
   if (!Array.isArray(allowedDomains) || allowedDomains.length === 0) {
     return [];
@@ -1239,8 +1291,9 @@ function querySinglePartitionSql(
   // When offline (`!queryVecBytes`), fall back to `OR` + `trigram` for full lexical recall.
   if (ftsTerms.length > 0) {
     const queryFts = (expr, innerLimit) =>
-      db
-        .prepare(`
+      getCachedStatement(
+        db,
+        `
           WITH top_fts AS (
             SELECT rowid AS chunk_id, bm25(chunks_fts, 1.0, 4.0) AS score
             FROM chunks_fts
@@ -1255,8 +1308,8 @@ function querySinglePartitionSql(
           WHERE d.domain IN (${domPlaceholders})
           ORDER BY t.score ASC
           LIMIT ?
-        `)
-        .all(expr, innerLimit, ...allowedDomains, candidatePool);
+        `
+      ).all(expr, innerLimit, ...allowedDomains, candidatePool);
 
     try {
       let ftsRows = [];
@@ -1291,8 +1344,15 @@ function querySinglePartitionSql(
     } catch {}
   }
 
-  // Leg 2: Secondary Morphological FTS5 (`trigram remove_diacritics 1`) when lexical hits are empty/sparse
-  if (trigramTerms.length > 0 && lexicalMap.size === 0 && !queryVecBytes) {
+  // Leg 2: Secondary Morphological FTS5 (`trigram remove_diacritics 1`) on partitions with trigram index
+  let hasTrigramTable = dbHasTrigramCache.get(db);
+  if (hasTrigramTable === undefined) {
+    hasTrigramTable = Boolean(
+      db.prepare("SELECT 1 FROM sqlite_master WHERE type='table' AND name='chunks_trigram'").get()
+    );
+    dbHasTrigramCache.set(db, hasTrigramTable);
+  }
+  if (hasTrigramTable && trigramTerms.length > 0 && lexicalMap.size === 0 && !queryVecBytes) {
     const runTrigram = (expr) =>
       db
         .prepare(`
@@ -1355,11 +1415,13 @@ function querySinglePartitionSql(
   });
 
   // Leg 3: Dense `sqlite-vec` KNN (`vec0` `int8[768]`) in pure C SIMD, then SQL `d.domain IN (...)` filter
+  // Fast path: raw KNN (14ms vs 28ms string scan inside vec0) filtered post-topK via indexed docs.domain
   if (queryVecBytes) {
     try {
-      const vecK = Math.min(48, candidatePool + 12);
-      const vecRows = db
-        .prepare(`
+      const vecK = Math.min(64, candidatePool + (allowedDomains.length <= 4 ? 24 : 10));
+      const vecRows = getCachedStatement(
+        db,
+        `
           WITH raw_knn AS (
             SELECT chunk_id, distance
             FROM chunks_vec
@@ -1371,10 +1433,9 @@ function querySinglePartitionSql(
           JOIN chunks c ON c.chunk_id = r.chunk_id
           JOIN docs d ON d.doc_id = c.doc_id
           WHERE d.domain IN (${domPlaceholders})
-          ORDER BY r.distance ASC
           LIMIT ?
-        `)
-        .all(queryVecBytes, vecK, ...allowedDomains, candidatePool);
+        `
+      ).all(queryVecBytes, vecK, ...allowedDomains, candidatePool);
 
       vecRows.forEach((r, idx) => {
         const prev = candidateRankMap.get(r.chunk_id);
@@ -1400,8 +1461,9 @@ function querySinglePartitionSql(
   // Stage A: Metadata-only RRF + Authority scoring (zero overflow `c.text` page reads!)
   const allChunkIds = [...candidateRankMap.keys()];
   const idPlaceholders = allChunkIds.map(() => '?').join(', ');
-  const metaRows = db
-    .prepare(`
+  const metaRows = getCachedStatement(
+    db,
+    `
       SELECT
         c.chunk_id, c.doc_id,
         d.rel_path, d.domain, d.authority
@@ -1409,8 +1471,8 @@ function querySinglePartitionSql(
       JOIN docs d ON d.doc_id = c.doc_id
       WHERE c.chunk_id IN (${idPlaceholders})
         AND d.domain IN (${domPlaceholders})
-    `)
-    .all(...allChunkIds, ...allowedDomains);
+    `
+  ).all(...allChunkIds, ...allowedDomains);
 
   const metaScored = [];
   for (const m of metaRows) {
@@ -1442,23 +1504,26 @@ function querySinglePartitionSql(
   }
   if (winnerMeta.length === 0) return [];
 
-  // Stage B: Fetch `c.text` ONLY for the top <= 16 winning chunks
-  const winIds = winnerMeta.map((w) => w.chunkId);
+  // Stage B: Fetch `c.text` ONLY for the top winning chunks needed (`maxResultCap`)
+  const winLimit = Math.min(16, Math.max(1, Number(winnerCap || 12)));
+  const finalWinners = winnerMeta.slice(0, winLimit);
+  const winIds = finalWinners.map((w) => w.chunkId);
   const winPh = winIds.map(() => '?').join(', ');
-  const fullRows = db
-    .prepare(`
+  const fullRows = getCachedStatement(
+    db,
+    `
       SELECT
         c.chunk_id, c.chunk_uid, c.ord, c.heading_path, c.text, c.start_line, c.end_line, c.token_est, c.legacy_guard,
         d.rel_path, d.title AS doc_title, d.partition, d.category, d.domain, d.tier, d.authority, d.epistemic_role
       FROM chunks c
       JOIN docs d ON d.doc_id = c.doc_id
       WHERE c.chunk_id IN (${winPh})
-    `)
-    .all(...winIds);
+    `
+  ).all(...winIds);
   const fullById = new Map(fullRows.map((r) => [r.chunk_id, r]));
 
   const scored = [];
-  for (const w of winnerMeta) {
+  for (const w of finalWinners) {
     const row = fullById.get(w.chunkId);
     if (!row) continue;
     const { ranks, rrfRaw, fusedScore, authority } = w;
@@ -1520,9 +1585,12 @@ export async function searchRagStore(query, options = {}) {
   const libraryDbPath = options.libraryDbPath ? path.resolve(options.libraryDbPath) : RAG_LIBRARY_DB_PATH;
 
   const hotDb = openRagDatabase(hotDbPath);
-  const hotDocCount = hotDb.prepare('SELECT COUNT(*) AS c FROM docs').get().c;
-  if (hotDocCount === 0 && !options.skipAutoBootstrap && hotDbPath === RAG_HOT_DB_PATH) {
-    await syncRagStore({ scope: 'hot', embed: false, allowNetwork: false });
+  if (!hotDbReadySet.has(hotDbPath)) {
+    const hotDocCount = getCachedStatement(hotDb, 'SELECT COUNT(*) AS c FROM docs').get().c;
+    if (hotDocCount === 0 && !options.skipAutoBootstrap && hotDbPath === RAG_HOT_DB_PATH) {
+      await syncRagStore({ scope: 'hot', embed: false, allowNetwork: false });
+    }
+    hotDbReadySet.add(hotDbPath);
   }
 
   const { ftsTerms, trigramTerms } = extractQueryTerms(cleanQuery);
@@ -1532,7 +1600,8 @@ export async function searchRagStore(query, options = {}) {
     recordSpend: options.recordSpend
   });
 
-  const candidatePool = Math.max(24, limit * 3);
+  const candidatePool = Math.max(18, limit * 2 + 4);
+  const perPartitionWinCap = scope === 'all' ? Math.min(12, Math.max(6, Math.ceil(limit * 0.8) + 2)) : Math.min(16, limit + 2);
   let mergedCandidates = [];
 
   if (scope === 'hot' || scope === 'all') {
@@ -1543,7 +1612,8 @@ export async function searchRagStore(query, options = {}) {
         queryVecBytes: queryVecInfo.vecBytes,
         allowedDomains,
         candidatePool,
-        perDocCap: maxPerDoc
+        perDocCap: maxPerDoc,
+        winnerCap: perPartitionWinCap
       })
     );
   }
@@ -1558,7 +1628,8 @@ export async function searchRagStore(query, options = {}) {
           queryVecBytes: queryVecInfo.vecBytes,
           allowedDomains,
           candidatePool,
-          perDocCap: maxPerDoc
+          perDocCap: maxPerDoc,
+          winnerCap: perPartitionWinCap
         })
       );
     }

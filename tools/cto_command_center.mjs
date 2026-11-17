@@ -29,8 +29,7 @@ import {
   recordProjectAuditScore
 } from './lib/project_loader.mjs';
 import {
-  getFactoryDoraSummary,
-  recordProjectDoraMetrics
+  getFactoryDoraSummary
 } from './intelligence/factory_dora_metrics.mjs';
 import { runGitRemoteSyncCheck } from './audit/git_remote_sync_check.mjs';
 import { syncProjectStatechartSnapshot } from './orchestrator/deterministic_agent_statechart.mjs';
@@ -587,11 +586,16 @@ async function handleConstruir(args = []) {
   loadBeadsTaskGraph();
   const traceRes = verifySpecKittyTraceabilityMatrix(projectCfg.id);
   const preAstRes = runAstAudit(null, { rootDir: projectCfg.projectRoot });
-  verifyF2pAndP2pGate({
+  const preF2pGate = verifyF2pAndP2pGate({
     f2pTestPassed: Boolean(traceRes?.passed !== false),
     p2pSuitePassed: Boolean(preAstRes?.passed),
     evidences: [`Traceability(${projectCfg.id})=${Boolean(traceRes?.passed !== false)}`, `AST=${preAstRes?.score ?? 0}/100`]
   });
+  if (!preF2pGate.passed) {
+    throw new Error(
+      `F2P_P2P_PREFLIGHT_BLOCKED: Traceability=${Boolean(traceRes?.passed !== false)}, AST=${preAstRes?.score ?? 0}/100`
+    );
+  }
 
   // 1. Compile Tokens (respecting BRAND_IDENTITY_LOCK.json), Apply Bespoke Morphology to DOM, & Build Production Dist
   compileDesignTokens({ projectDir: projectCfg.projectRoot });
@@ -1257,17 +1261,6 @@ async function handleCrearMovil(rest = []) {
 async function handleEstado() {
   const activeProj = getActiveProject();
   const secLight = evaluateCybersecurityTrafficLight();
-  recordProjectDoraMetrics({
-    projectSlug: activeProj.activeSlug || 'agencia-alfa',
-    stack: activeProj.stack || 'vanilla-edge',
-    archetype: activeProj.archetype || 'saas-b2b',
-    humanTouchesPerShip: 1,
-    leadTimeMinutes: 4.2,
-    costPerShipUsd: 0.0,
-    firstPassEvalPassed: true,
-    revertedAfterShip: false,
-    lastEvalScore: 100.0
-  });
   const dora = getFactoryDoraSummary();
   const gitSync = runGitRemoteSyncCheck();
 
@@ -1420,10 +1413,18 @@ async function handleCambioIncremental(args = []) {
   const nodes = loadBeadsTaskGraph();
   const collisions = verifyZeroParallelFileCollisions(nodes);
   const traceCheck = verifySpecKittyTraceabilityMatrix(slug, deltaInfo.deltaPath);
+  const { runAstAudit: runDeltaAstAudit } = await import('./audit/ast_guard.mjs');
+  const deltaProjectCfg = loadProjectConfig(slug);
+  const deltaAstRes = runDeltaAstAudit(null, { rootDir: deltaProjectCfg.projectRoot });
   const f2pCheck = verifyF2pAndP2pGate({
-    f2pTestPassed: true,
-    p2pSuitePassed: true,
-    evidences: [`OpenSpec delta: ${path.basename(deltaInfo.deltaPath)}`, `Lane: ${laneDecision.lane}`]
+    f2pTestPassed: Boolean(traceCheck?.passed !== false && collisions.length === 0),
+    p2pSuitePassed: Boolean(deltaAstRes?.passed),
+    evidences: [
+      `OpenSpec delta: ${path.basename(deltaInfo.deltaPath)}`,
+      `Lane: ${laneDecision.lane}`,
+      `Traceability: ${Boolean(traceCheck?.passed !== false)}`,
+      `AST: ${deltaAstRes?.score ?? 0}/100`
+    ]
   });
 
   if (f2pCheck.passed && collisions.length === 0) {

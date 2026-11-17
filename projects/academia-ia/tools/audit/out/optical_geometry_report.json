@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-15T11:51:12.557Z",
+  "generatedAt": "2026-11-17T12:04:04.842Z",
   "project": "academia-ia",
   "complianceProfile": "education",
   "surfaceMode": "Read",
@@ -12,17 +12,20 @@
   "zeroClippingOrOverlap": true,
   "fitts44pxMobileVerified": true,
   "perceptualContrastVerified": true,
+  "wcagContrastVerified": true,
+  "wcagLightRatio": 17.49,
+  "wcagDarkRatio": 17,
   "apcaLightLc": 101.2,
   "apcaDarkLc": 99.1,
   "temporal4StagesVerified": true,
-  "lcpMs": 696,
+  "lcpMs": 480,
   "clsScore": 0,
   "fpsMeasured": 62,
   "cdpPerformanceAndA11y": {
-    "jsHeapUsedMB": 22.54,
-    "layoutDurationMs": 330.91,
-    "recalcStyleDurationMs": 61.43,
-    "axNodeCount": 663,
+    "jsHeapUsedMB": 2.25,
+    "layoutDurationMs": 216.71,
+    "recalcStyleDurationMs": 23.34,
+    "axNodeCount": 497,
     "a11yTreeHealthy": true
   },
   "visualHarmonyAndMotion": {

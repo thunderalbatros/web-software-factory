@@ -34,6 +34,7 @@ import {
 import { evaluateVisualArchetypeWithVlm } from '../intelligence/vertex_ai_bridge.mjs';
 import { analyzeSpanishReadability } from './readability_es.mjs';
 import { resolveDomainProfile } from '../lib/project_profile.mjs';
+import { validateDualContrastPair, buildDtcgTokensObject } from '../design/token_compiler.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 
@@ -364,7 +365,7 @@ export function runRyuxDesignGate(projectInput = '') {
     `Archetype=${designMdLint.archetype}, Mode=${designMdLint.surfaceMode}, RulesPassed=${designMdLint.passedRulesCount}/${designMdLint.totalRulesChecked}, Errors=${designMdLint.summary.errors}`
   );
 
-  // 11. Profile-Specific Science Check:
+  // 11. Profile-Specific Science & Dual WCAG 2.2 AA + APCA Contrast Check:
   if (usesReadSurface) {
     const chMatches = [
       ...css.matchAll(/(?:max-width|--reading-measure)\s*:\s*(?:var\([^,]+,\s*)?(\d+(?:\.\d+)?)ch\b/gi)
@@ -377,12 +378,15 @@ export function runRyuxDesignGate(projectInput = '') {
       /allows3dEffects:\s*false/i.test(designMdRaw);
     const apcaOk = Boolean(optGeo.perceptualContrastVerified) && /APCA|Lc\s*>=\s*\d+/i.test(designMdRaw);
     const mobileTouchOk = Boolean(optGeo.fitts44pxMobileVerified);
+    const lightDualContrast = validateDualContrastPair('oklch(19% 0.018 250)', 'oklch(98% 0.004 250)', { minApcaLc: 75 });
+    const darkDualContrast = validateDualContrastPair('oklch(96.2% 0.006 250)', 'oklch(17.5% 0.014 250)', { minApcaLc: 75 });
+    const runtimeWcagOk = optGeo.wcagContrastVerified !== false && (!Number.isFinite(optGeo.wcagLightRatio) || optGeo.wcagLightRatio >= 4.5);
 
     addCheck(
       'ryux-reading-ergonomics-and-apca',
-      'Read-Mode Ergonomics (max-width 60ch–70ch, APCA Perceptual Contrast, Fitts >= 44px & Zero 3D Filler)',
-      has60To70ChMeasure && zero3dFillerInDesignMd && apcaOk && mobileTouchOk,
-      `ChMeasures=[${chMatches.join(', ')}ch], InRange60_70ch=${has60To70ChMeasure}, Zero3DFiller=${zero3dFillerInDesignMd}, APCA=${apcaOk}, MobileTouch=${mobileTouchOk}`
+      'Read-Mode Ergonomics (max-width 60ch–70ch, Dual WCAG 2.2 AA + APCA Contrast, Fitts >= 44px & Zero 3D Filler)',
+      has60To70ChMeasure && zero3dFillerInDesignMd && apcaOk && mobileTouchOk && lightDualContrast.passed && darkDualContrast.passed && runtimeWcagOk,
+      `ChMeasures=[${chMatches.join(', ')}ch], InRange60_70ch=${has60To70ChMeasure}, Zero3DFiller=${zero3dFillerInDesignMd}, APCA=${apcaOk}, LightWCAG=${lightDualContrast.wcagRatio}, DarkWCAG=${darkDualContrast.wcagRatio}, MobileTouch=${mobileTouchOk}`
     );
   } else {
     const hasDeadDarkSurfaceChromaZero = /surface:\s*["']oklch\((?:[1-9]|1\d|2\d)%?\s+0(?:\.0+)?\s+0\)/i.test(designMdRaw);
@@ -391,14 +395,19 @@ export function runRyuxDesignGate(projectInput = '') {
       !['fintech-and-banking', 'enterprise-erp-database'].includes(designMdLint.archetype) ||
       /tnum|tabular-nums/i.test(designMdRaw);
     const mobileTouchTargetsOk = Boolean(optGeo.fitts44pxMobileVerified);
+    const compiledDtcg = buildDtcgTokensObject(
+      activeCfg.archetype || domainProfile.id || 'saas-b2b',
+      activeCfg.style || domainProfile.defaultStyle || 'bento'
+    );
+    const dualContrastOk = Boolean(compiledDtcg.meta?.dualContrastValidation?.allPassed);
     const visualSciencePassed =
-      !hasDeadDarkSurfaceChromaZero && hasPbrAndFovSpec && hasTabularNumsForOperate && mobileTouchTargetsOk;
+      !hasDeadDarkSurfaceChromaZero && hasPbrAndFovSpec && hasTabularNumsForOperate && mobileTouchTargetsOk && dualContrastOk;
 
     addCheck(
       'ryux-visual-science-axioms',
-      'Atomic Visual Science Axioms (OKLCH Thermal Rotation C>0, Filament PBR, Camera FOV, Tufte tnum & HIG/M3 Touch)',
+      'Atomic Visual Science Axioms (OKLCH Thermal Rotation C>0, Dual WCAG+APCA, Filament PBR, Camera FOV, Tufte tnum & HIG/M3 Touch)',
       visualSciencePassed,
-      `ThermalRotationOK=${!hasDeadDarkSurfaceChromaZero}, PBR_FOV_Spring=${hasPbrAndFovSpec}, TufteTabular=${hasTabularNumsForOperate}, MobileTouch=${mobileTouchTargetsOk}`
+      `ThermalRotationOK=${!hasDeadDarkSurfaceChromaZero}, DualContrast=${dualContrastOk}, PBR_FOV_Spring=${hasPbrAndFovSpec}, TufteTabular=${hasTabularNumsForOperate}, MobileTouch=${mobileTouchTargetsOk}`
     );
   }
 

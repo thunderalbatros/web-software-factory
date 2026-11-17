@@ -1194,10 +1194,23 @@ export function createFactoryTwinServer() {
     }
   };
 
+  const MAX_COCKPIT_BODY_BYTES = 65536;
+  const isAllowedLocalHostHeader = (hostHeader) => {
+    const raw = String(hostHeader || '').trim().toLowerCase();
+    if (!raw) return false;
+    const hostOnly = raw.startsWith('[') ? raw.replace(/:\d+$/, '') : raw.split(':')[0];
+    return hostOnly === '127.0.0.1' || hostOnly === 'localhost' || hostOnly === '[::1]';
+  };
+
   telemetryEmitter.on('state-updated', onTelemetryUpdate);
 
   const server = http.createServer(async (req, res) => {
-    const urlObj = new URL(req.url || '/', `http://${req.headers.host || '127.0.0.1'}`);
+    if (!isAllowedLocalHostHeader(req.headers.host)) {
+      res.writeHead(403, { 'Content-Type': 'application/json; charset=utf-8' });
+      res.end(JSON.stringify({ ok: false, error: 'FORBIDDEN_INVALID_HOST_HEADER' }));
+      return;
+    }
+    const urlObj = new URL(req.url || '/', `http://${req.headers.host}`);
     const pathname = urlObj.pathname;
 
     const originHeader = req.headers.origin;
@@ -1281,11 +1294,24 @@ export function createFactoryTwinServer() {
 
     // 5. Interactive CTO HITL Actions ("approve_hitl", "send_feedback", "package_zip")
     if (req.method === 'POST' && pathname === '/api/hitl-action') {
-      let rawBody = '';
+      const chunks = [];
+      let totalBytes = 0;
+      let abortedTooLarge = false;
       req.on('data', (chunk) => {
-        rawBody += chunk.toString();
+        if (abortedTooLarge) return;
+        totalBytes += chunk.length;
+        if (totalBytes > MAX_COCKPIT_BODY_BYTES) {
+          abortedTooLarge = true;
+          res.writeHead(413, { 'Content-Type': 'application/json; charset=utf-8' });
+          res.end(JSON.stringify({ ok: false, error: 'PAYLOAD_TOO_LARGE' }));
+          req.destroy();
+          return;
+        }
+        chunks.push(chunk);
       });
       req.on('end', async () => {
+        if (abortedTooLarge) return;
+        const rawBody = Buffer.concat(chunks).toString('utf8');
         let body = {};
         try {
           body = JSON.parse(rawBody || '{}');
@@ -1474,6 +1500,26 @@ export async function runCockpitSelfTest() {
     });
     if (tokenlessRes.status !== 403 || crossOriginRes.status !== 403) {
       throw new Error(`Cockpit CSRF/Origin guard failed (${tokenlessRes.status}/${crossOriginRes.status})`);
+    }
+    const invalidHostStatus = await new Promise((resolve, reject) => {
+      const req = http.request(
+        {
+          hostname: '127.0.0.1',
+          port: addr.port,
+          path: '/api/state',
+          method: 'GET',
+          headers: { Host: 'evil.attacker.example' }
+        },
+        (res) => {
+          res.resume();
+          resolve(res.statusCode);
+        }
+      );
+      req.on('error', reject);
+      req.end();
+    });
+    if (invalidHostStatus !== 403) {
+      throw new Error(`Cockpit DNS rebinding Host guard failed (status=${invalidHostStatus})`);
     }
 
     const simRes = await fetch(`${baseUrl}/api/simulate`, {

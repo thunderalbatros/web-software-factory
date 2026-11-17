@@ -512,7 +512,7 @@ export function compileStaticDistCspAndHeaders(projectRoot, options = {}) {
   const profileName = resolveComplianceProfileName(options.profile || 'education', resolvedRoot);
   const distDir = options.distDir || path.join(resolvedRoot, 'dist');
   const publicDir = options.publicDir || path.join(resolvedRoot, 'public');
-  const syncPublicHeaders = options.syncPublicHeaders !== false;
+  const syncPublicHeaders = Boolean(options.syncPublicHeaders);
   const extractInlineStyles = options.extractInlineStyles !== false && profileName === 'education';
 
   let styleExtraction = {

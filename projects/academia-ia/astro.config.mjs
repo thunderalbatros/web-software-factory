@@ -25,13 +25,34 @@ function collectRoutePaths(distDir, currentDir = distDir, routes = []) {
   return routes.sort();
 }
 
+function resolveRouteLastMod(route) {
+  const cleanRoute = route === '/' ? '' : route.replace(/^\/+|\/+$/g, '');
+  const candidates = cleanRoute
+    ? [
+        path.join(PROJECT_ROOT, 'src', 'pages', `${cleanRoute}.mdx`),
+        path.join(PROJECT_ROOT, 'src', 'pages', `${cleanRoute}.astro`),
+        path.join(PROJECT_ROOT, 'src', 'pages', cleanRoute, 'index.mdx'),
+        path.join(PROJECT_ROOT, 'src', 'pages', cleanRoute, 'index.astro')
+      ]
+    : [path.join(PROJECT_ROOT, 'src', 'pages', 'index.astro')];
+  for (const cand of candidates) {
+    if (fs.existsSync(cand)) {
+      return fs.statSync(cand).mtime.toISOString().slice(0, 10);
+    }
+  }
+  const distHtml = path.join(PROJECT_ROOT, 'dist', cleanRoute, 'index.html');
+  if (fs.existsSync(distHtml)) {
+    return fs.statSync(distHtml).mtime.toISOString().slice(0, 10);
+  }
+  return '2026-11-17';
+}
+
 function generateSitemapAndAgenticManifests(distDir) {
   const routes = collectRoutePaths(distDir);
-  const lastmod = '2026-11-15';
   const urlEntries = routes
     .map(
       (route) =>
-        `  <url>\n    <loc>${SITE_ORIGIN}${route}</loc>\n    <lastmod>${lastmod}</lastmod>\n  </url>`
+        `  <url>\n    <loc>${SITE_ORIGIN}${route}</loc>\n    <lastmod>${resolveRouteLastMod(route)}</lastmod>\n  </url>`
     )
     .join('\n');
   const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urlEntries}\n</urlset>\n`;
@@ -57,15 +78,9 @@ function generateSitemapAndAgenticManifests(distDir) {
 
   const llmsFullTxt = `${llmsTxt}\n---\n\n${prdRaw.trim()}\n\n---\n\n${specRaw.trim()}\n`;
 
-  const publicDir = path.join(PROJECT_ROOT, 'public');
-  fs.mkdirSync(publicDir, { recursive: true });
-
   fs.writeFileSync(path.join(distDir, 'sitemap.xml'), sitemapXml, 'utf8');
-  fs.writeFileSync(path.join(publicDir, 'sitemap.xml'), sitemapXml, 'utf8');
   fs.writeFileSync(path.join(distDir, 'llms.txt'), llmsTxt, 'utf8');
-  fs.writeFileSync(path.join(publicDir, 'llms.txt'), llmsTxt, 'utf8');
   fs.writeFileSync(path.join(distDir, 'llms-full.txt'), llmsFullTxt, 'utf8');
-  fs.writeFileSync(path.join(publicDir, 'llms-full.txt'), llmsFullTxt, 'utf8');
 }
 
 async function runPagefindIndexing(distDir) {
@@ -111,28 +126,11 @@ function academiaPrePwaPostBuildIntegration() {
       'astro:build:done': async ({ dir }) => {
         const distDir = fileURLToPath(dir);
         generateSitemapAndAgenticManifests(distDir);
-        compileStaticDistCspAndHeaders(PROJECT_ROOT, {
-          profile: 'education',
-          distDir,
-          syncPublicHeaders: true
-        });
         await runPagefindIndexing(distDir);
-      }
-    }
-  };
-}
-
-function academiaFinalCspSealIntegration() {
-  return {
-    name: 'academia-ia-final-csp-seal',
-    hooks: {
-      'astro:build:done': async ({ dir }) => {
-        const distDir = fileURLToPath(dir);
         compileStaticDistCspAndHeaders(PROJECT_ROOT, {
           profile: 'education',
           distDir,
-          syncPublicHeaders: true,
-          extractInlineStyles: false
+          syncPublicHeaders: false
         });
       }
     }
@@ -148,6 +146,9 @@ export default defineConfig({
     inlineStylesheets: 'never'
   },
   vite: {
+    worker: {
+      format: 'es'
+    },
     build: {
       sourcemap: false,
       chunkSizeWarningLimit: 2000
@@ -184,16 +185,27 @@ export default defineConfig({
             src: '/favicon.svg',
             sizes: 'any',
             type: 'image/svg+xml'
+          },
+          {
+            src: '/pwa-192x192.png',
+            sizes: '192x192',
+            type: 'image/png'
+          },
+          {
+            src: '/pwa-512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'any maskable'
           }
         ]
       },
       generateSW: {
         navigateFallback: null,
         globPatterns: ['**/*.{html,css,js,svg,ico}'],
-        globIgnores: ['**/cl100k_base*.js', '**/pagefind/**'],
+        globIgnores: ['**/cl100k_base*.js', '**/tiktoken-worker*.js', '**/*.png', '**/pagefind/**'],
         runtimeCaching: [
           {
-            urlPattern: /\/_astro\/cl100k_base.*\.(?:js|mjs)$/,
+            urlPattern: /\/_astro\/(?:cl100k_base|tiktoken-worker).*\.(?:js|mjs)$/,
             handler: 'CacheFirst',
             options: {
               cacheName: 'academia-tiktoken-dict-v1',
@@ -216,7 +228,6 @@ export default defineConfig({
           }
         ]
       }
-    }),
-    academiaFinalCspSealIntegration()
+    })
   ]
 });

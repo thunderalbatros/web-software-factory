@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import TiktokenExplorer from '../components/TiktokenExplorer.astro';
 import { loadLocalAcademySnapshot } from '../lib/academy-data.mjs';
 
 const snapshot = loadLocalAcademySnapshot();
@@ -108,7 +107,15 @@ const levelMeta = [
     <p class="tutor-status-line" data-archetype-summary aria-live="polite"></p>
   </section>
 
-  <TiktokenExplorer />
+  <section class="editorial-panel" aria-label="Laboratorio interactivo de tokens BPE">
+    <h2 class="editorial-h2">Laboratorio local de tokens BPE (bajo demanda)</h2>
+    <p>
+      Explora en el Nivel 1 cómo un modelo de lenguaje divide tus palabras en tokens sin enviar datos a internet y cargando el diccionario local únicamente si activas el laboratorio.
+    </p>
+    <div class="card-actions-row">
+      <a class="btn-editorial" href="/niveles/principiante/#tiktoken-lab">Abrir laboratorio de tokens en Nivel 1</a>
+    </div>
+  </section>
 
   <section aria-label="Proyectos integradores abiertos">
     <h2 class="editorial-h2">Seis proyectos reales con herramientas libres ({snapshot.tracks.length} rutas)</h2>

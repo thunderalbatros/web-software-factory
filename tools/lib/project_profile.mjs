@@ -324,6 +324,13 @@ export function classifyKnowledgeDocumentDomain(filePathOrSource = '') {
     ) {
       return 'commercial_marketing_skills';
     }
+    if (
+      /(?:WEBGPU|KTX2|BASIS_UNIVERSAL|THREEJS|THREE_JS|GLTF|GLB|WGSL|TSL|SHADERS?|OPTICAL_MATERIALS|GAUSSIAN_SPLAT)/i.test(
+        norm
+      )
+    ) {
+      return 'graphics_3d';
+    }
     const parts = norm.split('/');
     if (parts.length >= 3) {
       return parts[1];
@@ -436,6 +443,11 @@ export function resolveDomainProfile(projectSlugOrOptions = {}) {
       .split('#')[0];
     const domain = classifyKnowledgeDocumentDomain(norm);
     if (!allowedDomainSet.has(domain)) return false;
+    if (!baseProfile.capabilities.media.three && !baseProfile.capabilities.media.shaders) {
+      if (domain === 'graphics_3d' || domain === 'motion_and_animation') {
+        return false;
+      }
+    }
 
     if (!baseProfile.capabilities.commerce.payments) {
       if (/(?:PAYMENT_GATEWAYS|MERCADOPAGO|STRIPE_LEMONSQUEEZY|EDGE_PAYMENTS)/i.test(norm)) {

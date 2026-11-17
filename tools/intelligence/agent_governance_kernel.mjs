@@ -86,7 +86,7 @@ export const PRIVILEGE_RINGS = {
   },
   RING_3_SANDBOX_READONLY: {
     level: 3,
-    roles: ['research', 'untrusted-guest', 'external-mcp-caller'],
+    roles: ['research', 'untrusted-guest', 'external-mcp-caller', 'readonly_client'],
     canModifyConstitution: false,
     canExecuteTools: true,
     canWriteWorkspace: false
@@ -122,10 +122,13 @@ const GIT_MUTATION_REGEX =
   /\bgit\s+(?:commit|push|reset|rebase|merge|cherry-pick|tag\s+-d|branch\s+-[dD]|checkout\s+-[bB])\b/i;
 
 const IN_TRANSIT_SECRET_PATTERNS = [
+  { label: 'DB_URI_CREDENTIALS', regex: /\b(?:postgres(?:ql)?|mysql|mariadb|mongodb(?:\+srv)?|redis|rediss|amqp):\/\/[^:\s/]+:[^@\s]+@[^\s"'`]+/gi, replacement: '[REDACTED_DB_URI]' },
   { label: 'BEARER_TOKEN', regex: /\bBearer\s+[A-Za-z0-9\-._~+/]+=*\b/gi, replacement: 'Bearer [REDACTED_BY_AGENT_OS]' },
-  { label: 'GITHUB_PAT', regex: /\b(?:ghp|gho|ghu|ghs|ghr)_[A-Za-z0-9_]{36,255}\b/g, replacement: '[REDACTED_GITHUB_PAT]' },
+  { label: 'GITHUB_PAT', regex: /\b(?:(?:ghp|gho|ghu|ghs|ghr)_[A-Za-z0-9_]{20,255}|github_pat_[A-Za-z0-9_]{20,255})\b/g, replacement: '[REDACTED_GITHUB_PAT]' },
   { label: 'AWS_AKIA', regex: /\b(?:AKIA|ASIA)[A-Z0-9]{16}\b/g, replacement: '[REDACTED_AWS_KEY]' },
-  { label: 'OPENAI_OR_STRIPE_SK', regex: /\bsk_(?:live|proj)_[0-9a-zA-Z_-]{20,99}\b/g, replacement: '[REDACTED_SECRET_KEY]' },
+  { label: 'GOOGLE_API_KEY', regex: /\bAIza[0-9A-Za-z\-_]{35,64}\b/g, replacement: '[REDACTED_GOOGLE_API_KEY]' },
+  { label: 'OPENAI_OR_VENDOR_SK', regex: /\b(?:sk-(?:proj|ant|or|live|test|svcacct)-[0-9a-zA-Z_-]{16,180}|sk_(?:live|test|proj)_[0-9a-zA-Z_-]{16,180}|gsk_[0-9a-zA-Z_-]{20,120})\b/g, replacement: '[REDACTED_SECRET_KEY]' },
+  { label: 'JWT_TOKEN', regex: /\beyJ[A-Za-z0-9_-]{8,}\.eyJ[A-Za-z0-9_-]{8,}\.[A-Za-z0-9_-]{8,}\b/g, replacement: '[REDACTED_JWT_TOKEN]' },
   { label: 'EMAIL_PII', regex: /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b/g, replacement: '[REDACTED_EMAIL_PII]' }
 ];
 
@@ -285,12 +288,21 @@ export function verifyRoleMcpPermission({
     };
   }
 
-  // Coverage Verifier (`qa-auditor`) 100% Read-Only check on code tools
-  if (cleanRole === 'qa-auditor' && /^(?:write_file|edit_file|filesystem_scoped_write|write_custom_semgrep_rule)$/i.test(toolName)) {
+  // Coverage Verifier & strict Read-Only roles check on mutating tools
+  const isReadOnlyRole =
+    cleanRole === 'qa-auditor' ||
+    cleanRole === 'readonly_client' ||
+    rolePerm?.writeCodeAllowed === false;
+  if (
+    isReadOnlyRole &&
+    /^(?:write_file|edit_file|filesystem_scoped_write|write_custom_semgrep_rule|factory_compile_tokens|github_nhi_open_pr)$/i.test(
+      String(toolName || '')
+    )
+  ) {
     return {
       allowed: false,
       latencyMs: Number((performance.now() - t0).toFixed(4)),
-      reason: `VERIFIER_READONLY_VIOLATION: 'qa-auditor' (Wave 3A) has 100% Read-Only access to the codebase.`
+      reason: `VERIFIER_READONLY_VIOLATION: Role '${cleanRole}' has 100% Read-Only access to the codebase.`
     };
   }
 

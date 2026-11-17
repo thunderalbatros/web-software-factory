@@ -4,7 +4,7 @@ import crypto from 'node:crypto';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { execFileSync } from 'node:child_process';
+import { execFileSync, spawn } from 'node:child_process';
 
 const HERMETIC_TMP_ROOT = fs.mkdtempSync(path.join(os.tmpdir(), 'wf-test-suite-'));
 const ORIG_TEST_ENV = {
@@ -2629,6 +2629,208 @@ test('Stage 3C.3-B — Omni-RAG v6 sqlite-vec int8[768], atomic chunker, increme
     fs.rmSync(tmpRagRoot, { recursive: true, force: true });
   }
 });
+
+test('Stage 3C.4-A — MCP path/secret containment, host-trusted role authz, HMAC HITL, and JSON-RPC 2.0 errors', async () => {
+  const {
+    executeSingleMcpTool,
+    createHitlApprovalToken,
+    resolveTrustedHostMcpRole
+  } = await import('../tools/intelligence/mcp_omni_rag_server.mjs');
+  const prevRole = process.env.FACTORY_AGENT_ROLE;
+  delete process.env.FACTORY_AGENT_ROLE;
+
+  try {
+    assert.equal(resolveTrustedHostMcpRole(), 'readonly_client');
+
+    await assert.rejects(
+      () => executeSingleMcpTool('filesystem_scoped_read', { filePath: '.env' }),
+      /SENSITIVE_FILE_ACCESS_DENIED/
+    );
+    await assert.rejects(
+      () => executeSingleMcpTool('filesystem_scoped_read', { filePath: '../outside.txt', role: 'orchestrator' }),
+      /PATH_CONTAINMENT_VIOLATION/
+    );
+    await assert.rejects(
+      () =>
+        executeSingleMcpTool('codemode_execute_batch', {
+          operations: [
+            { tool: 'write_custom_semgrep_rule', args: { ruleId: 'evil-rule', pattern: 'eval($X)', message: 'bad' } }
+          ]
+        }),
+      /VERIFIER_READONLY_VIOLATION|AGENT_GOVERNANCE_KERNEL_DENY/i
+    );
+    await assert.rejects(
+      () =>
+        executeSingleMcpTool('codemode_execute_batch', {
+          operations: [{ tool: 'filesystem_scoped_read', args: { filePath: '.dev.vars' } }]
+        }),
+      /SENSITIVE_FILE_ACCESS_DENIED/
+    );
+    await assert.rejects(
+      () =>
+        executeSingleMcpTool('github_nhi_open_pr', {
+          branchName: 'feat/test-pr',
+          title: 'Boolean HITL should fail',
+          hitlConfirmed: true
+        }),
+      /MCP_HITL_CRYPTO_TOKEN_REQUIRED/
+    );
+
+    process.env.FACTORY_AGENT_ROLE = 'orchestrator';
+    const ts = Math.floor(Date.now() / 1000);
+    const token = createHitlApprovalToken({
+      action: 'github_nhi_open_pr',
+      branchName: 'feat/test-pr',
+      title: 'Signed PR',
+      timestamp: ts
+    });
+    const prRes = await executeSingleMcpTool('github_nhi_open_pr', {
+      branchName: 'feat/test-pr',
+      title: 'Signed PR',
+      hitlApprovalToken: token,
+      hitlTimestamp: ts
+    });
+    assert.equal(prRes.autoMergeAllowed, false);
+    assert.equal(prRes.status, 'PR_READY_FOR_CTO_REVIEW');
+  } finally {
+    if (prevRole === undefined) delete process.env.FACTORY_AGENT_ROLE;
+    else process.env.FACTORY_AGENT_ROLE = prevRole;
+  }
+
+  // Verify JSON-RPC 2.0 -32700 parse error, -32601 unknown method, and spoofed _meta.role rejection over stdio
+  const rpcResponses = await new Promise((resolve, reject) => {
+    const child = spawn(
+      process.execPath,
+      [path.join(FACTORY_ROOT, 'tools', 'intelligence', 'mcp_omni_rag_server.mjs')],
+      { cwd: FACTORY_ROOT, stdio: ['pipe', 'pipe', 'pipe'] }
+    );
+    const lines = [];
+    let buf = '';
+    const timer = setTimeout(() => {
+      try { child.kill(); } catch {}
+      reject(new Error('MCP stdio JSON-RPC negative test timed out'));
+    }, 8000);
+
+    child.stdout.on('data', (chunk) => {
+      buf += chunk.toString('utf8');
+      let nl = buf.indexOf('\n');
+      while (nl !== -1) {
+        const line = buf.slice(0, nl).trim();
+        buf = buf.slice(nl + 1);
+        if (line) {
+          lines.push(JSON.parse(line));
+          if (lines.length >= 3) {
+            clearTimeout(timer);
+            try { child.kill(); } catch {}
+            resolve(lines);
+            return;
+          }
+        }
+        nl = buf.indexOf('\n');
+      }
+    });
+
+    child.on('error', (err) => {
+      clearTimeout(timer);
+      reject(err);
+    });
+
+    child.stdin.write('{not valid json\n');
+    child.stdin.write(JSON.stringify({ jsonrpc: '2.0', id: 91, method: 'unknown/nonexistentMethod' }) + '\n');
+    child.stdin.write(
+      JSON.stringify({
+        jsonrpc: '2.0',
+        id: 92,
+        method: 'tools/call',
+        params: {
+          name: 'github_nhi_open_pr',
+          arguments: { branchName: 'feat/spoof', title: 'Spoofed role', hitlConfirmed: true },
+          _meta: { role: 'orchestrator' }
+        }
+      }) + '\n'
+    );
+  });
+
+  assert.equal(rpcResponses[0]?.error?.code, -32700);
+  assert.equal(rpcResponses[1]?.error?.code, -32601);
+  assert.equal(rpcResponses[1]?.id, 91);
+  assert.equal(rpcResponses[2]?.error?.code, -32600);
+  assert.equal(rpcResponses[2]?.id, 92);
+});
+
+test('Stage 3C.4-A — Path traversal guard, honest F2P/P2P gates, Braintrust factuality, transit secret redaction, sandbox scrubbing, graphics_3d quarantine & dual contrast', async () => {
+  const { verifyF2pAndP2pGate } = await import('../tools/intelligence/eval_matrix.mjs');
+  const { runBraintrustAutoevals } = await import('../tools/orchestrator/humanlayer_rpi_gate.mjs');
+  const { redactTransitCredentialsAndPii } = await import('../tools/intelligence/agent_governance_kernel.mjs');
+  const { sanitizeEnvironment } = await import('../tools/sandbox.mjs');
+  const { validateDualContrastPair, buildDtcgTokensObject } = await import('../tools/design/token_compiler.mjs');
+  const { resolveDomainProfile, classifyKnowledgeDocumentDomain } = await import('../tools/lib/project_profile.mjs');
+
+  assert.throws(() => resolveProjectRoot('../..'), /SECURITY_BLOCK/);
+  assert.throws(() => resolveProjectRoot('../tools'), /SECURITY_BLOCK/);
+
+  const emptyF2p = verifyF2pAndP2pGate();
+  assert.equal(emptyF2p.passed, false);
+  assert.equal(emptyF2p.missingEvidence, true);
+  assert.equal(emptyF2p.f2pVerified, false);
+
+  const failedF2p = verifyF2pAndP2pGate({ f2pTestPassed: false, p2pSuitePassed: true });
+  assert.equal(failedF2p.passed, false);
+  assert.equal(failedF2p.f2pVerified, false);
+
+  const evalRes = runBraintrustAutoevals({
+    candidateText: 'texto completamente ajeno alpha beta gamma',
+    expectedText: 'arquitectura cuantica determinista hmac validacion',
+    candidateJson: { ok: true },
+    expectedJson: { ok: true }
+  });
+  assert.ok(evalRes.scores.Factuality < 0.5, `Expected honest Factuality < 0.5, got ${evalRes.scores.Factuality}`);
+
+  const sampleSecrets = [
+    'db=postgresql://admin:Sup3rSecr3t!@db.internal:5432/prod',
+    'openai=sk-proj-AbCdEfGhIjKlMnOpQrSt123456',
+    'anthropic=sk-ant-api03-AbCdEfGhIjKlMnOpQrSt1234',
+    'google=AIzaSyDaBcdEfGhIjKlMnOpQrStUvWxYz1234567'
+  ].join(' ');
+  const redacted = redactTransitCredentialsAndPii(sampleSecrets);
+  assert.equal(redacted.sanitizedText.includes('Sup3rSecr3t!'), false);
+  assert.equal(redacted.sanitizedText.includes('sk-proj-AbCdEf'), false);
+  assert.equal(redacted.sanitizedText.includes('sk-ant-api03-AbCdEf'), false);
+  assert.equal(redacted.sanitizedText.includes('AIzaSyDaBcdEf'), false);
+
+  const cleanEnv = sanitizeEnvironment({
+    PATH: '/usr/bin',
+    DATABASE_URL: 'postgres://u:p@h/db',
+    DIRECT_URL: 'postgres://u:p@h/direct',
+    AZURE_STORAGE_CONNECTION_STRING: 'DefaultEndpointsProtocol=https;AccountKey=secret',
+    GOOGLE_APPLICATION_CREDENTIALS: '/tmp/creds.json',
+    PUBLIC_APP_NAME: 'Academia IA'
+  });
+  assert.equal('DATABASE_URL' in cleanEnv, false);
+  assert.equal('DIRECT_URL' in cleanEnv, false);
+  assert.equal('AZURE_STORAGE_CONNECTION_STRING' in cleanEnv, false);
+  assert.equal('GOOGLE_APPLICATION_CREDENTIALS' in cleanEnv, false);
+  assert.equal(cleanEnv.PUBLIC_APP_NAME, 'Academia IA');
+
+  const lowContrast = validateDualContrastPair('#777777', '#888888');
+  assert.equal(lowContrast.passed, false);
+  assert.equal(lowContrast.wcagPassed, false);
+  assert.equal(lowContrast.apcaPassed, false);
+
+  const highContrast = validateDualContrastPair('#ffffff', '#13448a');
+  assert.equal(highContrast.passed, true);
+  assert.equal(highContrast.wcagPassed, true);
+  assert.equal(highContrast.apcaPassed, true);
+
+  const saasTokens = buildDtcgTokensObject('saas-b2b', 'bento');
+  assert.equal(saasTokens.meta?.dualContrastValidation?.allPassed, true);
+
+  const webgpuDoc = 'knowledge/motion_and_animation/CANON_COMPOSITOR_MOTION_WEBGPU_TSL_GLTF_MESHOPT_AND_KTX2_2026.md';
+  assert.equal(classifyKnowledgeDocumentDomain(webgpuDoc), 'graphics_3d');
+  assert.equal(resolveDomainProfile('academia-ia').isDomainAllowedInRag(webgpuDoc), false);
+  assert.equal(resolveDomainProfile('agencia-alfa').isDomainAllowedInRag(webgpuDoc), true);
+});
+
 
 
 

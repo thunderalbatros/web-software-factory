@@ -40,7 +40,7 @@ const bundle = getLevelBundle(levelSlug);
     sectionHeading={`Videos complementarios verificados del nivel ${levelNumber} (${bundle.videos.length} fuentes)`}
   />
 
-  {frontmatter.includeTiktoken !== false && (
+  {frontmatter.hasTokenizerLab === true && (
     <TiktokenExplorer
       sampleText={frontmatter.tiktokenSample || 'Un modelo de lenguaje divide cada frase en tokens antes de calcular probabilidades.'}
     />

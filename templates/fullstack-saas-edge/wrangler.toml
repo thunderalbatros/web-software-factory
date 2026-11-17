@@ -11,6 +11,11 @@ directory = "./dist"
 binding = "ASSETS"
 not_found_handling = "404-page"
 
+[[ratelimits]]
+name = "RATE_LIMITER"
+namespace_id = "1001"
+simple = { limit = 20, period = 60 }
+
 # Uncomment and bind your D1 database ID via `wrangler d1 create {{PROJECT_ID}}-db`
 # [[d1_databases]]
 # binding = "DB"

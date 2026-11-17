@@ -151,6 +151,7 @@ export function codeCompressorAst(rawCode = '', { maxLines = 45 } = {}) {
  * and returns a reversible handle for `headroom_retrieve(hash)`.
  */
 const ensuredCcrDirs = new Set();
+const persistedCcrHashes = new Set();
 
 export function compressReversibleCcr(payload, options = {}) {
   const mode = options.mode || (typeof payload === 'object' && payload !== null ? 'json' : 'text');
@@ -163,10 +164,30 @@ export function compressReversibleCcr(payload, options = {}) {
     ensuredCcrDirs.add(targetDir);
   }
   const ccrFilePath = path.join(targetDir, `${hash}.json`);
-  if (options.handleOnly && fs.existsSync(ccrFilePath)) {
+  const cacheKey = `${targetDir}::${hash}`;
+  if (options.handleOnly && (persistedCcrHashes.has(cacheKey) || fs.existsSync(ccrFilePath))) {
+    persistedCcrHashes.add(cacheKey);
     return {
       hash,
-      strategyUsed: 'SmartCrusher',
+      strategyUsed: 'HandleOnly',
+      ccrPath: `.cache/headroom_ccr/${hash}.json`,
+      retrieveToolCall: `headroom_retrieve("${hash}")`
+    };
+  }
+  if (options.handleOnly) {
+    const ccrEnvelope = {
+      schema: 'headroom-ccr-v1',
+      hash,
+      createdAt: new Date().toISOString(),
+      strategyUsed: 'HandleOnly',
+      mode,
+      originalPayload: payload
+    };
+    fs.writeFileSync(ccrFilePath, JSON.stringify(ccrEnvelope), 'utf8');
+    persistedCcrHashes.add(cacheKey);
+    return {
+      hash,
+      strategyUsed: 'HandleOnly',
       ccrPath: `.cache/headroom_ccr/${hash}.json`,
       retrieveToolCall: `headroom_retrieve("${hash}")`
     };

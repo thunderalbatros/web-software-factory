@@ -61,7 +61,8 @@ import {
   evaluateGovernancePolicy,
   verifyRoleMcpPermission,
   compressLargeMcpOutputToDisk,
-  inspectMcpToolResponseForPoisoning
+  inspectMcpToolResponseForPoisoning,
+  redactTransitCredentialsAndPii
 } from './agent_governance_kernel.mjs';
 import { scanSecurityAndPerformance } from './ast_guard.mjs';
 import { compileDesignTokens, getStyleCatalog, buildDtcgTokensObject } from '../design/token_compiler.mjs';
@@ -520,15 +521,17 @@ export const TOOLS = [
     mcpServer: 'github-mcp',
     readOnly: false,
     requiresHitlConfirmation: true,
-    description: 'Opens a Pull Request via Non-Human Identity (NHI) with auto-merge strictly disabled.',
+    description: 'Opens a Pull Request via Non-Human Identity (NHI) with auto-merge strictly disabled and cryptographic HITL verification.',
     inputSchema: {
       type: 'object',
       properties: {
         branchName: { type: 'string', description: 'Source branch name.' },
         title: { type: 'string', description: 'PR title.' },
-        hitlConfirmed: { type: 'boolean', description: 'Mandatory human confirmation gate.' }
+        hitlConfirmed: { type: 'boolean', description: 'Deprecated boolean flag; cryptographic hitlApprovalToken is required.' },
+        hitlApprovalToken: { type: 'string', description: 'HMAC-SHA256 HITL token over github_nhi_open_pr|branchName|title|hitlTimestamp.' },
+        hitlTimestamp: { type: 'number', description: 'Unix epoch seconds when approval token was issued (max 300s skew).' }
       },
-      required: ['branchName', 'title', 'hitlConfirmed'],
+      required: ['branchName', 'title'],
       additionalProperties: false
     }
   },
@@ -670,6 +673,130 @@ export function hydrateDeferredToolSchema(toolName = '') {
   };
 }
 
+const SENSITIVE_FILE_BASENAME_PATTERNS = [
+  /^\.env(?:\..+)?$/i,
+  /^\.dev\.vars(?:\..+)?$/i,
+  /\.(?:pem|key|p12|pfx|crt|jks)$/i,
+  /^admin_api_secret\.txt$/i,
+  /^agentvcs_ed25519_keys\.json$/i,
+  /^\.npmrc$/i,
+  /^\.pypirc$/i
+];
+
+const EPHEMERAL_HITL_HMAC_SECRET = crypto.randomBytes(32);
+
+function normalizeCaseIfWin32(p) {
+  return process.platform === 'win32' ? p.toLowerCase() : p;
+}
+
+/**
+ * Derives caller role strictly from trusted host environment, never from client JSON arguments.
+ */
+export function resolveTrustedHostMcpRole() {
+  return String(process.env.FACTORY_AGENT_ROLE || 'readonly_client').trim().toLowerCase() || 'readonly_client';
+}
+
+/**
+ * Resolves a workspace-relative path with strict realpathSync containment and sensitive-file denylist.
+ */
+export function resolveContainedWorkspaceFile(rawRelPath, rootDir = ROOT) {
+  const raw = String(rawRelPath || '').trim();
+  if (!raw || raw.includes('\0')) {
+    throw new Error('PATH_CONTAINMENT_VIOLATION: Empty or null-byte file path rejected.');
+  }
+  const cleanRel = raw.replace(/\\/g, '/').replace(/^\.\//, '');
+  if (
+    path.isAbsolute(raw) ||
+    /^[a-zA-Z]:/.test(raw) ||
+    cleanRel.startsWith('//') ||
+    cleanRel.split('/').includes('..')
+  ) {
+    throw new Error(`PATH_CONTAINMENT_VIOLATION: Traversal or absolute path '${raw}' is forbidden.`);
+  }
+  const base = path.posix.basename(cleanRel);
+  const lowerRel = cleanRel.toLowerCase();
+  if (
+    SENSITIVE_FILE_BASENAME_PATTERNS.some((rx) => rx.test(base)) ||
+    lowerRel.includes('.agents/sealed_envelope_evals')
+  ) {
+    throw new Error(`SENSITIVE_FILE_ACCESS_DENIED: Access to sensitive credential/sealed file '${cleanRel}' is forbidden.`);
+  }
+  const resolvedRoot = fs.realpathSync(path.resolve(rootDir));
+  const candidate = path.resolve(resolvedRoot, cleanRel);
+  const normRoot = normalizeCaseIfWin32(resolvedRoot);
+  const normCandidate = normalizeCaseIfWin32(candidate);
+  if (normCandidate !== normRoot && !normCandidate.startsWith(normRoot + path.sep)) {
+    throw new Error('PATH_CONTAINMENT_VIOLATION: Resolved path escapes workspace root.');
+  }
+  if (fs.existsSync(candidate)) {
+    const realCandidate = fs.realpathSync(candidate);
+    const normReal = normalizeCaseIfWin32(realCandidate);
+    if (normReal !== normRoot && !normReal.startsWith(normRoot + path.sep)) {
+      throw new Error(`SYMLINK_ESCAPE_VIOLATION: Realpath '${realCandidate}' escapes workspace root.`);
+    }
+    const realBase = path.basename(realCandidate);
+    if (SENSITIVE_FILE_BASENAME_PATTERNS.some((rx) => rx.test(realBase))) {
+      throw new Error(`SENSITIVE_FILE_ACCESS_DENIED: Realpath target '${realBase}' is in sensitive denylist.`);
+    }
+    return { absPath: realCandidate, relPath: path.relative(resolvedRoot, realCandidate).replace(/\\/g, '/') };
+  }
+  return { absPath: candidate, relPath: cleanRel };
+}
+
+function getHitlHmacSecret() {
+  return process.env.FACTORY_HITL_HMAC_SECRET
+    ? Buffer.from(String(process.env.FACTORY_HITL_HMAC_SECRET), 'utf8')
+    : EPHEMERAL_HITL_HMAC_SECRET;
+}
+
+export function createHitlApprovalToken({
+  action = 'github_nhi_open_pr',
+  branchName = '',
+  title = '',
+  timestamp = Math.floor(Date.now() / 1000),
+  secret
+} = {}) {
+  const ts = Number(timestamp);
+  const canonical = `${String(action)}|${String(branchName)}|${String(title)}|${ts}`;
+  const hmacSecret = secret ? Buffer.from(String(secret), 'utf8') : getHitlHmacSecret();
+  return crypto.createHmac('sha256', hmacSecret).update(canonical, 'utf8').digest('hex');
+}
+
+export function verifyHitlApprovalToken({
+  action = 'github_nhi_open_pr',
+  branchName = '',
+  title = '',
+  token = '',
+  timestamp,
+  maxSkewSeconds = 300,
+  secret
+} = {}) {
+  const ts = Number(timestamp);
+  if (!token || typeof token !== 'string' || !Number.isFinite(ts)) {
+    return {
+      valid: false,
+      reason: 'MCP_HITL_CRYPTO_TOKEN_REQUIRED: Valid HMAC hitlApprovalToken and numeric hitlTimestamp are required.'
+    };
+  }
+  const nowSec = Math.floor(Date.now() / 1000);
+  if (Math.abs(nowSec - ts) > maxSkewSeconds) {
+    return {
+      valid: false,
+      reason: `MCP_HITL_TOKEN_EXPIRED: hitlTimestamp skew exceeds ${maxSkewSeconds}s.`
+    };
+  }
+  const expectedHex = createHitlApprovalToken({ action, branchName, title, timestamp: ts, secret });
+  const providedBuf = Buffer.from(token.trim(), 'utf8');
+  const expectedBuf = Buffer.from(expectedHex, 'utf8');
+  if (providedBuf.length !== expectedBuf.length || !crypto.timingSafeEqual(providedBuf, expectedBuf)) {
+    return {
+      valid: false,
+      reason: 'MCP_HITL_HMAC_INVALID: Cryptographic HITL token verification failed.'
+    };
+  }
+  return { valid: true, timestamp: ts };
+}
+
 /**
  * Expands a retrieved chunk to its Parent Markdown Section (up to `maxChars`, default 2200)
  * when the underlying `knowledge/` or repo file exists on disk (Parent Document Retriever pattern).
@@ -679,7 +806,16 @@ export function expandChunkToParentMarkdownSection(chunk = {}, maxChars = 2200) 
   const snippet = String(chunk.text || chunk.snippet || '');
   if (!rawSource) return snippet.slice(0, maxChars);
 
-  const absPath = path.isAbsolute(rawSource) ? rawSource : path.join(ROOT, rawSource);
+  let absPath;
+  try {
+    const resolvedRoot = fs.realpathSync(ROOT);
+    const rel = path.isAbsolute(rawSource)
+      ? path.relative(resolvedRoot, fs.realpathSync(rawSource)).replace(/\\/g, '/')
+      : rawSource;
+    absPath = resolveContainedWorkspaceFile(rel, resolvedRoot).absPath;
+  } catch {
+    return snippet.slice(0, maxChars);
+  }
   if (!fs.existsSync(absPath) || !fs.statSync(absPath).isFile()) {
     return snippet.slice(0, maxChars);
   }
@@ -861,9 +997,16 @@ export function validateMcpRequestSecurity(req = {}) {
   if (req.method === 'tools/call') {
     const toolName = req.params?.name;
     const args = req.params?.arguments || {};
-    const callerRole = req.params?._meta?.role || 'orchestrator';
+    const callerRole = resolveTrustedHostMcpRole();
     const toolDef = TOOLS.find((t) => t.name === toolName);
-    if (toolDef && toolDef.inputSchema?.additionalProperties === false) {
+    if (!toolDef) {
+      return {
+        valid: false,
+        traceId,
+        error: `MCP_UNKNOWN_TOOL: Tool '${toolName}' is not registered on this MCP server.`
+      };
+    }
+    if (toolDef.inputSchema?.additionalProperties === false) {
       const allowedKeys = new Set(Object.keys(toolDef.inputSchema.properties || {}));
       if (!args || typeof args !== 'object' || Array.isArray(args)) {
         return {
@@ -883,15 +1026,33 @@ export function validateMcpRequestSecurity(req = {}) {
       }
     }
 
+    const hitlCheck =
+      toolName === 'github_nhi_open_pr'
+        ? verifyHitlApprovalToken({
+            action: toolName,
+            branchName: args.branchName || '',
+            title: args.title || '',
+            token: args.hitlApprovalToken,
+            timestamp: args.hitlTimestamp
+          })
+        : { valid: true };
+    if (!hitlCheck.valid) {
+      return {
+        valid: false,
+        traceId,
+        error: hitlCheck.reason
+      };
+    }
+
     const govCheck = evaluateGovernancePolicy({
       roleId: callerRole,
       mcpServer: toolDef?.mcpServer || 'omni-rag-ast',
       toolName,
-      targetFile: args.filePath || '',
+      targetFile: args.filePath || args.targetDir || '',
       sqlQuery: args.sql || '',
       gitCommand: args.subcommand ? `git ${args.subcommand}` : '',
       audience: declaredAudience,
-      hitlConfirmed: Boolean(args.hitlConfirmed),
+      hitlConfirmed: toolName === 'github_nhi_open_pr' ? hitlCheck.valid : Boolean(args.hitlConfirmed),
       isDestructiveOrDeploy: Boolean(toolDef?.requiresHitlConfirmation),
       payload: args,
       retryCount: 0
@@ -933,12 +1094,47 @@ export function buildNotImplementedCliGateError(toolName, traceId, extra = {}) {
   };
 }
 
+export async function executeCodemodeBatch(args = {}, traceId = generateCsprngSessionId()) {
+  const ops = Array.isArray(args.operations) ? args.operations.slice(0, 8) : [];
+  for (const op of ops) {
+    if (!op || typeof op.tool !== 'string' || !op.tool.trim()) {
+      throw new Error('MCP_BATCH_INVALID_OPERATION: Every batch operation must declare a tool name.');
+    }
+    if (op.tool === 'codemode_execute_batch') {
+      throw new Error('MCP_BATCH_RECURSION_FORBIDDEN: Nested codemode_execute_batch is forbidden.');
+    }
+    const subCheck = validateMcpRequestSecurity({
+      jsonrpc: '2.0',
+      method: 'tools/call',
+      params: { name: op.tool, arguments: op.args || {} }
+    });
+    if (!subCheck.valid) {
+      throw new Error(subCheck.error);
+    }
+  }
+  const batchResults = [];
+  for (const op of ops) {
+    const out = await executeSingleMcpTool(op.tool, op.args || {}, traceId);
+    batchResults.push({ tool: op.tool, result: out });
+  }
+  return {
+    traceId,
+    executor: '@cloudflare/codemode-batch-v1',
+    operationsExecuted: batchResults.length,
+    results: batchResults
+  };
+}
+
 export async function executeSingleMcpTool(toolName, args = {}, traceId = generateCsprngSessionId()) {
+  const trustedRole = resolveTrustedHostMcpRole();
+  if (toolName === 'codemode_execute_batch') {
+    return executeCodemodeBatch(args, traceId);
+  }
   if (toolName === 'discover_tools') {
     return discoverToolsByIntent({
       intent: args.intent || '',
       domain: args.domain || '',
-      role: args.role || 'orchestrator'
+      role: trustedRole
     });
   }
   if (toolName === 'headroom_retrieve') {
@@ -953,36 +1149,67 @@ export async function executeSingleMcpTool(toolName, args = {}, traceId = genera
   }
   if (toolName === 'security_check' || toolName === 'semgrep_scan') {
     const targetRel = args.filePath || args.targetDir || 'templates/vanilla-edge/site/js/app.js';
-    const absTarget = path.join(ROOT, targetRel);
+    const contained = resolveContainedWorkspaceFile(targetRel);
     const findings =
-      fs.existsSync(absTarget) && fs.statSync(absTarget).isFile()
-        ? scanSecurityAndPerformance(absTarget)
+      fs.existsSync(contained.absPath) && fs.statSync(contained.absPath).isFile()
+        ? scanSecurityAndPerformance(contained.absPath)
         : [];
     const spilled = compressLargeMcpOutputToDisk({
       mcpServer: 'semgrep-mcp',
       toolName,
-      payload: { traceId, target: targetRel, findingsCount: findings.length, findings }
+      payload: { traceId, target: contained.relPath, findingsCount: findings.length, findings }
     });
     return spilled.payload;
   }
   if (toolName === 'get_abstract_syntax_tree') {
-    const rel = String(args.filePath || 'tools/ast_guard.mjs').replace(/\\/g, '/');
-    const abs = path.join(ROOT, rel);
-    const content = fs.existsSync(abs) ? fs.readFileSync(abs, 'utf8') : '';
+    const relInput = String(args.filePath || 'tools/ast_guard.mjs');
+    const contained = resolveContainedWorkspaceFile(relInput);
+    const content = fs.existsSync(contained.absPath) && fs.statSync(contained.absPath).isFile()
+      ? fs.readFileSync(contained.absPath, 'utf8')
+      : '';
     const sha256 = crypto.createHash('sha256').update(content, 'utf8').digest('hex').slice(0, 16);
-    return extractFileAstMetadata(abs, rel, content, sha256);
+    return extractFileAstMetadata(contained.absPath, contained.relPath, content, sha256);
   }
   if (toolName === 'write_custom_semgrep_rule') {
+    const perm = verifyRoleMcpPermission({
+      roleId: trustedRole,
+      mcpServer: 'semgrep-mcp',
+      toolName: 'write_custom_semgrep_rule',
+      targetPath: '.agents/security_reports/.semgrep/'
+    });
+    if (!perm.allowed) throw new Error(perm.reason);
+    const safeId = String(args.ruleId || '').replace(/[^a-zA-Z0-9_-]/g, '-').replace(/^-+|-+$/g, '');
+    if (!safeId || safeId.length < 2) {
+      throw new Error('MCP_SCHEMA_VIOLATION: ruleId must contain at least 2 alphanumeric characters.');
+    }
+    const rawPattern = String(args.pattern || '');
+    const rawMessage = String(args.message || '');
+    const hasUnsafeControlChars = (str, allowNewlines = false) => {
+      for (let i = 0; i < str.length; i++) {
+        const c = str.charCodeAt(i);
+        if (c < 32 && c !== 9 && (!allowNewlines || (c !== 10 && c !== 13))) {
+          return true;
+        }
+      }
+      return false;
+    };
+    if (!rawPattern.trim() || hasUnsafeControlChars(rawPattern, false) || hasUnsafeControlChars(rawMessage, true)) {
+      throw new Error('SEMGREP_YAML_INJECTION_BLOCKED: Control characters or multiline YAML injection rejected.');
+    }
+    const allowedSeverity = new Set(['ERROR', 'WARNING', 'INFO']);
+    const severity = String(args.severity || 'ERROR').trim().toUpperCase();
+    if (!allowedSeverity.has(severity)) {
+      throw new Error(`MCP_SCHEMA_VIOLATION: Invalid severity '${severity}'. Allowed: ERROR, WARNING, INFO.`);
+    }
     const rulesDir = path.join(ROOT, '.agents', 'security_reports', '.semgrep');
     fs.mkdirSync(rulesDir, { recursive: true });
-    const safeId = String(args.ruleId || 'custom-rule').replace(/[^a-zA-Z0-9_-]/g, '-');
     const rulePath = path.join(rulesDir, `${safeId}.yml`);
     const yamlContent = [
       'rules:',
       `  - id: ${safeId}`,
-      `    pattern: ${args.pattern}`,
-      `    message: "${String(args.message || '').replace(/"/g, "'")}"`,
-      `    severity: ${args.severity || 'ERROR'}`,
+      `    pattern: ${JSON.stringify(rawPattern)}`,
+      `    message: ${JSON.stringify(rawMessage.replace(/\r?\n/g, ' '))}`,
+      `    severity: ${severity}`,
       '    languages: [javascript, typescript]'
     ].join('\n');
     fs.writeFileSync(rulePath, yamlContent + '\n', 'utf8');
@@ -1011,16 +1238,25 @@ export async function executeSingleMcpTool(toolName, args = {}, traceId = genera
     });
   }
   if (toolName === 'filesystem_scoped_read') {
+    const contained = resolveContainedWorkspaceFile(args.filePath);
     const perm = verifyRoleMcpPermission({
-      roleId: args.role || 'senior-coder',
+      roleId: trustedRole,
       mcpServer: 'filesystem-scoped',
       toolName: 'filesystem_scoped_read',
-      targetPath: args.filePath
+      targetPath: contained.relPath
     });
     if (!perm.allowed) throw new Error(perm.reason);
-    const abs = path.join(ROOT, String(args.filePath || ''));
-    const text = fs.existsSync(abs) && fs.statSync(abs).isFile() ? fs.readFileSync(abs, 'utf8').slice(0, 4000) : '';
-    return { traceId, filePath: args.filePath, preview: text };
+    const rawText =
+      fs.existsSync(contained.absPath) && fs.statSync(contained.absPath).isFile()
+        ? fs.readFileSync(contained.absPath, 'utf8').slice(0, 4000)
+        : '';
+    const redacted = redactTransitCredentialsAndPii(rawText);
+    return {
+      traceId,
+      filePath: contained.relPath,
+      redactionsCount: redacted.redactionsCount,
+      preview: redacted.sanitizedText
+    };
   }
   if (toolName === 'git_readonly_inspect') {
     const perm = verifyRoleMcpPermission({
@@ -1057,14 +1293,37 @@ export async function executeSingleMcpTool(toolName, args = {}, traceId = genera
     });
   }
   if (toolName === 'github_nhi_open_pr') {
-    if (!args.hitlConfirmed) {
-      throw new Error('MCP_HITL_GATE_REQUIRED: github_nhi_open_pr requires hitlConfirmed=true.');
+    const perm = verifyRoleMcpPermission({
+      roleId: trustedRole,
+      mcpServer: 'github-mcp',
+      toolName: 'github_nhi_open_pr',
+      hitlConfirmed: false
+    });
+    const hitlCheck = verifyHitlApprovalToken({
+      action: 'github_nhi_open_pr',
+      branchName: args.branchName || '',
+      title: args.title || '',
+      token: args.hitlApprovalToken,
+      timestamp: args.hitlTimestamp
+    });
+    if (!hitlCheck.valid) {
+      throw new Error(hitlCheck.reason);
+    }
+    const permWithHitl = verifyRoleMcpPermission({
+      roleId: trustedRole,
+      mcpServer: 'github-mcp',
+      toolName: 'github_nhi_open_pr',
+      hitlConfirmed: true
+    });
+    if (!permWithHitl.allowed) {
+      throw new Error(permWithHitl.reason || perm.reason);
     }
     return {
       traceId,
       identity: 'webfactory-nhi-bot',
       branchName: args.branchName,
       autoMergeAllowed: false,
+      hitlVerifiedAt: new Date(hitlCheck.timestamp * 1000).toISOString(),
       status: 'PR_READY_FOR_CTO_REVIEW'
     };
   }
@@ -1086,7 +1345,7 @@ export async function executeSingleMcpTool(toolName, args = {}, traceId = genera
     });
     const route = routeQueryToSquads(q);
     const storeRes = await searchRagStore(q, {
-      limit: lim + 1,
+      limit: lim,
       scope,
       projectSlug: domainProfile.slug,
       domainProfile: domainProfile.id,
@@ -1106,7 +1365,10 @@ export async function executeSingleMcpTool(toolName, args = {}, traceId = genera
       const cleanPath = String(h.relPath || h.source || h.id || '').replace(/^local:\/\//, '').split('#')[0];
       const domain = h.domain || classifyKnowledgeDocumentDomain(cleanPath);
       const isClassicBook = h.epistemicTier === 'TIER_2_TIMELESS_PRINCIPLES';
-      let rawText = sanitizeMcpRetrievedFragment(h.text || h.snippet || '');
+      let rawText = String(h.text || h.snippet || '');
+      if (!h.delimitedData) {
+        rawText = sanitizeMcpRetrievedFragment(rawText);
+      }
       if (isClassicBook && !rawText.includes('[TRANSLATION_RULE:')) {
         rawText = `${TRANSLATION_RULE_WARNING}\n${rawText}`;
       }
@@ -1159,6 +1421,7 @@ export async function executeSingleMcpTool(toolName, args = {}, traceId = genera
 
     const headerOverheadChars = JSON.stringify(baseEnvelope).length;
     let remainingChars = Math.max(200, maxTotalChars - headerOverheadChars);
+    let currentEnvelopeChars = headerOverheadChars;
     const targetCount = Math.max(1, Math.min(fullResults.length, lim));
     const perHitOverheadChars = 195;
     const perHitTargetChars = Math.max(
@@ -1184,18 +1447,18 @@ export async function executeSingleMcpTool(toolName, args = {}, traceId = genera
         legacySyntaxGuard: item.legacySyntaxGuard || undefined,
         text: trimmedText
       };
-      const nextResults = [...baseEnvelope.results, candidateEntry];
-      const serializedProbe = JSON.stringify({ ...baseEnvelope, results: nextResults });
-      if (Math.ceil(serializedProbe.length / 3.4) > inlineTokenCap && baseEnvelope.results.length > 0) {
+      const entryChars = JSON.stringify(candidateEntry).length + 2;
+      if (Math.ceil((currentEnvelopeChars + entryChars) / 3.4) > inlineTokenCap && baseEnvelope.results.length > 0) {
         break;
       }
       baseEnvelope.results.push(candidateEntry);
-      remainingChars = maxTotalChars - serializedProbe.length;
+      currentEnvelopeChars += entryChars;
+      remainingChars = maxTotalChars - currentEnvelopeChars;
     }
 
     baseEnvelope.returnedTokens = Math.min(
       inlineTokenCap,
-      Math.ceil(JSON.stringify(baseEnvelope).length / 3.5)
+      Math.ceil(currentEnvelopeChars / 3.5)
     );
     return baseEnvelope;
   }
@@ -1303,7 +1566,12 @@ export function startMcpServer() {
     let req;
     try {
       req = JSON.parse(trimmed);
-    } catch {
+    } catch (parseErr) {
+      sendError(null, -32700, `Parse error: ${parseErr.message}`);
+      return;
+    }
+    if (!req || typeof req !== 'object' || Array.isArray(req) || typeof req.method !== 'string') {
+      sendError(req?.id ?? null, -32600, 'Invalid Request: expected JSON-RPC 2.0 object with method.');
       return;
     }
 
@@ -1326,6 +1594,8 @@ export function startMcpServer() {
         });
       } else if (method === 'notifications/initialized') {
         // No response required for notifications
+      } else if (method === 'ping') {
+        if (id !== undefined) sendResponse(id, {});
       } else if (method === 'tools/list') {
         const useCompact = Boolean(params?.compact || params?.deferred);
         sendResponse(id, {
@@ -1337,22 +1607,11 @@ export function startMcpServer() {
         const args = params?.arguments || {};
 
         if (toolName === 'codemode_execute_batch') {
-          const ops = Array.isArray(args.operations) ? args.operations.slice(0, 8) : [];
-          const batchResults = [];
-          for (const op of ops) {
-            if (!op || !op.tool || op.tool === 'codemode_execute_batch') continue;
-            const out = await executeSingleMcpTool(op.tool, op.args || {}, securityCheck.traceId);
-            batchResults.push({ tool: op.tool, result: out });
-          }
+          const batchPayload = await executeCodemodeBatch(args, securityCheck.traceId);
           const finalOut = compressLargeMcpOutputToDisk({
             mcpServer: 'omni-rag-ast',
             toolName: 'codemode_execute_batch',
-            payload: {
-              traceId: securityCheck.traceId,
-              executor: '@cloudflare/codemode-batch-v1',
-              operationsExecuted: batchResults.length,
-              results: batchResults
-            }
+            payload: batchPayload
           });
           sendResponse(id, {
             content: [{ type: 'text', text: JSON.stringify(finalOut.payload, null, 2) }]
@@ -1386,7 +1645,7 @@ export function startMcpServer() {
           }
         }
       } else if (id !== undefined) {
-        sendResponse(id, { traceId: securityCheck.traceId });
+        sendError(id, -32601, `Method not found: ${method}`);
       }
     } catch (err) {
       if (id !== undefined) {

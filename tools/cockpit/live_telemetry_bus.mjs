@@ -432,13 +432,11 @@ export function buildDefaultFactoryState() {
           columnId:
             b.status === 'COMPLETED' || b.status === 'PASSED'
               ? 'col_5_approved_packaged'
-              : idx === 0
-              ? 'col_5_approved_packaged'
-              : idx === 1
+              : b.status === 'BLIND_AUDIT'
               ? 'col_4_blind_audit'
               : 'col_3_in_construction',
-          f2pVerified: true,
-          p2pVerified: true,
+          f2pVerified: Boolean(b.f2pVerified ?? (b.status === 'COMPLETED' || b.status === 'PASSED')),
+          p2pVerified: Boolean(b.p2pVerified ?? (b.status === 'COMPLETED' || b.status === 'PASSED')),
           updatedAt: b.updatedAt || new Date().toISOString()
         }))
       : [
@@ -449,9 +447,9 @@ export function buildDefaultFactoryState() {
             assignedRole: 'ux-designer',
             lane: 'LANE_1_FAST_PATH',
             fileLocks: [`projects/${proj.projectSlug}/index.html`],
-            columnId: 'col_5_approved_packaged',
-            f2pVerified: true,
-            p2pVerified: true,
+            columnId: 'col_1_backlog',
+            f2pVerified: false,
+            p2pVerified: false,
             updatedAt: new Date().toISOString()
           }
         ];
@@ -465,15 +463,15 @@ export function buildDefaultFactoryState() {
     jevMemoryPipeline: finopsSnapshot.jevMemoryReport,
     jevFinopsLedger: finopsSnapshot.jevFinopsLedger,
     activeLane: 'LANE_2_STANDARD_BUILD',
-    rpiStage: 'Implementation',
-    rpiStageOrder: 6,
+    rpiStage: 'PendingAudit',
+    rpiStageOrder: 0,
     stations: FACTORY_STATIONS,
     agents: FACTORY_AGENTS_ROSTER.map((a) => ({
       ...a,
       currentStation: a.homeStation,
-      status: 'passed',
+      status: 'idle',
       activeFile: `projects/${proj.projectSlug}/index.html`,
-      lastAction: `Certificación Pre-Vuelo 100/100 completada en ${a.homeStation}`,
+      lastAction: `En espera de auditoría real en ${a.homeStation}`,
       retryRound: 0,
       updatedAt: new Date().toISOString()
     })),
@@ -483,17 +481,18 @@ export function buildDefaultFactoryState() {
         timestamp: new Date().toISOString(),
         actorRole: 'foreman',
         stationId: 'SALA_1_RECEPCION_TRIAJE',
-        actionWhy: `Harness certificado en 100.0/100.0 para el proyecto [${proj.projectSlug}] (0 overhead de tokens).`,
+        actionWhy: `Estado inicializado para [${proj.projectSlug}] pendiente de auditoría real (0 overhead de tokens).`,
         laneUsed: 'LANE_2_STANDARD_BUILD'
       }
     ],
     scores: {
-      compositeScore: 100.0,
-      buildAndStatic: 25,
-      securityZeroTrust: 25,
-      chaosDestructive: 25,
-      visualAndMotion: 25,
-      harnessDoctorScore: 100.0
+      auditStatus: 'PENDING_MEASUREMENT',
+      compositeScore: 0,
+      buildAndStatic: 0,
+      securityZeroTrust: 0,
+      chaosDestructive: 0,
+      visualAndMotion: 0,
+      harnessDoctorScore: 0
     },
     budgetSpentUsd: 0.0,
     dailyBudgetCapUsd: 1.5

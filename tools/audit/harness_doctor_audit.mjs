@@ -622,7 +622,7 @@ export async function runEndToEndDryRunSimulation() {
       name: 'Compilación W3C DTCG OKLCH + Guardias AST / Security / F2P-P2P / Traceability',
       passed: Boolean(tokRes.passed && astCheck.passed && f2pCheck.passed && traceCheck.passed),
       durationMs: Math.round(performance.now() - t4),
-      detail: `Tokens OK | AST ${astCheck.score}/100 | F2P/P2P=true | Traceability 1:1`
+      detail: `Tokens OK | AST ${astCheck.score}/100 | F2P/P2P=${f2pCheck.passed} | Traceability=${Boolean(traceCheck.passed)}`
     });
 
     // Step 5: Clean Production Build (`build_dist.mjs`)

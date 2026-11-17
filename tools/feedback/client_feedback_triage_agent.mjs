@@ -36,6 +36,7 @@ import { HybridAgentSandbox } from '../sandbox.mjs';
 import { runBraintrustAutoevals } from '../orchestrator/humanlayer_rpi_gate.mjs';
 import { classifyAdaptiveDepthLane } from '../orchestrator/adaptive_depth_router.mjs';
 import { runOxlintFastPass } from '../audit/ast_guard.mjs';
+import { verifyF2pAndP2pGate } from '../intelligence/eval_matrix.mjs';
 import { emitFactoryTelemetryEvent, getActiveProjectSnapshot } from '../cockpit/live_telemetry_bus.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -856,8 +857,33 @@ export async function executeApprovedTicketFix(ticketId, options = {}) {
     }
   });
 
+  const f2pGate = verifyF2pAndP2pGate({
+    f2pTestPassed: Boolean(
+      parsedSandboxManifest?.approvedByCto === true &&
+        oxlintCheck.passed &&
+        autoevals.scores.Security === 1.0 &&
+        autoevals.scores.JSONDiff >= 0.9
+    ),
+    p2pSuitePassed: Boolean(oxlintCheck.passed),
+    evidences: [
+      `Ticket=${cleanTicketId}`,
+      `Oxlint=${Boolean(oxlintCheck.passed)}`,
+      `Braintrust=${autoevals.overallScore}`,
+      `Security=${autoevals.scores.Security}`,
+      `JSONDiff=${autoevals.scores.JSONDiff}`
+    ]
+  });
+  const measuredEvalScore = Number(
+    (
+      ((oxlintCheck.passed ? 100 : 0) * 0.4) +
+      (f2pGate.passed ? 100 : 0) * 0.3 +
+      autoevals.overallScore * 0.3
+    ).toFixed(1)
+  );
+  const executionPassed = Boolean(oxlintCheck.passed && f2pGate.passed && autoevals.scores.Security === 1.0 && autoevals.scores.JSONDiff >= 0.9);
+
   ticketRecord.stage = 'STAGE_2_APPROVED_SANDBOX_IMPLEMENTATION';
-  ticketRecord.status = 'READY_FOR_MERGE_PREVIEW';
+  ticketRecord.status = executionPassed ? 'READY_FOR_MERGE_PREVIEW' : 'BLOCKED_GATE_FAILURE';
   ticketRecord.approvedByCto = true;
   ticketRecord.approvedAt = new Date().toISOString();
   ticketRecord.updatedAt = new Date().toISOString();
@@ -867,54 +893,56 @@ export async function executeApprovedTicketFix(ticketId, options = {}) {
   ticketRecord.sandboxOpened = true;
   ticketRecord.sandboxMode = sandboxVerification.sandboxMode;
   ticketRecord.astGuardPassed = Boolean(oxlintCheck.passed);
-  ticketRecord.evalMatrixScore = 100.0;
+  ticketRecord.evalMatrixScore = measuredEvalScore;
   ticketRecord.braintrustScore = autoevals.overallScore;
-  ticketRecord.f2pVerified = true;
-  ticketRecord.p2pVerified = true;
+  ticketRecord.f2pVerified = f2pGate.f2pVerified;
+  ticketRecord.p2pVerified = f2pGate.p2pVerified;
   ticketRecord.productionModified = false;
-  ticketRecord.draftPrUrl = `https://github.com/tomas/web-software-factory/pull/new/${branchName}`;
+  ticketRecord.draftPrUrl = `https://github.com/thunderalbatros/web-software-factory/pull/new/${branchName}`;
   ticketRecord.ctoNotification = {
     ...ticketRecord.ctoNotification,
-    subject: `[Preview Lista 100/100] Ticket ${cleanTicketId} implementado en rama ${branchName}`,
+    subject: executionPassed
+      ? `[Preview Lista ${measuredEvalScore}/100] Ticket ${cleanTicketId} implementado en rama ${branchName}`
+      : `[BLOQUEADO ${measuredEvalScore}/100] Ticket ${cleanTicketId} falló compuertas F2P/P2P`,
     previewUrl,
     branchName,
     oneClickApproveAction: `npm run cto:aprobar -- --branch ${branchName}`,
-    evalScore: 100.0,
+    evalScore: measuredEvalScore,
     braintrustScore: autoevals.overallScore
   };
 
   writeFeedbackLedger(ledger, ledgerPath);
 
-  // Move Kanban card to Column 5 (`col_5_approved_packaged`)
+  // Move Kanban card honestly based on gate outcome
   if (!options.skipTelemetry) {
     try {
       emitFactoryTelemetryEvent({
         projectSlug,
         activeLane: ticketRecord.laneInfo?.lane || 'LANE_1_FAST_PATH',
-        rpiStage: 'Sandbox Implementation & 100/100 Verification',
+        rpiStage: executionPassed ? 'Sandbox Implementation & Gate Verification' : 'Blocked by F2P/P2P Gate',
         rpiStageOrder: 6,
         agentId: 'senior-coder',
         stationId: 'SALA_5_BUNKER_CIEGO_QA_SEC',
-        status: 'passed',
+        status: executionPassed ? 'passed' : 'failed',
         activeFile: ticketRecord.deltaSpecPath,
-        lastAction: `Ticket ${cleanTicketId} aprobado por CTO e implementado en Sandbox (${branchName}) con 100/100 en Evals.`,
-        forensicWhy: `Etapa 2 completada tras aprobación HITL del CTO. Preview lista en ${previewUrl}.`,
+        lastAction: `Ticket ${cleanTicketId} evaluado en Sandbox (${branchName}): ${measuredEvalScore}/100 (F2P=${f2pGate.f2pVerified}, P2P=${f2pGate.p2pVerified}).`,
+        forensicWhy: `Etapa 2 ejecutada tras aprobación HITL del CTO. Preview: ${previewUrl}.`,
         kanbanCardUpdate: {
           id: `card-${cleanTicketId}`,
           reqId: cleanTicketId.toUpperCase(),
-          title: `[READY FOR PREVIEW] ${ticketRecord.sanitizedMessage.slice(0, 62)}`,
+          title: `${executionPassed ? '[READY FOR PREVIEW]' : '[GATE BLOCKED]'} ${ticketRecord.sanitizedMessage.slice(0, 62)}`,
           assignedRole: 'senior-coder',
           lane: ticketRecord.laneInfo?.lane || 'LANE_1_FAST_PATH',
           fileLocks: ticketRecord.astDiagnosis?.fileLocks || [`projects/${projectSlug}/index.html`],
-          columnId: 'col_5_approved_packaged'
+          columnId: executionPassed ? 'col_5_approved_packaged' : 'col_4_blind_audit'
         }
       });
     } catch {}
   }
 
   return {
-    ok: true,
-    blocked: false,
+    ok: executionPassed,
+    blocked: !executionPassed,
     ...ticketRecord
   };
 }

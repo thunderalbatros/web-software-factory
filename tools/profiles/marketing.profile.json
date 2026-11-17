@@ -41,6 +41,7 @@
     "rag": {
       "allowedDomains": [
         "ui_ux_design",
+        "graphics_3d",
         "motion_and_animation",
         "architecture_and_books",
         "architecture_and_edge",

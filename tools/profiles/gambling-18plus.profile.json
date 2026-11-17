@@ -41,6 +41,7 @@
     "rag": {
       "allowedDomains": [
         "streaming_and_overlays",
+        "graphics_3d",
         "motion_and_animation",
         "ui_ux_design",
         "cybersecurity",

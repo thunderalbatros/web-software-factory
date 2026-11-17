@@ -175,10 +175,31 @@ export function resolveProjectRoot(inputPath = '') {
     return FACTORY_ROOT;
   }
 
-  // Check if it's a slug inside projects/<slug> first
-  const slugCandidate = path.join(FACTORY_ROOT, 'projects', raw);
-  if (fs.existsSync(slugCandidate) && fs.statSync(slugCandidate).isDirectory()) {
-    return slugCandidate;
+  if (raw.includes('\0') || raw.split(/[\\/]/).includes('..')) {
+    throw new Error(
+      `SECURITY_BLOCK: Path traversal sequence ('..') is forbidden in project identifier "${raw}".`
+    );
+  }
+
+  // Check if it's a clean slug inside projects/<slug> first
+  const projectsBaseDir = path.resolve(FACTORY_ROOT, 'projects');
+  if (!/[\\/]/.test(raw) && raw !== '.') {
+    const slugCandidate = path.resolve(projectsBaseDir, raw);
+    const normProjects = process.platform === 'win32' ? projectsBaseDir.toLowerCase() : projectsBaseDir;
+    const normSlugCandidate = process.platform === 'win32' ? slugCandidate.toLowerCase() : slugCandidate;
+    if (!normSlugCandidate.startsWith(normProjects + path.sep)) {
+      throw new Error(`SECURITY_BLOCK: Project slug "${raw}" escapes projects directory.`);
+    }
+    if (fs.existsSync(slugCandidate) && fs.statSync(slugCandidate).isDirectory()) {
+      const realProjects = fs.realpathSync(projectsBaseDir);
+      const realSlug = fs.realpathSync(slugCandidate);
+      const normRealProjects = process.platform === 'win32' ? realProjects.toLowerCase() : realProjects;
+      const normRealSlug = process.platform === 'win32' ? realSlug.toLowerCase() : realSlug;
+      if (!normRealSlug.startsWith(normRealProjects + path.sep)) {
+        throw new Error(`SECURITY_BLOCK: Symlink project slug "${raw}" escapes projects directory.`);
+      }
+      return realSlug;
+    }
   }
 
   // Check if it's an absolute path or direct relative path (bounded to FACTORY_ROOT unless explicitly opted in)

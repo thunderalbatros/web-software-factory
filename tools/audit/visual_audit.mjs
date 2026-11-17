@@ -15,7 +15,6 @@ const here = path.dirname(fileURLToPath(import.meta.url));
 const projectCfg = loadProjectConfig();
 const rootDir = projectCfg.projectRoot;
 const out = path.join(here, 'out');
-fs.mkdirSync(out, { recursive: true });
 
 const positionalUrl = process.argv.slice(2).find(a => a.startsWith('http://') || a.startsWith('https://'));
 let BASE = positionalUrl || 'http://127.0.0.1:3000';
@@ -683,6 +682,7 @@ export async function runAxeCoreAndAriaSnapshotAudit(page = null) {
     } catch {}
   }
 
+  fs.mkdirSync(out, { recursive: true });
   const ariaYamlText = ariaYamlLines.join('\n') + '\n';
   const ariaSnapshotPath = path.join(out, 'aria_snapshot.yaml');
   fs.writeFileSync(ariaSnapshotPath, ariaYamlText, 'utf8');
@@ -728,35 +728,33 @@ export async function runAxeCoreAndAriaSnapshotAudit(page = null) {
   };
 }
 
-const isCliEntry =
-  process.argv[1] && path.resolve(process.argv[1]) === path.resolve(fileURLToPath(import.meta.url));
+export async function runVisualAuditCli(argv = process.argv) {
+  fs.mkdirSync(out, { recursive: true });
+  if (argv.includes('--self-test')) {
+    const browser = await chromium.launch({ executablePath: CHROME, headless: true });
+    const page = await browser.newPage();
+    await page.setContent(`<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><title>Axe & ARIA Self-Test</title></head><body><header><nav aria-label="Navegación Principal"><a href="#main">Inicio</a></nav></header><main id="main"><h1>Plataforma Enterprise Verificada</h1><button type="button">Comenzar Ahora</button></main><footer><p>© 2026 WebFactory</p></footer></body></html>`);
+    const axeAndAria = await runAxeCoreAndAriaSnapshotAudit(page);
+    await browser.close();
+    console.log(JSON.stringify(axeAndAria, null, 2));
+    process.exit(axeAndAria.passed ? 0 : 1);
+  }
 
-if (isCliEntry && process.argv.includes('--self-test')) {
+  await ensureServer();
   const browser = await chromium.launch({ executablePath: CHROME, headless: true });
-  const page = await browser.newPage();
-  await page.setContent(`<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><title>Axe & ARIA Self-Test</title></head><body><header><nav aria-label="Navegación Principal"><a href="#main">Inicio</a></nav></header><main id="main"><h1>Plataforma Enterprise Verificada</h1><button type="button">Comenzar Ahora</button></main><footer><p>© 2026 WebFactory</p></footer></body></html>`);
-  const axeAndAria = await runAxeCoreAndAriaSnapshotAudit(page);
-  await browser.close();
-  console.log(JSON.stringify(axeAndAria, null, 2));
-  process.exit(axeAndAria.passed ? 0 : 1);
-}
+  const report = {
+    base: BASE,
+    generated: new Date().toISOString(),
+    runs: [],
+    temporalAudit: {},
+    fluidityMetrics: { clsMax: 0, fpsMin: 60, loafCount: 0, gpuAccelerated: true },
+    cdpTelemetry: {},
+    console: [],
+    failedRequests: []
+  };
+  let blockers = 0;
 
-if (isCliEntry) {
-await ensureServer();
-const browser = await chromium.launch({ executablePath: CHROME, headless: true });
-const report = {
-  base: BASE,
-  generated: new Date().toISOString(),
-  runs: [],
-  temporalAudit: {},
-  fluidityMetrics: { clsMax: 0, fpsMin: 60, loafCount: 0, gpuAccelerated: true },
-  cdpTelemetry: {},
-  console: [],
-  failedRequests: []
-};
-let blockers = 0;
-
-for (const vp of VIEWPORTS) {
+  for (const vp of VIEWPORTS) {
   const ctx = await browser.newContext({ viewport: { width: vp.w, height: vp.h }, reducedMotion: 'no-preference' });
   const page = await ctx.newPage();
 
@@ -1101,4 +1099,10 @@ for (const r of report.runs) {
 }
 console.log(`console errors: ${report.console.length}, failed requests: ${report.failedRequests.length}`);
 process.exit(blockers ? 1 : 0);
+}
+
+const isCliEntry =
+  process.argv[1] && path.resolve(process.argv[1]) === path.resolve(fileURLToPath(import.meta.url));
+if (isCliEntry) {
+  await runVisualAuditCli(process.argv);
 }

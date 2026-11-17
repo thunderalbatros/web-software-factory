@@ -696,11 +696,28 @@ export function runBraintrustAutoevals({
   const dangerousRx = /(<script[\s>]|javascript:|DROP\s+TABLE|UNION\s+SELECT|ignore\s+all\s+previous\s+instructions|sk-live-[a-zA-Z0-9]{16,})/i;
   const securityScore = dangerousRx.test(String(candidateText || '')) ? 0.0 : 1.0;
 
-  // 4. Factuality Scorer
-  const factualityScore =
-    candidateText && expectedText
-      ? Math.max(0.95, normalizedLevenshtein(candidateText, expectedText))
-      : 1.0;
+  // 4. Factuality Scorer (term-coverage ratio between expected facts and candidate output; zero artificial floor)
+  const extractFactTerms = (text) =>
+    String(text || '')
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .split(/[^a-z0-9_#-]+/)
+      .filter((t) => t.length >= 2);
+  let factualityScore = 1.0;
+  if (expectedText || candidateText) {
+    const expTerms = [...new Set(extractFactTerms(expectedText))];
+    const candNormalized = String(candidateText || '')
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '');
+    if (expTerms.length === 0 || !candidateText) {
+      factualityScore = candidateText === expectedText ? 1.0 : 0.0;
+    } else {
+      const matchedTerms = expTerms.filter((t) => candNormalized.includes(t));
+      factualityScore = Number((matchedTerms.length / expTerms.length).toFixed(4));
+    }
+  }
 
   const jsonDiffScore = computeJsonDiffScore(candidateJson, expectedJson);
   const levenshteinScore = expectedText ? normalizedLevenshtein(candidateText, expectedText) : 1.0;

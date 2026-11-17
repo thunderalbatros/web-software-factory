@@ -500,7 +500,7 @@ async function main() {
         style: styleName || (archetype === 'education' ? 'stripe-editorial' : 'bento')
       });
     }
-    recordProjectAuditScore(targetDir, 100, 'APROBADO');
+    recordProjectAuditScore(targetDir, 0, 'PENDIENTE_AUDITORIA');
 
     console.log('\n====================================================================');
     console.log(`🚀 NEW WEBSITE SCAFFOLDED FROM TEMPLATE [${templateName}]`);
@@ -546,9 +546,20 @@ async function main() {
     }
     try {
       const { syncProjectStatechartSnapshot } = await import('./orchestrator/deterministic_agent_statechart.mjs');
-      syncProjectStatechartSnapshot(cfg.id, [
-        { type: 'COMPLETE_RPI_UNTAINTED_RESEARCH', untaintedResearchVerified: true, maxStageInstructions: 14 }
-      ]);
+      const rpiCpPath = path.join(FACTORY_ROOT, '.agents', 'runs', cfg.id, 'rpi_checkpoint.json');
+      if (fs.existsSync(rpiCpPath)) {
+        const rpiCp = JSON.parse(fs.readFileSync(rpiCpPath, 'utf8'));
+        const verified = Boolean(rpiCp?.completedStages?.Research?.artifactSummary?.untaintedResearchPackage?.untaintedVerified);
+        if (verified) {
+          syncProjectStatechartSnapshot(cfg.id, [
+            { type: 'COMPLETE_RPI_UNTAINTED_RESEARCH', untaintedResearchVerified: true, maxStageInstructions: 14 }
+          ]);
+        } else {
+          syncProjectStatechartSnapshot(cfg.id, []);
+        }
+      } else {
+        syncProjectStatechartSnapshot(cfg.id, []);
+      }
     } catch {}
     execSync(`node "${path.join(FACTORY_ROOT, 'tools', 'build_dist.mjs')}" --project "${cfg.projectRoot}"`, {
       cwd: FACTORY_ROOT,

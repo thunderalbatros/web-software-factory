@@ -24,10 +24,19 @@ const initialChips = initialTokens.slice(0, 36).map((tokenId) => {
   };
 });
 ---
-<section class="editorial-panel" data-tiktoken-explorer aria-label="Explorador interactivo de tokens">
+<section id="tiktoken-lab" class="editorial-panel" data-tiktoken-explorer aria-label="Explorador interactivo de tokens">
   <h2 class="editorial-h2">{heading}</h2>
   <p>
-    Escribe o modifica cualquier oración en español para observar en tiempo real cómo el codificador <code>cl100k_base</code> fragmenta sílabas, espacios y signos en identificadores numéricos sin enviar nada a servidores externos.
+    Observa la tokenización previa estática (0 KB de diccionario descargados inicialmente). Si deseas probar frases propias con el codificador <code>cl100k_base</code>, activa el laboratorio bajo demanda en un Web Worker local sin enviar nada a servidores externos.
+  </p>
+
+  <div class="card-actions-row">
+    <button type="button" class="btn-editorial" data-tiktoken-load>
+      Activar tokenizador en vivo (Web Worker)
+    </button>
+  </div>
+  <p class="tutor-status-line" data-tiktoken-status aria-live="polite">
+    Vista previa estática (0 KB BPE descargados). Pulsa el botón para cargar el motor cl100k_base bajo demanda.
   </p>
 
   <div class="control-field">

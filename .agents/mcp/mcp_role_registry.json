@@ -372,6 +372,13 @@
       "writeCodeAllowed": false,
       "mode": "STRICT_READONLY_VERIFIER"
     },
+    "readonly_client": {
+      "wave": "wave_3a_coverage_verifier",
+      "allowedServers": ["omni-rag-ast", "context7", "git-readonly-mcp", "d1-sqlite-readonly-mcp", "filesystem-scoped", "semgrep-mcp", "delta-security-scanner"],
+      "blockedPaths": [".env", ".dev.vars", ".agents/sealed_envelope_evals/"],
+      "writeCodeAllowed": false,
+      "mode": "STRICT_READONLY_CLIENT"
+    },
     "security-engineer": {
       "wave": "wave_3b_devsecops_auditor",
       "allowedServers": ["delta-security-scanner", "dast-offat-zap", "github-mcp", "cloudflare-edge-mcp"],

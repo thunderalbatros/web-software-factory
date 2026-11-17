@@ -51,7 +51,7 @@ export function withSecurityHeaders(response, extraHeaders = {}) {
   });
 }
 
-export function validateFetchMetadata(request, allowedOriginHost = "") {
+export function validateFetchMetadata(request, allowedOriginHost = "", options = {}) {
   const secSite = (request.headers.get("Sec-Fetch-Site") || "").toLowerCase();
   const secMode = (request.headers.get("Sec-Fetch-Mode") || "").toLowerCase();
   const secDest = (request.headers.get("Sec-Fetch-Dest") || "").toLowerCase();
@@ -71,8 +71,11 @@ export function validateFetchMetadata(request, allowedOriginHost = "") {
       const originHost = new URL(originHeader).hostname.toLowerCase();
       const requestHost = new URL(request.url).hostname.toLowerCase();
       const allowedHost = allowedOriginHost ? String(allowedOriginHost).toLowerCase() : "";
-      const isLocal = originHost === "localhost" || originHost === "127.0.0.1";
-      if (originHost !== requestHost && !isLocal && (!allowedHost || originHost !== allowedHost)) {
+      const isLocalOrigin = originHost === "localhost" || originHost === "127.0.0.1";
+      const isLocalRequestHost = requestHost === "localhost" || requestHost === "127.0.0.1";
+      const isDevEnv = String(options?.environment || "").toLowerCase() === "development";
+      const allowLocalLoopback = isLocalOrigin && (isLocalRequestHost || isDevEnv);
+      if (originHost !== requestHost && !allowLocalLoopback && (!allowedHost || originHost !== allowedHost)) {
         return { allowed: false, reason: "CROSS_ORIGIN_MISMATCH_REJECTED" };
       }
     } catch {
@@ -213,7 +216,13 @@ export async function verifySlackSignatureWebCrypto(
   };
 }
 
-export async function verifyTurnstileTokenServerSide(token, secretKey, remoteIp = "", fetchImpl = fetch) {
+export async function verifyTurnstileTokenServerSide(
+  token,
+  secretKey,
+  remoteIp = "",
+  fetchImpl = fetch,
+  options = {}
+) {
   const cleanToken = String(token || "").trim();
   if (!cleanToken) {
     return { valid: false, reason: "TURNSTILE_VERIFICATION_REQUIRED" };
@@ -223,9 +232,15 @@ export async function verifyTurnstileTokenServerSide(token, secretKey, remoteIp 
     return { valid: false, reason: "TURNSTILE_SECRET_NOT_CONFIGURED" };
   }
   try {
+    const idempotencyKey =
+      options.idempotencyKey ||
+      (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function"
+        ? crypto.randomUUID()
+        : `${Date.now()}-${Math.random().toString(16).slice(2)}`);
     const formData = new URLSearchParams({
       secret: cleanSecret,
-      response: cleanToken
+      response: cleanToken,
+      idempotency_key: String(idempotencyKey)
     });
     if (remoteIp) formData.set("remoteip", String(remoteIp));
     const res = await fetchImpl("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
@@ -239,6 +254,14 @@ export async function verifyTurnstileTokenServerSide(token, secretKey, remoteIp 
     }
     const json = await res.json();
     const ok = Boolean(json && json.success === true);
+    if (
+      ok &&
+      options.expectedHostname &&
+      json.hostname &&
+      String(json.hostname).toLowerCase() !== String(options.expectedHostname).toLowerCase()
+    ) {
+      return { valid: false, reason: "TURNSTILE_HOSTNAME_MISMATCH" };
+    }
     return { valid: ok, reason: ok ? "TURNSTILE_VERIFIED" : "TURNSTILE_SITEVERIFY_REJECTED" };
   } catch {
     return { valid: false, reason: "TURNSTILE_SITEVERIFY_NETWORK_ERROR" };
@@ -376,7 +399,9 @@ export default {
 
       if (["POST", "PUT", "DELETE"].includes(method)) {
         if (url.pathname !== "/api/slack-webhook") {
-          const fetchMeta = validateFetchMetadata(request, env && env.ALLOWED_ORIGIN);
+          const fetchMeta = validateFetchMetadata(request, env && env.ALLOWED_ORIGIN, {
+            environment: env && env.ENVIRONMENT
+          });
           if (!fetchMeta.allowed) {
             return withSecurityHeaders(
               new Response(JSON.stringify({ ok: false, error: fetchMeta.reason }), {
@@ -452,11 +477,13 @@ export default {
 
           const headerToken = request.headers.get("cf-turnstile-response") || "";
           const turnstileToken = validation.data.turnstileToken || headerToken;
-          if (env && env.TURNSTILE_REQUIRED === "true") {
+          if (!env || env.TURNSTILE_REQUIRED !== "false") {
             const turnstileCheck = await verifyTurnstileTokenServerSide(
               turnstileToken,
-              env.TURNSTILE_SECRET_KEY,
-              clientIp
+              env && env.TURNSTILE_SECRET_KEY,
+              clientIp,
+              fetch,
+              { expectedHostname: env && env.TURNSTILE_EXPECTED_HOSTNAME }
             );
             if (!turnstileCheck.valid) {
               return withSecurityHeaders(
