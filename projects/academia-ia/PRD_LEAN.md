@@ -1,6 +1,6 @@
-# PRD_LEAN.md — Academia IA (Borrador Gate #1)
+# PRD_LEAN.md — Academia Libre (Borrador Gate #1)
 
-> **Proyecto:** `academia-ia` · **Perfil de Cumplimiento:** `education` · **Modo de Superficie:** `Read`
+> **Proyecto (slug):** `academia-ia` · **Marca Pública:** **Academia Libre** · **Perfil de Cumplimiento:** `education` · **Modo de Superficie:** `Read`
 > **Estado de Compuerta:** `DRAFT_PENDING_CTO_GATE1` (`approvedBy: null` — pendiente de firma humana del CTO)
 > **Fuente Maestra:** Derivado 1:1 de `docs/PRD_ACADEMIA_IA_MASTER.md` y `data/academy/project_charter.json`
 
@@ -18,8 +18,8 @@ Construir la plataforma educativa abierta en español más completa, dinámica, 
 
 ## 2. Invariantes de Producto y Gobernanza (`[INV-01]` a `[INV-07]`)
 
-- **`[INV-01]` Acceso Abierto real y Costo de Servidor \$0.00 USD:** Sitio 100 % estático sobre **Cloudflare Workers Static Assets** (`commercial_mode: false`, financiamiento exclusivo por donaciones voluntarias sin beneficios exclusivos). Prohibidos muros de pago, planes Pro, publicidad o patrocinios comerciales.
-- **`[INV-02]` Privacidad Local-First (Ley 25.326):** Cero inicio de sesión obligatorio, cero telemetría invasiva y cero bases de datos de alumnos en servidores. Todo el progreso, repaso espaciado (`ts-fsrs`) y selección de arquetipo técnico vive en el navegador (`IndexedDB` vía `Dexie` / `localStorage`) con exportación abierta.
+- **`[INV-01]` Acceso Abierto real y Sostenibilidad Edge:** El 100 % de las lecciones, explorables y recursos son públicos sin registro ni muros de pago sobre **Cloudflare Workers + Static Assets** (`commercial_mode: false`, financiamiento exclusivo por donaciones voluntarias sin beneficios exclusivos). Prohibidos muros de pago, planes Pro, publicidad o patrocinios comerciales.
+- **`[INV-02]` Privacidad Local-First y Sincronización Opcional (Ley 25.326):** Cero inicio de sesión obligatorio para estudiar. El progreso local vive en `IndexedDB` (`Dexie`); quien decida iniciar sesión opcionalmente con Google (`OAuth 2.1 PKCE`) y/o enlazar GitHub cuenta con cifrado de email `AES-256-GCM` en Cloudflare D1, índice ciego `HMAC-SHA256`, recorte local de avatar `WebP` sin EXIF y derechos de exportación completa (`GET /api/me/export`) y eliminación total en cascada (`DELETE /api/me`).
 - **`[INV-03]` Inclusión y Accesibilidad Web (Ley 26.653 / WCAG 2.2 AA+):** Contraste perceptual APCA `Lc >= 85`, navegación completa por teclado, objetivos táctiles `>= 48x48px`, tema claro/oscuro accesible, respeto estricto de `prefers-reduced-motion: reduce` y síntesis textual verificada para cada video.
 - **`[INV-04]` Carga Cognitiva Controlada y Español Neutro (`readability_es.mjs`):** Párrafos de hasta `110` palabras, máximo `3` conceptos nuevos por lección, ancho de lectura editorial entre `60ch` y `70ch` (`65ch` canónico) y pisos INFLESZ verificados por nivel (`>= 65` Principiante, `>= 55` Intermedio, `>= 45` Avanzado).
 - **`[INV-05]` Triangulación Audiovisual Limpia y Aviso de Privacidad:** Entre `2` y `3` videos complementarios por lección exclusivamente desde orígenes permitidos (`youtube-nocookie.com`, `archive.org`, `commons.wikimedia.org`, `upload.wikimedia.org`) mediante fachada diferida con aviso breve de almacenamiento local antes de cargar el reproductor externo.

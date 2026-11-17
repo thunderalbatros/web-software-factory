@@ -253,7 +253,7 @@ export function loadProjectConfig(inputPath = '') {
   const entryHtml = pathsCfg.entryHtml || (isStudioRoot ? 'templates/vanilla-edge/index.html' : 'index.html');
   const distDir = pathsCfg.distDir || 'dist';
   const workerEntry =
-    pathsCfg.workerEntry === null || complianceProfile === 'education'
+    pathsCfg.workerEntry === null || (!pathsCfg.workerEntry && complianceProfile === 'education')
       ? null
       : (pathsCfg.workerEntry || (isStudioRoot ? 'templates/vanilla-edge/worker/index.js' : 'worker/index.js'));
   const tokensPath = pathsCfg.tokensPath || 'tokens/design.tokens.json';

@@ -1,0 +1,121 @@
+---
+import {
+  PATH_IDS,
+  PATH_CATALOG,
+  HARDWARE_ARCHETYPES_CATALOG,
+  ONBOARDING_CALIBRATION_CASES
+} from '../lib/curriculum-paths.mjs';
+---
+<section
+  class="editorial-panel"
+  hidden
+  data-onboarding-wizard
+  aria-labelledby="onboarding-wizard-title"
+>
+  <h2 id="onboarding-wizard-title" class="editorial-h2" tabindex="-1" data-onboarding-title>
+    Bienvenida adaptativa (Paso <span class="tabular-metric" data-onboarding-step-num>1</span> de <span class="tabular-metric">4</span>)
+  </h2>
+  <p class="tutor-status-line" data-onboarding-status aria-live="polite">
+    Configura tu ruta y nivel inicial. Este diagnóstico es 100% orientativo y no regala XP ni certificados.
+  </p>
+
+  <div data-onboarding-pane="1">
+    <p><strong>Paso 1:</strong> Elige el propósito principal con el que quieres aplicar inteligencia artificial:</p>
+    <div class="radio-cards-grid" role="radiogroup" aria-label="Ruta de aprendizaje">
+      {PATH_IDS.map((pid, idx) => {
+        const p = PATH_CATALOG[pid];
+        return (
+          <button
+            type="button"
+            class="radio-card-btn"
+            role="radio"
+            aria-checked={idx === 0 ? 'true' : 'false'}
+            data-onb-path={pid}
+          >
+            <strong>{p.titleEs}</strong>
+            <span>{p.summaryEs}</span>
+          </button>
+        );
+      })}
+    </div>
+    <div class="card-actions-row">
+      <button type="button" class="btn-primary" data-onb-next="2">Continuar al paso 2</button>
+      <button type="button" class="btn-editorial" data-onb-dismiss>Cerrar por ahora</button>
+    </div>
+  </div>
+
+  <div data-onboarding-pane="2" hidden>
+    <p><strong>Paso 2:</strong> ¿Con qué equipo cuentas habitualmente?</p>
+    <div class="radio-cards-grid" role="radiogroup" aria-label="Tu equipo de trabajo">
+      {HARDWARE_ARCHETYPES_CATALOG.map((arch, idx) => (
+        <button
+          type="button"
+          class="radio-card-btn"
+          role="radio"
+          aria-checked={idx === 0 ? 'true' : 'false'}
+          data-onb-archetype={arch.id}
+        >
+          <strong>{arch.titleEs} ({arch.hardwareTier})</strong>
+          <span>Stack sugerido: {arch.stackSummary}</span>
+        </button>
+      ))}
+    </div>
+    <div class="card-actions-row">
+      <button type="button" class="btn-editorial" data-onb-prev="1">Volver</button>
+      <button type="button" class="btn-primary" data-onb-next="3">Continuar al paso 3</button>
+    </div>
+  </div>
+
+  <div data-onboarding-pane="3" hidden>
+    <p><strong>Paso 3 (Calibración práctica 1 de 2):</strong> {ONBOARDING_CALIBRATION_CASES.case1.promptEs}</p>
+    <div class="radio-cards-grid" role="radiogroup" aria-label="Caso práctico de privacidad y verificación">
+      {ONBOARDING_CALIBRATION_CASES.case1.options.map((opt, idx) => (
+        <button
+          type="button"
+          class="radio-card-btn"
+          role="radio"
+          aria-checked={idx === 0 ? 'true' : 'false'}
+          data-onb-case1={opt.value}
+        >
+          <span>{opt.labelEs}</span>
+        </button>
+      ))}
+    </div>
+    <div class="card-actions-row">
+      <button type="button" class="btn-editorial" data-onb-prev="2">Volver</button>
+      <button type="button" class="btn-editorial" data-onb-scratch>Quiero empezar desde cero</button>
+      <button type="button" class="btn-primary" data-onb-next="4">Continuar al paso 4</button>
+    </div>
+  </div>
+
+  <div data-onboarding-pane="4" hidden>
+    <p><strong>Paso 4 (Calibración práctica 2 de 2):</strong> {ONBOARDING_CALIBRATION_CASES.case2.promptEs}</p>
+    <div class="radio-cards-grid" role="radiogroup" aria-label="Caso práctico de RAG y seguridad">
+      {ONBOARDING_CALIBRATION_CASES.case2.options.map((opt, idx) => (
+        <button
+          type="button"
+          class="radio-card-btn"
+          role="radio"
+          aria-checked={idx === 0 ? 'true' : 'false'}
+          data-onb-case2={opt.value}
+        >
+          <span>{opt.labelEs}</span>
+        </button>
+      ))}
+    </div>
+    <div class="card-actions-row">
+      <button type="button" class="btn-editorial" data-onb-prev="3">Volver</button>
+      <button type="button" class="btn-editorial" data-onb-scratch>Quiero empezar desde cero</button>
+      <button type="button" class="btn-primary" data-onb-submit>Guardar ruta y ubicación inicial</button>
+    </div>
+  </div>
+
+  <div data-onboarding-pane="done" hidden>
+    <p data-onb-result-text></p>
+    <div class="card-actions-row">
+      <a class="badge-pill" hidden data-onb-github-link href="/api/auth/github/start">Enlazar cuenta de GitHub (opcional)</a>
+      <a class="btn-primary" href="/perfil/">Ir a mi Perfil y Progreso</a>
+      <button type="button" class="btn-editorial" data-onb-dismiss>Seguir estudiando</button>
+    </div>
+  </div>
+</section>

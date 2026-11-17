@@ -1,8 +1,8 @@
 {
   "id": "academia-ia",
-  "name": "Academia IA",
+  "name": "Academia Libre",
   "domain": "https://academia-ia.pages.dev",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "domainProfile": "education",
   "archetype": "education",
   "stack": "astro-edge",
@@ -10,7 +10,7 @@
   "paths": {
     "entryHtml": "src/pages/index.astro",
     "distDir": "dist",
-    "workerEntry": null,
+    "workerEntry": "worker/index.mjs",
     "tokensPath": "tokens/design.tokens.json",
     "designCssPath": "src/styles/design-tokens.css",
     "selectorCachePath": "memory/selector_cache.json",
@@ -32,7 +32,7 @@
   },
   "aeo": {
     "requiredLlmsHeaders": [
-      "# Academia IA"
+      "# Academia Libre"
     ]
   },
   "invariants": {
@@ -49,11 +49,11 @@
       "Docentes e Investigadores"
     ],
     "visualTheme": "OKLCH 90/8/2 Editorial Read Mode (65ch) + 3 Semantic Level Accents + WCAG 2.2 AA+",
-    "architectureTier": "Astro 7.4.11 Static + Cloudflare Workers Static Assets ($0.00 USD Server)"
+    "architectureTier": "Astro 7.4.11 + Hybrid Same-Origin Cloudflare Worker (/api/* + D1 + R2) with 100% Open Lessons"
   },
   "surfaceMode": "Read",
   "industryArchetype": "academic-editorial-education",
-  "dbTier": "static-json-and-indexeddb",
+  "dbTier": "hybrid-static-indexeddb-and-d1",
   "design": {
     "industryArchetype": "academic-editorial-education",
     "surfaceMode": "Read",

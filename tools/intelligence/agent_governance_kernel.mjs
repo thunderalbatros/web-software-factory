@@ -26,7 +26,7 @@ const __dirname = path.dirname(__filename);
 const ROOT = path.resolve(__dirname, '..', '..');
 
 export const MCP_ROLE_REGISTRY_PATH = path.join(ROOT, '.agents', 'mcp', 'mcp_role_registry.json');
-export const SECURITY_REPORTS_DIR = path.join(ROOT, '.agents', 'security_reports');
+export const SECURITY_REPORTS_DIR = path.join(ROOT, '.agents', 'runs', 'security_reports');
 export const HEADROOM_CCR_DIR = path.join(ROOT, '.cache', 'headroom_ccr');
 
 let cachedRoleRegistry = null;
@@ -413,9 +413,9 @@ export function compressLargeMcpOutputToDisk({
     artifactPointer: relPointer,
     companionReports: isDeltaSecurity
       ? {
-          semgrepReport: `.agents/security_reports/.semgrep/${toolName}-${hash}.json`,
-          trivyIacReport: `.agents/security_reports/.trivy/trivy-iac-delta-${hash}.json`,
-          sbomCycloneDxReport: `.agents/security_reports/.sbom/cyclonedx-delta-${hash}.json`
+          semgrepReport: `.agents/runs/security_reports/.semgrep/${toolName}-${hash}.json`,
+          trivyIacReport: `.agents/runs/security_reports/.trivy/trivy-iac-delta-${hash}.json`,
+          sbomCycloneDxReport: `.agents/runs/security_reports/.sbom/cyclonedx-delta-${hash}.json`
         }
       : undefined,
     executiveSummary: `Output (${estimatedTokens} tokens > ${maxInlineTokens} inline limit) persisted to ${relPointer}. Retrieve lossless payload via headroom_retrieve("${hash}") or read_file.`

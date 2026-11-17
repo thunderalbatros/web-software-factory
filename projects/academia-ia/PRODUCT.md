@@ -1,10 +1,10 @@
-# Product — Academia IA
+# Product — Academia Libre
 
 <!-- impeccable:product-schema 1 -->
 
 ## Platform
 
-web (`astro@7.4.11` static site on Cloudflare Workers Static Assets, `$0.00 USD` server cost)
+web (`astro@7.4.11` + optional same-origin Cloudflare Workers `/api/*` + D1/R2 for optional sync, profiles, and Ed25519 certificates)
 
 ## Industry Archetype
 

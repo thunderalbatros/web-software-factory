@@ -259,7 +259,15 @@ export function generateHeadersFileContent(profileName = 'standard-web', options
   ];
 
   if (effectiveProfile === 'education') {
-    lines.push('', '/pagefind/*', '  Cache-Control: public, max-age=3600');
+    lines.push(
+      '',
+      '/pagefind/*',
+      '  Cache-Control: public, max-age=3600',
+      '',
+      '/api/*',
+      '  Cache-Control: no-store, max-age=0',
+      '  X-Robots-Tag: noindex'
+    );
   } else {
     lines.push(
       '',

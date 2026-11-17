@@ -1,0 +1,202 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import OnboardingWizard from '../components/OnboardingWizard.astro';
+import {
+  PATH_IDS,
+  PATH_CATALOG,
+  HARDWARE_ARCHETYPES_CATALOG
+} from '../lib/curriculum-paths.mjs';
+---
+<BaseLayout
+  title="Tu Perfil y Progreso — Academia Libre"
+  description="Consulta tu progreso local o sincronizado (Tronco Universal + Ruta activa), enlaza tu GitHub, sube un avatar WebP seguro, emite certificados Ed25519 o ejerce tus derechos Ley 25.326."
+  canonicalPath="/perfil/"
+>
+  <div class="level-kicker">
+    <span>Privacidad Ley 25.326</span>
+    <span>·</span>
+    <span>Sin registro obligatorio para estudiar</span>
+  </div>
+
+  <h1 class="editorial-h1">Tu perfil, progreso e insignias</h1>
+  <p class="lead-summary">
+    El 100% de las lecciones funciona sin crear cuenta. Tu avance se conserva localmente en tu navegador (<code>Dexie</code>); si decides conectarte, sincronizas tu ruta, subes una foto <code>WebP</code> sin metadatos y emites diplomas firmados con <code>Ed25519</code>.
+  </p>
+
+  <section class="editorial-panel" data-profile-guest aria-label="Modo local sin cuenta">
+    <h2 class="editorial-h2">Progreso local en este navegador</h2>
+    <div class="tiktoken-metrics-grid">
+      <div class="metric-tile">
+        <span class="metric-label">XP local acumulado</span>
+        <span class="token-count-value tabular-metric" data-guest-xp>0</span>
+      </div>
+      <div class="metric-tile">
+        <span class="metric-label">Avance total</span>
+        <span class="token-count-value tabular-metric" data-guest-pct>0%</span>
+      </div>
+      <div class="metric-tile">
+        <span class="metric-label">Ruta local</span>
+        <span class="token-count-value" data-guest-path>Uso Cotidiano y Alfabetización</span>
+      </div>
+    </div>
+    <div class="card-actions-row">
+      <a class="btn-primary" href="/api/auth/google/start">
+        Ingresar rápido con Google (OAuth 2.1 PKCE)
+      </a>
+      <button type="button" class="btn-editorial" data-open-onboarding-btn>
+        Configurar ruta y nivel
+      </button>
+    </div>
+  </section>
+
+  <section hidden data-profile-auth aria-label="Panel del estudiante autenticado">
+    <div class="editorial-panel">
+      <div class="profile-identity-row">
+        <img
+          hidden
+          width="84"
+          height="84"
+          class="profile-avatar-img"
+          alt="Avatar del estudiante en Academia Libre"
+          data-profile-avatar-img
+        />
+        <div>
+          <h2 class="editorial-h2" data-profile-name-badge>Estudiante</h2>
+          <p class="tutor-status-line" data-profile-meta-badge>
+            Nivel 1 · 0 XP · Sin avatar
+          </p>
+        </div>
+      </div>
+
+      <div class="badge-pills-row" data-profile-badges-row></div>
+
+      <div class="card-actions-row">
+        <button type="button" class="btn-editorial" data-open-onboarding-btn>
+          Recalibrar ruta y nivel (conserva tu XP)
+        </button>
+        <a class="btn-editorial" href="/api/auth/github/start" data-link-github-btn>
+          Enlazar cuenta de GitHub (read:user)
+        </a>
+      </div>
+    </div>
+
+    <section class="editorial-panel" aria-label="Progreso universal y por ruta">
+      <h2 class="editorial-h2">Progreso curricular: Tronco Universal + Ruta</h2>
+      <p class="tutor-status-line" data-progress-breakdown-summary aria-live="polite"></p>
+      <div class="progress-bars-grid" data-progress-bars></div>
+
+      <h3 class="editorial-h3">Acreditar nodos de especialidad, hitos y emitir certificados</h3>
+      <div class="control-field">
+        <label class="control-label" for="milestone-repo-input">Repositorio GitHub del proyecto integrador (opcional para Nivel 2/3, ej. https://github.com/usuario/proyecto)</label>
+        <input
+          id="milestone-repo-input"
+          type="url"
+          class="editorial-input"
+          placeholder="https://github.com/tu-usuario/tu-repositorio"
+          data-milestone-repo-input
+        />
+      </div>
+      <div class="tools-list" data-path-nodes-list></div>
+      <p class="tutor-status-line" data-cert-issue-status aria-live="polite"></p>
+      <div class="card-actions-row" data-level-cert-actions></div>
+      <div class="tools-list" data-issued-certs-list></div>
+    </section>
+
+    <section class="editorial-panel" aria-label="Foto de perfil WebP sin EXIF">
+      <h2 class="editorial-h2">Foto de perfil segura (128x128 WebP)</h2>
+      <p>
+        La imagen se recorta al cuadrado en tu navegador sobre <code>&lt;canvas&gt;</code>, se recodifica a <code>128x128 image/webp</code> (&lt;= 25 KB) eliminando el 100% de metadatos EXIF/GPS antes de subirla.
+      </p>
+      <div class="control-field">
+        <label class="control-label" for="avatar-file-input">Elegir imagen para recortar a WebP</label>
+        <input
+          id="avatar-file-input"
+          type="file"
+          accept="image/*"
+          class="editorial-input"
+          data-avatar-file-input
+        />
+      </div>
+      <p class="tutor-status-line" data-avatar-status aria-live="polite"></p>
+    </section>
+
+    <section class="editorial-panel" aria-label="Editar perfil, ruta e insignias">
+      <h2 class="editorial-h2">Preferencias e insignias profesionales</h2>
+      <form data-profile-update-form>
+        <div class="control-field">
+          <label class="control-label" for="profile-display-name">Nombre público en diploma</label>
+          <input
+            id="profile-display-name"
+            type="text"
+            class="editorial-input"
+            maxlength="80"
+            data-field-display-name
+            required
+          />
+        </div>
+        <div class="control-field">
+          <label class="control-label" for="profile-path-select">Ruta de interés (Path)</label>
+          <select id="profile-path-select" class="editorial-select" data-field-path>
+            {PATH_IDS.map((pid) => (
+              <option value={pid}>{PATH_CATALOG[pid].titleEs}</option>
+            ))}
+          </select>
+        </div>
+        <div class="control-field">
+          <label class="control-label" for="profile-archetype-select">Arquetipo de equipo</label>
+          <select id="profile-archetype-select" class="editorial-select" data-field-archetype>
+            {HARDWARE_ARCHETYPES_CATALOG.map((arch) => (
+              <option value={arch.id}>{arch.titleEs} ({arch.hardwareTier})</option>
+            ))}
+          </select>
+        </div>
+        <div class="control-field">
+          <label class="control-label" for="profile-linkedin-input">Perfil opcional LinkedIn (https://www.linkedin.com/in/usuario)</label>
+          <input
+            id="profile-linkedin-input"
+            type="url"
+            class="editorial-input"
+            placeholder="https://www.linkedin.com/in/tu-usuario"
+            data-field-linkedin
+          />
+        </div>
+        <div class="control-field">
+          <label class="control-label" for="profile-x-input">Perfil opcional en X (https://x.com/usuario)</label>
+          <input
+            id="profile-x-input"
+            type="url"
+            class="editorial-input"
+            placeholder="https://x.com/tu_usuario"
+            data-field-x
+          />
+        </div>
+        <div class="card-actions-row">
+          <button type="submit" class="btn-primary">Guardar cambios en perfil</button>
+        </div>
+        <p class="tutor-status-line" data-profile-save-status aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="editorial-panel" aria-label="Control de datos personales Ley 25.326">
+      <h2 class="editorial-h2">Tus derechos de privacidad (Ley 25.326)</h2>
+      <p>
+        Tu correo se almacena cifrado con <code>AES-256-GCM</code> y puedes descargar una copia completa de tus datos o eliminar tu cuenta de inmediato en cascada.
+      </p>
+      <div class="card-actions-row">
+        <a class="btn-editorial" href="/api/me/export">Descargar mis datos (JSON)</a>
+        <button type="button" class="btn-editorial" data-logout-btn>Cerrar sesión</button>
+        <button type="button" class="btn-danger-outline" data-delete-arm-btn>
+          Eliminar mi cuenta y datos
+        </button>
+        <button type="button" hidden class="btn-danger-outline" data-delete-confirm-btn>
+          Confirmar borrado definitivo en cascada
+        </button>
+      </div>
+      <p class="tutor-status-line" data-account-action-status aria-live="polite"></p>
+    </section>
+  </section>
+
+  <OnboardingWizard />
+
+  <script src="../scripts/profile-client.mjs"></script>
+</BaseLayout>

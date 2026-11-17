@@ -15,21 +15,24 @@
   "approvedBy": null,
   "blocks": {
     "block1_pages_and_dom_architecture": {
-      "brandName": "Academia IA",
+      "brandName": "Academia Libre",
       "industryArchetype": "education",
       "resolvedArchetypeId": "academic-editorial-education",
       "pages": [
         "/",
         "/niveles/principiante/",
         "/niveles/intermedio/",
-        "/niveles/avanzado/"
+        "/niveles/avanzado/",
+        "/perfil/",
+        "/verificar/"
       ],
       "domSectionsAndComponents": [
-        "Header Editorial Minimalista con Selector de Tema Claro/Oscuro (0 Mute Toggle sonoro)",
-        "Índice Editorial (Academia IA) con 3 Niveles UNESCO (Adquirir, Profundizar, Crear) y Buscador Pagefind",
+        "Header Editorial Minimalista con Selector de Tema Claro/Oscuro y Enlace a Perfil/Verificar (0 Mute Toggle sonoro)",
+        "Índice Editorial (Academia Libre) con 3 Niveles UNESCO (Adquirir, Profundizar, Crear) y Buscador Pagefind",
         "Columna de Lectura en Modo Read (65ch, bloques <= 110 palabras en español neutro tú)",
         "Fachada Multi-Video de Privacidad (youtube-nocookie.com + archive.org) con aviso local y síntesis textual",
-        "Micro-Explorables en Cliente (js-tiktoken BPE + Temml MathML 0 KB JS) y Tutor Socrático en Sandbox Opaco (MessageChannel 1:1)"
+        "Micro-Explorables en Cliente (js-tiktoken BPE + Temml MathML 0 KB JS) y Tutor Socrático en Sandbox Opaco (MessageChannel 1:1)",
+        "Cuestionario Adaptativo de 4 Pasos + Menú Perfil (Avatar WebP 128x128 + Derechos Ley 25.326) + Verificador de Certificados Ed25519"
       ]
     },
     "block2_functional_contracts_and_valibot": {
@@ -133,11 +136,26 @@
       "maxVideoBudgetMb": 0
     },
     "block9_database_payments_auth_and_edge_worker": {
-      "databaseTier": "static-json-and-indexeddb",
-      "databaseEngine": "Static JSON (data/academy/*.json) + Local-First Browser Storage (Dexie/IndexedDB & localStorage)",
+      "databaseTier": "hybrid-static-indexeddb-and-d1",
+      "databaseEngine": "Static JSON (data/academy/*.json) + Local-First Browser Storage (Dexie/IndexedDB) + Optional Same-Origin Cloudflare D1 & R2 (/api/*)",
       "paymentGateway": "none",
-      "authMode": "none (Anonymous Local-First — Ley 25.326)",
-      "workerEndpoints": [],
+      "authMode": "Optional OAuth 2.1 PKCE Google + GitHub Link (100% Open Lessons Without Login — Ley 25.326)",
+      "workerEndpoints": [
+        "/api/health",
+        "/api/auth/google/start",
+        "/api/auth/google/callback",
+        "/api/auth/github/start",
+        "/api/auth/github/callback",
+        "/api/auth/logout",
+        "/api/me",
+        "/api/me/onboarding",
+        "/api/me/avatar",
+        "/api/me/export",
+        "/api/progress/sync",
+        "/api/progress/event",
+        "/api/milestones/verify",
+        "/api/certificates/issue"
+      ],
       "enforceWebhookIdempotencyAndRls": false
     },
     "block10_mobile_capacitor_feedback_and_f2p_matrix": {
@@ -156,10 +174,10 @@
       ]
     },
     "block1_commercial_identity": {
-      "brandName": "Academia IA",
+      "brandName": "Academia Libre",
       "industryArchetype": "education",
       "resolvedArchetypeId": "academic-editorial-education",
-      "valuePropositionOneLiner": "Academia IA une rigor pedagógico UNESCO/OCDE, diseño editorial OKLCH 90/8/2 de lectura calmada (65ch), micro-explorables reales en el navegador y soberanía Open-Source sin login ni muros de pago.",
+      "valuePropositionOneLiner": "Academia Libre une rigor pedagógico UNESCO/OCDE, diseño editorial OKLCH 90/8/2 de lectura calmada (65ch), micro-explorables en navegador y sincronización opcional OAuth 2.1 PKCE sin muros de pago.",
       "referenceCompetitors": [
         "Distill.pub",
         "Brilliant.org",
@@ -232,8 +250,8 @@
     "block8_technical_backend_integrations": {
       "leadCaptureForm": false,
       "paymentGateway": "none",
-      "authMode": "none (Anonymous Local-First — Ley 25.326)",
-      "databaseEngine": "Static JSON (data/academy/*.json) + Local-First Browser Storage (Dexie/IndexedDB & localStorage)",
+      "authMode": "Optional OAuth 2.1 PKCE Google + GitHub Link (100% Open Lessons Without Login — Ley 25.326)",
+      "databaseEngine": "Static JSON (data/academy/*.json) + Local-First Browser Storage (Dexie/IndexedDB) + Optional Same-Origin Cloudflare D1 & R2 (/api/*)",
       "externalIntegrations": [
         "youtube-nocookie.com (Click-to-Play Privacy Facade)",
         "archive.org OER Media",

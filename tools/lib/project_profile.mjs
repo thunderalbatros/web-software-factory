@@ -83,7 +83,10 @@ export const DomainProfileSchema = v.strictObject({
       worker: v.boolean(),
       d1: v.boolean(),
       staticHeadersRequired: v.boolean(),
-      pwaOfflineMpa: v.boolean()
+      pwaOfflineMpa: v.boolean(),
+      hybridSameOriginApiAllowed: v.optional(v.boolean()),
+      optionalD1: v.optional(v.boolean()),
+      optionalR2: v.optional(v.boolean())
     }),
     content: v.strictObject({
       mdxLessons: v.boolean(),
@@ -96,7 +99,8 @@ export const DomainProfileSchema = v.strictObject({
       trustedTypesStrict: v.boolean(),
       ageGate18Plus: v.boolean(),
       localFirstPrivacy: v.boolean(),
-      forbidExternalGenerativeFallbacks: v.boolean()
+      forbidExternalGenerativeFallbacks: v.boolean(),
+      loginRequiredForLessons: v.optional(v.boolean())
     }),
     rag: v.strictObject({
       allowedDomains: v.pipe(v.array(v.string()), v.minLength(1)),

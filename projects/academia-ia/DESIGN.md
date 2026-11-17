@@ -1,6 +1,6 @@
 ---
 version: "2026.10"
-name: "Academia IA (Open AI Academy & Explorable Editorial Education)"
+name: "Academia Libre (Open AI Academy & Explorable Editorial Education)"
 description: "Calm Explorable Editorial & Inclusive Pedagogical Clarity — Mode: Read"
 archetype: "academic-editorial-education"
 surfaceMode: "Read"
@@ -110,7 +110,7 @@ components:
     padding: "12px 16px"
 ---
 
-# DESIGN.md — Academia IA
+# DESIGN.md — Academia Libre
 
 ## Overview
 

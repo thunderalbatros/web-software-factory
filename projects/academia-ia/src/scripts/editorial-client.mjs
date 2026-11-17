@@ -2,6 +2,11 @@ import {
   attachOpaqueTutorBridge,
   validateOpaqueSandboxAttribute
 } from '../lib/socratic-tutor-sandbox.mjs';
+import {
+  hasLoggedInHintCookie,
+  recordLocalProgressEvent,
+  getFastLocalSnapshotSync
+} from '../lib/local-progress-store.mjs';
 import tiktokenWorkerAssetUrl from './tiktoken-worker.mjs?worker&url';
 
 function initThemeToggle() {
@@ -302,6 +307,62 @@ function initPwaRegistration() {
   }
 }
 
+function initLessonProgressControls() {
+  const section = document.querySelector('[data-lesson-progress]');
+  if (!section) return;
+  const lessonSlug = section.getAttribute('data-lesson-slug') || '';
+  const readBtn = section.querySelector('[data-lesson-complete-read]');
+  const quizBtn = section.querySelector('[data-lesson-complete-quiz]');
+  const statusEl = section.querySelector('[data-lesson-progress-status]');
+  if (!lessonSlug || !statusEl) return;
+
+  const refreshStatus = (serverData = null) => {
+    const localSnap = getFastLocalSnapshotSync();
+    const readDone = localSnap.events.some((e) => e.lessonId === lessonSlug && e.eventType === 'read');
+    const quizDone = localSnap.events.some((e) => e.lessonId === lessonSlug && e.eventType === 'quiz');
+    const activeXp = serverData?.user ? serverData.user.xpTotal : localSnap.xpTotal;
+    const syncLabel = serverData?.user ? 'Sincronizado en cuenta' : 'Guardado local en navegador';
+    statusEl.textContent = `${syncLabel} · Lectura: ${readDone ? 'Completa' : 'Pendiente'} · Autoevaluación: ${quizDone ? 'Completa' : 'Pendiente'} · XP acumulado: ${activeXp}`;
+    if (readBtn) readBtn.setAttribute('aria-pressed', readDone ? 'true' : 'false');
+    if (quizBtn) quizBtn.setAttribute('aria-pressed', quizDone ? 'true' : 'false');
+  };
+
+  const handleAction = async (eventType) => {
+    await recordLocalProgressEvent({ lessonId: lessonSlug, eventType });
+    let serverData = null;
+    if (hasLoggedInHintCookie()) {
+      try {
+        const res = await fetch('/api/progress/event', {
+          method: 'POST',
+          credentials: 'same-origin',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ lessonId: lessonSlug, eventType })
+        });
+        if (res.ok) serverData = await res.json();
+      } catch {}
+    }
+    refreshStatus(serverData);
+  };
+
+  if (readBtn) readBtn.addEventListener('click', () => { void handleAction('read'); });
+  if (quizBtn) quizBtn.addEventListener('click', () => { void handleAction('quiz'); });
+  refreshStatus();
+}
+
+async function initSessionHeaderSync() {
+  const profileLink = document.querySelector('[data-header-profile-link]');
+  if (!hasLoggedInHintCookie()) return;
+  try {
+    const res = await fetch('/api/me', { credentials: 'same-origin' });
+    if (!res.ok) return;
+    const state = await res.json();
+    if (!state?.authenticated || !state?.user) return;
+    if (profileLink) {
+      profileLink.textContent = `Perfil (${state.user.xpTotal} XP)`;
+    }
+  } catch {}
+}
+
 function bootAcademiaClient() {
   initThemeToggle();
   initArchetypeSelector();
@@ -309,7 +370,9 @@ function bootAcademiaClient() {
   initTiktokenExplorer();
   initIsolatedSocraticTutor();
   initPagefindSearch();
+  initLessonProgressControls();
   initPwaRegistration();
+  void initSessionHeaderSync();
 }
 
 if (document.readyState === 'loading') {

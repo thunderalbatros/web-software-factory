@@ -1,14 +1,15 @@
-# SPEC.md — Especificación Técnica de Academia IA (Borrador Gate #2)
+# SPEC.md — Especificación Técnica de Academia Libre (Borrador Gate #2)
 
-> **Proyecto:** `academia-ia` · **Stack:** `astro-edge` (`astro@7.4.11` exacto) · **Perfil:** `education` (`Surface Mode: Read`)
+> **Proyecto (slug):** `academia-ia` · **Marca Pública:** **Academia Libre** · **Stack:** `astro-edge` (`astro@7.4.11` exacto) + Hybrid Worker `/api/*` (`D1` + `R2`) · **Perfil:** `education` (`Surface Mode: Read`)
 > **Estado de Compuerta:** `DRAFT_PENDING_CTO_GATE2` (`approvedBy: null` — pendiente de firma humana del CTO)
 > **Entradas Contractuales:** `docs/PRD_ACADEMIA_IA_MASTER.md`, `data/academy/project_charter.json`, `PRD_LEAN.md` y `BRAND_IDENTITY_LOCK.json`
 
 ---
 
-## 1. Arquitectura Estática de Costo Servidor \$0.00 USD
+## 1. Arquitectura Híbrida Same-Origin (Astro 7 Estático + Worker `/api/*` + D1 + R2)
 
-- **Motor de Compilación:** `astro@7.4.11` (`output: 'static'`, `vite.build.sourcemap: false`, `build.inlineStylesheets: 'never'`) sin `@astrojs/starlight` y sin `worker/index.js` de formularios.
+- **Motor de Compilación:** `astro@7.4.11` (`output: 'static'`, `vite.build.sourcemap: false`, `build.inlineStylesheets: 'never'`) sin `@astrojs/starlight`, con acceso 100 % abierto a todas las lecciones sin login.
+- **Backend Edge Opcional (`worker/index.mjs` + `migrations/0001_academia_libre_core.sql`):** Resuelve `/api/*` bajo el mismo origen (`connect-src 'self'`), ejecutando SQL idéntico parametrizado sobre `env.DB` (Cloudflare D1) en producción o `node:sqlite` en pruebas/local. Incluye autenticación opcional **OAuth 2.1 PKCE** (`S256`) con Google, enlace secundario GitHub (`read:user`), correos cifrados `AES-256-GCM`, índice ciego `HMAC-SHA256`, avatares `128x128 image/webp` sin EXIF en R2 (`AVATARS_BUCKET`), cuestionario adaptativo en 4 pasos, progresión Universal + `Path` y emisión/verificación de certificados firmados con **`Ed25519`** (`SubtleCrypto`).
 - **Integraciones Oficiales Pineadas:**
   - `astro-expressive-code@0.44.3` (bloques de código accesibles en niveles Intermedio y Avanzado, cero bloques de código en Principiante).
   - `@astrojs/mdx@8.1.6` + plugin determinista con `temml@0.14.0` para compilar fórmulas LaTeX a **MathML nativo (`0 KB` de JS en cliente)**.
@@ -48,8 +49,8 @@
 
 | ID | Requisito Técnico | Invariante Origen | Verificación Determinista |
 | :--- | :--- | :--- | :--- |
-| `[REQ-01]` | Build 100 % estático en Astro `7.4.11` (`sourcemap: false`, sin `#pricing` ni Worker de leads) | `[INV-01]` | `build_dist.mjs` + `security_gate.mjs` |
-| `[REQ-02]` | Almacenamiento local-first (`Dexie`/`localStorage`) sin login ni PII en servidor | `[INV-02]` | Inspección AST + `cognitive_ux_auditor.mjs` |
+| `[REQ-01]` | Build Astro `7.4.11` (`sourcemap: false`, sin `#pricing`) + Worker híbrido same-origin `/api/*` (`D1` + `R2`) | `[INV-01]` | `build_dist.mjs` + `security_gate.mjs` |
+| `[REQ-02]` | Acceso 100 % libre sin login obligatorio (`Dexie`/local) + cuenta OAuth 2.1 PKCE opcional con Ley 25.326 | `[INV-02]` | Worker tests + `cognitive_ux_auditor.mjs` |
 | `[REQ-03]` | Piso WCAG 2.2 AA (`0` violaciones `@axe-core/playwright` en tema claro y oscuro) | `[INV-03]` | `certify_academia_runtime.mjs` |
 | `[REQ-04]` | Columna `60ch–70ch` (`65ch`), `clamp()`, `tabular-nums` y jerarquía `h1->h2->h3` | `[INV-03]`, `[INV-04]` | `ryux_design_gate.mjs` (`Read`) |
 | `[REQ-05]` | Prosa en español neutro (`tú`), bloques `<= 110` palabras e INFLESZ por nivel | `[INV-04]` | `readability_es.mjs` + `ryux_design_gate.mjs` |

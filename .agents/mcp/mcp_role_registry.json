@@ -17,10 +17,10 @@
     ],
     "maxInlineResponseTokens": 1200,
     "overflowReportDirectories": {
-      "root": ".agents/security_reports",
-      "semgrep": ".agents/security_reports/.semgrep",
-      "trivy": ".agents/security_reports/.trivy",
-      "sbom": ".agents/security_reports/.sbom",
+      "root": ".agents/runs/security_reports",
+      "semgrep": ".agents/runs/security_reports/.semgrep",
+      "trivy": ".agents/runs/security_reports/.trivy",
+      "sbom": ".agents/runs/security_reports/.sbom",
       "headroomCcr": ".cache/headroom_ccr"
     }
   },
@@ -134,11 +134,11 @@
       "hitlGate": false,
       "maxSummaryTokens": 300,
       "reportOutputs": {
-        "semgrepDir": ".agents/security_reports/.semgrep",
-        "trivyDir": ".agents/security_reports/.trivy",
-        "sbomDir": ".agents/security_reports/.sbom"
+        "semgrepDir": ".agents/runs/security_reports/.semgrep",
+        "trivyDir": ".agents/runs/security_reports/.trivy",
+        "sbomDir": ".agents/runs/security_reports/.sbom"
       },
-      "description": "Escaneos delta paralelos (SAST, IaC CIS Benchmarks y SBOM CycloneDX) guardando reportes en .agents/security_reports/ y devolviendo resumen ejecutivo < 300 tokens.",
+      "description": "Escaneos delta paralelos (SAST, IaC CIS Benchmarks y SBOM CycloneDX) guardando reportes en .agents/runs/security_reports/ y devolviendo resumen ejecutivo < 300 tokens.",
       "tools": ["delta_security_scan"]
     },
     "dast-offat-zap": {

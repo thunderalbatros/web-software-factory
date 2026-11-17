@@ -27,13 +27,13 @@ const MCP_JSON_PATH = path.join(ROOT, '.mcp.json');
 const OMNI_RAG_SERVER_PATH = path.join(ROOT, 'tools', 'intelligence', 'mcp_omni_rag_server.mjs');
 const OMNI_RAG_BRIDGE_PATH = path.join(ROOT, 'tools', 'mcp', 'mcp_omni_rag_server.mjs');
 const GOVERNANCE_KERNEL_PATH = path.join(ROOT, 'tools', 'intelligence', 'agent_governance_kernel.mjs');
-const SARIF_OUTPUT_PATH = path.join(ROOT, '.agents', 'security_reports', 'mcp_audit.sarif.json');
+const SARIF_OUTPUT_PATH = path.join(ROOT, '.agents', 'runs', 'security_reports', 'mcp_audit.sarif.json');
 
 /**
- * Ensures `.agents/security_reports/{.semgrep,.trivy,.sbom}` directories and baseline artifacts exist.
+ * Ensures `.agents/runs/security_reports/{.semgrep,.trivy,.sbom}` directories and baseline artifacts exist.
  */
 export function ensureDeltaSecurityReportDirectories() {
-  const baseDir = path.join(ROOT, '.agents', 'security_reports');
+  const baseDir = path.join(ROOT, '.agents', 'runs', 'security_reports');
   const semgrepDir = path.join(baseDir, '.semgrep');
   const trivyDir = path.join(baseDir, '.trivy');
   const sbomDir = path.join(baseDir, '.sbom');
@@ -68,10 +68,10 @@ export function ensureDeltaSecurityReportDirectories() {
   }
 
   return {
-    baseDir: '.agents/security_reports',
-    semgrepDir: '.agents/security_reports/.semgrep',
-    trivyDir: '.agents/security_reports/.trivy',
-    sbomDir: '.agents/security_reports/.sbom'
+    baseDir: '.agents/runs/security_reports',
+    semgrepDir: '.agents/runs/security_reports/.semgrep',
+    trivyDir: '.agents/runs/security_reports/.trivy',
+    sbomDir: '.agents/runs/security_reports/.sbom'
   };
 }
 
@@ -253,12 +253,12 @@ export function runMcpSecurityAudit(options = {}) {
   const reportOutputs = deltaServer.reportOutputs || {};
   const rule12Passed =
     deltaServer.maxSummaryTokens === 300 &&
-    reportOutputs.semgrepDir === '.agents/security_reports/.semgrep' &&
-    reportOutputs.trivyDir === '.agents/security_reports/.trivy' &&
-    reportOutputs.sbomDir === '.agents/security_reports/.sbom' &&
-    fs.existsSync(path.join(ROOT, '.agents', 'security_reports', '.semgrep')) &&
-    fs.existsSync(path.join(ROOT, '.agents', 'security_reports', '.trivy')) &&
-    fs.existsSync(path.join(ROOT, '.agents', 'security_reports', '.sbom'));
+    reportOutputs.semgrepDir === '.agents/runs/security_reports/.semgrep' &&
+    reportOutputs.trivyDir === '.agents/runs/security_reports/.trivy' &&
+    reportOutputs.sbomDir === '.agents/runs/security_reports/.sbom' &&
+    fs.existsSync(path.join(ROOT, '.agents', 'runs', 'security_reports', '.semgrep')) &&
+    fs.existsSync(path.join(ROOT, '.agents', 'runs', 'security_reports', '.trivy')) &&
+    fs.existsSync(path.join(ROOT, '.agents', 'runs', 'security_reports', '.sbom'));
 
   // Rule 13: MCP13-DastOffatZapIsolatedStaging (`dast-offat-zap` isolated to localhost/127.0.0.1 staging)
   const dastServer = registryServers['dast-offat-zap'] || {};
@@ -393,7 +393,7 @@ export function runMcpSecurityAudit(options = {}) {
       id: 'MCP-12',
       name: 'DeltaSecurityScannerExecutiveCompression',
       owaspRef: 'OWASP-MCP08:2025',
-      shortDescription: 'Persists SAST, IaC CIS, and CycloneDX SBOM reports to .agents/security_reports/{.semgrep,.trivy,.sbom} with <300 token summary.',
+      shortDescription: 'Persists SAST, IaC CIS, and CycloneDX SBOM reports to .agents/runs/security_reports/{.semgrep,.trivy,.sbom} with <300 token summary.',
       passed: rule12Passed
     },
     {
@@ -501,7 +501,7 @@ export function runMcpSecurityAudit(options = {}) {
     passedRules: passedRulesCount,
     totalRules: totalRulesCount,
     scoreRatio: `${passedRulesCount}/${totalRulesCount}`,
-    sarifPath: '.agents/security_reports/mcp_audit.sarif.json',
+    sarifPath: '.agents/runs/security_reports/mcp_audit.sarif.json',
     registeredServersCount: Object.keys(registryServers).length,
     durationMs,
     rules

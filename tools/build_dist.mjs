@@ -42,7 +42,14 @@ const domainProfile = resolveDomainProfile({
   complianceProfile: projectConfig.complianceProfile,
   archetype: projectConfig.archetype
 });
-const isStaticWithoutWorker = !domainProfile.capabilities.runtime.worker || projectConfig.paths?.workerEntry === null;
+const hasHybridEducationWorker = Boolean(
+  domainProfile.capabilities.runtime.hybridSameOriginApiAllowed &&
+    projectConfig.paths?.workerEntry &&
+    fs.existsSync(path.join(root, projectConfig.paths.workerEntry))
+);
+const isStaticWithoutWorker =
+  projectConfig.paths?.workerEntry === null ||
+  (!domainProfile.capabilities.runtime.worker && !hasHybridEducationWorker);
 
 console.log(`=== BUILDING CLOUDFLARE PRODUCTION PAYLOAD (${projectConfig.id} -> dist/) ===\n`);
 
@@ -64,7 +71,7 @@ if (fs.existsSync(dist)) {
 }
 fs.mkdirSync(dist, { recursive: true });
 
-if (!isStaticWithoutWorker) {
+if (domainProfile.capabilities.runtime.worker && projectConfig.paths?.workerEntry !== null) {
   try {
     const openApiRes = verifyAndEmitOpenApiContract(projectConfig.id);
     console.log(
@@ -491,11 +498,12 @@ ${specMdText ? `## 4. Technical Specification (SPEC.md)\n\n${specMdText.trim()}\
 ${designMdText ? `## 5. Design System & Tokens Summary (DESIGN.md)\n\n${designMdText.slice(0, 2400).trim()}\n` : ''}
 `;
 
-  // Preserve project-generated llms.txt & llms-full.txt (e.g. Astro post-build / static education manifests)
+  // Preserve project-generated llms.txt & llms-full.txt (e.g. Astro post-build / education manifests)
   const distLlmsPath = path.join(dist, 'llms.txt');
   const distLlmsFullPath = path.join(dist, 'llms-full.txt');
-  const preserveProjectLlms = isStaticWithoutWorker && fs.existsSync(distLlmsPath);
-  const preserveProjectLlmsFull = isStaticWithoutWorker && fs.existsSync(distLlmsFullPath);
+  const preserveEducationManifests = isStaticWithoutWorker || hasHybridEducationWorker;
+  const preserveProjectLlms = preserveEducationManifests && fs.existsSync(distLlmsPath);
+  const preserveProjectLlmsFull = preserveEducationManifests && fs.existsSync(distLlmsFullPath);
 
   if (!preserveProjectLlms && (prdLeanText || specMdText || !fs.existsSync(distLlmsPath))) {
     fs.writeFileSync(distLlmsPath, llmsConcise, 'utf8');
@@ -552,7 +560,7 @@ if (domainProfile.capabilities.compliance.trustedTypesStrict) {
   compileStaticDistCspAndHeaders(root, {
     profile: domainProfile.capabilities.compliance.cspProfile,
     distDir: dist,
-    syncPublicHeaders: true
+    syncPublicHeaders: false
   });
 } else {
   const headersContent = generateHeadersFileContent({
@@ -566,7 +574,7 @@ if (domainProfile.capabilities.compliance.trustedTypesStrict) {
 try {
   const distOgPath = path.join(dist, 'og-image.svg');
   const projectPublicOgPath = path.join(root, 'public', 'og-image.svg');
-  if (isStaticWithoutWorker && (fs.existsSync(distOgPath) || fs.existsSync(projectPublicOgPath))) {
+  if ((isStaticWithoutWorker || hasHybridEducationWorker) && (fs.existsSync(distOgPath) || fs.existsSync(projectPublicOgPath))) {
     if (!fs.existsSync(distOgPath) && fs.existsSync(projectPublicOgPath)) {
       fs.copyFileSync(projectPublicOgPath, distOgPath);
     }
@@ -709,8 +717,14 @@ export function exportStandaloneDeliverable(cfg = null, options = {}) {
     complianceProfile: resolvedCfg.complianceProfile,
     archetype: resolvedCfg.archetype
   });
+  const hasHybridEducationWorker = Boolean(
+    exportProfile.capabilities.runtime.hybridSameOriginApiAllowed &&
+      resolvedCfg.paths?.workerEntry &&
+      fs.existsSync(path.join(projRoot, resolvedCfg.paths.workerEntry))
+  );
   const isStaticWithoutWorker =
-    resolvedCfg.paths?.workerEntry === null || !exportProfile.capabilities.runtime.worker;
+    resolvedCfg.paths?.workerEntry === null ||
+    (!exportProfile.capabilities.runtime.worker && !hasHybridEducationWorker);
 
   const localDeliverableDir = options.outDir
     ? path.resolve(options.outDir)
@@ -758,38 +772,54 @@ export function exportStandaloneDeliverable(cfg = null, options = {}) {
     fs.copyFileSync(publicOg, distOg);
   }
 
-  // 3. Copy standalone worker/index.js ONLY for projects that actually declare a Worker
+  // 3. Copy standalone worker bundle ONLY for projects that actually declare a Worker
   let hasWorkerBundle = false;
   if (!isStaticWithoutWorker) {
-    const workerCandidates = [
-      path.join(projRoot, resolvedCfg.paths?.workerEntry || 'worker/index.js'),
-      path.join(
-        FACTORY_ROOT,
-        'templates',
-        resolvedCfg.stack === 'astro-edge' ? 'astro-edge' : 'vanilla-edge',
-        'worker',
-        'index.js'
-      )
-    ];
-    const foundWorker = workerCandidates.find((p) => fs.existsSync(p));
-    if (foundWorker) {
-      const workerDest = path.join(localDeliverableDir, 'worker', 'index.js');
-      fs.mkdirSync(path.dirname(workerDest), { recursive: true });
-      fs.copyFileSync(foundWorker, workerDest);
-      hasWorkerBundle = true;
+    if (hasHybridEducationWorker) {
+      const workerDirSrc = path.join(projRoot, 'worker');
+      if (fs.existsSync(workerDirSrc)) {
+        copyRecursive(workerDirSrc, path.join(localDeliverableDir, 'worker'));
+        hasWorkerBundle = true;
+      }
+      const migrationsSrc = path.join(projRoot, 'migrations');
+      if (fs.existsSync(migrationsSrc)) {
+        copyRecursive(migrationsSrc, path.join(localDeliverableDir, 'migrations'));
+      }
+    } else {
+      const workerCandidates = [
+        path.join(projRoot, resolvedCfg.paths?.workerEntry || 'worker/index.js'),
+        path.join(
+          FACTORY_ROOT,
+          'templates',
+          resolvedCfg.stack === 'astro-edge' ? 'astro-edge' : 'vanilla-edge',
+          'worker',
+          'index.js'
+        )
+      ];
+      const foundWorker = workerCandidates.find((p) => fs.existsSync(p));
+      if (foundWorker) {
+        const workerDest = path.join(localDeliverableDir, 'worker', path.basename(foundWorker));
+        fs.mkdirSync(path.dirname(workerDest), { recursive: true });
+        fs.copyFileSync(foundWorker, workerDest);
+        hasWorkerBundle = true;
+      }
     }
   }
 
-  // 4. Write preconfigured standalone wrangler.toml (pure Static Assets when static without Worker)
-  const wranglerToml = isStaticWithoutWorker
-    ? `name = "${slug}"
+  // 4. Write preconfigured standalone wrangler.toml (or preserve hybrid education wrangler.toml)
+  const projWranglerSrc = path.join(projRoot, 'wrangler.toml');
+  const wranglerToml =
+    hasHybridEducationWorker && fs.existsSync(projWranglerSrc)
+      ? fs.readFileSync(projWranglerSrc, 'utf8')
+      : isStaticWithoutWorker
+        ? `name = "${slug}"
 compatibility_date = "2026-10-01"
 
 [assets]
 directory = "./dist"
 not_found_handling = "404-page"
 `
-    : `name = "${slug}"
+        : `name = "${slug}"
 main = "worker/index.js"
 compatibility_date = "2026-10-01"
 

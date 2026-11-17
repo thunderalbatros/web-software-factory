@@ -11,11 +11,12 @@ const levelNumber = Number(frontmatter.level || 1);
 const levelSlug = frontmatter.levelSlug || 'principiante';
 const unescoLabel = frontmatter.unescoStageLabel || 'Adquirir';
 const canonicalPath = `/niveles/${levelSlug}/`;
+const lessonSlug = frontmatter.lessonSlug || `semilla-${levelSlug}`;
 
 const bundle = getLevelBundle(levelSlug);
 ---
 <BaseLayout
-  title={`${frontmatter.title || 'Lección Semilla'} — Academia IA`}
+  title={`${frontmatter.title || 'Lección Semilla'} — Academia Libre`}
   description={frontmatter.description || bundle.levelConfig.scope_es}
   levelNumber={levelNumber}
   canonicalPath={canonicalPath}
@@ -48,8 +49,29 @@ const bundle = getLevelBundle(levelSlug);
 
   <SocraticTutorShell
     levelId={levelSlug}
-    lessonSlug={frontmatter.lessonSlug || `semilla-${levelSlug}`}
+    lessonSlug={lessonSlug}
     defaultQuestion={frontmatter.defaultTutorQuestion || '¿Cómo aplico esta idea sin exponer datos privados?'}
   />
+
+  <section
+    class="editorial-panel"
+    data-lesson-progress
+    data-lesson-slug={lessonSlug}
+    aria-label="Registro de avance en esta lección"
+  >
+    <h2 class="editorial-h2">Registrar avance en este nivel (local y sincronizable)</h2>
+    <p>
+      Tu progreso se guarda localmente en <code>Dexie</code> sin requerir registro. Si iniciaste sesión en <a href="/perfil/">tu perfil</a>, los puntos se acreditarán de forma idempotente en tu historial.
+    </p>
+    <div class="card-actions-row">
+      <button type="button" class="btn-primary" data-lesson-complete-read>
+        Marcar lectura completada (+25 XP)
+      </button>
+      <button type="button" class="btn-editorial" data-lesson-complete-quiz>
+        Acreditar autoevaluación del nivel (+50 XP)
+      </button>
+    </div>
+    <p class="tutor-status-line" data-lesson-progress-status aria-live="polite"></p>
+  </section>
 </BaseLayout>
 

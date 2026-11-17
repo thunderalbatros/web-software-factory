@@ -8,12 +8,12 @@
   "approvedBy": null,
   "blocks": {
     "block1_business_identity_and_problem": {
-      "officialBrandName": "Academia IA",
+      "officialBrandName": "Academia Libre",
       "brandTagline": "Plataforma educativa abierta, minimalista e inclusiva sobre IA y tecnologías emergentes en español",
       "industryCategory": "education",
       "resolvedArchetypeId": "academic-editorial-education",
-      "coreOffering": "Recorrido pedagógico abierto en 3 niveles UNESCO (Principiante/Adquirir sin código, Intermedio/Profundizar y Avanzado/Crear con prioridad Open-Source y costo $0.00 USD de servidor).",
-      "coreProblemSolved": "Elimina los muros de pago, la sobrecarga cognitiva y la dependencia de plataformas cerradas enseñando IA práctica, ética y verificable con progreso local-first y alternativas gratuitas sin tarjeta."
+      "coreOffering": "Recorrido pedagógico abierto en 3 niveles UNESCO (Principiante/Adquirir sin código, Intermedio/Profundizar y Avanzado/Crear con prioridad Open-Source), arquitectura híbrida opcional D1/R2 en mismo origen y certificados Ed25519.",
+      "coreProblemSolved": "Elimina los muros de pago, la sobrecarga cognitiva y la dependencia de plataformas cerradas enseñando IA práctica, ética y verificable con acceso libre sin login obligatorio."
     },
     "block2_target_audience_and_objections": {
       "targetDemographic": "Estudiantes, trabajadores, oficios reales, docentes y desarrolladores hispanohablantes",
@@ -24,7 +24,7 @@
         "¿Van a guardar mis datos personales en un servidor o bloquear lecciones detrás de un plan Pro?",
         "¿Puedo practicar con una PC básica y presupuesto $0 sin GPU propia?"
       ],
-      "uniqueValueProposition": "Academia IA une rigor pedagógico UNESCO/OCDE, diseño editorial OKLCH 90/8/2 de lectura calmada (65ch), micro-explorables reales en el navegador y soberanía Open-Source sin login ni muros de pago."
+      "uniqueValueProposition": "Academia Libre une rigor pedagógico UNESCO/OCDE, diseño editorial OKLCH 90/8/2 de lectura calmada (65ch), micro-explorables en navegador y sincronización opcional OAuth 2.1 PKCE con certificados Ed25519."
     },
     "block3_existing_brand_identity_lock": {
       "brandIdentityMode": "PARTIAL_BRAND_EVOLUTION",
@@ -90,7 +90,7 @@
         "phone": "No aplica (sin venta telefónica)",
         "whatsapp": "No aplica (sin embudo comercial)",
         "businessHours": "Acceso libre 24/7 con soporte offline vía PWA",
-        "legalEntityName": "Academia IA — Código MIT · Contenido CC-BY-NC-SA-4.0 · Cumplimiento Ley 25.326 (local-first) y Ley 26.653 (WCAG 2.2 AA)"
+        "legalEntityName": "Academia Libre — Código MIT · Contenido CC-BY-NC-SA-4.0 · Cumplimiento Ley 25.326 (acceso sin login obligatorio, cifrado AES-256-GCM y baja/exportación ARCO) y Ley 26.653 (WCAG 2.2 AA)"
       }
     },
     "block7_explicit_non_goals_and_success_metrics": {
@@ -98,7 +98,7 @@
         "Cero muros de pago, cero sección #pricing, cero plan Pro, cero publicidad y cero patrocinios comerciales",
         "Cero rachas punitivas (streaks), cero leaderboards públicos y cero temporizadores de urgencia",
         "Cero @astrojs/starlight, cero shaders 3D WebGPU decorativos, cero audio de fondo y cero Pollinations",
-        "Cero cuentas de usuario o almacenamiento de claves API/datos personales en servidores"
+        "Cero inicio de sesión obligatorio para estudiar: 100% de las lecciones abiertas; cuenta OAuth 2.1 PKCE estrictamente opcional"
       ],
       "expectedSuccessMetrics": [
         "0 violaciones WCAG 2.2 AA en @axe-core/playwright (tema claro y oscuro)",

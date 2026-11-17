@@ -2,7 +2,7 @@
 import '../styles/editorial-education.css';
 
 const {
-  title = 'Academia IA — Educación Abierta en Inteligencia Artificial',
+  title = 'Academia Libre — Educación Abierta en Inteligencia Artificial',
   description = 'Plataforma educativa abierta, minimalista e inclusiva en español sobre tecnologías emergentes e inteligencia artificial (UNESCO Adquirir, Profundizar y Crear).',
   levelNumber = 0,
   canonicalPath = '/'
@@ -88,7 +88,7 @@ const canonicalUrl = `https://academia-ia.pages.dev${canonicalPath}`;
           {
             "@type": "EducationalOrganization",
             "@id": "https://academia-ia.pages.dev/#organization",
-            "name": "Academia IA",
+            "name": "Academia Libre",
             "url": "https://academia-ia.pages.dev/",
             "inLanguage": "es",
             "isAccessibleForFree": true,
@@ -96,8 +96,8 @@ const canonicalUrl = `https://academia-ia.pages.dev${canonicalPath}`;
           },
           {
             "@type": "Course",
-            "name": "Academia IA — Recorrido UNESCO Adquirir, Profundizar y Crear",
-            "description": "Plataforma educativa abierta en español sobre inteligencia artificial y tecnologías emergentes sin muros de pago.",
+            "name": "Academia Libre — Recorrido UNESCO Adquirir, Profundizar y Crear",
+            "description": "Plataforma educativa abierta en español sobre inteligencia artificial y tecnologías emergentes sin muros de pago ni registro obligatorio.",
             "provider": { "@id": "https://academia-ia.pages.dev/#organization" },
             "inLanguage": "es",
             "isAccessibleForFree": true
@@ -116,10 +116,10 @@ const canonicalUrl = `https://academia-ia.pages.dev${canonicalPath}`;
       <div class="header-inner">
         <a class="brand-link" href="/">
           <img class="brand-mark" src="/favicon.svg" width="28" height="28" alt="" />
-          <span>Academia IA</span>
+          <span>Academia Libre</span>
         </a>
 
-        <nav class="editorial-nav" aria-label="Niveles pedagógicos UNESCO">
+        <nav class="editorial-nav" aria-label="Navegación principal">
           <a class="nav-link" href="/" aria-current={canonicalPath === '/' ? 'page' : undefined}>
             Inicio
           </a>
@@ -147,6 +147,21 @@ const canonicalUrl = `https://academia-ia.pages.dev${canonicalPath}`;
           >
             3 · Avanzado
           </a>
+          <a
+            class="nav-link"
+            href="/verificar/"
+            aria-current={canonicalPath === '/verificar/' ? 'page' : undefined}
+          >
+            Verificar
+          </a>
+          <a
+            class="nav-link"
+            href="/perfil/"
+            data-header-profile-link
+            aria-current={canonicalPath === '/perfil/' ? 'page' : undefined}
+          >
+            Perfil
+          </a>
           <button
             type="button"
             class="theme-toggle-btn"
@@ -169,10 +184,10 @@ const canonicalUrl = `https://academia-ia.pages.dev${canonicalPath}`;
     <footer class="editorial-footer">
       <div class="footer-inner">
         <p>
-          <strong>Academia IA</strong> · Educación abierta en español sin muros de pago ni cuentas obligatorias. Progreso local en tu propio navegador conforme a la Ley 25.326 y accesibilidad WCAG 2.2 AA conforme a la Ley 26.653.
+          <strong>Academia Libre</strong> · Educación abierta en español sin muros de pago ni cuentas obligatorias: el 100% de las lecciones es accesible libremente. Progreso local en tu navegador (<code>Dexie</code>) y sincronización opcional cifrada conforme a la Ley 25.326 y accesibilidad WCAG 2.2 AA conforme a la Ley 26.653.
         </p>
         <p>
-          Código bajo licencia <code>MIT</code> · Contenido educativo bajo licencia <code>CC-BY-NC-SA-4.0</code> (piezas derivadas <code>CC-BY-SA-4.0</code> conservan su bloque SPDX propio). Costo de servidor en producción: <span class="tabular-metric">$0.00 USD</span>.
+          Código bajo licencia <code>MIT</code> · Contenido educativo bajo licencia <code>CC-BY-NC-SA-4.0</code> (piezas derivadas <code>CC-BY-SA-4.0</code> conservan su bloque SPDX propio). Emisión de certificados verificables con firma criptográfica <code>Ed25519</code>.
         </p>
       </div>
     </footer>

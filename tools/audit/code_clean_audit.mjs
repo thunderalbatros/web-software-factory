@@ -226,13 +226,25 @@ if (fs.existsSync(indexHtmlPath)) {
 // 5. Stage 5: Knip-Inspired Dead Code, Unreferenced Exports & Orphan File Detector (Vault: audit-sota/knip)
 let orphanFilesCount = 0;
 let unusedExportsCount = 0;
-const allHtmlAndJsContent = [
-  fs.existsSync(indexHtmlPath) ? fs.readFileSync(indexHtmlPath, 'utf8') : '',
-  ...jsFiles.map(f => fs.readFileSync(f, 'utf8')),
-  ...cssFiles.map(f => fs.readFileSync(f, 'utf8'))
-].join('\n');
+const astroAndModuleFiles = [];
+for (const d of targetDirs) {
+  collectFiles(d, ['.astro', '.mdx', '.mjs', '.ts'], astroAndModuleFiles);
+}
+const extraConsumerFiles = [
+  ...(fs.existsSync(indexHtmlPath) ? [indexHtmlPath] : []),
+  ...(fs.existsSync(path.join(rootDir, 'astro.config.mjs')) ? [path.join(rootDir, 'astro.config.mjs')] : []),
+  ...collectFiles(path.join(rootDir, 'worker'), ['.js', '.mjs', '.ts'])
+];
+const consumerMap = new Map();
+for (const f of [...extraConsumerFiles, ...jsFiles, ...cssFiles, ...astroAndModuleFiles]) {
+  const abs = path.resolve(f);
+  if (!consumerMap.has(abs) && fs.existsSync(abs)) {
+    consumerMap.set(abs, fs.readFileSync(abs, 'utf8'));
+  }
+}
 
 for (const fullPath of [...jsFiles, ...cssFiles]) {
+  const absTarget = path.resolve(fullPath);
   const baseName = path.basename(fullPath);
   const relPath = path.relative(rootDir, fullPath).replace(/\\/g, '/');
   // Entry points & standard template assets are always referenced
@@ -240,8 +252,14 @@ for (const fullPath of [...jsFiles, ...cssFiles]) {
     continue;
   }
   const stem = baseName.replace(/\.[^.]+$/, '');
-  const refCount = (allHtmlAndJsContent.match(new RegExp(stem.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g')) || []).length;
-  if (refCount <= 1) {
+  const escapedStem = new RegExp(stem.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g');
+  let externalRefCount = 0;
+  for (const [consumerAbs, text] of consumerMap.entries()) {
+    if (consumerAbs === absTarget) continue;
+    const matches = text.match(escapedStem);
+    if (matches) externalRefCount += matches.length;
+  }
+  if (externalRefCount === 0) {
     orphanFilesCount++;
     addFinding('MINOR', 'knip-orphan-file', relPath, 1, `Orphan asset or unreferenced module detected (${relPath}).`, 'Import/link the file or prune dead asset (knip rule).');
   }

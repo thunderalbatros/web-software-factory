@@ -27,7 +27,7 @@ import fs from 'node:fs';
 import http from 'node:http';
 import os from 'node:os';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { chromium } from 'playwright-core';
 import { AxeBuilder } from '@axe-core/playwright';
 import { APCAcontrast, sRGBtoY } from 'apca-w3';
@@ -57,6 +57,8 @@ const MIME_BY_EXT = Object.freeze({
   '.json': 'application/json; charset=utf-8',
   '.webmanifest': 'application/manifest+json; charset=utf-8',
   '.svg': 'image/svg+xml',
+  '.png': 'image/png',
+  '.webp': 'image/webp',
   '.xml': 'application/xml; charset=utf-8',
   '.txt': 'text/plain; charset=utf-8',
   '.wasm': 'application/wasm',
@@ -156,13 +158,71 @@ function parseRgbString(rgbStr = '') {
   return null;
 }
 
-function startEphemeralHeadersServer(distDir, headersFilePath) {
+async function startEphemeralHeadersServer(distDir, headersFilePath, projectRoot = DEFAULT_PROJECT_ROOT) {
   const rawHeaders = fs.readFileSync(headersFilePath, 'utf8');
   const parsedRules = parseHeadersFile(rawHeaders);
 
-  const server = http.createServer((req, res) => {
+  const workerEntryPath = path.join(projectRoot, 'worker', 'index.mjs');
+  const bindingsPath = path.join(projectRoot, 'worker', 'local-bindings.mjs');
+  let workerHandler = null;
+  let edgeDb = null;
+  let edgeBucket = null;
+  let tmpEdgeDir = null;
+
+  if (fs.existsSync(workerEntryPath) && fs.existsSync(bindingsPath)) {
+    const workerMod = await import(pathToFileURL(workerEntryPath).href);
+    const bindingsMod = await import(pathToFileURL(bindingsPath).href);
+    workerHandler = workerMod.default;
+    tmpEdgeDir = fs.mkdtempSync(path.join(os.tmpdir(), 'wf-cert-edge-'));
+    edgeDb = bindingsMod.createNodeSqliteD1Binding(
+      path.join(tmpEdgeDir, 'd1.sqlite'),
+      path.join(projectRoot, 'migrations', '0001_academia_libre_core.sql')
+    );
+    edgeBucket = bindingsMod.createLocalFsR2Bucket(path.join(tmpEdgeDir, 'r2'));
+  }
+
+  const server = http.createServer(async (req, res) => {
     const reqUrl = new URL(req.url || '/', 'http://127.0.0.1');
     const cleanPath = decodeURIComponent(reqUrl.pathname);
+
+    if (cleanPath.startsWith('/api/') && workerHandler) {
+      const port = server.address()?.port || 80;
+      const chunks = [];
+      for await (const c of req) chunks.push(c);
+      const bodyBuf = Buffer.concat(chunks);
+      const hdrs = new Headers();
+      for (const [k, v] of Object.entries(req.headers || {})) {
+        if (k.toLowerCase() === 'host' || v === undefined) continue;
+        if (Array.isArray(v)) {
+          for (const item of v) hdrs.append(k, item);
+        } else {
+          hdrs.set(k, v);
+        }
+      }
+      const method = (req.method || 'GET').toUpperCase();
+      const webReq = new Request(`http://127.0.0.1:${port}${req.url}`, {
+        method,
+        headers: hdrs,
+        ...(method !== 'GET' && method !== 'HEAD' && bodyBuf.length > 0 ? { body: bodyBuf } : {})
+      });
+      const workerRes = await workerHandler.fetch(webReq, {
+        ENVIRONMENT: 'development',
+        DB: edgeDb,
+        AVATARS_BUCKET: edgeBucket
+      });
+      res.statusCode = workerRes.status;
+      const setCookies = typeof workerRes.headers.getSetCookie === 'function' ? workerRes.headers.getSetCookie() : [];
+      for (const [hKey, hVal] of workerRes.headers.entries()) {
+        if (hKey.toLowerCase() === 'set-cookie') continue;
+        res.setHeader(hKey, hVal);
+      }
+      if (setCookies.length > 0) {
+        res.setHeader('Set-Cookie', setCookies);
+      }
+      res.end(Buffer.from(await workerRes.arrayBuffer()));
+      return;
+    }
+
     const appliedHeaders = resolveHeadersForPathname(parsedRules, cleanPath);
     for (const [hKey, hVal] of Object.entries(appliedHeaders)) {
       res.setHeader(hKey, hVal);
@@ -198,7 +258,20 @@ function startEphemeralHeadersServer(distDir, headersFilePath) {
       resolve({
         server,
         origin: `http://127.0.0.1:${addr.port}`,
-        close: () => new Promise((r) => server.close(() => r()))
+        close: () =>
+          new Promise((r) =>
+            server.close(() => {
+              try {
+                if (edgeDb && typeof edgeDb.close === 'function') edgeDb.close();
+              } catch {}
+              if (tmpEdgeDir) {
+                try {
+                  fs.rmSync(tmpEdgeDir, { recursive: true, force: true, maxRetries: 5, retryDelay: 50 });
+                } catch {}
+              }
+              r();
+            })
+          )
       });
     });
   });
@@ -270,7 +343,7 @@ export async function certifyAcademiaRuntime(projectRoot = DEFAULT_PROJECT_ROOT)
   );
   const distStats = computeDirBytes(distDir);
   const swPrecache = measureSwPrecacheBudget(distDir);
-  const srv = await startEphemeralHeadersServer(distDir, effectiveHeadersPath);
+  const srv = await startEphemeralHeadersServer(distDir, effectiveHeadersPath, projectRoot);
 
   const consoleErrors = [];
   const pageErrors = [];
@@ -330,7 +403,9 @@ export async function certifyAcademiaRuntime(projectRoot = DEFAULT_PROJECT_ROOT)
       '/',
       '/niveles/principiante/',
       '/niveles/intermedio/',
-      '/niveles/avanzado/'
+      '/niveles/avanzado/',
+      '/perfil/',
+      '/verificar/'
     ];
 
     const requestedUrlsForRoute = [];
@@ -349,6 +424,16 @@ export async function certifyAcademiaRuntime(projectRoot = DEFAULT_PROJECT_ROOT)
         throw new Error(
           `Lazy-budget violation on ${route}: BPE/Tiktoken worker loaded before click (${eagerTiktokenRequests.join(', ')})`
         );
+      }
+      if (route === '/' || route.startsWith('/niveles/')) {
+        const eagerDexieRequests = requestedUrlsForRoute.filter((u) =>
+          /(?:dexie|import-wrapper)/i.test(u)
+        );
+        if (eagerDexieRequests.length > 0) {
+          throw new Error(
+            `Lazy-budget violation on ${route}: Dexie bundle loaded eagerly before interaction (${eagerDexieRequests.join(', ')})`
+          );
+        }
       }
 
       // Measure LCP & CLS via Performance APIs
@@ -403,7 +488,7 @@ export async function certifyAcademiaRuntime(projectRoot = DEFAULT_PROJECT_ROOT)
         const searchInput = page.locator('[data-pagefind-input]');
         await searchInput.fill('SQLite');
         await page.locator('[data-pagefind-results] li').first().waitFor({ timeout: 5000 });
-      } else {
+      } else if (route.startsWith('/niveles/')) {
         // 1. Verify MathML rendered at 0 KB JS in Level 2 & Level 3
         if (route === '/niveles/intermedio/' || route === '/niveles/avanzado/') {
           const mathCount = await page.locator('math').count();
@@ -452,6 +537,47 @@ export async function certifyAcademiaRuntime(projectRoot = DEFAULT_PROJECT_ROOT)
         // 4. Exercise video privacy facade click-to-play
         await page.locator('[data-video-play]').first().click();
         await page.locator('iframe.video-stage-iframe').first().waitFor({ timeout: 5000 });
+      } else if (route === '/perfil/') {
+        await page.locator('[data-profile-guest]').waitFor({ state: 'visible', timeout: 5000 });
+        await page.locator('[data-profile-guest] [data-open-onboarding-btn]').click();
+        await page.locator('[data-onboarding-wizard]').waitFor({ state: 'visible', timeout: 5000 });
+        await page.locator('[data-onb-next="2"]').click();
+        await page.waitForFunction(() => {
+          const stepEl = document.querySelector('[data-onboarding-step-num]');
+          return stepEl && stepEl.textContent?.trim() === '2';
+        }, null, { timeout: 5000 });
+        await page.locator('[data-onboarding-pane="2"] [data-onb-prev="1"]').click();
+        await page.locator('[data-onboarding-pane="1"] [data-onb-dismiss]').click();
+      } else if (route === '/verificar/') {
+        const kp = await crypto.subtle.generateKey('Ed25519', true, ['sign', 'verify']);
+        const pubJwk = await crypto.subtle.exportKey('jwk', kp.publicKey);
+        const canonicalPayload = JSON.stringify({
+          certCode: 'AL-2026-CERTDEMO',
+          issuedAt: '2026-11-17T10:00:00.000Z',
+          level: 1,
+          levelLabel: 'Nivel 1 · Principiante',
+          pathId: 'uso_cotidiano',
+          pathTitleEs: 'Uso Cotidiano y Alfabetización',
+          recipientName: 'Estudiante Demo',
+          githubRepoUrl: null,
+          issuer: 'Academia Libre',
+          schema: 'academia-libre-cert-v1'
+        });
+        const sigBuf = await crypto.subtle.sign('Ed25519', kp.privateKey, new TextEncoder().encode(canonicalPayload));
+        const sigB64 = Buffer.from(sigBuf).toString('base64url');
+        await page.locator('[data-cert-json-input]').fill(
+          JSON.stringify({
+            payloadJson: canonicalPayload,
+            ed25519Signature: sigB64,
+            publicJwk: { kty: pubJwk.kty, crv: pubJwk.crv, x: pubJwk.x }
+          })
+        );
+        await page.locator('[data-cert-manual-verify-btn]').click();
+        await page.waitForFunction(() => {
+          const status = document.querySelector('[data-diploma-crypto-status]');
+          const qr = document.querySelector('[data-cert-qr-slot] svg');
+          return status && status.textContent?.includes('FIRMA ED25519 VÁLIDA') && Boolean(qr);
+        }, null, { timeout: 5000 });
       }
 
       // Run @axe-core/playwright WCAG 2.2 AA in Light Mode

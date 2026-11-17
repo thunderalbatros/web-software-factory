@@ -276,8 +276,12 @@ export function headroom_retrieve(hash, options = {}) {
     path.join(baseDir, `${cleanHash}.json`),
     path.join(baseDir, `mcp-${cleanHash}.json`)
   ];
-  const semgrepDir = path.join(ROOT, '.agents', 'security_reports', '.semgrep');
-  if (fs.existsSync(semgrepDir)) {
+  const semgrepDirs = [
+    path.join(ROOT, '.agents', 'runs', 'security_reports', '.semgrep'),
+    path.join(ROOT, '.agents', 'security_reports', '.semgrep')
+  ];
+  for (const semgrepDir of semgrepDirs) {
+    if (!fs.existsSync(semgrepDir)) continue;
     try {
       for (const name of fs.readdirSync(semgrepDir)) {
         if (name.endsWith(`-${cleanHash}.json`)) {

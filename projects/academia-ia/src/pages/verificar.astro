@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Verificar Certificado Ed25519 — Academia Libre"
+  description="Verifica públicamente cualquier diploma emitido por Academia Libre validando la firma criptográfica Ed25519 con WebCrypto y renderizando su código QR SVG."
+  canonicalPath="/verificar/"
+>
+  <div class="level-kicker">
+    <span>Criptografía Ed25519</span>
+    <span>·</span>
+    <span>Verificación Pública en Cliente</span>
+  </div>
+
+  <h1 class="editorial-h1">Verificación de certificados oficiales</h1>
+  <p class="lead-summary">
+    Todo diploma de <strong>Academia Libre</strong> está firmado con clave privada <code>Ed25519</code> y verificado directamente en tu navegador mediante <code>crypto.subtle.verify</code> sin confiar ciegamente en capturas de pantalla.
+  </p>
+
+  <section class="editorial-panel no-print" aria-label="Consulta por código de certificado">
+    <h2 class="editorial-h2">Consultar por código de emisión</h2>
+    <div class="control-field">
+      <label class="control-label" for="verify-code-input">Código del certificado (ejemplo: AL-2026-XXXXXXXX)</label>
+      <input
+        id="verify-code-input"
+        type="text"
+        class="editorial-input"
+        placeholder="AL-2026-XXXXXXXX"
+        data-cert-code-input
+      />
+    </div>
+    <div class="card-actions-row">
+      <button type="button" class="btn-primary" data-cert-fetch-btn>
+        Consultar y verificar firma Ed25519
+      </button>
+    </div>
+    <p class="tutor-status-line" data-cert-lookup-status aria-live="polite"></p>
+  </section>
+
+  <section class="editorial-panel no-print" aria-label="Verificación manual offline de paquete JSON">
+    <h2 class="editorial-h2">Verificación directa de payload y firma JSON</h2>
+    <div class="control-field">
+      <label class="control-label" for="verify-json-textarea">Paquete firmado JSON (<code>payloadJson</code> + <code>ed25519Signature</code> + <code>publicJwk</code>)</label>
+      <textarea
+        id="verify-json-textarea"
+        class="editorial-textarea"
+        placeholder='{"payloadJson":"{...}","ed25519Signature":"...","publicJwk":{"kty":"OKP","crv":"Ed25519","x":"..."}}'
+        data-cert-json-input
+      ></textarea>
+    </div>
+    <div class="card-actions-row">
+      <button type="button" class="btn-editorial" data-cert-manual-verify-btn>
+        Verificar JSON localmente con WebCrypto
+      </button>
+    </div>
+  </section>
+
+  <section class="certificate-diploma" hidden data-cert-diploma-box aria-label="Diploma verificable">
+    <div class="certificate-diploma-grid">
+      <div>
+        <h2 class="editorial-h2">Diploma Verificable · Academia Libre</h2>
+        <h3 class="editorial-h3" data-diploma-recipient>Titular</h3>
+        <p data-diploma-summary></p>
+        <p class="tutor-status-line" data-diploma-meta></p>
+        <p class="tutor-status-line" data-diploma-crypto-status></p>
+      </div>
+      <div data-cert-qr-slot aria-label="Código QR de verificación"></div>
+    </div>
+    <div class="card-actions-row no-print">
+      <a hidden class="badge-pill" target="_blank" rel="noopener noreferrer" data-diploma-repo-link>
+        Repositorio GitHub acreditado
+      </a>
+      <button type="button" class="btn-editorial" data-diploma-print-btn>
+        Imprimir o guardar en PDF
+      </button>
+    </div>
+  </section>
+
+  <script src="../scripts/verify-client.mjs"></script>
+</BaseLayout>

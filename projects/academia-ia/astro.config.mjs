@@ -57,15 +57,17 @@ function generateSitemapAndAgenticManifests(distDir) {
     .join('\n');
   const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urlEntries}\n</urlset>\n`;
 
-  const llmsTxt = `# Academia IA
+  const llmsTxt = `# Academia Libre
 
-> Plataforma educativa abierta, minimalista e inclusiva en español sobre inteligencia artificial y tecnologías emergentes (UNESCO Adquirir -> Profundizar -> Crear). Costo de servidor $0.00 USD, privacidad local-first (Ley 25.326) y accesibilidad WCAG 2.2 AA (Ley 26.653).
+> Plataforma educativa abierta, minimalista e inclusiva en español sobre inteligencia artificial y tecnologías emergentes (UNESCO Adquirir -> Profundizar -> Crear). Acceso 100% libre sin registro obligatorio (Ley 25.326), sincronización opcional en Cloudflare Workers/D1/R2 mismo origen (/api/*), certificados Ed25519 y accesibilidad WCAG 2.2 AA (Ley 26.653).
 
-## Rutas Pedagógicas Principales
+## Rutas Pedagógicas y Verificación
 - [Inicio](${SITE_ORIGIN}/): Índice editorial de 3 niveles UNESCO, buscador local Pagefind y selector de arquetipos técnicos sin rastreo.
 - [Nivel 1 · Principiante](${SITE_ORIGIN}/niveles/principiante/): Uso cotidiano y en oficios reales sin código; toda herramienta paga incluye alternativa gratuita sin tarjeta.
 - [Nivel 2 · Intermedio](${SITE_ORIGIN}/niveles/intermedio/): Búsqueda aumentada local (RAG) con SQLite FTS5, vectores abiertos y ecuaciones MathML (Temml 0 KB JS).
 - [Nivel 3 · Avanzado](${SITE_ORIGIN}/niveles/avanzado/): Sistemas compuestos seguros, CSP por hashes SHA-256, Trusted Types, sandboxes opacos y Software Factories.
+- [Perfil y Progreso](${SITE_ORIGIN}/perfil/): Progreso local Dexie y sincronización opcional OAuth 2.1 PKCE, cuestionario inicial, avatar WebP y control ARCO Ley 25.326.
+- [Verificar Certificado](${SITE_ORIGIN}/verificar/): Validación criptográfica pública Ed25519 y diploma imprimible con QR SVG.
 - [Manifiesto Completo para Agentes](/llms-full.txt): Contratos técnicos, licencias abiertas (MIT / CC-BY-NC-SA-4.0) e invariantes de seguridad.
 `;
 
@@ -171,8 +173,8 @@ export default defineConfig({
       injectRegister: null,
       manifestFilename: 'manifest.webmanifest',
       manifest: {
-        name: 'Academia IA — Educación Abierta en Español',
-        short_name: 'Academia IA',
+        name: 'Academia Libre — Educación Abierta en Español',
+        short_name: 'Academia Libre',
         description: 'Plataforma educativa abierta, minimalista e inclusiva sobre inteligencia artificial (UNESCO Adquirir, Profundizar, Crear).',
         lang: 'es',
         start_url: '/',
@@ -202,8 +204,28 @@ export default defineConfig({
       generateSW: {
         navigateFallback: null,
         globPatterns: ['**/*.{html,css,js,svg,ico}'],
-        globIgnores: ['**/cl100k_base*.js', '**/tiktoken-worker*.js', '**/*.png', '**/pagefind/**'],
+        globIgnores: [
+          '**/cl100k_base*.js',
+          '**/tiktoken-worker*.js',
+          '**/dexie*.js',
+          '**/import-wrapper*.js',
+          '**/perfil/**',
+          '**/perfil.*.js',
+          '**/*.png',
+          '**/pagefind/**'
+        ],
         runtimeCaching: [
+          {
+            urlPattern: /\/_astro\/(?:dexie|import-wrapper).*\.(?:js|mjs)$/,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'academia-dexie-v1',
+              expiration: {
+                maxEntries: 4,
+                maxAgeSeconds: 60 * 60 * 24 * 30
+              }
+            }
+          },
           {
             urlPattern: /\/_astro\/(?:cl100k_base|tiktoken-worker).*\.(?:js|mjs)$/,
             handler: 'CacheFirst',

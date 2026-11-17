@@ -334,7 +334,9 @@ export function scanSecurityAndPerformance(filePath) {
   });
 
   // 9. Worker Mutant Endpoint Guard (POST / PUT / DELETE must validate schema + enforce RateLimit or Turnstile)
-  const isWorkerFile = /\/worker\/|worker\.m?js$/i.test(normPath);
+  const isWorkerFile =
+    /\/worker\/index\.m?js$|worker\.m?js$/i.test(normPath) ||
+    (/\/worker\//i.test(normPath) && /\b(?:async\s+fetch\s*\(|fetch\s*\(\s*request\b)/.test(content));
   const handlesMutantMethods = /\b(?:POST|PUT|DELETE)\b/.test(content);
   if (isWorkerFile && handlesMutantMethods) {
     const hasSchemaValidation =

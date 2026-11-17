@@ -776,7 +776,7 @@ export async function runLiveDemoWalkthroughSequence({ stepDelayMs = 60 } = {}) 
           id: 'security-engineer',
           currentStation: 'SALA_5_BUNKER_CIEGO_QA_SEC',
           status: 'working',
-          activeFile: '.agents/security_reports/mcp_audit.sarif.json',
+          activeFile: '.agents/runs/security_reports/mcp_audit.sarif.json',
           lastAction: 'Escaneo AgentShield + Zizmor + OWASP MCP Top 10 (18/18 SARIF)'
         }
       ],

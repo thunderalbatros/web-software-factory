@@ -164,14 +164,20 @@ export function auditEdgeWorkersAndDist(rootDir = ROOT, options = {}) {
     const requiresStaticHeaders = domainProfile.capabilities.runtime.staticHeadersRequired;
     const cspProfile = domainProfile.capabilities.compliance.cspProfile;
 
-    const candidateWorker = path.join(projDir, 'worker', 'index.js');
-    if (fs.existsSync(candidateWorker)) {
-      workerPaths.push(candidateWorker);
-    } else if (isProjectEntry && requiresStaticHeaders) {
+    const workerEntryCandidates = [
+      manifest?.paths?.workerEntry ? path.join(projDir, manifest.paths.workerEntry) : '',
+      path.join(projDir, 'worker', 'index.mjs'),
+      path.join(projDir, 'worker', 'index.js')
+    ].filter(Boolean);
+    const candidateWorker = workerEntryCandidates.find((p) => fs.existsSync(p)) || '';
+    if (candidateWorker) {
+      workerPaths.push({ path: candidateWorker, domainProfile });
+    }
+    if (isProjectEntry && requiresStaticHeaders) {
       staticEducationProjects.push(projDir);
       const pubHeadersPath = path.join(projDir, 'public', '_headers');
       if (!fs.existsSync(pubHeadersPath)) {
-        issues.push(`[EDU-STATIC-CSP] ${labelName}/public/_headers ausente en proyecto estático (${domainProfile.id}).`);
+        issues.push(`[EDU-STATIC-CSP] ${labelName}/public/_headers ausente en proyecto educativo (${domainProfile.id}).`);
       } else {
         const pubRaw = fs.readFileSync(pubHeadersPath, 'utf8');
         if (hasStandaloneUnsafeEval(pubRaw)) {
@@ -232,7 +238,10 @@ export function auditEdgeWorkersAndDist(rootDir = ROOT, options = {}) {
     }
   }
 
-  for (const wPath of workerPaths) {
+  for (const workerItem of workerPaths) {
+    const wPath = typeof workerItem === 'string' ? workerItem : workerItem.path;
+    const workerProfile = typeof workerItem === 'string' ? null : workerItem.domainProfile;
+    const requiresTurnstile = workerProfile?.capabilities?.commerce?.turnstile !== false;
     const rel = path.relative(rootDir, wPath).replace(/\\/g, '/');
     const src = fs.readFileSync(wPath, 'utf8');
 
@@ -259,9 +268,13 @@ export function auditEdgeWorkersAndDist(rootDir = ROOT, options = {}) {
       issues.push(`[OWASP-VALIBOT-BOUNDARY] ${rel} no aplica límite duro de tamaño de payload (MAX_BODY_BYTES / 413).`);
     }
 
-    // 5. Turnstile server-side verification + bounded rate-limit memory + zero auto-approval in edge worker
-    if (!src.includes('turnstile/v0/siteverify')) {
-      issues.push(`[OWASP-BOT-DEFENSE] ${rel} no verifica tokens Turnstile server-side contra Cloudflare siteverify.`);
+    // 5. Turnstile (commercial) OR OAuth 2.1 PKCE (education) + bounded rate-limit memory + zero auto-approval
+    if (requiresTurnstile) {
+      if (!src.includes('turnstile/v0/siteverify')) {
+        issues.push(`[OWASP-BOT-DEFENSE] ${rel} no verifica tokens Turnstile server-side contra Cloudflare siteverify.`);
+      }
+    } else if (!src.includes('code_challenge_method') || !src.includes('S256')) {
+      issues.push(`[OWASP-OAUTH21-PKCE] ${rel} debe exigir OAuth 2.1 con PKCE (code_challenge_method=S256).`);
     }
     if (!src.includes('MAX_RATE_LIMIT_BUCKETS') && !src.includes('RATE_LIMITER')) {
       issues.push(`[OWASP-DOS-MEMORY] ${rel} no acota buckets de rate-limit en memoria (MAX_RATE_LIMIT_BUCKETS / RATE_LIMITER).`);

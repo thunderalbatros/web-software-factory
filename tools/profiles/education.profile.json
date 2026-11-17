@@ -23,7 +23,10 @@
       "worker": false,
       "d1": false,
       "staticHeadersRequired": true,
-      "pwaOfflineMpa": true
+      "pwaOfflineMpa": true,
+      "hybridSameOriginApiAllowed": true,
+      "optionalD1": true,
+      "optionalR2": true
     },
     "content": {
       "mdxLessons": true,
@@ -36,7 +39,8 @@
       "trustedTypesStrict": true,
       "ageGate18Plus": false,
       "localFirstPrivacy": true,
-      "forbidExternalGenerativeFallbacks": true
+      "forbidExternalGenerativeFallbacks": true,
+      "loginRequiredForLessons": false
     },
     "rag": {
       "allowedDomains": [

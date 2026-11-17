@@ -210,16 +210,17 @@ test('Stage 3C — cto_command_center requires explicit --stack non-interactivel
   assert.match(vanillaHtml, /id="pricing"/);
   assert.match(vanillaWorker, /turnstile/i);
 
-  // Instantiated projects/academia-ia is 100% static education without Worker or #pricing
+  // Instantiated projects/academia-ia is hybrid same-origin education (100% open lessons without login, optional Worker /api/*)
   const academiaDir = path.join(FACTORY_ROOT, 'projects', 'academia-ia');
   const academiaProj = JSON.parse(fs.readFileSync(path.join(academiaDir, 'factory.project.json'), 'utf8'));
   const academiaPkg = JSON.parse(fs.readFileSync(path.join(academiaDir, 'package.json'), 'utf8'));
   assert.equal(academiaProj.archetype, 'education');
   assert.equal(academiaProj.complianceProfile, 'education');
   assert.equal(academiaProj.surfaceMode, 'Read');
-  assert.equal(academiaProj.paths.workerEntry, null);
+  assert.equal(academiaProj.paths.workerEntry, 'worker/index.mjs');
   assert.equal(academiaPkg.name, 'academia-ia');
-  assert.equal(fs.existsSync(path.join(academiaDir, 'worker', 'index.js')), false);
+  assert.equal(fs.existsSync(path.join(academiaDir, 'worker', 'index.mjs')), true);
+  assert.equal(fs.existsSync(path.join(academiaDir, 'migrations', '0001_academia_libre_core.sql')), true);
 
   // Human HITL gates must NOT be auto-approved by agents
   const prdState = JSON.parse(fs.readFileSync(path.join(academiaDir, 'PRD_INTERVIEW_STATE.json'), 'utf8'));
@@ -1932,20 +1933,32 @@ test('Stage 3C.1 — isolated os.tmpdir() standalone dist/PWA verification, stat
     }
     assert.ok(precacheBytes > 0 && precacheBytes < 250 * 1024, `Expected precache < 250 KB, got ${precacheBytes} B`);
 
-    // Verify exportStandaloneDeliverable() produces static bundle without worker/index.js ([A-01])
+    // Verify exportStandaloneDeliverable() preserves hybrid same-origin Worker + D1 migrations for Academia Libre
     const tmpCfg = loadProjectConfig(tmpProj);
     const exported = exportStandaloneDeliverable(tmpCfg, { outDir: tmpDeliverable, skipZip: true });
-    assert.equal(exported.isStaticWithoutWorker, true);
-    assert.equal(fs.existsSync(path.join(tmpDeliverable, 'worker', 'index.js')), false);
+    assert.equal(exported.isStaticWithoutWorker, false);
+    assert.equal(exported.hasWorkerBundle, true);
+    assert.equal(fs.existsSync(path.join(tmpDeliverable, 'worker', 'index.mjs')), true);
+    assert.equal(fs.existsSync(path.join(tmpDeliverable, 'migrations', '0001_academia_libre_core.sql')), true);
     const exportedWrangler = fs.readFileSync(path.join(tmpDeliverable, 'wrangler.toml'), 'utf8');
-    assert.match(exportedWrangler, /directory\s*=\s*"\.\/dist"/);
+    assert.match(exportedWrangler, /main\s*=\s*"worker\/index\.mjs"/);
     assert.match(exportedWrangler, /not_found_handling\s*=\s*"404-page"/);
-    assert.equal(/\bmain\s*=/.test(exportedWrangler), false);
     assert.equal(fs.existsSync(path.join(tmpDeliverable, 'dist', 'llms.txt')), true);
     assert.equal(fs.existsSync(path.join(tmpDeliverable, 'dist', 'llms-full.txt')), true);
     const exportedOg = fs.readFileSync(path.join(tmpDeliverable, 'dist', 'og-image.svg'), 'utf8');
-    assert.match(exportedOg, /Academia IA/);
+    assert.match(exportedOg, /Academia Libre/);
     assert.equal(/Agencia Alfa/i.test(exportedOg), false);
+
+    // Pure static regression check when an education project sets workerEntry: null
+    const staticOnlyCfg = { ...tmpCfg, paths: { ...tmpCfg.paths, workerEntry: null } };
+    const staticExported = exportStandaloneDeliverable(staticOnlyCfg, {
+      outDir: `${tmpDeliverable}-static`,
+      skipZip: true
+    });
+    assert.equal(staticExported.isStaticWithoutWorker, true);
+    assert.equal(fs.existsSync(path.join(`${tmpDeliverable}-static`, 'worker', 'index.mjs')), false);
+    const staticWrangler = fs.readFileSync(path.join(`${tmpDeliverable}-static`, 'wrangler.toml'), 'utf8');
+    assert.equal(/\bmain\s*=/.test(staticWrangler), false);
 
     // 3. Anti-bomb Gate #2 test on os.tmpdir() copy ([B-01]): compileSpecFromInterview preserves Read mode & 100/100 gates
     compilePrdLeanAndBrandLock('academia-ia', {
@@ -2829,6 +2842,555 @@ test('Stage 3C.4-A — Path traversal guard, honest F2P/P2P gates, Braintrust fa
   assert.equal(classifyKnowledgeDocumentDomain(webgpuDoc), 'graphics_3d');
   assert.equal(resolveDomainProfile('academia-ia').isDomainAllowedInRag(webgpuDoc), false);
   assert.equal(resolveDomainProfile('agencia-alfa').isDomainAllowedInRag(webgpuDoc), true);
+});
+
+// ============================================================================
+// 34. STAGE 3C.4-B — ACADEMIA LIBRE HYBRID D1/SQLITE WORKER, PKCE, WEBP & ED25519
+// ============================================================================
+test('Stage 3C.4-B — Hybrid D1/SQLite Worker, OAuth 2.1 PKCE Google + GitHub link, AES-256-GCM email, anti-farm XP, WebP sanitizer, Ed25519 certs & Ley 25.326', async () => {
+  const http = await import('node:http');
+  const { DatabaseSync } = await import('node:sqlite');
+  const { default: workerHandler } = await import('../projects/academia-ia/worker/index.mjs');
+  const {
+    createNodeSqliteD1Binding,
+    createLocalFsR2Bucket
+  } = await import('../projects/academia-ia/worker/local-bindings.mjs');
+  const {
+    decryptEmailAesGcm,
+    computeEmailBlindIndex,
+    verifyCertificatePayloadEd25519
+  } = await import('../projects/academia-ia/worker/crypto-edge.mjs');
+  const { generateQrMatrix } = await import('../projects/academia-ia/src/lib/qr-svg.mjs');
+
+  const tmpDir = fs.mkdtempSync(path.join(HERMETIC_TMP_ROOT, 'stage3c4b-edge-'));
+  const sqliteFile = path.join(tmpDir, 'd1.sqlite');
+  const r2Dir = path.join(tmpDir, 'r2');
+  const migrationSql = path.join(FACTORY_ROOT, 'projects', 'academia-ia', 'migrations', '0001_academia_libre_core.sql');
+  const dbBinding = createNodeSqliteD1Binding(sqliteFile, migrationSql);
+  const bucketBinding = createLocalFsR2Bucket(r2Dir);
+
+  // Ephemeral test WebCrypto Ed25519 keypair + random symmetric test keys (zero hardcoded literals)
+  const edKp = await crypto.subtle.generateKey('Ed25519', true, ['sign', 'verify']);
+  const privJwk = await crypto.subtle.exportKey('jwk', edKp.privateKey);
+  const pubJwk = await crypto.subtle.exportKey('jwk', edKp.publicKey);
+  const aesKeyB64 = crypto.randomBytes(32).toString('base64url');
+  const blindHmacKey = crypto.randomBytes(32).toString('hex');
+  const oauthCookieKey = crypto.randomBytes(32).toString('base64url');
+  const googleClientId = 'g-client-' + crypto.randomBytes(6).toString('hex');
+  const googleClientVal = crypto.randomBytes(16).toString('hex');
+  const githubClientId = 'gh-client-' + crypto.randomBytes(6).toString('hex');
+  const githubClientVal = crypto.randomBytes(16).toString('hex');
+
+  const recordedGoogleChallenges = new Map();
+  const googleEmail = 'ana.estudiante@gmail.com';
+  let activeGoogleProfile = { sub: 'google-sub-001', email: googleEmail, email_verified: true, name: 'Ana Libre' };
+  let activeGithubUser = { id: 77889900, login: 'ana-libre', email: null };
+
+  const oauthMockSrv = http.createServer(async (req, res) => {
+    const reqUrl = new URL(req.url || '/', 'http://127.0.0.1');
+    const chunks = [];
+    for await (const c of req) chunks.push(c);
+    const bodyStr = Buffer.concat(chunks).toString('utf8');
+
+    if (reqUrl.pathname === '/google/token' && req.method === 'POST') {
+      const form = new URLSearchParams(bodyStr);
+      const verifier = form.get('code_verifier') || '';
+      const challenge = recordedGoogleChallenges.get(form.get('code') || '');
+      const computed = crypto.createHash('sha256').update(verifier).digest('base64url');
+      if (!challenge || challenge !== computed) {
+        res.statusCode = 400;
+        res.end(JSON.stringify({ error: 'invalid_grant_pkce_mismatch' }));
+        return;
+      }
+      res.setHeader('Content-Type', 'application/json');
+      res.end(JSON.stringify({ access_token: 'g-tok-' + activeGoogleProfile.sub, token_type: 'Bearer' }));
+      return;
+    }
+    if (reqUrl.pathname === '/google/userinfo' && req.method === 'GET') {
+      res.setHeader('Content-Type', 'application/json');
+      res.end(JSON.stringify(activeGoogleProfile));
+      return;
+    }
+    if (reqUrl.pathname === '/github/token' && req.method === 'POST') {
+      const form = new URLSearchParams(bodyStr);
+      const verifier = form.get('code_verifier') || '';
+      if (!verifier) {
+        res.statusCode = 400;
+        res.end(JSON.stringify({ error: 'missing_pkce_verifier' }));
+        return;
+      }
+      res.setHeader('Content-Type', 'application/json');
+      res.end(JSON.stringify({ access_token: 'gh-tok-' + activeGithubUser.login, token_type: 'Bearer' }));
+      return;
+    }
+    if (reqUrl.pathname === '/github/user' && req.method === 'GET') {
+      res.setHeader('Content-Type', 'application/json');
+      res.end(JSON.stringify(activeGithubUser));
+      return;
+    }
+    res.statusCode = 404;
+    res.end('Not Found');
+  });
+
+  await new Promise((r) => oauthMockSrv.listen(0, '127.0.0.1', r));
+  const oauthOrigin = `http://127.0.0.1:${oauthMockSrv.address().port}`;
+
+  const baseEnv = {
+    ENVIRONMENT: 'development',
+    DB: dbBinding,
+    AVATARS_BUCKET: bucketBinding,
+    GOOGLE_CLIENT_ID: googleClientId,
+    GOOGLE_CLIENT_SECRET: googleClientVal,
+    GITHUB_CLIENT_ID: githubClientId,
+    GITHUB_CLIENT_SECRET: githubClientVal,
+    EMAIL_ENCRYPTION_KEY_B64: aesKeyB64,
+    EMAIL_BLIND_INDEX_SECRET: blindHmacKey,
+    OAUTH_STATE_SECRET: oauthCookieKey,
+    CERT_ED25519_PRIVATE_JWK: JSON.stringify(privJwk),
+    CERT_ED25519_PUBLIC_JWK: JSON.stringify(pubJwk),
+    OAUTH_GOOGLE_AUTH_URL: `${oauthOrigin}/google/auth`,
+    OAUTH_GOOGLE_TOKEN_URL: `${oauthOrigin}/google/token`,
+    OAUTH_GOOGLE_USERINFO_URL: `${oauthOrigin}/google/userinfo`,
+    OAUTH_GITHUB_AUTH_URL: `${oauthOrigin}/github/auth`,
+    OAUTH_GITHUB_TOKEN_URL: `${oauthOrigin}/github/token`,
+    OAUTH_GITHUB_USER_URL: `${oauthOrigin}/github/user`
+  };
+
+  function buildMinimalWebp(width = 128, height = 128, withExifFlag = false) {
+    // 10-byte VP8X chunk + minimal valid 1x1-bitstream VP8L chunk with decoded dimensions
+    const wMinus1 = width - 1;
+    const hMinus1 = height - 1;
+    const vp8lData = Buffer.from([
+      0x2f,
+      wMinus1 & 0xff,
+      ((wMinus1 >> 8) & 0x3f) | ((hMinus1 & 0x03) << 6),
+      (hMinus1 >> 2) & 0xff,
+      (hMinus1 >> 10) & 0x0f,
+      0x00, 0x00, 0x00
+    ]);
+    const parts = [];
+    if (withExifFlag) {
+      const vp8x = Buffer.alloc(18);
+      vp8x.write('VP8X', 0, 4, 'ascii');
+      vp8x.writeUInt32LE(10, 4);
+      vp8x[8] = 0x08; // EXIF bit set
+      vp8x[12] = wMinus1 & 0xff;
+      vp8x[13] = (wMinus1 >> 8) & 0xff;
+      vp8x[14] = (wMinus1 >> 16) & 0xff;
+      vp8x[15] = hMinus1 & 0xff;
+      vp8x[16] = (hMinus1 >> 8) & 0xff;
+      vp8x[17] = (hMinus1 >> 16) & 0xff;
+      parts.push(vp8x);
+    }
+    const vp8lHdr = Buffer.alloc(8);
+    vp8lHdr.write('VP8L', 0, 4, 'ascii');
+    vp8lHdr.writeUInt32LE(vp8lData.length, 4);
+    parts.push(vp8lHdr, vp8lData);
+    const body = Buffer.concat(parts);
+    const riffHdr = Buffer.alloc(12);
+    riffHdr.write('RIFF', 0, 4, 'ascii');
+    riffHdr.writeUInt32LE(4 + body.length, 4);
+    riffHdr.write('WEBP', 8, 4, 'ascii');
+    return Buffer.concat([riffHdr, body]);
+  }
+
+  function extractCookieHeaderFromResponse(resp, existingMap = new Map()) {
+    const rawSetCookies = typeof resp.headers.getSetCookie === 'function' ? resp.headers.getSetCookie() : [];
+    for (const sc of rawSetCookies) {
+      const firstSeg = sc.split(';')[0];
+      const eq = firstSeg.indexOf('=');
+      if (eq <= 0) continue;
+      const k = firstSeg.slice(0, eq).trim();
+      const val = firstSeg.slice(eq + 1).trim();
+      if (!val) existingMap.delete(k);
+      else existingMap.set(k, val);
+    }
+    return [...existingMap.entries()].map(([k, val]) => `${k}=${val}`).join('; ');
+  }
+
+  try {
+    // (a) Fail-closed 503 OAUTH_NOT_CONFIGURED when secrets missing; GET /api/me returns 200 logged-out without noise
+    const unconfRes = await workerHandler.fetch(
+      new Request('https://academia-ia.pages.dev/api/auth/google/start'),
+      { DB: dbBinding }
+    );
+    assert.equal(unconfRes.status, 503);
+    const unconfJson = await unconfRes.json();
+    assert.equal(unconfJson.error, 'OAUTH_NOT_CONFIGURED');
+
+    const guestMeRes = await workerHandler.fetch(
+      new Request('https://academia-ia.pages.dev/api/me'),
+      baseEnv
+    );
+    assert.equal(guestMeRes.status, 200);
+    assert.equal((await guestMeRes.json()).authenticated, false);
+
+    // Non-loopback plain HTTP must fail closed with 400
+    const insecureHttpStart = await workerHandler.fetch(
+      new Request('http://academia-ia.pages.dev/api/auth/google/start'),
+      baseEnv
+    );
+    assert.equal(insecureHttpStart.status, 400);
+
+    // (b) Production HTTPS OAuth start emits __Host-al_oauth_state with Secure; loopback dev PKCE round-trip
+    const prodStartRes = await workerHandler.fetch(
+      new Request('https://academia-ia.pages.dev/api/auth/google/start'),
+      baseEnv
+    );
+    assert.equal(prodStartRes.status, 302);
+    const prodCookies = prodStartRes.headers.getSetCookie();
+    assert.ok(prodCookies.some((c) => c.startsWith('__Host-al_oauth_state=') && c.includes('; Secure') && c.includes('; HttpOnly')));
+
+    const devCookieJar = new Map();
+    const gStart = await workerHandler.fetch(
+      new Request('http://127.0.0.1:8788/api/auth/google/start'),
+      baseEnv
+    );
+    assert.equal(gStart.status, 302);
+    const gAuthUrl = new URL(gStart.headers.get('Location'));
+    assert.equal(gAuthUrl.searchParams.get('code_challenge_method'), 'S256');
+    const gState = gAuthUrl.searchParams.get('state');
+    const gCode = 'gcode-' + crypto.randomBytes(6).toString('hex');
+    recordedGoogleChallenges.set(gCode, gAuthUrl.searchParams.get('code_challenge'));
+    let cookieHdr = extractCookieHeaderFromResponse(gStart, devCookieJar);
+
+    // Tampered OAuth state rejected 400 anti-CSRF
+    const badStateCb = await workerHandler.fetch(
+      new Request(`http://127.0.0.1:8788/api/auth/google/callback?code=${gCode}&state=forged-state`, {
+        headers: { Cookie: cookieHdr }
+      }),
+      baseEnv
+    );
+    assert.equal(badStateCb.status, 400);
+
+    // Valid PKCE Google callback creates session and sets al_session cookie
+    const gCb = await workerHandler.fetch(
+      new Request(`http://127.0.0.1:8788/api/auth/google/callback?code=${gCode}&state=${gState}`, {
+        headers: { Cookie: cookieHdr }
+      }),
+      baseEnv
+    );
+    assert.equal(gCb.status, 302);
+    assert.equal(gCb.headers.get('Location'), '/perfil/?onboarding=1');
+    cookieHdr = extractCookieHeaderFromResponse(gCb, devCookieJar);
+    assert.ok(devCookieJar.has('al_session'));
+
+    // Also test production HTTPS callback session cookie naming (__Host-al_session)
+    const prodJar = new Map();
+    const pStart = await workerHandler.fetch(
+      new Request('https://academia-ia.pages.dev/api/auth/google/start'),
+      baseEnv
+    );
+    const pUrl = new URL(pStart.headers.get('Location'));
+    const pCode = 'pcode-' + crypto.randomBytes(6).toString('hex');
+    recordedGoogleChallenges.set(pCode, pUrl.searchParams.get('code_challenge'));
+    const pCookie = extractCookieHeaderFromResponse(pStart, prodJar);
+    const pCb = await workerHandler.fetch(
+      new Request(`https://academia-ia.pages.dev/api/auth/google/callback?code=${pCode}&state=${pUrl.searchParams.get('state')}`, {
+        headers: { Cookie: pCookie }
+      }),
+      baseEnv
+    );
+    assert.equal(pCb.status, 302);
+    assert.ok(pCb.headers.getSetCookie().some((c) => c.startsWith('__Host-al_session=') && c.includes('; Secure')));
+
+    // (c) Verify email is AES-256-GCM encrypted on disk (zero plaintext email in SQLite bytes) + blind index matches HMAC
+    const rawSqliteBuf = fs.readFileSync(sqliteFile);
+    assert.equal(rawSqliteBuf.toString('utf8').includes(googleEmail), false, 'Plaintext email must NEVER appear on SQLite disk');
+    const inspectDb = new DatabaseSync(sqliteFile);
+    const userDbRow = inspectDb.prepare('SELECT * FROM users LIMIT 1').get();
+    inspectDb.close();
+    assert.equal(await decryptEmailAesGcm(userDbRow.email_ciphertext, aesKeyB64, userDbRow.id), googleEmail);
+    assert.equal(userDbRow.email_blind_index, await computeEmailBlindIndex(googleEmail, blindHmacKey));
+
+    // (d) GitHub secondary link requires session (401 without cookie) + supports private email: null + rejects 409 collision
+    const ghUnauth = await workerHandler.fetch(
+      new Request('http://127.0.0.1:8788/api/auth/github/start'),
+      baseEnv
+    );
+    assert.equal(ghUnauth.status, 401);
+
+    const ghStart = await workerHandler.fetch(
+      new Request('http://127.0.0.1:8788/api/auth/github/start', { headers: { Cookie: cookieHdr } }),
+      baseEnv
+    );
+    assert.equal(ghStart.status, 302);
+    const ghUrl = new URL(ghStart.headers.get('Location'));
+    assert.equal(ghUrl.searchParams.get('scope'), 'read:user');
+    assert.equal(ghUrl.searchParams.get('code_challenge_method'), 'S256');
+    cookieHdr = extractCookieHeaderFromResponse(ghStart, devCookieJar);
+    const ghCb = await workerHandler.fetch(
+      new Request(`http://127.0.0.1:8788/api/auth/github/callback?code=ghok&state=${ghUrl.searchParams.get('state')}`, {
+        headers: { Cookie: cookieHdr }
+      }),
+      baseEnv
+    );
+    assert.equal(ghCb.status, 302);
+    assert.equal(ghCb.headers.get('Location'), '/perfil/?github=linked');
+    cookieHdr = extractCookieHeaderFromResponse(ghCb, devCookieJar);
+
+    // Second Google user trying to link the same GitHub provider_user_id gets 409 conflict
+    activeGoogleProfile = { sub: 'google-sub-002', email: 'segundo.usuario@gmail.com', email_verified: true, name: 'Segundo' };
+    const jar2 = new Map();
+    const u2Start = await workerHandler.fetch(new Request('http://127.0.0.1:8788/api/auth/google/start'), baseEnv);
+    const u2Url = new URL(u2Start.headers.get('Location'));
+    const u2Code = 'g2-' + crypto.randomBytes(6).toString('hex');
+    recordedGoogleChallenges.set(u2Code, u2Url.searchParams.get('code_challenge'));
+    let u2Cookie = extractCookieHeaderFromResponse(u2Start, jar2);
+    const u2Cb = await workerHandler.fetch(
+      new Request(`http://127.0.0.1:8788/api/auth/google/callback?code=${u2Code}&state=${u2Url.searchParams.get('state')}`, {
+        headers: { Cookie: u2Cookie }
+      }),
+      baseEnv
+    );
+    u2Cookie = extractCookieHeaderFromResponse(u2Cb, jar2);
+    const u2GhStart = await workerHandler.fetch(
+      new Request('http://127.0.0.1:8788/api/auth/github/start', { headers: { Cookie: u2Cookie } }),
+      baseEnv
+    );
+    const u2GhUrl = new URL(u2GhStart.headers.get('Location'));
+    u2Cookie = extractCookieHeaderFromResponse(u2GhStart, jar2);
+    const u2GhCb = await workerHandler.fetch(
+      new Request(`http://127.0.0.1:8788/api/auth/github/callback?code=gh2&state=${u2GhUrl.searchParams.get('state')}`, {
+        headers: { Cookie: u2Cookie }
+      }),
+      baseEnv
+    );
+    assert.equal(u2GhCb.status, 409);
+
+    // (e) Onboarding 4-step calibration sets Level 2 without granting free XP or prior certs
+    const onbRes = await workerHandler.fetch(
+      new Request('http://127.0.0.1:8788/api/me/onboarding', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Cookie: cookieHdr },
+        body: JSON.stringify({
+          activePathId: 'web_productos',
+          hardwareArchetypeId: 'pc_media_hybrid_free',
+          startFromScratch: false,
+          case1Choice: 'local_verify',
+          case2Choice: 'hybrid_rag'
+        })
+      }),
+      baseEnv
+    );
+    assert.equal(onbRes.status, 200);
+    const onbData = await onbRes.json();
+    assert.equal(onbData.user.currentLevel, 2);
+    assert.equal(onbData.user.xpTotal, 0);
+    assert.equal(onbData.certificates.length, 0);
+    assert.equal(onbData.user.onboardingCompleted, true);
+
+    // (f) Anti-XP-farm via UNIQUE(user_id, lesson_id, event_type) across /api/progress/sync & /api/progress/event
+    for (let attempt = 0; attempt < 3; attempt++) {
+      const syncRes = await workerHandler.fetch(
+        new Request('http://127.0.0.1:8788/api/progress/sync', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Cookie: cookieHdr },
+          body: JSON.stringify({
+            events: [
+              { lessonId: 'l2-rag-local-sqlite', eventType: 'read' },
+              { lessonId: 'l2-rag-local-sqlite', eventType: 'quiz' },
+              { lessonId: 'l2-especialidad-web_productos', eventType: 'read' }
+            ]
+          })
+        }),
+        baseEnv
+      );
+      assert.equal(syncRes.status, 200);
+      const syncJson = await syncRes.json();
+      assert.equal(syncJson.user.xpTotal, 100); // 25 (read) + 50 (quiz) + 25 (specialty read) strictly once
+    }
+
+    // Switching path keeps accumulated XP intact
+    const switchPathRes = await workerHandler.fetch(
+      new Request('http://127.0.0.1:8788/api/me', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json', Cookie: cookieHdr },
+        body: JSON.stringify({ activePathId: 'bots_automatizacion' })
+      }),
+      baseEnv
+    );
+    assert.equal(switchPathRes.status, 200);
+    assert.equal((await switchPathRes.json()).user.xpTotal, 100);
+
+    // Revert back to web_productos + validate strict social URLs (LinkedIn/X allowed; IG/FB/javascript rejected 400)
+    for (const badField of [
+      { linkedinUrl: 'https://instagram.com/ana' },
+      { linkedinUrl: 'https://www.facebook.com/ana' },
+      { linkedinUrl: 'javascript:alert(1)' },
+      { xUrl: 'https://facebook.com/ana' },
+      { xUrl: 'https://instagram.com/ana' }
+    ]) {
+      const badSocial = await workerHandler.fetch(
+        new Request('http://127.0.0.1:8788/api/me', {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json', Cookie: cookieHdr },
+          body: JSON.stringify(badField)
+        }),
+        baseEnv
+      );
+      assert.equal(badSocial.status, 400);
+    }
+
+    const goodProfilePatch = await workerHandler.fetch(
+      new Request('http://127.0.0.1:8788/api/me', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json', Cookie: cookieHdr },
+        body: JSON.stringify({
+          activePathId: 'web_productos',
+          linkedinUrl: 'https://www.linkedin.com/in/ana-libre',
+          xUrl: 'https://x.com/ana_libre'
+        })
+      }),
+      baseEnv
+    );
+    assert.equal(goodProfilePatch.status, 200);
+    const patchedState = await goodProfilePatch.json();
+    assert.equal(patchedState.user.linkedinUrl, 'https://www.linkedin.com/in/ana-libre');
+    assert.equal(patchedState.user.xUrl, 'https://x.com/ana_libre');
+
+    // (g) WebP Avatar Sanitizer: reject SVG-renamed-to-WebP (415), >25KB (413), EXIF-flagged WebP (415); accept clean WebP & serve same-origin
+    const svgAsWebp = await workerHandler.fetch(
+      new Request('http://127.0.0.1:8788/api/me/avatar', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'image/webp', Cookie: cookieHdr },
+        body: '<svg xmlns="http://www.w3.org/2000/svg"><script>alert(1)</script></svg>'
+      }),
+      baseEnv
+    );
+    assert.equal(svgAsWebp.status, 415);
+
+    const oversizedWebp = await workerHandler.fetch(
+      new Request('http://127.0.0.1:8788/api/me/avatar', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'image/webp', Cookie: cookieHdr },
+        body: new Uint8Array(26_000)
+      }),
+      baseEnv
+    );
+    assert.equal(oversizedWebp.status, 413);
+
+    const exifWebp = await workerHandler.fetch(
+      new Request('http://127.0.0.1:8788/api/me/avatar', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'image/webp', Cookie: cookieHdr },
+        body: buildMinimalWebp(128, 128, true)
+      }),
+      baseEnv
+    );
+    assert.equal(exifWebp.status, 415);
+
+    const cleanWebpPut = await workerHandler.fetch(
+      new Request('http://127.0.0.1:8788/api/me/avatar', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'image/webp', Cookie: cookieHdr },
+        body: buildMinimalWebp(128, 128, false)
+      }),
+      baseEnv
+    );
+    assert.equal(cleanWebpPut.status, 200);
+    const avatarMeta = await cleanWebpPut.json();
+    const avatarGet = await workerHandler.fetch(
+      new Request(`http://127.0.0.1:8788${avatarMeta.avatarUrl}`),
+      baseEnv
+    );
+    assert.equal(avatarGet.status, 200);
+    assert.equal(avatarGet.headers.get('Content-Type'), 'image/webp');
+    assert.equal(avatarGet.headers.get('X-Content-Type-Options'), 'nosniff');
+
+    // (h) Certificates Ed25519: fail 403 before milestone; succeed 201 after milestone + crypto verify valid vs tampered + QR matrix
+    const prematureCert = await workerHandler.fetch(
+      new Request('http://127.0.0.1:8788/api/certificates/issue', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Cookie: cookieHdr },
+        body: JSON.stringify({ level: 2, pathId: 'web_productos' })
+      }),
+      baseEnv
+    );
+    assert.equal(prematureCert.status, 403);
+
+    const msRes = await workerHandler.fetch(
+      new Request('http://127.0.0.1:8788/api/milestones/verify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Cookie: cookieHdr },
+        body: JSON.stringify({
+          pathId: 'web_productos',
+          milestoneIndex: 2,
+          githubRepoUrl: 'https://github.com/ana-libre/proyecto-edge'
+        })
+      }),
+      baseEnv
+    );
+    assert.equal(msRes.status, 200);
+    assert.equal((await msRes.json()).user.xpTotal, 200);
+
+    const issuedCertRes = await workerHandler.fetch(
+      new Request('http://127.0.0.1:8788/api/certificates/issue', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Cookie: cookieHdr },
+        body: JSON.stringify({ level: 2, pathId: 'web_productos' })
+      }),
+      baseEnv
+    );
+    assert.equal(issuedCertRes.status, 201);
+    const issuedCert = await issuedCertRes.json();
+    const certLookupRes = await workerHandler.fetch(
+      new Request(`http://127.0.0.1:8788/api/certificates/${issuedCert.certificate.cert_code}`),
+      baseEnv
+    );
+    assert.equal(certLookupRes.status, 200);
+    const certLookup = await certLookupRes.json();
+    assert.equal(certLookup.validSignature, true);
+    assert.equal(
+      await verifyCertificatePayloadEd25519(certLookup.payloadJson, certLookup.ed25519Signature, certLookup.publicJwk),
+      true
+    );
+    // Alter 1 byte of payload -> cryptographic verification MUST fail
+    const tamperedPayload = certLookup.payloadJson.replace('Ana Libre', 'Ana Fake ');
+    assert.equal(
+      await verifyCertificatePayloadEd25519(tamperedPayload, certLookup.ed25519Signature, certLookup.publicJwk),
+      false
+    );
+
+    const qrRes = generateQrMatrix(`https://academia-ia.pages.dev/verificar/?code=${issuedCert.certificate.cert_code}`);
+    assert.ok(qrRes.size >= 29 && qrRes.matrix.length === qrRes.size);
+
+    // (i) Ley 25.326: full data export + cascade physical deletion leaves 0 rows across all 6 tables + 404 avatar
+    const exportRes = await workerHandler.fetch(
+      new Request('http://127.0.0.1:8788/api/me/export', { headers: { Cookie: cookieHdr } }),
+      baseEnv
+    );
+    assert.equal(exportRes.status, 200);
+    const exportJson = await exportRes.json();
+    assert.equal(exportJson.account.email, googleEmail);
+    assert.equal(exportJson.certificates.length, 1);
+
+    const delRes = await workerHandler.fetch(
+      new Request('http://127.0.0.1:8788/api/me', { method: 'DELETE', headers: { Cookie: cookieHdr } }),
+      baseEnv
+    );
+    assert.equal(delRes.status, 200);
+    assert.equal((await delRes.json()).deleted, true);
+
+    const avatarAfterDel = await workerHandler.fetch(
+      new Request(`http://127.0.0.1:8788${avatarMeta.avatarUrl}`),
+      baseEnv
+    );
+    assert.equal(avatarAfterDel.status, 404);
+
+    const verifyEmptyDb = new DatabaseSync(sqliteFile);
+    const uCnt = verifyEmptyDb.prepare('SELECT COUNT(*) AS c FROM users WHERE id = ?').get(userDbRow.id);
+    assert.equal(Number(uCnt.c), 0, 'Deleted user must have 0 rows in users');
+    for (const tbl of ['oauth_accounts', 'sessions', 'lesson_progress_ledger', 'project_milestones', 'certificates']) {
+      const cnt = verifyEmptyDb.prepare(`SELECT COUNT(*) AS c FROM ${tbl} WHERE user_id = ?`).get(userDbRow.id);
+      assert.equal(Number(cnt.c), 0, `Deleted user must leave 0 rows in ${tbl}`);
+    }
+    verifyEmptyDb.close();
+  } finally {
+    oauthMockSrv.close();
+    dbBinding.close();
+    fs.rmSync(tmpDir, { recursive: true, force: true });
+  }
 });
 
 

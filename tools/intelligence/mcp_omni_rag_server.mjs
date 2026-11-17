@@ -409,7 +409,7 @@ export const TOOLS = [
     domain: 'devsecops',
     mcpServer: 'semgrep-mcp',
     readOnly: false,
-    description: 'Transforms a discovered security finding into a permanent Semgrep regression rule in .agents/security_reports/.semgrep/.',
+    description: 'Transforms a discovered security finding into a permanent Semgrep regression rule in .agents/runs/security_reports/.semgrep/.',
     inputSchema: {
       type: 'object',
       properties: {
@@ -1175,7 +1175,7 @@ export async function executeSingleMcpTool(toolName, args = {}, traceId = genera
       roleId: trustedRole,
       mcpServer: 'semgrep-mcp',
       toolName: 'write_custom_semgrep_rule',
-      targetPath: '.agents/security_reports/.semgrep/'
+      targetPath: '.agents/runs/security_reports/.semgrep/'
     });
     if (!perm.allowed) throw new Error(perm.reason);
     const safeId = String(args.ruleId || '').replace(/[^a-zA-Z0-9_-]/g, '-').replace(/^-+|-+$/g, '');
@@ -1201,7 +1201,7 @@ export async function executeSingleMcpTool(toolName, args = {}, traceId = genera
     if (!allowedSeverity.has(severity)) {
       throw new Error(`MCP_SCHEMA_VIOLATION: Invalid severity '${severity}'. Allowed: ERROR, WARNING, INFO.`);
     }
-    const rulesDir = path.join(ROOT, '.agents', 'security_reports', '.semgrep');
+    const rulesDir = path.join(ROOT, '.agents', 'runs', 'security_reports', '.semgrep');
     fs.mkdirSync(rulesDir, { recursive: true });
     const rulePath = path.join(rulesDir, `${safeId}.yml`);
     const yamlContent = [
@@ -1217,7 +1217,7 @@ export async function executeSingleMcpTool(toolName, args = {}, traceId = genera
       traceId,
       saved: true,
       ruleId: safeId,
-      rulePath: `.agents/security_reports/.semgrep/${safeId}.yml`
+      rulePath: `.agents/runs/security_reports/.semgrep/${safeId}.yml`
     };
   }
   if (toolName === 'delta_security_scan') {
