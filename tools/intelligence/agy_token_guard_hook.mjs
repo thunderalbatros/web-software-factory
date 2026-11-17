@@ -21,7 +21,7 @@ const CACHE_DIR = path.join(ROOT, '.cache');
 const DEFAULT_TURN_LEDGER_PATH = path.join(CACHE_DIR, 'agy_session_turns.json');
 
 const HEAVY_ARTIFACT_REGEX =
-  /(omni_rag_fts5\.sqlite|omni_rag_v5\.sqlite|codebase_ast_graph\.json|code_and_wiki_graph\.json|knowledge_index\.json|package-lock\.json|sbom_cyclonedx\.json|data[\\/]academy[\\/][^\\/\s"'`]+\.json|dist[\\/]pagefind[\\/]|dist[\\/]_astro[\\/]|llms-full\.txt)/i;
+  /(rag_hot\.sqlite|rag_library\.sqlite|omni_rag_fts5\.sqlite|omni_rag_v5\.sqlite|codebase_ast_graph\.json|code_and_wiki_graph\.json|knowledge_index\.json|package-lock\.json|sbom_cyclonedx\.json|data[\\/]academy[\\/][^\\/\s"'`]+\.json|dist[\\/]pagefind[\\/]|dist[\\/]_astro[\\/]|llms-full\.txt)/i;
 const RAW_DUMP_CMD_REGEX = /\b(cat|type|Get-Content|gc)\b/i;
 const INLINE_NODE_EVAL_REGEX = /\bnode\s+(?:-[a-z]*[ep]|--eval|--print)\b/i;
 const BOUNDED_FILTER_REGEX = /\b(Select-Object\s+-First|head\b|tail\b|rg\b|Select-String)\b/i;

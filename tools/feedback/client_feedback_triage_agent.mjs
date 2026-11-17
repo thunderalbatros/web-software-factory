@@ -28,6 +28,7 @@
  */
 
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
@@ -468,20 +469,20 @@ export function buildSlackBlockKitTriageCard({
   };
 }
 
-function readFeedbackLedger() {
+function readFeedbackLedger(ledgerPath = FEEDBACK_LEDGER_PATH) {
   try {
-    if (fs.existsSync(FEEDBACK_LEDGER_PATH)) {
-      const parsed = JSON.parse(fs.readFileSync(FEEDBACK_LEDGER_PATH, 'utf8'));
+    if (fs.existsSync(ledgerPath)) {
+      const parsed = JSON.parse(fs.readFileSync(ledgerPath, 'utf8'));
       if (parsed && Array.isArray(parsed.tickets)) return parsed;
     }
   } catch {}
   return { tickets: [] };
 }
 
-function writeFeedbackLedger(ledger) {
-  fs.mkdirSync(path.dirname(FEEDBACK_LEDGER_PATH), { recursive: true });
+function writeFeedbackLedger(ledger, ledgerPath = FEEDBACK_LEDGER_PATH) {
+  fs.mkdirSync(path.dirname(ledgerPath), { recursive: true });
   ledger.tickets = (ledger.tickets || []).slice(0, 60);
-  fs.writeFileSync(FEEDBACK_LEDGER_PATH, JSON.stringify(ledger, null, 2), 'utf8');
+  fs.writeFileSync(ledgerPath, JSON.stringify(ledger, null, 2), 'utf8');
 }
 
 /**
@@ -538,7 +539,8 @@ export async function analyzeTicketAndProposeSpec(ticketInput = {}, options = {}
     estimatedCostUsd: laneDecision.lane === 'LANE_1_FAST_PATH' ? '0.004' : '0.012'
   };
 
-  const projectDir = path.join(FACTORY_ROOT, 'projects', projectSlug);
+  const outputRootDir = options.outputRootDir ? path.resolve(options.outputRootDir) : FACTORY_ROOT;
+  const projectDir = path.join(outputRootDir, 'projects', projectSlug);
   const deltasDir = path.join(projectDir, 'deltas');
   const reportsDir = path.join(projectDir, 'triage_reports');
   fs.mkdirSync(deltasDir, { recursive: true });
@@ -693,35 +695,38 @@ export async function analyzeTicketAndProposeSpec(ticketInput = {}, options = {}
     }
   };
 
-  const ledger = readFeedbackLedger();
+  const ledgerPath = options.ledgerPath ? path.resolve(options.ledgerPath) : FEEDBACK_LEDGER_PATH;
+  const ledger = readFeedbackLedger(ledgerPath);
   ledger.tickets = ledger.tickets.filter((t) => t.ticketId !== ticketId);
   ledger.tickets.unshift(record);
-  writeFeedbackLedger(ledger);
+  writeFeedbackLedger(ledger, ledgerPath);
 
   // Move Kanban card to Column 2 (`col_2_waiting_hitl` — `2. Esperando Info / Aprobación de Plano (wait-to-implement)`)
-  try {
-    emitFactoryTelemetryEvent({
-      projectSlug,
-      activeLane: laneInfo.lane,
-      rpiStage: 'Spec & Triage HITL Gate',
-      rpiStageOrder: 2,
-      agentId: 'triage-agent',
-      stationId: 'SALA_1_RECEPCION_TRIAJE',
-      status: 'waiting_hitl',
-      activeFile: reportRelPath,
-      lastAction: `Ticket ${ticketId} (${scopeInfo.commercialScope}) diagnosticado en solo-lectura. Esperando aprobación del CTO.`,
-      forensicWhy: `Triaje Etapa 1 completado sin tocar código. Generado ${deltaRelPath} y ${reportRelPath}.`,
-      kanbanCardUpdate: {
-        id: `card-${ticketId}`,
-        reqId: ticketId.toUpperCase(),
-        title: `[${scopeInfo.commercialScope}] ${validation.sanitizedMessage.slice(0, 68)}`,
-        assignedRole: 'triage-agent',
-        lane: laneInfo.lane,
-        fileLocks: astDiagnosis.fileLocks,
-        columnId: 'col_2_waiting_hitl'
-      }
-    });
-  } catch {}
+  if (!options.skipTelemetry) {
+    try {
+      emitFactoryTelemetryEvent({
+        projectSlug,
+        activeLane: laneInfo.lane,
+        rpiStage: 'Spec & Triage HITL Gate',
+        rpiStageOrder: 2,
+        agentId: 'triage-agent',
+        stationId: 'SALA_1_RECEPCION_TRIAJE',
+        status: 'waiting_hitl',
+        activeFile: reportRelPath,
+        lastAction: `Ticket ${ticketId} (${scopeInfo.commercialScope}) diagnosticado en solo-lectura. Esperando aprobación del CTO.`,
+        forensicWhy: `Triaje Etapa 1 completado sin tocar código. Generado ${deltaRelPath} y ${reportRelPath}.`,
+        kanbanCardUpdate: {
+          id: `card-${ticketId}`,
+          reqId: ticketId.toUpperCase(),
+          title: `[${scopeInfo.commercialScope}] ${validation.sanitizedMessage.slice(0, 68)}`,
+          assignedRole: 'triage-agent',
+          lane: laneInfo.lane,
+          fileLocks: astDiagnosis.fileLocks,
+          columnId: 'col_2_waiting_hitl'
+        }
+      });
+    } catch {}
+  }
 
   return {
     ok: true,
@@ -761,7 +766,9 @@ export async function executeApprovedTicketFix(ticketId, options = {}) {
     };
   }
 
-  const ledger = readFeedbackLedger();
+  const outputRootDir = options.outputRootDir ? path.resolve(options.outputRootDir) : FACTORY_ROOT;
+  const ledgerPath = options.ledgerPath ? path.resolve(options.ledgerPath) : FEEDBACK_LEDGER_PATH;
+  const ledger = readFeedbackLedger(ledgerPath);
   const ticketRecord = ledger.tickets.find((t) => t.ticketId === cleanTicketId);
   if (!ticketRecord) {
     return {
@@ -822,7 +829,7 @@ export async function executeApprovedTicketFix(ticketId, options = {}) {
   }
 
   const oxlintCheck = runOxlintFastPass();
-  const deltaSpecAbs = ticketRecord.deltaSpecPath ? path.join(FACTORY_ROOT, ticketRecord.deltaSpecPath) : '';
+  const deltaSpecAbs = ticketRecord.deltaSpecPath ? path.join(outputRootDir, ticketRecord.deltaSpecPath) : '';
   const deltaSpecText =
     deltaSpecAbs && fs.existsSync(deltaSpecAbs) ? fs.readFileSync(deltaSpecAbs, 'utf8') : '';
   let parsedSandboxManifest = {};
@@ -876,32 +883,34 @@ export async function executeApprovedTicketFix(ticketId, options = {}) {
     braintrustScore: autoevals.overallScore
   };
 
-  writeFeedbackLedger(ledger);
+  writeFeedbackLedger(ledger, ledgerPath);
 
   // Move Kanban card to Column 5 (`col_5_approved_packaged`)
-  try {
-    emitFactoryTelemetryEvent({
-      projectSlug,
-      activeLane: ticketRecord.laneInfo?.lane || 'LANE_1_FAST_PATH',
-      rpiStage: 'Sandbox Implementation & 100/100 Verification',
-      rpiStageOrder: 6,
-      agentId: 'senior-coder',
-      stationId: 'SALA_5_BUNKER_CIEGO_QA_SEC',
-      status: 'passed',
-      activeFile: ticketRecord.deltaSpecPath,
-      lastAction: `Ticket ${cleanTicketId} aprobado por CTO e implementado en Sandbox (${branchName}) con 100/100 en Evals.`,
-      forensicWhy: `Etapa 2 completada tras aprobación HITL del CTO. Preview lista en ${previewUrl}.`,
-      kanbanCardUpdate: {
-        id: `card-${cleanTicketId}`,
-        reqId: cleanTicketId.toUpperCase(),
-        title: `[READY FOR PREVIEW] ${ticketRecord.sanitizedMessage.slice(0, 62)}`,
-        assignedRole: 'senior-coder',
-        lane: ticketRecord.laneInfo?.lane || 'LANE_1_FAST_PATH',
-        fileLocks: ticketRecord.astDiagnosis?.fileLocks || [`projects/${projectSlug}/index.html`],
-        columnId: 'col_5_approved_packaged'
-      }
-    });
-  } catch {}
+  if (!options.skipTelemetry) {
+    try {
+      emitFactoryTelemetryEvent({
+        projectSlug,
+        activeLane: ticketRecord.laneInfo?.lane || 'LANE_1_FAST_PATH',
+        rpiStage: 'Sandbox Implementation & 100/100 Verification',
+        rpiStageOrder: 6,
+        agentId: 'senior-coder',
+        stationId: 'SALA_5_BUNKER_CIEGO_QA_SEC',
+        status: 'passed',
+        activeFile: ticketRecord.deltaSpecPath,
+        lastAction: `Ticket ${cleanTicketId} aprobado por CTO e implementado en Sandbox (${branchName}) con 100/100 en Evals.`,
+        forensicWhy: `Etapa 2 completada tras aprobación HITL del CTO. Preview lista en ${previewUrl}.`,
+        kanbanCardUpdate: {
+          id: `card-${cleanTicketId}`,
+          reqId: cleanTicketId.toUpperCase(),
+          title: `[READY FOR PREVIEW] ${ticketRecord.sanitizedMessage.slice(0, 62)}`,
+          assignedRole: 'senior-coder',
+          lane: ticketRecord.laneInfo?.lane || 'LANE_1_FAST_PATH',
+          fileLocks: ticketRecord.astDiagnosis?.fileLocks || [`projects/${projectSlug}/index.html`],
+          columnId: 'col_5_approved_packaged'
+        }
+      });
+    } catch {}
+  }
 
   return {
     ok: true,
@@ -987,62 +996,86 @@ export async function runClientFeedbackTriageSelfTest() {
   );
 
   // Case (c): Stage 1 (Read-Only Triage) generates TRIAGE_REPORT_<id>.md + ticket-<id>.delta.md + Slack Block Kit JSON
-  // and halts in WAITING_CTO_TRIAGE_APPROVAL without opening the Sandbox or modifying code
-  const stage1Res = await analyzeTicketAndProposeSpec(
-    {
-      ticketId: 'tkt-selftest01',
-      projectSlug: 'agencia-alfa',
-      clientId: 'client-alfa-001',
-      sourceChannel: 'client_feedback_widget',
-      sectionSelector: '#hero-cta',
-      pageUrl: 'https://agencia-alfa.pages.dev/',
-      viewport: '1440x900',
-      message:
-        'Por favor cambiar el texto del botón principal del hero a "Agendar Auditoría Ejecutiva" con mi tarjeta 4532 1111 2222 3333.'
-    },
-    { skipSlackWebhook: true, projectSlug: 'agencia-alfa' }
-  );
-  const deltaAbs = path.join(FACTORY_ROOT, stage1Res.deltaSpecPath || '');
-  const reportAbs = path.join(FACTORY_ROOT, stage1Res.triageReportPath || '');
-  const testCOk =
-    stage1Res.ok === true &&
-    stage1Res.status === 'WAITING_CTO_TRIAGE_APPROVAL' &&
-    stage1Res.approvedByCto === false &&
-    stage1Res.sandboxOpened === false &&
-    stage1Res.productionModified === false &&
-    stage1Res.sanitizedMessage.includes('[REDACTED_CARD_PAN]') &&
-    fs.existsSync(deltaAbs) &&
-    fs.existsSync(reportAbs) &&
-    Array.isArray(stage1Res.slackBlockKitCard?.blocks) &&
-    stage1Res.slackBlockKitCard.blocks.length >= 4;
-  console.log(
-    `  [${testCOk ? 'PASS' : 'FAIL'}] (c) Stage 1 Read-Only Triage -> Generated ${stage1Res.triageReportPath} + ${stage1Res.deltaSpecPath} + Halted at WAITING_CTO_TRIAGE_APPROVAL`
-  );
-
-  // Case (d): Stage 2 blocks with HARD_STOP_CTO_TRIAGE_APPROVAL_REQUIRED when unapproved,
-  // and executes in HybridAgentSandbox + generates Preview URL once approvedByCto: true is passed
-  const unapprovedAttempt = await executeApprovedTicketFix('tkt-selftest01', { approvedByCto: false });
-  const approvedExecution = await executeApprovedTicketFix('tkt-selftest01', { approvedByCto: true });
-
-  // Clean up self-test artifacts so we leave zero test debris in `projects/agencia-alfa/`
+  // strictly isolated inside os.tmpdir() and halts in WAITING_CTO_TRIAGE_APPROVAL without opening the Sandbox or modifying code
+  const selfTestTmpRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'wf-triage-selftest-'));
+  const selfTestLedgerPath = path.join(selfTestTmpRoot, 'client_feedback_ledger.json');
+  let testCOk = false;
+  let testDOk = false;
   try {
-    if (fs.existsSync(deltaAbs)) fs.rmSync(deltaAbs, { force: true });
-    if (fs.existsSync(reportAbs)) fs.rmSync(reportAbs, { force: true });
-  } catch {}
+    const stage1Res = await analyzeTicketAndProposeSpec(
+      {
+        ticketId: 'tkt-selftest01',
+        projectSlug: 'agencia-alfa',
+        clientId: 'client-alfa-001',
+        sourceChannel: 'client_feedback_widget',
+        sectionSelector: '#hero-cta',
+        pageUrl: 'https://agencia-alfa.pages.dev/',
+        viewport: '1440x900',
+        message:
+          'Por favor cambiar el texto del botón principal del hero a "Agendar Auditoría Ejecutiva" con mi tarjeta 4532 1111 2222 3333.'
+      },
+      {
+        skipSlackWebhook: true,
+        skipTelemetry: true,
+        projectSlug: 'agencia-alfa',
+        outputRootDir: selfTestTmpRoot,
+        ledgerPath: selfTestLedgerPath
+      }
+    );
+    const deltaAbs = path.join(selfTestTmpRoot, stage1Res.deltaSpecPath || '');
+    const reportAbs = path.join(selfTestTmpRoot, stage1Res.triageReportPath || '');
+    const repoDeltaAbs = path.join(FACTORY_ROOT, stage1Res.deltaSpecPath || '');
+    const repoReportAbs = path.join(FACTORY_ROOT, stage1Res.triageReportPath || '');
+    testCOk =
+      stage1Res.ok === true &&
+      stage1Res.status === 'WAITING_CTO_TRIAGE_APPROVAL' &&
+      stage1Res.approvedByCto === false &&
+      stage1Res.sandboxOpened === false &&
+      stage1Res.productionModified === false &&
+      stage1Res.sanitizedMessage.includes('[REDACTED_CARD_PAN]') &&
+      fs.existsSync(deltaAbs) &&
+      fs.existsSync(reportAbs) &&
+      !fs.existsSync(repoDeltaAbs) &&
+      !fs.existsSync(repoReportAbs) &&
+      Array.isArray(stage1Res.slackBlockKitCard?.blocks) &&
+      stage1Res.slackBlockKitCard.blocks.length >= 4;
+    console.log(
+      `  [${testCOk ? 'PASS' : 'FAIL'}] (c) Stage 1 Read-Only Triage (os.tmpdir() isolated) -> Generated ${stage1Res.triageReportPath} + ${stage1Res.deltaSpecPath} + Halted at WAITING_CTO_TRIAGE_APPROVAL`
+    );
 
-  const testDOk =
-    unapprovedAttempt.ok === false &&
-    unapprovedAttempt.blocked === true &&
-    unapprovedAttempt.error === 'HARD_STOP_CTO_TRIAGE_APPROVAL_REQUIRED' &&
-    approvedExecution.ok === true &&
-    approvedExecution.status === 'READY_FOR_MERGE_PREVIEW' &&
-    approvedExecution.approvedByCto === true &&
-    approvedExecution.sandboxOpened === true &&
-    approvedExecution.branchName === 'feedback/tkt-selftest01' &&
-    approvedExecution.previewUrl.startsWith('https://preview-tkt-selftest01.');
-  console.log(
-    `  [${testDOk ? 'PASS' : 'FAIL'}] (d) Stage 2 HITL Enforcement -> Blocked unapproved run + Executed Sandbox & Preview URL upon CTO Approval`
-  );
+    // Case (d): Stage 2 blocks with HARD_STOP_CTO_TRIAGE_APPROVAL_REQUIRED when unapproved,
+    // and executes in HybridAgentSandbox + generates Preview URL once approvedByCto: true is passed
+    const unapprovedAttempt = await executeApprovedTicketFix('tkt-selftest01', {
+      approvedByCto: false,
+      outputRootDir: selfTestTmpRoot,
+      ledgerPath: selfTestLedgerPath,
+      skipTelemetry: true
+    });
+    const approvedExecution = await executeApprovedTicketFix('tkt-selftest01', {
+      approvedByCto: true,
+      outputRootDir: selfTestTmpRoot,
+      ledgerPath: selfTestLedgerPath,
+      skipTelemetry: true
+    });
+
+    testDOk =
+      unapprovedAttempt.ok === false &&
+      unapprovedAttempt.blocked === true &&
+      unapprovedAttempt.error === 'HARD_STOP_CTO_TRIAGE_APPROVAL_REQUIRED' &&
+      approvedExecution.ok === true &&
+      approvedExecution.status === 'READY_FOR_MERGE_PREVIEW' &&
+      approvedExecution.approvedByCto === true &&
+      approvedExecution.sandboxOpened === true &&
+      approvedExecution.branchName === 'feedback/tkt-selftest01' &&
+      approvedExecution.previewUrl.startsWith('https://preview-tkt-selftest01.');
+    console.log(
+      `  [${testDOk ? 'PASS' : 'FAIL'}] (d) Stage 2 HITL Enforcement -> Blocked unapproved run + Executed Sandbox & Preview URL upon CTO Approval`
+    );
+  } finally {
+    try {
+      fs.rmSync(selfTestTmpRoot, { recursive: true, force: true });
+    } catch {}
+  }
 
   // Case (e): Sliding-Window Rate Limiter (Max 5 tickets/hour per client)
   resetClientRateLimitBuckets();

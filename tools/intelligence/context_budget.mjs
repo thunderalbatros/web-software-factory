@@ -150,14 +150,27 @@ export function codeCompressorAst(rawCode = '', { maxLines = 45 } = {}) {
  * `CodeCompressor`, persists the lossless original in `.cache/headroom_ccr/<hash>.json`,
  * and returns a reversible handle for `headroom_retrieve(hash)`.
  */
+const ensuredCcrDirs = new Set();
+
 export function compressReversibleCcr(payload, options = {}) {
   const mode = options.mode || (typeof payload === 'object' && payload !== null ? 'json' : 'text');
-  const rawSerialized = typeof payload === 'string' ? payload : JSON.stringify(payload, null, 2);
+  const rawSerialized = typeof payload === 'string' ? payload : JSON.stringify(payload);
   const hash = crypto.createHash('sha256').update(rawSerialized, 'utf8').digest('hex').slice(0, 16);
 
   const targetDir = options.headroomDir || process.env.FACTORY_HEADROOM_CCR_DIR || HEADROOM_CCR_DIR;
-  fs.mkdirSync(targetDir, { recursive: true });
+  if (!ensuredCcrDirs.has(targetDir)) {
+    fs.mkdirSync(targetDir, { recursive: true });
+    ensuredCcrDirs.add(targetDir);
+  }
   const ccrFilePath = path.join(targetDir, `${hash}.json`);
+  if (options.handleOnly && fs.existsSync(ccrFilePath)) {
+    return {
+      hash,
+      strategyUsed: 'SmartCrusher',
+      ccrPath: `.cache/headroom_ccr/${hash}.json`,
+      retrieveToolCall: `headroom_retrieve("${hash}")`
+    };
+  }
 
   let compressedPayload;
   let strategyUsed = 'SmartCrusher';
@@ -212,7 +225,9 @@ export function compressReversibleCcr(payload, options = {}) {
     originalPayload: payload
   };
 
-  fs.writeFileSync(ccrFilePath, JSON.stringify(ccrEnvelope, null, 2), 'utf8');
+  if (!fs.existsSync(ccrFilePath)) {
+    fs.writeFileSync(ccrFilePath, JSON.stringify(ccrEnvelope, null, 2), 'utf8');
+  }
 
   return {
     hash,

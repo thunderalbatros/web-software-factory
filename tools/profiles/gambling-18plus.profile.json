@@ -47,6 +47,8 @@
         "architecture_and_books",
         "software_factory",
         "agent_skills",
+        "factory_docs",
+        "sources",
         "core_index"
       ],
       "maxInlineTokens": 1200

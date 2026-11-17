@@ -43,7 +43,6 @@
     "lightningcss",
     "lighthouse",
     "lite-youtube-embed",
-    "minisearch",
     "nanostores",
     "odiff-bin",
     "oxfmt",
@@ -57,6 +56,8 @@
     "playwright-core",
     "pngjs",
     "repomix",
+    "sqlite-vec",
+    "sqlite-vec-windows-x64",
     "svgo",
     "temml",
     "three",
@@ -83,6 +84,7 @@
       "oxfmt": "0.78.0",
       "@biomejs/biome": "2.6.7",
       "playwright-core": "1.65.1",
+      "sqlite-vec": "0.1.9",
       "svgo": "4.1.0"
     },
     "templates/astro-edge": {

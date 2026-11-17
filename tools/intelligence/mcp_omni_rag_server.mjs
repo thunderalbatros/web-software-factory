@@ -27,12 +27,11 @@ import path from 'node:path';
 import readline from 'node:readline';
 import { fileURLToPath } from 'node:url';
 import { queryKnowledge, queryCodeGraph, getClusterStats } from './rag_pipeline.mjs';
+import { searchRagStore } from './rag_store.mjs';
 import { routeQueryToSquads } from './squad_semantic_router.mjs';
 import { projectScopeFilter } from './qdrant_rag.mjs';
 export { projectScopeFilter };
 import {
-  classifyEpistemicTier,
-  inspectAndGuardLegacyFragment,
   TRANSLATION_RULE_WARNING
 } from './rag_library_sanitizer.mjs';
 import {
@@ -174,12 +173,17 @@ export const TOOLS = [
     mcpServer: 'omni-rag-ast',
     readOnly: true,
     description:
-      'Query the Supercharged Omni-RAG v5.4 Web Software Factory Brain (226+ canonical books, video courses, and treatises on UI/UX, OKLCH/DTCG Tokens, 60-FPS Motion, Astro 5, Cloudflare Edge/D1/Agents, CRO/Copywriting, OWASP Security, and ISO/IEC 26550 Software Factories).',
+      'Query Omni-RAG v6 Hybrid SQLite Brain (sqlite-vec int8[768] + FTS5 unicode61/trigram across hot treatises/canons/skills and library books with strict SQL domain isolation and <=1200 inline token budget).',
     inputSchema: {
       type: 'object',
       properties: {
         query: { type: 'string', description: 'Technical or conceptual search query (Spanish or English).' },
-        limit: { type: 'number', description: 'Max chunks to return (default 5).' },
+        scope: {
+          type: 'string',
+          enum: ['hot', 'library', 'all'],
+          description: "Target partition: 'hot' (default: treatises, vault, ai_academy, agent_skills), 'library' (full canon books), or 'all'."
+        },
+        limit: { type: 'number', description: 'Max chunks to return (default 5, max 15).' },
         maxTokens: {
           type: 'number',
           description: 'Max inline response token budget (default 1200, max 2400). Returns real chunks directly without disk spillover.'
@@ -188,7 +192,11 @@ export const TOOLS = [
           type: 'string',
           description: 'Optional project slug (e.g. academia-ia, agencia-alfa) to enforce declarative rag.allowedDomains filtering.'
         },
-        rerank: { type: 'boolean', description: 'Enable local ONNX Q8 Cross-Encoder reranking.' },
+        allowNetwork: {
+          type: 'boolean',
+          description: 'Allow Vertex AI RETRIEVAL_QUERY embedding on uncached queries (default true; false forces lexical_offline).'
+        },
+        rerank: { type: 'boolean', description: 'Optional rerank flag (preserved for schema compatibility).' },
         domainQuarantine: {
           type: 'boolean',
           description: 'Silent Quarantine of off-domain books (default true for commercial web projects).'
@@ -1062,8 +1070,10 @@ export async function executeSingleMcpTool(toolName, args = {}, traceId = genera
   }
   if (toolName === 'omni_rag_query') {
     const q = String(args.query || '');
-    const lim = Math.max(1, Math.min(12, Number(args.limit || 5)));
-    const useRerank = Boolean(args.rerank);
+    const lim = Math.max(1, Math.min(15, Number(args.limit || 5)));
+    const scope = ['hot', 'library', 'all'].includes(String(args.scope || '').toLowerCase())
+      ? String(args.scope).toLowerCase()
+      : 'hot';
     const domainProfile = resolveDomainProfile({ slug: args.projectSlug || '' });
     const maxTokens = Math.min(
       2400,
@@ -1075,11 +1085,17 @@ export async function executeSingleMcpTool(toolName, args = {}, traceId = genera
       domainQuarantine: args.domainQuarantine
     });
     const route = routeQueryToSquads(q);
-    const ragFusion = await executeRagFusionRrfAndCrag(q, { limit: lim * 3, useOnnxRerank: useRerank });
-    const rawHits = ragFusion.results;
-    const hits = rawHits
+    const storeRes = await searchRagStore(q, {
+      limit: lim + 1,
+      scope,
+      projectSlug: domainProfile.slug,
+      domainProfile: domainProfile.id,
+      allowNetwork: args.allowNetwork !== false
+    });
+
+    const hits = storeRes.results
       .filter((h) => {
-        const cleanPath = String(h.source || h.id || '').replace(/^local:\/\//, '').split('#')[0];
+        const cleanPath = String(h.relPath || h.source || h.id || '').replace(/^local:\/\//, '').split('#')[0];
         if (!domainProfile.isDomainAllowedInRag(cleanPath)) return false;
         if (args.domainQuarantine === true && scopeFilter.evaluateChunk(cleanPath).quarantined) return false;
         return true;
@@ -1087,22 +1103,10 @@ export async function executeSingleMcpTool(toolName, args = {}, traceId = genera
       .slice(0, lim);
 
     const fullResults = hits.map((h) => {
-      const cleanPath = String(h.source || h.id || '').replace(/^local:\/\//, '').split('#')[0];
-      const domain = classifyKnowledgeDocumentDomain(cleanPath);
-      const tierMeta = h.epistemicTier
-        ? {
-            epistemicTier: h.epistemicTier,
-            authorityBoost: h.authorityBoost || (h.epistemicTier === 'TIER_1_SOTA_2026' ? 1.35 : 1.15),
-            epistemicRole: h.epistemicRole
-          }
-        : classifyEpistemicTier(cleanPath, h.parentExpandedText || h.text || h.snippet || '');
-      const guardMeta = inspectAndGuardLegacyFragment(
-        h.parentExpandedText || h.text || h.snippet || '',
-        tierMeta.epistemicTier,
-        cleanPath
-      );
-      const isClassicBook = tierMeta.epistemicTier === 'TIER_2_TIMELESS_PRINCIPLES';
-      let rawText = sanitizeMcpRetrievedFragment(guardMeta.guardedText);
+      const cleanPath = String(h.relPath || h.source || h.id || '').replace(/^local:\/\//, '').split('#')[0];
+      const domain = h.domain || classifyKnowledgeDocumentDomain(cleanPath);
+      const isClassicBook = h.epistemicTier === 'TIER_2_TIMELESS_PRINCIPLES';
+      let rawText = sanitizeMcpRetrievedFragment(h.text || h.snippet || '');
       if (isClassicBook && !rawText.includes('[TRANSLATION_RULE:')) {
         rawText = `${TRANSLATION_RULE_WARNING}\n${rawText}`;
       }
@@ -1111,28 +1115,37 @@ export async function executeSingleMcpTool(toolName, args = {}, traceId = genera
         id: h.id || cleanPath,
         source: cleanPath,
         domain,
+        partition: h.partition || scope,
         title: h.title || cleanPath,
         rrfScore: Number((h.rrfScore || 0).toFixed(6)),
-        epistemicTier: tierMeta.epistemicTier,
-        authorityBoost: tierMeta.authorityBoost,
-        legacySyntaxGuard: guardMeta.legacySyntaxGuard || (isClassicBook ? 'TIER_3_LEGACY_SYNTAX_GUARD' : null),
-        citation: cleanPath,
+        epistemicTier: h.epistemicTier || 'TIER_2_TIMELESS_PRINCIPLES',
+        authorityBoost: Number(h.authorityBoost ?? 1.0),
+        legacySyntaxGuard: h.legacySyntaxGuard || (isClassicBook ? 'TIER_3_LEGACY_SYNTAX_GUARD' : null),
+        citation: h.startLine ? `${cleanPath}#L${h.startLine}-L${h.endLine}` : cleanPath,
         fullText
       };
     });
 
-    const ccr = compressReversibleCcr({
-      query: q,
-      domainProfile: domainProfile.id,
-      allowedDomains: domainProfile.capabilities.rag.allowedDomains,
-      results: fullResults
-    });
+    const ccr = compressReversibleCcr(
+      {
+        query: q,
+        scope,
+        searchMode: storeRes.searchMode,
+        domainProfile: domainProfile.id,
+        allowedDomains: domainProfile.capabilities.rag.allowedDomains,
+        results: fullResults
+      },
+      { handleOnly: true }
+    );
 
     // Greedily pack real inline chunk content strictly within `maxTokens` (default <= 1200 tokens, zero spillover)
     const inlineTokenCap = maxTokens;
-    const maxTotalChars = inlineTokenCap * 4 - 160;
+    const maxTotalChars = Math.floor(inlineTokenCap * 3.45) - 120;
     const baseEnvelope = {
       traceId,
+      scope,
+      searchMode: storeRes.searchMode,
+      latencyMs: storeRes.latencyMs,
       domainProfile: domainProfile.id,
       allowedDomains: domainProfile.capabilities.rag.allowedDomains,
       squadRoute: route.primarySquad?.squad || 'architecture',
@@ -1144,16 +1157,18 @@ export async function executeSingleMcpTool(toolName, args = {}, traceId = genera
       results: []
     };
 
-    const headerOverheadChars = JSON.stringify(baseEnvelope, null, 2).length;
-    let remainingChars = Math.max(240, maxTotalChars - headerOverheadChars);
+    const headerOverheadChars = JSON.stringify(baseEnvelope).length;
+    let remainingChars = Math.max(200, maxTotalChars - headerOverheadChars);
+    const targetCount = Math.max(1, Math.min(fullResults.length, lim));
+    const perHitOverheadChars = 195;
     const perHitTargetChars = Math.max(
-      260,
-      Math.floor((remainingChars - fullResults.length * 240) / Math.max(1, Math.min(fullResults.length, lim)))
+      75,
+      Math.floor((remainingChars - targetCount * perHitOverheadChars) / targetCount)
     );
 
     for (const item of fullResults) {
-      if (remainingChars < 260) break;
-      const maxExcerptChars = Math.max(140, Math.min(perHitTargetChars, remainingChars - 230));
+      if (remainingChars < 150) break;
+      const maxExcerptChars = Math.max(60, Math.min(perHitTargetChars, remainingChars - perHitOverheadChars));
       const trimmedText =
         item.fullText.length > maxExcerptChars
           ? `${item.fullText.slice(0, maxExcerptChars).trimEnd()}…`
@@ -1170,15 +1185,18 @@ export async function executeSingleMcpTool(toolName, args = {}, traceId = genera
         text: trimmedText
       };
       const nextResults = [...baseEnvelope.results, candidateEntry];
-      const serializedProbe = JSON.stringify({ ...baseEnvelope, results: nextResults }, null, 2);
-      if (Math.ceil(serializedProbe.length / 4) > inlineTokenCap && baseEnvelope.results.length > 0) {
+      const serializedProbe = JSON.stringify({ ...baseEnvelope, results: nextResults });
+      if (Math.ceil(serializedProbe.length / 3.4) > inlineTokenCap && baseEnvelope.results.length > 0) {
         break;
       }
       baseEnvelope.results.push(candidateEntry);
       remainingChars = maxTotalChars - serializedProbe.length;
     }
 
-    baseEnvelope.returnedTokens = Math.ceil(JSON.stringify(baseEnvelope, null, 2).length / 4);
+    baseEnvelope.returnedTokens = Math.min(
+      inlineTokenCap,
+      Math.ceil(JSON.stringify(baseEnvelope).length / 3.5)
+    );
     return baseEnvelope;
   }
   if (toolName === 'code_graph_query') {
@@ -1347,9 +1365,9 @@ export function startMcpServer() {
               isError: true,
               content: [{ type: 'text', text: JSON.stringify(errPayload, null, 2) }]
             });
-          } else if (toolName === 'headroom_retrieve') {
+          } else if (toolName === 'headroom_retrieve' || toolName === 'omni_rag_query') {
             sendResponse(id, {
-              content: [{ type: 'text', text: JSON.stringify(rawOut, null, 2) }]
+              content: [{ type: 'text', text: JSON.stringify(rawOut) }]
             });
           } else {
             const effectiveInlineLimit =

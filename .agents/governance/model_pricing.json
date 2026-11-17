@@ -301,6 +301,40 @@
         }
       },
       "batch": null
+    },
+    "gemini-embedding-001": {
+      "provider": "vertex-ai",
+      "modality": "embedding",
+      "unit": "per_1m_tokens",
+      "pricing_basis": "official_public_pricing",
+      "runtime_http_200_verified": true,
+      "verified_at": "2026-11-17",
+      "source_url": "https://cloud.google.com/model-garden/pricing",
+      "pricing_note": "Vertex AI Gemini Multilingual Embedding (768d Matryoshka truncation + explicit L2 norm); $0.15 USD / 1M online input tokens, $0.12 USD / 1M batch input tokens, $0.00 output.",
+      "standard": {
+        "global": {
+          "input_per_1m_usd": 0.15,
+          "output_per_1m_usd": 0,
+          "cached_input_per_1m_usd": 0.15
+        },
+        "regional": {
+          "input_per_1m_usd": 0.15,
+          "output_per_1m_usd": 0,
+          "cached_input_per_1m_usd": 0.15
+        }
+      },
+      "batch": {
+        "global": {
+          "input_per_1m_usd": 0.12,
+          "output_per_1m_usd": 0,
+          "cached_input_per_1m_usd": 0.12
+        },
+        "regional": {
+          "input_per_1m_usd": 0.12,
+          "output_per_1m_usd": 0,
+          "cached_input_per_1m_usd": 0.12
+        }
+      }
     }
   }
 }

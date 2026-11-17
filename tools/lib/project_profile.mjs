@@ -113,8 +113,14 @@ const COMMERCIAL_MARKETING_SKILL_NAMES = new Set([
   'marketing-psychology'
 ]);
 
+const MOTION_AND_3D_SKILL_NAMES = new Set([
+  'threejs-r186-tsl-and-gsap-free',
+  'motion-engineer'
+]);
+
 const charterCache = new Map();
 const domainProfileCache = new Map();
+const projectManifestCache = new Map();
 
 function deepFreeze(obj) {
   if (!obj || typeof obj !== 'object' || Object.isFrozen(obj)) return obj;
@@ -146,19 +152,27 @@ export function loadProjectCharter(charterPath = ACADEMY_CHARTER_PATH) {
   return charter;
 }
 
+function readCachedJsonIfExists(absPath) {
+  if (!absPath || !fs.existsSync(absPath)) return null;
+  const st = fs.statSync(absPath);
+  const hit = projectManifestCache.get(absPath);
+  if (hit && hit.mtimeMs === st.mtimeMs) return hit.data;
+  const parsed = JSON.parse(fs.readFileSync(absPath, 'utf8'));
+  projectManifestCache.set(absPath, { mtimeMs: st.mtimeMs, data: parsed });
+  return parsed;
+}
+
 function readProjectManifest(slugOrDir) {
   const raw = String(slugOrDir || '').trim();
   if (!raw) return null;
   const candidateBySlug = SLUG_RE.test(raw) ? path.join(FACTORY_ROOT, 'projects', raw, 'factory.project.json') : '';
-  if (candidateBySlug && fs.existsSync(candidateBySlug)) {
-    return JSON.parse(fs.readFileSync(candidateBySlug, 'utf8'));
+  if (candidateBySlug) {
+    const bySlug = readCachedJsonIfExists(candidateBySlug);
+    if (bySlug) return bySlug;
   }
   const resolvedDir = path.isAbsolute(raw) ? raw : path.resolve(FACTORY_ROOT, raw);
   const candidateInDir = path.join(resolvedDir, 'factory.project.json');
-  if (fs.existsSync(candidateInDir)) {
-    return JSON.parse(fs.readFileSync(candidateInDir, 'utf8'));
-  }
-  return null;
+  return readCachedJsonIfExists(candidateInDir);
 }
 
 function readProjectConfigProfile(slug) {
@@ -300,6 +314,16 @@ export function classifyKnowledgeDocumentDomain(filePathOrSource = '') {
   if (!norm) return 'core_index';
 
   if (norm.startsWith('knowledge/')) {
+    if (/(?:STREAM_MARKETING|EXTREMAL_EVENTS|ACTUARIAL|CROWD_PLAY|SLOTS?_OVERLAY)/i.test(norm)) {
+      return 'streaming_and_overlays';
+    }
+    if (
+      /(?:PAYMENT_GATEWAYS|EDGE_PAYMENTS|MERCADOPAGO|STRIPE_LEMONSQUEEZY|CHECKOUT_CRO|HORMOZI_OFFERS|SCHWARTZ_CRO|B2B_COPYWRITING|SOFTWARE_PRICING_DAVIDSON|FOGG_BEHAVIOR_MODEL|PREDICTABLY_IRRATIONAL_ARIELY)/i.test(
+        norm
+      )
+    ) {
+      return 'commercial_marketing_skills';
+    }
     const parts = norm.split('/');
     if (parts.length >= 3) {
       return parts[1];
@@ -310,6 +334,9 @@ export function classifyKnowledgeDocumentDomain(filePathOrSource = '') {
     const skillName = norm.split('/')[2] || '';
     if (COMMERCIAL_MARKETING_SKILL_NAMES.has(skillName)) {
       return 'commercial_marketing_skills';
+    }
+    if (MOTION_AND_3D_SKILL_NAMES.has(skillName)) {
+      return 'motion_and_animation';
     }
     return 'agent_skills';
   }

@@ -230,6 +230,9 @@ export function checkLockfileAndVulnerabilities(rootDir = ROOT, skipNetworkAudit
           ...targetPkg.dependencies,
           ...targetPkg.devDependencies
         };
+        const optionalDeps = {
+          ...targetPkg.optionalDependencies
+        };
         for (const depName of Object.keys(directDeps)) {
           const nodeKey = `node_modules/${depName}`;
           const rootLockDeps = lock.packages?.[""]?.dependencies || {};
@@ -241,6 +244,35 @@ export function checkLockfileAndVulnerabilities(rootDir = ROOT, skipNetworkAudit
               file: relLockFile,
               package: depName,
               message: `Dependency "${depName}" in ${relRoot}/package.json is missing from ${relLockFile}.`
+            });
+          }
+          const parentLockEntry = lock.packages[nodeKey];
+          const subOptionalDeps = parentLockEntry?.optionalDependencies || {};
+          const winSubPkg = `node_modules/${depName}-windows-x64`;
+          if (
+            process.platform === "win32" &&
+            process.arch === "x64" &&
+            subOptionalDeps[`${depName}-windows-x64`] &&
+            !lock.packages[winSubPkg]
+          ) {
+            issues.push({
+              rule: "OPTIONAL_PLATFORM_BINARY_MISSING_IN_LOCKFILE",
+              severity: "HIGH",
+              file: relLockFile,
+              package: `${depName}-windows-x64`,
+              message: `Platform binary optional subpackage "${depName}-windows-x64" required by "${depName}" on Windows x64 is missing from ${relLockFile}.`
+            });
+          }
+        }
+        for (const optName of Object.keys(optionalDeps)) {
+          const rootLockOptDeps = lock.packages?.[""]?.optionalDependencies || {};
+          if (!lock.packages[`node_modules/${optName}`] && !rootLockOptDeps[optName]) {
+            issues.push({
+              rule: "LOCKFILE_DRIFT",
+              severity: "HIGH",
+              file: relLockFile,
+              package: optName,
+              message: `Optional dependency "${optName}" in ${relRoot}/package.json is missing from ${relLockFile}.`
             });
           }
         }
@@ -446,7 +478,20 @@ export function generateCycloneDxSbom(rootDir = ROOT) {
     }
   } catch {}
 
-  const allDeps = { ...pkg.dependencies, ...pkg.devDependencies };
+  const allDeps = {
+    ...pkg.dependencies,
+    ...pkg.devDependencies,
+    ...pkg.optionalDependencies
+  };
+  for (const depName of Object.keys(pkg.dependencies || {})) {
+    const parentEntry = lockPackages[`node_modules/${depName}`];
+    const optSubs = parentEntry?.optionalDependencies || {};
+    for (const [subName, subVer] of Object.entries(optSubs)) {
+      if (lockPackages[`node_modules/${subName}`]?.version && fs.existsSync(path.join(rootDir, "node_modules", subName))) {
+        allDeps[subName] = subVer;
+      }
+    }
+  }
   const components = Object.entries(allDeps).map(([depName, specVer]) => {
     const lockEntry = lockPackages[`node_modules/${depName}`] || {};
     const resolvedVersion = String(lockEntry.version || String(specVer).replace(/^[\^~]/, ""));

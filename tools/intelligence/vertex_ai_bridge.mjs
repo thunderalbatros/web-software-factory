@@ -82,10 +82,22 @@ function runGcloudCli(args = []) {
     }
   }
   const gcloudBin = resolveGcloudBinary();
+  if (process.platform === 'win32' && /\.(?:cmd|bat)$/i.test(gcloudBin)) {
+    return execFileSync(
+      'cmd.exe',
+      ['/d', '/s', '/c', `""${gcloudBin}" ${args.join(' ')}"`],
+      {
+        encoding: 'utf8',
+        windowsHide: true,
+        windowsVerbatimArguments: true,
+        stdio: ['ignore', 'pipe', 'pipe']
+      }
+    ).trim();
+  }
   return execFileSync(gcloudBin, args, {
     encoding: 'utf8',
     windowsHide: true,
-    shell: process.platform === 'win32' && /\.(?:cmd|bat)$/i.test(gcloudBin)
+    stdio: ['ignore', 'pipe', 'pipe']
   }).trim();
 }
 
@@ -1335,8 +1347,15 @@ export async function speculativeRagSynthesize(query, hits = []) {
 // ============================================================================
 export const GCP_FINOPS_BUDGET_PATH = path.join(ROOT, '.agents', 'governance', 'gcp_finops_budget.json');
 
-async function resolveGcpAccessToken(explicitToken = '') {
+let cachedGcpAccessToken = '';
+let cachedGcpAccessTokenExpiresAt = 0;
+
+export async function resolveGcpAccessToken(explicitToken = '') {
   if (explicitToken) return String(explicitToken).trim();
+  const now = Date.now();
+  if (cachedGcpAccessToken && now < cachedGcpAccessTokenExpiresAt) {
+    return cachedGcpAccessToken;
+  }
   const rawAdc =
     env.GOOGLE_APPLICATION_CREDENTIALS ||
     (process.env.APPDATA ? path.join(process.env.APPDATA, 'gcloud', 'application_default_credentials.json') : '');
@@ -1356,11 +1375,28 @@ async function resolveGcpAccessToken(explicitToken = '') {
           })
         });
         const tokJson = await res.json();
-        if (tokJson.access_token) return tokJson.access_token;
+        if (tokJson.access_token) {
+          cachedGcpAccessToken = tokJson.access_token;
+          cachedGcpAccessTokenExpiresAt = now + 45 * 60_000;
+          return cachedGcpAccessToken;
+        }
       }
     } catch {}
   }
-  return runGcloudCli(['auth', 'application-default', 'print-access-token']);
+  try {
+    const adcTok = runGcloudCli(['auth', 'application-default', 'print-access-token']);
+    if (adcTok) {
+      cachedGcpAccessToken = adcTok;
+      cachedGcpAccessTokenExpiresAt = now + 45 * 60_000;
+      return adcTok;
+    }
+  } catch {}
+  const userTok = runGcloudCli(['auth', 'print-access-token']);
+  if (userTok) {
+    cachedGcpAccessToken = userTok;
+    cachedGcpAccessTokenExpiresAt = now + 45 * 60_000;
+  }
+  return userTok;
 }
 
 /**
@@ -3071,6 +3107,309 @@ export async function routeMultimediaGeneration({
     ok: true,
     ...opSummary,
     finopsStatus
+  };
+}
+
+let stageEmbeddingCumulativeUsd = 0;
+
+/**
+ * Applies explicit L2 normalization AFTER truncation to 768 dimensions (mandatory for Matryoshka embeddings).
+ */
+export function l2NormalizeFloat32Vector(rawValues = [], expectedDim = 768) {
+  const f32 = new Float32Array(expectedDim);
+  let normSq = 0;
+  const len = Math.min(expectedDim, rawValues.length);
+  for (let i = 0; i < len; i++) {
+    const v = Number(rawValues[i]) || 0;
+    f32[i] = v;
+    normSq += v * v;
+  }
+  const norm = Math.sqrt(normSq);
+  if (norm > 1e-12) {
+    for (let i = 0; i < expectedDim; i++) {
+      f32[i] /= norm;
+    }
+  }
+  return f32;
+}
+
+/**
+ * Quantizes an L2-normalized Float32 unit vector into signed int8 `[-127, 127]` (`Uint8Array` buffer for sqlite-vec `vec_int8`).
+ */
+export function quantizeUnitVectorToInt8(unitFloat32) {
+  const dim = unitFloat32.length;
+  let maxAbs = 0;
+  for (let i = 0; i < dim; i++) {
+    const a = Math.abs(unitFloat32[i]);
+    if (a > maxAbs) maxAbs = a;
+  }
+  const i8 = new Int8Array(dim);
+  if (maxAbs > 1e-12) {
+    const scale = 127 / maxAbs;
+    for (let i = 0; i < dim; i++) {
+      const q = Math.round(unitFloat32[i] * scale);
+      i8[i] = q > 127 ? 127 : q < -127 ? -127 : q;
+    }
+  }
+  return new Uint8Array(i8.buffer, i8.byteOffset, i8.byteLength);
+}
+
+/**
+ * Generates multilingual 768d L2-normalized + int8-quantized embeddings via Vertex AI (`gemini-embedding-001`)
+ * under strict FinOps pricing & stage cap (`<= $0.60 USD` default). Degrades cleanly when `allowNetwork === false`.
+ */
+export async function embedTextsWithVertex(items = [], options = {}) {
+  if (options.allowNetwork === false || process.env.FACTORY_ALLOW_NETWORK === '0') {
+    return {
+      ok: false,
+      offline: true,
+      reason: 'NETWORK_DISABLED_LEXICAL_FALLBACK',
+      model: String(options.model || 'gemini-embedding-001'),
+      dim: Number(options.outputDimensionality || 768),
+      totalTokens: 0,
+      billedCostUsd: 0,
+      embeddings: []
+    };
+  }
+
+  const normalizedItems = Array.isArray(items)
+    ? items.map((it) =>
+        typeof it === 'string'
+          ? { content: it, title: '' }
+          : { content: String(it?.content || it?.text || ''), title: String(it?.title || '') }
+      )
+    : [];
+
+  if (normalizedItems.length === 0) {
+    return {
+      ok: true,
+      offline: false,
+      model: String(options.model || 'gemini-embedding-001'),
+      dim: Number(options.outputDimensionality || 768),
+      totalTokens: 0,
+      billedCostUsd: 0,
+      embeddings: []
+    };
+  }
+
+  const model = String(options.model || 'gemini-embedding-001');
+  const location = String(options.location || 'us-central1');
+  const dim = Number(options.outputDimensionality || 768);
+  const taskType = String(options.taskType || 'RETRIEVAL_DOCUMENT');
+  const stageCapUsd = Number.isFinite(options.stageCapUsd) ? Number(options.stageCapUsd) : 0.6;
+  const maxBatchSize = Math.max(1, Math.min(64, Number(options.batchSize || 32)));
+  const maxCharsPerInstance = Number(options.maxCharsPerInstance || 6200);
+  const projectId = String(options.project || GCP_PROJECT || env.GCP_PROJECT_ID || '');
+
+  const verifiedPricing = getVerifiedModelPricing(model, location, options.pricingPath || MODEL_PRICING_PATH);
+  if (!verifiedPricing || !verifiedPricing.standard || verifiedPricing.standard.input_per_1m_usd === undefined) {
+    throw new Error(`UNVERIFIED_EMBEDDING_MODEL_PRICING: ${model} in ${location}`);
+  }
+  const inputRatePerToken = Number(verifiedPricing.standard.input_per_1m_usd) / 1_000_000;
+
+  let totalEstimatedTokens = 0;
+  for (const it of normalizedItems) {
+    const clippedLen = Math.min(maxCharsPerInstance, it.content.length) + Math.min(240, it.title.length);
+    totalEstimatedTokens += Math.max(1, Math.ceil(clippedLen / 3.4));
+  }
+  const estimatedCostUsd = Number((totalEstimatedTokens * inputRatePerToken).toFixed(8));
+
+  if (stageEmbeddingCumulativeUsd + estimatedCostUsd > stageCapUsd) {
+    throw new Error(
+      `FINOPS_STAGE_EMBEDDING_CAP_EXCEEDED: estimated $${(stageEmbeddingCumulativeUsd + estimatedCostUsd).toFixed(4)} USD exceeds stage ceiling $${stageCapUsd.toFixed(2)} USD.`
+    );
+  }
+
+  const dailyCheck = checkFinOpsDailyBudget(estimatedCostUsd, { allowBatchBudgetOverride: false });
+  if (!dailyCheck.allowed) {
+    throw new Error(`FINOPS_DAILY_BUDGET_BLOCKED: ${dailyCheck.reason}`);
+  }
+
+  if (!projectId) {
+    return {
+      ok: false,
+      offline: true,
+      reason: 'MISSING_GCP_PROJECT_ID',
+      model,
+      dim,
+      totalTokens: 0,
+      billedCostUsd: 0,
+      embeddings: []
+    };
+  }
+
+  let accessToken = '';
+  try {
+    accessToken = await resolveGcpAccessToken(options.accessToken || '');
+  } catch (authErr) {
+    return {
+      ok: false,
+      offline: true,
+      reason: `AUTH_UNAVAILABLE:${authErr.message}`,
+      model,
+      dim,
+      totalTokens: 0,
+      billedCostUsd: 0,
+      embeddings: []
+    };
+  }
+  if (!accessToken) {
+    return {
+      ok: false,
+      offline: true,
+      reason: 'EMPTY_ACCESS_TOKEN',
+      model,
+      dim,
+      totalTokens: 0,
+      billedCostUsd: 0,
+      embeddings: []
+    };
+  }
+
+  const fetchFn = options.fetchImpl || globalThis.fetch;
+  const host = location === 'global' ? 'https://aiplatform.googleapis.com' : `https://${location}-aiplatform.googleapis.com`;
+  const url = `${host}/v1/projects/${projectId}/locations/${location}/publishers/google/models/${model}:predict`;
+
+  const batches = [];
+  let curBatch = [];
+  let curBatchEstTokens = 0;
+  for (const it of normalizedItems) {
+    const content = it.content.length > maxCharsPerInstance ? it.content.slice(0, maxCharsPerInstance) : it.content;
+    const title = it.title.length > 240 ? it.title.slice(0, 240) : it.title;
+    const itemTokens = Math.max(1, Math.ceil((content.length + title.length) / 3.4));
+    if (
+      curBatch.length > 0 &&
+      (curBatch.length >= maxBatchSize || curBatchEstTokens + itemTokens > 12000)
+    ) {
+      batches.push(curBatch);
+      curBatch = [];
+      curBatchEstTokens = 0;
+    }
+    const inst = { task_type: taskType, content };
+    if (taskType === 'RETRIEVAL_DOCUMENT' && title) {
+      inst.title = title;
+    }
+    curBatch.push(inst);
+    curBatchEstTokens += itemTokens;
+  }
+  if (curBatch.length > 0) batches.push(curBatch);
+
+  const embeddings = [];
+  let actualTotalTokens = 0;
+  let totalBilledUsd = 0;
+
+  const sendInstancesWithSplitFallback = async (instancesSlice) => {
+    let lastErr = null;
+    for (let attempt = 0; attempt < 3; attempt++) {
+      try {
+        const res = await fetchFn(url, {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            'Content-Type': 'application/json',
+            'x-goog-user-project': projectId
+          },
+          body: JSON.stringify({
+            instances: instancesSlice,
+            parameters: { outputDimensionality: dim }
+          }),
+          signal: AbortSignal.timeout(35000)
+        });
+        const bodyJson = await res.json();
+        if (res.ok && Array.isArray(bodyJson?.predictions) && bodyJson.predictions.length === instancesSlice.length) {
+          return bodyJson.predictions;
+        }
+        lastErr = new Error(`HTTP_${res.status}:${JSON.stringify(bodyJson).slice(0, 240)}`);
+        if (res.status === 400 && instancesSlice.length > 1) {
+          const mid = Math.floor(instancesSlice.length / 2);
+          const left = await sendInstancesWithSplitFallback(instancesSlice.slice(0, mid));
+          const right = await sendInstancesWithSplitFallback(instancesSlice.slice(mid));
+          return [...left, ...right];
+        }
+        if (res.status === 429 || res.status >= 500) {
+          await new Promise((r) => setTimeout(r, 700 * (attempt + 1)));
+          continue;
+        }
+        break;
+      } catch (e) {
+        lastErr = e;
+        await new Promise((r) => setTimeout(r, 500 * (attempt + 1)));
+      }
+    }
+    throw lastErr || new Error('VERTEX_EMBEDDING_PREDICT_FAILED');
+  };
+
+  const concurrency = Math.max(1, Math.min(6, Number(options.concurrency || 4)));
+  for (let bStart = 0; bStart < batches.length; bStart += concurrency) {
+    const waveBatches = batches.slice(bStart, bStart + concurrency);
+    const wavePredLists = await Promise.all(
+      waveBatches.map((b) => sendInstancesWithSplitFallback(b))
+    );
+
+    let waveTokens = 0;
+    for (const predictions of wavePredLists) {
+      for (const pred of predictions) {
+        const rawVals = pred?.embeddings?.values || [];
+        if (rawVals.length !== dim) {
+          throw new Error(`EMBEDDING_DIM_MISMATCH: expected ${dim}, got ${rawVals.length}`);
+        }
+        const tok = Number(pred?.embeddings?.statistics?.token_count || 0);
+        waveTokens += tok > 0 ? tok : 1;
+        const unitVec = l2NormalizeFloat32Vector(rawVals, dim);
+        const int8Bytes = quantizeUnitVectorToInt8(unitVec);
+        embeddings.push({
+          int8Bytes,
+          unitFloat32: unitVec,
+          tokenCount: tok
+        });
+      }
+    }
+
+    const batchCostUsd = Number((waveTokens * inputRatePerToken).toFixed(8));
+    actualTotalTokens += waveTokens;
+    totalBilledUsd = Number((totalBilledUsd + batchCostUsd).toFixed(8));
+    stageEmbeddingCumulativeUsd = Number((stageEmbeddingCumulativeUsd + batchCostUsd).toFixed(8));
+
+    if (options.recordSpend !== false) {
+      recordFinOpsTelemetry({
+        operation: options.operation || `rag_v6_embed_${taskType.toLowerCase()}`,
+        model,
+        inputChars: waveTokens * 4,
+        outputChars: 0,
+        cacheHit: false,
+        fixedCostUsd: batchCostUsd
+      });
+    }
+
+    if (stageEmbeddingCumulativeUsd > stageCapUsd) {
+      throw new Error(
+        `FINOPS_STAGE_EMBEDDING_CAP_EXCEEDED_MID_RUN: $${stageEmbeddingCumulativeUsd.toFixed(4)} > $${stageCapUsd.toFixed(2)} USD.`
+      );
+    }
+  }
+
+  if (options.recordSpend !== false && totalBilledUsd > 0) {
+    syncFinOpsBudgetJsonSummary({
+      timestamp: new Date().toISOString(),
+      tierId: 'VERTEX_EMBEDDING_768D_INT8',
+      engine: model,
+      estimatedAssetCostUsd: estimatedCostUsd,
+      billedCostUsd: totalBilledUsd
+    });
+  }
+
+  return {
+    ok: true,
+    offline: false,
+    model,
+    location,
+    dim,
+    taskType,
+    batchesSent: batches.length,
+    totalTokens: actualTotalTokens,
+    billedCostUsd: totalBilledUsd,
+    stageCumulativeUsd: stageEmbeddingCumulativeUsd,
+    embeddings
   };
 }
 

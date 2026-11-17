@@ -30,7 +30,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const ROOT = path.resolve(__dirname, '..', '..');
 const CACHE_DIR = path.join(ROOT, '.cache');
-const SQLITE_DB_FILE = path.join(CACHE_DIR, 'omni_rag_fts5.sqlite');
+const SQLITE_DB_FILE = path.join(CACHE_DIR, 'rag_hot.sqlite');
 const GRAPH_JSON_FILE = path.join(CACHE_DIR, 'code_and_wiki_graph.json');
 
 // Domain Hub Mapping for automatic Obsidian [[Wikilink]] constellation
@@ -272,9 +272,11 @@ export function buildCodeGraph() {
 /**
  * 2. Build & Enrich Obsidian [[Wikilink]] Knowledge Graph across knowledge/ and .agents/skills/
  */
-export function buildAndEnrichWikiGraph(enrichFiles = true) {
+export function buildAndEnrichWikiGraph(_enrichFiles = false) {
   const mdFiles = [
-    ...walkFiles(path.join(ROOT, 'knowledge'), ['.md'], 4),
+    ...walkFiles(path.join(ROOT, 'knowledge'), ['.md'], 4).filter(
+      (f) => !f.replace(/\\/g, '/').includes('knowledge/_inbox_')
+    ),
     ...walkFiles(path.join(ROOT, '.agents', 'skills'), ['.md'], 3)
   ];
 
@@ -297,37 +299,19 @@ export function buildAndEnrichWikiGraph(enrichFiles = true) {
     });
   }
 
-  // Ensure every knowledge/*.md document has rich [[Wikilinks]] to its domain hubs + INDEX so Obsidian Graph View has 0 orphans
-  if (enrichFiles) {
-    for (const node of wikiNodes) {
-      if (!node.id.startsWith('knowledge/') || node.title === 'INDEX') continue;
-      const raw = fs.readFileSync(node.filePath, 'utf8');
-      const existingLinks = raw.match(/\[\[[^\]]+\]\]/g) || [];
-      if (existingLinks.length >= 2) continue;
-
-      const hubs = DOMAIN_HUBS[node.domain] || DOMAIN_HUBS.architecture_and_books;
-      const targetLinks = ['[[INDEX]]'];
-      for (const h of hubs) {
-        if (h !== node.title && targetLinks.length < 5) {
-          targetLinks.push(`[[${h}]]`);
-        }
-      }
-      const footer = `\n\n---\n**Conexiones del Grafo (Obsidian):** ${targetLinks.join(' · ')} · #${node.domain}\n`;
-      fs.writeFileSync(node.filePath, raw.trimEnd() + footer, 'utf8');
-    }
-  }
-
-  // Extract all [[Wikilinks]] and markdown file links
+  // Extract all [[Wikilinks]], markdown file links, and virtual domain-hub edges strictly in memory/SQLite (never mutating knowledge/**/*.md)
   const wikiEdges = [];
   const seenWikiEdge = new Set();
 
   for (const node of wikiNodes) {
     const raw = fs.readFileSync(node.filePath, 'utf8');
+    let explicitLinkCount = 0;
     // Match [[NoteName]] or [[NoteName|Alias]]
     for (const m of raw.matchAll(/\[\[([^\]|#]+)(?:[|#][^\]]*)?\]\]/g)) {
       const targetName = m[1].trim().toLowerCase();
       const targetRel = nameToRel.get(targetName);
       if (targetRel && targetRel !== node.id) {
+        explicitLinkCount++;
         const key = `${node.id}->${targetRel}`;
         if (!seenWikiEdge.has(key)) {
           seenWikiEdge.add(key);
@@ -340,10 +324,25 @@ export function buildAndEnrichWikiGraph(enrichFiles = true) {
       const targetName = m[1].trim().toLowerCase();
       const targetRel = nameToRel.get(targetName);
       if (targetRel && targetRel !== node.id) {
+        explicitLinkCount++;
         const key = `${node.id}->${targetRel}`;
         if (!seenWikiEdge.has(key)) {
           seenWikiEdge.add(key);
           wikiEdges.push({ source: node.id, target: targetRel, relation: 'md_link' });
+        }
+      }
+    }
+    if (explicitLinkCount < 2 && node.id.startsWith('knowledge/') && node.title !== 'INDEX') {
+      const hubs = DOMAIN_HUBS[node.domain] || DOMAIN_HUBS.architecture_and_books;
+      const targets = ['INDEX', ...hubs.filter((h) => h !== node.title).slice(0, 4)];
+      for (const h of targets) {
+        const targetRel = nameToRel.get(h.toLowerCase());
+        if (targetRel && targetRel !== node.id) {
+          const key = `${node.id}->${targetRel}`;
+          if (!seenWikiEdge.has(key)) {
+            seenWikiEdge.add(key);
+            wikiEdges.push({ source: node.id, target: targetRel, relation: 'virtual_hub_edge' });
+          }
         }
       }
     }
@@ -362,10 +361,11 @@ export function buildAndEnrichWikiGraph(enrichFiles = true) {
 /**
  * Persist both graphs into .cache/omni_rag_fts5.sqlite and .cache/code_and_wiki_graph.json
  */
-export function buildAndPersistAllGraphs() {
+export function buildAndPersistAllGraphs(options = {}) {
   if (!fs.existsSync(CACHE_DIR)) fs.mkdirSync(CACHE_DIR, { recursive: true });
+  const targetSqlitePath = options.dbPath || SQLITE_DB_FILE;
   const codeGraph = buildCodeGraph();
-  const wikiGraph = buildAndEnrichWikiGraph(true);
+  const wikiGraph = buildAndEnrichWikiGraph(false);
 
   const payload = {
     generatedAt: new Date().toISOString(),
@@ -376,8 +376,9 @@ export function buildAndPersistAllGraphs() {
 
   try {
     const { DatabaseSync } = require('node:sqlite');
-    const db = new DatabaseSync(SQLITE_DB_FILE);
+    const db = new DatabaseSync(targetSqlitePath);
     try {
+      db.exec('PRAGMA journal_mode = WAL; PRAGMA synchronous = NORMAL; PRAGMA busy_timeout = 5000; PRAGMA foreign_keys = ON;');
       db.exec(`
         CREATE TABLE IF NOT EXISTS code_nodes (
           id TEXT PRIMARY KEY,
@@ -405,13 +406,10 @@ export function buildAndPersistAllGraphs() {
           target TEXT,
           relation TEXT
         );
-        DELETE FROM code_nodes;
-        DELETE FROM code_edges;
-        DELETE FROM wiki_nodes;
-        DELETE FROM wiki_edges;
       `);
 
-      db.exec('BEGIN TRANSACTION');
+      db.exec('BEGIN IMMEDIATE');
+      db.exec('DELETE FROM code_nodes; DELETE FROM code_edges; DELETE FROM wiki_nodes; DELETE FROM wiki_edges;');
       const insCodeNode = db.prepare('INSERT INTO code_nodes VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
       for (const n of codeGraph.nodes) {
         insCodeNode.run(

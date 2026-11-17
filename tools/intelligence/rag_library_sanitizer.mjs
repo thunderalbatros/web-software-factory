@@ -642,9 +642,9 @@ export function classifyEpistemicTier(filePath = '', rawText = '', options = {})
 
   if (relPath.startsWith('.agents/skills/')) {
     return {
-      epistemicTier: 'TIER_1_SOTA_2026',
-      authorityBoost: 1.35,
-      epistemicRole: 'EL CÓMO TÉCNICO (Skill operativa interna de la Web Software Factory)'
+      epistemicTier: 'TIER_AGENT_SKILL',
+      authorityBoost: 1.0,
+      epistemicRole: 'EL CÓMO OPERATIVO (Skill interna agent_skills x1.0 — subordinada a cánones verificados)'
     };
   }
 

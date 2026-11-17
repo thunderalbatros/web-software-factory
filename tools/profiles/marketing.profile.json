@@ -48,6 +48,8 @@
         "cybersecurity",
         "agent_skills",
         "commercial_marketing_skills",
+        "factory_docs",
+        "sources",
         "core_index"
       ],
       "maxInlineTokens": 1200

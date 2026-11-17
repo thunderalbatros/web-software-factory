@@ -838,17 +838,19 @@ test('Stage 3A (d & e): zero academy_* tables in .cache/omni_rag_fts5.sqlite + b
   assert.equal(eduProfile.commercialMode, false);
   assert.equal(eduProfile.externalGenerativeFallbacksAllowed, false);
 
-  // (d) Verify 0 academy_* tables inside disposable .cache/omni_rag_fts5.sqlite
-  const ftsCachePath = path.join(FACTORY_ROOT, '.cache', 'omni_rag_fts5.sqlite');
-  if (fs.existsSync(ftsCachePath)) {
-    const cacheDb = new DatabaseSync(ftsCachePath);
-    try {
-      const legacyTables = cacheDb
-        .prepare("SELECT name FROM sqlite_master WHERE type = 'table' AND name LIKE 'academy\\_%' ESCAPE '\\'")
-        .all();
-      assert.equal(legacyTables.length, 0, `Unexpected academy_* tables in RAG cache: ${JSON.stringify(legacyTables)}`);
-    } finally {
-      cacheDb.close();
+  // (d) Verify 0 academy_* tables inside disposable .cache/{rag_hot,rag_library,omni_rag_fts5}.sqlite
+  for (const dbName of ['rag_hot.sqlite', 'rag_library.sqlite', 'omni_rag_fts5.sqlite']) {
+    const ftsCachePath = path.join(FACTORY_ROOT, '.cache', dbName);
+    if (fs.existsSync(ftsCachePath)) {
+      const cacheDb = new DatabaseSync(ftsCachePath);
+      try {
+        const legacyTables = cacheDb
+          .prepare("SELECT name FROM sqlite_master WHERE type = 'table' AND name LIKE 'academy\\_%' ESCAPE '\\'")
+          .all();
+        assert.equal(legacyTables.length, 0, `Unexpected academy_* tables in ${dbName}: ${JSON.stringify(legacyTables)}`);
+      } finally {
+        cacheDb.close();
+      }
     }
   }
 
@@ -2447,6 +2449,187 @@ test('Stage 3C.3-A — declarative domain profiles, CCRmcp round-trip, stub MCP 
   assert.equal(green.passed, true);
   assert.equal(green.activeState, 'hitl_review_ready');
 });
+
+test('Stage 3C.3-B — Omni-RAG v6 sqlite-vec int8[768], atomic chunker, incremental sync, domain isolation, lexical_offline fallback & os.tmpdir() triage', async () => {
+  const {
+    openRagDatabase,
+    chunkMarkdownDocument,
+    hasUnbalancedCodeFence,
+    syncRagStore,
+    searchRagStore,
+    closeAllRagDatabases
+  } = await import('../tools/intelligence/rag_store.mjs');
+  const { classifyEpistemicTier } = await import('../tools/intelligence/rag_library_sanitizer.mjs');
+  const { l2NormalizeFloat32Vector, quantizeUnitVectorToInt8 } = await import(
+    '../tools/intelligence/vertex_ai_bridge.mjs'
+  );
+  const { analyzeTicketAndProposeSpec } = await import('../tools/feedback/client_feedback_triage_agent.mjs');
+
+  const tmpRagRoot = fs.mkdtempSync(path.join(HERMETIC_TMP_ROOT, 'rag-v6-unit-'));
+  try {
+    // 1. Verify agent_skills reclassified to TIER_AGENT_SKILL (1.0x) instead of TIER_1_SOTA_2026 (1.35x)
+    const skillTier = classifyEpistemicTier('.agents/skills/baseline-ui/SKILL.md', '# Baseline UI Skill');
+    assert.equal(skillTier.epistemicTier, 'TIER_AGENT_SKILL');
+    assert.equal(skillTier.authorityBoost, 1.0);
+
+    // 2. Verify sqlite-vec loads in memory, locks enableLoadExtension(false), and executes KNN on int8[768]
+    const memDbPath = path.join(tmpRagRoot, 'vec_probe.sqlite');
+    const probeDb = openRagDatabase(memDbPath, { freshConnection: true });
+    assert.throws(() => probeDb.loadExtension('blocked.dll'));
+    const raw768 = Array.from({ length: 768 }, (_, idx) => (idx === 3 ? 2.5 : idx % 11 === 0 ? -0.2 : 0.01));
+    const unit768 = l2NormalizeFloat32Vector(raw768, 768);
+    let normSq = 0;
+    for (const v of unit768) normSq += v * v;
+    assert.ok(Math.abs(Math.sqrt(normSq) - 1.0) < 1e-5, 'Expected unit L2 norm after post-truncation normalization');
+    const qBytes = quantizeUnitVectorToInt8(unit768);
+    probeDb
+      .prepare('INSERT INTO chunks_vec(chunk_id, domain, emb) VALUES (CAST(? AS INTEGER), ?, vec_int8(?))')
+      .run(77, 'ai_academy', qBytes);
+    const knnHit = probeDb
+      .prepare("SELECT chunk_id, distance FROM chunks_vec WHERE emb MATCH vec_int8(?) AND k = 1 AND domain IN ('ai_academy')")
+      .get(qBytes);
+    assert.equal(knnHit.chunk_id, 77);
+    probeDb.close();
+
+    // 3. Verify structural chunker keeps fenced code, tables, and $$ math atomic (0 broken fences, 0 [Scope: ...])
+    const mdSample = [
+      '# Arquitectura Híbrida',
+      '',
+      '| Motor | Rol |',
+      '| --- | --- |',
+      '| FTS5 | Léxico |',
+      '| vec0 | Semántico |',
+      '',
+      '```js',
+      'function demo() {',
+      '  // # comment inside code must NOT split as heading',
+      '  return 42;',
+      '}',
+      '```',
+      '',
+      '$$',
+      'RRF(d) = \\sum \\frac{1}{60 + r(d)}',
+      '$$'
+    ].join('\n');
+    const chunked = chunkMarkdownDocument({
+      relPath: 'knowledge/ai_academy/CANON_SAMPLE.md',
+      rawText: mdSample,
+      partition: 'hot'
+    });
+    assert.ok(chunked.chunks.length >= 1);
+    for (const c of chunked.chunks) {
+      assert.equal(hasUnbalancedCodeFence(c.text), false);
+      assert.equal(c.text.includes('[Scope:'), false);
+    }
+
+    // 4. Verify incremental hot/library sync, emb_cache $0.00 reuse, SQL domain isolation, and lexical_offline mode
+    const corpusRoot = path.join(tmpRagRoot, 'workspace');
+    const hotPath = path.join(tmpRagRoot, 'rag_hot.sqlite');
+    const libPath = path.join(tmpRagRoot, 'rag_library.sqlite');
+    fs.mkdirSync(path.join(corpusRoot, 'knowledge', 'ai_academy'), { recursive: true });
+    fs.mkdirSync(path.join(corpusRoot, 'knowledge', 'streaming_and_overlays'), { recursive: true });
+
+    const eduCanonPath = path.join(corpusRoot, 'knowledge', 'ai_academy', 'CANON_EDU_UNIT.md');
+    const casinoBookPath = path.join(corpusRoot, 'knowledge', 'streaming_and_overlays', 'book_casino_slots.md');
+    fs.writeFileSync(
+      eduCanonPath,
+      '---\napproved_by: "CTO"\nsources:\n  - url: "https://unesco.org/ai"\n    http_status: 200\n    verified_at: "2026-11-17"\n---\n# Pedagogía Socrática\n\nProgresión de competencias UNESCO Acquire Deepen Create con ejemplos resueltos.\n',
+      'utf8'
+    );
+    fs.writeFileSync(
+      casinoBookPath,
+      '# Casino Slots Overlay\n\nRuleta y tragamonedas RTP bankroll sniper overlay en vivo.\n',
+      'utf8'
+    );
+
+    let mockEmbedCalls = 0;
+    const mockFetch = async (_url, init) => {
+      mockEmbedCalls++;
+      const body = JSON.parse(init.body);
+      const predictions = body.instances.map((inst, idx) => ({
+        embeddings: {
+          values: Array.from({ length: 768 }, (_, d) => (d === idx % 8 ? 0.9 : 0.02)),
+          statistics: { token_count: Math.max(4, Math.ceil(String(inst.content || '').length / 4)), truncated: false }
+        }
+      }));
+      return new Response(JSON.stringify({ predictions }), { status: 200 });
+    };
+
+    const sync1 = await syncRagStore({
+      rootDir: corpusRoot,
+      hotDbPath: hotPath,
+      libraryDbPath: libPath,
+      embed: true,
+      allowNetwork: true,
+      accessToken: 'unit-test-token',
+      fetchImpl: mockFetch,
+      recordSpend: false,
+      skipGraphs: true
+    });
+    assert.equal(sync1.hot.upsertedDocs, 1);
+    assert.equal(sync1.library.upsertedDocs, 1);
+    assert.ok(mockEmbedCalls >= 2);
+
+    const callsAfterFirst = mockEmbedCalls;
+    const sync2 = await syncRagStore({
+      rootDir: corpusRoot,
+      hotDbPath: hotPath,
+      libraryDbPath: libPath,
+      embed: true,
+      allowNetwork: true,
+      accessToken: 'unit-test-token',
+      fetchImpl: mockFetch,
+      recordSpend: false,
+      skipGraphs: true
+    });
+    assert.equal(sync2.hot.skippedDocs, 1);
+    assert.equal(sync2.library.skippedDocs, 1);
+    assert.equal(mockEmbedCalls, callsAfterFirst, 'Second sync with unchanged SHA-256 must make 0 embedding calls');
+
+    // Offline lexical fallback + zero casino leakage in education profile
+    const offlineEduRes = await searchRagStore('casino slots ruleta UNESCO Acquire Deepen Create', {
+      scope: 'all',
+      domainProfile: 'education',
+      hotDbPath: hotPath,
+      libraryDbPath: libPath,
+      allowNetwork: false,
+      skipAutoBootstrap: true
+    });
+    assert.equal(offlineEduRes.searchMode, 'lexical_offline');
+    assert.equal(
+      offlineEduRes.results.some((r) => r.domain === 'streaming_and_overlays'),
+      false,
+      'Education profile SQL filter must block streaming_and_overlays before ranking'
+    );
+    assert.equal(offlineEduRes.results[0]?.domain, 'ai_academy');
+
+    // 5. Verify Triage Stage 1 writes exclusively to outputRootDir in os.tmpdir(), leaving projects/agencia-alfa clean
+    const triageTmp = path.join(tmpRagRoot, 'triage-out');
+    const triageRes = await analyzeTicketAndProposeSpec(
+      {
+        ticketId: 'tkt-unit3c3b',
+        projectSlug: 'agencia-alfa',
+        clientId: 'client-unit-1',
+        sourceChannel: 'client_feedback_widget',
+        sectionSelector: '#hero-cta',
+        message: 'Por favor cambiar el texto del botón principal del hero.'
+      },
+      {
+        skipSlackWebhook: true,
+        skipTelemetry: true,
+        outputRootDir: triageTmp,
+        ledgerPath: path.join(triageTmp, 'ledger.json')
+      }
+    );
+    assert.equal(triageRes.status, 'WAITING_CTO_TRIAGE_APPROVAL');
+    assert.equal(fs.existsSync(path.join(triageTmp, triageRes.deltaSpecPath)), true);
+    assert.equal(fs.existsSync(path.join(FACTORY_ROOT, triageRes.deltaSpecPath)), false);
+  } finally {
+    closeAllRagDatabases();
+    fs.rmSync(tmpRagRoot, { recursive: true, force: true });
+  }
+});
+
 
 
 

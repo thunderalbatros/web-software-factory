@@ -11,6 +11,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { queryKnowledge, invalidateIndexCache } from './rag_pipeline.mjs';
+import { BENCHMARK_40_QRELS, runRagBenchmarkV6 } from './rag_benchmark_v6.mjs';
+
+export { BENCHMARK_40_QRELS, runRagBenchmarkV6 };
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -311,37 +314,43 @@ export function compareBenchmarkRuns(baseline, after) {
   };
 }
 
-if (process.argv[1] && path.resolve(process.argv[1]) === __filename) {
+if (process.argv[1] && path.resolve(process.argv[1]).toLowerCase() === path.resolve(__filename).toLowerCase()) {
   const args = process.argv.slice(2);
-  const saveBaselineIdx = args.indexOf('--save-baseline');
-  const compareIdx = args.indexOf('--compare');
-  const outIdx = args.indexOf('--output');
-
-  const snapshot = await runBenchmark20Queries({ reloadIndex: true });
-
-  if (saveBaselineIdx !== -1) {
-    const relTarget = args[saveBaselineIdx + 1] || 'data/academy/rag_benchmark_20q_baseline.json';
-    const absTarget = path.resolve(ROOT, relTarget);
-    fs.mkdirSync(path.dirname(absTarget), { recursive: true });
-    fs.writeFileSync(absTarget, JSON.stringify(snapshot, null, 2) + '\n', 'utf8');
-    console.log(JSON.stringify({ savedBaseline: relTarget, queryCount: snapshot.queryCount }, null, 2));
-  } else if (compareIdx !== -1) {
-    const relBase = args[compareIdx + 1] || 'data/academy/rag_benchmark_20q_baseline.json';
-    const baseline = JSON.parse(fs.readFileSync(path.resolve(ROOT, relBase), 'utf8'));
-    const report = compareBenchmarkRuns(baseline, snapshot);
-    if (outIdx !== -1 && args[outIdx + 1]) {
-      const absOut = path.resolve(ROOT, args[outIdx + 1]);
-      fs.mkdirSync(path.dirname(absOut), { recursive: true });
-      fs.writeFileSync(absOut, JSON.stringify({ after: snapshot, comparison: report }, null, 2) + '\n', 'utf8');
-    }
-    console.log(JSON.stringify(report.summary, null, 2));
-    if (!report.summary.zeroEngineeringDegradation || !report.summary.allExpectedCanonsHit) {
-      process.exitCode = 1;
-    }
+  if (args.includes('--v6') || args.includes('--40q')) {
+    const v6Report = await runRagBenchmarkV6({ allowNetwork: !args.includes('--offline') });
+    console.log(JSON.stringify({ allPassed: v6Report.allPassed, metrics: v6Report.metrics, gates: v6Report.gates }, null, 2));
+    if (!v6Report.allPassed) process.exitCode = 1;
   } else {
-    console.log(JSON.stringify(snapshot.summary, null, 2));
-    if (!snapshot.summary.allExpectedCanonsHit) {
-      process.exitCode = 1;
+    const saveBaselineIdx = args.indexOf('--save-baseline');
+    const compareIdx = args.indexOf('--compare');
+    const outIdx = args.indexOf('--output');
+
+    const snapshot = await runBenchmark20Queries({ reloadIndex: true });
+
+    if (saveBaselineIdx !== -1) {
+      const relTarget = args[saveBaselineIdx + 1] || 'data/academy/rag_benchmark_20q_baseline.json';
+      const absTarget = path.resolve(ROOT, relTarget);
+      fs.mkdirSync(path.dirname(absTarget), { recursive: true });
+      fs.writeFileSync(absTarget, JSON.stringify(snapshot, null, 2) + '\n', 'utf8');
+      console.log(JSON.stringify({ savedBaseline: relTarget, queryCount: snapshot.queryCount }, null, 2));
+    } else if (compareIdx !== -1) {
+      const relBase = args[compareIdx + 1] || 'data/academy/rag_benchmark_20q_baseline.json';
+      const baseline = JSON.parse(fs.readFileSync(path.resolve(ROOT, relBase), 'utf8'));
+      const report = compareBenchmarkRuns(baseline, snapshot);
+      if (outIdx !== -1 && args[outIdx + 1]) {
+        const absOut = path.resolve(ROOT, args[outIdx + 1]);
+        fs.mkdirSync(path.dirname(absOut), { recursive: true });
+        fs.writeFileSync(absOut, JSON.stringify({ after: snapshot, comparison: report }, null, 2) + '\n', 'utf8');
+      }
+      console.log(JSON.stringify(report.summary, null, 2));
+      if (!report.summary.zeroEngineeringDegradation || !report.summary.allExpectedCanonsHit) {
+        process.exitCode = 1;
+      }
+    } else {
+      console.log(JSON.stringify(snapshot.summary, null, 2));
+      if (!snapshot.summary.allExpectedCanonsHit) {
+        process.exitCode = 1;
+      }
     }
   }
 }
