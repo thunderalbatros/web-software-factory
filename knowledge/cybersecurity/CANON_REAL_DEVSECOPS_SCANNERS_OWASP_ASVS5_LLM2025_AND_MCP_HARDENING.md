@@ -1,7 +1,7 @@
 ---
 title: "DevSecOps Real 2026: Escáneres Open-Source Auditables, Hardening de Servidores MCP, OWASP ASVS 5.0 y Seguridad en Edge Workers"
 domain: "cybersecurity"
-approval_status: "PENDING_CTO_REVIEW"
+approval_status: "APPROVED_BY_CTO"
 created_at: "2026-11-17"
 sources:
   - title: "Opengrep — Open-Source LGPL-2.1 AST SAST Engine"
@@ -44,6 +44,8 @@ sources:
     url: "https://arxiv.org/abs/2503.18813"
     verified_at: "2026-11-17"
     http_status: 200
+approved_by: "CTO"
+approved_at: "2026-11-17T15:37:31.574Z"
 ---
 
 # DevSecOps Real 2026: Escáneres Open-Source Auditables, Hardening de Servidores MCP, OWASP ASVS 5.0 y Seguridad en Edge Workers

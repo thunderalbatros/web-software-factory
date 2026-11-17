@@ -1,7 +1,7 @@
 ---
 title: "RAG Híbrido v6.1, Cross-Encoder Rerankers Open-Source, Tuning Quirúrgico SQLite y Datos Edge (Cloudflare D1 / Drizzle)"
 domain: "architecture_and_edge"
-approval_status: "PENDING_CTO_REVIEW"
+approval_status: "APPROVED_BY_CTO"
 created_at: "2026-11-17"
 sources:
   - title: "BAAI/bge-reranker-v2-m3 — Multilingual Cross-Encoder Reranker (MIT)"
@@ -44,6 +44,8 @@ sources:
     url: "https://orm.drizzle.team/docs/connect-cloudflare-d1"
     verified_at: "2026-11-17"
     http_status: 200
+approved_by: "CTO"
+approved_at: "2026-11-17T15:37:31.574Z"
 ---
 
 # RAG Híbrido v6.1, Cross-Encoder Rerankers Open-Source, Tuning Quirúrgico SQLite y Datos Edge

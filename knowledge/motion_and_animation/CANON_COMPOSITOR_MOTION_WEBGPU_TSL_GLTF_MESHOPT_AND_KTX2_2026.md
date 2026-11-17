@@ -1,7 +1,7 @@
 ---
 title: "Coreografía de Movimiento a 60/120 FPS, OGL vs Three.js WebGPU/TSL y Pipeline glTF-Transform + Meshoptimizer + KTX2"
 domain: "motion_and_animation"
-approval_status: "PENDING_CTO_REVIEW"
+approval_status: "APPROVED_BY_CTO"
 created_at: "2026-11-17"
 sources:
   - title: "MDN Web Docs — Web Animations API (WAAPI)"
@@ -40,6 +40,8 @@ sources:
     url: "https://discoverthreejs.com/"
     verified_at: "2026-11-17"
     http_status: 200
+approved_by: "CTO"
+approved_at: "2026-11-17T15:37:31.574Z"
 ---
 
 # Coreografía de Movimiento a 60/120 FPS, OGL vs Three.js WebGPU/TSL y Pipeline glTF-Transform + Meshoptimizer + KTX2

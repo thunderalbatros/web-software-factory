@@ -1,7 +1,7 @@
 ---
 title: "Web Platform Baseline 2026: Astro 7 Óptimo, Ingeniería de INP/LCP, Primitivas CSS Nativas y Gate Dual WCAG 2.2 AA + APCA"
 domain: "ui_ux_design"
-approval_status: "PENDING_CTO_REVIEW"
+approval_status: "APPROVED_BY_CTO"
 created_at: "2026-11-17"
 sources:
   - title: "Astro Documentation — Experimental & Built-in Fonts Optimization Guide"
@@ -40,6 +40,8 @@ sources:
     url: "https://www.w3.org/TR/WCAG22/"
     verified_at: "2026-11-17"
     http_status: 200
+approved_by: "CTO"
+approved_at: "2026-11-17T15:37:31.574Z"
 ---
 
 # Web Platform Baseline 2026: Astro 7 Óptimo, Ingeniería de INP/LCP, Primitivas CSS Nativas y Gate Dual WCAG 2.2 AA + APCA

@@ -1,7 +1,7 @@
 ---
 title: "Codificación Agéntica SOTA 2026: MCP SDK Oficial, AST-Grep/Tree-Sitter, Orquestación Determinista y Evals Reales"
 domain: "software_factory"
-approval_status: "PENDING_CTO_REVIEW"
+approval_status: "APPROVED_BY_CTO"
 created_at: "2026-11-17"
 sources:
   - title: "Model Context Protocol — Security Best Practices Specification"
@@ -44,6 +44,8 @@ sources:
     url: "https://huggingface.co/learn/mcp-course/unit0/introduction"
     verified_at: "2026-11-17"
     http_status: 200
+approved_by: "CTO"
+approved_at: "2026-11-17T15:37:31.574Z"
 ---
 
 # Codificación Agéntica SOTA 2026: MCP SDK Oficial, AST-Grep/Tree-Sitter, Orquestación Determinista y Evals Reales
