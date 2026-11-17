@@ -83,6 +83,25 @@ function foldForClassifier(raw = '') {
     .trim();
 }
 
+const PRO_SOCIAL_HOSTS = new Set([
+  'linkedin.com',
+  'www.linkedin.com',
+  'lnkd.in',
+  'x.com',
+  'www.x.com',
+  'twitter.com',
+  'www.twitter.com'
+]);
+
+const PRO_SOCIAL_MESSAGE_ES =
+  'Las redes profesionales (LinkedIn y X) solo se muestran como insignias verificadas desde /perfil/. En mensajes solo se aceptan repositorios y demos de código.';
+
+const BLOCKED_PRO_SOCIAL_DOMAIN_RX =
+  /(?:^|[^a-z0-9])(?:(?:www|m|mobile|l)\s*\.\s*)?(?:linkedin\s*\.\s*com|lnkd\s*\.\s*in|x\s*\.\s*com|twitter\s*\.\s*com)(?:$|[^a-z0-9])/i;
+
+const BLOCKED_PRO_SOCIAL_EVASION_RX =
+  /(?:\b(?:linkedin|twitter)\s*[:=]\s*@?[a-z0-9_.-]{2,}|\bx\s*[:=]\s*@[a-z0-9_]{1,15}\b|\b(?:mi|nuestro|su)\s+(?:(?:perfil|cuenta|usuario)\s+(?:de|en)\s+)?(?:linkedin|twitter|x)\b|\b(?:escribe|escribime|escribeme|mandame|pasa|pasame|agregame|buscame|seguime|sigueme|encuentrame|encontrame|contacto)\b[^.\n]{0,36}\b(?:linkedin|twitter|en\s+x)\b|\ben\s+(?:linkedin|twitter|x)\s+@[a-z0-9_.]{2,})/i;
+
 const BLOCKED_SOCIAL_DOMAIN_RX =
   /(?:^|[^a-z0-9])(?:(?:www|m|l)\s*\.\s*)?(?:instagram\s*\.\s*com|instagr\s*\.\s*am|facebook\s*\.\s*com|fb\s*\.\s*com|tiktok\s*\.\s*com|wa\s*\.\s*me|whatsapp\s*\.\s*com|t\s*\.\s*me|discord\s*\.\s*gg|discord\s*\.\s*com)(?:$|[^a-z0-9])/i;
 
@@ -100,20 +119,6 @@ const BLOCKED_SECRET_RX =
 
 const BLOCKED_PHONE_RX =
   /(?:\+\d{1,3}[\s.-]?(?:\(?\d{1,4}\)?[\s.-]?){1,2}\d{3,4}[\s.-]?\d{3,4}\b|\(?\b0?\d{2,4}\)?[\s.-]\d{3,4}[\s.-]\d{4}\b|\b(?:tel|telefono|teléfono|cel|celular|numero|número|llamar|llamame)\b[^0-9\n]{0,16}\+?\d[\d\s.-]{7,16}\d\b)/i;
-
-const X_RESERVED_PATHS = new Set([
-  'home',
-  'explore',
-  'search',
-  'notifications',
-  'messages',
-  'settings',
-  'compose',
-  'i',
-  'intent',
-  'login',
-  'signup'
-]);
 
 function isAllowedInternalPath(pathname = '') {
   const clean = String(pathname || '').split('?')[0].split('#')[0];
@@ -155,6 +160,14 @@ export function validateCommunityUrl(rawUrl, options = {}) {
 
   const host = parsed.hostname.toLowerCase();
 
+  if (PRO_SOCIAL_HOSTS.has(host)) {
+    return {
+      valid: false,
+      reasonCode: 'BLOCKED_SOCIAL_IN_MESSAGE_USE_PROFILE_BADGE',
+      messageEs: PRO_SOCIAL_MESSAGE_ES
+    };
+  }
+
   if (ALLOWED_REPO_HOSTS.has(host)) {
     if (!parsed.pathname || parsed.pathname === '/') {
       return { valid: false, reasonCode: 'URL_NOT_IN_ALLOWLIST' };
@@ -170,28 +183,6 @@ export function validateCommunityUrl(rawUrl, options = {}) {
     return { valid: true, normalizedUrl: parsed.href };
   }
 
-  if (host === 'linkedin.com' || host === 'www.linkedin.com') {
-    if (parsed.search || parsed.hash) {
-      return { valid: false, reasonCode: 'URL_NOT_IN_ALLOWLIST' };
-    }
-    const m = /^\/in\/([a-zA-Z0-9-]{3,100})\/?$/.exec(parsed.pathname);
-    if (!m) {
-      return { valid: false, reasonCode: 'URL_NOT_IN_ALLOWLIST' };
-    }
-    return { valid: true, normalizedUrl: `https://www.linkedin.com/in/${m[1]}` };
-  }
-
-  if (host === 'x.com') {
-    if (parsed.search || parsed.hash) {
-      return { valid: false, reasonCode: 'URL_NOT_IN_ALLOWLIST' };
-    }
-    const m = /^\/([a-zA-Z0-9_]{1,15})\/?$/.exec(parsed.pathname);
-    if (!m || X_RESERVED_PATHS.has(m[1].toLowerCase())) {
-      return { valid: false, reasonCode: 'URL_NOT_IN_ALLOWLIST' };
-    }
-    return { valid: true, normalizedUrl: `https://x.com/${m[1]}` };
-  }
-
   return { valid: false, reasonCode: 'URL_NOT_IN_ALLOWLIST' };
 }
 
@@ -204,9 +195,6 @@ const ALLOWED_BARE_HOSTS = new Set([
   'huggingface.co',
   'codepen.io',
   'stackblitz.com',
-  'linkedin.com',
-  'www.linkedin.com',
-  'x.com',
   'academia-ia.pages.dev',
   'youtube-nocookie.com',
   'archive.org'
@@ -224,6 +212,7 @@ export function inspectDeterministicLayer1({
   const normalizedTexts = textFields.map((t) => normalizeModerationText(t)).filter(Boolean);
   const combined = normalizedTexts.join('\n');
   const combinedWithUrl = attachedUrl ? `${combined}\n${normalizeModerationText(attachedUrl)}` : combined;
+  const foldedCombined = foldForClassifier(combinedWithUrl);
 
   if (BLOCKED_SECRET_RX.test(combinedWithUrl)) {
     return { allowed: false, reasonCode: 'BLOCKED_SECRET_OR_TOKEN', layer: 'layer1_deterministic' };
@@ -234,6 +223,14 @@ export function inspectDeterministicLayer1({
   if (BLOCKED_SHORTENER_RX.test(combinedWithUrl)) {
     return { allowed: false, reasonCode: 'BLOCKED_URL_SHORTENER', layer: 'layer1_deterministic' };
   }
+  if (BLOCKED_PRO_SOCIAL_DOMAIN_RX.test(combinedWithUrl) || BLOCKED_PRO_SOCIAL_EVASION_RX.test(foldedCombined)) {
+    return {
+      allowed: false,
+      reasonCode: 'BLOCKED_SOCIAL_IN_MESSAGE_USE_PROFILE_BADGE',
+      messageEs: PRO_SOCIAL_MESSAGE_ES,
+      layer: 'layer1_deterministic'
+    };
+  }
   if (BLOCKED_SOCIAL_DOMAIN_RX.test(combinedWithUrl) || BLOCKED_EVASION_MENTION_RX.test(combinedWithUrl)) {
     return { allowed: false, reasonCode: 'BLOCKED_SOCIAL_OR_MESSAGING', layer: 'layer1_deterministic' };
   }
@@ -241,7 +238,12 @@ export function inspectDeterministicLayer1({
   if (attachedUrl) {
     const urlCheck = validateCommunityUrl(attachedUrl, { requireRepoHost, siteOrigin });
     if (!urlCheck.valid) {
-      return { allowed: false, reasonCode: urlCheck.reasonCode, layer: 'layer1_deterministic' };
+      return {
+        allowed: false,
+        reasonCode: urlCheck.reasonCode,
+        ...(urlCheck.messageEs ? { messageEs: urlCheck.messageEs } : {}),
+        layer: 'layer1_deterministic'
+      };
     }
   }
 
@@ -250,7 +252,12 @@ export function inspectDeterministicLayer1({
   for (const rawLink of httpMatches) {
     const check = validateCommunityUrl(rawLink, { requireRepoHost: false, siteOrigin });
     if (!check.valid) {
-      return { allowed: false, reasonCode: check.reasonCode, layer: 'layer1_deterministic' };
+      return {
+        allowed: false,
+        reasonCode: check.reasonCode,
+        ...(check.messageEs ? { messageEs: check.messageEs } : {}),
+        layer: 'layer1_deterministic'
+      };
     }
     textWithoutAllowedUrls = textWithoutAllowedUrls.replace(rawLink, ' ');
   }
@@ -332,6 +339,7 @@ export async function evaluateModerationCascade({
       status: 422,
       error: 'MODERATION_BLOCKED',
       reasonCode: layer1.reasonCode,
+      ...(layer1.messageEs ? { messageEs: layer1.messageEs } : {}),
       layer: layer1.layer
     };
   }

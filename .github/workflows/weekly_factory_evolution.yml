@@ -30,6 +30,7 @@ jobs:
     timeout-minutes: 25
     permissions:
       contents: write
+      pull-requests: write
 
     steps:
       - name: 1. Checkout Repository (Zero Credential Persistence)
@@ -73,21 +74,11 @@ jobs:
         run: |
           node tools/intelligence/weekly_email_notifier.mjs
 
-      - name: 7. Commit & Push Verified Knowledge, Memory & Weekly Report
+      - name: 7. Publish Verified Knowledge, News & Weekly Report via Pull Request
         if: success()
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_BASE_BRANCH: master
         run: |
-          git config user.name "WebFactory Autonomous Evolver"
-          git config user.email "tomasbermudez777@gmail.com"
-          git add knowledge/ weekly_update/ .agents/memory/held_in_regression_tasks.json
-          if git diff --staged --quiet; then
-            echo "No changes to commit."
-          else
-            git commit -m "chore(weekly-evolution): actualización automática SOTA y reporte CTO [skip ci]"
-            BASIC_AUTH=$(printf 'x-access-token:%s' "${GITHUB_TOKEN}" | base64 -w0)
-            GIT_CONFIG_COUNT=1 \
-            GIT_CONFIG_KEY_0="http.https://github.com/.extraheader" \
-            GIT_CONFIG_VALUE_0="AUTHORIZATION: basic ${BASIC_AUTH}" \
-              git push --force-with-lease "https://github.com/${GITHUB_REPOSITORY}.git" HEAD:${GITHUB_REF_NAME}
-          fi
+          node tools/intelligence/weekly_pr_publisher.mjs

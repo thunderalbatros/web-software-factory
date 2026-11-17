@@ -37,15 +37,49 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 export const CHAOS_REPORT_PATH = path.join(__dirname, 'out', 'chaos_report.json');
 
-const CHROME_PATHS = [
+const LINUX_BROWSER_PATHS = [
+  '/usr/bin/google-chrome',
+  '/usr/bin/google-chrome-stable',
+  '/usr/bin/chromium',
+  '/usr/bin/chromium-browser',
+  '/snap/bin/chromium'
+];
+
+const WINDOWS_BROWSER_PATHS = [
   'C:/Program Files/Google/Chrome/Application/chrome.exe',
   'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe',
   'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',
   'C:/Program Files/Microsoft/Edge/Application/msedge.exe'
 ];
 
-function findSystemBrowser() {
-  return CHROME_PATHS.find((p) => fs.existsSync(p));
+/**
+ * Resolves a Chromium/Chrome/Edge binary across CI Linux & Windows desktops:
+ *  1) `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` / `CHROME_PATH` env vars (if present on disk)
+ *  2) Playwright's bundled `chromium.executablePath()` (installed in CI via `playwright install chromium`)
+ *  3) Standard Linux Chromium/Chrome binary locations
+ *  4) Standard Windows Chrome/Edge binary locations
+ */
+export function findSystemBrowser(options = {}) {
+  const env = options.env || process.env;
+  const existsSync = options.existsSync || fs.existsSync;
+  const getPlaywrightExecutablePath =
+    options.getPlaywrightExecutablePath || (() => chromium.executablePath());
+
+  const envCandidates = [env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH, env.CHROME_PATH]
+    .map((p) => String(p || '').trim())
+    .filter(Boolean);
+  for (const candidate of envCandidates) {
+    if (existsSync(candidate)) return candidate;
+  }
+
+  try {
+    const pwExec = String(getPlaywrightExecutablePath() || '').trim();
+    if (pwExec && existsSync(pwExec)) return pwExec;
+  } catch {
+    /* Fall through to standard OS binary locations */
+  }
+
+  return [...LINUX_BROWSER_PATHS, ...WINDOWS_BROWSER_PATHS].find((p) => existsSync(p));
 }
 
 function startLocalServer(rootDir) {
@@ -436,7 +470,7 @@ export async function runChaosMonkeyAudit(options = {}) {
   const chromeExecutable = findSystemBrowser();
 
   if (!chromeExecutable) {
-    throw new Error('System Chrome/Edge executable not found for Playwright chaos testing.');
+    throw new Error('Chromium/Chrome/Edge executable not found for Playwright chaos testing.');
   }
 
   const { server, baseUrl } = await startLocalServer(rootDir);

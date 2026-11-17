@@ -5,25 +5,31 @@
 
 import { PATH_CATALOG } from '../lib/curriculum-paths.mjs';
 
-const ALLOWED_CLIENT_LINK_HOSTS = new Set([
+const ALLOWED_MESSAGE_LINK_HOSTS = new Set([
   'github.com',
   'gitlab.com',
   'huggingface.co',
   'codepen.io',
   'stackblitz.com',
-  'linkedin.com',
-  'www.linkedin.com',
-  'x.com',
   'academia-ia.pages.dev'
 ]);
 
-function isSafeDisplayUrl(rawUrl) {
+const ALLOWED_PROFILE_BADGE_HOSTS = new Set([
+  'github.com',
+  'linkedin.com',
+  'www.linkedin.com',
+  'x.com'
+]);
+
+function isSafeDisplayUrl(rawUrl, allowProfileSocialHosts = false) {
   const raw = String(rawUrl || '').trim();
   if (!raw) return false;
-  if (raw.startsWith('/') && !raw.startsWith('//')) return true;
+  if (raw.startsWith('/') && !raw.startsWith('//')) return !allowProfileSocialHosts;
   try {
     const parsed = new URL(raw);
-    return parsed.protocol === 'https:' && ALLOWED_CLIENT_LINK_HOSTS.has(parsed.hostname.toLowerCase());
+    const host = parsed.hostname.toLowerCase();
+    const allowSet = allowProfileSocialHosts ? ALLOWED_PROFILE_BADGE_HOSTS : ALLOWED_MESSAGE_LINK_HOSTS;
+    return parsed.protocol === 'https:' && allowSet.has(host);
   } catch {
     return false;
   }
@@ -38,7 +44,7 @@ function buildAuthorBadgesRow(containerEl, author) {
   nodes.push(nameBadge);
 
   const badges = author?.badges || {};
-  if (badges.githubUrl && badges.githubLogin && isSafeDisplayUrl(badges.githubUrl)) {
+  if (badges.githubUrl && badges.githubLogin && isSafeDisplayUrl(badges.githubUrl, true)) {
     const ghLink = document.createElement('a');
     ghLink.className = 'badge-pill';
     ghLink.href = badges.githubUrl;
@@ -47,7 +53,7 @@ function buildAuthorBadgesRow(containerEl, author) {
     ghLink.textContent = `GitHub: @${badges.githubLogin}`;
     nodes.push(ghLink);
   }
-  if (badges.linkedinUrl && isSafeDisplayUrl(badges.linkedinUrl)) {
+  if (badges.linkedinUrl && isSafeDisplayUrl(badges.linkedinUrl, true)) {
     const liLink = document.createElement('a');
     liLink.className = 'badge-pill';
     liLink.href = badges.linkedinUrl;
@@ -56,7 +62,7 @@ function buildAuthorBadgesRow(containerEl, author) {
     liLink.textContent = 'LinkedIn verificado';
     nodes.push(liLink);
   }
-  if (badges.xUrl && isSafeDisplayUrl(badges.xUrl)) {
+  if (badges.xUrl && isSafeDisplayUrl(badges.xUrl, true)) {
     const xLink = document.createElement('a');
     xLink.className = 'badge-pill';
     xLink.href = badges.xUrl;
@@ -534,7 +540,7 @@ async function bootCommunityPage() {
           if (threadFormStatusEl) {
             threadFormStatusEl.textContent =
               out.error === 'MODERATION_BLOCKED'
-                ? `Bloqueado por moderación (${out.reasonCode}): revisa enlaces externos, datos personales o lenguaje.`
+                ? out.messageEs || `Bloqueado por moderación (${out.reasonCode}): revisa enlaces externos, datos personales o lenguaje.`
                 : `No se pudo publicar (${out.error || res.status}).`;
           }
           return;
@@ -564,7 +570,7 @@ async function bootCommunityPage() {
           if (replyStatusEl) {
             replyStatusEl.textContent =
               out.error === 'MODERATION_BLOCKED'
-                ? `Respuesta bloqueada por moderación (${out.reasonCode}).`
+                ? out.messageEs || `Respuesta bloqueada por moderación (${out.reasonCode}).`
                 : `Error al responder (${out.error || res.status}).`;
           }
           return;
@@ -601,7 +607,7 @@ async function bootCommunityPage() {
           if (chatFormStatusEl) {
             chatFormStatusEl.textContent =
               out.error === 'MODERATION_BLOCKED'
-                ? `Mensaje bloqueado por moderación (${out.reasonCode}).`
+                ? out.messageEs || `Mensaje bloqueado por moderación (${out.reasonCode}).`
                 : `No se pudo enviar (${out.error || res.status}).`;
           }
           return;

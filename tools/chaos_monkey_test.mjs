@@ -10,7 +10,12 @@ export { runChaosMonkeyAudit, CHAOS_REPORT_PATH };
 
 const __filename = fileURLToPath(import.meta.url);
 if (process.argv[1] && path.resolve(process.argv[1]) === __filename) {
-  const res = runChaosMonkeyAudit();
-  console.log(`[CHAOS-MONKEY] Status: ${res.passed ? 'PASS (100% RESILIENT)' : 'FAIL'} | Report: ${CHAOS_REPORT_PATH}`);
-  process.exit(res.passed ? 0 : 1);
+  try {
+    const res = await runChaosMonkeyAudit();
+    console.log(`[CHAOS-MONKEY] Status: ${res.passed ? 'PASS (100% RESILIENT)' : 'FAIL'} | Report: ${CHAOS_REPORT_PATH}`);
+    process.exit(res.passed ? 0 : 1);
+  } catch (err) {
+    console.error(`[CHAOS-MONKEY] Fatal error: ${err?.message || String(err)}`);
+    process.exit(1);
+  }
 }

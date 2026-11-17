@@ -808,7 +808,7 @@ export async function runEvalMatrix(projectInput = '', options = {}) {
     secGateRes.enterpriseDbAndIdentityAudit?.passed !== false &&
     complianceScore === 100;
   const block2Points = block2CriticalPassed ? 25 : 0;
-  console.log(`  ✓ Block 2 Score: ${block2Points}/25 | Security Gate: ${secGateRes.passed ? '100% BLINDADO' : 'FAILED'} | Postgres RLS + KMS + Ory: ${secGateRes.enterpriseDbAndIdentityAudit?.passed ? 'VERIFIED' : 'FAILED'} | Compliance: ${complianceScore}/100`);
+  console.log(`  ✓ Block 2 Score: ${block2Points}/25 | Security Gate: ${secGateRes.passed ? '100% BLINDADO' : 'FAILED'} | DB/Edge Identity & Crypto Guard: ${secGateRes.enterpriseDbAndIdentityAudit?.passed ? 'VERIFIED' : 'FAILED'} | Compliance: ${complianceScore}/100`);
 
   // --------------------------------------------------------------------------
   // BLOCK 3 (25 PTS): Chaos Monkey Destructive Testing (`chaos_monkey_test.mjs`)

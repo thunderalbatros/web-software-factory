@@ -1185,6 +1185,7 @@ export default {
                   ok: false,
                   error: 'MODERATION_BLOCKED',
                   reasonCode: modRes.reasonCode,
+                  ...(modRes.messageEs ? { messageEs: modRes.messageEs } : {}),
                   layer: modRes.layer
                 },
                 422
