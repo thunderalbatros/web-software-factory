@@ -72,7 +72,9 @@
         "Layout editorial propio en Astro 7.4.11 (65ch, OKLCH 90/8/2 con matiz por nivel, tema claro/oscuro WCAG 2.2 AA)",
         "Fachada multi-video (youtube-nocookie + OER) con aviso breve de almacenamiento local al reproducir y síntesis textual",
         "Micro-explorable real de conteo de tokens BPE en cliente con js-tiktoken y ecuaciones MathML con temml (0 KB JS)",
-        "Tutor socrático aislado en iframe sandbox='allow-scripts' comunicado vía postMessage (Valibot) + DOMPurify Trusted Types"
+        "Tutor socrático aislado en iframe sandbox='allow-scripts' comunicado vía postMessage (Valibot) + DOMPurify Trusted Types",
+        "Comunidad abierta (/comunidad/) con foro por nivel/ruta, salas de chat por nivel, mérito >= 45 XP y moderación IA en cascada sin leaderboards",
+        "Sección de novedades verificadas (/novedades/) desde data/academy/news_feed.json con alternativa gratuita sin tarjeta y puente directo a comunidad"
       ]
     },
     "block6_real_assets_social_proof_and_legal": {

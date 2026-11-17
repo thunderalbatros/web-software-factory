@@ -1,0 +1,271 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { PATH_IDS, PATH_CATALOG } from '../lib/curriculum-paths.mjs';
+---
+<BaseLayout
+  title="Comunidad Abierta y Salas por Nivel — Academia Libre"
+  description="Foro de proyectos e ideas y salas de chat por nivel con lectura libre sin registro, escritura por mérito (>= 45 XP), insignias verificadas y moderación por IA."
+  canonicalPath="/comunidad/"
+>
+  <div class="level-kicker">
+    <span>Lectura Libre · Ley 25.326</span>
+    <span>·</span>
+    <span>Participación con Mérito (&gt;= 45 XP)</span>
+  </div>
+
+  <h1 class="editorial-h1">Comunidad abierta y salas de estudio por nivel</h1>
+  <p class="lead-summary">
+    Cualquier persona puede leer hilos, repositorios y conversaciones sin crear cuenta. Para publicar, responder o reportar necesitas iniciar sesión en tu perfil y haber acreditado al menos una lección con autoevaluación (<code>45 XP</code>), manteniendo espacios serenos y sin tablas competitivas.
+  </p>
+
+  <section class="editorial-panel" aria-label="Estado de sesión y mérito comunitario">
+    <h2 class="editorial-h2">Tu estado para participar</h2>
+    <p class="tutor-status-line community-status-reserve" data-community-auth-status aria-live="polite">
+      Verificando estado de sesión y XP...
+    </p>
+    <div class="card-actions-row">
+      <button type="button" class="video-tab-btn" data-community-view-tab="forum" aria-pressed="true">
+        Foro de Proyectos e Ideas
+      </button>
+      <button type="button" class="video-tab-btn" data-community-view-tab="chat" aria-pressed="false">
+        Salas de Chat por Nivel
+      </button>
+      <a class="btn-editorial" href="/perfil/" data-community-profile-cta>
+        Ir a Mi Perfil y XP
+      </a>
+    </div>
+  </section>
+
+  <section data-community-panel="forum" aria-label="Foro de Proyectos e Ideas">
+    <h2 class="editorial-h2">Foro de Proyectos e Ideas</h2>
+
+    <div class="editorial-panel">
+      <div class="community-filters-grid">
+        <div class="control-field">
+          <label class="control-label" for="forum-filter-level">Filtrar por nivel</label>
+          <select id="forum-filter-level" class="editorial-select" data-forum-filter-level>
+            <option value="">Todos los niveles</option>
+            <option value="1">Nivel 1 · Principiante</option>
+            <option value="2">Nivel 2 · Intermedio</option>
+            <option value="3">Nivel 3 · Avanzado</option>
+          </select>
+        </div>
+
+        <div class="control-field">
+          <label class="control-label" for="forum-filter-path">Filtrar por ruta</label>
+          <select id="forum-filter-path" class="editorial-select" data-forum-filter-path>
+            <option value="">Todas las rutas</option>
+            {PATH_IDS.map((pid) => (
+              <option value={pid}>{PATH_CATALOG[pid].titleEs}</option>
+            ))}
+          </select>
+        </div>
+
+        <div class="control-field">
+          <label class="control-label" for="forum-filter-category">Filtrar por categoría</label>
+          <select id="forum-filter-category" class="editorial-select" data-forum-filter-category>
+            <option value="">Todas las categorías</option>
+            <option value="ideas">Ideas</option>
+            <option value="proyectos">Proyectos</option>
+            <option value="repositorios">Repositorios</option>
+            <option value="consejos">Consejos</option>
+            <option value="novedades">Novedades</option>
+          </select>
+        </div>
+      </div>
+      <div class="card-actions-row">
+        <button type="button" class="btn-editorial" data-forum-refresh-btn>
+          Actualizar hilos del foro
+        </button>
+      </div>
+      <p class="tutor-status-line" data-forum-status aria-live="polite">
+        Cargando hilos públicos...
+      </p>
+    </div>
+
+    <ul class="tools-list" data-forum-threads-list aria-live="polite">
+      <li class="tool-item">
+        <p>Cargando hilos públicos de la comunidad...</p>
+      </li>
+    </ul>
+
+    <section class="editorial-panel" hidden data-thread-detail-panel aria-label="Detalle del hilo seleccionado">
+      <h3 class="editorial-h3" data-thread-detail-title>Detalle del hilo</h3>
+      <div class="badge-pills-row" data-thread-detail-author></div>
+      <p data-thread-detail-body></p>
+      <div class="card-actions-row">
+        <a hidden class="badge-pill" target="_blank" rel="noopener noreferrer" data-thread-detail-repo>
+          Ver repositorio adjunto
+        </a>
+        <button type="button" class="btn-editorial" data-thread-detail-close-btn>
+          Cerrar detalle
+        </button>
+        <button type="button" hidden class="btn-danger-outline" data-thread-detail-report-btn>
+          Reportar hilo
+        </button>
+      </div>
+
+      <ul class="tools-list" data-thread-replies-list></ul>
+
+      <form data-reply-create-form>
+        <div class="control-field">
+          <label class="control-label" for="reply-body-input">Tu respuesta técnica (enlaces permitidos: GitHub, GitLab, HuggingFace, CodePen, StackBlitz, LinkedIn /in/ o X)</label>
+          <textarea
+            id="reply-body-input"
+            class="editorial-textarea"
+            maxlength="1600"
+            placeholder="Comparte una mejora verificable o una duda concreta..."
+            data-reply-body
+            required
+          ></textarea>
+        </div>
+        <div class="card-actions-row">
+          <button type="submit" class="btn-primary" data-reply-submit-btn>
+            Publicar respuesta
+          </button>
+        </div>
+        <p class="tutor-status-line" data-reply-form-status aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="editorial-panel" aria-label="Publicar nuevo hilo en el foro">
+      <h3 class="editorial-h3">Publicar nuevo hilo en el foro</h3>
+      <p>
+        La moderación automática bloquea redes externas, acortadores, teléfonos, correos y claves secretas para cuidar tu seguridad y privacidad.
+      </p>
+      <form data-thread-create-form>
+        <div class="community-filters-grid">
+          <div class="control-field">
+            <label class="control-label" for="thread-level-select">Nivel UNESCO</label>
+            <select id="thread-level-select" class="editorial-select" data-thread-level>
+              <option value="1">Nivel 1 · Principiante</option>
+              <option value="2">Nivel 2 · Intermedio</option>
+              <option value="3">Nivel 3 · Avanzado</option>
+            </select>
+          </div>
+          <div class="control-field">
+            <label class="control-label" for="thread-category-select">Categoría</label>
+            <select id="thread-category-select" class="editorial-select" data-thread-category>
+              <option value="proyectos">Proyectos</option>
+              <option value="ideas">Ideas</option>
+              <option value="repositorios">Repositorios</option>
+              <option value="consejos">Consejos</option>
+              <option value="novedades">Novedades</option>
+            </select>
+          </div>
+          <div class="control-field">
+            <label class="control-label" for="thread-path-select">Ruta de aprendizaje</label>
+            <select id="thread-path-select" class="editorial-select" data-thread-path>
+              {PATH_IDS.map((pid) => (
+                <option value={pid}>{PATH_CATALOG[pid].titleEs}</option>
+              ))}
+            </select>
+          </div>
+        </div>
+
+        <div class="control-field">
+          <label class="control-label" for="thread-title-input">Título del hilo (6 a 140 caracteres)</label>
+          <input
+            id="thread-title-input"
+            type="text"
+            class="editorial-input"
+            minlength="6"
+            maxlength="140"
+            placeholder="Ejemplo: Buscador local FTS5 aplicado a manuales de taller"
+            data-thread-title
+            required
+          />
+        </div>
+
+        <div class="control-field">
+          <label class="control-label" for="thread-body-input">Descripción o pregunta (12 a 2400 caracteres)</label>
+          <textarea
+            id="thread-body-input"
+            class="editorial-textarea"
+            minlength="12"
+            maxlength="2400"
+            placeholder="Describe qué problema resuelves, qué herramienta libre usaste y qué dudas tienes..."
+            data-thread-body
+            required
+          ></textarea>
+        </div>
+
+        <div class="control-field">
+          <label class="control-label" for="thread-repo-input">Repositorio opcional (GitHub, GitLab, HuggingFace, CodePen o StackBlitz)</label>
+          <input
+            id="thread-repo-input"
+            type="url"
+            class="editorial-input"
+            maxlength="220"
+            placeholder="https://github.com/usuario/proyecto-abierto"
+            data-thread-repo
+          />
+        </div>
+
+        <div class="card-actions-row">
+          <button type="submit" class="btn-primary" data-thread-submit-btn>
+            Publicar hilo
+          </button>
+        </div>
+        <p class="tutor-status-line" data-thread-form-status aria-live="polite"></p>
+      </form>
+    </section>
+  </section>
+
+  <section hidden data-community-panel="chat" aria-label="Salas de Chat por Nivel">
+    <h2 class="editorial-h2">Salas de Chat por Nivel</h2>
+    <div class="video-tabs-row" role="group" aria-label="Seleccionar sala de chat por nivel">
+      <button type="button" class="video-tab-btn" data-chat-room-btn="1" aria-pressed="true">
+        Sala Nivel 1 · Principiante
+      </button>
+      <button type="button" class="video-tab-btn" data-chat-room-btn="2" aria-pressed="false">
+        Sala Nivel 2 · Intermedio
+      </button>
+      <button type="button" class="video-tab-btn" data-chat-room-btn="3" aria-pressed="false">
+        Sala Nivel 3 · Avanzado
+      </button>
+    </div>
+    <p class="tutor-status-line" data-chat-status aria-live="polite">
+      Cargando mensajes de Sala Nivel 1...
+    </p>
+
+    <ul class="tools-list" data-chat-messages-list aria-live="polite"></ul>
+
+    <section class="editorial-panel" aria-label="Enviar mensaje a la sala activa">
+      <h3 class="editorial-h3">Enviar mensaje a la sala</h3>
+      <form data-chat-send-form>
+        <div class="control-field">
+          <label class="control-label" for="chat-body-input">Mensaje breve (2 a 600 caracteres)</label>
+          <textarea
+            id="chat-body-input"
+            class="editorial-textarea"
+            minlength="2"
+            maxlength="600"
+            placeholder="Comparte un avance, consulta o recurso permitido..."
+            data-chat-body
+            required
+          ></textarea>
+        </div>
+        <div class="control-field">
+          <label class="control-label" for="chat-url-input">Enlace permitido opcional (GitHub, GitLab, HuggingFace, CodePen, StackBlitz, LinkedIn /in/, X)</label>
+          <input
+            id="chat-url-input"
+            type="url"
+            class="editorial-input"
+            maxlength="220"
+            placeholder="https://github.com/usuario/recurso"
+            data-chat-url
+          />
+        </div>
+        <div class="card-actions-row">
+          <button type="submit" class="btn-primary" data-chat-submit-btn>
+            Enviar mensaje
+          </button>
+        </div>
+        <p class="tutor-status-line" data-chat-form-status aria-live="polite"></p>
+      </form>
+    </section>
+  </section>
+
+  <script src="../scripts/community-client.mjs"></script>
+</BaseLayout>

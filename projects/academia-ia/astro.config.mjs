@@ -66,6 +66,8 @@ function generateSitemapAndAgenticManifests(distDir) {
 - [Nivel 1 · Principiante](${SITE_ORIGIN}/niveles/principiante/): Uso cotidiano y en oficios reales sin código; toda herramienta paga incluye alternativa gratuita sin tarjeta.
 - [Nivel 2 · Intermedio](${SITE_ORIGIN}/niveles/intermedio/): Búsqueda aumentada local (RAG) con SQLite FTS5, vectores abiertos y ecuaciones MathML (Temml 0 KB JS).
 - [Nivel 3 · Avanzado](${SITE_ORIGIN}/niveles/avanzado/): Sistemas compuestos seguros, CSP por hashes SHA-256, Trusted Types, sandboxes opacos y Software Factories.
+- [Comunidad Abierta](${SITE_ORIGIN}/comunidad/): Foro de proyectos e ideas y salas de chat por nivel con lectura libre, mérito >= 45 XP y moderación IA en cascada.
+- [Novedades Verificadas](${SITE_ORIGIN}/novedades/): Fichas técnicas verificadas con estado HTTP 200, alternativa gratuita sin tarjeta y puente directo a lecciones.
 - [Perfil y Progreso](${SITE_ORIGIN}/perfil/): Progreso local Dexie y sincronización opcional OAuth 2.1 PKCE, cuestionario inicial, avatar WebP y control ARCO Ley 25.326.
 - [Verificar Certificado](${SITE_ORIGIN}/verificar/): Validación criptográfica pública Ed25519 y diploma imprimible con QR SVG.
 - [Manifiesto Completo para Agentes](/llms-full.txt): Contratos técnicos, licencias abiertas (MIT / CC-BY-NC-SA-4.0) e invariantes de seguridad.
@@ -209,8 +211,15 @@ export default defineConfig({
           '**/tiktoken-worker*.js',
           '**/dexie*.js',
           '**/import-wrapper*.js',
+          '**/comunidad/**',
+          '**/comunidad*.js',
+          '**/community-client*.js',
           '**/perfil/**',
-          '**/perfil.*.js',
+          '**/perfil*.js',
+          '**/profile-client*.js',
+          '**/verificar/**',
+          '**/verificar*.js',
+          '**/verify-client*.js',
           '**/*.png',
           '**/pagefind/**'
         ],

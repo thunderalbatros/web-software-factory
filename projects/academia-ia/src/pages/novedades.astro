@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { loadVerifiedNewsFeed, NEWS_CATEGORIES } from '../lib/news-feed.mjs';
+
+const newsDoc = loadVerifiedNewsFeed();
+const items = newsDoc.rows;
+---
+<BaseLayout
+  title="Novedades Verificadas en IA — Academia Libre"
+  description="Actualizaciones curadas con fecha de verificación, enlace HTTP 200, alternativa gratuita sin tarjeta y puente directo a las lecciones y la comunidad."
+  canonicalPath="/novedades/"
+>
+  <div class="level-kicker">
+    <span>Curaduría Verificada</span>
+    <span>·</span>
+    <span>Alternativa Gratuita Obligatoria</span>
+  </div>
+
+  <h1 class="editorial-h1">Novedades verificadas en inteligencia artificial</h1>
+  <p class="lead-summary">
+    Cada ficha resume un avance útil con fuente oficial comprobada, una alternativa gratuita o de código abierto sin tarjeta bancaria, la lección relacionada y un acceso directo para debatir en comunidad.
+  </p>
+
+  <section class="editorial-panel" aria-label="Filtrar novedades por área">
+    <h2 class="editorial-h2">Filtrar por área de aplicación</h2>
+    <div class="video-tabs-row" role="group" aria-label="Categorías de novedades">
+      {NEWS_CATEGORIES.map((cat, idx) => (
+        <button
+          type="button"
+          class="video-tab-btn"
+          data-news-filter={cat.id}
+          aria-pressed={idx === 0 ? 'true' : 'false'}
+        >
+          {cat.labelEs}
+        </button>
+      ))}
+    </div>
+    <p class="tutor-status-line" data-news-filter-status aria-live="polite">
+      Mostrando {items.length} fichas verificadas con estado HTTP 200.
+    </p>
+  </section>
+
+  <section aria-label="Listado de novedades verificadas">
+    <h2 class="editorial-h2">Fichas curadas con enlace verificado</h2>
+    <ul class="tools-list" data-news-list>
+      {items.map((item) => (
+        <li
+          class="tool-item news-feed-card"
+          data-news-card
+          data-news-category={item.category}
+          data-card-level={String(item.level)}
+        >
+          <div class="news-card-meta">
+            <span>{item.category_label_es}</span>
+            <span>·</span>
+            <span>Nivel {item.level}</span>
+            <span>·</span>
+            <span class="tabular-metric">Verificado {item.verified_at}</span>
+            <span>·</span>
+            <span class="tabular-metric">HTTP {item.http_status}</span>
+          </div>
+
+          <h3 class="editorial-h3">{item.title_es}</h3>
+          <p>{item.summary_es}</p>
+
+          <div class="news-free-alt-box">
+            <p>
+              <strong>Alternativa gratuita / Open-Source sin tarjeta:</strong>{' '}
+              <a href={item.free_alternative_url} target="_blank" rel="noopener noreferrer">
+                {item.free_alternative_name}
+              </a>
+            </p>
+            <p>{item.free_alternative_notes_es}</p>
+          </div>
+
+          <div class="card-actions-row">
+            <a class="btn-editorial" href={item.linked_lesson_path}>
+              {item.linked_lesson_title_es}
+            </a>
+            <a class="btn-primary" href={item.community_discuss_url}>
+              Conversar en Comunidad
+            </a>
+            <a class="badge-pill" href={item.source_url} target="_blank" rel="noopener noreferrer">
+              {item.source_label_es}
+            </a>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </section>
+</BaseLayout>

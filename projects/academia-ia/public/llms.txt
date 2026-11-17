@@ -1,12 +1,14 @@
 # Academia Libre
 
-> Plataforma educativa abierta, minimalista e inclusiva en español sobre inteligencia artificial y tecnologías emergentes (UNESCO Adquirir -> Profundizar -> Crear). Acceso 100% libre sin registro obligatorio (Ley 25.326), sincronización opcional en Cloudflare Workers/D1/R2 mismo origen, certificados Ed25519 y accesibilidad WCAG 2.2 AA (Ley 26.653).
+> Plataforma educativa abierta, minimalista e inclusiva en español sobre inteligencia artificial y tecnologías emergentes (UNESCO Adquirir -> Profundizar -> Crear). Acceso 100% libre sin registro obligatorio (Ley 25.326), sincronización opcional en Cloudflare Workers/D1/R2 mismo origen (/api/*), certificados Ed25519 y accesibilidad WCAG 2.2 AA (Ley 26.653).
 
 ## Rutas Pedagógicas y Verificación
 - [Inicio](https://academia-ia.pages.dev/): Índice editorial de 3 niveles UNESCO, buscador local Pagefind y selector de arquetipos técnicos sin rastreo.
 - [Nivel 1 · Principiante](https://academia-ia.pages.dev/niveles/principiante/): Uso cotidiano y en oficios reales sin código; toda herramienta paga incluye alternativa gratuita sin tarjeta.
 - [Nivel 2 · Intermedio](https://academia-ia.pages.dev/niveles/intermedio/): Búsqueda aumentada local (RAG) con SQLite FTS5, vectores abiertos y ecuaciones MathML (Temml 0 KB JS).
 - [Nivel 3 · Avanzado](https://academia-ia.pages.dev/niveles/avanzado/): Sistemas compuestos seguros, CSP por hashes SHA-256, Trusted Types, sandboxes opacos y Software Factories.
-- [Perfil y Progreso](/perfil/): Progreso local Dexie y sincronización opcional OAuth 2.1 PKCE, avatar WebP y control de datos Ley 25.326.
-- [Verificar Certificado](/verificar/): Validación pública criptográfica Ed25519 y diploma imprimible con QR SVG.
+- [Comunidad Abierta](https://academia-ia.pages.dev/comunidad/): Foro de proyectos e ideas y salas de chat por nivel con lectura libre, mérito >= 45 XP y moderación IA en cascada.
+- [Novedades Verificadas](https://academia-ia.pages.dev/novedades/): Fichas técnicas verificadas con estado HTTP 200, alternativa gratuita sin tarjeta y puente directo a lecciones.
+- [Perfil y Progreso](https://academia-ia.pages.dev/perfil/): Progreso local Dexie y sincronización opcional OAuth 2.1 PKCE, cuestionario inicial, avatar WebP y control ARCO Ley 25.326.
+- [Verificar Certificado](https://academia-ia.pages.dev/verificar/): Validación criptográfica pública Ed25519 y diploma imprimible con QR SVG.
 - [Manifiesto Completo para Agentes](/llms-full.txt): Contratos técnicos, licencias abiertas (MIT / CC-BY-NC-SA-4.0) e invariantes de seguridad.

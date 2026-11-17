@@ -24,7 +24,8 @@
       "data/academy/tracks.json",
       "data/academy/sources.json",
       "data/academy/videos.json",
-      "data/academy/tools.json"
+      "data/academy/tools.json",
+      "data/academy/news_feed.json"
     ],
     "overlays": [],
     "requiredOverlaysInAudit": [],

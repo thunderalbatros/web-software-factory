@@ -239,10 +239,19 @@ body {
   border: 1px solid var(--color-primary);
 }
 
-.video-tab-btn[aria-selected="true"] {
+.video-tab-btn[aria-selected="true"],
+.video-tab-btn[aria-pressed="true"] {
   border-color: var(--active-level-accent);
   background-color: var(--color-surface-deep);
   color: var(--active-level-accent);
+}
+
+.btn-primary:disabled,
+.btn-editorial:disabled {
+  cursor: not-allowed;
+  background-color: var(--color-surface-deep);
+  color: var(--color-text-secondary);
+  border-color: var(--color-border-strong);
 }
 
 /* Main Reading Container (Strict 60ch-70ch Editorial Measure) */
@@ -779,6 +788,54 @@ details[open] .details-body {
   background-color: var(--color-surface);
   color: var(--color-level-create);
   border: 1px solid var(--color-level-create);
+}
+
+.news-feed-card {
+  border-left: 4px solid var(--active-level-accent);
+}
+
+.news-feed-card[data-card-level="1"] {
+  border-left-color: var(--color-level-acquire);
+}
+
+.news-feed-card[data-card-level="2"] {
+  border-left-color: var(--color-level-deepen);
+}
+
+.news-feed-card[data-card-level="3"] {
+  border-left-color: var(--color-level-create);
+}
+
+.news-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 0.55rem;
+}
+
+.news-free-alt-box {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-hairline);
+  border-radius: var(--radius-xs);
+  padding: 0.8rem 0.95rem;
+  margin: 0.85rem 0;
+}
+
+.news-free-alt-box p:last-child {
+  margin-bottom: 0;
+}
+
+.community-filters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
+}
+
+.community-status-reserve {
+  min-height: 2.8rem;
 }
 
 @media print {

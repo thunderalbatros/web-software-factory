@@ -6,16 +6,16 @@
 
 ---
 
-## 1. Arquitectura Híbrida Same-Origin (Astro 7 Estático + Worker `/api/*` + D1 + R2)
+## 1. Arquitectura Híbrida Same-Origin (Astro 7 Estático + Worker `/api/*` + D1 + R2 + Durable Objects)
 
-- **Motor de Compilación:** `astro@7.4.11` (`output: 'static'`, `vite.build.sourcemap: false`, `build.inlineStylesheets: 'never'`) sin `@astrojs/starlight`, con acceso 100 % abierto a todas las lecciones sin login.
-- **Backend Edge Opcional (`worker/index.mjs` + `migrations/0001_academia_libre_core.sql`):** Resuelve `/api/*` bajo el mismo origen (`connect-src 'self'`), ejecutando SQL idéntico parametrizado sobre `env.DB` (Cloudflare D1) en producción o `node:sqlite` en pruebas/local. Incluye autenticación opcional **OAuth 2.1 PKCE** (`S256`) con Google, enlace secundario GitHub (`read:user`), correos cifrados `AES-256-GCM`, índice ciego `HMAC-SHA256`, avatares `128x128 image/webp` sin EXIF en R2 (`AVATARS_BUCKET`), cuestionario adaptativo en 4 pasos, progresión Universal + `Path` y emisión/verificación de certificados firmados con **`Ed25519`** (`SubtleCrypto`).
+- **Motor de Compilación:** `astro@7.4.11` (`output: 'static'`, `vite.build.sourcemap: false`, `build.inlineStylesheets: 'never'`) sin `@astrojs/starlight`, con acceso 100 % abierto a todas las lecciones y 8 rutas públicas (`/`, `/niveles/principiante/`, `/niveles/intermedio/`, `/niveles/avanzado/`, `/comunidad/`, `/novedades/`, `/perfil/`, `/verificar/`).
+- **Backend Edge Opcional (`worker/index.mjs` + `migrations/0001_academia_libre_core.sql` + `migrations/0002_community_and_news.sql`):** Resuelve `/api/*` bajo el mismo origen (`connect-src 'self'`), ejecutando SQL idéntico parametrizado sobre `env.DB` (Cloudflare D1) en producción o `node:sqlite` en pruebas/local. Incluye autenticación opcional **OAuth 2.1 PKCE** (`S256`) con Google, enlace secundario GitHub (`read:user`), correos cifrados `AES-256-GCM`, índice ciego `HMAC-SHA256`, avatares `128x128 image/webp` sin EXIF en R2 (`AVATARS_BUCKET`), emisión/verificación de certificados firmados con **`Ed25519`**, foro y salas de chat por nivel con Durable Object `LevelChatRoom` (WebSocket Hibernation API) + respaldo completo D1/SQLite, compuerta de mérito `>= 45 XP`, moderación en cascada (`worker/moderation-guard.mjs` + `env.AI` `@cf/meta/llama-guard-3-8b` / NFKC local) y auto-ocultamiento preventivo al 3er reporte único.
 - **Integraciones Oficiales Pineadas:**
   - `astro-expressive-code@0.44.3` (bloques de código accesibles en niveles Intermedio y Avanzado, cero bloques de código en Principiante).
   - `@astrojs/mdx@8.1.6` + plugin determinista con `temml@0.14.0` para compilar fórmulas LaTeX a **MathML nativo (`0 KB` de JS en cliente)**.
-  - `@vite-pwa/astro@2.0.2` para lectura offline MPA de lecciones (`navigateFallback: null`, precache inicial `< 250 KB`) y manifiesto web limpio.
+  - `@vite-pwa/astro@2.0.2` para lectura offline MPA de lecciones (`navigateFallback: null`, precache inicial `< 220 KiB` excluyendo chunks exclusivos de red `community-client`, `profile-client`, `verify-client`) y manifiesto web limpio.
   - Post-build determinista: índice de búsqueda estático con `pagefind@1.6.0`, generación de `sitemap.xml`, `llms.txt` + `llms-full.txt`, extracción de atributos `style="..."` a hoja CSS cacheable y sellado de `public/_headers` + `dist/_headers` mediante `src/lib/csp-builder.mjs`.
-- **Datos Autónomos en el Proyecto:** Copia local sincronizada en `projects/academia-ia/data/academy/{project_charter,archetypes,tracks,sources,videos,tools}.json` bajo esquema relacional v2 validado con `Valibot` (cero referencias a `../../`).
+- **Datos Autónomos en el Proyecto:** Copia local sincronizada en `projects/academia-ia/data/academy/{project_charter,archetypes,tracks,sources,videos,tools,news_feed}.json` bajo esquema relacional v2 validado con `Valibot` (cero referencias a `../../` fuera de la raíz del proyecto).
 
 ---
 
@@ -49,8 +49,8 @@
 
 | ID | Requisito Técnico | Invariante Origen | Verificación Determinista |
 | :--- | :--- | :--- | :--- |
-| `[REQ-01]` | Build Astro `7.4.11` (`sourcemap: false`, sin `#pricing`) + Worker híbrido same-origin `/api/*` (`D1` + `R2`) | `[INV-01]` | `build_dist.mjs` + `security_gate.mjs` |
-| `[REQ-02]` | Acceso 100 % libre sin login obligatorio (`Dexie`/local) + cuenta OAuth 2.1 PKCE opcional con Ley 25.326 | `[INV-02]` | Worker tests + `cognitive_ux_auditor.mjs` |
+| `[REQ-01]` | Build Astro `7.4.11` (`sourcemap: false`, sin `#pricing`) + Worker híbrido same-origin `/api/*` (`D1` + `R2` + `LevelChatRoom` DO) | `[INV-01]` | `build_dist.mjs` + `security_gate.mjs` |
+| `[REQ-02]` | Acceso 100 % libre sin login obligatorio (`Dexie`/local) + OAuth 2.1 PKCE opcional + lectura abierta `/comunidad/` y escritura `>= 45 XP` con Ley 25.326 | `[INV-02]` | Worker tests + `cognitive_ux_auditor.mjs` |
 | `[REQ-03]` | Piso WCAG 2.2 AA (`0` violaciones `@axe-core/playwright` en tema claro y oscuro) | `[INV-03]` | `certify_academia_runtime.mjs` |
 | `[REQ-04]` | Columna `60ch–70ch` (`65ch`), `clamp()`, `tabular-nums` y jerarquía `h1->h2->h3` | `[INV-03]`, `[INV-04]` | `ryux_design_gate.mjs` (`Read`) |
 | `[REQ-05]` | Prosa en español neutro (`tú`), bloques `<= 110` palabras e INFLESZ por nivel | `[INV-04]` | `readability_es.mjs` + `ryux_design_gate.mjs` |
@@ -59,5 +59,5 @@
 | `[REQ-08]` | Ecuaciones compiladas en build con `temml` a MathML nativo (`0 KB` JS extra) | `[INV-01]`, `[INV-03]` | Inspección DOM `<math>` en niveles 2 y 3 |
 | `[REQ-09]` | Tutor socrático aislado en `<iframe sandbox="allow-scripts">` + `Valibot` + `DOMPurify` TrustedHTML | `[INV-02]` | Playwright runtime (`origin === 'null'`) |
 | `[REQ-10]` | CSP estricta con hashes `sha256-...` reales + `require-trusted-types-for 'script'` (`0` violaciones) | `[INV-01]`, `[INV-02]` | `csp_builder.mjs` + `securitypolicyviolation` listener |
-| `[REQ-11]` | 3 páginas semilla funcionales (`/niveles/principiante/`, `/niveles/intermedio/`, `/niveles/avanzado/`) leyendo `data/academy/*.json` | `[INV-06]`, `[INV-07]` | Build + navegación Playwright |
+| `[REQ-11]` | 8 rutas activas (`/`, `/niveles/{principiante,intermedio,avanzado}/`, `/comunidad/`, `/novedades/`, `/perfil/`, `/verificar/`) alimentadas desde `data/academy/*.json` | `[INV-06]`, `[INV-07]` | Build + `certify_academia_runtime.mjs` |
 | `[REQ-12]` | Presupuesto de rendimiento: `LCP <= 1800 ms`, `CLS = 0.000`, `jsHeapUsedMB < 64 MB` + `pagefind`, `sitemap.xml` y `llms.txt` | `[INV-01]`, `[INV-03]` | `certify_academia_runtime.mjs` + `floor_and_aeo_guard.mjs` |

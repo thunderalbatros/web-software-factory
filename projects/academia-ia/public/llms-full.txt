@@ -1,14 +1,16 @@
 # Academia Libre
 
-> Plataforma educativa abierta, minimalista e inclusiva en español sobre inteligencia artificial y tecnologías emergentes (UNESCO Adquirir -> Profundizar -> Crear). Acceso 100% libre sin registro obligatorio (Ley 25.326), sincronización opcional en Cloudflare Workers/D1/R2 mismo origen, certificados Ed25519 y accesibilidad WCAG 2.2 AA (Ley 26.653).
+> Plataforma educativa abierta, minimalista e inclusiva en español sobre inteligencia artificial y tecnologías emergentes (UNESCO Adquirir -> Profundizar -> Crear). Acceso 100% libre sin registro obligatorio (Ley 25.326), sincronización opcional en Cloudflare Workers/D1/R2 mismo origen (/api/*), certificados Ed25519 y accesibilidad WCAG 2.2 AA (Ley 26.653).
 
-## Rutas Pedagógicas Principales
+## Rutas Pedagógicas y Verificación
 - [Inicio](https://academia-ia.pages.dev/): Índice editorial de 3 niveles UNESCO, buscador local Pagefind y selector de arquetipos técnicos sin rastreo.
 - [Nivel 1 · Principiante](https://academia-ia.pages.dev/niveles/principiante/): Uso cotidiano y en oficios reales sin código; toda herramienta paga incluye alternativa gratuita sin tarjeta.
 - [Nivel 2 · Intermedio](https://academia-ia.pages.dev/niveles/intermedio/): Búsqueda aumentada local (RAG) con SQLite FTS5, vectores abiertos y ecuaciones MathML (Temml 0 KB JS).
 - [Nivel 3 · Avanzado](https://academia-ia.pages.dev/niveles/avanzado/): Sistemas compuestos seguros, CSP por hashes SHA-256, Trusted Types, sandboxes opacos y Software Factories.
-- [Perfil y Progreso](/perfil/): Progreso local Dexie y sincronización opcional OAuth 2.1 PKCE, avatar WebP y control de datos Ley 25.326.
-- [Verificar Certificado](/verificar/): Validación pública criptográfica Ed25519 y diploma imprimible con QR SVG.
+- [Comunidad Abierta](https://academia-ia.pages.dev/comunidad/): Foro de proyectos e ideas y salas de chat por nivel con lectura libre, mérito >= 45 XP y moderación IA en cascada.
+- [Novedades Verificadas](https://academia-ia.pages.dev/novedades/): Fichas técnicas verificadas con estado HTTP 200, alternativa gratuita sin tarjeta y puente directo a lecciones.
+- [Perfil y Progreso](https://academia-ia.pages.dev/perfil/): Progreso local Dexie y sincronización opcional OAuth 2.1 PKCE, cuestionario inicial, avatar WebP y control ARCO Ley 25.326.
+- [Verificar Certificado](https://academia-ia.pages.dev/verificar/): Validación criptográfica pública Ed25519 y diploma imprimible con QR SVG.
 - [Manifiesto Completo para Agentes](/llms-full.txt): Contratos técnicos, licencias abiertas (MIT / CC-BY-NC-SA-4.0) e invariantes de seguridad.
 
 ---
@@ -28,13 +30,14 @@ Construir la plataforma educativa abierta en español más completa, dinámica, 
 1. **Nivel 1 — Principiante (*Adquirir*):** Panorama claro y aplicable de herramientas de IA actuales (gratuitas y pagas) para la vida cotidiana, oficios y profesiones reales, **sin código de programación** (`programming_code_allowed: false`). Toda herramienta paga exige mostrar una alternativa gratuita verificada sin tarjeta (`free_no_card` u `open_source_local`).
 2. **Nivel 2 — Intermedio (*Profundizar*):** Construcción práctica de productos, bots, flujos automatizados y RAG sobre bases de datos con prioridad **Open-Source y costo \$0**, adaptado a los recursos técnicos de cada estudiante mediante plantillas locales (`academy_learner_archetypes`).
 3. **Nivel 3 — Avanzado (*Crear*):** Diseño de sistemas compuestos de IA, ciberseguridad aplicada a modelos generativos y *Software Factories* gobernadas por pruebas deterministas.
+4. **Comunidad Abierta (`/comunidad/`) y Novedades Verificadas (`/novedades/`):** Foro por nivel y ruta + salas de chat por nivel con lectura libre sin registro, escritura por mérito (`>= 45 XP`), moderación IA en cascada (allowlist estricta de enlaces, bloqueo de PII/secretos/redes externas y auto-ocultamiento preventivo al 3er reporte) y fichas de novedades con alternativa gratuita sin tarjeta.
 
 ---
 
 ## 2. Invariantes de Producto y Gobernanza (`[INV-01]` a `[INV-07]`)
 
-- **`[INV-01]` Acceso Abierto real y Costo de Servidor \$0.00 USD:** Sitio 100 % estático sobre **Cloudflare Workers Static Assets** (`commercial_mode: false`, financiamiento exclusivo por donaciones voluntarias sin beneficios exclusivos). Prohibidos muros de pago, planes Pro, publicidad o patrocinios comerciales.
-- **`[INV-02]` Privacidad Local-First (Ley 25.326):** Cero inicio de sesión obligatorio, cero telemetría invasiva y cero bases de datos de alumnos en servidores. Todo el progreso, repaso espaciado (`ts-fsrs`) y selección de arquetipo técnico vive en el navegador (`IndexedDB` vía `Dexie` / `localStorage`) con exportación abierta.
+- **`[INV-01]` Acceso Abierto real y Sostenibilidad Edge:** El 100 % de las lecciones, explorables, novedades (`/novedades/`) y lectura de comunidad (`/comunidad/`) son públicos sin registro ni muros de pago sobre **Cloudflare Workers + Static Assets** (`commercial_mode: false`, financiamiento exclusivo por donaciones voluntarias sin beneficios exclusivos). Prohibidos muros de pago, planes Pro, publicidad o patrocinios comerciales.
+- **`[INV-02]` Privacidad Local-First y Sincronización Opcional (Ley 25.326):** Cero inicio de sesión obligatorio para estudiar. El progreso local vive en `IndexedDB` (`Dexie`); quien decida iniciar sesión opcionalmente con Google (`OAuth 2.1 PKCE`) y/o enlazar GitHub cuenta con cifrado de email `AES-256-GCM` en Cloudflare D1, índice ciego `HMAC-SHA256`, recorte local de avatar `WebP` sin EXIF, participación comunitaria segura por mérito (`>= 45 XP`) y derechos de exportación completa (`GET /api/me/export`) y eliminación total en cascada (`DELETE /api/me`, incluyendo hilos, respuestas, mensajes y reportes).
 - **`[INV-03]` Inclusión y Accesibilidad Web (Ley 26.653 / WCAG 2.2 AA+):** Contraste perceptual APCA `Lc >= 85`, navegación completa por teclado, objetivos táctiles `>= 48x48px`, tema claro/oscuro accesible, respeto estricto de `prefers-reduced-motion: reduce` y síntesis textual verificada para cada video.
 - **`[INV-04]` Carga Cognitiva Controlada y Español Neutro (`readability_es.mjs`):** Párrafos de hasta `110` palabras, máximo `3` conceptos nuevos por lección, ancho de lectura editorial entre `60ch` y `70ch` (`65ch` canónico) y pisos INFLESZ verificados por nivel (`>= 65` Principiante, `>= 55` Intermedio, `>= 45` Avanzado).
 - **`[INV-05]` Triangulación Audiovisual Limpia y Aviso de Privacidad:** Entre `2` y `3` videos complementarios por lección exclusivamente desde orígenes permitidos (`youtube-nocookie.com`, `archive.org`, `commons.wikimedia.org`, `upload.wikimedia.org`) mediante fachada diferida con aviso breve de almacenamiento local antes de cargar el reproductor externo.
@@ -64,23 +67,24 @@ Quedan explícitamente **FUERA** del alcance y prohibidos por contrato:
 
 ---
 
-# SPEC.md — Especificación Técnica de Academia IA (Borrador Gate #2)
+# SPEC.md — Especificación Técnica de Academia Libre (Borrador Gate #2)
 
-> **Proyecto:** `academia-ia` · **Stack:** `astro-edge` (`astro@7.4.11` exacto) · **Perfil:** `education` (`Surface Mode: Read`)
+> **Proyecto (slug):** `academia-ia` · **Marca Pública:** **Academia Libre** · **Stack:** `astro-edge` (`astro@7.4.11` exacto) + Hybrid Worker `/api/*` (`D1` + `R2`) · **Perfil:** `education` (`Surface Mode: Read`)
 > **Estado de Compuerta:** `DRAFT_PENDING_CTO_GATE2` (`approvedBy: null` — pendiente de firma humana del CTO)
 > **Entradas Contractuales:** `docs/PRD_ACADEMIA_IA_MASTER.md`, `data/academy/project_charter.json`, `PRD_LEAN.md` y `BRAND_IDENTITY_LOCK.json`
 
 ---
 
-## 1. Arquitectura Estática de Costo Servidor \$0.00 USD
+## 1. Arquitectura Híbrida Same-Origin (Astro 7 Estático + Worker `/api/*` + D1 + R2 + Durable Objects)
 
-- **Motor de Compilación:** `astro@7.4.11` (`output: 'static'`, `vite.build.sourcemap: false`, `build.inlineStylesheets: 'never'`) sin `@astrojs/starlight` y sin `worker/index.js` de formularios.
+- **Motor de Compilación:** `astro@7.4.11` (`output: 'static'`, `vite.build.sourcemap: false`, `build.inlineStylesheets: 'never'`) sin `@astrojs/starlight`, con acceso 100 % abierto a todas las lecciones y 8 rutas públicas (`/`, `/niveles/principiante/`, `/niveles/intermedio/`, `/niveles/avanzado/`, `/comunidad/`, `/novedades/`, `/perfil/`, `/verificar/`).
+- **Backend Edge Opcional (`worker/index.mjs` + `migrations/0001_academia_libre_core.sql` + `migrations/0002_community_and_news.sql`):** Resuelve `/api/*` bajo el mismo origen (`connect-src 'self'`), ejecutando SQL idéntico parametrizado sobre `env.DB` (Cloudflare D1) en producción o `node:sqlite` en pruebas/local. Incluye autenticación opcional **OAuth 2.1 PKCE** (`S256`) con Google, enlace secundario GitHub (`read:user`), correos cifrados `AES-256-GCM`, índice ciego `HMAC-SHA256`, avatares `128x128 image/webp` sin EXIF en R2 (`AVATARS_BUCKET`), emisión/verificación de certificados firmados con **`Ed25519`**, foro y salas de chat por nivel con Durable Object `LevelChatRoom` (WebSocket Hibernation API) + respaldo completo D1/SQLite, compuerta de mérito `>= 45 XP`, moderación en cascada (`worker/moderation-guard.mjs` + `env.AI` `@cf/meta/llama-guard-3-8b` / NFKC local) y auto-ocultamiento preventivo al 3er reporte único.
 - **Integraciones Oficiales Pineadas:**
   - `astro-expressive-code@0.44.3` (bloques de código accesibles en niveles Intermedio y Avanzado, cero bloques de código en Principiante).
   - `@astrojs/mdx@8.1.6` + plugin determinista con `temml@0.14.0` para compilar fórmulas LaTeX a **MathML nativo (`0 KB` de JS en cliente)**.
-  - `@vite-pwa/astro@2.0.2` para lectura offline MPA de lecciones (`navigateFallback: null`, precache inicial `< 250 KB`) y manifiesto web limpio.
+  - `@vite-pwa/astro@2.0.2` para lectura offline MPA de lecciones (`navigateFallback: null`, precache inicial `< 220 KiB` excluyendo chunks exclusivos de red `community-client`, `profile-client`, `verify-client`) y manifiesto web limpio.
   - Post-build determinista: índice de búsqueda estático con `pagefind@1.6.0`, generación de `sitemap.xml`, `llms.txt` + `llms-full.txt`, extracción de atributos `style="..."` a hoja CSS cacheable y sellado de `public/_headers` + `dist/_headers` mediante `src/lib/csp-builder.mjs`.
-- **Datos Autónomos en el Proyecto:** Copia local sincronizada en `projects/academia-ia/data/academy/{project_charter,archetypes,tracks,sources,videos,tools}.json` bajo esquema relacional v2 validado con `Valibot` (cero referencias a `../../`).
+- **Datos Autónomos en el Proyecto:** Copia local sincronizada en `projects/academia-ia/data/academy/{project_charter,archetypes,tracks,sources,videos,tools,news_feed}.json` bajo esquema relacional v2 validado con `Valibot` (cero referencias a `../../` fuera de la raíz del proyecto).
 
 ---
 
@@ -114,8 +118,8 @@ Quedan explícitamente **FUERA** del alcance y prohibidos por contrato:
 
 | ID | Requisito Técnico | Invariante Origen | Verificación Determinista |
 | :--- | :--- | :--- | :--- |
-| `[REQ-01]` | Build 100 % estático en Astro `7.4.11` (`sourcemap: false`, sin `#pricing` ni Worker de leads) | `[INV-01]` | `build_dist.mjs` + `security_gate.mjs` |
-| `[REQ-02]` | Almacenamiento local-first (`Dexie`/`localStorage`) sin login ni PII en servidor | `[INV-02]` | Inspección AST + `cognitive_ux_auditor.mjs` |
+| `[REQ-01]` | Build Astro `7.4.11` (`sourcemap: false`, sin `#pricing`) + Worker híbrido same-origin `/api/*` (`D1` + `R2` + `LevelChatRoom` DO) | `[INV-01]` | `build_dist.mjs` + `security_gate.mjs` |
+| `[REQ-02]` | Acceso 100 % libre sin login obligatorio (`Dexie`/local) + OAuth 2.1 PKCE opcional + lectura abierta `/comunidad/` y escritura `>= 45 XP` con Ley 25.326 | `[INV-02]` | Worker tests + `cognitive_ux_auditor.mjs` |
 | `[REQ-03]` | Piso WCAG 2.2 AA (`0` violaciones `@axe-core/playwright` en tema claro y oscuro) | `[INV-03]` | `certify_academia_runtime.mjs` |
 | `[REQ-04]` | Columna `60ch–70ch` (`65ch`), `clamp()`, `tabular-nums` y jerarquía `h1->h2->h3` | `[INV-03]`, `[INV-04]` | `ryux_design_gate.mjs` (`Read`) |
 | `[REQ-05]` | Prosa en español neutro (`tú`), bloques `<= 110` palabras e INFLESZ por nivel | `[INV-04]` | `readability_es.mjs` + `ryux_design_gate.mjs` |
@@ -124,5 +128,5 @@ Quedan explícitamente **FUERA** del alcance y prohibidos por contrato:
 | `[REQ-08]` | Ecuaciones compiladas en build con `temml` a MathML nativo (`0 KB` JS extra) | `[INV-01]`, `[INV-03]` | Inspección DOM `<math>` en niveles 2 y 3 |
 | `[REQ-09]` | Tutor socrático aislado en `<iframe sandbox="allow-scripts">` + `Valibot` + `DOMPurify` TrustedHTML | `[INV-02]` | Playwright runtime (`origin === 'null'`) |
 | `[REQ-10]` | CSP estricta con hashes `sha256-...` reales + `require-trusted-types-for 'script'` (`0` violaciones) | `[INV-01]`, `[INV-02]` | `csp_builder.mjs` + `securitypolicyviolation` listener |
-| `[REQ-11]` | 3 páginas semilla funcionales (`/niveles/principiante/`, `/niveles/intermedio/`, `/niveles/avanzado/`) leyendo `data/academy/*.json` | `[INV-06]`, `[INV-07]` | Build + navegación Playwright |
+| `[REQ-11]` | 8 rutas activas (`/`, `/niveles/{principiante,intermedio,avanzado}/`, `/comunidad/`, `/novedades/`, `/perfil/`, `/verificar/`) alimentadas desde `data/academy/*.json` | `[INV-06]`, `[INV-07]` | Build + `certify_academia_runtime.mjs` |
 | `[REQ-12]` | Presupuesto de rendimiento: `LCP <= 1800 ms`, `CLS = 0.000`, `jsHeapUsedMB < 64 MB` + `pagefind`, `sitemap.xml` y `llms.txt` | `[INV-01]`, `[INV-03]` | `certify_academia_runtime.mjs` + `floor_and_aeo_guard.mjs` |

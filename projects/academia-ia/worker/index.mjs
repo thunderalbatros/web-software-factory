@@ -50,8 +50,29 @@ import {
   findCertificateByUserLevelPath,
   findCertificateByCode,
   insertCertificate,
+  listForumThreads,
+  getForumThreadWithReplies,
+  insertForumThread,
+  insertForumReply,
+  listChatMessages,
+  insertChatMessage,
+  submitCommunityReport,
+  recordModerationAuditLog,
+  listUserCommunityContributionsForExport,
   deleteUserCascade
 } from './db.mjs';
+import {
+  COMMUNITY_MIN_XP_TO_POST,
+  FORUM_CATEGORIES,
+  ForumThreadCreateSchema,
+  ForumReplyCreateSchema,
+  ChatMessageCreateSchema,
+  CommunityReportCreateSchema,
+  evaluateModerationCascade
+} from './moderation-guard.mjs';
+import { LevelChatRoom } from './chat-room-do.mjs';
+
+export { LevelChatRoom };
 
 const MAX_BODY_BYTES = 65536;
 const MAX_AVATAR_BYTES = 25600;
@@ -157,7 +178,14 @@ function validateFetchMetadata(request, options = {}) {
   if (secMode && secMode === 'navigate' && !['GET', 'HEAD'].includes(method)) {
     return { allowed: false, reason: 'INVALID_FETCH_MODE_FOR_MUTATION' };
   }
-  if (secDest && !['empty', 'document', 'image', ''].includes(secDest)) {
+  const isChatWsUpgrade =
+    method === 'GET' &&
+    new URL(request.url).pathname.startsWith('/api/community/chat/') &&
+    (request.headers.get('Upgrade') || '').toLowerCase() === 'websocket';
+  const allowedFetchDest = isChatWsUpgrade
+    ? ['empty', 'document', 'image', 'websocket', '']
+    : ['empty', 'document', 'image', ''];
+  if (secDest && !allowedFetchDest.includes(secDest)) {
     return { allowed: false, reason: 'INVALID_FETCH_DEST' };
   }
   if (originHeader && ['POST', 'PUT', 'PATCH', 'DELETE'].includes(method)) {
@@ -787,8 +815,88 @@ export default {
       }
 
       // ------------------------------------------------------------------
-      // 3. Profile Read (`GET /api/me` returns 200 `{ authenticated: false }`)
+      // 3. Public Community Read Routes (`GET /api/community/*` — Ley 25.326) & Profile Read (`GET /api/me`)
       // ------------------------------------------------------------------
+      if (pathname === '/api/community/threads' && method === 'GET') {
+        const qLevel = url.searchParams.get('level') || '';
+        const qCategory = url.searchParams.get('category') || '';
+        const qPathId = url.searchParams.get('pathId') || '';
+        const qLessonSlug = url.searchParams.get('lessonSlug') || '';
+        if (qLevel && !['1', '2', '3'].includes(qLevel)) {
+          return jsonResponse({ ok: false, error: 'VALIDATION_FAILED' }, 400);
+        }
+        if (qCategory && !FORUM_CATEGORIES.includes(qCategory)) {
+          return jsonResponse({ ok: false, error: 'VALIDATION_FAILED' }, 400);
+        }
+        if (qPathId && !PATH_IDS.includes(qPathId)) {
+          return jsonResponse({ ok: false, error: 'VALIDATION_FAILED' }, 400);
+        }
+        if (qLessonSlug && !/^[a-z0-9-]{1,80}$/.test(qLessonSlug)) {
+          return jsonResponse({ ok: false, error: 'VALIDATION_FAILED' }, 400);
+        }
+        if (!env.DB) {
+          return jsonResponse({ ok: true, threads: [], offlineStatic: true });
+        }
+        const threads = await listForumThreads(env.DB, {
+          level: qLevel ? Number(qLevel) : null,
+          category: qCategory,
+          pathId: qPathId,
+          lessonSlug: qLessonSlug
+        });
+        return jsonResponse({ ok: true, threads });
+      }
+
+      if (pathname.startsWith('/api/community/threads/') && method === 'GET') {
+        const m = /^\/api\/community\/threads\/([^/]+)$/.exec(pathname);
+        if (!m) return jsonResponse({ ok: false, error: 'API_ROUTE_NOT_FOUND' }, 404);
+        const threadId = m[1];
+        if (/^\d+$/.test(threadId)) {
+          return jsonResponse({ ok: false, error: 'OPAQUE_UUID_OR_ULID_REQUIRED' }, 400);
+        }
+        if (!/^[a-zA-Z0-9-]{8,64}$/.test(threadId)) {
+          return jsonResponse({ ok: false, error: 'INVALID_THREAD_ID' }, 400);
+        }
+        if (!env.DB) {
+          return jsonResponse({ ok: false, error: 'D1_BINDING_UNAVAILABLE' }, 503);
+        }
+        const detail = await getForumThreadWithReplies(env.DB, threadId);
+        if (!detail) {
+          return jsonResponse({ ok: false, error: 'THREAD_NOT_FOUND' }, 404);
+        }
+        return jsonResponse({ ok: true, ...detail });
+      }
+
+      if (pathname.startsWith('/api/community/chat/') && method === 'GET') {
+        const m = /^\/api\/community\/chat\/([123])$/.exec(pathname);
+        if (!m) {
+          return jsonResponse({ ok: false, error: 'INVALID_CHAT_ROOM_LEVEL' }, 400);
+        }
+        const roomLevel = Number(m[1]);
+        const isWsUpgrade = (request.headers.get('Upgrade') || '').toLowerCase() === 'websocket';
+        if (isWsUpgrade) {
+          if (env.LEVEL_CHAT_ROOMS && typeof env.LEVEL_CHAT_ROOMS.idFromName === 'function') {
+            const doId = env.LEVEL_CHAT_ROOMS.idFromName(`level-${roomLevel}`);
+            return env.LEVEL_CHAT_ROOMS.get(doId).fetch(request);
+          }
+          return jsonResponse({ ok: false, error: 'WEBSOCKET_DO_UNAVAILABLE' }, 501);
+        }
+        if (!env.DB) {
+          return jsonResponse({
+            ok: true,
+            roomLevel,
+            realtimeAvailable: Boolean(env.LEVEL_CHAT_ROOMS),
+            messages: []
+          });
+        }
+        const messages = await listChatMessages(env.DB, roomLevel, 50);
+        return jsonResponse({
+          ok: true,
+          roomLevel,
+          realtimeAvailable: Boolean(env.LEVEL_CHAT_ROOMS),
+          messages
+        });
+      }
+
       if (pathname === '/api/me' && method === 'GET') {
         if (!env.DB) {
           return jsonResponse({ ok: true, authenticated: false, user: null });
@@ -1043,11 +1151,202 @@ export default {
         );
       }
 
+      if (pathname.startsWith('/api/community/') && method === 'POST') {
+        if (Number(sessionUser.xp_total || 0) < COMMUNITY_MIN_XP_TO_POST) {
+          return jsonResponse(
+            {
+              ok: false,
+              error: 'INSUFFICIENT_XP_FOR_POSTING',
+              requiredXp: COMMUNITY_MIN_XP_TO_POST,
+              currentXp: Number(sessionUser.xp_total || 0)
+            },
+            403
+          );
+        }
+
+        const runModerationAndAudit = async (surface, modInput) => {
+          const modRes = await evaluateModerationCascade({
+            ...modInput,
+            siteOrigin: url.origin,
+            env
+          });
+          if (!modRes.allowed) {
+            const userIdHash = await sha256Hex(`mod:${sessionUser.id}`);
+            await recordModerationAuditLog(env.DB, {
+              id: crypto.randomUUID(),
+              userIdHash,
+              surface,
+              reasonCode: modRes.reasonCode,
+              createdAt: new Date().toISOString()
+            });
+            return {
+              blockedResponse: jsonResponse(
+                {
+                  ok: false,
+                  error: 'MODERATION_BLOCKED',
+                  reasonCode: modRes.reasonCode,
+                  layer: modRes.layer
+                },
+                422
+              )
+            };
+          }
+          return { blockedResponse: null, normalizedAttachedUrl: modRes.normalizedAttachedUrl };
+        };
+
+        const broadcastRoomEvent = async (roomLevel, eventObj) => {
+          if (env.LEVEL_CHAT_ROOMS && typeof env.LEVEL_CHAT_ROOMS.idFromName === 'function') {
+            try {
+              const doId = env.LEVEL_CHAT_ROOMS.idFromName(`level-${roomLevel}`);
+              const stub = env.LEVEL_CHAT_ROOMS.get(doId);
+              await stub.fetch(
+                new Request('https://level-chat-room.internal/internal/broadcast', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify(eventObj)
+                })
+              );
+            } catch {}
+          }
+        };
+
+        if (pathname === '/api/community/threads') {
+          const bodyRes = await readBoundedJsonBody(request);
+          if (!bodyRes.ok) return jsonResponse({ ok: false, error: bodyRes.error }, bodyRes.status);
+          const parsed = v.safeParse(ForumThreadCreateSchema, bodyRes.data);
+          if (!parsed.success) {
+            return jsonResponse({ ok: false, error: 'VALIDATION_FAILED' }, 400);
+          }
+          const d = parsed.output;
+          if (d.lessonSlug && !/^[a-z0-9-]{2,80}$/.test(d.lessonSlug)) {
+            return jsonResponse({ ok: false, error: 'VALIDATION_FAILED' }, 400);
+          }
+          const mod = await runModerationAndAudit('forum_thread', {
+            textFields: [d.title, d.bodyMd],
+            attachedUrl: d.attachedRepoUrl || '',
+            requireRepoHost: true
+          });
+          if (mod.blockedResponse) return mod.blockedResponse;
+
+          const thread = await insertForumThread(env.DB, {
+            id: crypto.randomUUID(),
+            authorId: sessionUser.id,
+            level: d.level,
+            category: d.category,
+            pathId: d.pathId || sessionUser.active_path_id || 'uso_cotidiano',
+            lessonSlug: d.lessonSlug || null,
+            title: d.title.replace(/[<>]/g, ''),
+            bodyMd: d.bodyMd.replace(/[<>]/g, ''),
+            attachedRepoUrl: mod.normalizedAttachedUrl,
+            createdAt: new Date().toISOString()
+          });
+          return jsonResponse({ ok: true, thread }, 201);
+        }
+
+        const replyMatch = /^\/api\/community\/threads\/([^/]+)\/replies$/.exec(pathname);
+        if (replyMatch) {
+          const threadId = replyMatch[1];
+          if (/^\d+$/.test(threadId)) {
+            return jsonResponse({ ok: false, error: 'OPAQUE_UUID_OR_ULID_REQUIRED' }, 400);
+          }
+          if (!/^[a-zA-Z0-9-]{8,64}$/.test(threadId)) {
+            return jsonResponse({ ok: false, error: 'INVALID_THREAD_ID' }, 400);
+          }
+          const bodyRes = await readBoundedJsonBody(request);
+          if (!bodyRes.ok) return jsonResponse({ ok: false, error: bodyRes.error }, bodyRes.status);
+          const parsed = v.safeParse(ForumReplyCreateSchema, bodyRes.data);
+          if (!parsed.success) {
+            return jsonResponse({ ok: false, error: 'VALIDATION_FAILED' }, 400);
+          }
+          const mod = await runModerationAndAudit('forum_reply', {
+            textFields: [parsed.output.bodyMd]
+          });
+          if (mod.blockedResponse) return mod.blockedResponse;
+
+          const reply = await insertForumReply(env.DB, {
+            id: crypto.randomUUID(),
+            threadId,
+            authorId: sessionUser.id,
+            bodyMd: parsed.output.bodyMd.replace(/[<>]/g, ''),
+            createdAt: new Date().toISOString()
+          });
+          if (!reply) {
+            return jsonResponse({ ok: false, error: 'THREAD_NOT_FOUND' }, 404);
+          }
+          return jsonResponse({ ok: true, reply }, 201);
+        }
+
+        const chatMatch = /^\/api\/community\/chat\/([123])$/.exec(pathname);
+        if (chatMatch) {
+          const roomLevel = Number(chatMatch[1]);
+          const bodyRes = await readBoundedJsonBody(request);
+          if (!bodyRes.ok) return jsonResponse({ ok: false, error: bodyRes.error }, bodyRes.status);
+          const parsed = v.safeParse(ChatMessageCreateSchema, bodyRes.data);
+          if (!parsed.success) {
+            return jsonResponse({ ok: false, error: 'VALIDATION_FAILED' }, 400);
+          }
+          const mod = await runModerationAndAudit('chat_message', {
+            textFields: [parsed.output.bodyText],
+            attachedUrl: parsed.output.attachedUrl || '',
+            requireRepoHost: false
+          });
+          if (mod.blockedResponse) return mod.blockedResponse;
+
+          const message = await insertChatMessage(env.DB, {
+            id: crypto.randomUUID(),
+            roomLevel,
+            authorId: sessionUser.id,
+            bodyText: parsed.output.bodyText.replace(/[<>]/g, ''),
+            attachedUrl: mod.normalizedAttachedUrl,
+            createdAt: new Date().toISOString()
+          });
+          await broadcastRoomEvent(roomLevel, { type: 'new_message', roomLevel, message });
+          return jsonResponse({ ok: true, message }, 201);
+        }
+
+        if (pathname === '/api/community/reports') {
+          const bodyRes = await readBoundedJsonBody(request);
+          if (!bodyRes.ok) return jsonResponse({ ok: false, error: bodyRes.error }, bodyRes.status);
+          const parsed = v.safeParse(CommunityReportCreateSchema, bodyRes.data);
+          if (!parsed.success) {
+            return jsonResponse({ ok: false, error: 'VALIDATION_FAILED' }, 400);
+          }
+          const mod = await runModerationAndAudit('report', {
+            textFields: [parsed.output.reason]
+          });
+          if (mod.blockedResponse) return mod.blockedResponse;
+
+          const outcome = await submitCommunityReport(env.DB, {
+            id: crypto.randomUUID(),
+            targetType: parsed.output.targetType,
+            targetId: parsed.output.targetId,
+            reporterUserId: sessionUser.id,
+            reason: parsed.output.reason.replace(/[<>]/g, ''),
+            createdAt: new Date().toISOString()
+          });
+          if (!outcome.found) {
+            return jsonResponse({ ok: false, error: 'TARGET_NOT_FOUND' }, 404);
+          }
+          if (outcome.autoHidden && parsed.output.targetType === 'chat_message' && outcome.roomLevel) {
+            await broadcastRoomEvent(outcome.roomLevel, {
+              type: 'message_hidden',
+              targetId: parsed.output.targetId
+            });
+          }
+          return jsonResponse({ ok: true, ...outcome });
+        }
+
+        return jsonResponse({ ok: false, error: 'API_ROUTE_NOT_FOUND' }, 404);
+      }
+
       if (pathname === '/api/me/export' && method === 'GET') {
         const plainEmail = env.EMAIL_ENCRYPTION_KEY_B64
           ? await decryptEmailAesGcm(sessionUser.email_ciphertext, env.EMAIL_ENCRYPTION_KEY_B64, sessionUser.id)
           : '[ENCRYPTION_KEY_UNAVAILABLE]';
-        const dashboard = await getUserDashboardState(env.DB, sessionUser);
+        const [dashboard, communityActivity] = await Promise.all([
+          getUserDashboardState(env.DB, sessionUser),
+          listUserCommunityContributionsForExport(env.DB, sessionUser.id)
+        ]);
         const exportBundle = {
           legalBasis: 'Ley 25.326 — Derecho de Acceso y Portabilidad de Datos Personales',
           exportedAt: new Date().toISOString(),
@@ -1058,7 +1357,8 @@ export default {
           progressSummary: dashboard.progress,
           lessonProgressLedger: dashboard.ledger,
           projectMilestones: dashboard.milestones,
-          certificates: dashboard.certificates
+          certificates: dashboard.certificates,
+          communityActivity
         };
         return withSecurityHeaders(
           new Response(JSON.stringify(exportBundle, null, 2), {

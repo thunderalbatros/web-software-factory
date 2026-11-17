@@ -4,7 +4,7 @@
 
 ## Platform
 
-web (`astro@7.4.11` + optional same-origin Cloudflare Workers `/api/*` + D1/R2 for optional sync, profiles, and Ed25519 certificates)
+web (`astro@7.4.11` + optional same-origin Cloudflare Workers `/api/*` + D1/R2/LevelChatRoom DO for optional sync, profiles, moderated `/comunidad/`, `/novedades/`, and Ed25519 certificates)
 
 ## Industry Archetype
 

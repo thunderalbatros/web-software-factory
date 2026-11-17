@@ -122,7 +122,10 @@ function measureSwPrecacheBudget(distDir) {
   }
   const swSelfBytes = fs.statSync(swPath).size;
   const excludesHeavyDictionariesAndPagefind = uniqueUrls.every(
-    (u) => !/cl100k_base/i.test(u) && !/(?:^|\/)pagefind\//i.test(u)
+    (u) =>
+      !/cl100k_base/i.test(u) &&
+      !/(?:^|\/)pagefind\//i.test(u) &&
+      !/(?:community-client|profile-client|verify-client|comunidad\.astro|perfil\.astro|verificar\.astro)/i.test(u)
   );
   const precacheKilobytes = Number((precacheBytes / 1024).toFixed(2));
   const withinBudget250Kb =
@@ -404,6 +407,8 @@ export async function certifyAcademiaRuntime(projectRoot = DEFAULT_PROJECT_ROOT)
       '/niveles/principiante/',
       '/niveles/intermedio/',
       '/niveles/avanzado/',
+      '/comunidad/',
+      '/novedades/',
       '/perfil/',
       '/verificar/'
     ];
@@ -537,6 +542,33 @@ export async function certifyAcademiaRuntime(projectRoot = DEFAULT_PROJECT_ROOT)
         // 4. Exercise video privacy facade click-to-play
         await page.locator('[data-video-play]').first().click();
         await page.locator('iframe.video-stage-iframe').first().waitFor({ timeout: 5000 });
+      } else if (route === '/comunidad/') {
+        await page.waitForFunction(() => {
+          const st = document.querySelector('[data-community-auth-status]');
+          return st && !st.textContent?.includes('Verificando estado');
+        }, null, { timeout: 5000 });
+        await page.locator('[data-community-view-tab="chat"]').click();
+        await page.locator('[data-community-panel="chat"]').waitFor({ state: 'visible', timeout: 5000 });
+        await page.locator('[data-chat-room-btn="2"]').click();
+        await page.waitForFunction(() => {
+          const cs = document.querySelector('[data-chat-status]');
+          return cs && cs.textContent?.includes('Nivel 2');
+        }, null, { timeout: 5000 });
+        await page.locator('[data-community-view-tab="forum"]').click();
+        await page.locator('[data-community-panel="forum"]').waitFor({ state: 'visible', timeout: 5000 });
+      } else if (route === '/novedades/') {
+        await page.locator('[data-news-card]').first().waitFor({ state: 'visible', timeout: 5000 });
+        await page.locator('[data-news-filter="vida_cotidiana"]').click();
+        await page.waitForFunction(() => {
+          const st = document.querySelector('[data-news-filter-status]');
+          const visible = [...document.querySelectorAll('[data-news-card]')].filter((c) => !c.hidden);
+          return st && st.textContent?.includes('1') && visible.length === 1;
+        }, null, { timeout: 5000 });
+        await page.locator('[data-news-filter="all"]').click();
+        await page.waitForFunction(() => {
+          const visible = [...document.querySelectorAll('[data-news-card]')].filter((c) => !c.hidden);
+          return visible.length === 3;
+        }, null, { timeout: 5000 });
       } else if (route === '/perfil/') {
         await page.locator('[data-profile-guest]').waitFor({ state: 'visible', timeout: 5000 });
         await page.locator('[data-profile-guest] [data-open-onboarding-btn]').click();

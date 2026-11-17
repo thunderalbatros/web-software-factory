@@ -58,6 +58,32 @@ class LocalD1PreparedStatement {
   }
 }
 
+function resolveMigrationFiles(migrationSqlPath) {
+  if (!migrationSqlPath) return [];
+  if (Array.isArray(migrationSqlPath)) {
+    return migrationSqlPath.flatMap((entry) => resolveMigrationFiles(entry));
+  }
+  const resolved = path.resolve(String(migrationSqlPath));
+  if (!fs.existsSync(resolved)) return [];
+  const st = fs.statSync(resolved);
+  if (st.isDirectory()) {
+    return fs
+      .readdirSync(resolved)
+      .filter((name) => name.endsWith('.sql'))
+      .sort()
+      .map((name) => path.join(resolved, name));
+  }
+  const parentDir = path.dirname(resolved);
+  if (path.basename(parentDir) === 'migrations') {
+    return fs
+      .readdirSync(parentDir)
+      .filter((name) => name.endsWith('.sql'))
+      .sort()
+      .map((name) => path.join(parentDir, name));
+  }
+  return [resolved];
+}
+
 export function createNodeSqliteD1Binding(sqliteFilePath, migrationSqlPath) {
   fs.mkdirSync(path.dirname(sqliteFilePath), { recursive: true });
   const sqlite = new DatabaseSync(sqliteFilePath);
@@ -65,8 +91,8 @@ export function createNodeSqliteD1Binding(sqliteFilePath, migrationSqlPath) {
   sqlite.exec('PRAGMA foreign_keys = ON;');
   sqlite.exec('PRAGMA busy_timeout = 5000;');
 
-  if (migrationSqlPath && fs.existsSync(migrationSqlPath)) {
-    const sql = fs.readFileSync(migrationSqlPath, 'utf8');
+  for (const migFile of resolveMigrationFiles(migrationSqlPath)) {
+    const sql = fs.readFileSync(migFile, 'utf8');
     sqlite.exec(sql);
   }
 

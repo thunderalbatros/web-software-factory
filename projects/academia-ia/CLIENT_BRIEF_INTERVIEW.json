@@ -23,15 +23,19 @@
         "/niveles/principiante/",
         "/niveles/intermedio/",
         "/niveles/avanzado/",
+        "/comunidad/",
+        "/novedades/",
         "/perfil/",
         "/verificar/"
       ],
       "domSectionsAndComponents": [
-        "Header Editorial Minimalista con Selector de Tema Claro/Oscuro y Enlace a Perfil/Verificar (0 Mute Toggle sonoro)",
+        "Header Editorial Minimalista con Selector de Tema Claro/Oscuro y Enlace a Comunidad/Novedades/Perfil/Verificar (0 Mute Toggle sonoro)",
         "Índice Editorial (Academia Libre) con 3 Niveles UNESCO (Adquirir, Profundizar, Crear) y Buscador Pagefind",
         "Columna de Lectura en Modo Read (65ch, bloques <= 110 palabras en español neutro tú)",
         "Fachada Multi-Video de Privacidad (youtube-nocookie.com + archive.org) con aviso local y síntesis textual",
         "Micro-Explorables en Cliente (js-tiktoken BPE + Temml MathML 0 KB JS) y Tutor Socrático en Sandbox Opaco (MessageChannel 1:1)",
+        "Comunidad Social Moderada por IA (/comunidad/: Foro por Nivel/Ruta + Salas de Chat por Nivel 1..3 con Durable Object LevelChatRoom y lectura libre)",
+        "Sección de Novedades Curadas (/novedades/ desde data/academy/news_feed.json con alternativa gratuita sin tarjeta y puente a comunidad)",
         "Cuestionario Adaptativo de 4 Pasos + Menú Perfil (Avatar WebP 128x128 + Derechos Ley 25.326) + Verificador de Certificados Ed25519"
       ]
     },
@@ -48,7 +52,10 @@
       ],
       "valibotSchemas": [
         "TutorOutboundPromptSchema (question, levelId, lessonSlug)",
-        "TutorInboundMessageSchema (TUTOR_SANDBOX_READY | TUTOR_HINT_RESPONSE | TUTOR_ERROR)"
+        "TutorInboundMessageSchema (TUTOR_SANDBOX_READY | TUTOR_HINT_RESPONSE | TUTOR_ERROR)",
+        "ForumThreadCreateSchema & ForumReplyCreateSchema",
+        "ChatMessageCreateSchema & CommunityReportCreateSchema",
+        "NewsFeedDocumentSchema (data/academy/news_feed.json)"
       ]
     },
     "block3_grid_topology_and_morphology": {
@@ -137,9 +144,9 @@
     },
     "block9_database_payments_auth_and_edge_worker": {
       "databaseTier": "hybrid-static-indexeddb-and-d1",
-      "databaseEngine": "Static JSON (data/academy/*.json) + Local-First Browser Storage (Dexie/IndexedDB) + Optional Same-Origin Cloudflare D1 & R2 (/api/*)",
+      "databaseEngine": "Static JSON (data/academy/*.json) + Local-First Browser Storage (Dexie/IndexedDB) + Optional Same-Origin Cloudflare D1, R2 & LevelChatRoom Durable Object (/api/*)",
       "paymentGateway": "none",
-      "authMode": "Optional OAuth 2.1 PKCE Google + GitHub Link (100% Open Lessons Without Login — Ley 25.326)",
+      "authMode": "Optional OAuth 2.1 PKCE Google + GitHub Link (100% Open Lessons Without Login — Ley 25.326; Merit >= 45 XP Required for Community Posting)",
       "workerEndpoints": [
         "/api/health",
         "/api/auth/google/start",
@@ -154,7 +161,12 @@
         "/api/progress/sync",
         "/api/progress/event",
         "/api/milestones/verify",
-        "/api/certificates/issue"
+        "/api/certificates/issue",
+        "/api/community/threads",
+        "/api/community/threads/:threadId",
+        "/api/community/threads/:threadId/replies",
+        "/api/community/chat/:level",
+        "/api/community/reports"
       ],
       "enforceWebhookIdempotencyAndRls": false
     },
@@ -165,11 +177,11 @@
         "es"
       ],
       "maxCloudApiBudgetUsd": 0,
-      "totalGcpCreditPoolUsd": 90,
+      "totalGcpCreditPoolUsd": 70,
       "f2pAcceptanceCriteria": [
-        "[REQ-01..03] Astro 7.4.11 100% estático ($0 servidor), progreso local-first (Ley 25.326) y 0 violaciones WCAG 2.2 AA",
+        "[REQ-01..03] Arquitectura híbrida estática Astro 7.4.11 + Worker mismo origen (/api/* con D1/R2/DO opcional), progreso local-first (Ley 25.326) y 0 violaciones WCAG 2.2 AA",
         "[REQ-04..06] Columna 60ch–70ch (65ch), español neutro <= 110 palabras (INFLESZ) y fachada multi-video con aviso local",
-        "[REQ-07..09] js-tiktoken BPE local, Temml MathML 0 KB JS y sandbox opaco con MessageChannel 1:1 + Valibot + DOMPurify TrustedHTML",
+        "[REQ-07..09] js-tiktoken BPE local, Temml MathML 0 KB JS, sandbox opaco MessageChannel 1:1 + moderación IA en cascada sobre /comunidad/",
         "[REQ-10..12] CSP estricta con hashes sha256 + Trusted Types (default.createHTML lanza TypeError), PWA MPA < 250 KB y autonomía fuera del monorepo"
       ]
     },
@@ -197,14 +209,19 @@
         "/",
         "/niveles/principiante/",
         "/niveles/intermedio/",
-        "/niveles/avanzado/"
+        "/niveles/avanzado/",
+        "/comunidad/",
+        "/novedades/",
+        "/perfil/",
+        "/verificar/"
       ],
       "mandatorySections": [
         "Índice Editorial con 3 Niveles UNESCO y Búsqueda Estática Pagefind",
         "Columna de Lectura 65ch con Jerarquía Limpia h1 -> h2 -> h3",
         "Fachada Multi-Video (youtube-nocookie.com + archive.org) con Aviso de Almacenamiento Local",
         "Micro-Explorables (js-tiktoken + Temml MathML 0 KB JS)",
-        "Tutor Socrático en Sandbox Opaco (MessageChannel 1:1 + Valibot + DOMPurify TrustedHTML)"
+        "Tutor Socrático en Sandbox Opaco (MessageChannel 1:1 + Valibot + DOMPurify TrustedHTML)",
+        "Comunidad Abierta Moderada por IA (/comunidad/) y Novedades Curadas (/novedades/)"
       ]
     },
     "block4_aesthetic_oklch_typography": {
@@ -275,7 +292,7 @@
         "es"
       ],
       "maxCloudApiBudgetUsd": 0,
-      "totalGcpCreditPoolUsd": 90,
+      "totalGcpCreditPoolUsd": 70,
       "successMetricsDod": [
         "RYUX Design Gate Read Mode = 100/100 & Security Gate = 100/100",
         "LCP <= 1.8s, CLS = 0.000, PWA Precache < 250 KB & 0 violaciones CSP/Trusted Types/axe",

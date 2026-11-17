@@ -363,9 +363,39 @@ async function initSessionHeaderSync() {
   } catch {}
 }
 
+function initNewsFilter() {
+  const filterBtns = [...document.querySelectorAll('[data-news-filter]')];
+  const cards = [...document.querySelectorAll('[data-news-card]')];
+  const statusEl = document.querySelector('[data-news-filter-status]');
+  if (filterBtns.length === 0 || cards.length === 0) return;
+
+  const applyFilter = (category) => {
+    let visibleCount = 0;
+    for (const card of cards) {
+      const cardCat = card.getAttribute('data-news-category') || '';
+      const show = category === 'all' || cardCat === category;
+      card.hidden = !show;
+      if (show) visibleCount += 1;
+    }
+    for (const btn of filterBtns) {
+      btn.setAttribute('aria-pressed', btn.getAttribute('data-news-filter') === category ? 'true' : 'false');
+    }
+    if (statusEl) {
+      statusEl.textContent = `Mostrando ${visibleCount} ficha(s) verificada(s) con estado HTTP 200.`;
+    }
+  };
+
+  for (const btn of filterBtns) {
+    btn.addEventListener('click', () => {
+      applyFilter(btn.getAttribute('data-news-filter') || 'all');
+    });
+  }
+}
+
 function bootAcademiaClient() {
   initThemeToggle();
   initArchetypeSelector();
+  initNewsFilter();
   initVideoFacades();
   initTiktokenExplorer();
   initIsolatedSocraticTutor();

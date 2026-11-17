@@ -29,3 +29,14 @@ namespace_id = "2001"
 [ratelimits.simple]
 limit = 30
 period = 60
+
+[[durable_objects.bindings]]
+name = "LEVEL_CHAT_ROOMS"
+class_name = "LevelChatRoom"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["LevelChatRoom"]
+
+[ai]
+binding = "AI"

@@ -2,7 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://academia-ia.pages.dev/</loc>
-    <lastmod>2026-11-15</lastmod>
+    <lastmod>2026-11-17</lastmod>
+  </url>
+  <url>
+    <loc>https://academia-ia.pages.dev/comunidad/</loc>
+    <lastmod>2026-11-17</lastmod>
   </url>
   <url>
     <loc>https://academia-ia.pages.dev/niveles/avanzado/</loc>
@@ -14,6 +18,18 @@
   </url>
   <url>
     <loc>https://academia-ia.pages.dev/niveles/principiante/</loc>
-    <lastmod>2026-11-15</lastmod>
+    <lastmod>2026-11-17</lastmod>
+  </url>
+  <url>
+    <loc>https://academia-ia.pages.dev/novedades/</loc>
+    <lastmod>2026-11-17</lastmod>
+  </url>
+  <url>
+    <loc>https://academia-ia.pages.dev/perfil/</loc>
+    <lastmod>2026-11-17</lastmod>
+  </url>
+  <url>
+    <loc>https://academia-ia.pages.dev/verificar/</loc>
+    <lastmod>2026-11-17</lastmod>
   </url>
 </urlset>
