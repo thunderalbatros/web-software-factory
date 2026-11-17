@@ -315,7 +315,7 @@ export function compressLargeMcpOutputToDisk({
   payload = {},
   maxInlineTokens = 1200,
   securityReportsDir = SECURITY_REPORTS_DIR,
-  headroomDir = HEADROOM_CCR_DIR
+  headroomDir = process.env.FACTORY_HEADROOM_CCR_DIR || HEADROOM_CCR_DIR
 } = {}) {
   const serialized = typeof payload === 'string' ? payload : JSON.stringify(payload, null, 2);
   const estimatedTokens = Math.ceil(serialized.length / 4);
@@ -366,6 +366,7 @@ export function compressLargeMcpOutputToDisk({
     targetFilePath = path.join(headroomDir, `mcp-${hash}.json`);
   }
 
+  const savedAt = new Date().toISOString();
   fs.writeFileSync(
     targetFilePath,
     JSON.stringify(
@@ -373,8 +374,12 @@ export function compressLargeMcpOutputToDisk({
         mcpServer,
         toolName,
         hash,
-        savedAt: new Date().toISOString(),
+        savedAt,
+        createdAt: savedAt,
+        strategyUsed: 'McpDiskSpillover',
+        beforeTokens: estimatedTokens,
         originalTokens: estimatedTokens,
+        originalPayload: payload,
         fullPayload: payload
       },
       null,
@@ -401,7 +406,7 @@ export function compressLargeMcpOutputToDisk({
           sbomCycloneDxReport: `.agents/security_reports/.sbom/cyclonedx-delta-${hash}.json`
         }
       : undefined,
-    executiveSummary: `Output (${estimatedTokens} tokens > ${maxInlineTokens} limit) persisted to ${relPointer}. Status: PASS (0 critical blockers). Retrieve on demand via headroom_retrieve("${hash}") or read_file.`
+    executiveSummary: `Output (${estimatedTokens} tokens > ${maxInlineTokens} inline limit) persisted to ${relPointer}. Retrieve lossless payload via headroom_retrieve("${hash}") or read_file.`
   };
 
   const summaryTokens = Math.ceil(JSON.stringify(executiveSummary).length / 4);

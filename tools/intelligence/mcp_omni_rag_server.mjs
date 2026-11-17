@@ -28,14 +28,14 @@ import readline from 'node:readline';
 import { fileURLToPath } from 'node:url';
 import { queryKnowledge, queryCodeGraph, getClusterStats } from './rag_pipeline.mjs';
 import { routeQueryToSquads } from './squad_semantic_router.mjs';
-import { hybridRrfSearch, projectScopeFilter } from './qdrant_rag.mjs';
+import { projectScopeFilter } from './qdrant_rag.mjs';
+export { projectScopeFilter };
 import {
   classifyEpistemicTier,
   inspectAndGuardLegacyFragment,
   TRANSLATION_RULE_WARNING
 } from './rag_library_sanitizer.mjs';
 import {
-  assembleThreeTierContext,
   compressReversibleCcr,
   headroom_retrieve
 } from './context_budget.mjs';
@@ -69,8 +69,8 @@ import { compileDesignTokens, getStyleCatalog, buildDtcgTokensObject } from '../
 import { runRyuxDesignGate } from '../audit/ryux_design_gate.mjs';
 import { runCognitiveUxAudit } from '../audit/cognitive_ux_auditor.mjs';
 import { runDiffUiAdversarialGate } from '../audit/diff_ui_adversarial.mjs';
-import { lookupInLocalVault } from './vault_indexer.mjs';
 import { resolveDatabaseTier } from '../db/dual_database_forge.mjs';
+import { resolveDomainProfile, classifyKnowledgeDocumentDomain } from '../lib/project_profile.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -180,6 +180,14 @@ export const TOOLS = [
       properties: {
         query: { type: 'string', description: 'Technical or conceptual search query (Spanish or English).' },
         limit: { type: 'number', description: 'Max chunks to return (default 5).' },
+        maxTokens: {
+          type: 'number',
+          description: 'Max inline response token budget (default 1200, max 2400). Returns real chunks directly without disk spillover.'
+        },
+        projectSlug: {
+          type: 'string',
+          description: 'Optional project slug (e.g. academia-ia, agencia-alfa) to enforce declarative rag.allowedDomains filtering.'
+        },
         rerank: { type: 'boolean', description: 'Enable local ONNX Q8 Cross-Encoder reranking.' },
         domainQuarantine: {
           type: 'boolean',
@@ -892,7 +900,32 @@ export function validateMcpRequestSecurity(req = {}) {
   return { valid: true, traceId };
 }
 
-async function executeSingleMcpTool(toolName, args = {}, traceId = generateCsprngSessionId()) {
+export const STUB_MCP_CLI_GATE_MAP = Object.freeze({
+  delta_security_scan: 'node tools/audit/security_gate.mjs && node tools/supply_chain_guard.mjs --fast',
+  dast_endpoint_probe: 'node tools/audit/local_fullstack_and_component_harness.mjs',
+  github_precommit_secret_scan: 'node tools/audit/security_gate.mjs && node tools/audit/workflow_security_linter.mjs',
+  git_readonly_inspect: 'node tools/audit/git_remote_sync_check.mjs',
+  d1_readonly_query: 'node tools/intelligence/academy_store.mjs --stats'
+});
+
+export function buildNotImplementedCliGateError(toolName, traceId, extra = {}) {
+  const cliCommand = STUB_MCP_CLI_GATE_MAP[toolName] || 'node tools/factory.mjs gate';
+  return {
+    _isStubCliGateError: true,
+    ok: false,
+    isError: true,
+    code: 'NOT_IMPLEMENTED_USE_CLI_GATE',
+    error: 'NOT_IMPLEMENTED_USE_CLI_GATE',
+    status: 'NOT_IMPLEMENTED_USE_CLI_GATE',
+    traceId,
+    toolName,
+    cliCommand,
+    ...extra,
+    message: `NOT_IMPLEMENTED_USE_CLI_GATE: MCP tool '${toolName}' does not execute simulated PASS stubs. Run the real CLI gate instead: ${cliCommand}`
+  };
+}
+
+export async function executeSingleMcpTool(toolName, args = {}, traceId = generateCsprngSessionId()) {
   if (toolName === 'discover_tools') {
     return discoverToolsByIntent({
       intent: args.intent || '',
@@ -953,35 +986,21 @@ async function executeSingleMcpTool(toolName, args = {}, traceId = generateCsprn
     };
   }
   if (toolName === 'delta_security_scan') {
-    const slug = args.projectSlug || 'agencia-alfa';
-    const fullScanReport = {
+    const slug = args.projectSlug || resolveDomainProfile().slug;
+    return buildNotImplementedCliGateError('delta_security_scan', traceId, {
       projectSlug: slug,
-      timestamp: new Date().toISOString(),
-      sastSemgrep: { passed: true, blockers: 0 },
-      iacTrivyCis: { passed: true, misconfigurations: 0 },
-      sbomCycloneDx: { passed: true, componentsVerified: 13 },
-      details: 'Delta SAST + IaC CIS + CycloneDX SBOM completed with 0 vulnerabilities.'
-    };
-    const compressed = compressLargeMcpOutputToDisk({
-      mcpServer: 'delta-security-scanner',
-      toolName: 'delta_security_scan',
-      payload: fullScanReport
+      cliCommand: `node tools/audit/security_gate.mjs --project ${slug}`
     });
-    return compressed.payload;
   }
   if (toolName === 'dast_endpoint_probe') {
     const u = String(args.targetUrl || 'http://127.0.0.1:3000');
     if (!/^https?:\/\/(?:127\.0\.0\.1|localhost)(?::\d+)?/i.test(u)) {
       throw new Error('DAST_SCOPE_VIOLATION: dast-offat-zap only probes isolated localhost/127.0.0.1 staging.');
     }
-    return {
-      traceId,
+    return buildNotImplementedCliGateError('dast_endpoint_probe', traceId, {
       targetUrl: u,
-      secFetchEnforced: true,
-      corsStrict: true,
-      csrfTokenOrMetadataVerified: true,
-      status: 'DAST_PASS'
-    };
+      cliCommand: 'node tools/audit/local_fullstack_and_component_harness.mjs'
+    });
   }
   if (toolName === 'filesystem_scoped_read') {
     const perm = verifyRoleMcpPermission({
@@ -1003,7 +1022,11 @@ async function executeSingleMcpTool(toolName, args = {}, traceId = generateCsprn
       gitCommand: `git ${args.subcommand || 'status'}`
     });
     if (!perm.allowed) throw new Error(perm.reason);
-    return { traceId, mode: 'READ_ONLY_VERIFIED', subcommand: args.subcommand };
+    const sub = String(args.subcommand || 'status').replace(/[^a-z0-9_-]/gi, '');
+    return buildNotImplementedCliGateError('git_readonly_inspect', traceId, {
+      subcommand: sub,
+      cliCommand: `git ${sub || 'status'} -s`
+    });
   }
   if (toolName === 'd1_readonly_query') {
     const perm = verifyRoleMcpPermission({
@@ -1014,23 +1037,16 @@ async function executeSingleMcpTool(toolName, args = {}, traceId = generateCsprn
     });
     if (!perm.allowed) throw new Error(perm.reason);
     const activeDbTier = resolveDatabaseTier(ROOT);
-    return {
-      traceId,
-      mode: 'READ_ONLY_SQL_VERIFIED',
+    return buildNotImplementedCliGateError('d1_readonly_query', traceId, {
       dbTier: activeDbTier,
-      rlsEnforced: activeDbTier === 'enterprise-postgres',
-      query: args.sql,
-      rows: []
-    };
+      cliCommand: 'node tools/intelligence/academy_store.mjs --stats'
+    });
   }
   if (toolName === 'github_precommit_secret_scan') {
-    return {
-      traceId,
-      branchName: args.branchName || 'factory/agencia-alfa',
-      pushProtectionActive: true,
-      secretsDetected: 0,
-      status: 'CLEAN'
-    };
+    return buildNotImplementedCliGateError('github_precommit_secret_scan', traceId, {
+      branchName: args.branchName || 'HEAD',
+      cliCommand: 'node tools/audit/security_gate.mjs'
+    });
   }
   if (toolName === 'github_nhi_open_pr') {
     if (!args.hitlConfirmed) {
@@ -1046,24 +1062,33 @@ async function executeSingleMcpTool(toolName, args = {}, traceId = generateCsprn
   }
   if (toolName === 'omni_rag_query') {
     const q = String(args.query || '');
-    const lim = Number(args.limit || 5);
+    const lim = Math.max(1, Math.min(12, Number(args.limit || 5)));
     const useRerank = Boolean(args.rerank);
-    const scopeFilter = projectScopeFilter(q, { domainQuarantine: args.domainQuarantine });
+    const domainProfile = resolveDomainProfile({ slug: args.projectSlug || '' });
+    const maxTokens = Math.min(
+      2400,
+      Math.max(256, Number(args.maxTokens || domainProfile.capabilities.rag.maxInlineTokens || 1200))
+    );
+    const scopeFilter = projectScopeFilter(q, {
+      project: domainProfile.slug,
+      archetype: domainProfile.id,
+      domainQuarantine: args.domainQuarantine
+    });
     const route = routeQueryToSquads(q);
-    const contextBudget = assembleThreeTierContext(q);
-    const localVaultMatches = lookupInLocalVault(q);
-    const ragFusion = await executeRagFusionRrfAndCrag(q, { limit: lim * 2, useOnnxRerank: useRerank });
+    const ragFusion = await executeRagFusionRrfAndCrag(q, { limit: lim * 3, useOnnxRerank: useRerank });
     const rawHits = ragFusion.results;
     const hits = rawHits
       .filter((h) => {
         const cleanPath = String(h.source || h.id || '').replace(/^local:\/\//, '').split('#')[0];
-        return !scopeFilter.evaluateChunk(cleanPath).quarantined;
+        if (!domainProfile.isDomainAllowedInRag(cleanPath)) return false;
+        if (args.domainQuarantine === true && scopeFilter.evaluateChunk(cleanPath).quarantined) return false;
+        return true;
       })
       .slice(0, lim);
-    const rrfFallback = await hybridRrfSearch(q, lim, { domainQuarantine: args.domainQuarantine });
-    const cappedResults = hits.map((h, idx) => {
-      const rrfMatch = rrfFallback.results[idx];
+
+    const fullResults = hits.map((h) => {
       const cleanPath = String(h.source || h.id || '').replace(/^local:\/\//, '').split('#')[0];
+      const domain = classifyKnowledgeDocumentDomain(cleanPath);
       const tierMeta = h.epistemicTier
         ? {
             epistemicTier: h.epistemicTier,
@@ -1081,57 +1106,80 @@ async function executeSingleMcpTool(toolName, args = {}, traceId = generateCsprn
       if (isClassicBook && !rawText.includes('[TRANSLATION_RULE:')) {
         rawText = `${TRANSLATION_RULE_WARNING}\n${rawText}`;
       }
-      const text = rawText.slice(0, 2200);
+      const fullText = rawText.slice(0, 2200);
       return {
-        ...h,
-        rrfScore: h.rrfScore,
-        matchedVariants: h.matchedVariants,
+        id: h.id || cleanPath,
+        source: cleanPath,
+        domain,
+        title: h.title || cleanPath,
+        rrfScore: Number((h.rrfScore || 0).toFixed(6)),
         epistemicTier: tierMeta.epistemicTier,
         authorityBoost: tierMeta.authorityBoost,
-        epistemicRole: tierMeta.epistemicRole,
         legacySyntaxGuard: guardMeta.legacySyntaxGuard || (isClassicBook ? 'TIER_3_LEGACY_SYNTAX_GUARD' : null),
-        translationRule: guardMeta.translationRule || (isClassicBook ? TRANSLATION_RULE_WARNING : null),
-        supersededReplacements: guardMeta.supersededReplacements,
-        citation: rrfMatch?.citation || String(h.source || h.id || '').replace(/^local:\/\//, ''),
-        tokens: Math.min(600, Math.ceil(text.length / 4)),
-        text
+        citation: cleanPath,
+        fullText
       };
     });
 
     const ccr = compressReversibleCcr({
       query: q,
-      results: cappedResults,
-      rrfCitations: rrfFallback.results
+      domainProfile: domainProfile.id,
+      allowedDomains: domainProfile.capabilities.rag.allowedDomains,
+      results: fullResults
     });
 
-    return {
+    // Greedily pack real inline chunk content strictly within `maxTokens` (default <= 1200 tokens, zero spillover)
+    const inlineTokenCap = maxTokens;
+    const maxTotalChars = inlineTokenCap * 4 - 160;
+    const baseEnvelope = {
       traceId,
-      projectScopeFilter: rrfFallback.projectScopeFilter,
-      squadRoute: route.primarySquad,
-      epistemicIntent: rrfFallback.epistemicIntent,
-      activeTranslationRule: TRANSLATION_RULE_WARNING,
-      ragFusionRrfAndCrag: {
-        rrfFormula: ragFusion.rrfFormula,
-        queryVariants: ragFusion.queryVariants,
-        cragEvaluation: ragFusion.cragEvaluation
-      },
-      complementaryPairs: rrfFallback.complementaryPairs || [],
-      localVaultMatches,
+      domainProfile: domainProfile.id,
+      allowedDomains: domainProfile.capabilities.rag.allowedDomains,
+      squadRoute: route.primarySquad?.squad || 'architecture',
+      maxTokens: inlineTokenCap,
       headroomCcr: {
         hash: ccr.hash,
-        retrieveToolCall: ccr.retrieveToolCall,
-        reductionPct: ccr.reductionPct
+        retrieveToolCall: ccr.retrieveToolCall
       },
-      contextBudget: {
-        hotCacheKey: contextBudget.hot.cacheKey,
-        alignedPrefixHash: contextBudget.hot.alignedPrefixHash,
-        warmRole: contextBudget.warm.activeRole.path,
-        warmSkills: contextBudget.warm.selectedSkills.map((s) => s.name),
-        maxFragmentTokens: 600
-      },
-      results: cappedResults,
-      rrfCitations: rrfFallback.results
+      results: []
     };
+
+    const headerOverheadChars = JSON.stringify(baseEnvelope, null, 2).length;
+    let remainingChars = Math.max(240, maxTotalChars - headerOverheadChars);
+    const perHitTargetChars = Math.max(
+      260,
+      Math.floor((remainingChars - fullResults.length * 240) / Math.max(1, Math.min(fullResults.length, lim)))
+    );
+
+    for (const item of fullResults) {
+      if (remainingChars < 260) break;
+      const maxExcerptChars = Math.max(140, Math.min(perHitTargetChars, remainingChars - 230));
+      const trimmedText =
+        item.fullText.length > maxExcerptChars
+          ? `${item.fullText.slice(0, maxExcerptChars).trimEnd()}…`
+          : item.fullText;
+      const candidateEntry = {
+        id: item.id,
+        source: item.source,
+        domain: item.domain,
+        title: item.title,
+        epistemicTier: item.epistemicTier,
+        authorityBoost: item.authorityBoost,
+        rrfScore: item.rrfScore,
+        legacySyntaxGuard: item.legacySyntaxGuard || undefined,
+        text: trimmedText
+      };
+      const nextResults = [...baseEnvelope.results, candidateEntry];
+      const serializedProbe = JSON.stringify({ ...baseEnvelope, results: nextResults }, null, 2);
+      if (Math.ceil(serializedProbe.length / 4) > inlineTokenCap && baseEnvelope.results.length > 0) {
+        break;
+      }
+      baseEnvelope.results.push(candidateEntry);
+      remainingChars = maxTotalChars - serializedProbe.length;
+    }
+
+    baseEnvelope.returnedTokens = Math.ceil(JSON.stringify(baseEnvelope, null, 2).length / 4);
+    return baseEnvelope;
   }
   if (toolName === 'code_graph_query') {
     return { traceId, ...queryCodeGraph(args.symbol_or_file || '', Number(args.limit || 8)) };
@@ -1293,14 +1341,31 @@ export function startMcpServer() {
           });
         } else {
           const rawOut = await executeSingleMcpTool(toolName, args, securityCheck.traceId);
-          const finalOut = compressLargeMcpOutputToDisk({
-            mcpServer: TOOLS.find((t) => t.name === toolName)?.mcpServer || 'omni-rag-ast',
-            toolName,
-            payload: rawOut
-          });
-          sendResponse(id, {
-            content: [{ type: 'text', text: JSON.stringify(finalOut.payload, null, 2) }]
-          });
+          if (rawOut && rawOut._isStubCliGateError) {
+            const { _isStubCliGateError, ...errPayload } = rawOut;
+            sendResponse(id, {
+              isError: true,
+              content: [{ type: 'text', text: JSON.stringify(errPayload, null, 2) }]
+            });
+          } else if (toolName === 'headroom_retrieve') {
+            sendResponse(id, {
+              content: [{ type: 'text', text: JSON.stringify(rawOut, null, 2) }]
+            });
+          } else {
+            const effectiveInlineLimit =
+              toolName === 'omni_rag_query'
+                ? Math.min(2400, Math.max(256, Number(args.maxTokens || 1200)))
+                : 1200;
+            const finalOut = compressLargeMcpOutputToDisk({
+              mcpServer: TOOLS.find((t) => t.name === toolName)?.mcpServer || 'omni-rag-ast',
+              toolName,
+              payload: rawOut,
+              maxInlineTokens: effectiveInlineLimit
+            });
+            sendResponse(id, {
+              content: [{ type: 'text', text: JSON.stringify(finalOut.payload, null, 2) }]
+            });
+          }
         }
       } else if (id !== undefined) {
         sendResponse(id, { traceId: securityCheck.traceId });
@@ -1317,7 +1382,10 @@ export function startMcpServer() {
   });
 }
 
-if (process.argv[1] && path.resolve(process.argv[1]) === __filename) {
+if (
+  process.argv[1] &&
+  path.resolve(process.argv[1]).toLowerCase() === path.resolve(__filename).toLowerCase()
+) {
   if (process.argv.includes('--self-test')) {
     executeRagFusionRrfAndCrag('OKLCH W3C DTCG 2025.10 tokens and APCA contrast', { limit: 4 }).then((res) => {
       console.log('====================================================================');

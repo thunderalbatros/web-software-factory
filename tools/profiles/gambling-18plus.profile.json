@@ -1,0 +1,55 @@
+{
+  "profileId": "gambling-18plus",
+  "version": "1.0.0",
+  "complianceProfile": "gambling-18plus",
+  "defaultStyle": "bento",
+  "defaultSurfaceMode": "Experience",
+  "defaultIndustryArchetype": "streaming-overlay",
+  "capabilities": {
+    "commerce": {
+      "payments": false,
+      "leads": false,
+      "turnstile": false,
+      "pricingSection": false
+    },
+    "media": {
+      "audio": true,
+      "three": true,
+      "shaders": true,
+      "introVideo": true,
+      "bespokeDomMorphology": true
+    },
+    "runtime": {
+      "worker": false,
+      "d1": false,
+      "staticHeadersRequired": false,
+      "pwaOfflineMpa": false
+    },
+    "content": {
+      "mdxLessons": false,
+      "socraticQuizzes": false,
+      "fsrsSpacedRepetition": false,
+      "legacyClientBriefMarkdown": true
+    },
+    "compliance": {
+      "cspProfile": "gambling-18plus",
+      "trustedTypesStrict": false,
+      "ageGate18Plus": true,
+      "localFirstPrivacy": false,
+      "forbidExternalGenerativeFallbacks": false
+    },
+    "rag": {
+      "allowedDomains": [
+        "streaming_and_overlays",
+        "motion_and_animation",
+        "ui_ux_design",
+        "cybersecurity",
+        "architecture_and_books",
+        "software_factory",
+        "agent_skills",
+        "core_index"
+      ],
+      "maxInlineTokens": 1200
+    }
+  }
+}

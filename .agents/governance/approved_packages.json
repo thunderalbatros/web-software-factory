@@ -16,7 +16,6 @@
     "@astrojs/sitemap",
     "@axe-core/playwright",
     "@biomejs/biome",
-    "@browserbasehq/stagehand",
     "@cloudflare/workers-types",
     "@electric-sql/pglite",
     "@google/genai",
@@ -38,6 +37,7 @@
     "drizzle-orm",
     "esbuild",
     "fzstd",
+    "gpt-tokenizer",
     "hono",
     "js-tiktoken",
     "lightningcss",
@@ -75,11 +75,15 @@
     "root": {
       "@axe-core/playwright": "4.14.0",
       "@google/genai": "3.3.0",
+      "apca-w3": "0.1.9",
+      "esbuild": "0.28.2",
+      "gpt-tokenizer": "4.1.2",
       "oxlint": "1.93.0",
       "oxlint-tsgolint": "7.0.2007",
       "oxfmt": "0.78.0",
       "@biomejs/biome": "2.6.7",
-      "playwright-core": "1.65.1"
+      "playwright-core": "1.65.1",
+      "svgo": "4.1.0"
     },
     "templates/astro-edge": {
       "astro": "7.4.11",

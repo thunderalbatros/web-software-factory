@@ -14,7 +14,8 @@ const ORIG_TEST_ENV = {
   VERTEX_IMAGEN3_OUT_DIR: process.env.VERTEX_IMAGEN3_OUT_DIR,
   FACTORY_RETRY_LEDGER_DIR: process.env.FACTORY_RETRY_LEDGER_DIR,
   AGY_TURN_LEDGER_PATH: process.env.AGY_TURN_LEDGER_PATH,
-  WEBFACTORY_SANDBOX_BASE_DIR: process.env.WEBFACTORY_SANDBOX_BASE_DIR
+  WEBFACTORY_SANDBOX_BASE_DIR: process.env.WEBFACTORY_SANDBOX_BASE_DIR,
+  FACTORY_HEADROOM_CCR_DIR: process.env.FACTORY_HEADROOM_CCR_DIR
 };
 
 function applyHermeticTestEnv() {
@@ -25,6 +26,7 @@ function applyHermeticTestEnv() {
   process.env.FACTORY_RETRY_LEDGER_DIR = path.join(HERMETIC_TMP_ROOT, 'runs');
   process.env.AGY_TURN_LEDGER_PATH = path.join(HERMETIC_TMP_ROOT, 'agy_turn_ledger.json');
   process.env.WEBFACTORY_SANDBOX_BASE_DIR = path.join(HERMETIC_TMP_ROOT, 'sandboxes');
+  process.env.FACTORY_HEADROOM_CCR_DIR = path.join(HERMETIC_TMP_ROOT, 'headroom_ccr');
 }
 applyHermeticTestEnv();
 
@@ -1573,8 +1575,9 @@ test('agent_runner_adapter enforces Bead fileLocks and runs deterministic zero-c
   assert.equal(runRes.fileLocksVerified, true);
 });
 
-test('turso_mvcc_bridge executes concurrent SQLite transactions cleanly', async () => {
-  const tmpDbPath = path.join(HERMETIC_TMP_ROOT, `test_mvcc_${Date.now()}.sqlite`);
+test('turso_mvcc_bridge executes concurrent SQLite transactions cleanly in os.tmpdir()', async () => {
+  const mvccTmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'wf-mvcc-test-'));
+  const tmpDbPath = path.join(mvccTmpDir, `test_mvcc_${Date.now()}.sqlite`);
   const db = await openConcurrentSqliteConnection(tmpDbPath);
   try {
     await db.exec('CREATE TABLE IF NOT EXISTS items (id INTEGER PRIMARY KEY, label TEXT NOT NULL);');
@@ -1586,9 +1589,7 @@ test('turso_mvcc_bridge executes concurrent SQLite transactions cleanly', async 
     assert.equal(rows[0].label, 'alpha-mvcc');
   } finally {
     await db.close();
-    for (const ext of ['', '-wal', '-shm']) {
-      if (fs.existsSync(tmpDbPath + ext)) fs.rmSync(tmpDbPath + ext, { force: true });
-    }
+    fs.rmSync(mvccTmpDir, { recursive: true, force: true, maxRetries: 5, retryDelay: 50 });
   }
 });
 
@@ -2339,6 +2340,112 @@ test('Stage 3C.2 — vertex_ai_bridge FinOps telemetry, budget sync, KMS wrap, a
   assert.equal(finalLogLines, INITIAL_FINOPS_LOG_LINES, 'FinOps usage line count must be unchanged across full suite');
   const finalGitPorcelain = execFileSync('git', ['status', '--porcelain'], { cwd: FACTORY_ROOT, encoding: 'utf8' });
   assert.equal(finalGitPorcelain, INITIAL_GIT_PORCELAIN, 'git status --porcelain must remain identical across full suite');
+});
+
+test('Stage 3C.3-A — declarative domain profiles, CCRmcp round-trip, stub MCP gate rejection, and honest XState gate blocking', async () => {
+  const { resolveDomainProfile, KNOWN_DOMAIN_PROFILES } = await import('../tools/lib/project_profile.mjs');
+  const { compressLargeMcpOutputToDisk } = await import('../tools/intelligence/agent_governance_kernel.mjs');
+  const { headroom_retrieve } = await import('../tools/intelligence/context_budget.mjs');
+  const { executeSingleMcpTool, STUB_MCP_CLI_GATE_MAP } = await import('../tools/mcp/mcp_omni_rag_server.mjs');
+  const { syncConstructionGatesToStatechart } = await import('../tools/cto_command_center.mjs');
+
+  for (const pid of KNOWN_DOMAIN_PROFILES) {
+    const prof = resolveDomainProfile(pid);
+    assert.equal(prof.id, pid);
+    assert.equal(Object.isFrozen(prof), true);
+    assert.equal(Object.isFrozen(prof.capabilities.media), true);
+    assert.equal(Object.isFrozen(prof.capabilities.rag.allowedDomains), true);
+  }
+  const eduProf = resolveDomainProfile('academia-ia');
+  assert.equal(eduProf.id, 'education');
+  assert.equal(eduProf.capabilities.media.three, false);
+  assert.equal(eduProf.capabilities.commerce.payments, false);
+  assert.equal(eduProf.capabilities.runtime.worker, false);
+  assert.equal(eduProf.isDomainAllowedInRag('knowledge/streaming_and_overlays/book_rules.md'), false);
+  assert.equal(eduProf.isDomainAllowedInRag('knowledge/motion_and_animation/CANON_HOLO_SHADERS_3D.md'), false);
+  assert.equal(eduProf.isDomainAllowedInRag('.agents/skills/cro/references/form.md'), false);
+  assert.equal(eduProf.isDomainAllowedInRag('knowledge/ai_academy/CANON_PEDAGOGICAL_SCAFFOLDING_UNESCO_DIATAXIS_AND_SOCRATIC_LEARNLM_2026.md'), true);
+
+  // CCR mcp-<hash>.json round-trip + zero fake "Status: PASS"
+  const ccrTmp = path.join(HERMETIC_TMP_ROOT, 'ccr-3c3a');
+  const spilled = compressLargeMcpOutputToDisk({
+    mcpServer: 'omni-rag-ast',
+    toolName: 'custom_large_probe',
+    payload: { marker: 'stage-3c3a', body: 'X'.repeat(6000) },
+    headroomDir: ccrTmp,
+    securityReportsDir: path.join(HERMETIC_TMP_ROOT, 'sec-3c3a')
+  });
+  assert.equal(spilled.spilledToDisk, true);
+  assert.equal(/Status:\s*PASS/i.test(spilled.payload.executiveSummary), false);
+  const retrieved = headroom_retrieve(spilled.payload.hash, { headroomDir: ccrTmp });
+  assert.equal(retrieved.found, true);
+  assert.equal(retrieved.originalPayload.marker, 'stage-3c3a');
+
+  // All 5 stub MCP tools must return NOT_IMPLEMENTED_USE_CLI_GATE
+  for (const stubName of Object.keys(STUB_MCP_CLI_GATE_MAP)) {
+    const out = await executeSingleMcpTool(stubName, {
+      targetUrl: 'http://127.0.0.1:3000',
+      subcommand: 'status',
+      sql: 'SELECT 1'
+    });
+    assert.equal(out.ok, false);
+    assert.equal(out.error, 'NOT_IMPLEMENTED_USE_CLI_GATE');
+    assert.equal(out.status, 'NOT_IMPLEMENTED_USE_CLI_GATE');
+    assert.ok(out.cliCommand.length > 5);
+  }
+
+  // Simulated gate failure halts XState in escalated_to_cto_hitl; genuine pass reaches hitl_review_ready
+  const snapFile = path.join(HERMETIC_TMP_ROOT, 'xstate_sim.json');
+  const halted = syncConstructionGatesToStatechart(
+    'agencia-alfa',
+    {
+      untaintedResearchVerified: true,
+      maxStageInstructions: 14,
+      ryuxScore: 82,
+      securityScore: 0,
+      visualBlockers: 2,
+      jevVerdict: 'ALIGNED_WITH_SPEC',
+      boltPassed: false,
+      harnessPassed: true
+    },
+    {
+      statechartOptions: {
+        gate1Status: 'COMPLETED_BY_CTO',
+        gate2Status: 'COMPLETED_BY_CTO',
+        hasBrandIdentityLock: true,
+        hasSpecAndDesign: true,
+        snapshotPath: snapFile
+      }
+    }
+  );
+  assert.equal(halted.passed, false);
+  assert.equal(halted.blocked, true);
+  assert.equal(halted.activeState, 'escalated_to_cto_hitl');
+
+  const green = syncConstructionGatesToStatechart(
+    'agencia-alfa',
+    {
+      untaintedResearchVerified: true,
+      maxStageInstructions: 14,
+      ryuxScore: 100,
+      securityScore: 100,
+      visualBlockers: 0,
+      jevVerdict: 'ALIGNED_WITH_SPEC',
+      boltPassed: true,
+      harnessPassed: true
+    },
+    {
+      statechartOptions: {
+        gate1Status: 'COMPLETED_BY_CTO',
+        gate2Status: 'COMPLETED_BY_CTO',
+        hasBrandIdentityLock: true,
+        hasSpecAndDesign: true,
+        snapshotPath: snapFile
+      }
+    }
+  );
+  assert.equal(green.passed, true);
+  assert.equal(green.activeState, 'hitl_review_ready');
 });
 
 

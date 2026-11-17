@@ -70,6 +70,8 @@ export { validateFileLockContainment };
 import { syncProjectStatechartSnapshot } from '../orchestrator/deterministic_agent_statechart.mjs';
 import { checkAstDiffOscillationBreaker } from '../audit/local_fullstack_and_component_harness.mjs';
 import { evaluateFullJevOuterAndMetaGate } from './jev_semantic_gate.mjs';
+import { resolveDomainProfile } from '../lib/project_profile.mjs';
+import { runRyuxDesignGate } from '../audit/ryux_design_gate.mjs';
 
 const selfHealingAstHashHistory = new Map();
 
@@ -717,7 +719,14 @@ export async function runSquadMission(missionTitle = 'Standard SOTA Bolt Pipelin
 
   const startMs = performance.now();
   const targetProjectSlug = project || 'agencia-alfa';
-  const dualGateCheck = verifyDualInterviewGates(targetProjectSlug, options.archetype || 'saas');
+  const domainProfile = resolveDomainProfile({
+    slug: targetProjectSlug,
+    archetype: options.archetype
+  });
+  const effectiveIndustry = domainProfile.capabilities.content.mdxLessons
+    ? 'education'
+    : options.archetype || domainProfile.defaultIndustryArchetype;
+  const dualGateCheck = verifyDualInterviewGates(targetProjectSlug, effectiveIndustry);
   if (!dualGateCheck.passed) {
     throw new Error(dualGateCheck.message);
   }
@@ -892,18 +901,22 @@ export async function runSquadMission(missionTitle = 'Standard SOTA Bolt Pipelin
           run: async () => {
             const t0 = performance.now();
             const projRoot = project ? path.join(ROOT, 'projects', project) : null;
-            const workerExists =
-              (projRoot && fs.existsSync(path.join(projRoot, 'worker', 'index.js'))) ||
-              fs.existsSync(path.join(ROOT, 'templates', 'vanilla-edge', 'worker', 'index.js'));
+            const requiresWorker = domainProfile.capabilities.runtime.worker;
+            const workerCheckPassed = requiresWorker
+              ? Boolean(
+                  (projRoot && fs.existsSync(path.join(projRoot, 'worker', 'index.js'))) ||
+                    (!projRoot && fs.existsSync(path.join(ROOT, 'templates', 'vanilla-edge', 'worker', 'index.js')))
+                )
+              : true;
             const headersExists =
               (projRoot &&
                 (fs.existsSync(path.join(projRoot, 'public', '_headers')) ||
                   fs.existsSync(path.join(projRoot, 'dist', '_headers')))) ||
-              fs.existsSync(path.join(ROOT, 'templates', 'vanilla-edge', 'public', '_headers'));
+              (!projRoot && fs.existsSync(path.join(ROOT, 'templates', 'vanilla-edge', 'public', '_headers')));
             const astRes = runAstAudit();
             return {
               id: 'tracer_bullet_skeleton_and_worker',
-              passed: Boolean(workerExists && headersExists && astRes.passed),
+              passed: Boolean(workerCheckPassed && headersExists && astRes.passed),
               durationMs: Math.round(performance.now() - t0),
               score: astRes.score
             };
@@ -914,7 +927,9 @@ export async function runSquadMission(missionTitle = 'Standard SOTA Bolt Pipelin
     {
       waveId: 'WAVE_2B_TDD_FILL_IN',
       waveNumber: '2B',
-      title: 'Wave 2B (TDD Fill-In) — Full Sections, CRO Copywriting (stop-slop) & 3D/WebGPU Primitives (Max 2 Retries)',
+      title: domainProfile.capabilities.media.three
+        ? 'Wave 2B (TDD Fill-In) — Full Sections, CRO Copywriting (stop-slop) & 3D/WebGPU Primitives (Max 2 Retries)'
+        : 'Wave 2B (TDD Fill-In) — Editorial Content Sections & Cognitive UX Verification (3D Omitted by Profile)',
       nodes: [
         {
           id: 'oxlint_fast_pass',
@@ -933,36 +948,41 @@ export async function runSquadMission(missionTitle = 'Standard SOTA Bolt Pipelin
             return { id: 'cognitive_ux_auditor', passed: res.passed, durationMs: res.durationMs };
           }
         },
-        {
-          id: 'webgpu_3d_primitives_fill_in',
-          role: 'motion-engineer',
-          run: async () => {
-            const t0 = performance.now();
-            const primitiveCount = Object.keys(FORGE_3D_PRIMITIVES || {}).length;
-            let forged3dResult = null;
-            try {
-              const targetRoot = project && fs.existsSync(path.join(ROOT, 'projects', project))
-                ? path.join(ROOT, 'projects', project)
-                : ROOT;
-              const briefPath = path.join(targetRoot, 'CLIENT_BRIEF_INTERVIEW.json');
-              let forge3dMode = 'diorama-3d';
-              if (fs.existsSync(briefPath)) {
-                const parsedBrief = JSON.parse(fs.readFileSync(briefPath, 'utf8'));
-                forge3dMode = parsedBrief?.blocks?.block5_motion_3d_interactivity?.forge3dMode || 'none';
+        ...(domainProfile.capabilities.media.three
+          ? [
+              {
+                id: 'webgpu_3d_primitives_fill_in',
+                role: 'motion-engineer',
+                run: async () => {
+                  const t0 = performance.now();
+                  const primitiveCount = Object.keys(FORGE_3D_PRIMITIVES || {}).length;
+                  let forged3dResult = null;
+                  try {
+                    const targetRoot =
+                      project && fs.existsSync(path.join(ROOT, 'projects', project))
+                        ? path.join(ROOT, 'projects', project)
+                        : ROOT;
+                    const briefPath = path.join(targetRoot, 'CLIENT_BRIEF_INTERVIEW.json');
+                    let forge3dMode = 'diorama-3d';
+                    if (fs.existsSync(briefPath)) {
+                      const parsedBrief = JSON.parse(fs.readFileSync(briefPath, 'utf8'));
+                      forge3dMode = parsedBrief?.blocks?.block5_motion_3d_interactivity?.forge3dMode || 'none';
+                    }
+                    if (forge3dMode && forge3dMode !== 'none') {
+                      forged3dResult = forge3dSceneOrEffect(forge3dMode, project || '');
+                    }
+                  } catch {}
+                  return {
+                    id: 'webgpu_3d_primitives_fill_in',
+                    passed: primitiveCount >= 3,
+                    durationMs: Math.round(performance.now() - t0),
+                    primitiveCount,
+                    forged3dResult
+                  };
+                }
               }
-              if (forge3dMode && forge3dMode !== 'none') {
-                forged3dResult = forge3dSceneOrEffect(forge3dMode, project || '');
-              }
-            } catch {}
-            return {
-              id: 'webgpu_3d_primitives_fill_in',
-              passed: primitiveCount >= 3,
-              durationMs: Math.round(performance.now() - t0),
-              primitiveCount,
-              forged3dResult
-            };
-          }
-        },
+            ]
+          : []),
         {
           id: 'agent_runner_scoped_synthesis',
           role: 'senior-coder',
@@ -1187,15 +1207,22 @@ export async function runSquadMission(missionTitle = 'Standard SOTA Bolt Pipelin
   }
 
   // Synchronize XState v5 Statechart & JEV Memory Write-Gate on mission completion ([ENGRANAJE-05])
+  let measuredRyux = { passed: false, score: 0, criticalBlockers: 1 };
+  let measuredSec = { passed: false, score: 0 };
   try {
     const slug = project || 'agencia-alfa';
-    if (allPassed) {
+    measuredRyux = runRyuxDesignGate({ project: slug });
+    measuredSec = await runSecurityQuarantineGate({ skipNetworkAudit: true, projectSlug: slug });
+    const ryuxScore = Number(measuredRyux?.score ?? 0);
+    const securityScore = Number(measuredSec?.score ?? (measuredSec?.passed ? 100 : 0));
+    const visualBlockers = Number(measuredRyux?.criticalBlockers ?? (measuredRyux?.passed ? 0 : 1));
+    if (allPassed && measuredRyux?.passed && measuredSec?.passed) {
       syncProjectStatechartSnapshot(slug, [
         { type: 'COMPLETE_RPI_UNTAINTED_RESEARCH', untaintedResearchVerified: true, maxStageInstructions: 14 },
         { type: 'START_WAVE1_FOUNDATION' },
         { type: 'COMPLETE_WAVE1_FOUNDATION' },
         { type: 'COMPLETE_WAVE2_SPECIALIST_FORGE' },
-        { type: 'PASS_WAVE3_QA_AND_JEV', ryuxScore: 100, securityScore: 100, visualBlockers: 0 }
+        { type: 'PASS_WAVE3_QA_AND_JEV', ryuxScore, securityScore, visualBlockers }
       ]);
       await evaluateMemoryWriteAdmissionWithJev(
         {
@@ -1204,18 +1231,31 @@ export async function runSquadMission(missionTitle = 'Standard SOTA Bolt Pipelin
         },
         { persist: false }
       );
+    } else {
+      allPassed = false;
+      syncProjectStatechartSnapshot(slug, [
+        { type: 'COMPLETE_RPI_UNTAINTED_RESEARCH', untaintedResearchVerified: true, maxStageInstructions: 14 },
+        { type: 'START_WAVE1_FOUNDATION' },
+        { type: 'COMPLETE_WAVE1_FOUNDATION' },
+        { type: 'COMPLETE_WAVE2_SPECIALIST_FORGE' },
+        { type: 'FAIL_WAVE3_QA_TRIGGER_REPAIR' },
+        { type: 'ESCALATE_TO_CTO_HITL' }
+      ]);
     }
   } catch {}
 
   // Independent Blind Foreman Review (`vercel-labs/eve` pattern)
+  const measuredComposite = Math.round(
+    (Number(measuredRyux?.score ?? 0) + Number(measuredSec?.score ?? 0)) / 2
+  );
   const blindReview = await runBlindIndependentReview({
     specPath: path.join(ROOT, 'projects', project || 'agencia-alfa', 'SPEC.md'),
     gitDiff: `runId=${runId};handoffArtifacts=${checkpointState.handoffPointers.length}`,
     auditMetrics: {
       astPassed: allPassed,
-      securityPassed: allPassed,
-      visualPassed: allPassed,
-      compositeScore: allPassed ? 100 : 49
+      securityPassed: Boolean(allPassed && measuredSec?.passed),
+      visualPassed: Boolean(allPassed && measuredRyux?.passed),
+      compositeScore: allPassed ? measuredComposite : Math.min(49, measuredComposite)
     }
   });
   checkpointState.blindReview = blindReview;

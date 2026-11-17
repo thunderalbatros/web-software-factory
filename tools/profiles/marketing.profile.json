@@ -1,0 +1,56 @@
+{
+  "profileId": "marketing",
+  "version": "1.0.0",
+  "complianceProfile": "standard-web",
+  "defaultStyle": "bento",
+  "defaultSurfaceMode": "Persuade",
+  "defaultIndustryArchetype": "marketing",
+  "capabilities": {
+    "commerce": {
+      "payments": false,
+      "leads": true,
+      "turnstile": true,
+      "pricingSection": true
+    },
+    "media": {
+      "audio": true,
+      "three": true,
+      "shaders": true,
+      "introVideo": true,
+      "bespokeDomMorphology": true
+    },
+    "runtime": {
+      "worker": false,
+      "d1": false,
+      "staticHeadersRequired": false,
+      "pwaOfflineMpa": false
+    },
+    "content": {
+      "mdxLessons": false,
+      "socraticQuizzes": false,
+      "fsrsSpacedRepetition": false,
+      "legacyClientBriefMarkdown": true
+    },
+    "compliance": {
+      "cspProfile": "standard-web",
+      "trustedTypesStrict": false,
+      "ageGate18Plus": false,
+      "localFirstPrivacy": false,
+      "forbidExternalGenerativeFallbacks": false
+    },
+    "rag": {
+      "allowedDomains": [
+        "ui_ux_design",
+        "motion_and_animation",
+        "architecture_and_books",
+        "architecture_and_edge",
+        "software_factory",
+        "cybersecurity",
+        "agent_skills",
+        "commercial_marketing_skills",
+        "core_index"
+      ],
+      "maxInlineTokens": 1200
+    }
+  }
+}

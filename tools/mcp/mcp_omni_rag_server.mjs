@@ -3,13 +3,9 @@
  * tools/mcp/mcp_omni_rag_server.mjs — OWASP MCP Top 10 + Creator-Verifier Split Entrypoint
  * ==========================================================================================
  * Bridges and re-exports the hardened MCP server from `tools/intelligence/mcp_omni_rag_server.mjs`.
- * Enforces:
- *   - `"additionalProperties": false` on all tool JSON schemas
- *   - Rejection of unauthorized `x-mcp-header` / `x-mcp-untrusted` headers
- *   - CSPRNG session/trace IDs via `crypto.randomUUID()` & `crypto.randomBytes()`
- *   - Audience validation (`urn:web-software-factory:mcp*`) & HITL Gate
- *   - Indirect Prompt Injection & Tool Poisoning sanitization (`sanitizeMcpRetrievedFragment`)
- *   - Role-Partitioned Creator-Verifier Split (`verifyRoleMcpPermission`) & >1,200 token spillover
+ * Stub tools (`delta_security_scan`, `dast_endpoint_probe`, `github_precommit_secret_scan`,
+ * `git_readonly_inspect`, `d1_readonly_query`) reject simulated PASS responses with explicit
+ * structured `NOT_IMPLEMENTED_USE_CLI_GATE` errors pointing to the real CLI gate.
  * ==========================================================================================
  */
 
@@ -18,6 +14,9 @@ import { fileURLToPath } from 'node:url';
 import {
   SERVER_INFO,
   TOOLS,
+  STUB_MCP_CLI_GATE_MAP,
+  buildNotImplementedCliGateError,
+  executeSingleMcpTool,
   generateCsprngSessionId,
   discoverToolsByIntent,
   sanitizeMcpRetrievedFragment,
@@ -29,6 +28,9 @@ import {
 export {
   SERVER_INFO,
   TOOLS,
+  STUB_MCP_CLI_GATE_MAP,
+  buildNotImplementedCliGateError,
+  executeSingleMcpTool,
   generateCsprngSessionId,
   discoverToolsByIntent,
   sanitizeMcpRetrievedFragment,
@@ -39,6 +41,9 @@ export {
 
 const __filename = fileURLToPath(import.meta.url);
 
-if (process.argv[1] && path.resolve(process.argv[1]) === __filename) {
+if (
+  process.argv[1] &&
+  path.resolve(process.argv[1]).toLowerCase() === path.resolve(__filename).toLowerCase()
+) {
   startMcpServer();
 }

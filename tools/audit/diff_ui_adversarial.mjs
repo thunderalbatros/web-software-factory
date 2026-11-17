@@ -215,9 +215,7 @@ export function runDiffUiAdversarialGate(projectInput = '') {
   // 4. Rust-Speed Oxc (`oxlint v1.93.0` + `oxlint-tsgolint`) AST Check
   // --------------------------------------------------------------------------
   const oxlintBinName = process.platform === 'win32' ? 'oxlint.cmd' : 'oxlint';
-  const rootOxlintBin = path.join(FACTORY_ROOT, 'node_modules', '.bin', oxlintBinName);
-  const auditOxlintBin = path.join(FACTORY_ROOT, 'tools', 'audit', 'node_modules', '.bin', oxlintBinName);
-  const oxlintBin = fs.existsSync(rootOxlintBin) ? rootOxlintBin : auditOxlintBin;
+  const oxlintBin = path.join(FACTORY_ROOT, 'node_modules', '.bin', oxlintBinName);
   let oxlintElapsedMs = 0;
   if (fs.existsSync(oxlintBin)) {
     const oxStart = Date.now();
@@ -242,7 +240,7 @@ export function runDiffUiAdversarialGate(projectInput = '') {
       }
     }
   } else {
-    emitFail('oxc-rust-linter', 'oxlint binary not found in root node_modules/.bin or tools/audit/node_modules/.bin');
+    emitFail('oxc-rust-linter', 'oxlint binary not found in root node_modules/.bin');
   }
 
   const totalElapsedMs = Date.now() - t0;

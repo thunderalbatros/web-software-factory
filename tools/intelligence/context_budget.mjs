@@ -155,8 +155,9 @@ export function compressReversibleCcr(payload, options = {}) {
   const rawSerialized = typeof payload === 'string' ? payload : JSON.stringify(payload, null, 2);
   const hash = crypto.createHash('sha256').update(rawSerialized, 'utf8').digest('hex').slice(0, 16);
 
-  fs.mkdirSync(HEADROOM_CCR_DIR, { recursive: true });
-  const ccrFilePath = path.join(HEADROOM_CCR_DIR, `${hash}.json`);
+  const targetDir = options.headroomDir || process.env.FACTORY_HEADROOM_CCR_DIR || HEADROOM_CCR_DIR;
+  fs.mkdirSync(targetDir, { recursive: true });
+  const ccrFilePath = path.join(targetDir, `${hash}.json`);
 
   let compressedPayload;
   let strategyUsed = 'SmartCrusher';
@@ -229,16 +230,37 @@ export function compressReversibleCcr(payload, options = {}) {
  * Lossless retrieval of an original payload from `.cache/headroom_ccr/<hash>.json`.
  */
 export function headroom_retrieve(hash, options = {}) {
-  const cleanHash = String(hash || '').replace(/[^a-f0-9]/gi, '').slice(0, 16);
+  const stripped = String(hash || '').trim().replace(/^mcp-/i, '');
+  const cleanHash = stripped.replace(/[^a-f0-9]/gi, '').slice(0, 16);
   if (!cleanHash) {
     return { found: false, error: 'Invalid CCR hash provided.' };
   }
-  const ccrFilePath = path.join(HEADROOM_CCR_DIR, `${cleanHash}.json`);
-  if (!fs.existsSync(ccrFilePath)) {
-    return { found: false, hash: cleanHash, error: `CCR entry not found at .cache/headroom_ccr/${cleanHash}.json` };
+  const baseDir = options.headroomDir || process.env.FACTORY_HEADROOM_CCR_DIR || HEADROOM_CCR_DIR;
+  const candidates = [
+    path.join(baseDir, `${cleanHash}.json`),
+    path.join(baseDir, `mcp-${cleanHash}.json`)
+  ];
+  const semgrepDir = path.join(ROOT, '.agents', 'security_reports', '.semgrep');
+  if (fs.existsSync(semgrepDir)) {
+    try {
+      for (const name of fs.readdirSync(semgrepDir)) {
+        if (name.endsWith(`-${cleanHash}.json`)) {
+          candidates.push(path.join(semgrepDir, name));
+        }
+      }
+    } catch {}
+  }
+
+  const ccrFilePath = candidates.find((p) => fs.existsSync(p));
+  if (!ccrFilePath) {
+    return {
+      found: false,
+      hash: cleanHash,
+      error: `CCR entry not found at .cache/headroom_ccr/${cleanHash}.json or .cache/headroom_ccr/mcp-${cleanHash}.json`
+    };
   }
   const stored = JSON.parse(fs.readFileSync(ccrFilePath, 'utf8'));
-  let payload = stored.originalPayload;
+  let payload = stored.originalPayload !== undefined ? stored.originalPayload : stored.fullPayload;
 
   if (options.startLine && typeof payload === 'string') {
     const lines = payload.split('\n');
@@ -250,11 +272,13 @@ export function headroom_retrieve(hash, options = {}) {
   return {
     found: true,
     hash: cleanHash,
-    strategyUsed: stored.strategyUsed,
-    createdAt: stored.createdAt,
-    beforeTokens: stored.beforeTokens,
+    artifactPointer: path.relative(ROOT, ccrFilePath).replace(/\\/g, '/'),
+    strategyUsed: stored.strategyUsed || 'McpDiskSpillover',
+    createdAt: stored.createdAt || stored.savedAt,
+    beforeTokens: stored.beforeTokens ?? stored.originalTokens,
     afterTokens: stored.afterTokens,
-    originalPayload: payload
+    originalPayload: payload,
+    fullPayload: payload
   };
 }
 

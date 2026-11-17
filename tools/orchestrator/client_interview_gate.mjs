@@ -38,6 +38,7 @@ import {
   resolveSonicArchetypePreset,
   synthesizeProceduralSoundFromDesignCriteria
 } from '../../templates/components/web-audio-director.js';
+import { resolveDomainProfile } from '../lib/project_profile.mjs';
 import {
   initPrdInterviewFiles,
   verifyPrdInterviewGate,
@@ -111,6 +112,22 @@ function loadBrandLockAndPrdState(slug = 'agencia-alfa', explicitProjectDir = nu
  * Builds the 10-Block Technical Specification Interview payload (`CLIENT_BRIEF_INTERVIEW.json`),
  * anchored to the immutable `PRD_LEAN.md` and `BRAND_IDENTITY_LOCK.json`.
  */
+function resolveInterviewDomainProfile(slug, projectDir, industryInput, brandLock, prdState, manifest) {
+  const explicitHint =
+    manifest?.domainProfile ||
+    manifest?.complianceProfile ||
+    manifest?.archetype ||
+    brandLock?.industryCategory ||
+    prdState?.blocks?.block1_business_identity_and_problem?.industryCategory ||
+    industryInput;
+  return resolveDomainProfile({
+    slug,
+    projectRoot: projectDir,
+    manifest,
+    industry: explicitHint
+  });
+}
+
 export function buildDefaultInterviewPayload(
   slug = 'agencia-alfa',
   industryInput = 'saas',
@@ -119,24 +136,29 @@ export function buildDefaultInterviewPayload(
 ) {
   const { projectDir } = resolveSpecProjectTarget(slug, options);
   const { brandLock, prdState, manifest } = loadBrandLockAndPrdState(slug, projectDir);
-  const isEducation =
-    manifest?.complianceProfile === 'education' ||
-    manifest?.archetype === 'education' ||
-    String(industryInput || '').toLowerCase().trim() === 'education' ||
-    brandLock?.industryCategory === 'education' ||
-    brandLock?.industryCategory === 'academic-editorial-education' ||
-    prdState?.blocks?.block1_business_identity_and_problem?.industryCategory === 'education';
+  const domainProfile = resolveInterviewDomainProfile(
+    slug,
+    projectDir,
+    industryInput,
+    brandLock,
+    prdState,
+    manifest
+  );
+  const isEducation = domainProfile.capabilities.content.mdxLessons;
 
   const effectiveIndustry = isEducation
-    ? 'education'
+    ? domainProfile.id
     : brandLock?.industryCategory ||
       prdState?.blocks?.block1_business_identity_and_problem?.industryCategory ||
       industryInput;
   const arch = resolveIndustryArchetype(effectiveIndustry);
-  const sonicSeed = isEducation
+  const sonicSeed = !domainProfile.capabilities.media.audio
     ? EDUCATION_NULL_SONIC_PRESET
     : resolveSonicArchetypePreset(effectiveIndustry);
-  const isLawOrRead = isEducation || arch.primarySurfaceMode === 'Read' || sonicSeed.archetype === 'abogacia';
+  const isLawOrRead =
+    !domainProfile.capabilities.media.three ||
+    arch.primarySurfaceMode === 'Read' ||
+    sonicSeed.archetype === 'abogacia';
 
   const brandName =
     brandLock?.brandName ||
@@ -581,19 +603,22 @@ export function initClientInterviewFiles(slugOrDir = 'agencia-alfa', industryInp
   fs.mkdirSync(projectDir, { recursive: true });
 
   const { brandLock, prdState, manifest } = loadBrandLockAndPrdState(slug, projectDir);
-  const isEducation =
-    manifest?.complianceProfile === 'education' ||
-    manifest?.archetype === 'education' ||
-    String(industryInput || '').toLowerCase().trim() === 'education' ||
-    brandLock?.industryCategory === 'education' ||
-    brandLock?.industryCategory === 'academic-editorial-education' ||
-    prdState?.blocks?.block1_business_identity_and_problem?.industryCategory === 'education';
+  const domainProfile = resolveInterviewDomainProfile(
+    slug,
+    projectDir,
+    industryInput,
+    brandLock,
+    prdState,
+    manifest
+  );
+  const usesLegacyClientMd = domainProfile.capabilities.content.legacyClientBriefMarkdown;
+  const isEducation = domainProfile.capabilities.content.mdxLessons;
 
   const jsonPath = path.join(projectDir, 'CLIENT_BRIEF_INTERVIEW.json');
   const mdPath = path.join(projectDir, 'ENTREVISTA_CLIENTE.md');
   const specMdInterviewPath = path.join(projectDir, 'ENTREVISTA_2_SPEC_TECNICO.md');
 
-  if (isEducation && fs.existsSync(mdPath)) {
+  if (!usesLegacyClientMd && fs.existsSync(mdPath)) {
     fs.rmSync(mdPath, { force: true });
   }
 
@@ -604,7 +629,7 @@ export function initClientInterviewFiles(slugOrDir = 'agencia-alfa', industryInp
         existing.status === 'COMPLETED_BY_CTO' ? 'COMPLETED_BY_CTO' : 'PENDING_CTO_SPEC_INPUT';
     }
     const rendered = renderInterviewMarkdown(existing);
-    if (!isEducation && !fs.existsSync(mdPath)) {
+    if (usesLegacyClientMd && !fs.existsSync(mdPath)) {
       fs.writeFileSync(mdPath, rendered, 'utf8');
     }
     if (!fs.existsSync(specMdInterviewPath)) {
@@ -616,19 +641,19 @@ export function initClientInterviewFiles(slugOrDir = 'agencia-alfa', industryInp
       status: existing.status,
       specInterviewStatus: existing.specInterviewStatus,
       jsonPath,
-      mdPath: isEducation ? null : mdPath,
+      mdPath: usesLegacyClientMd ? mdPath : null,
       specMdInterviewPath,
       interview: existing
     };
   }
 
   const initialStatus = options.autoApprove ? 'COMPLETED_BY_CTO' : 'PENDING_CTO_SPEC_INPUT';
-  const payload = buildDefaultInterviewPayload(slug, isEducation ? 'education' : industryInput, initialStatus, {
+  const payload = buildDefaultInterviewPayload(slug, isEducation ? domainProfile.id : industryInput, initialStatus, {
     projectDir
   });
   const rendered = renderInterviewMarkdown(payload);
   fs.writeFileSync(jsonPath, JSON.stringify(payload, null, 2) + '\n', 'utf8');
-  if (!isEducation) {
+  if (usesLegacyClientMd) {
     fs.writeFileSync(mdPath, rendered, 'utf8');
   }
   fs.writeFileSync(specMdInterviewPath, rendered, 'utf8');
@@ -639,7 +664,7 @@ export function initClientInterviewFiles(slugOrDir = 'agencia-alfa', industryInp
     status: payload.status,
     specInterviewStatus: payload.specInterviewStatus,
     jsonPath,
-    mdPath: isEducation ? null : mdPath,
+    mdPath: usesLegacyClientMd ? mdPath : null,
     specMdInterviewPath,
     interview: payload
   };
@@ -652,11 +677,18 @@ export function initClientInterviewFiles(slugOrDir = 'agencia-alfa', industryInp
  */
 export function verifyClientInterviewGate(slugOrDir = 'agencia-alfa', industryFallback = 'saas', options = {}) {
   const { projectDir, slug } = resolveSpecProjectTarget(slugOrDir, options);
-  const { manifest } = loadBrandLockAndPrdState(slug, projectDir);
-  const effectiveFallback =
-    manifest?.complianceProfile === 'education' || manifest?.archetype === 'education'
-      ? 'education'
-      : industryFallback;
+  const { brandLock, prdState, manifest } = loadBrandLockAndPrdState(slug, projectDir);
+  const domainProfile = resolveInterviewDomainProfile(
+    slug,
+    projectDir,
+    industryFallback,
+    brandLock,
+    prdState,
+    manifest
+  );
+  const effectiveFallback = domainProfile.capabilities.content.mdxLessons
+    ? domainProfile.id
+    : industryFallback;
 
   // 1. Check Gate #1 (PRD & Brand Identity Lock) first!
   const prdGate = verifyPrdInterviewGate(slugOrDir, effectiveFallback, { projectDir });
@@ -749,11 +781,18 @@ export function verifyClientInterviewGate(slugOrDir = 'agencia-alfa', industryFa
  */
 export function verifyDualInterviewGates(slugOrDir = 'agencia-alfa', industryFallback = 'saas', options = {}) {
   const { projectDir, slug } = resolveSpecProjectTarget(slugOrDir, options);
-  const { manifest } = loadBrandLockAndPrdState(slug, projectDir);
-  const effectiveFallback =
-    manifest?.complianceProfile === 'education' || manifest?.archetype === 'education'
-      ? 'education'
-      : industryFallback;
+  const { brandLock, prdState, manifest } = loadBrandLockAndPrdState(slug, projectDir);
+  const domainProfile = resolveInterviewDomainProfile(
+    slug,
+    projectDir,
+    industryFallback,
+    brandLock,
+    prdState,
+    manifest
+  );
+  const effectiveFallback = domainProfile.capabilities.content.mdxLessons
+    ? domainProfile.id
+    : industryFallback;
 
   const prdGate = verifyPrdInterviewGate(slugOrDir, effectiveFallback, { projectDir });
   if (!prdGate.passed) {
@@ -1001,14 +1040,19 @@ export function compileSpecFromInterview(slugOrDir = 'agencia-alfa', options = {
   const { projectDir, slug, inRepoProjects } = resolveSpecProjectTarget(slugOrDir, options);
   const { brandLock: initialBrandLock, prdState: initialPrdState, manifest: initialManifest } =
     loadBrandLockAndPrdState(slug, projectDir);
-  const isEducation =
-    initialManifest?.complianceProfile === 'education' ||
-    initialManifest?.archetype === 'education' ||
-    String(options.industry || '').toLowerCase().trim() === 'education' ||
-    initialBrandLock?.industryCategory === 'education' ||
-    initialBrandLock?.industryCategory === 'academic-editorial-education' ||
-    initialPrdState?.blocks?.block1_business_identity_and_problem?.industryCategory === 'education';
-  const effectiveIndustry = isEducation ? 'education' : options.industry || 'saas';
+  const domainProfile = resolveInterviewDomainProfile(
+    slug,
+    projectDir,
+    options.industry,
+    initialBrandLock,
+    initialPrdState,
+    initialManifest
+  );
+  const usesLegacyClientMd = domainProfile.capabilities.content.legacyClientBriefMarkdown;
+  const isEducation = domainProfile.capabilities.content.mdxLessons;
+  const effectiveIndustry = isEducation
+    ? domainProfile.id
+    : options.industry || domainProfile.defaultIndustryArchetype;
 
   // Enforce Gate #1 prerequisite!
   const prdGate = verifyPrdInterviewGate(slugOrDir, effectiveIndustry, { projectDir });
@@ -1020,16 +1064,16 @@ export function compileSpecFromInterview(slugOrDir = 'agencia-alfa', options = {
   const mdPath = path.join(projectDir, 'ENTREVISTA_CLIENTE.md');
   const specMdInterviewPath = path.join(projectDir, 'ENTREVISTA_2_SPEC_TECNICO.md');
 
-  if (isEducation && fs.existsSync(mdPath)) {
+  if (!usesLegacyClientMd && fs.existsSync(mdPath)) {
     fs.rmSync(mdPath, { force: true });
   }
 
   // Preserve any manual Markdown edits made by the CTO on disk BEFORE any refresh/init
   const hadExistingSpecMd =
-    fs.existsSync(specMdInterviewPath) || (!isEducation && fs.existsSync(mdPath));
+    fs.existsSync(specMdInterviewPath) || (usesLegacyClientMd && fs.existsSync(mdPath));
   const existingSpecMdContent = fs.existsSync(specMdInterviewPath)
     ? fs.readFileSync(specMdInterviewPath, 'utf8')
-    : !isEducation && fs.existsSync(mdPath)
+    : usesLegacyClientMd && fs.existsSync(mdPath)
     ? fs.readFileSync(mdPath, 'utf8')
     : '';
 
@@ -1129,7 +1173,7 @@ export function compileSpecFromInterview(slugOrDir = 'agencia-alfa', options = {
     persistInLedger: inRepoProjects && !slug.startsWith('_test')
   });
 
-  if (isEducation) {
+  if (!domainProfile.capabilities.media.three) {
     bespokeDna.introChoreographyId = 'none-read-mode';
     bespokeDna.introAnd3dDecision = {
       recommendIntroVideo: false,
@@ -1138,8 +1182,8 @@ export function compileSpecFromInterview(slugOrDir = 'agencia-alfa', options = {
     };
   }
 
-  // Synthesize exact psychoacoustic patch from the visual and material criteria (or null preset for Read-mode education)
-  const sonicPatch = isEducation
+  // Synthesize exact psychoacoustic patch from the visual and material criteria (or null preset when media.audio === false)
+  const sonicPatch = !domainProfile.capabilities.media.audio
     ? { ...EDUCATION_NULL_SONIC_PRESET }
     : synthesizeProceduralSoundFromDesignCriteria({
         archetype: b1.industryArchetype,
@@ -1175,7 +1219,7 @@ export function compileSpecFromInterview(slugOrDir = 'agencia-alfa', options = {
   }
   const updatedInterviewMd = renderInterviewMarkdown(interview);
   fs.writeFileSync(jsonPath, JSON.stringify(interview, null, 2) + '\n', 'utf8');
-  if (!isEducation) {
+  if (usesLegacyClientMd) {
     fs.writeFileSync(mdPath, updatedInterviewMd, 'utf8');
   }
   fs.writeFileSync(specMdInterviewPath, updatedInterviewMd, 'utf8');
@@ -1185,17 +1229,18 @@ export function compileSpecFromInterview(slugOrDir = 'agencia-alfa', options = {
     if (fs.existsSync(factoryProjPath)) {
       try {
         const projJson = JSON.parse(fs.readFileSync(factoryProjPath, 'utf8'));
-        projJson.industryArchetype = isEducation ? 'education' : b1.industryArchetype;
-        projJson.surfaceMode = isEducation ? 'Read' : b4.surfaceMode;
-        if (isEducation) {
-          projJson.complianceProfile = 'education';
+        projJson.domainProfile = domainProfile.id;
+        projJson.industryArchetype = isEducation ? domainProfile.id : b1.industryArchetype;
+        projJson.surfaceMode = isEducation ? domainProfile.defaultSurfaceMode : b4.surfaceMode;
+        if (!domainProfile.capabilities.runtime.worker) {
+          projJson.complianceProfile = domainProfile.complianceProfile;
           if (projJson.paths && 'workerEntry' in projJson.paths) {
             projJson.paths.workerEntry = null;
           }
         }
         projJson.brandIdentityMode = brandMode;
         projJson.lockClientPalette = lockPalette;
-        projJson.sonicIdentity = isEducation
+        projJson.sonicIdentity = !domainProfile.capabilities.media.audio
           ? {
               seedId: EDUCATION_NULL_SONIC_PRESET.seedId,
               uiSfxMode: 'off',
@@ -1234,24 +1279,16 @@ export function compileSpecFromInterview(slugOrDir = 'agencia-alfa', options = {
       lockClientPalette: lockPalette,
       requirementsCount: 12,
       sonicSeedId: sonicPatch.seedId,
-      uiSfxMode: isEducation ? 'off' : b6.uiSfxMode,
-      agentsAssigned: isEducation
-        ? [
-            'product-strategist',
-            'design-system-architect',
-            'layout-primitives-architect',
-            'security-auditor',
-            'qa-visual-critic'
-          ]
-        : [
-            'product-strategist',
-            'design-system-architect',
-            'layout-primitives-architect',
-            'motion-engineer',
-            'sonic-dsp-director',
-            'security-auditor',
-            'qa-visual-critic'
-          ]
+      uiSfxMode: !domainProfile.capabilities.media.audio ? 'off' : b6.uiSfxMode,
+      agentsAssigned: [
+        'product-strategist',
+        'design-system-architect',
+        'layout-primitives-architect',
+        ...(domainProfile.capabilities.media.three ? ['motion-engineer'] : []),
+        ...(domainProfile.capabilities.media.audio ? ['sonic-dsp-director'] : []),
+        'security-auditor',
+        'qa-visual-critic'
+      ]
     };
     let existingLines = [];
     if (fs.existsSync(taskGraphPath)) {
@@ -1266,8 +1303,11 @@ export function compileSpecFromInterview(slugOrDir = 'agencia-alfa', options = {
 
   const projCfgPath = path.join(projectDir, 'factory.project.json');
   const projCfg = fs.existsSync(projCfgPath) ? JSON.parse(fs.readFileSync(projCfgPath, 'utf8')) : null;
+  const projResolvedProfile = projCfg
+    ? resolveDomainProfile({ slug, projectRoot: projectDir, manifest: projCfg })
+    : domainProfile;
   const isCuratedEducationProfile =
-    isEducation || projCfg?.complianceProfile === 'education' || b1.industryArchetype === 'education';
+    isEducation || projResolvedProfile.capabilities.content.mdxLessons;
   const existingSpecPath = path.join(projectDir, 'SPEC.md');
   const existingProductPath = path.join(projectDir, 'PRODUCT.md');
   const existingDesignPath = path.join(projectDir, 'DESIGN.md');

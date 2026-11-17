@@ -167,9 +167,9 @@ export const factoryLifecycleMachine = setup({
       ]
     }),
     recordWave3Passed: assign({
-      ryuxScore: ({ event, context }) => Number(event.ryuxScore ?? context.ryuxScore ?? 100),
-      securityScore: ({ event, context }) => Number(event.securityScore ?? context.securityScore ?? 100),
-      visualBlockers: ({ event, context }) => Number(event.visualBlockers ?? context.visualBlockers ?? 0),
+      ryuxScore: ({ event, context }) => Number(event.ryuxScore ?? context.ryuxScore ?? 0),
+      securityScore: ({ event, context }) => Number(event.securityScore ?? context.securityScore ?? 0),
+      visualBlockers: ({ event, context }) => Number(event.visualBlockers ?? context.visualBlockers ?? 99),
       jevVerdict: ({ event, context }) => event.jevVerdict || context.jevVerdict || 'ALIGNED_WITH_SPEC',
       transitionLog: ({ context }) => [
         ...(context.transitionLog || []),
@@ -443,27 +443,31 @@ export function validateAgentPolicyProposal(snapshot, proposedEvent, options = {
 /**
  * Persists or synchronizes a project's live disk state into `.agents/runs/<slug>/xstate_actor_snapshot.json`.
  */
-export function syncProjectStatechartSnapshot(projectInput = '', eventSequence = []) {
+export function syncProjectStatechartSnapshot(projectInput = '', eventSequence = [], options = {}) {
   const cfg = loadProjectConfig(projectInput);
   const slug = cfg.id || 'agencia-alfa';
   const rootDir = cfg.projectRoot;
 
-  let gate1Status = 'PENDING_CTO_PRD_INPUT';
-  let gate2Status = 'PENDING_CTO_SPEC_INPUT';
-  const hasBrandIdentityLock = fs.existsSync(path.join(rootDir, 'BRAND_IDENTITY_LOCK.json'));
+  let gate1Status = options.gate1Status || 'PENDING_CTO_PRD_INPUT';
+  let gate2Status = options.gate2Status || 'PENDING_CTO_SPEC_INPUT';
+  const hasBrandIdentityLock =
+    options.hasBrandIdentityLock !== undefined
+      ? Boolean(options.hasBrandIdentityLock)
+      : fs.existsSync(path.join(rootDir, 'BRAND_IDENTITY_LOCK.json'));
   const hasSpecAndDesign =
-    fs.existsSync(path.join(rootDir, 'SPEC.md')) &&
-    fs.existsSync(path.join(rootDir, 'DESIGN.md'));
+    options.hasSpecAndDesign !== undefined
+      ? Boolean(options.hasSpecAndDesign)
+      : fs.existsSync(path.join(rootDir, 'SPEC.md')) && fs.existsSync(path.join(rootDir, 'DESIGN.md'));
 
   const prdJsonPath = path.join(rootDir, 'PRD_INTERVIEW_STATE.json');
   const specJsonPath = path.join(rootDir, 'CLIENT_BRIEF_INTERVIEW.json');
-  if (fs.existsSync(prdJsonPath)) {
+  if (!options.gate1Status && fs.existsSync(prdJsonPath)) {
     try {
       const p = JSON.parse(fs.readFileSync(prdJsonPath, 'utf8'));
       gate1Status = p.prdInterviewStatus || gate1Status;
     } catch {}
   }
-  if (fs.existsSync(specJsonPath)) {
+  if (!options.gate2Status && fs.existsSync(specJsonPath)) {
     try {
       const s = JSON.parse(fs.readFileSync(specJsonPath, 'utf8'));
       gate2Status = s.specInterviewStatus || gate2Status;
@@ -477,10 +481,10 @@ export function syncProjectStatechartSnapshot(projectInput = '', eventSequence =
       gate2Status,
       hasBrandIdentityLock,
       hasSpecAndDesign,
-      untaintedResearchVerified: true,
-      maxStageInstructions: 14,
-      ryuxScore: 100,
-      securityScore: 100,
+      untaintedResearchVerified: false,
+      maxStageInstructions: 0,
+      ryuxScore: 0,
+      securityScore: 0,
       visualBlockers: 0
     }
   });
@@ -507,7 +511,9 @@ export function syncProjectStatechartSnapshot(projectInput = '', eventSequence =
   const liveSnap = actor.getSnapshot();
   actor.stop();
 
-  const outFile = path.join(ROOT, '.agents', 'runs', slug, 'xstate_actor_snapshot.json');
+  const outFile = options.snapshotPath
+    ? path.resolve(options.snapshotPath)
+    : path.join(ROOT, '.agents', 'runs', slug, 'xstate_actor_snapshot.json');
   fs.mkdirSync(path.dirname(outFile), { recursive: true });
   const burrActionLog = Array.isArray(liveSnap.context?.transitionLog)
     ? liveSnap.context.transitionLog

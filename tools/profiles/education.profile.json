@@ -1,0 +1,54 @@
+{
+  "profileId": "education",
+  "version": "1.0.0",
+  "complianceProfile": "education",
+  "defaultStyle": "stripe-editorial",
+  "defaultSurfaceMode": "Read",
+  "defaultIndustryArchetype": "academic-editorial-education",
+  "capabilities": {
+    "commerce": {
+      "payments": false,
+      "leads": false,
+      "turnstile": false,
+      "pricingSection": false
+    },
+    "media": {
+      "audio": false,
+      "three": false,
+      "shaders": false,
+      "introVideo": false,
+      "bespokeDomMorphology": false
+    },
+    "runtime": {
+      "worker": false,
+      "d1": false,
+      "staticHeadersRequired": true,
+      "pwaOfflineMpa": true
+    },
+    "content": {
+      "mdxLessons": true,
+      "socraticQuizzes": true,
+      "fsrsSpacedRepetition": true,
+      "legacyClientBriefMarkdown": false
+    },
+    "compliance": {
+      "cspProfile": "education",
+      "trustedTypesStrict": true,
+      "ageGate18Plus": false,
+      "localFirstPrivacy": true,
+      "forbidExternalGenerativeFallbacks": true
+    },
+    "rag": {
+      "allowedDomains": [
+        "ai_academy",
+        "architecture_and_books",
+        "software_factory",
+        "cybersecurity",
+        "ui_ux_design",
+        "agent_skills",
+        "core_index"
+      ],
+      "maxInlineTokens": 1200
+    }
+  }
+}

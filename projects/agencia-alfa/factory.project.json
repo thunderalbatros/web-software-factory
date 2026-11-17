@@ -3,6 +3,7 @@
   "name": "Agencia Alfa",
   "domain": "https://agencia-alfa.com",
   "version": "1.0.0",
+  "domainProfile": "saas-b2b",
   "archetype": "saas-b2b",
   "stack": "vanilla-edge",
   "complianceProfile": "standard-web",

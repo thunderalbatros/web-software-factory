@@ -1,0 +1,26 @@
+{
+  "id": "curso-fotografia-meta-ads",
+  "name": "Curso Fotografia Meta Ads",
+  "domain": "https://curso-fotografia-meta-ads.pages.dev",
+  "version": "1.0.0",
+  "domainProfile": "marketing",
+  "archetype": "marketing",
+  "stack": "vanilla-edge",
+  "complianceProfile": "standard-web",
+  "surfaceMode": "Persuade",
+  "industryArchetype": "marketing",
+  "dbTier": "none-static",
+  "paths": {
+    "entryHtml": "promo-1x1.html",
+    "distDir": "dist",
+    "workerEntry": null,
+    "tokensPath": "tokens/design.tokens.json",
+    "designCssPath": "assets/styles.css",
+    "selectorCachePath": "memory/selector_cache.json",
+    "sourceDirs": ["assets"],
+    "dataFiles": [],
+    "overlays": [],
+    "requiredOverlaysInAudit": [],
+    "coreJsFiles": []
+  }
+}

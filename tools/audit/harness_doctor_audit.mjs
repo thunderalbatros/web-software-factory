@@ -10,6 +10,7 @@
  */
 
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { execSync, spawnSync } from 'node:child_process';
@@ -36,6 +37,7 @@ import { runMcpSecurityAudit } from './mcp_security_auditor.mjs';
 import { runBlindIndependentReview, verifyF2pAndP2pGate } from '../intelligence/eval_matrix.mjs';
 import { runAstAudit } from './ast_guard.mjs';
 import { runCodeCleanAudit } from './code_clean_audit.mjs';
+import { runRyuxDesignGate } from './ryux_design_gate.mjs';
 import { runSecurityQuarantineGate, runAgentShieldHarnessAudit } from './security_gate.mjs';
 import { runWorkflowSecurityLinter } from './workflow_security_linter.mjs';
 import {
@@ -360,17 +362,33 @@ export async function auditEightHarnessLayers() {
     'tools/intelligence/agent_benchmark_harness.mjs'
   ];
   const l5Syntax = l5Files.map(checkNodeSyntax);
+  const astRes = runAstAudit();
+  const secGateRes = await runSecurityQuarantineGate({ skipNetworkAudit: true });
+  const ryuxProbe = runRyuxDesignGate({ project: 'agencia-alfa' });
+  const traceProbe = verifySpecKittyTraceabilityMatrix('agencia-alfa');
+  const measuredComposite = Math.round(
+    (Number(astRes?.score ?? 0) + Number(secGateRes?.score ?? 0) + Number(ryuxProbe?.score ?? 0)) / 3
+  );
   const blindRev = await runBlindIndependentReview({
     specPath: path.join(FACTORY_ROOT, 'projects', 'agencia-alfa', 'SPEC.md'),
     gitDiff: 'harness_doctor_probe',
-    auditMetrics: { astPassed: true, securityPassed: true, visualPassed: true, compositeScore: 100 }
+    auditMetrics: {
+      astPassed: Boolean(astRes?.passed),
+      securityPassed: Boolean(secGateRes?.passed),
+      visualPassed: Boolean(ryuxProbe?.passed),
+      compositeScore: measuredComposite
+    }
   });
   const hiddenSuitePath = path.join(FACTORY_ROOT, '.agents', 'sealed_envelope_evals', 'hidden_acceptance_suite.json');
   const hiddenSuiteExists = fs.existsSync(hiddenSuitePath);
   const f2pGate = verifyF2pAndP2pGate({
-    f2pTestPassed: true,
-    p2pSuitePassed: true,
-    evidences: ['Harness Doctor F2P/P2P Probe']
+    f2pTestPassed: Boolean(hiddenSuiteExists && traceProbe?.passed !== false),
+    p2pSuitePassed: Boolean(astRes?.passed && secGateRes?.passed && ryuxProbe?.passed),
+    evidences: [
+      `AST=${astRes?.score ?? 0}/100`,
+      `SecGate=${secGateRes?.score ?? 0}/100`,
+      `RYUX=${ryuxProbe?.score ?? 0}/100`
+    ]
   });
 
   const l5Passed =
@@ -386,7 +404,7 @@ export async function auditEightHarnessLayers() {
     score: l5Passed ? 12.5 : 0,
     maxScore: 12.5,
     passed: l5Passed,
-    evidence: `BlindReview=${Boolean(blindRev.passed || blindRev.approved)} | HiddenSuite=${hiddenSuiteExists} | F2P=${f2pGate.f2pVerified} | P2P=${f2pGate.p2pVerified}`
+    evidence: `BlindReview=${Boolean(blindRev.passed || blindRev.approved)} (score=${measuredComposite}) | HiddenSuite=${hiddenSuiteExists} | F2P=${f2pGate.f2pVerified} | P2P=${f2pGate.p2pVerified}`
   });
 
   // =========================================================================
@@ -399,11 +417,9 @@ export async function auditEightHarnessLayers() {
     'tools/audit/workflow_security_linter.mjs'
   ];
   const l6Syntax = l6Files.map(checkNodeSyntax);
-  const astRes = runAstAudit();
   const cleanRes = runCodeCleanAudit();
   const shieldRes = runAgentShieldHarnessAudit();
   const zizmorRes = runWorkflowSecurityLinter();
-  const secGateRes = await runSecurityQuarantineGate({ skipNetworkAudit: true });
   const binExt = process.platform === 'win32' ? '.cmd' : '';
   const biomeBin = path.join(FACTORY_ROOT, 'node_modules', '.bin', `biome${binExt}`);
   const oxfmtBin = path.join(FACTORY_ROOT, 'node_modules', '.bin', `oxfmt${binExt}`);
@@ -531,11 +547,10 @@ export async function auditEightHarnessLayers() {
  * Automatically cleans up the temporary capsule on completion so zero test debris remains.
  */
 export async function runEndToEndDryRunSimulation() {
-  const tempCapsuleDir = path.join(FACTORY_ROOT, '.cache', 'e2e_preflight_capsule');
+  const tempCapsuleDir = fs.mkdtempSync(path.join(os.tmpdir(), 'wf-e2e-preflight-capsule-'));
   const steps = [];
 
   try {
-    fs.rmSync(tempCapsuleDir, { recursive: true, force: true });
     fs.mkdirSync(path.join(tempCapsuleDir, 'site', 'css'), { recursive: true });
     fs.mkdirSync(path.join(tempCapsuleDir, 'site', 'js'), { recursive: true });
     fs.mkdirSync(path.join(tempCapsuleDir, 'public'), { recursive: true });
@@ -592,12 +607,16 @@ export async function runEndToEndDryRunSimulation() {
     const t4 = performance.now();
     const tokRes = compileDesignTokens({ projectDir: tempCapsuleDir, archetype: 'saas-b2b', style: 'stripe-editorial' });
     const astCheck = runAstAudit();
-    const f2pCheck = verifyF2pAndP2pGate({
-      f2pTestPassed: true,
-      p2pSuitePassed: true,
-      evidences: ['E2E Dry-Run Step 4']
-    });
     const traceCheck = verifySpecKittyTraceabilityMatrix('agencia-alfa');
+    const f2pCheck = verifyF2pAndP2pGate({
+      f2pTestPassed: Boolean(tokRes.passed && traceCheck.passed),
+      p2pSuitePassed: Boolean(astCheck.passed),
+      evidences: [
+        `TokensCompiled=${Boolean(tokRes.passed)}`,
+        `AST=${astCheck.score}/100`,
+        `Traceability=${Boolean(traceCheck.passed)}`
+      ]
+    });
     steps.push({
       step: 4,
       name: 'Compilación W3C DTCG OKLCH + Guardias AST / Security / F2P-P2P / Traceability',

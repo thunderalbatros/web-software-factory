@@ -3,6 +3,7 @@
   "name": "Academia IA",
   "domain": "https://academia-ia.pages.dev",
   "version": "1.0.0",
+  "domainProfile": "education",
   "archetype": "education",
   "stack": "astro-edge",
   "complianceProfile": "education",

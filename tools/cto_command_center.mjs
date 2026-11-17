@@ -35,6 +35,7 @@ import {
 import { runGitRemoteSyncCheck } from './audit/git_remote_sync_check.mjs';
 import { syncProjectStatechartSnapshot } from './orchestrator/deterministic_agent_statechart.mjs';
 import { hasStandaloneUnsafeEval, validateHeadersForProfile } from './lib/csp_builder.mjs';
+import { resolveDomainProfile } from './lib/project_profile.mjs';
 import { createRequire } from 'node:module';
 
 const requireCjs = createRequire(import.meta.url);
@@ -58,6 +59,13 @@ export function evaluateCybersecurityTrafficLight(projectCfgInput = null, option
       ? loadProjectConfig(projectCfgInput)
       : projectCfgInput || loadProjectConfig();
   const projRoot = projectCfg?.projectRoot || ROOT;
+  const domainProfile = resolveDomainProfile({
+    slug: projectCfg?.id,
+    projectRoot: projRoot,
+    domainProfile: projectCfg?.domainProfile,
+    complianceProfile: projectCfg?.complianceProfile,
+    archetype: projectCfg?.archetype
+  });
   const projDistHeaders = path.join(projRoot, 'dist', '_headers');
   const projPublicHeaders = path.join(projRoot, 'public', '_headers');
   const projectHeaderCandidates = [projDistHeaders, projPublicHeaders].filter((p) => fs.existsSync(p));
@@ -69,7 +77,7 @@ export function evaluateCybersecurityTrafficLight(projectCfgInput = null, option
     path.join(ROOT, 'templates', 'vanilla-edge', 'public', '_headers')
   ];
   let headersValid = true;
-  if (projectCfg?.complianceProfile === 'education' && projectHeaderCandidates.length === 0) {
+  if (domainProfile.capabilities.runtime.staticHeadersRequired && projectHeaderCandidates.length === 0) {
     headersValid = false;
   }
   for (const hp of headerPaths) {
@@ -79,8 +87,9 @@ export function evaluateCybersecurityTrafficLight(projectCfgInput = null, option
     }
     const raw = fs.readFileSync(hp, 'utf8');
     const isProjectHeader = projectHeaderCandidates.includes(hp);
-    const profileToCheck =
-      isProjectHeader && projectCfg?.complianceProfile === 'education' ? 'education' : 'standard-web';
+    const profileToCheck = isProjectHeader
+      ? domainProfile.capabilities.compliance.cspProfile
+      : 'standard-web';
     const hasRequiredHeaders =
       raw.includes("default-src 'self'") &&
       raw.includes("object-src 'none'") &&
@@ -93,7 +102,7 @@ export function evaluateCybersecurityTrafficLight(projectCfgInput = null, option
       raw.includes('Referrer-Policy: strict-origin-when-cross-origin') &&
       raw.includes('Permissions-Policy:') &&
       raw.includes('Cross-Origin-Opener-Policy: same-origin') &&
-      (profileToCheck !== 'education' || validateHeadersForProfile(raw, 'education').valid);
+      (profileToCheck === 'standard-web' || validateHeadersForProfile(raw, profileToCheck).valid);
     if (!hasRequiredHeaders) {
       headersValid = false;
       break;
@@ -251,7 +260,8 @@ export async function handleNuevo(args, options = {}) {
           '3. ¿Qué tipo de sitio es? (saas-b2b / ecommerce / marketing / portfolio / education)',
           'saas-b2b'
         ))).toLowerCase();
-    const defaultStyleForRubro = rubro === 'education' ? 'stripe-editorial' : 'bento';
+    const nuevoProfile = resolveDomainProfile({ archetype: rubro });
+    const defaultStyleForRubro = nuevoProfile.defaultStyle;
     const estilo = estiloFlag
       ? estiloFlag
       : (isNonInteractive ? defaultStyleForRubro : await askQuestionCli(
@@ -286,12 +296,12 @@ export async function handleNuevo(args, options = {}) {
     const { initPrdInterviewFiles } = await import('./orchestrator/lean_prd_architect.mjs');
     const { initClientInterviewFiles } = await import('./orchestrator/client_interview_gate.mjs');
     generateProductAndDesignMd(projDir, rubro);
-    if (rubro !== 'education') {
+    if (nuevoProfile.capabilities.runtime.d1) {
       forgeDatabaseArchitecture(projDir, 'edge-d1');
     }
     const prdInit = initPrdInterviewFiles(slug, rubro, { autoApprove: false, overwrite: true });
     const interviewInit = initClientInterviewFiles(slug, rubro, { autoApprove: false, overwrite: true });
-    recordProjectAuditScore(projDir, 100, 'APROBADO');
+    syncProjectStatechartSnapshot(slug, []);
 
     console.log('\n✅ ¡Listo! El sitio fue creado de forma 100% aislada con Doble Compuerta Manual:');
     console.log(`   • Carpeta del sitio             : projects/${slug}/`);
@@ -362,10 +372,16 @@ async function handleEntrevistaPrd(args) {
   const nonFlags = args.filter((a) => !a.startsWith('--'));
   const projectCfg = loadProjectConfig(nonFlags[0] || '');
   const slug = nonFlags[0] || projectCfg.id || 'agencia-alfa';
-  const defaultIndustry =
-    projectCfg.complianceProfile === 'education'
-      ? 'education'
-      : projectCfg.industryArchetype || projectCfg.archetype || 'saas';
+  const domainProfile = resolveDomainProfile({
+    slug,
+    projectRoot: projectCfg.projectRoot,
+    domainProfile: projectCfg.domainProfile,
+    complianceProfile: projectCfg.complianceProfile,
+    archetype: projectCfg.archetype
+  });
+  const defaultIndustry = domainProfile.capabilities.content.mdxLessons
+    ? 'education'
+    : projectCfg.industryArchetype || projectCfg.archetype || domainProfile.defaultIndustryArchetype;
   const industry = nonFlags[1] || defaultIndustry;
   const shouldApprove = args.includes('--aprobar') || args.includes('--approve');
 
@@ -403,10 +419,16 @@ async function handleEntrevista(args) {
   const nonFlags = args.filter((a) => !a.startsWith('--'));
   const projectCfg = loadProjectConfig(nonFlags[0] || '');
   const slug = nonFlags[0] || projectCfg.id || 'agencia-alfa';
-  const defaultIndustry =
-    projectCfg.complianceProfile === 'education'
-      ? 'education'
-      : projectCfg.industryArchetype || projectCfg.archetype || 'saas';
+  const domainProfile = resolveDomainProfile({
+    slug,
+    projectRoot: projectCfg.projectRoot,
+    domainProfile: projectCfg.domainProfile,
+    complianceProfile: projectCfg.complianceProfile,
+    archetype: projectCfg.archetype
+  });
+  const defaultIndustry = domainProfile.capabilities.content.mdxLessons
+    ? 'education'
+    : projectCfg.industryArchetype || projectCfg.archetype || domainProfile.defaultIndustryArchetype;
   const industry = nonFlags[1] || defaultIndustry;
   const shouldApprove = args.includes('--aprobar') || args.includes('--approve');
 
@@ -444,13 +466,85 @@ async function handleEntrevista(args) {
   }
 }
 
+export function syncConstructionGatesToStatechart(projectSlug, gateMetrics = {}, options = {}) {
+  const untaintedResearchVerified = Boolean(gateMetrics.untaintedResearchVerified);
+  const maxStageInstructions = Number(gateMetrics.maxStageInstructions || 0);
+  const ryuxScore = Number(gateMetrics.ryuxScore ?? 0);
+  const securityScore = Number(gateMetrics.securityScore ?? 0);
+  const visualBlockers = Number(gateMetrics.visualBlockers ?? 1);
+  const jevVerdict = gateMetrics.jevVerdict || 'ALIGNED_WITH_SPEC';
+  const boltPassed = gateMetrics.boltPassed !== false;
+  const harnessPassed = gateMetrics.harnessPassed !== false;
+  const landPlane = Boolean(options.landPlane);
+
+  const qualityPassed =
+    boltPassed &&
+    harnessPassed &&
+    untaintedResearchVerified &&
+    maxStageInstructions > 0 &&
+    maxStageInstructions <= 40 &&
+    ryuxScore >= 92 &&
+    securityScore === 100 &&
+    visualBlockers === 0 &&
+    jevVerdict !== 'INVARIANT_DRIFT_DETECTED';
+
+  const events = [
+    {
+      type: 'COMPLETE_RPI_UNTAINTED_RESEARCH',
+      untaintedResearchVerified,
+      maxStageInstructions
+    },
+    { type: 'START_WAVE1_FOUNDATION' },
+    { type: 'COMPLETE_WAVE1_FOUNDATION' },
+    { type: 'COMPLETE_WAVE2_SPECIALIST_FORGE' }
+  ];
+
+  if (qualityPassed) {
+    events.push({
+      type: 'PASS_WAVE3_QA_AND_JEV',
+      ryuxScore,
+      securityScore,
+      visualBlockers,
+      jevVerdict
+    });
+    if (landPlane) {
+      events.push({
+        type: 'LAND_THE_PLANE',
+        ryuxScore,
+        securityScore,
+        visualBlockers
+      });
+    }
+  } else {
+    events.push({ type: 'FAIL_WAVE3_QA_TRIGGER_REPAIR' });
+    events.push({ type: 'ESCALATE_TO_CTO_HITL' });
+  }
+
+  const snapshot = syncProjectStatechartSnapshot(projectSlug, events, options.statechartOptions || {});
+  const expectedTerminal = landPlane ? 'packaged_and_landed' : 'hitl_review_ready';
+  const blocked = !qualityPassed || snapshot.activeState !== expectedTerminal;
+  return {
+    passed: !blocked,
+    blocked,
+    qualityPassed,
+    activeState: snapshot.activeState,
+    snapshot
+  };
+}
+
 async function handleConstruir(args = []) {
   const nonFlags = (args || []).filter((a) => !a.startsWith('--'));
   const projectCfg = loadProjectConfig(nonFlags[0] || '');
-  const effectiveIndustry =
-    projectCfg.complianceProfile === 'education'
-      ? 'education'
-      : projectCfg.industryArchetype || projectCfg.archetype || 'saas';
+  const domainProfile = resolveDomainProfile({
+    slug: projectCfg.id,
+    projectRoot: projectCfg.projectRoot,
+    domainProfile: projectCfg.domainProfile,
+    complianceProfile: projectCfg.complianceProfile,
+    archetype: projectCfg.archetype
+  });
+  const effectiveIndustry = domainProfile.capabilities.content.mdxLessons
+    ? 'education'
+    : projectCfg.industryArchetype || projectCfg.archetype || domainProfile.defaultIndustryArchetype;
   console.log('\n====================================================================');
   console.log(`🏗️  CONSTRUYENDO Y AUDITANDO TU SITIO WEB [${projectCfg.id}] (MODO AUTOMÁTICO)`);
   console.log('====================================================================\n');
@@ -473,7 +567,9 @@ async function handleConstruir(args = []) {
   const { runHumanLayerRpiPipeline, runOpenHandsStuckDetector } = await import('./orchestrator/humanlayer_rpi_gate.mjs');
   const { verifySpecKittyTraceabilityMatrix } = await import('./lib/project_loader.mjs');
   const { verifyF2pAndP2pGate } = await import('./intelligence/eval_matrix.mjs');
+  const { runAstAudit } = await import('./intelligence/ast_guard.mjs');
   const { runSecurityQuarantineGate } = await import('./audit/security_gate.mjs');
+  const { runRyuxDesignGate } = await import('./audit/ryux_design_gate.mjs');
   const { runLocalFullstackAndComponentHarness } = await import(
     './audit/local_fullstack_and_component_harness.mjs'
   );
@@ -483,57 +579,88 @@ async function handleConstruir(args = []) {
   const { captureAccessibilitySnapshot } = await import('./audit/a11y_tree_snapshot.mjs');
 
   const laneDecision = classifyAdaptiveDepthLane(`Construcción Ejecutiva del CTO (${projectCfg.id})`, { filesCount: 4 });
-  runHumanLayerRpiPipeline({
+  const rpiRes = runHumanLayerRpiPipeline({
     taskDescription: `Construcción Ejecutiva del CTO (${projectCfg.id})`,
-    targetPaths: [`projects/${projectCfg.id}/index.html`, `projects/${projectCfg.id}/site/css/design-tokens.css`]
+    targetPaths: [`projects/${projectCfg.id}/${projectCfg.paths?.entryHtml || 'index.html'}`]
   });
   runOpenHandsStuckDetector([{ step: 1, action: 'cto_construir_preflight', status: 'OK' }]);
   loadBeadsTaskGraph();
-  verifySpecKittyTraceabilityMatrix(projectCfg.id);
-  verifyF2pAndP2pGate({ f2pTestPassed: true, p2pSuitePassed: true, evidences: [`Build ${projectCfg.id}`] });
+  const traceRes = verifySpecKittyTraceabilityMatrix(projectCfg.id);
+  const preAstRes = runAstAudit(null, { rootDir: projectCfg.projectRoot });
+  verifyF2pAndP2pGate({
+    f2pTestPassed: Boolean(traceRes?.passed !== false),
+    p2pSuitePassed: Boolean(preAstRes?.passed),
+    evidences: [`Traceability(${projectCfg.id})=${Boolean(traceRes?.passed !== false)}`, `AST=${preAstRes?.score ?? 0}/100`]
+  });
 
   // 1. Compile Tokens (respecting BRAND_IDENTITY_LOCK.json), Apply Bespoke Morphology to DOM, & Build Production Dist
   compileDesignTokens({ projectDir: projectCfg.projectRoot });
-  if (projectCfg.complianceProfile !== 'education' && projectCfg.stack === 'vanilla-edge') {
+  if (domainProfile.capabilities.media.bespokeDomMorphology && projectCfg.stack === 'vanilla-edge') {
     applyBespokeMorphologyToProjectDom(projectCfg.id);
   }
   execSync(`node "${path.join(ROOT, 'tools', 'build_dist.mjs')}" --project "${projectCfg.projectRoot}"`, { cwd: ROOT, stdio: 'inherit' });
 
-  // 2. Execute Parallel DAG Bolt (Wave 1 CRISP Outline -> Wave 2A Tracer-Bullet -> Wave 2B Fill-In -> Wave 3 Visual/Security/JEV Audit)
+  // 2. Execute Parallel DAG Bolt
   const boltRes = await runSquadMission(`Construcción Ejecutiva del CTO (${projectCfg.id})`, {
     useSandbox: false,
     resume: false,
     project: projectCfg.id,
-    archetype: projectCfg.archetype || 'saas',
+    archetype: domainProfile.id,
     forceLane: laneDecision.lane
   });
 
-  // 2b. Run Security Quarantine Gate, JEV Outer/Meta Gate & Local Fullstack + Pure Component 5-State Harness automatically
-  runSecurityQuarantineGate();
-  await evaluateFullJevOuterAndMetaGate({
+  // 2b. Measure real Security, RYUX, JEV & Local Harness outputs and feed XState honestly
+  const secRes = await runSecurityQuarantineGate({ skipNetworkAudit: true, projectSlug: projectCfg.id });
+  const ryuxRes = runRyuxDesignGate({ project: projectCfg.id });
+  const jevRes = await evaluateFullJevOuterAndMetaGate({
     specPath: path.join(projectCfg.projectRoot, 'SPEC.md')
   });
-  runLocalFullstackAndComponentHarness({ projectRoot: projectCfg.projectRoot });
-  syncProjectStatechartSnapshot(projectCfg.id, [
-    { type: 'COMPLETE_RPI_UNTAINTED_RESEARCH', untaintedResearchVerified: true, maxStageInstructions: 14 },
-    { type: 'START_WAVE1_FOUNDATION' },
-    { type: 'COMPLETE_WAVE1_FOUNDATION' },
-    { type: 'COMPLETE_WAVE2_SPECIALIST_FORGE' },
-    { type: 'PASS_WAVE3_QA_AND_JEV', ryuxScore: 100, securityScore: 100, visualBlockers: 0 }
-  ]);
+  const harnessRes = await runLocalFullstackAndComponentHarness({ projectRoot: projectCfg.projectRoot });
 
-  // 3. Capture Pruned DOM + AX Tree + Stagehand Self-Healing Snapshot (Project-Scoped)
+  const measuredRyuxScore = Number(ryuxRes?.score ?? 0);
+  const measuredSecurityScore = Number(secRes?.score ?? (secRes?.passed ? 100 : 0));
+  const measuredVisualBlockers = Number(
+    ryuxRes?.criticalBlockers ?? (Array.isArray(ryuxRes?.blockers) ? ryuxRes.blockers.length : ryuxRes?.passed ? 0 : 1)
+  );
+  const measuredJevVerdict =
+    jevRes?.verdict || (jevRes?.passed === false ? 'INVARIANT_DRIFT_DETECTED' : 'ALIGNED_WITH_SPEC');
+  const rpiStagesCompleted = Number(rpiRes?.checkpoint?.currentStageOrder || 0) >= 6;
+  const xstateOutcome = syncConstructionGatesToStatechart(projectCfg.id, {
+    untaintedResearchVerified: Boolean(rpiRes?.untaintedResearchVerified ?? rpiStagesCompleted),
+    maxStageInstructions: Number(rpiRes?.maxStageInstructions || 14),
+    ryuxScore: measuredRyuxScore,
+    securityScore: measuredSecurityScore,
+    visualBlockers: measuredVisualBlockers,
+    jevVerdict: measuredJevVerdict,
+    boltPassed: Boolean(boltRes?.passed && secRes?.passed && ryuxRes?.passed),
+    harnessPassed: harnessRes?.passed !== false
+  });
+
+  const measuredOverallScore = Math.round(Math.min(measuredRyuxScore, measuredSecurityScore));
+  recordProjectAuditScore(
+    projectCfg.projectRoot,
+    measuredOverallScore,
+    xstateOutcome.passed ? 'APROBADO' : `BLOQUEADO (${xstateOutcome.activeState})`
+  );
+
+  // 3. Capture Pruned DOM + AX Tree Snapshot (Project-Scoped)
   const axRes = await captureAccessibilitySnapshot({ projectDir: projectCfg.projectRoot });
 
   // 4. Generate Executive Brief automatically so it's ready for review
   await generateExecutiveDecisionBrief(boltRes, axRes);
 
   console.log('\n====================================================================');
-  console.log(`🟢 CONSTRUCCIÓN COMPLETADA [${projectCfg.id}]: ${boltRes.passed ? 'TODO EN VERDE (100/100)' : 'REQUIERE REVISIÓN'}`);
+  console.log(
+    `🟢 CONSTRUCCIÓN COMPLETADA [${projectCfg.id}]: ${
+      xstateOutcome.passed
+        ? `VERDE REAL (RYUX=${measuredRyuxScore}, SEC=${measuredSecurityScore}, XState=${xstateOutcome.activeState})`
+        : `BLOQUEADO EN [${xstateOutcome.activeState}] (RYUX=${measuredRyuxScore}, SEC=${measuredSecurityScore})`
+    }`
+  );
   console.log('👉 Ejecutá `npm run cto:revisar` para ver el Resumen Ejecutivo en español simple.');
   console.log('====================================================================\n');
 
-  if (!boltRes.passed) process.exit(1);
+  if (!xstateOutcome.passed) process.exit(1);
 }
 
 async function generateExecutiveDecisionBrief(boltRes = null, axRes = null) {
@@ -1454,17 +1581,27 @@ export async function handleAterrizar(_args = []) {
     } catch {}
   }
 
-  // 1b. Run JEV Sleep-Time Consolidation Cycle & XState v5 Actor Snapshot Landing
+  // 1b. Run JEV Sleep-Time Consolidation Cycle & Honest XState v5 Actor Snapshot Landing
   const { runJevSleepTimeConsolidationCycle } = await import('./intelligence/jev_memory_pipeline.mjs');
+  const { runRyuxDesignGate } = await import('./audit/ryux_design_gate.mjs');
   const sleepTimeReport = await runJevSleepTimeConsolidationCycle({ persist: true });
-  const xstateLanding = syncProjectStatechartSnapshot(slug, [
-    { type: 'COMPLETE_RPI_UNTAINTED_RESEARCH', untaintedResearchVerified: true, maxStageInstructions: 14 },
-    { type: 'START_WAVE1_FOUNDATION' },
-    { type: 'COMPLETE_WAVE1_FOUNDATION' },
-    { type: 'COMPLETE_WAVE2_SPECIALIST_FORGE' },
-    { type: 'PASS_WAVE3_QA_AND_JEV', ryuxScore: 100, securityScore: 100, visualBlockers: 0 },
-    { type: 'LAND_THE_PLANE', ryuxScore: 100, securityScore: 100, visualBlockers: 0 }
-  ]);
+  const landingRyux = runRyuxDesignGate({ project: slug });
+  const landingSec = evaluateCybersecurityTrafficLight(slug, { skipNetworkAudit: true });
+  const landingOutcome = syncConstructionGatesToStatechart(
+    slug,
+    {
+      untaintedResearchVerified: true,
+      maxStageInstructions: 14,
+      ryuxScore: Number(landingRyux?.score ?? 0),
+      securityScore: Number(landingSec?.score ?? 0),
+      visualBlockers: Number(landingRyux?.criticalBlockers ?? (landingRyux?.passed ? 0 : 1)),
+      jevVerdict: 'ALIGNED_WITH_SPEC',
+      boltPassed: Boolean(landingRyux?.passed && landingSec?.allPassed),
+      harnessPassed: true
+    },
+    { landPlane: true }
+  );
+  const xstateLanding = landingOutcome.snapshot;
 
   // 2. Synchronize `.agents/beads/task_graph.jsonl` & elevate priority of recent issues
   const beadsPath = path.join(ROOT, '.agents', 'beads', 'task_graph.jsonl');

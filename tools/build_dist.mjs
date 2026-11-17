@@ -12,6 +12,7 @@ import { forge3dSceneOrEffect } from './design/shader_and_3d_forge.mjs';
 import { generateBrandIntroVideo } from './media/programmatic_video_forge.mjs';
 import { verifyAndEmitOpenApiContract } from './audit/api_contract_verifier.mjs';
 import { compileStaticDistCspAndHeaders, generateHeadersFileContent } from './lib/csp_builder.mjs';
+import { resolveDomainProfile } from './lib/project_profile.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const IS_CLI_MAIN = Boolean(process.argv[1] && path.resolve(process.argv[1]) === path.resolve(__filename));
@@ -34,13 +35,19 @@ export async function runBuildDist(explicitProject = '') {
 const projectConfig = loadProjectConfig(explicitProject);
 const root = projectConfig.projectRoot;
 const dist = path.join(root, projectConfig.paths.distDir);
-const isEducationProfile = projectConfig.complianceProfile === 'education' || projectConfig.archetype === 'education';
-const isStaticWithoutWorker = isEducationProfile || projectConfig.paths?.workerEntry === null;
+const domainProfile = resolveDomainProfile({
+  slug: projectConfig.id,
+  projectRoot: root,
+  domainProfile: projectConfig.domainProfile,
+  complianceProfile: projectConfig.complianceProfile,
+  archetype: projectConfig.archetype
+});
+const isStaticWithoutWorker = !domainProfile.capabilities.runtime.worker || projectConfig.paths?.workerEntry === null;
 
 console.log(`=== BUILDING CLOUDFLARE PRODUCTION PAYLOAD (${projectConfig.id} -> dist/) ===\n`);
 
 // 0. Apply Bespoke Morphology & Industry Interactive Widget to project DOM before copying to dist/
-if (!isEducationProfile) {
+if (domainProfile.capabilities.media.bespokeDomMorphology) {
   try {
     const morphRes = applyBespokeMorphologyToProjectDom(projectConfig.id);
     console.log(
@@ -165,11 +172,8 @@ async function minifyDistAssets() {
 
   let esbuild = null;
   try {
-    const esbuildPath = path.join(FACTORY_ROOT, 'tools', 'audit', 'node_modules', 'esbuild', 'lib', 'main.js');
-    if (fs.existsSync(esbuildPath)) {
-      const mod = await import('file:///' + esbuildPath.replace(/\\/g, '/'));
-      esbuild = mod.default || mod;
-    }
+    const mod = await import('esbuild');
+    esbuild = mod.default || mod;
   } catch {}
 
   let savedBytes = 0;
@@ -273,16 +277,9 @@ async function minifyDistAssets() {
     }
   }
 
-  // Optimize SVG assets in dist/ via svgo (if installed in tools/audit/node_modules/svgo)
+  // Optimize SVG assets in dist/ via svgo (if installed in root node_modules)
   try {
-    const svgoPath = path.join(FACTORY_ROOT, 'tools', 'audit', 'node_modules', 'svgo', 'dist', 'svgo.node.cjs');
-    const svgoEsmPath = path.join(FACTORY_ROOT, 'tools', 'audit', 'node_modules', 'svgo', 'lib', 'svgo.js');
-    let svgoMod = null;
-    if (fs.existsSync(svgoEsmPath)) {
-      svgoMod = await import('file:///' + svgoEsmPath.replace(/\\/g, '/'));
-    } else if (fs.existsSync(svgoPath)) {
-      svgoMod = await import('file:///' + svgoPath.replace(/\\/g, '/'));
-    }
+    const svgoMod = await import('svgo');
     const optimizeSvg = svgoMod?.optimize || svgoMod?.default?.optimize;
     if (typeof optimizeSvg === 'function') {
       const svgDir = path.join(dist, 'site', 'images');
@@ -305,7 +302,11 @@ async function minifyDistAssets() {
 }
 
 // 4a. Inject Psychoacoustic Sonic Identity (full sonicPatch), 3D Scene Runtime & Procedural Brand Intro Player BEFORE minification
-if (!isEducationProfile) {
+if (
+  domainProfile.capabilities.media.audio ||
+  domainProfile.capabilities.media.three ||
+  domainProfile.capabilities.media.introVideo
+) {
 try {
   const interviewJsonPath = path.join(root, 'CLIENT_BRIEF_INTERVIEW.json');
   let sonicConfig = {
@@ -547,15 +548,15 @@ if (projectConfig.stack !== 'astro-edge') {
 
 // 5. Generate Cloudflare _headers via Single-Source CSP Builder (Security, Hardened CSP, CORP, Immutable Hashing)
 console.log('• Generating Cloudflare _headers...');
-if (isEducationProfile) {
+if (domainProfile.capabilities.compliance.trustedTypesStrict) {
   compileStaticDistCspAndHeaders(root, {
-    profile: 'education',
+    profile: domainProfile.capabilities.compliance.cspProfile,
     distDir: dist,
     syncPublicHeaders: true
   });
 } else {
   const headersContent = generateHeadersFileContent({
-    profile: projectConfig.complianceProfile || 'standard-web',
+    profile: domainProfile.capabilities.compliance.cspProfile,
     preloadCssHref: projectConfig.stack === 'astro-edge' ? null : '/site/css/bundle.css'
   });
   fs.writeFileSync(path.join(dist, '_headers'), headersContent, 'utf8');
@@ -701,10 +702,15 @@ export function exportStandaloneDeliverable(cfg = null, options = {}) {
   const displayName = resolvedCfg.name || slug;
   const projRoot = resolvedCfg.projectRoot;
   const projDist = path.join(projRoot, resolvedCfg.paths?.distDir || 'dist');
+  const exportProfile = resolveDomainProfile({
+    slug: resolvedCfg.id,
+    projectRoot: projRoot,
+    domainProfile: resolvedCfg.domainProfile,
+    complianceProfile: resolvedCfg.complianceProfile,
+    archetype: resolvedCfg.archetype
+  });
   const isStaticWithoutWorker =
-    resolvedCfg.paths?.workerEntry === null ||
-    resolvedCfg.complianceProfile === 'education' ||
-    resolvedCfg.archetype === 'education';
+    resolvedCfg.paths?.workerEntry === null || !exportProfile.capabilities.runtime.worker;
 
   const localDeliverableDir = options.outDir
     ? path.resolve(options.outDir)

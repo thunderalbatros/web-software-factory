@@ -108,11 +108,11 @@ export function listProjectsCatalog() {
     }
 
     const auditFile = path.join(projRoot, '.specify', 'memory', 'last_audit.json');
-    let lastAuditScore = '100/100 (Listo)';
+    let lastAuditScore = 'Sin auditar';
     if (fs.existsSync(auditFile)) {
       try {
         const a = JSON.parse(fs.readFileSync(auditFile, 'utf8'));
-        lastAuditScore = `${a.score}/100 (${a.statusLabel || 'APROBADO'})`;
+        lastAuditScore = `${a.score}/100 (${a.statusLabel || 'AUDITADO'})`;
       } catch {}
     }
 

@@ -20,6 +20,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { runSupplyChainGuard } from './supply_chain_guard.mjs';
 import { runAstAudit } from './ast_guard.mjs';
+import { resolveDomainProfile } from '../lib/project_profile.mjs';
 import { runWorkflowSecurityLinter, lintWorkflowYamlContent } from './workflow_security_linter.mjs';
 import {
   verifyAgentGovernanceKernelSelfTest,
@@ -149,29 +150,34 @@ export function auditEdgeWorkersAndDist(rootDir = ROOT, options = {}) {
 
   const inspectProjectDir = (projDir, labelName, isProjectEntry = true) => {
     const manifestPath = path.join(projDir, 'factory.project.json');
-    let complianceProfile = 'standard-web';
+    let manifest = null;
     if (fs.existsSync(manifestPath)) {
       try {
-        const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
-        complianceProfile =
-          manifest.complianceProfile || (manifest.archetype === 'education' ? 'education' : 'standard-web');
+        manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
       } catch {}
     }
+    const domainProfile = resolveDomainProfile({
+      slug: manifest?.id || labelName,
+      projectRoot: projDir,
+      manifest
+    });
+    const requiresStaticHeaders = domainProfile.capabilities.runtime.staticHeadersRequired;
+    const cspProfile = domainProfile.capabilities.compliance.cspProfile;
 
     const candidateWorker = path.join(projDir, 'worker', 'index.js');
     if (fs.existsSync(candidateWorker)) {
       workerPaths.push(candidateWorker);
-    } else if (isProjectEntry && complianceProfile === 'education') {
+    } else if (isProjectEntry && requiresStaticHeaders) {
       staticEducationProjects.push(projDir);
       const pubHeadersPath = path.join(projDir, 'public', '_headers');
       if (!fs.existsSync(pubHeadersPath)) {
-        issues.push(`[EDU-STATIC-CSP] ${labelName}/public/_headers ausente en proyecto estático education.`);
+        issues.push(`[EDU-STATIC-CSP] ${labelName}/public/_headers ausente en proyecto estático (${domainProfile.id}).`);
       } else {
         const pubRaw = fs.readFileSync(pubHeadersPath, 'utf8');
         if (hasStandaloneUnsafeEval(pubRaw)) {
           issues.push(`[EDU-STATIC-CSP] ${labelName}/public/_headers contiene el token prohibido 'unsafe-eval'.`);
         }
-        const headerCheck = validateHeadersForProfile(pubRaw, 'education');
+        const headerCheck = validateHeadersForProfile(pubRaw, cspProfile);
         if (!headerCheck.valid) {
           for (const errMsg of headerCheck.issues) {
             issues.push(`[EDU-STATIC-CSP] ${labelName}/public/_headers: ${errMsg}`);
@@ -182,13 +188,13 @@ export function auditEdgeWorkersAndDist(rootDir = ROOT, options = {}) {
 
     const distDir = path.join(projDir, 'dist');
     if (fs.existsSync(distDir)) {
-      if (isProjectEntry && complianceProfile === 'education') {
+      if (isProjectEntry && requiresStaticHeaders) {
         const distHeadersPath = path.join(distDir, '_headers');
         if (!fs.existsSync(distHeadersPath)) {
           issues.push(`[EDU-STATIC-DIST] ${labelName}/dist/_headers ausente tras el build estático.`);
         } else {
           const distRaw = fs.readFileSync(distHeadersPath, 'utf8');
-          const distCheck = validateHeadersForProfile(distRaw, 'education');
+          const distCheck = validateHeadersForProfile(distRaw, cspProfile);
           if (!distCheck.valid) {
             for (const errMsg of distCheck.issues) {
               issues.push(`[EDU-STATIC-DIST] ${labelName}/dist/_headers: ${errMsg}`);

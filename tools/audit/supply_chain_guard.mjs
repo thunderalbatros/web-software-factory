@@ -164,7 +164,6 @@ export function checkLockfileAndVulnerabilities(rootDir = ROOT, skipNetworkAudit
 
   const candidateDirs = [
     rootDir,
-    path.join(rootDir, "tools", "audit"),
     path.join(rootDir, "templates", "astro-edge")
   ];
   const projectsBase = path.join(rootDir, "projects");

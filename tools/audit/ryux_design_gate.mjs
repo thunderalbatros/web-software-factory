@@ -33,6 +33,7 @@ import {
 } from '../design/bespoke_morphology_composer.mjs';
 import { evaluateVisualArchetypeWithVlm } from '../intelligence/vertex_ai_bridge.mjs';
 import { analyzeSpanishReadability } from './readability_es.mjs';
+import { resolveDomainProfile } from '../lib/project_profile.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 
@@ -118,7 +119,18 @@ export function runRyuxDesignGate(projectInput = '') {
       ? projectInput
       : loadProjectConfig(typeof projectInput === 'string' ? projectInput : '');
   const ROOT = activeCfg.projectRoot;
-  const isEducationProfile = activeCfg.complianceProfile === 'education';
+  const domainProfile = resolveDomainProfile({
+    slug: activeCfg.id,
+    projectRoot: ROOT,
+    domainProfile: activeCfg.domainProfile,
+    complianceProfile: activeCfg.complianceProfile,
+    archetype: activeCfg.archetype
+  });
+  const usesMdxLessons = domainProfile.capabilities.content.mdxLessons;
+  const usesReadSurface = domainProfile.defaultSurfaceMode === 'Read' || usesMdxLessons;
+  const usesThreeAndSonic =
+    domainProfile.capabilities.media.three && domainProfile.capabilities.media.audio;
+  const usesBespokeMorphology = domainProfile.capabilities.media.bespokeDomMorphology;
 
   let html = readFirstExisting(ROOT, [
     activeCfg.paths?.entryHtml,
@@ -158,9 +170,9 @@ export function runRyuxDesignGate(projectInput = '') {
     checks.push({ id, label, passed: Boolean(passed), evidence });
   };
 
-  // 1. OKLCH & W3C DTCG Token System (+ 3 semantic level accents in education Read mode)
+  // 1. OKLCH & W3C DTCG Token System (+ 3 semantic level accents when mdxLessons capability active)
   const hasOklch = /oklch\(/i.test(css) || hasDtcgFile;
-  if (isEducationProfile) {
+  if (usesMdxLessons) {
     const combinedTokens = `${css}\n${dtcgRaw}\n${html}`;
     const hasThreeLevelAccents =
       /level-acquire/i.test(combinedTokens) &&
@@ -205,7 +217,7 @@ export function runRyuxDesignGate(projectInput = '') {
   addCheck(
     'ryux-native-motion-2026',
     '2026 Native Motion Primitives (View Transitions API + @starting-style / Scroll-Driven CSS)',
-    hasViewTransition && (isEducationProfile ? true : hasStartingStyleOrScroll),
+    hasViewTransition && (usesReadSurface ? true : hasStartingStyleOrScroll),
     `ViewTransitions=${hasViewTransition}, NativeCSSMotion=${hasStartingStyleOrScroll}`
   );
 
@@ -218,10 +230,10 @@ export function runRyuxDesignGate(projectInput = '') {
     hasReducedMotion ? 'prefers-reduced-motion guard active' : 'Missing prefers-reduced-motion guard'
   );
 
-  // 6. Anti-Slop Heuristics & Clean Heading Hierarchy (h1 -> h2 -> h3 enforced in education Read mode)
+  // 6. Anti-Slop Heuristics & Clean Heading Hierarchy (h1 -> h2 -> h3 enforced in Read surface mode)
   const hasSlopText = /\b(lorem ipsum dolor sit amet|insert your text here|your company name here)\b/i.test(html);
   const hasMainAndHeading = /<main[\s>]/i.test(html) && /<h[12][\s>]/i.test(html);
-  if (isEducationProfile) {
+  if (usesMdxLessons) {
     const contentFiles = collectFilesByExtension(path.join(ROOT, 'src'), ['.astro', '.mdx', '.md']);
     const combinedEduMarkup = contentFiles.length > 0
       ? contentFiles.map((f) => fs.readFileSync(f, 'utf8')).join('\n')
@@ -322,35 +334,38 @@ export function runRyuxDesignGate(projectInput = '') {
 
   // 10. Google Labs DESIGN.md + Impeccable v4.6 (62 Anti-Slop Rules & 4 Surface Modes)
   const designMdPath = path.join(ROOT, 'DESIGN.md');
-  if (!isEducationProfile) {
+  if (usesThreeAndSonic) {
     if (
       !fs.existsSync(designMdPath) ||
       !fs.readFileSync(designMdPath, 'utf8').includes('pbrMaterial:') ||
       !fs.readFileSync(designMdPath, 'utf8').includes('## Sonic & Video Identity') ||
       !fs.readFileSync(designMdPath, 'utf8').includes('## Brand DNA Vector & Bespoke Morphology')
     ) {
-      generateProductAndDesignMd(ROOT, activeCfg.industryArchetype || activeCfg.archetype || 'saas');
+      generateProductAndDesignMd(
+        ROOT,
+        activeCfg.industryArchetype || activeCfg.archetype || domainProfile.defaultIndustryArchetype
+      );
     }
   } else if (!fs.existsSync(designMdPath)) {
-    generateProductAndDesignMd(ROOT, 'education');
+    generateProductAndDesignMd(ROOT, domainProfile.id);
   }
 
   const designMdRaw = fs.existsSync(designMdPath) ? fs.readFileSync(designMdPath, 'utf8') : '';
   const designMdLint = lintDesignMd(designMdRaw || designMdPath, {
-    archetype: isEducationProfile ? 'academic-editorial-education' : (activeCfg.industryArchetype || activeCfg.archetype || 'saas'),
+    archetype: usesReadSurface
+      ? domainProfile.defaultIndustryArchetype
+      : activeCfg.industryArchetype || activeCfg.archetype || domainProfile.defaultIndustryArchetype,
     sourcePath: designMdPath
   });
   addCheck(
     'ryux-impeccable-design-md-62-rules',
     'Google Labs DESIGN.md (8 Sections) & Impeccable v4.6 (62 Deterministic Anti-Slop Rules)',
-    designMdLint.passed && (!isEducationProfile || designMdLint.surfaceMode === 'Read'),
+    designMdLint.passed && (!usesReadSurface || designMdLint.surfaceMode === 'Read'),
     `Archetype=${designMdLint.archetype}, Mode=${designMdLint.surfaceMode}, RulesPassed=${designMdLint.passedRulesCount}/${designMdLint.totalRulesChecked}, Errors=${designMdLint.summary.errors}`
   );
 
   // 11. Profile-Specific Science Check:
-  //     - Education (`Read`): Reading Measure `max-width` in `[60ch, 70ch]`, zero 3D/PBR bloat, APCA contrast & Fitts touch
-  //     - Standard/SaaS: Thermal Rotation C > 0, Filament PBR, Camera FOV, Spring Physics, Tufte tnum & HIG/M3 Touch
-  if (isEducationProfile) {
+  if (usesReadSurface) {
     const chMatches = [
       ...css.matchAll(/(?:max-width|--reading-measure)\s*:\s*(?:var\([^,]+,\s*)?(\d+(?:\.\d+)?)ch\b/gi)
     ].map((m) => Number(m[1]));
@@ -393,7 +408,7 @@ export function runRyuxDesignGate(projectInput = '') {
   const hasUnmutedAudioAutoplay = /<audio\b[^>]*\bautoplay\b/i.test(html);
   const hasUnmutedVideoAutoplay = /<video\b[^>]*\bautoplay\b(?![^>]*\bmuted\b)/i.test(html);
 
-  if (isEducationProfile) {
+  if (usesMdxLessons) {
     const lessonDirs = [
       path.join(ROOT, 'src', 'content'),
       path.join(ROOT, 'src', 'pages', 'niveles'),
@@ -519,7 +534,9 @@ export function runRyuxDesignGate(projectInput = '') {
   // 14. Intra-Category Uniqueness & Surface Topology
   const activeDna = synthesizeUniqueBrandDna({
     projectSlug: activeCfg.id || 'agencia-alfa',
-    industryCategory: isEducationProfile ? 'education' : (activeCfg.industryArchetype || activeCfg.archetype || 'saas'),
+    industryCategory: usesMdxLessons
+      ? domainProfile.id
+      : activeCfg.industryArchetype || activeCfg.archetype || domainProfile.defaultIndustryArchetype,
     persistInLedger: true
   });
   const divergenceOk = activeDna.morphologicalDivergenceScore >= MIN_DIVERGENCE_THRESHOLD;
@@ -537,7 +554,7 @@ export function runRyuxDesignGate(projectInput = '') {
       motionStrip.all4KeyframesVerified === true
   );
 
-  if (isEducationProfile) {
+  if (!usesBespokeMorphology) {
     const hasEditorialLayoutPrimitive =
       css.includes('prose-editorial') ||
       css.includes('--reading-measure') ||
@@ -613,7 +630,13 @@ export async function runAutonomousAestheticRepairLoop(options = {}) {
   const minScore = Number(options.minScore || 92);
   const activeCfg = loadProjectConfig(options.project || '');
   const ROOT = activeCfg.projectRoot;
-  const isEducationProfile = activeCfg.complianceProfile === 'education';
+  const repairProfile = resolveDomainProfile({
+    slug: activeCfg.id,
+    projectRoot: ROOT,
+    domainProfile: activeCfg.domainProfile,
+    complianceProfile: activeCfg.complianceProfile,
+    archetype: activeCfg.archetype
+  });
   const { runCognitiveUxAudit } = await import('./cognitive_ux_auditor.mjs');
 
   const history = [];
@@ -622,7 +645,9 @@ export async function runAutonomousAestheticRepairLoop(options = {}) {
     const cogRes = runCognitiveUxAudit(activeCfg);
     const vlmRes = await evaluateVisualArchetypeWithVlm({
       projectRoot: ROOT,
-      archetype: isEducationProfile ? 'education' : (activeCfg.industryArchetype || activeCfg.archetype || 'saas'),
+      archetype: repairProfile.capabilities.content.mdxLessons
+        ? repairProfile.id
+        : activeCfg.industryArchetype || activeCfg.archetype || repairProfile.defaultIndustryArchetype,
       screenshots: ['1440px', '768px', '375px'],
       passNumber: iter,
       maxPasses: maxIterations
@@ -665,9 +690,12 @@ export async function runAutonomousAestheticRepairLoop(options = {}) {
       };
     }
 
-    if (!isEducationProfile) {
+    if (repairProfile.capabilities.media.bespokeDomMorphology) {
       try {
-        generateProductAndDesignMd(ROOT, activeCfg.industryArchetype || activeCfg.archetype || 'saas');
+        generateProductAndDesignMd(
+          ROOT,
+          activeCfg.industryArchetype || activeCfg.archetype || repairProfile.defaultIndustryArchetype
+        );
         const { compileDesignTokens } = await import('../design/token_compiler.mjs');
         compileDesignTokens({ projectDir: ROOT });
       } catch {}

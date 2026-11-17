@@ -1,0 +1,26 @@
+{
+  "id": "diggity-slots-overlay",
+  "name": "Diggity Slots Overlay",
+  "domain": "https://diggity-slots-overlay.pages.dev",
+  "version": "1.0.0",
+  "domainProfile": "gambling-18plus",
+  "archetype": "streaming-overlay",
+  "stack": "vanilla-edge",
+  "complianceProfile": "gambling-18plus",
+  "surfaceMode": "Experience",
+  "industryArchetype": "streaming-overlay",
+  "dbTier": "none-static",
+  "paths": {
+    "entryHtml": "index.html",
+    "distDir": "dist",
+    "workerEntry": null,
+    "tokensPath": "tokens/design.tokens.json",
+    "designCssPath": "site/css/design-tokens.css",
+    "selectorCachePath": "memory/selector_cache.json",
+    "sourceDirs": ["site"],
+    "dataFiles": [],
+    "overlays": ["roller-panel.html"],
+    "requiredOverlaysInAudit": [],
+    "coreJsFiles": []
+  }
+}
